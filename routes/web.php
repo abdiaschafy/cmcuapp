@@ -31,6 +31,7 @@ Route::prefix('admin')->middleware('role:superadministrateur')->group(function (
     Route::resource('/produit', 'ProduitController');
     Route::get('/pharmaceutique', 'ProduitController@stock_pharmaceutique')->name('produit.pharmaceutique');
     Route::get('/materiel', 'ProduitController@stock_materiel')->name('materiel.pharmaceutique');
+    Route::resource('/events', 'EventController');
 });
 
 

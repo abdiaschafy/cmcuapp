@@ -29,16 +29,16 @@
                 </div>
                 <div class="form-group">
                     <label for="quantity">QUANTITE STOCK:</label>
-                    <input type="text" class="form-control" name="quantite_stock" value={{ $produit->quantite_stock }} />
+                    <input type="text" class="form-control" name="quantite_stock" value="{{ $produit->quantite_stock }}" />
                 </div>
                 <div class="form-group">
                     <label for="quantity">QUANTITE ALERTE:</label>
-                    <input type="text" class="form-control" name="quantite_alerte" value={{ $produit->quantite_alerte }} />
+                    <input type="text" class="form-control" name="quantite_alerte" value="{{ $produit->quantite_alerte }}" />
                 </div>
                 
                 <div class="form-group">
                     <label for="quantity">PRIX:</label>
-                    <input type="text" class="form-control" name="prix_unitaire" value={{ $produit->prix_unitaire }} />
+                    <input type="text" class="form-control" name="prix_unitaire" value="{{ $produit->prix_unitaire }}" />
                 </div>
                <button type="submit" class="btn btn-primary">MODIFIER</button>
             </form>

@@ -6,7 +6,7 @@
         </h1>
         <span>M</span>
     </div>
-    <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg">
+    <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg img-fluid">
     <ul class="list-unstyled components">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">
@@ -78,9 +78,9 @@
             </a>
         </li>
         <li>
-            <a href="grids.html">
+            <a href="{{ route('events.index') }}">
                 <i class="fas fa-th"></i>
-                Liste des rendez-vous
+                Plages horaires
             </a>
         </li>
         <li>
