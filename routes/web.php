@@ -17,12 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::group(['middleware' => ['auth'] ], function () {
+    Route::resource('/home', 'HomeController');
+});
 
 
-Route::prefix('admin')->middleware('role:superadministrateur')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function () {
     Route::get('/', 'AdminController@index');
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::resource('/users', 'UsersController');

@@ -43,7 +43,7 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->login }}</td>
                                     @foreach($user->roles as $role)
-                                        <td>{{ $role->name }}</td>
+                                        <td>{{ $user->roles->first()->name }}</td>
                                     @endforeach
                                     <td>{{ $user->telephone }}</td>
                                     {{--<td>{{ $user->created_at->toFormattedDateString() }}</td>--}}
