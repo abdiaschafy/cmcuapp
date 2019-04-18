@@ -15,7 +15,7 @@ class AddUserIdFieldToEventsTable extends Migration
     {
         Schema::table('events', function (Blueprint $table) {
             $table->integer('user_id')->unsigned()->nullable()->after('id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -22,18 +22,18 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">CATEGORIE</label>
                         <select class="form-control" name="categorie" id="exampleFormControlSelect1">
-                            <option>pharmaceutique</option>
-                            <option>materiel</option>
+                            <option>PHARMACEUTIQUE</option>
+                            <option>MATERIEL</option>
 
                         </select>
                         <div class="form-group">
                             <label for="price">QUANTITE STOCK :</label>
-                            <input type="text" class="form-control" name="quantite_stock" />
+                            <input type="text" class="form-control" name="qte_stock" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="price">QUANTITE ALERTE :</label>
-                        <input type="text" class="form-control" name="quantite_alerte" />
+                        <input type="text" class="form-control" name="qte_alerte" />
                     </div>
                     <div class="form-group">
                         <label for="quantity">PRIX:</label>

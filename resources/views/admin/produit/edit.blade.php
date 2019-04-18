@@ -23,17 +23,17 @@
                 <div class="form-group">
                 <label for="exampleFormControlSelect1">CATEGORIE</label>
                 <select class="form-control" name="categorie"  id="exampleFormControlSelect1">
-                    <option >Pharmaceutique</option>
-                    <option>Materiel</option>
+                    <option >PHARMACEUTIQUE</option>
+                    <option>MATERIEL</option>
                 </select>
                 </div>
                 <div class="form-group">
                     <label for="quantity">QUANTITE STOCK:</label>
-                    <input type="text" class="form-control" name="quantite_stock" value="{{ $produit->quantite_stock }}" />
+                    <input type="text" class="form-control" name="qte_stock" value="{{ $produit->qte_stock }}" />
                 </div>
                 <div class="form-group">
                     <label for="quantity">QUANTITE ALERTE:</label>
-                    <input type="text" class="form-control" name="quantite_alerte" value="{{ $produit->quantite_alerte }}" />
+                    <input type="text" class="form-control" name="qte_alerte" value="{{ $produit->qte_alerte }}" />
                 </div>
                 
                 <div class="form-group">

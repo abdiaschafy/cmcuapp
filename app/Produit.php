@@ -11,11 +11,16 @@ class Produit extends Model
     protected $fillable = [
         'designation',
         'categorie',
-        'quantite_stock',
-        'quantite_alerte',
+        'qte_stock',
+        'qte_alerte',
         'prix_unitaire'
 
     ] ;
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User');
+    }
 
 
 }

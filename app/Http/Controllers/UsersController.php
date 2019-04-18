@@ -64,8 +64,8 @@ class UsersController extends Controller
         $user->password = Hash::make($password);
         $user->save();
 
-        if ($request->roles) {
-            $user->syncRoles(explode(',', $request->roles));
+        if ($request->input('roles')) {
+            $user->roles()->attach($request->input('roles'));
         }
 
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
@@ -129,7 +129,7 @@ class UsersController extends Controller
         $user->password = Hash::make($request->password);
 
         $user->save();
-        $user->syncRoles(explode(',', $request->roles));
+        $user->roles()->attach($request->input('roles'));
 
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été modifier");
     }

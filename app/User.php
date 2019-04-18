@@ -49,4 +49,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Event');
     }
 
+    public function produits()
+    {
+        return $this->belongsToMany('App\Produit');
+    }
+
 }
