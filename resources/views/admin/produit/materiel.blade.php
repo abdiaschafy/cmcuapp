@@ -39,8 +39,8 @@
                                     <td>{{$produit->id}}</td>
                                     <td>{{$produit->designation}}</td>
                                     <td>{{$produit->categorie}}</td>
-                                    <td>{{$produit->quantite_stock}}</td>
-                                    <td>{{$produit->quantite_alerte}}</td>
+                                    <td>{{$produit->qte_stock}}</td>
+                                    <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
                                     <td><a href="{{ route('produit.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>

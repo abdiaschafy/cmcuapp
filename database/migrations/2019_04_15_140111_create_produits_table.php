@@ -17,8 +17,8 @@ class CreateProduitsTable extends Migration
             $table->bigIncrements('id');
             $table->string('designation');
             $table->string('categorie');
-            $table->integer('quantite_stock');
-            $table->integer('quantite_alerte');
+            $table->integer('qte_stock');
+            $table->integer('qte_alerte');
             $table->integer('prix_unitaire');
             $table->timestamps();
         });
