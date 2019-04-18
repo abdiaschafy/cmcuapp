@@ -28,7 +28,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
     Route::get('/', 'AdminController@index');
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::resource('/users', 'UsersController');
-    Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
     Route::resource('/roles', 'RolesController');
     Route::resource('/produit', 'ProduitController');
     Route::get('/pharmaceutique', 'ProduitController@stock_pharmaceutique')->name('produit.pharmaceutique');

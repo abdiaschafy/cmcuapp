@@ -20,12 +20,6 @@
             <label for="exampleFormControlSelect1">Nom</label>
             <input name="name" class="form-control col-md-6" type="text" value="{{ old('name') }}"><br>
 
-            <label for="exampleFormControlSelect1">Non d'affichage</label>
-            <input name="display_name" class="form-control col-md-6" type="text" value="{{ old('display_name') }}"><br>
-
-            <label for="exampleFormControlSelect1">Description</label>
-            <input name="description" class="form-control col-md-6" type="text" value="{{ old('description') }}"><br>
-
             <button type="submit" class="btn btn-primary btn-xs col-md-2" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
         </form>
 
