@@ -23,8 +23,7 @@ class RolesController extends Controller
      */
     public function create()
     {
-        $permissions = Permission::all();
-        return view('admin.roles.create')->withPermissions($permissions);
+        return view('admin.roles.create');
     }
     /**
      * Store a newly created resource in storage.
@@ -35,19 +34,11 @@ class RolesController extends Controller
     public function store(Request $request)
     {
         $this->validateWith([
-            'display_name' => 'required|max:255',
-            'name' => 'required|max:100|alpha_dash|unique:roles',
-            'description' => 'sometimes|max:255'
+            'name' => 'required|max:255'
         ]);
         $role = new Role();
-        $role->display_name = $request->display_name;
         $role->name = $request->name;
-        $role->description = $request->description;
         $role->save();
-
-        if ($request->permissions) {
-            $role->syncPermissions(explode(',', $request->permissions));
-        }
 
         return redirect()->route('roles.index')->with('success',"Votre nouveau role a bien été ajouté");
     }
@@ -59,7 +50,7 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = Role::where('id', $id)->with('permissions')->first();
+        $role = Role::where('id', $id)->first();
         return view('admin.roles.show')->withRole($role);
     }
     /**
@@ -70,9 +61,8 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::where('id', $id)->with('permissions')->first();
-        $permissions = Permission::all();
-        return view('admin.roles.edit')->withRole($role)->withPermissions($permissions);
+        $role = Role::where('id', $id)->first();
+        return view('admin.roles.edit')->withRole($role);
     }
     /**
      * Update the specified resource in storage.
@@ -84,17 +74,11 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validateWith([
-            'display_name' => 'required|max:255',
-            'description' => 'sometimes|max:255'
+            'name' => 'required|max:255'
         ]);
         $role = Role::findOrFail($id);
-        $role->display_name = $request->display_name;
-        $role->description = $request->description;
+        $role->name = $request->name;
         $role->save();
-
-        if ($request->permissions) {
-            $role->syncPermissions(explode(',', $request->permissions));
-        }
 
         return redirect()->route('roles.index')->with('success',"Le role a bien été modifier");
     }
