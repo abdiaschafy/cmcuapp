@@ -15,12 +15,12 @@
             </a>
         </li>
         <li>
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+            <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-users"></i>
                 Gestion des utilisateurs
                 <i class="fas fa-angle-down fa-pull-right"></i>
             </a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+            <ul class="collapse list-unstyled" id="usersSubmenu">
                 <li>
                     <a href="{{ route('users.index') }}">Liste des utlisateurs</a>
                 </li>
@@ -30,10 +30,19 @@
             </ul>
         </li>
         <li>
-            <a href="grids.html">
-                <i class="fas fa-th"></i>
+            <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-users"></i>
                 Gestion des patients
+                <i class="fas fa-angle-down fa-pull-right"></i>
             </a>
+            <ul class="collapse list-unstyled" id="patientsSubmenu">
+                <li>
+                    <a href="{{ route('patients.index') }}">Dossiers patient</a>
+                </li>
+                <li>
+                    <a href="#">Consultation</a>
+                </li>
+            </ul>
         </li>
         <li>
             <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">

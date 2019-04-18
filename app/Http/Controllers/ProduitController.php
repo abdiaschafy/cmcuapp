@@ -96,6 +96,7 @@ class ProduitController extends Controller
         ]);
 
         $produit = Produit::find($id);
+
         $produit->designation = $request->get('designation');
         $produit->categorie = $request->get('categorie');
         $produit->qte_stock = $request->get('qte_stock');
@@ -124,6 +125,8 @@ class ProduitController extends Controller
     public function stock_pharmaceutique()
     {
         $produi = Produit::orderBy('id', 'asc')->paginate(8);
+        $number = count(Produit::orderBy('id', 'asc')->paginate(8));
+        dd($number);
         $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->get();
 
         return view('admin.produit.pharmaceutique', compact('produits', 'produi'));
@@ -135,6 +138,8 @@ class ProduitController extends Controller
         $produi = Produit::orderBy('id', 'asc')->paginate(8);
         $produits = DB::table('produits')->where('categorie', 'materiel')->get();
 
+//        $number = count($produits);
+//        dd($number);
         return view('admin.produit.materiel', compact('produits', 'produi'));
     }
 }
