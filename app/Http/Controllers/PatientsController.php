@@ -1,10 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
+
+use App\Patient;
 use Illuminate\Http\Request;
-use App\Role;
-use App\Permission;
-use Session;
-class RolesController extends Controller
+use Illuminate\Support\Facades\Auth;
+
+class PatientsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,11 +15,10 @@ class RolesController extends Controller
      */
     public function index()
     {
-
-        $roles = Role::orderBy('id', 'desc')->paginate(8);
-
-        return view('admin.roles.index')->withRoles($roles);
+        $patients = Patient::orderBy('id', 'asc')->paginate(8);
+        return view('admin.patients.index', compact('patients'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -25,8 +26,9 @@ class RolesController extends Controller
      */
     public function create()
     {
-        return view('admin.roles.create');
+        return view('admin.patients.create');
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,15 +37,31 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateWith([
-            'name' => 'required|max:255'
+        $request->validate([
+            'numero_dossier'=> '',
+            'taille'=> 'required',
+            'name'=> 'required',
+            'sexe'=> 'required',
+            'poids'=> 'required|integer',
+            'tension'=> 'required',
+            'temperature'=> 'required',
         ]);
-        $role = new Role();
-        $role->name = $request->name;
-        $role->save();
 
-        return redirect()->route('roles.index')->with('success',"Votre nouveau role a bien été ajouté");
+
+        $patient = new Patient();
+        $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
+        $patient->taille = $request->get('taille');
+        $patient->name = $request->get('name');
+        $patient->sexe = $request->get('sexe');
+        $patient->poids = $request->get('poids');
+        $patient->tension = $request->get('tension');
+        $patient->temperature = $request->get('temperature');
+        $patient->user_id = Auth::id();
+        $patient->save();
+
+        return redirect()->route('patients.index')->with('success', 'Le dossier du patient a été ajouté avec succès !');
     }
+
     /**
      * Display the specified resource.
      *
@@ -52,9 +70,9 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = Role::where('id', $id)->first();
-        return view('admin.roles.show')->withRole($role);
+        //
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -63,9 +81,9 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        $role = Role::where('id', $id)->first();
-        return view('admin.roles.edit')->withRole($role);
+        //
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -75,15 +93,9 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validateWith([
-            'name' => 'required|max:255'
-        ]);
-        $role = Role::findOrFail($id);
-        $role->name = $request->name;
-        $role->save();
-
-        return redirect()->route('roles.index')->with('success',"Le role a bien été modifier");
+        //
     }
+
     /**
      * Remove the specified resource from storage.
      *
