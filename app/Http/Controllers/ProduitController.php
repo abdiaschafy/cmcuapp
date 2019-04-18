@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produit;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProduitController extends Controller
@@ -37,18 +38,19 @@ class ProduitController extends Controller
       $request->validate([
           'designation'=>'required',
           'categorie'=> 'required',
-          'quantite_alerte'=> 'required',
-          'quantite_stock'=> 'required',
+          'qte_alerte'=> 'required',
+          'qte_stock'=> 'required',
           'prix_unitaire'=> 'required|integer'
       ]);
-      $produit = new Produit([
-        'designation' => $request->get('designation'),
-          'categorie' => $request->get('categorie'),
-          'quantite_stock' => $request->get('quantite_stock'),
-          'quantite_alerte' => $request->get('quantite_alerte'),
-          'prix_unitaire'=> $request->get('prix_unitaire')
-      ]);
-      $produit->save();
+        $produit = new Produit();
+        $produit->designation = $request->get('designation');
+        $produit->categorie = $request->get('categorie');
+        $produit->qte_stock = $request->get('qte_stock');
+        $produit->qte_alerte = $request->get('qte_alerte');
+        $produit->prix_unitaire = $request->get('prix_unitaire');
+        $produit->user_id = Auth::id();
+        $produit->save();
+
       return redirect()->route('produit.index')->with('success', 'Le produit a été ajouté avec succès !');
     }
 
@@ -88,17 +90,18 @@ class ProduitController extends Controller
         $request->validate([
             'designation'=>'required',
             'categorie'=> 'required',
-            'quantite_stock'=> 'required|integer',
-            'quantite_alerte'=> 'required|integer',
+            'qte_stock'=> 'required|integer',
+            'qte_alerte'=> 'required|integer',
             'prix_unitaire'=> 'required|integer'
         ]);
 
         $produit = Produit::find($id);
         $produit->designation = $request->get('designation');
         $produit->categorie = $request->get('categorie');
-        $produit->quantite_stock = $request->get('quantite_stock');
-        $produit->quantite_alerte = $request->get('quantite_alerte');
+        $produit->qte_stock = $request->get('qte_stock');
+        $produit->qte_alerte = $request->get('qte_alerte');
         $produit->prix_unitaire = $request->get('prix_unitaire');
+        $produit->user_id = Auth::id();
         $produit->save();
 
         return redirect()->route('produit.index')->with('success', 'La mise à jour a bien été éffectuer');

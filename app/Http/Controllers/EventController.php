@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 //use Calendar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
 //use MaddHatter\LaravelFullcalendar\Calendar;
@@ -71,6 +72,7 @@ class EventController extends Controller
         $events->color = $request->input('color');
         $events->start_date = $request->input('start_date');
         $events->end_date = $request->input('end_date');
+        $events->user_id = Auth::id();
 
         $events->save();
 
