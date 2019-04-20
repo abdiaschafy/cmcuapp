@@ -169,6 +169,7 @@ return [
         Laratrust\LaratrustServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -230,6 +231,7 @@ return [
         'Laratrust'   => Laratrust\LaratrustFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 
