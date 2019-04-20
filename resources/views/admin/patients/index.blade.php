@@ -30,8 +30,9 @@
                             <th>NOM</th>
                             <th>TAILLE</th>
                             <th>DATE DE CREATION</th>
-                            <th>EDITER</th>
+                            <th>CONSULTER</th>
                             <th>SUPPRIMER</th>
+                            <th>IMPRIMER</th>
                             </thead>
                             <tbody>
 
@@ -46,12 +47,17 @@
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
-                                        <a href="{{ route('consultations.create') }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
+                                        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>
                                             </button>
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                            <a class="btn btn-success btn-xs" title="Imprimer" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                     </td>
                                 </tr>
@@ -67,9 +73,9 @@
         </div>
 
         <div class="col-md-12 text-center">
-            <a href="{{ route('patients.create') }}" type="submit" class="btn btn-primary">Ajouter un utilisateur</a>
+            <a href="{{ route('patients.create') }}" type="submit" class="btn btn-primary">Ajouter un patient</a>
         </div>
-
+        {{--<a href="{{ URL::to('/admin/consultation') }}">Export PDF</a>--}}
     </div>
     </div>
     </body>

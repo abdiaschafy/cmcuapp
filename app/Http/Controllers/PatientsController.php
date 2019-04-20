@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Patient;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class PatientsController extends Controller
 {
@@ -70,7 +72,8 @@ class PatientsController extends Controller
      */
     public function show($id)
     {
-        //
+        $patient = Patient::where('id', $id)->first();
+        return view('admin.patients.show', compact('patient'));
     }
 
     /**
@@ -105,5 +108,18 @@ class PatientsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export_pdf($id)
+    {
+
+        $patient = Patient::find($id);
+        $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
+
+        $pdf->save(storage_path('consultation').'.pdf');
+
+//        $content = $pdf->download()->getOriginalContent();
+//        Storage::put('public/admin/name.pdf',$content) ;
+        return $pdf->download('consultation.pdf');
     }
 }
