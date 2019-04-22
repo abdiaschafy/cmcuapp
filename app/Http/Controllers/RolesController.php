@@ -1,9 +1,14 @@
 <?php
+
+
 namespace App\Http\Controllers;
+
+
 use Illuminate\Http\Request;
 use App\Role;
-use App\Permission;
 use Session;
+
+
 class RolesController extends Controller
 {
     /**
@@ -35,8 +40,8 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateWith([
-            'name' => 'required|max:255'
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:20', 'unique:roles'],
         ]);
         $role = new Role();
         $role->name = $request->name;
@@ -75,8 +80,8 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validateWith([
-            'name' => 'required|max:255'
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:20', 'unique:roles'],
         ]);
         $role = Role::findOrFail($id);
         $role->name = $request->name;
@@ -92,6 +97,10 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::find($id);
+
+        $role->delete();
+
+        return redirect()->route('roles.index')->with('success', 'Le role a bien été supprimé');
     }
 }

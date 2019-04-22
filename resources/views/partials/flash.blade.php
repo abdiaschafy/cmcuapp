@@ -30,12 +30,12 @@
 @endif
 
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        Veuillez vérifier si le formulaire ci-dessous contient des erreurs
-    </div>
-@endif
+{{--@if ($errors->any())--}}
+    {{--<div class="alert alert-danger">--}}
+        {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+        {{--Veuillez vérifier si le formulaire ci-dessous contient des erreurs--}}
+    {{--</div>--}}
+{{--@endif--}}
 
 
 
