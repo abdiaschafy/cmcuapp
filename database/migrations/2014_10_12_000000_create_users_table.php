@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->integer('telephone')->unique();
             $table->string('sexe', 254);
             $table->string('lieu_naissance', 254);
-            $table->dateTime('date_naissance');
+            $table->date('date_naissance');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

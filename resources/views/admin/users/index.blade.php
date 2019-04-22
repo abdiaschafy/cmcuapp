@@ -42,9 +42,10 @@
                                     </td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->login }}</td>
-                                    @foreach($user->roles as $role)
-                                        <td>{{ $user->roles->first()->name }}</td>
-                                    @endforeach
+                                    <td>{{ $user->roles->name }}</td>
+                                    {{--@foreach($users->roles as $role)--}}
+                                        {{--<td>{{ $role->name  }}</td>--}}
+                                    {{--@endforeach--}}
                                     <td>{{ $user->telephone }}</td>
                                     {{--<td>{{ $user->created_at->toFormattedDateString() }}</td>--}}
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
@@ -52,10 +53,12 @@
                                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
                                     </td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </p>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,12 +71,19 @@
                 </div>
             </div>
         </div>
-
+        <br>
         <div class="col-md-12 text-center">
             <a href="{{ route('users.create') }}" type="submit" class="btn btn-primary">Ajouter un utilisateur</a>
         </div>
 
     </div>
     </div>
+
+    <script>
+        function myFunction() {
+            if(!confirm("Veuillez confirmer la suppréssion de l'utilisateur"))
+                event.preventDefault();
+        }
+    </script>
     </body>
 @stop

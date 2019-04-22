@@ -39,9 +39,16 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+//    gestion avec la table pivot
+
+//    public function roles()
+//    {
+//        return $this->belongsToMany(Role::class, 'user_role');
+//    }
+
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'user_role');
+        return $this->belongsTo('App\Role', 'role_id');
     }
 
     public function events()

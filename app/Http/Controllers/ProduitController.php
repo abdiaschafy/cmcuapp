@@ -87,13 +87,13 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'designation'=>'required',
-            'categorie'=> 'required',
-            'qte_stock'=> 'required|integer',
-            'qte_alerte'=> 'required|integer',
-            'prix_unitaire'=> 'required|integer'
-        ]);
+//        $request->validate([
+//            'designation'=>'required',
+//            'categorie'=> 'required',
+//            'qte_stock'=> 'required|integer',
+//            'qte_alerte'=> 'required|integer',
+//            'prix_unitaire'=> 'required|integer'
+//        ]);
 
         $produit = Produit::find($id);
 
@@ -125,8 +125,7 @@ class ProduitController extends Controller
     public function stock_pharmaceutique()
     {
         $produi = Produit::orderBy('id', 'asc')->paginate(8);
-        $number = count(Produit::orderBy('id', 'asc')->paginate(8));
-        dd($number);
+
         $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->get();
 
         return view('admin.produit.pharmaceutique', compact('produits', 'produi'));
@@ -138,8 +137,7 @@ class ProduitController extends Controller
         $produi = Produit::orderBy('id', 'asc')->paginate(8);
         $produits = DB::table('produits')->where('categorie', 'materiel')->get();
 
-//        $number = count($produits);
-//        dd($number);
+
         return view('admin.produit.materiel', compact('produits', 'produi'));
     }
 }
