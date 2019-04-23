@@ -14,7 +14,7 @@ class AddUserIdFieldToProduitsTable extends Migration
     public function up()
     {
         Schema::table('produits', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned()->after('id');
+            $table->integer('user_id')->unsigned()->nullable()->after('id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }

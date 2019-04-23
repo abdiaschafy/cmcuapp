@@ -16,10 +16,10 @@
                                 <img src="http://placehold.it/380x500" alt="" class="rounded img-fluid">
                             </div>
                             <div class="col-md-6 col-lg-8">
-                                <p> <i class="glyphicon glyphicon-envelope"></i>{{ $user->email }}<br>
-                                    <br> <i class="glyphicon glyphicon-gift"></i>{{ $user->created_at->toFormattedDateString() }}</p>
+                                <p> <i class="glyphicon glyphicon-envelope"></i>{{ $patient->name }}<br>
+                                    <br> <i class="glyphicon glyphicon-gift"></i>{{ $patient->created_at->toFormattedDateString() }}</p>
 
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{ route('consultations.create', $patient->id) }}" class="btn btn-primary">Consultation</a>
                             </div>
                         </div>
                     </div>

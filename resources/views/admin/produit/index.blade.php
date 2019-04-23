@@ -69,9 +69,11 @@
                                     <td>{{$produit->prix_unitaire}}</td>
                                     <td><a href="{{ route('produit.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
-                                        <form action="{{ route('produit.destroy', $produit->id)}}" method="post">
+                                        <form action="{{ route('produit.destroy', $produit->id) }}" method="post">
                                             @csrf @method('DELETE')
-                                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
                                         </form>
                                     </td>
                                 </tr>
@@ -88,6 +90,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function myFunction() {
+            if(!confirm("Veuillez confirmer la suppréssion du produit"))
+                event.preventDefault();
+        }
+    </script>
     </body>
 
 @endsection

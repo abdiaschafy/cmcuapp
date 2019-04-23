@@ -2,7 +2,6 @@
 
 @section('content')
 
-<body background="admin/images/home.jpg">
 <div class="mid-class">
     <div class="art-right-w3ls">
         <h2>Page de connexion</h2>
@@ -45,5 +44,4 @@
         </p>
     </div>
 </div>
-</body>
 @endsection
