@@ -19,7 +19,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABACAVIR SANDOZ 300 mg, comprimé pelliculé sécable',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -27,7 +27,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABACAVIR/LAMIVUDINE BIOGARAN 600 mg/300 mg, comprimé pelliculé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -35,7 +35,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABIES CANADENSIS BOIRON, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -43,7 +43,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABIES PECTINATA BOIRON, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -51,7 +51,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABIES PECTINATA LEHNING, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -59,7 +59,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABILIFY 10 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -67,7 +67,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABILIFY 10 mg, comprimé orodispersible',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -75,7 +75,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -83,7 +83,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABILIFY 15 mg, comprimé orodispersible',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -91,7 +91,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABILIFY MAINTENA 300 mg, poudre et solvant pour suspension injectable à libération prolongée',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -99,7 +99,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABILIFY MAINTENA 400 mg, poudre et solvant pour suspension injectable à libération prolongée en seringue',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -107,7 +107,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABROTANUM BOIRON, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -115,7 +115,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABSINTHIUM BOIRON, degré de dilution compris entre 2CH et 30CH ou entre 4DH et 60DH',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -123,7 +123,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABSTRAL 100 microgrammes, comprimé sublingual',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -131,7 +131,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ABUFENE 400 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -139,7 +139,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACARBOSE BIOGARAN 50 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -147,7 +147,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -155,7 +155,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACARBOSE EG 100 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -163,7 +163,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR MYLAN 500 mg, poudre pour solution injectable (IV)',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -171,7 +171,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR RATIOPHARM 200 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -179,7 +179,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR MYLAN PHARMA 5 %, crème',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -187,7 +187,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR RATIOPHARM 800 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -195,7 +195,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR SANDOZ 200 mg, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -203,7 +203,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACICLOVIR SANDOZ CONSEIL 5 %, crème',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -211,7 +211,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACIDE ALENDRONIQUE/CHOLECALCIFEROL (VITAMINE D3) CRISTERS 70 mg/2800 UI, comprimé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -219,7 +219,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACIDE FUSIDIQUE MYLAN 2 %, crème',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -227,7 +227,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACIDE TIAPROFENIQUE TEVA 100 mg, comprimé sécable',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -235,7 +235,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ACIDE ZOLEDRONIQUE BIOGARAN 4 mg/100 ml, solution pour perfusion',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -243,7 +243,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'PACILIA, comprimé enrobé',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -251,7 +251,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'PACLITAXEL EBEWE 6 mg/ml, solution à diluer pour perfusion',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -259,7 +259,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'PACLITAXEL KABI 6 mg/ml, solution à diluer pour perfusion',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -267,7 +267,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'PADERYL 0,1 POUR CENT, sirop',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -275,7 +275,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -283,7 +283,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Luminaire ECO 1',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -291,7 +291,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Va-et-vient à tirette éjectable',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -299,7 +299,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'PRISES A CONNEXION MAGNÉTIQUE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -307,7 +307,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Manipulateur pour appel',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -315,7 +315,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Arthromoteur',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -323,7 +323,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -331,7 +331,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -339,7 +339,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Lave Bassin',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -347,7 +347,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Fauteuil roulant électrique pliant ELITE ULTRALIGHT',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -355,7 +355,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Solution médicales d’intégration vidéo',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -363,7 +363,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Electrostimulateur TENS sans fil',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -371,7 +371,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -379,7 +379,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'défibrillateur semi-automatique Point de Vie-Plus Castellano',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -387,7 +387,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Fauteuil de massage Zero Gravity avec fonction de chaleur rouge',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -395,7 +395,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Table divan SPA en bois avec 4 séctions et accoudoirs Couleur ',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -403,7 +403,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Chaise thérapeutique multifonctionnelle avec coussin ',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -411,7 +411,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Siège de massage Shiatshu et d\'acupression Medisana MC 825',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -419,7 +419,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Fauteuil roulant électrique pliable en aluminium rouge',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -427,7 +427,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Brosse faciale pour le nettoyage et les soins de la peau',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -435,7 +435,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Matériel d’oxygénothérapie',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -443,7 +443,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'régulateurs de dépression, aspirateurs de mucosités, bocaux d’aspiration',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -451,7 +451,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Matériel d’administration des gaz médicaux, valve à la demande',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -459,7 +459,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'détendeur-débitlitres, détendeur à pression fixe, débitlitres, humidificateurs, flexibles Sécuristar, accessoires d’oxygénothérapie',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -467,7 +467,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Loupes',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -475,7 +475,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Dentisterie / laboratoire dentaire',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -483,7 +483,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'MOBILIER BLOC OPÉRATOIRE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -491,7 +491,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -499,7 +499,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => '',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -507,7 +507,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'STÉRILISATION',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -515,7 +515,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'EQUIPEMENT MÉDICAL',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -523,7 +523,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'INSTRUMENTATION',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -531,7 +531,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Divan d\'examen Ritter 204',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -539,7 +539,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Nébuliseur pneumatique ST23',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -547,7 +547,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Pack cabinet médical Ecomax Carina',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -555,7 +555,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Batterie externe Power Pac 14.4 V Molift',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -563,7 +563,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Moufle de protection rigide',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -571,7 +571,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Divan d\'examen Ecomax Carina Medical',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -579,7 +579,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Tensiomètre manopoire LIAN Nano Spengler',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -587,7 +587,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Tabouret confort sur roulettes',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -595,7 +595,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'Matelas amagnétique pour Table De Radiologie',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -603,7 +603,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'LIT D\'HÔPITAL / ÉLECTRIQUE / À HAUTEUR RÉGLABLE / TRENDELENBURG',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -611,7 +611,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'LIT D\'HÔPITAL / ÉLECTRIQUE / À HAUTEUR RÉGLABLE / TRENDELENBURG',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -619,7 +619,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ARMOIRE DE CHEVET SUR ROULETTES',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -627,7 +627,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'LIT D\'HÔPITAL / MANUEL / À HAUTEUR FIXE / 1 SECTION',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -635,7 +635,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'TABLE DE CHEVET SUR ROULETTES',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -643,7 +643,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'TABLE DE LIT SUR ROULETTES / À HAUTEUR VARIABLE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -651,7 +651,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'ARMOIRE DE RANGEMENT / DE CHAMBRE DE PATIENT / AVEC PORTE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -659,7 +659,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'FAUTEUIL DE REPOS SUR ROULETTES / AVEC REPOSE-JAMBES / ERGONOMIQUE / MANUEL',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -667,7 +667,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'LIT PÉDIATRIQUE / D\'HÔPITAL / MÉDICAL / ÉLECTRIQUE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -675,7 +675,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'LIT DE SOINS INTENSIFS / ÉLECTRIQUE / À HAUTEUR RÉGLABLE / TRENDELENBURG',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -683,7 +683,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'BERCEAU MÉDICAL SUR ROULETTES / TRANSPARENT / AVEC ESPACE DE RANGEMEN',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -691,7 +691,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'MEUBLE DE CHANGE AVEC ÉVIER / AVEC BANNETTES / POUR HÔPITAUX / AVEC LAVE-MAINS INTÉGRÉ',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -699,7 +699,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'SALLE DE SOINS / PÉDIATRIQUE / MODULAIRE / POUR ÉTABLISSEMENT DE SANTÉ',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -707,7 +707,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'TABLE D\'EXAMEN DE GYNÉCOLOGIE / ÉLECTRIQUE / À HAUTEUR VARIABLE / SUR ROULETTES',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
-                'qte_alerte'    => '45645',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '12321'
             ],
             [
@@ -715,7 +715,7 @@ class ProduitsTableSeeder extends Seeder
                 'designation'   => 'TABLE D\'EXAMEN MANUELLE / À HAUTEUR FIXE / 2 PLANS / ERGONOMIQUE',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '12',
-                'qte_alerte'    => '1',
+                'qte_alerte'    => '10',
                 'prix_unitaire' => '2582'
             ],
 

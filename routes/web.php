@@ -35,6 +35,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
     Route::resource('/events', 'EventController');
     Route::resource('/patients', 'PatientsController');
     Route::resource('/consultations', 'PatientsController');
+    Route::resource('/fiches', 'FicheController');
+   
+
 });
 
 

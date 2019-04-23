@@ -90,7 +90,7 @@
             </a>
         </li>
         <li>
-            <a href="grids.html">
+            <a href="{{ route ('fiches.index')}}">
                 <i class="fas fa-th"></i>
                 Fiches de satisfaction
             </a>
