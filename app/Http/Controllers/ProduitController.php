@@ -16,9 +16,12 @@ class ProduitController extends Controller
      */
     public function index()
     {
-        $produits = Produit::orderBy('id', 'asc')->paginate(8);
+        $produitCount = Produit::count();
 
-        return view('admin.produit.index', compact('produits'));
+        // return $produitCount;
+        $produits = Produit::orderBy('id', 'asc')->paginate(10);
+        return view('admin.produit.index', compact('produits', 'produitCount'));
+
     }
 
 
@@ -124,20 +127,29 @@ class ProduitController extends Controller
 
     public function stock_pharmaceutique()
     {
-        $produi = Produit::orderBy('id', 'asc')->paginate(8);
-
+      
         $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->get();
+        $produi = Produit::orderBy('id', 'asc')->paginate(8);
+        $pharmaCount = count($produits);
 
-        return view('admin.produit.pharmaceutique', compact('produits', 'produi'));
+
+        return view('admin.produit.pharmaceutique', compact('produits', 'produi', 'pharmaCount'));
     }
 
 
     public function stock_materiel()
     {
-        $produi = Produit::orderBy('id', 'asc')->paginate(8);
+
         $produits = DB::table('produits')->where('categorie', 'materiel')->get();
+        $produi = Produit::orderBy('id')->paginate(8);
+        $materielCount = count($produits);
 
+        return view('admin.produit.materiel', compact('produits', 'materielCount', 'produi'));
 
-        return view('admin.produit.materiel', compact('produits', 'produi'));
+//        $designation = DB::table('produits')->where('quantite_stock', '1')->get();
+//        $qteCount = Count($designation);
+
     }
+
+
 }

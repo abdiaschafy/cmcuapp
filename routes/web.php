@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
     Route::get('/consultation/{id}','PatientsController@export_pdf')->name('consultation.pdf');
 
     Route::resource('/consultations', 'PatientsController');
+    Route::resource('/fiches', 'FicheController');
+   
+
 });
 
 

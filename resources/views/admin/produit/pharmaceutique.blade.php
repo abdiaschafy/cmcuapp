@@ -16,8 +16,37 @@
             <h1 class="text-center">LISTE DES PRODUITS PHARMACEUTIQUES</h1>
         </div>
         <hr>
+        <div class="col-md-3 offset-md-8 text-center">
+
+            <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
+                <h2>TOTAL PRODUIT :</h2>
+                <h1><P>{{"$pharmaCount"}}</P> </h1>
+            </a>
+        </div>
         <div class="container">
             <div class="row">
+                <div class="col-10 col-md-10 col-lg-8">
+                    <form  action="/search" method="POST" role="search" class="card card-sm">
+                        {{ csrf_field() }}
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button action="/search" class="btn btn-lg btn-danger" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+                <!--end of col-->
+            </div>
+            </br>
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
