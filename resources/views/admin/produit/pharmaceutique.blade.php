@@ -82,7 +82,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $produi->links() }}
+                        {{ $produits->links() }}
                     </div>
 
                 </div>

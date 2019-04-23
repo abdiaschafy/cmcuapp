@@ -128,23 +128,22 @@ class ProduitController extends Controller
     public function stock_pharmaceutique()
     {
       
-        $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->get();
-        $produi = Produit::orderBy('id', 'asc')->paginate(8);
+        $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->paginate(8);
         $pharmaCount = count($produits);
 
 
-        return view('admin.produit.pharmaceutique', compact('produits', 'produi', 'pharmaCount'));
+        return view('admin.produit.pharmaceutique', compact('produits', 'pharmaCount'));
     }
 
 
     public function stock_materiel()
     {
 
-        $produits = DB::table('produits')->where('categorie', 'materiel')->get();
-        $produi = Produit::orderBy('id')->paginate(8);
+        $produits = DB::table('produits')->where('categorie', 'materiel')->paginate(8);
+
         $materielCount = count($produits);
 
-        return view('admin.produit.materiel', compact('produits', 'materielCount', 'produi'));
+        return view('admin.produit.materiel', compact('produits', 'materielCount'));
 
 //        $designation = DB::table('produits')->where('quantite_stock', '1')->get();
 //        $qteCount = Count($designation);
