@@ -34,7 +34,7 @@
                             </div>
                             <!--end of col-->
                             <div class="col">
-                                <input class="form-control form-control-lg form-control-borderless" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
+                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
                             </div>
                             <!--end of col-->
                             <div class="col-auto">
@@ -50,7 +50,7 @@
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <tr>
                                 <td>ID</td>
@@ -89,6 +89,7 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('admin/js/main.js') }}"></script>
     </body>
 
 @endsection
