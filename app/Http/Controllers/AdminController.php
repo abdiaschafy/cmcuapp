@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
+use App\Produit;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -9,7 +12,13 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $produitCount = Produit::count();
+        $users = User::count();
+        $patients = Patient::count();
+
+//        dd($nqte);
+
+        return view('admin.dashboard', compact('produitCount', 'users', 'patients'));
     }
 
 

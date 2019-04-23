@@ -17,7 +17,7 @@
 
                 <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
                     <h2>TOTAL PRODUIT :</h2>
-                    <h1><P>{{"$produitCount"}}</P> </h1>
+                    <h1><P>{{ $produitCount }}</P> </h1>
                 </a>
             </div>
         <div class="container">
@@ -35,7 +35,7 @@
                             </div>
                             <!--end of col-->
                             <div class="col-auto">
-                                <button action="/search" class="btn btn-lg btn-danger" type="submit">Search</button>
+                                <button action="" class="btn btn-lg btn-danger" type="">Search</button>
                             </div>
                             <!--end of col-->
                         </div>

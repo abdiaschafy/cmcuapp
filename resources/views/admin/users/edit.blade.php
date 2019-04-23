@@ -87,10 +87,13 @@
     <script type="text/javascript">
         function myFunction() {
             var x = document.getElementById("myInput");
-            if (x.type === "password") {
+            var y = document.getElementById("password-confirm");
+            if (x.type === "password" || y.type === "password") {
                 x.type = "text";
+                y.type = "text";
             } else {
                 x.type = "password";
+                y.type = "password";
             }
         }
     </script>
