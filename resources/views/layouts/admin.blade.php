@@ -96,7 +96,6 @@
 
 <!-- Js for bootstrap working-->
 <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <!-- //Js for bootstrap working -->
 
 </html>

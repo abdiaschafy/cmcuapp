@@ -27,11 +27,11 @@
                             </div>
                             <!--end of col-->
                             <div class="col">
-                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
+                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un utilisateur">
                             </div>
                             <!--end of col-->
                             <div class="col-auto">
-                                <button action="/search" class="btn btn-lg btn-danger" type="submit">Search</button>
+                                <a href="#" class="btn btn-lg btn-danger" type="">Search</a>
                             </div>
                             <!--end of col-->
                         </div>
@@ -39,6 +39,7 @@
                 </div>
                 <!--end of col-->
             </div>
+            <br>
 
             <div class="row">
                 <div class="col-lg-12">
@@ -47,7 +48,7 @@
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                <input type="checkbox" id="checkall">
+                                ID
                             </th>
                             <th>NOM</th>
                             <th>LOGIN</th>
@@ -60,9 +61,7 @@
 
                             @foreach($users as $user)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="checkthis">
-                                    </td>
+                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->login }}</td>
                                     <td>{{ $user->roles->name }}</td>

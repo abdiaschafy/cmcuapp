@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Produit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
+use Session;
 
 class ProduitController extends Controller
 {
@@ -90,19 +92,24 @@ class ProduitController extends Controller
      */
     public function update(Request $request, $id)
     {
-//        $request->validate([
-//            'designation'=>'required',
-//            'categorie'=> 'required',
-//            'qte_stock'=> 'required|integer',
-//            'qte_alerte'=> 'required|integer',
-//            'prix_unitaire'=> 'required|integer'
-//        ]);
+        $request->validate([
+            'designation'=> ['required'],
+            'categorie'=> ['required'],
+            'qte_stock'=> ['required', 'integer', 'numeric'],
+            'qte_alerte'=> ['required', 'integer', 'numeric'],
+            'prix_unitaire'=> ['required', 'integer', 'numeric'],
+        ]);
 
         $produit = Produit::find($id);
 
         $produit->designation = $request->get('designation');
         $produit->categorie = $request->get('categorie');
-        $produit->qte_stock = $request->get('qte_stock');
+
+        $input = Input::get('qte_stock');
+        $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');
+
+        $produit->qte_stock = $input + $nqte;
+
         $produit->qte_alerte = $request->get('qte_alerte');
         $produit->prix_unitaire = $request->get('prix_unitaire');
         $produit->user_id = Auth::id();

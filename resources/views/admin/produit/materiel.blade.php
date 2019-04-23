@@ -26,7 +26,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-10 col-md-10 col-lg-8">
-                    <form  action="/search" method="POST" role="search" class="card card-sm">
+                    <form  action="#" method="" role="search" class="card card-sm">
                         {{ csrf_field() }}
                         <div class="card-body row no-gutters align-items-center">
                             <div class="col-auto">
@@ -38,7 +38,7 @@
                             </div>
                             <!--end of col-->
                             <div class="col-auto">
-                                <button action="/search" class="btn btn-lg btn-danger" type="submit">Search</button>
+                                <a href="#" class="btn btn-lg btn-danger">Search</a>
                             </div>
                             <!--end of col-->
                         </div>

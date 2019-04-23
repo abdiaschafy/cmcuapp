@@ -24,7 +24,7 @@
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                <input type="checkbox" id="checkall">
+                                ID
                             </th>
                             <th>ROLE</th>
                             <th>EDITER</th>
@@ -35,9 +35,7 @@
 
                             @foreach ($roles as $role)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="checkthis">
-                                    </td>
+                                    <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">

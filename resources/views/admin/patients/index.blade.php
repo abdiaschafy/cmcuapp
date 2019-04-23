@@ -24,7 +24,7 @@
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                <input type="checkbox" id="checkall">
+                                ID
                             </th>
                             <th>NUMERO</th>
                             <th>NOM</th>
@@ -38,9 +38,8 @@
 
                             @foreach($patients as $patient)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="checkthis">
-                                    </td>
+
+                                    <td>{{ $patient->id }}</td>
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->taille }}</td>
