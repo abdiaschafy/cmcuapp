@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CMCU | Nouvelle consultation')
+@section('title', 'CMCU | Rensegner un dossier patient')
 
 @section('content')
 
@@ -13,8 +13,9 @@
     @include('partials.header')
     <!--// top-bar -->
         <div class="container">
-            <h1 class="text-center">CONSULTATION DU PATIENT</h1>
+            <h1 class="text-center">RENSEIGNER LE DOSSIER DU PATIENT PATIENT</h1>
             <hr>
+            @include('partials.flash_form')
             <div class="form-row mt-4">
                 <div class="col-sm-5 pb-3">
                     <label for="poids">Poids</label>
@@ -87,11 +88,10 @@
 
             </div>
             <div class="row">
-                <button type="submit" class="btn btn-primary btn-lg col-md-3" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Enregistrer</button>
+                <button type="submit" class="btn btn-primary btn-lg col-md-3" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
                 <a href="{{ route('patients.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Annulé</a>
             </div>
         </div>
-        <hr>
     </div>
     </body>
 

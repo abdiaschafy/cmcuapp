@@ -15,56 +15,23 @@
         <div class="container">
             <h1 class="text-center">AJOUTER UN DOSSIER PATIENT</h1>
             <hr>
+            @include('partials.flash_form')
             <form class="form-group col-md-6" action="{{ route('patients.store') }}" method="POST">
                 @csrf
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="name" class="col-form-label text-md-right">{{ __('Nom') }}</label>
-                        <input name="name" class="form-control" value="{{ old('name') }}" type="text" placeholder="Nom">
-                    </div>
-                    <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                        {!! $errors->first('name', '<span class="text-danger">:message</span>') !!}
+                        <input name="name" class="form-control" value="{{ old('name') }}" type="text" placeholder="Nom du patient" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="taille" class="col-form-label text-md-right">{{ __('Taille') }}</label>
-                        <input name="taille" class="form-control" value="{{ old('taille') }}" type="text" placeholder="Taille">
-                    </div>
-                    <div class="form-group {{ $errors->has('taille') ? 'has-error' : '' }}">
-                        {!! $errors->first('taille', '<span class="text-danger">:message</span>') !!}
+                        <label for="assurance" class="col-form-label text-md-right">{{ __('Assurance') }}</label>
+                        <input name="assurance" class="form-control" value="{{ old('assurance') }}" type="text" placeholder="Assurance" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="sexe" class="col-form-label text-md-right">{{ __('Sexe') }}</label>
-                        <br>
-                        <input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Homme" required> Homme
-                        <br>
-                        <input type="radio" id="sexe" class="form-check-inline" name="sexe" value="Femme" required> Femme
-                        <br>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="poids" class="col-form-label text-md-right">{{ __('Poids du patient') }}</label>
-                        <input name="poids" rows="2" value="{{ old('poids') }}" class="form-control" placeholder="Poids du patient">
-                    </div>
-                    <div class="form-group {{ $errors->has('poids') ? 'has-error' : '' }}">
-                        {!! $errors->first('poids', '<span class="text-danger">:message</span>') !!}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tension" class="col-form-label text-md-right">{{ __('Tension du patient') }}</label>
-                        <input name="tension" type="text" rows="2" value="{{ old('tension') }}" class="form-control" placeholder="Tension du patient">
-                    </div>
-                    <div class="form-group {{ $errors->has('tension') ? 'has-error' : '' }}">
-                        {!! $errors->first('tension', '<span class="text-danger">:message</span>') !!}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="temperature" class="col-form-label text-md-right">{{ __('Température du patient') }}</label>
-                        <input name="temperature" type="text" rows="2" value="{{ old('temperature') }}" class="form-control" placeholder="Temp2rqture du patient">
-                    </div>
-                    <div class="form-group {{ $errors->has('temperature') ? 'has-error' : '' }}">
-                        {!! $errors->first('temperature', '<span class="text-danger">:message</span>') !!}
+                        <label for="numero_assurance" class="col-form-label text-md-right">{{ __('Numero assurance') }}</label>
+                        <input name="numero_assurance" class="form-control" value="{{ old('numero_assurance') }}" type="text" placeholder="Numéro d'assurance" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg col-md-5" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>

@@ -9,11 +9,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
@@ -21,23 +17,12 @@ class UsersController extends Controller
         return view('admin.users.index',compact('users', 'roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $roles = Role::all();
         return view('admin.users.create')->withRoles($roles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -73,24 +58,12 @@ class UsersController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $user = User::where('id', $id)->with('roles')->first();
         return view("admin.users.show")->withUser($user);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $roles = Role::all();
@@ -98,13 +71,6 @@ class UsersController extends Controller
         return view("admin.users.edit")->withUser($user)->withRoles($roles);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $this->validateWith([
@@ -146,12 +112,7 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été modifier");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $user = User::find($id);
