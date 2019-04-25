@@ -17,21 +17,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 
+Route::group(['middleware' => ['auth'] ], function () {
+    Route::resource('/home', 'HomeController');
+});
 
 
-Route::prefix('admin')->middleware('role:superadministrateur')->group(function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function () {
     Route::get('/', 'AdminController@index');
     Route::get('/dashboard', 'AdminController@dashboard')->name('admin.dashboard');
     Route::resource('/users', 'UsersController');
-    Route::resource('/permissions', 'PermissionsController', ['except' => 'destroy']);
     Route::resource('/roles', 'RolesController');
     Route::resource('/produit', 'ProduitController');
     Route::get('/pharmaceutique', 'ProduitController@stock_pharmaceutique')->name('produit.pharmaceutique');
     Route::get('/materiel', 'ProduitController@stock_materiel')->name('materiel.pharmaceutique');
     Route::resource('/events', 'EventController');
+    Route::resource('/patients', 'PatientsController');
+    Route::get('/consultation/{id}','PatientsController@export_pdf')->name('consultation.pdf');
+    Route::resource('/consultations', 'PatientsController');
+    Route::resource('/fiches', 'FichesController');
+    Route::get('/fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
+
+
+
 });
 
 

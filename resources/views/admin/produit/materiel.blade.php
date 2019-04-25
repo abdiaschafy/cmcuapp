@@ -16,12 +16,41 @@
             <h1 class="text-center">LISTE DES PRODUITS MATERIELS</h1>
         </div>
         <hr>
+        <div class="col-md-3 offset-md-8 text-center">
+
+            <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
+                <h2>TOTAL PRODUIT :</h2>
+                <h1><P>{{"$materielCount"}}</P> </h1>
+            </a>
+        </div>
         <div class="container">
             <div class="row">
+                <div class="col-10 col-md-10 col-lg-8">
+                    <form  action="#" method="" role="search" class="card card-sm">
+                        {{ csrf_field() }}
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <a href="#" class="btn btn-lg btn-danger">Search</a>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+                <!--end of col-->
+            </div>
+            </br>
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <tr>
                                 <td>ID</td>
@@ -39,8 +68,8 @@
                                     <td>{{$produit->id}}</td>
                                     <td>{{$produit->designation}}</td>
                                     <td>{{$produit->categorie}}</td>
-                                    <td>{{$produit->quantite_stock}}</td>
-                                    <td>{{$produit->quantite_alerte}}</td>
+                                    <td>{{$produit->qte_stock}}</td>
+                                    <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
                                     <td><a href="{{ route('produit.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
@@ -53,13 +82,14 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $produi->links() }}
+                        {{ $produits->links() }}
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
+    <script src="{{ asset('admin/js/main.js') }}"></script>
     </body>
 
 @endsection

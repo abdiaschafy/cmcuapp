@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Gaze Sign up & login Form a Flat Responsive Widget Template :: w3layouts </title>
+    <title>CMCU | connexion </title>
     <!-- Meta tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,6 +16,12 @@
     <!--//style sheet end here-->
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 </head>
+<style>
+    body {
+        background-image: url("admin/images/home.jpg");
+
+    }
+</style>
 <body>
 @yield('content')
 </body>

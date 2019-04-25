@@ -1,16 +1,12 @@
-@extends('layouts.admin')
-
-@section('title', 'CMCU | Permission')
-
-@section('content')
+@extends('layouts.admin') @section('title', 'CMCU | Nouvel utilisateur') @section('content')
 
     <body>
     <div class="se-pre-con"></div>
     <div class="wrapper">
-    @include('partials.side_bar')
+@include('partials.side_bar')
 
     <!-- Page Content Holder -->
-        @include('partials.header')
+    @include('partials.header')
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 col-lg-6">
@@ -20,10 +16,10 @@
                                 <img src="http://placehold.it/380x500" alt="" class="rounded img-fluid">
                             </div>
                             <div class="col-md-6 col-lg-8">
-                                <p> <i class="glyphicon glyphicon-envelope"></i>{{ $permission->name }}<br>
-                                    <br> <i class="glyphicon glyphicon-gift"></i>{{ $permission->display_name }}</p>
+                                <p> <i class="glyphicon glyphicon-envelope"></i>{{ $patient->name }}<br>
+                                    <br> <i class="glyphicon glyphicon-gift"></i>{{ $patient->created_at->toFormattedDateString() }}</p>
 
-                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{ route('consultations.create', $patient->id) }}" class="btn btn-primary">Consultation</a>
                             </div>
                         </div>
                     </div>

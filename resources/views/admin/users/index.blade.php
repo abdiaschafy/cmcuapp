@@ -18,13 +18,37 @@
         <hr>
         <div class="container">
             <div class="row">
+                <div class="col-10 col-md-10 col-lg-8">
+                    <form  action="/search" method="POST" role="search" class="card card-sm">
+                        {{ csrf_field() }}
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un utilisateur">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <a href="#" class="btn btn-lg btn-danger" type="">Search</a>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>
+                <!--end of col-->
+            </div>
+            <br>
+
+            <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                <input type="checkbox" id="checkall">
+                                ID
                             </th>
                             <th>NOM</th>
                             <th>LOGIN</th>
@@ -37,14 +61,13 @@
 
                             @foreach($users as $user)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="checkthis">
-                                    </td>
+                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->login }}</td>
-                                    @foreach($user->roles as $role)
-                                        <td>{{ $role->name }}</td>
-                                    @endforeach
+                                    <td>{{ $user->roles->name }}</td>
+                                    {{--@foreach($users->roles as $role)--}}
+                                        {{--<td>{{ $role->name  }}</td>--}}
+                                    {{--@endforeach--}}
                                     <td>{{ $user->telephone }}</td>
                                     {{--<td>{{ $user->created_at->toFormattedDateString() }}</td>--}}
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
@@ -52,10 +75,12 @@
                                         <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
                                     </td>
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </p>
+                                        <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -68,12 +93,20 @@
                 </div>
             </div>
         </div>
-
+        <br>
         <div class="col-md-12 text-center">
             <a href="{{ route('users.create') }}" type="submit" class="btn btn-primary">Ajouter un utilisateur</a>
         </div>
 
     </div>
     </div>
+
+    <script>
+        function myFunction() {
+            if(!confirm("Veuillez confirmer la suppréssion de l'utilisateur"))
+                event.preventDefault();
+        }
+    </script>
+    <script src="{{ asset('admin/js/main.js') }}"></script>
     </body>
 @stop

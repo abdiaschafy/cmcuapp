@@ -24,35 +24,36 @@
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                <input type="checkbox" id="checkall">
+                                ID
                             </th>
                             <th>ROLE</th>
                             <th>EDITER</th>
-                            <th>VOIR</th>
+                            {{--<th>VOIR</th>--}}
                             <th>SUPPRIMER</th>
                             </thead>
                             <tbody>
 
                             @foreach ($roles as $role)
                                 <tr>
-                                    <td>
-                                        <input type="checkbox" class="checkthis">
-                                    </td>
+                                    <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Edit">
                                             <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary btn-xs"><i class="far fa-edit"></i></a>
                                         </p>
                                     </td>
+                                    {{--<td>--}}
+                                        {{--<p data-placement="top" data-toggle="tooltip" title="Voir">--}}
+                                            {{--<a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>--}}
+                                        {{--</p>--}}
+                                    {{--</td>--}}
                                     <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Voir">
-                                            <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button type="button" class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                                        </p>
+                                        <form action="{{ route('roles.destroy', $role->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,6 +62,7 @@
                         <div class="clearfix"></div>
                         {{ $roles->links() }}
                     </div>
+                    <br>
                     <div class="col-md-12 text-center">
                         <a href="{{ route('roles.create') }}" class="btn btn-primary">Ajouter un role</a>
                     </div>
@@ -69,6 +71,12 @@
         </div>
     </div>
     </div>
+    <script>
+        function myFunction() {
+            if(!confirm("Veuillez confirmer la suppréssion du role"))
+                event.preventDefault();
+        }
+    </script>
     </body>
 
 @stop

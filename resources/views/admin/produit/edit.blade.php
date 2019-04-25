@@ -11,34 +11,34 @@
         <div class="container">
             <h1 class="text-center">MODIFIER UN PRODUIT</h1>
             <hr>
-            @include('partials.flash')
+            @include('partials.flash_form')
             <div class="col-md-6">
-            <form method="post" action="{{ route('produit.update', $produit->id) }}">
+                <form method="post" action="{{ route('produit.update', $produit->id) }}">
                 @method('PATCH')
                 @csrf
               <div class="form-group">
                     <label for="name">designation:</label>
-                    <input type="text" class="form-control" name="designation" value={{ $produit->designation }} />
+                    <input type="text" class="form-control" name="designation" value={{ $produit->designation }} required/>
                 </div>
                 <div class="form-group">
                 <label for="exampleFormControlSelect1">CATEGORIE</label>
-                <select class="form-control" name="categorie"  id="exampleFormControlSelect1">
-                    <option >Pharmaceutique</option>
-                    <option>Materiel</option>
+                <select class="form-control" name="categorie"  id="exampleFormControlSelect1" required>
+                    <option >PHARMACEUTIQUE</option>
+                    <option>MATERIEL</option>
                 </select>
                 </div>
-                <div class="form-group">
+                 <div class="form-group">
                     <label for="quantity">QUANTITE STOCK:</label>
-                    <input type="text" class="form-control" name="quantite_stock" value="{{ $produit->quantite_stock }}" />
+                    <input type="text" class="form-control" name="qte_stock" value="{{ $produit->qte_stock }}" required/>
                 </div>
                 <div class="form-group">
                     <label for="quantity">QUANTITE ALERTE:</label>
-                    <input type="text" class="form-control" name="quantite_alerte" value="{{ $produit->quantite_alerte }}" />
+                    <input type="text" class="form-control" name="qte_alerte" value="{{ $produit->qte_alerte }}" required/>
                 </div>
                 
                 <div class="form-group">
                     <label for="quantity">PRIX:</label>
-                    <input type="text" class="form-control" name="prix_unitaire" value="{{ $produit->prix_unitaire }}" />
+                    <input type="text" class="form-control" name="prix_unitaire" value="{{ $produit->prix_unitaire }}" required/>
                 </div>
                <button type="submit" class="btn btn-primary">MODIFIER</button>
             </form>

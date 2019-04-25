@@ -3,13 +3,11 @@
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
 {
-    use LaratrustUserTrait;
     use Notifiable;
 
     /**
@@ -38,4 +36,34 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $table = 'users';
+
+//    gestion avec la table pivot
+
+//    public function roles()
+//    {
+//        return $this->belongsToMany(Role::class, 'user_role');
+//    }
+
+    public function roles()
+    {
+        return $this->belongsTo('App\Role', 'role_id');
+    }
+
+    public function events()
+    {
+        return $this->belongsToMany('App\Event');
+    }
+
+    public function produits()
+    {
+        return $this->belongsToMany('App\Produit');
+    }
+
+    public function fiches()
+    {
+        return $this->hasMany('App\Fiche');
+    }
+
 }
