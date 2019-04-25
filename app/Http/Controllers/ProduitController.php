@@ -11,18 +11,19 @@ use Session;
 
 class ProduitController extends Controller
 {
- /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        $produitCount = Produit::count();
+       $produitCount = Produit::count();
 
-        // return $produitCount;
-        $produits = Produit::orderBy('id', 'asc')->paginate(10);
-        return view('admin.produit.index', compact('produits', 'produitCount'));
+       //return $produitCount;
+     $produits = Produit::orderBy('id', 'asc')->paginate(10);
+     return view('admin.produit.index', compact('produits', 'produitCount'));
+
+        $total = DB::table('produits')->where('designation', '=', 'ABACAVIR')->sum('qte_stock');
+        //$total = ('Input::get')->sum('qte_stock');
+
+       // return $total;
 
     }
 
@@ -32,12 +33,6 @@ class ProduitController extends Controller
    return view('admin.produit.create');
 }
 
-/**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
       $request->validate([

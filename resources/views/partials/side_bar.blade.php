@@ -90,10 +90,7 @@
             </a>
         </li>
         <li>
-            <a href="{{ route ('fiches.index')}}">
-                <i class="fas fa-th"></i>
-                Fiches de satisfaction
-            </a>
+            <a href="{{ route('fiches.index') }}">Fiches de satisfaction</a>
         </li>
     </ul>
 </nav>

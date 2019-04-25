@@ -27,7 +27,7 @@
                     <option>MATERIEL</option>
                 </select>
                 </div>
-                <div class="form-group">
+                 <div class="form-group">
                     <label for="quantity">QUANTITE STOCK:</label>
                     <input type="text" class="form-control" name="qte_stock" value="{{ $produit->qte_stock }}" required/>
                 </div>

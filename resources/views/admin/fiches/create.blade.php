@@ -1,8 +1,4 @@
-@extends('layouts.admin')
-
-@section('title', 'CMCU | Ajouter une fiche de stisfaction')
-
-@section('content')
+@extends('layouts.admin') @section('title', 'CMCU | Ajouter une fiche de stisfaction') @section('content')
 <body>
 <div class="se-pre-con"></div>
 <div class="wrapper">
@@ -10,29 +6,29 @@
 
     <!-- Page Content Holder -->
     @include('partials.header')
-    <!--// top-bar -->
     <div class="container">
         <h1 class="text-center">AJOUTER UNE FICHE DE SATISFACTION</h1>
         <hr>
         @include('partials.flash')
+        @include('partials.flash_form')
         <div class="col-md-6">
-            <form method="post" action="{{route('fiches.store')}}">
+            <form method="post" action="{{ route('fiches.store') }}">
+                @csrf
                 <div class="form-group">
-                    @csrf
                     <label for="name">NOM:</label>
-                    <input type="text" class="form-control" name="nom" />
+                    <input type="text" class="form-control" name="nom" placeholder="facultatif" />
                 </div>
                 <div class="form-group">
-                    <label for="price">PRENOM :</label>
-                    <input type="text" class="form-control" name="prenom" />
+                    <label for="prenom">PRENOM :</label>
+                    <input type="text" class="form-control" name="prenom" placeholder="facultatif" />
                 </div>
                 <div class="form-group">
-                    <label for="price">AGE :</label>
-                    <input type="text" class="form-control" name="age" />
+                    <label for="chambre_numero">NUMERO DE CHAMBRE :</label>
+                    <input type="text" class="form-control" name="chambre_numero" placeholder="facultatif" />
                 </div>
                 <div class="form-group">
-                    <label for="price">CHAMBRE :</label>
-                    <input type="text" class="form-control" name="chambre" />
+                    <label for="age">AGE :</label>
+                    <input type="text" class="form-control" name="age" placeholder="facultatif" />
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">SERVICE</label>
@@ -58,8 +54,18 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlSelect1">RESTAURANT</label>
-                    <select class="form-control" name="restaurant" id="exampleFormControlSelect1">
+                    <label for="exampleFormControlSelect1">RESTAURANT </label>
+                    <select class="form-control" name="restauration" id="exampleFormControlSelect1">
+                        <option>EXCELLENT</option>
+                        <option>TRES BIEN</option>
+                        <option>BIEN</option>
+                        <option>PASSABLE</option>
+                        <option>MEDIOCRE</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">CHAMBRE </label>
+                    <select class="form-control" name="chambre" id="exampleFormControlSelect1">
                         <option>EXCELLENT</option>
                         <option>TRES BIEN</option>
                         <option>BIEN</option>
@@ -78,24 +84,30 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="sexe" class="col-form-label text-md-right">Recommanderiez-vous le Centre Médico-Chirurgical d’Urologie à vos proches ? </label>
+                    <label for="price">UNE NOTE :</label>
+                    <input type="text" class="form-control" name="notes" placeholder="Entrer une note sur 10 " />
+                </div>
+                <div class="form-group">
+                    <label for="bla" class="col-form-label text-md-right">Recommanderiez-vous le Centre Médico-Chirurgical d’Urologie à vos proches ? </label>
                     <br>
-                    <input type="radio" id="quizz" class="form-check-inline" name="quizz" value="Oui" required> Oui
+                    <input type="radio" id="" class="form-check-inline" name="quizz" value="Oui" required> Oui
                     <br>
-                    <input type="radio" id="quizz" class="form-check-inline" name="quizz" value="Non" required> Non
+                    <input type="radio" id="" class="form-check-inline" name="quizz" value="Non" required> Non
                     <br>
                 </div>
                 <div class="form-group">
                     <label for="quantity">REMARQUE ET SUGGESTION:</label>
-                     <FORM>
-                        <TEXTAREA name="commentaire" rows=4 cols=40>Valeur par défaut</TEXTAREA>
-                    </FORM>
+                    <div >
+                        <TEXTAREA name="remarque_suggestion" rows=4 cols=40>Valeur par défaut</TEXTAREA>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">ENREGISTRER</button>
             </form>
         </div>
     </div>
+    <button class="btn btn-primary" >
+        <a href="{{ route('fiches.index') }}">Retour</a>
+    </button>
 </div>
 </body>
-
-@stop
+@endsection

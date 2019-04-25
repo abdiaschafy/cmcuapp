@@ -6,26 +6,24 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateFichesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('fiches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nom');
             $table->string('prenom');
+            $table->string('chambre_numero');
             $table->integer('age');
-            $table->string('chambre');
             $table->string('service');
             $table->string('infirmier_charge');
             $table->string('accueil');
-            $table->string('restaurant');
+            $table->string('restauration');
+            $table->string('chambre');
             $table->string('soins');
+            $table->integer('notes');
             $table->string('quizz');
-            $table->string('commentaire');
+            $table->string('remarque_suggestion');
             $table->timestamps();
         });
     }

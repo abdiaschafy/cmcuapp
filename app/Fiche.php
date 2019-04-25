@@ -9,17 +9,21 @@ class Fiche extends Model
     protected $fillable = [
         'nom',
         'prenom',
+        'chambre_numero',
         'age',
-        'chambre',
         'service',
         'infirmier_charge',
         'accueil',
-        'restaurant',
+        'restauration',
+        'chambre',
         'soins',
+        'notes',
         'quizz',
-        'commentaire'
+        'remarque_suggestion'
+    ];
 
-    ] ;
-
-
+    public function users()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
