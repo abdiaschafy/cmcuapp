@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CMCU | Liste des dossiers patients')
+@section('title', 'CMCU | Liste des patients')
 
 @section('content')
 
@@ -13,7 +13,7 @@
     @include('partials.header')
     <!--// top-bar -->
         <div class="container">
-            <h1 class="text-center">LISTE DES DOSIIERS PATIENTS</h1>
+            <h1 class="text-center">LISTE DES PATIENTS</h1>
         </div>
         <hr>
         <div class="container">
@@ -24,11 +24,9 @@
                         <table id="mytable" class="table table-bordred table-striped">
                             <thead>
                             <th>
-                                ID
+                                NUMERO
                             </th>
-                            <th>NUMERO</th>
                             <th>NOM</th>
-                            <th>TAILLE</th>
                             <th>DATE DE CREATION</th>
                             <th>CONSULTER</th>
                             <th>SUPPRIMER</th>
@@ -39,14 +37,12 @@
                             @foreach($patients as $patient)
                                 <tr>
 
-                                    <td>{{ $patient->id }}</td>
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
-                                    <td>{{ $patient->taille }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
-                                        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('dossiers.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
@@ -74,7 +70,6 @@
         <div class="col-md-12 text-center">
             <a href="{{ route('patients.create') }}" type="submit" class="btn btn-primary">Ajouter un patient</a>
         </div>
-        {{--<a href="{{ URL::to('/admin/consultation') }}">Export PDF</a>--}}
     </div>
     </div>
     </body>
