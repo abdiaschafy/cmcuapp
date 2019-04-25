@@ -37,11 +37,11 @@
             </a>
             <ul class="collapse list-unstyled" id="patientsSubmenu">
                 <li>
-                    <a href="{{ route('patients.index') }}">Dossiers patient</a>
+                    <a href="{{ route('patients.index') }}">Liste des patients</a>
                 </li>
-                <li>
-                    <a href="#">Consultation</a>
-                </li>
+                {{--<li>--}}
+                    {{--<a href="#">Consultation</a>--}}
+                {{--</li>--}}
             </ul>
         </li>
         <li>

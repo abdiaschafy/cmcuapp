@@ -29,9 +29,10 @@ class ProduitController extends Controller
 
 
     public function create()
-{
-   return view('admin.produit.create');
-}
+    {
+
+        return view('admin.produit.create');
+    }
 
     public function store(Request $request)
     {
@@ -54,23 +55,11 @@ class ProduitController extends Controller
       return redirect()->route('produit.index')->with('success', 'Le produit a été ajouté avec succès !');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $produit = Produit::find($id);
@@ -78,13 +67,7 @@ class ProduitController extends Controller
         return view('admin.produit.edit', compact('produit'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -113,12 +96,7 @@ class ProduitController extends Controller
         return redirect()->route('produit.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $produit = Produit::find($id);
