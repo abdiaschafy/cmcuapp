@@ -22,10 +22,16 @@
             </a>
             <ul class="collapse list-unstyled" id="usersSubmenu">
                 <li>
-                    <a href="{{ route('users.index') }}">Liste des utlisateurs</a>
+                    <a href="{{ route('users.index') }}">
+                        <i class="fas fa-list-ul"></i>
+                        Liste des utlisateurs
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('roles.index') }}">Roles</a>
+                    <a href="{{ route('roles.index') }}">
+                        <i class="fas fa-list-ul"></i>
+                        Roles
+                    </a>
                 </li>
             </ul>
         </li>
@@ -37,11 +43,17 @@
             </a>
             <ul class="collapse list-unstyled" id="patientsSubmenu">
                 <li>
-                    <a href="{{ route('patients.index') }}">Liste des patients</a>
+                    <a href="{{ route('patients.index') }}">
+                        <i class="fas fa-list-ul"></i>
+                        Liste des patients
+                    </a>
                 </li>
-                {{--<li>--}}
-                    {{--<a href="#">Consultation</a>--}}
-                {{--</li>--}}
+                <li>
+                    <a href="#">
+                        <i class="fas fa-print"></i>
+                        Etats de sorties
+                    </a>
+                </li>
             </ul>
         </li>
         <li>
@@ -52,19 +64,28 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu1">
                 <li>
-                    <a href="{{ route('produit.index') }}">Produits en stock</a>
+                    <a href="{{ route('produit.index') }}">
+                        <i class="fas fa-list-ul"></i>
+                        Produits en stock
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('produit.pharmaceutique') }}">Produit pharmaceutiques</a>
+                    <a href="{{ route('produit.pharmaceutique') }}">
+                        <i class="fab fa-python"></i>
+                        Produit pharmaceutiques
+                    </a>
                 </li>
                 <li>
-                    <a href="{{ route('materiel.pharmaceutique') }}">Produit matériels</a>
+                    <a href="{{ route('materiel.pharmaceutique') }}">
+                        <i class="fas fa-cogs"></i>
+                        Produit matériels
+                    </a>
                 </li>
             </ul>
         </li>
         <li>
             <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-users"></i>
+                <i class="far fa-money-bill-alt"></i>
                 Factures
                 <i class="fas fa-angle-down fa-pull-right"></i>
             </a>
@@ -79,18 +100,21 @@
         </li>
         <li>
             <a href="grids.html">
-                <i class="fas fa-th"></i>
+                <i class="far fa-money-bill-alt"></i>
                 Bilan financier
             </a>
         </li>
         <li>
             <a href="{{ route('events.index') }}">
-                <i class="fas fa-th"></i>
+                <i class="far fa-calendar-times"></i>
                 Plages horaires
             </a>
         </li>
         <li>
-            <a href="{{ route('fiches.index') }}">Fiches de satisfaction</a>
+            <a href="{{ route('fiches.index') }}">
+                <i class="fas fa-list-ul"></i>
+                Fiches de satisfaction
+            </a>
         </li>
     </ul>
 </nav>

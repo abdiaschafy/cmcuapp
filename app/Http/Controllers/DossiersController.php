@@ -54,7 +54,7 @@ class DossiersController extends Controller
     public function show($id)
     {
         $patient = Patient::where('id', $id)->first();
-        return view('admin.dossiers.show', compact('patient'));
+        return view('admin.patients.show', compact('patient'));
     }
 
 
@@ -71,6 +71,11 @@ class DossiersController extends Controller
 
 
     public function destroy($id)
+    {
+        //
+    }
+
+    public function parametre_store()
     {
         //
     }

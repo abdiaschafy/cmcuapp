@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddConsultationIdToSoinsTable extends Migration
+class CreateOrdonancesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddConsultationIdToSoinsTable extends Migration
      */
     public function up()
     {
-        Schema::table('soins', function (Blueprint $table) {
-            $table->integer('consultation_id')->unsigned()->nullable()->after('id');
+        Schema::create('ordonances', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('consultation_id')->unsigned();
+            $table->text('description');
+            $table->timestamps();
+
             $table->foreign('consultation_id')->references('id')->on('consultations')->onUpdate('cascade')->onDelete('cascade');
         });
     }
@@ -26,8 +30,6 @@ class AddConsultationIdToSoinsTable extends Migration
      */
     public function down()
     {
-        Schema::table('soins', function (Blueprint $table) {
-            $table->dropColumn('consultation_id');
-        });
+        Schema::dropIfExists('ordonances');
     }
 }

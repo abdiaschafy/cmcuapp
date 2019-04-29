@@ -15,9 +15,13 @@ class CreateParametresTable extends Migration
     {
         Schema::create('parametres', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('patient_id')->unsigned();
             $table->integer('poids')->nullable();
-            $table->integer('tension')->nullable();
+            $table->integer('tension');
+            $table->integer('temperature');
             $table->timestamps();
+
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

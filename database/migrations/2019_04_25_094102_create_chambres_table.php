@@ -15,6 +15,9 @@ class CreateChambresTable extends Migration
     {
         Schema::create('chambres', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('numero');
+            $table->enum('type', ['CLASSIQUE', 'VIP', 'BLOC']);
+            $table->enum('prix', ['2000', '10000']);
             $table->timestamps();
         });
     }

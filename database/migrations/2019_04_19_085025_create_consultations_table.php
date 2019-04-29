@@ -15,7 +15,17 @@ class CreateConsultationsTable extends Migration
     {
         Schema::create('consultations', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('patient_id')->unsigned();
+            $table->string('diagnostique');
+            $table->string('commentaire');
+            $table->string('decision');
+            $table->integer('cout');
+            $table->time('dure_intervention')->nullable();
+            $table->string('resultat_examen')->nullable();
             $table->timestamps();
+
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+
         });
     }
 
