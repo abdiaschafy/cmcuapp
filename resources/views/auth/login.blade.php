@@ -43,5 +43,6 @@
         <h4 align="center"> www.cmcu-cm.com</h4>
         </p>
     </div>
+    @include('flashy::message')
 </div>
 @endsection

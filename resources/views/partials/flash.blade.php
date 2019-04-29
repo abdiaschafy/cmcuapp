@@ -1,33 +1,33 @@
-@if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
+{{--@if ($message = Session::get('success'))--}}
+    {{--<div class="alert alert-success alert-block">--}}
+        {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+        {{--<strong>{{ $message }}</strong>--}}
+    {{--</div>--}}
+{{--@endif--}}
 
 
-@if ($message = Session::get('error'))
-    <div class="alert alert-danger alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
+{{--@if ($message = Session::get('error'))--}}
+    {{--<div class="alert alert-danger alert-block">--}}
+        {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+        {{--<strong>{{ $message }}</strong>--}}
+    {{--</div>--}}
+{{--@endif--}}
 
 
-@if ($message = Session::get('warning'))
-    <div class="alert alert-warning alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
+{{--@if ($message = Session::get('warning'))--}}
+    {{--<div class="alert alert-warning alert-block">--}}
+        {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+        {{--<strong>{{ $message }}</strong>--}}
+    {{--</div>--}}
+{{--@endif--}}
 
 
-@if ($message = Session::get('info'))
-    <div class="alert alert-info alert-block">
-        <button type="button" class="close" data-dismiss="alert">×</button>
-        <strong>{{ $message }}</strong>
-    </div>
-@endif
+{{--@if ($message = Session::get('info'))--}}
+    {{--<div class="alert alert-info alert-block">--}}
+        {{--<button type="button" class="close" data-dismiss="alert">×</button>--}}
+        {{--<strong>{{ $message }}</strong>--}}
+    {{--</div>--}}
+{{--@endif--}}
 
 
 {{--@if ($errors->any())--}}
@@ -36,6 +36,19 @@
         {{--Veuillez vérifier si le formulaire ci-dessous contient des erreurs--}}
     {{--</div>--}}
 {{--@endif--}}
+
+@if(Session::has('flashy_notification.message'))
+    <script id="flashy-template" type="text/template">
+        <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
+            <i class="material-icons">speaker_notes</i>
+            <a href="#" class="flashy__body" target="_blank"></a>
+        </div>
+    </script>
+
+    <script>
+        flashy("{{ Session::get('flashy_notification.message') }}", "{{ Session::get('flashy_notification.link') }}");
+    </script>
+@endif
 
 
 

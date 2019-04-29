@@ -48,6 +48,7 @@
 
 <!-- Required common Js -->
 <script src='{{ asset('admin/js/jquery-2.2.3.min.js') }}'></script>
+@include('flashy::message')
 <!-- //Required common Js -->
 
 <!-- loading-gif Js -->

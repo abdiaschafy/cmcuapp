@@ -3,6 +3,7 @@
 
 
 Route::get('/', function () {
+    Flashy::message('Welcome Aboard!', 'http://your-awesome-link.com');
     return redirect('login');
 })->middleware('auth');
 

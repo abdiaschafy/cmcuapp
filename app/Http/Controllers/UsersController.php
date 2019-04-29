@@ -6,6 +6,7 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use MercurySeries\Flashy\Flashy;
 
 class UsersController extends Controller
 {
@@ -54,7 +55,9 @@ class UsersController extends Controller
 //            $user->roles()->attach($request->input('roles'));
 //        }
 
+        Flashy('Nous vous répondrons dans les plus brefs délais');
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
+
 
     }
 
