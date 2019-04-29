@@ -21,6 +21,11 @@ class Patient extends Model
         return $this->belongsTo('App\Dossier');
     }
 
+    public function parametres()
+    {
+        return $this->belongsTo(Parametre::class);
+    }
+
     public function users()
     {
         return $this->belongsTo(User::class);

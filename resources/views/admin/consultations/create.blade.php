@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
-                    <a href="{{ route('patients.show', $patients->id) }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour au dossier du patient</a>
+                    <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
                 </div>
                 <br>
                 <br>
@@ -28,9 +28,9 @@
                                 <tbody>
 
                                 <form action="{{ route('consultations.store') }}" method="post">
+                                    @csrf
                                     @include('partials.flash')
                                     @include('partials.flash_form')
-                                    @csrf
                                     <tr>
                                         <td>
                                             <h4><strong>Consultation</strong></h4></td>
@@ -116,11 +116,12 @@
                 <div class="col-md-6  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Prise des paramètres du <small><strong>{{ $mytime->toFormattedDateString() }}</strong></small></div>
+                            <div class="card-title">Prise des paramètres du <small><strong></strong></small></div>
                             <small class="text-info" title="La prise des paramètres du patient doit être quotidienne"><i class="fas fa-info-circle"></i></small>
 
                             <form action="{{ route('parametres.store') }}" method="POST">
-                                <table class="table table-user-information ">
+                                @csrf
+                                <table class="table">
                                     <tbody>
                                     <tr>
                                         <td>Poids</td>
@@ -147,52 +148,52 @@
                         </div>
                     </div>
                     <br>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-title">Fiche de sotie du patient</div>
-                            <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention !! à remplir à la sortie du patient</strong></i></small>
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<div class="card-title">Fiche de sotie du patient</div>--}}
+                            {{--<small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention !! à remplir à la sortie du patient</strong></i></small>--}}
 
-                            <form action="{{ route('parametres.store') }}" method="POST">
-                                <table class="table table-user-information ">
-                                    <tbody>
-                                    <tr>
-                                        <td>Bloc utilisé :</td>
-                                        <td>
-                                            <select name="" id="">
-                                                <option value="">Bloc 1</option>
-                                                <option value="">Bloc 2</option>
-                                                <option value="">Bloc 3</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Chambre :</td>
-                                        <td>
-                                            <select name="" id="">
-                                                <option value="">Chambre 1</option>
-                                                <option value="">Chambre 2</option>
-                                                <option value="">Chambre 3</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prix :</td>
-                                        <td>
-                                            <input type="number" placeholder="En fcfa">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Durée d'hospitalisation :</td>
-                                        <td>
-                                            <input type="number" placeholder="En jour">
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <button type="submit" class="btn btn-success">Valider la sortie <span class="text-danger"><i class="fas fa-check"></i></span></button>
-                            </form>
-                        </div>
-                    </div>
+                            {{--<form action="#" method="POST">--}}
+                                {{--<table class="table table-user-information ">--}}
+                                    {{--<tbody>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Bloc utilisé :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select name="" id="">--}}
+                                                {{--<option value="">Bloc 1</option>--}}
+                                                {{--<option value="">Bloc 2</option>--}}
+                                                {{--<option value="">Bloc 3</option>--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Chambre :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select name="" id="">--}}
+                                                {{--<option value="">Chambre 1</option>--}}
+                                                {{--<option value="">Chambre 2</option>--}}
+                                                {{--<option value="">Chambre 3</option>--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Prix :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<input type="number" placeholder="En fcfa">--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Durée d'hospitalisation :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<input type="number" placeholder="En jour">--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--</tbody>--}}
+                                {{--</table>--}}
+                                {{--<button type="submit" class="btn btn-success">Valider la sortie <span class="text-danger"><i class="fas fa-check"></i></span></button>--}}
+                            {{--</form>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
 
                 </div>
 

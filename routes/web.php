@@ -30,7 +30,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'] ], function
     Route::get('/dossiers', 'DossiersController@parametre_store')->name('parametres.store');
 
     Route::get('/consultation/{id}','PatientsController@export_pdf')->name('consultation.pdf');
-    Route::resource('/consultations', 'PatientsController');
+    Route::resource('/consultations', 'PatientsController')->except(['index']);
+    Route::resource('/parametres', 'ParametresController')->except(['index', 'show']);
     Route::resource('/fiches', 'FichesController');
     Route::get('/fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
     Route::resource('/consultations', 'ConsultationsController');

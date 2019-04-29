@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
-use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,19 +10,18 @@ use Illuminate\Http\Request;
 class ConsultationsController extends Controller
 {
 
-    public function create(Patient $id)
+    public function create()
     {
-        $patients = Patient::where('id', $id);
 
         $mytime = Carbon::now();
 
-        return view('admin.consultations.create', compact('patients', 'mytime'));
+        return view('admin.consultations.create', compact('mytime'));
     }
 
 
     public function store(Request $request)
     {
-        $patient = Patient::find(1);
+        $patient = Patient::find(2);
 
         $request->validate([
             'patient_id'=> '',

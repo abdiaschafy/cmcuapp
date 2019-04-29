@@ -6,8 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Parametre extends Model
 {
-    public function soins()
+    protected $fillable = [
+        'patient_id', 'poids', 'tenssion', 'temperature'
+    ];
+
+    public function patients()
     {
-        return $this->belongsTo('App\Soin');
+        return $this->hasMany(Patient::class);
     }
 }

@@ -17,8 +17,8 @@ class CreateParametresTable extends Migration
             $table->increments('id');
             $table->integer('patient_id')->unsigned();
             $table->integer('poids')->nullable();
-            $table->integer('tension');
-            $table->integer('temperature');
+            $table->string('tenssion');
+            $table->string('temperature');
             $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
