@@ -6,48 +6,43 @@ use App\Consultation;
 use App\Patient;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use MercurySeries\Flashy\Flashy;
 
 class ConsultationsController extends Controller
 {
 
-    public function create()
+    public function create($id)
     {
 
         $mytime = Carbon::now();
+        $patient = Patient::where('id', $id);
 
-        return view('admin.consultations.create', compact('mytime'));
+        return view('admin.consultations.create', compact('mytime', 'patient'));
     }
 
 
-    public function store(Request $request)
+    public function store(Patient $patient)
     {
-        $patient = Patient::find(2);
 
-        $request->validate([
-            'patient_id'=> '',
-            'diagnostique'=> 'required|max:255',
-            'commentaire'=> 'required|max:255',
-            'decision'=> 'required',
-            'cout'=> 'required',
-            'dure_intervention'=> '',
-            'resultat_examen'=> '',
+        //$patient = Patient::where('patient', $patient->get());
+
+        //dd($patient);
+
+        Consultation::create([
+            'user_id' => auth()->id(),
+            'patient_id' => $patient->id,
+            'diagnostique'=> request('diagnostique'),
+            'commentaire'=> request('commentaire'),
+            'decision'=> request('decision'),
+            'cout'=> request('cout'),
+            'dure_intervention'=> request('dure_intervention'),
+            'resultat_examen'=> request('resultat_examen'),
+
         ]);
 
-        $consultation = new Consultation();
+        Flashy('Nous vous répondrons dans les plus brefs délais');
 
-        $consultation->diagnostique = $request->get('diagnostique');
-        $consultation->commentaire = $request->get('commentaire');
-        $consultation->decision = $request->get('decision');
-        $consultation->cout = $request->get('cout');
-        $consultation->dure_intervention = $request->get('dure_intervention');
-        $consultation->resultat_examen = $request->get('resultat_examen');
-        $consultation->patient_id = $patient->id;
-
-        $consultation->save();
-
-
-
-        return view('admin.consultations.create')->with('success', 'Le patient a été ajouté avec succès !');
+        return back();
     }
 
     public function show($id)

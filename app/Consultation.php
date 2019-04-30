@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Consultation extends Model
 {
-    public function consultations()
+
+	//protected $guarded = [];
+
+	protected $fillable = ['user_id', 'patient_id', 'diagnostique', 'commentaire', 'decision', 'cout', 'dure_intervention', 'resultat_examen'];
+
+    public function user()
     {
-        return $this->belongsTo('App\Dossier');
+        return $this->belongsTo('User::class');
     }
 
-    public function soins()
+    public function patient()
     {
-        return $this->hasMany('App\Soin');
+        return $this->belongsTo('Patient::class');
     }
+
 }

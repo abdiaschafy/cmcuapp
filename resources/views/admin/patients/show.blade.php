@@ -72,7 +72,7 @@
                                     </tbody>
                                 </table>
                                 <a class="btn btn-primary" href="{{ route('dossiers.create', $patient->id) }}">Liste des soins</a>
-                                <a class="btn btn-danger" href="{{ route('consultations.create') }}">Nouvelle consultation</a>
+                                <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>
                             </div>
                         </div>
                     </div>
