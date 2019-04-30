@@ -20,6 +20,11 @@ class Patient extends Model
     {
         return $this->belongsTo('App\Dossier');
     }
+// un patient aura plusieurs consultation
+    public function consultations()
+    {
+        return $this->hasMany(Consultation::class);
+    }
 
     public function parametres()
     {

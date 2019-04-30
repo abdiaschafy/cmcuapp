@@ -12,6 +12,7 @@
     <!-- Page Content Holder -->
         @include('partials.header')
         <div class="container">
+            @include('flashy::message')
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
@@ -27,7 +28,7 @@
                             <table class="table table-user-information ">
                                 <tbody>
 
-                                <form action="{{ route('consultations.store') }}" method="post">
+                                <form action="{{ url("{$patient/consultations") }}" method="post">
                                     @csrf
                                     @include('partials.flash')
                                     @include('partials.flash_form')
