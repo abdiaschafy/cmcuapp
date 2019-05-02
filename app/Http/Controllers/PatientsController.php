@@ -28,8 +28,9 @@ class PatientsController extends Controller
             'name'=> 'required',
             'assurance'=> 'required',
             'numero_assurance'=> 'required',
-            'motif'=> '',
+           // 'motif'=> '',
             'numero_dossier'=> '',
+            'frais'=> 'required',
         ]);
 
 
@@ -39,7 +40,8 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
-        $patient->motif = 'Consultation';
+       // $patient->motif = 'Consultation';
+        $patient->frais = $request->get('frais');
 
         $patient->user_id = Auth::id();
         $patient->save();
@@ -66,14 +68,16 @@ class PatientsController extends Controller
             'name'=> '',
             'assurance'=> '',
             'numero_assurance'=> '',
-            'motif'=> '',
+           // 'motif'=> '',
             'numero_dossier'=> '',
+            'frais'=> '',
         ]);
 
         $this->validateWith([
             'name' => ['required', 'string', 'max:255'],
             'assurance' => ['max:255'],
             'numero_assurance' => ['max:255'],
+            'frais' => ['required'],
         ]);
 
 
@@ -82,7 +86,8 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
-        $patient->motif = 'Consultation';
+        //$patient->motif = 'Consultation';
+        $patient->frais = $request->get('frais');
 
         $patient->user_id = Auth::id();
         $patient->save();

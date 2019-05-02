@@ -48,11 +48,11 @@
                 </div>
                 <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
                     <div class="s-l">
-                        <h5>Employees</h5>
-                        <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
+                        <h5>Fiche de Satisfaction</h5>
+                        <p class="paragraph-agileits-w3layouts"></p>
                     </div>
                     <div class="s-r">
-                        <h6>190
+                        <h6>
                             <i class="fas fa-users"></i>
                         </h6>
                     </div>

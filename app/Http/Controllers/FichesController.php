@@ -12,8 +12,10 @@ class FichesController extends Controller
 
     public function index()
     {
+
+        $ficheCount = Fiche::count();
         $fiche = Fiche::orderBy('id', 'asc')->paginate(8);
-        return view('admin.fiches.index', compact('fiche'));
+        return view('admin.fiches.index', compact('fiche', 'ficheCount'));
     }
 
 

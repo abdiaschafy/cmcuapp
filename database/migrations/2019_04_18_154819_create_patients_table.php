@@ -18,9 +18,10 @@ class CreatePatientsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('numero_dossier');
             $table->string('name');
-            $table->string('motif')->nullable()->default('Consultation');
+           // $table->string('motif')->nullable()->default('Consultation');
             $table->string('assurance')->nullable();
             $table->string('numero_assurance')->nullable();
+            $table->integer('frais');
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

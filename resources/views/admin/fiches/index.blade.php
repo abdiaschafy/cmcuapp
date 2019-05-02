@@ -12,10 +12,12 @@
         <h1 class="text-center">LISTE DE FICHES DE SATISFACTIONS</h1>
     </div>
     <hr>
-    <div class="col-md-3 offset-md-8 text-center">
-
-
-    </div>
+        <div class="col-md-3 offset-md-8 text-center">
+             <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
+                <h2>TOTAL FICHES :</h2>
+                <h1><P>{{ $ficheCount }}</P> </h1>
+             </a>
+        </div>
     <div class="container">
         <div class="row">
             <div class="col-10 col-md-10 col-lg-8">
@@ -59,7 +61,7 @@
 <!--                        <td>UNE NOTE</td>-->
 <!--                        <td>QUESTION SECRETE</td>-->
 <!--                        <td>SUUGESTIONS ET REMARQUES</td>-->
-                        <td>EDITER</td>
+                        <td>VOIR</td>
                         <td>SUPPRIMER</td>
                         <td>IMPRIMER</td>
                     </tr>
