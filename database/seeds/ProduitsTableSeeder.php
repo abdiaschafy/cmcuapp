@@ -6,11 +6,7 @@ use App\Produit;
 
 class ProduitsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         $data = [

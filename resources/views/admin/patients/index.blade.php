@@ -28,6 +28,7 @@
                             </th>
                             <th>NOM</th>
                             <th>DATE DE CREATION</th>
+                            <th>FRAIS DE CONSULTATION</th>
                             <th>CONSULTER</th>
                             <th>SUPPRIMER</th>
                             <th>IMPRIMER</th>
@@ -40,6 +41,7 @@
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $patient->frais }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
                                         <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>

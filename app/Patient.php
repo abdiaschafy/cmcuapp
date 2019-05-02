@@ -14,6 +14,7 @@ class Patient extends Model
         'user_id',
         'telephone',
         'motif',
+        'frais',
     ] ;
 
     public function dossiers()
