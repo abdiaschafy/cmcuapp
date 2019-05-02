@@ -14,8 +14,6 @@
     <script src="{{ asset('admin/js/modernizr.js') }}"></script>
     <script src="{{ asset('admin/js/script.js') }}"></script>
     <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
-    <script src=//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js></script>
-    <script src=//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
     <style>
         /* ... */

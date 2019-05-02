@@ -64,7 +64,7 @@
                 <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
                     <h2>TOTAL PRODUIT</h2>
                     <i class="fas fa-medkit"></i>
-                    <h1><P>{{ $produitCount }}</P> </h1>
+                    <h1><P>{{ $produits }}</P> </h1>
                 </a>
             </div>
             <!--// Calender -->

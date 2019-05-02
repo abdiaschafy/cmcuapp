@@ -13,7 +13,7 @@
             <hr>
             @include('partials.flash_form')
             <div class="col-md-6">
-                <form method="post" action="{{ route('produit.update', $produit->id) }}">
+                <form method="post" action="{{ route('produits.update', $produit->id) }}">
                 @method('PATCH')
                 @csrf
               <div class="form-group">

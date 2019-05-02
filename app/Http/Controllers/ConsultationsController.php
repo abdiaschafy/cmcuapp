@@ -3,30 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
+use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
-use MercurySeries\Flashy\Flashy;
 
 class ConsultationsController extends Controller
 {
 
-    public function create($id)
+    public function create(Patient $patient)
     {
 
         $mytime = Carbon::now();
-        $patient = Patient::where('id', $id);
 
         return view('admin.consultations.create', compact('mytime', 'patient'));
     }
 
-
-    public function store(Patient $patient)
+    public function store(ConsultationRequest $request)
     {
 
-        //$patient = Patient::where('patient', $patient->get());
-
-        //dd($patient);
+        $patient = Patient::findOrFail($request->patient_id);
 
         Consultation::create([
             'user_id' => auth()->id(),
@@ -40,7 +35,7 @@ class ConsultationsController extends Controller
 
         ]);
 
-        Flashy('Nous vous répondrons dans les plus brefs délais');
+        Flashy('La nouvelle consultation a été crée qvec succès !!');
 
         return back();
     }
@@ -49,5 +44,16 @@ class ConsultationsController extends Controller
     {
         $patient = Patient::where('id', $id);
         return view('admin.patients.show', compact('patient'));
+    }
+
+    public function export_pdf($id)
+    {
+
+        $patient = Patient::find($id);
+        $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
+
+        $pdf->save(storage_path('consultation').'.pdf');
+
+        return $pdf->download('consultation.pdf');
     }
 }

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
 
-	//protected $guarded = [];
-
 	protected $fillable = ['user_id', 'patient_id', 'diagnostique', 'commentaire', 'decision', 'cout', 'dure_intervention', 'resultat_examen'];
 
     public function user()
@@ -18,7 +16,7 @@ class Consultation extends Model
 
     public function patient()
     {
-        return $this->belongsTo('Patient::class');
+        return $this->belongsTo(Patient::class);
     }
 
 }

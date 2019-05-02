@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreatePatientRequest;
 use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,14 +52,9 @@ class PatientsController extends Controller
 
     public function show($id)
     {
-        $patient = Patient::where('id', $id);
+        $patient = Patient::find($id);
+
         return view('admin.patients.show', compact('patient'));
-    }
-
-
-    public function edit($id)
-    {
-        //
     }
 
 
@@ -91,7 +85,7 @@ class PatientsController extends Controller
         $patient->user_id = Auth::id();
         $patient->save();
 
-        return redirect()->route('dossiers.show', $patient->id)->with('success', 'Les informations du patient ont été mis à jour avec succès !');
+        return redirect()->route('patients.show', $patient->id)->with('success', 'Les informations du patient ont été mis à jour avec succès !');
     }
 
 

@@ -20,10 +20,16 @@ class Patient extends Model
     {
         return $this->belongsTo('App\Dossier');
     }
-// un patient aura plusieurs consultation
+
+
     public function consultations()
     {
         return $this->hasMany(Consultation::class);
+    }
+
+    public function ordonances()
+    {
+        return $this->hasMany(Ordonance::class);
     }
 
     public function parametres()
@@ -44,6 +50,12 @@ class Patient extends Model
     public function getCreatedDateAttribute()
     {
         return $this->created_at->diffForHumans;
+    }
+
+
+    public function path()
+    {
+        return $this->id;
     }
 
 }

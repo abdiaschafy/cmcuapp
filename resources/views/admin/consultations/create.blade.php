@@ -12,7 +12,6 @@
     <!-- Page Content Holder -->
         @include('partials.header')
         <div class="container">
-            @include('flashy::message')
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
@@ -23,15 +22,14 @@
                 <div class="col-md-6  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
+                            @include('partials.flash_form')
                             <h3 class="card-title">Informations relatives au dossier patient</h3>
                             <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention !! espace réservé au médécin</strong></i></small>
                             <table class="table table-user-information ">
                                 <tbody>
 
-                                <form action="{{ url("{$patient/consultations") }}" method="post">
+                                <form action="{{ route("consultations.store") }}" method="post">
                                     @csrf
-                                    @include('partials.flash')
-                                    @include('partials.flash_form')
                                     <tr>
                                         <td>
                                             <h4><strong>Consultation</strong></h4></td>
@@ -40,24 +38,27 @@
                                     <tr>
                                         <td>Commentaire :</td>
                                         <td>
-                                            <textarea name="commentaire" value="{{ old('commentaire') }}" id="commentaire" cols="45" rows="5"></textarea>
+                                            <textarea name="commentaire" value="{{ old('commentaire') }}" id="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Diagnostique du médécin :</td>
                                         <td>
-                                            <textarea name="diagnostique" value="{{ old('diagnostique') }}" id="" cols="45" rows="3"></textarea>
+                                            <textarea name="diagnostique" value="{{ old('diagnostique') }}" id="" cols="45" rows="3" placeholder="Votre premier avis" required></textarea>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
                                         <td>Décision :</td>
                                         <td class="form-group small">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="decision" id="decision" value="Oui"> Hospitalisation
+                                                <input class="form-check-input" type="radio" name="decision" id="decision" value="Hospitalisation"> Hospitalisation
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="decision" id="decision" value="Non"> Intervention
+                                                <input class="form-check-input" type="radio" name="decision" id="decision" value="Intervention chirurgicale"> Intervention
                                                 </label>
                                             </div>
                                         </td>
@@ -65,7 +66,7 @@
                                     <tr>
                                         <td>Coût de l'inervention :</td>
                                         <td>
-                                            <input name="cout" value="{{ old('cout') }}" type="number" placeholder="En fcfa">
+                                            <input name="cout" value="{{ old('cout') }}" type="number" placeholder="En fcfa" required>
                                         </td>
                                     </tr>
                                     <tr>
@@ -88,7 +89,8 @@
                                     </tr>
                                 </form>
 
-                                <form action="" method="post">
+                                <form action="{{ route("ordonances.store") }}" method="post">
+                                    @csrf
                                     <tr>
                                         <td>
                                             <h4><strong>Ordonance</strong></h4></td>
@@ -97,8 +99,11 @@
                                     <tr>
                                         <td>Contenu :</td>
                                         <td>
-                                            <textarea name="ordonance" id="ordonance" cols="45" rows="10"></textarea>
+                                            <textarea name="description" id="description" cols="45" rows="10"></textarea>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
                                         <td>
@@ -149,52 +154,52 @@
                         </div>
                     </div>
                     <br>
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<div class="card-title">Fiche de sotie du patient</div>--}}
-                            {{--<small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention !! à remplir à la sortie du patient</strong></i></small>--}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">Fiche de sotie du patient</div>
+                            <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention !! à remplir à la sortie du patient</strong></i></small>
 
-                            {{--<form action="#" method="POST">--}}
-                                {{--<table class="table table-user-information ">--}}
-                                    {{--<tbody>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Bloc utilisé :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select name="" id="">--}}
-                                                {{--<option value="">Bloc 1</option>--}}
-                                                {{--<option value="">Bloc 2</option>--}}
-                                                {{--<option value="">Bloc 3</option>--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Chambre :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select name="" id="">--}}
-                                                {{--<option value="">Chambre 1</option>--}}
-                                                {{--<option value="">Chambre 2</option>--}}
-                                                {{--<option value="">Chambre 3</option>--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Prix :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<input type="number" placeholder="En fcfa">--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Durée d'hospitalisation :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<input type="number" placeholder="En jour">--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--</tbody>--}}
-                                {{--</table>--}}
-                                {{--<button type="submit" class="btn btn-success">Valider la sortie <span class="text-danger"><i class="fas fa-check"></i></span></button>--}}
-                            {{--</form>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                            <form action="#" method="POST">
+                                <table class="table table-user-information ">
+                                    <tbody>
+                                    <tr>
+                                        <td>Bloc utilisé :</td>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Bloc 1</option>
+                                                <option value="">Bloc 2</option>
+                                                <option value="">Bloc 3</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Chambre :</td>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Chambre 1</option>
+                                                <option value="">Chambre 2</option>
+                                                <option value="">Chambre 3</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Prix :</td>
+                                        <td>
+                                            <input type="number" placeholder="En fcfa">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Durée d'hospitalisation :</td>
+                                        <td>
+                                            <input type="number" placeholder="En jour">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <button type="submit" class="btn btn-success">Valider la sortie <span class="text-danger"><i class="fas fa-check"></i></span></button>
+                            </form>
+                        </div>
+                    </div>
 
                 </div>
 

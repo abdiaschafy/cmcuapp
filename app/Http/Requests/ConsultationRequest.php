@@ -26,7 +26,7 @@ class ConsultationRequest extends FormRequest
     {
         return [
 
-            'patient_id'=> 'required' . Patient::first(['id']),
+            'patient_id'=> 'required',
             'diagnostique'=> 'required|max:255',
             'commentaire'=> 'required|max:255',
             'decision'=> 'required',

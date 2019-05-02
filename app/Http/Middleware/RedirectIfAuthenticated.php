@@ -18,6 +18,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+
+            flashy()->primary('Bievenue nous sommes heureux de vous revoir');
             return redirect('/admin/dashboard');
         }
 

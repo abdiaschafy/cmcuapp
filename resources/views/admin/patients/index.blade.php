@@ -42,7 +42,7 @@
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
-                                        <a href="{{ route('dossiers.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">

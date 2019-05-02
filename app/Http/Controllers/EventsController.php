@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-//use Calendar;
+use Calendar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 
-//use MaddHatter\LaravelFullcalendar\Calendar;
 
-class EventController extends Controller
+class EventsController extends Controller
 {
 
     public function index()
@@ -68,7 +66,7 @@ class EventController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
-dd($event);
+
         return view('admin.events.show', compact('event'));
     }
 

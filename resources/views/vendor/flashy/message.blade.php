@@ -5,19 +5,19 @@
     border-radius: 4px;
     font-weight: 400;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 100px;
+    left: 280px;
     font-size: 16px;
     color: #fff;
 }
 
 .flashy--success {
-    background-color: #99c93d;
+    background-color: #06c902;
     color: #fff;
 }
 
 .flashy--warning {
-    color: #8a6d3b;
+    color: #8a000f;
     background-color: #fcf8e3;
     border-color: #faebcc;
 }
@@ -44,7 +44,7 @@
 }
 
 .flashy--primary {
-    background: #573e81;
+    background: #144f81;
 }
 
 .flashy--primary-dark {
@@ -89,9 +89,9 @@
         var template = $($("#flashy-template").html());
         $(".flashy").remove();
         template.find(".flashy__body").html(message).attr("href", link || "#").end()
-         .appendTo("body").hide().fadeIn(3400).delay(12800).animate({
-            marginRight: "-100%"
-        }, 300, "swing", function() {
+         .appendTo("body").hide().fadeIn(5000).delay(10000).animate({
+            marginLeft: "-100%"
+        }, 1000, "swing", function() {
             $(this).remove();
         });
     }
@@ -100,6 +100,7 @@
 @if(Session::has('flashy_notification.message'))
 <script id="flashy-template" type="text/template">
     <div class="flashy flashy--{{ Session::get('flashy_notification.type') }}">
+        <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <a href="#" class="flashy__body" target="_blank"></a>
     </div>
 </script>

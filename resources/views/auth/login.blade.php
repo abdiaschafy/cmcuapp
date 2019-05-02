@@ -5,7 +5,7 @@
 <div class="mid-class">
     <div class="art-right-w3ls">
         <h2>Page de connexion</h2>
-        @include('partials.flash')
+        @include('partials.flash_form')
         <form action="{{ route('login') }}" method="post">
             @csrf
             <div class="main">

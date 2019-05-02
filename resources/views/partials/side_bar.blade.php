@@ -64,19 +64,19 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu1">
                 <li>
-                    <a href="{{ route('produit.index') }}">
+                    <a href="{{ route('produits.index') }}">
                         <i class="fas fa-list-ul"></i>
                         Produits en stock
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('produit.pharmaceutique') }}">
+                    <a href="{{ route('produits.pharmaceutique') }}">
                         <i class="fab fa-python"></i>
                         Produit pharmaceutiques
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('materiel.pharmaceutique') }}">
+                    <a href="{{ route('materiels.pharmaceutique') }}">
                         <i class="fas fa-cogs"></i>
                         Produit matériels
                     </a>

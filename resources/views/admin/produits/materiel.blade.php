@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CMCU | Liste des produits pharmaceutique')
+@section('title', 'CMCU | Liste des produits materiels')
 
 @section('content')
 
@@ -13,20 +13,21 @@
     @include('partials.header')
     <!--// top-bar -->
         <div class="container">
-            <h1 class="text-center">LISTE DES PRODUITS PHARMACEUTIQUES</h1>
+            <h1 class="text-center">LISTE DES PRODUITS MATERIELS</h1>
         </div>
         <hr>
         <div class="col-md-3 offset-md-8 text-center">
 
             <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
                 <h2>TOTAL PRODUIT :</h2>
-                <h1><P>{{"$pharmaCount"}}</P> </h1>
+                <h1><P>{{"$materielCount"}}</P> </h1>
             </a>
         </div>
         <div class="container">
             <div class="row">
                 <div class="col-10 col-md-10 col-lg-8">
-                    <form  action="#" method="#" role="search" class="card card-sm">
+                    <form  action="#" method="" role="search" class="card card-sm">
+                        {{ csrf_field() }}
                         <div class="card-body row no-gutters align-items-center">
                             <div class="col-auto">
                                 <i class="fas fa-search h4 text-body"></i>
@@ -36,8 +37,8 @@
                                 <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
                             </div>
                             <!--end of col-->
-                            <div class="col-">
-                                <a class="btn btn-lg btn-danger" href="#">Search</a>
+                            <div class="col-auto">
+                                <a href="#" class="btn btn-lg btn-danger">Search</a>
                             </div>
                             <!--end of col-->
                         </div>
@@ -70,9 +71,9 @@
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
-                                    <td><a href="{{ route('produit.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td><a href="{{ route('produits.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
-                                        <form action="{{ route('produit.destroy', $produit->id)}}" method="post">
+                                        <form action="{{ route('produits.destroy', $produit->id)}}" method="post">
                                             @csrf @method('DELETE')
                                             <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
                                         </form>
