@@ -29,10 +29,11 @@ class ConsultationRequest extends FormRequest
             'patient_id'=> 'required',
             'diagnostique'=> 'required|max:255',
             'commentaire'=> 'required|max:255',
-            'decision'=> 'required',
+            'decision'=> '',
             'cout'=> 'required',
             'dure_intervention'=> '',
             'resultat_examen'=> '',
+            'chambre'=> '',
         ];
     }
 }

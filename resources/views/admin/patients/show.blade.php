@@ -18,67 +18,117 @@
                 </div>
                 <br>
                 <br>
-                @if ($patient->count())
-
                     <div class="col-md-6  offset-md-0  toppad">
                         <div class="card">
                             <div class="card-body">
-                                <h2 class="card-title">{{ $patient->name }}</h2>
+                                <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                                 <table class="table table-user-information ">
                                     <tbody>
                                     <tr>
-                                        <td>Numéro de dossier</td>
+                                        <td>NOM DU PATIENT :</td>
+                                        <td>{{ $patient->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NUMERO DE DOSSIER :</td>
                                         <td>{{ $patient->numero_dossier }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Frait de consultation</td>
-                                        <td>15 000 FCFA</td>
+                                        <td>FARIS DE CONSULTATION :</td>
+                                        <td>{{ $patient->frais }} FCFA</td>
                                     </tr>
                                     <tr>
-                                        <td>Pofession:</td>
-                                        <td>Empleado</td>
+                                        <td>ASSURANCE :</td>
+                                        <td>{{ $patient->assurance }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Date d'ouverture:</td>
+                                        <td>OUVERTURE DU DOSSIER :</td>
                                         <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Sexe</td>
-                                        <td>a14523687w</td>
+                                        <td>
+                                            <h1 class="text-info">CONSULTATION</h1>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    @foreach ($patient->consultations as $consultation)
+                                    <tr>
+                                        <td>DIAGNOSTIQUE :</td>
+                                        <td>{{ $consultation->diagnostique }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Poids</td>
-                                        <td>a14523687w</td>
+                                        <td>DECISION :</td>
+                                        <td>{{ $consultation->decision }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Tension</td>
-                                        <td>a14523687w</td>
+                                        <td>CHAMBRE :</td>
+                                        <td>{{ $consultation->chambre }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Assurance</td>
-                                        <td>a14523687w</td>
+                                        <td>COUT :</td>
+                                        <td>{{ $consultation->cout }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Numero d'assurance</td>
-                                        <td>a14523687w</td>
+                                        <td>COMMENTAIRE :</td>
+                                        <td>{{ $consultation->commentaire }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Personne à contacter</td>
-                                        <td>a14523687w</td>
+                                        <td>DUREE DE L'INTERVENTION :</td>
+                                        <td>{{ $consultation->dure_intervention }}</td>
                                     </tr>
                                     <tr>
-                                        <td>Téléphone personne à contacter</td>
-                                        <td>a14523687w</td>
+                                        <td>RESULTAT EXAMENTS :</td>
+                                        <td>RESULTAT ICI</td>
                                     </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td>
+                                            <h1 class="text-info">PARAMETRES</h1>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    @foreach($patient->parametres as $parametre)
+                                    <tr>
+                                        <td class="table-active">DATE :</td>
+                                        <td class="table-active">{{ $parametre->created_at->toFormattedDateString() }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>POIDS :</td>
+                                        <td>{{ $parametre->poids }} Kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TENSION :</td>
+                                        <td>{{ $parametre->tension }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TEMPERATURE</td>
+                                        <td>{{ $parametre->temperature }} °C</td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td>
+                                            <h1 class="text-info">SOINS RECUS</h1>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    @foreach($patient->soins as $soins)
+                                        <tr>
+                                            <td class="table-active">DATE :</td>
+                                            <td class="table-active">{{ $soins->created_at->toFormattedDateString() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>SOINS :</td>
+                                            <td>{{ $soins->content }}</td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
-                                <a class="btn btn-primary" href="#">Liste des soins</a>
                                 <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>
                             </div>
                         </div>
                     </div>
-                @endif
+
                 <div class="col-md-6  offset-md-0  toppad">
+
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">Modifier les informations du patients</h3>
@@ -112,6 +162,36 @@
                             </form>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-bordred table-striped">
+                                <thead>
+                                <th>NUMERO</th>
+                                <th>DESCRIPTION</th>
+                                <th>DATE</th>
+                                <th>IMPPRIMER</th>
+                                </thead>
+                                <tbody>
+
+                                @foreach($patient->ordonances as $ordonance)
+                                    <tr>
+                                        <td>{{ $ordonance->id }}</td>
+                                        <td>{{ $ordonance->description }}</td>
+                                        <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonances.pdf', $ordonance->id) }}"><i class="fas fa-print"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+
+                                </tbody>
+                            </table>
+                            <div class="clearfix"></div>
+                            {{ $ordonances->links() }}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

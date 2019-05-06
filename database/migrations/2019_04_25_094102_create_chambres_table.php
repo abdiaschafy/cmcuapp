@@ -18,7 +18,6 @@ class CreateChambresTable extends Migration
             $table->integer('numero');
             $table->enum('type', ['CLASSIQUE', 'VIP', 'BLOC']);
             $table->enum('prix', ['2000', '10000']);
-            $table->timestamps();
         });
     }
 

@@ -95,18 +95,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
+    Route::get('ordonances/{id}','OrdonancesController@export_pdf')->name('ordonances.pdf');
 
 
-//        Route::resource('/soins', 'SoinsController');
+
+    Route::post('soins', 'SoinsController@store')->name('soins.store');
 
 
-//    Route::post('soins', 'SoinsController@store')->name('soins.store');
-
-
-//    Route::resource('/parametres', 'ParametresController');
-
-
-    Route::get('parametres/create', 'ParametresController@create')->name('parametres.create');
     Route::post('parametres', 'ParametresController@store')->name('parametres.store');
 
 
