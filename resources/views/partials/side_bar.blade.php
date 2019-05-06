@@ -84,6 +84,39 @@
             </ul>
         </li>
         <li>
+            <a href="#chambresSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="far fa-file"></i>
+                Gestion des chambres
+                <i class="fas fa-angle-down fa-pull-right"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="chambresSubmenu">
+                <li>
+                    <a href="{{ route('chambres.index') }}">
+                        <i class="fas fa-bed"></i>
+                        Nos Chambres
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('chambres.classique') }}">
+                        <i class="fas fa-bed"></i>
+                        Chambres Classiques
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('chambres.mvp') }}">
+                        <i class="fas fa-bed"></i>
+                        Chambres Mvp
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('chambres.vip') }}">
+                        <i class="fas fa-bed"></i>
+                        Chambres Vip
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
                 <i class="far fa-money-bill-alt"></i>
                 Factures
@@ -91,10 +124,10 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu3">
                 <li>
-                    <a href="login.html">Payé</a>
+                    <a href="{{ route('patients.index') }}">Consultation</a>
                 </li>
                 <li>
-                    <a href="register.html">Impayé</a>
+                    <a href="login.html">Intervation</a>
                 </li>
             </ul>
         </li>

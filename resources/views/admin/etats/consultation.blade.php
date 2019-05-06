@@ -15,7 +15,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
-        body { font-size: 8px }
+        body { font-size: 7px }
 
         thead > tr > th {
             text-align: center;
@@ -264,7 +264,8 @@
      </div>
 </div>
     <br>
-  
+    <br>
+
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>
