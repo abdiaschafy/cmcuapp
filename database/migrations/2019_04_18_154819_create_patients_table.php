@@ -20,18 +20,12 @@ class CreatePatientsTable extends Migration
             $table->string('name');
             $table->string('assurance')->nullable();
             $table->string('numero_assurance')->nullable();
-            $table->integer('frais')->default(15000);
+            $table->integer('frais')->nullable()->default(15000);
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('patients');

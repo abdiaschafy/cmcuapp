@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class DossiersController extends Controller
 {
 
-    public function index()
-    {
-        //
-    }
-
-
     public function create()
     {
         return view('admin.dossiers.create');

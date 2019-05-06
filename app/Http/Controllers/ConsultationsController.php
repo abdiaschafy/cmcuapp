@@ -32,18 +32,13 @@ class ConsultationsController extends Controller
             'cout'=> request('cout'),
             'dure_intervention'=> request('dure_intervention'),
             'resultat_examen'=> request('resultat_examen'),
+            'chambre'=> request('chambre'),
 
         ]);
 
-        Flashy('La nouvelle consultation a été crée qvec succès !!');
+        Flashy('La nouvelle consultation a été crée avec succès !!');
 
         return back();
-    }
-
-    public function show($id)
-    {
-        $patient = Patient::where('id', $id);
-        return view('admin.patients.show', compact('patient'));
     }
 
     public function export_pdf($id)

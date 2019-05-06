@@ -17,9 +17,9 @@ class Patient extends Model
         'frais',
     ] ;
 
-    public function dossiers()
+    public function soins()
     {
-        return $this->belongsTo('App\Dossier');
+        return $this->hasMany(Soin::class);
     }
 
 
@@ -35,7 +35,7 @@ class Patient extends Model
 
     public function parametres()
     {
-        return $this->belongsTo(Parametre::class);
+        return $this->hasMany(Parametre::class);
     }
 
     public function users()

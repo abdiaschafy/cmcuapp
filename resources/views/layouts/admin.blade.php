@@ -35,6 +35,8 @@
     <!--// Nav Css -->
     <!-- Fontawesome Css -->
     <link href="{{ asset('admin/css/fontawesome-all.css') }}" rel="stylesheet">
+    {{--<link rel="stylesheet" href="{{ asset('css/froala_editor.pkgd.min.css') }}">--}}
+
     <!--// Fontawesome Css -->
     <!--// Style-sheets -->
 
@@ -48,9 +50,17 @@
 
 <!-- Required common Js -->
 <script src='{{ asset('admin/js/jquery-2.2.3.min.js') }}'></script>
+{{--<script type="text/javascript" src="{{ asset('js/froala_editor.pkgd.min.js') }}"></script>--}}
+{{--<script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>--}}
 @include('flashy::message')
 <!-- //Required common Js -->
-
+{{--<script>--}}
+    {{--$(function() {--}}
+        {{--$('textarea#froala-editor').froalaEditor({--}}
+            {{--documentReady: true--}}
+        {{--})--}}
+    {{--});--}}
+{{--</script>--}}
 <!-- loading-gif Js -->
 <script src="{{ asset('admin/js/modernizr.js') }}"></script>
 <script>

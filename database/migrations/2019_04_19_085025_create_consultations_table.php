@@ -19,12 +19,14 @@ class CreateConsultationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('diagnostique');
             $table->string('commentaire');
-            $table->string('decision');
-            $table->integer('cout');
+            $table->string('decision')->nullable();
+            $table->string('chambre')->nullable();
+            $table->integer('cout')->nullable();
             $table->time('dure_intervention')->nullable();
             $table->string('resultat_examen')->nullable();
             $table->timestamps();
 
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

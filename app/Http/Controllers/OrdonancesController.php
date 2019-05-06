@@ -25,4 +25,15 @@ class OrdonancesController extends Controller
         return back();
     }
 
+    public function export_pdf($id)
+    {
+
+        $ordonance = Ordonance::find($id);
+        $pdf = \PDF::loadView('admin.etats.ordonance', compact('ordonance'));
+
+        $pdf->save(storage_path('ordonance').'.pdf');
+
+        return $pdf->download('ordonance.pdf');
+    }
+
 }

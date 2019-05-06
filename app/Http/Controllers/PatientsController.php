@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Ordonance;
 use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,8 +19,6 @@ class PatientsController extends Controller
 
     public function create()
     {
-        $patient = new Patient();
-
         return view('admin.patients.create', compact('patient'));
     }
 
@@ -31,7 +30,6 @@ class PatientsController extends Controller
             'name'=> 'required',
             'assurance'=> 'required',
             'numero_assurance'=> 'required',
-           // 'motif'=> '',
             'numero_dossier'=> '',
 //            'frais'=> 'required',
         ]);
@@ -42,9 +40,6 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
-       // $patient->motif = 'Consultation';
-//        $patient->frais = $request->get('frais');
-
         $patient->user_id = Auth::id();
 
         $patient->save();
@@ -56,8 +51,9 @@ class PatientsController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
+        $ordonances = Ordonance::where('patient_id', $id)->orderBy('id', 'desc')->paginate(5);
 
-        return view('admin.patients.show', compact('patient'));
+        return view('admin.patients.show', compact('patient', 'ordonances'));
     }
 
 
@@ -67,16 +63,8 @@ class PatientsController extends Controller
             'name'=> '',
             'assurance'=> '',
             'numero_assurance'=> '',
-           // 'motif'=> '',
             'numero_dossier'=> '',
             'frais'=> '',
-        ]);
-
-        $this->validateWith([
-            'name' => ['required', 'string', 'max:255'],
-            'assurance' => ['max:255'],
-            'numero_assurance' => ['max:255'],
-            'frais' => ['required'],
         ]);
 
 
@@ -85,7 +73,6 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
-        //$patient->motif = 'Consultation';
         $patient->frais = $request->get('frais');
 
         $patient->user_id = Auth::id();

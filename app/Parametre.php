@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Parametre extends Model
 {
     protected $fillable = [
-        'patient_id', 'poids', 'tenssion', 'temperature'
+        'user_id', 'patient_id', 'poids', 'tension', 'temperature'
     ];
 
-    public function patients()
+    public function patient()
     {
-        return $this->hasMany(Patient::class);
+        return $this->belongsTo(Patient::class);
     }
 }
