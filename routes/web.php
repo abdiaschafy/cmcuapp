@@ -105,14 +105,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('parametres', 'ParametresController@store')->name('parametres.store');
 
 
-//    Route::resource('/fiches', 'FichesController');
+  Route::resource('/fiches', 'FichesController');
+    Route::resource('/chambres', 'ChambresController');
+    Route::get('/classique', 'ChambresController@chambres_classique')->name('chambres.classique');
+    Route::get('/mvp', 'ChambresController@chambres_mvp')->name('chambres.mvp');
+    Route::get('/vip', 'ChambresController@chambres_vip')->name('chambres.vip');
 
 
-    Route::get('fiches', 'FichesController@index')->name('fiches.index');
-    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');
-    Route::post('fiches', 'FichesController@store')->name('fiches.store');
+//    Route::get('fiches', 'FichesController@index')->name('fiches.index');
+//    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');
+//    Route::post('fiches', 'FichesController@store')->name('fiches.store');
+//    Route::get('fiches', 'FichesController@show')->name('fiches.show');
+//    Route::delete('fiches', 'FichesController@destroy')->name('fiches.destroy');
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
 
 });
-

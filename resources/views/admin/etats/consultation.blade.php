@@ -264,7 +264,8 @@
      </div>
 </div>
     <br>
-  
+    <br>
+
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>

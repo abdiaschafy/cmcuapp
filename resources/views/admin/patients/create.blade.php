@@ -33,12 +33,14 @@
                         <label for="numero_assurance" class="col-form-label text-md-right">{{ __('Numero assurance') }}</label>
                         <input name="numero_assurance" class="form-control" value="{{ old('numero_assurance') }}" type="text" placeholder="Numéro d'assurance" required>
                     </div>
-                    <label for="exampleFormControlSelect1">FRAIS DE CONSULTATION</label>
-                    <select class="form-control" name="frais" value="{{  __('frais') }}"  required>
-                        <option>15000</option>
-                    </select> </br>
+                    {{--<label for="exampleFormControlSelect1">FRAIS DE CONSULTATION</label>--}}
+                    {{--<select class="form-control" name="frais" value="{{  __('frais') }}"  required>--}}
+                        {{--<option>15000</option>--}}
+                    {{--</select> </br>--}}
                     </br>
                     </br>
+
+                    <br>
                     <button type="submit" class="btn btn-primary btn-lg col-md-5" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
                     <a href="{{ route('patients.index') }}" class="btn btn-warning btn-lg col-md-5 offset-md-1" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Annulé</a>
                 </div>

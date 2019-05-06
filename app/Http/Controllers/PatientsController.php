@@ -31,7 +31,7 @@ class PatientsController extends Controller
             'assurance'=> 'required',
             'numero_assurance'=> 'required',
             'numero_dossier'=> '',
-            'frais'=> 'required',
+//            'frais'=> 'required',
         ]);
 
         $patient = new Patient();
@@ -40,8 +40,6 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
-        $patient->frais = $request->get('frais');
-
         $patient->user_id = Auth::id();
 
         $patient->save();
@@ -53,7 +51,6 @@ class PatientsController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
-//        $ordonances = Ordonance::latest()->paginate(5);
         $ordonances = Ordonance::where('patient_id', $id)->orderBy('id', 'desc')->paginate(5);
 
         return view('admin.patients.show', compact('patient', 'ordonances'));
