@@ -33,7 +33,7 @@ class PatientsController extends Controller
             'numero_assurance'=> 'required',
            // 'motif'=> '',
             'numero_dossier'=> '',
-            'frais'=> 'required',
+//            'frais'=> 'required',
         ]);
 
         $patient = new Patient();
@@ -43,7 +43,7 @@ class PatientsController extends Controller
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
        // $patient->motif = 'Consultation';
-        $patient->frais = $request->get('frais');
+//        $patient->frais = $request->get('frais');
 
         $patient->user_id = Auth::id();
 

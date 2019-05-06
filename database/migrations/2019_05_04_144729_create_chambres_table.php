@@ -18,7 +18,7 @@ class CreateChambresTable extends Migration
             $table->integer('numero');
             $table->string('categorie');
             $table->integer('prix');
-            $table->boolean('statut');
+            $table->boolean('statut')->default('1');
             $table->timestamps();
         });
     }
