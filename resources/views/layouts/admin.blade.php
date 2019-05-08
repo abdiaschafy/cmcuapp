@@ -22,6 +22,7 @@
     <!-- Style-sheets -->
     <!-- Bootstrap Css -->
     <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
     <!-- Bootstrap Css -->
     <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <!-- Bars Css -->
@@ -50,17 +51,17 @@
 
 <!-- Required common Js -->
 <script src='{{ asset('admin/js/jquery-2.2.3.min.js') }}'></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 {{--<script type="text/javascript" src="{{ asset('js/froala_editor.pkgd.min.js') }}"></script>--}}
 {{--<script type="text/javascript" src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>--}}
 @include('flashy::message')
 <!-- //Required common Js -->
-{{--<script>--}}
-    {{--$(function() {--}}
-        {{--$('textarea#froala-editor').froalaEditor({--}}
-            {{--documentReady: true--}}
-        {{--})--}}
-    {{--});--}}
-{{--</script>--}}
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote();
+    });
+</script>
 <!-- loading-gif Js -->
 <script src="{{ asset('admin/js/modernizr.js') }}"></script>
 <script>

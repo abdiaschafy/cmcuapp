@@ -16,16 +16,9 @@
             <h1 class="text-center">LISTE DES PRODUITS PHARMACEUTIQUES</h1>
         </div>
         <hr>
-        <div class="col-md-3 offset-md-8 text-center">
-
-            <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
-                <h2>TOTAL PRODUIT :</h2>
-                <h1><P>{{"$pharmaCount"}}</P> </h1>
-            </a>
-        </div>
         <div class="container">
             <div class="row">
-                <div class="col-10 col-md-10 col-lg-8">
+                <div class="col-md-10 col-lg-8">
                     <form  action="#" method="#" role="search" class="card card-sm">
                         <div class="card-body row no-gutters align-items-center">
                             <div class="col-auto">
@@ -44,6 +37,9 @@
                     </form>
                 </div>
                 <!--end of col-->
+                <a href="{{ route('pharmaceutique.facturation') }}" class="btn btn-success btn-xs col-lg-1 offset-1">
+                    <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQte : '' }}</span>
+                </a>
             </div>
             </br>
                 <div class="col-lg-12">
@@ -54,10 +50,10 @@
                             <tr>
                                 <td>ID</td>
                                 <td>DESIGNATION</td>
-                                <td>CATEGORIE</td>
                                 <td>QUANTITE STOCK</td>
                                 <td>QUANTITE ALERTE</td>
                                 <td>PRIX UNITAIRE</td>
+                                <td>AJOUTER A LA FACTURE</td>
                                 <td>EDITER</td>
                                 <td>SUPPRIMER</td>
                             </tr>
@@ -66,10 +62,10 @@
                                 <tr>
                                     <td>{{$produit->id}}</td>
                                     <td>{{$produit->designation}}</td>
-                                    <td>{{$produit->categorie}}</td>
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
+                                    <td><a href="{{ route('pharmaceutique.cart', $produit->id) }}" class="btn btn-success" title="Ajouter à la facture"><i class="fas fa-plus-square"></i></a></td>
                                     <td><a href="{{ route('produits.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{ route('produits.destroy', $produit->id)}}" method="post">

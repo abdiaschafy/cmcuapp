@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Chambre;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ChambresController extends Controller
@@ -37,7 +38,7 @@ class ChambresController extends Controller
             $chambre->numero = $request->get('numero');
             $chambre->categorie = $request->get('categorie');
             $chambre->prix = $request->get('prix');
-//            $chambre->user_id = Auth::id();
+            $chambre->user_id = Auth::id();
             $chambre->save();
         return  redirect()->route('chambres.index')->with('success', 'chambre ajoutée avec succes');
     }
@@ -106,6 +107,7 @@ class ChambresController extends Controller
 
         return view('admin.chambres.mvp', compact('chambre', 'mvpCount'));
     }
+
     public function chambres_vip()
     {
 

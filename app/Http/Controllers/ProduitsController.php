@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class ProduitsController extends Controller
 {
@@ -116,4 +118,65 @@ class ProduitsController extends Controller
         return view('admin.produits.materiel', compact('produits', 'materielCount'));
 
     }
+
+    public function add_to_cart(Request $request, $id)
+    {
+        $produit = Produit::find($id);
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart =new Cart($oldCart);
+        $cart->add($produit, $produit->id);
+
+        $request->session()->put('cart', $cart);
+
+        return redirect()->route('produits.pharmaceutique');
+    }
+
+    public function facturation()
+    {
+
+        if(!Session::has('cart')){
+
+            return view('admin.produits.facturation');
+        }
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $produit = DB::table('produits')->where('id', $cart);
+//        dd($produits);
+
+        return view('admin.produits.facturation', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
+    }
+
+    public function getReduceByOne($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new  Cart($oldCart);
+        $cart->reduceByOne($id);
+
+        if (count($cart->items) > 0)
+        {
+            Session::put('cart', $cart);
+        }else{
+            Session::forget('cart');
+        }
+
+        return redirect()->route('pharmaceutique.facturation');
+    }
+
+    public function getRemoveItem($id)
+    {
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new  Cart($oldCart);
+        $cart->removeItem($id);
+
+        if (count($cart->items) > 0)
+        {
+            Session::put('cart', $cart);
+        }else{
+            Session::forget('cart');
+        }
+
+        return redirect()->route('pharmaceutique.facturation');
+    }
+
 }

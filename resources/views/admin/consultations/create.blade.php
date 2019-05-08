@@ -43,17 +43,13 @@
                                     <tr>
                                         <td>Commentaire :</td>
                                         <td>
-                                            <textarea name="commentaire" value="{{ old('commentaire') }}"
-                                                      id="commentaire" cols="45" rows="5"
-                                                      placeholder="Ici la note du médécin" required></textarea>
+                                            <textarea name="commentaire" value="{{ old('commentaire') }}" cols="45" rows="5" placeholder="Ici la note du médécin" required></textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Diagnostique du médécin :</td>
                                         <td>
-                                            <textarea name="diagnostique" value="{{ old('diagnostique') }}"
-                                                      id="froala-editor" cols="45" rows="3"
-                                                      placeholder="Votre premier avis" required></textarea>
+                                            <textarea name="diagnostique" value="{{ old('diagnostique') }}" cols="45" rows="3" placeholder="Votre premier avis" required></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -139,8 +135,7 @@
                                                     <div class="form-group">
                                                         <label for="description" class="col-form-label">Ordonance
                                                             :</label>
-                                                        <textarea class="form-control" name="description"
-                                                                  id="froala-editor" cols="30" rows="10"></textarea>
+                                                        <textarea id="summernote" class="form-control" name="description" cols="30" rows="10"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="button" class="btn btn-secondary"
