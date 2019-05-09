@@ -15,8 +15,8 @@ class ConsultationsController extends Controller
     {
 
         $mytime = Carbon::now();
-        $chambres = Consultation::with('chambres')->where('id', '!=', 'chambre_id');
-//        $chambres = Chambre::where('statut', '=', 'libre')->get(['id']);
+//        $chambres = Consultation::with('chambres')->where('id', '!=', 'chambre_id');
+        $chambres = Chambre::where('statut', '=', 'libre')->get(['id']);
         $blocs = Chambre::where('statut', '=', 'libre')->where('categorie', '=', 'bloc')->get(['id']);
         $c = 1;
         $b =1;
@@ -34,6 +34,7 @@ class ConsultationsController extends Controller
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
             'chambre_id' => request('chambre_id'),
+            'chambre_id' => request('bloc_id'),
             'diagnostique'=> request('diagnostique'),
             'commentaire'=> request('commentaire'),
             'decision'=> request('decision'),
