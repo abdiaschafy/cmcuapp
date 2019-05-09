@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('pharmaceutiques/{id}', 'ProduitsController@add_to_cart')->name('pharmaceutique.cart');
     Route::get('facturation', 'ProduitsController@facturation')->name('pharmaceutique.facturation');
 
+    Route::get('imprimer','ProduitsController@export_pdf')->name('pharmacie.pdf');
     Route::get('supprimer/{id}', 'ProduitsController@getRemoveItem')->name('facturation.supprimer');
     Route::get('reduire/{id}', 'ProduitsController@getReduceByOne')->name('facturation.reduire');
 

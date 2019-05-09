@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\Produit;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -179,4 +180,24 @@ class ProduitsController extends Controller
         return redirect()->route('pharmaceutique.facturation');
     }
 
+
+    public function export_pdf(Request $request)
+    {
+
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $produit = DB::table('produits')->where('id', $cart);
+//        $myFile = public_path("dummy_pdf.pdf");
+//        $headers = ['Content-Type: application/pdf'];
+//        $newName = 'itsolutionstuff-pdf-file-'.time().'.pdf';
+
+        $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
+
+        $pdf->save(storage_path('pharmacie').'.pdf');
+
+        Session::forget('cart');
+        return $pdf->download('pharmacie.pdf');
+
+//        return redirect()->route('produits.pharmaceutique');
+    }
 }

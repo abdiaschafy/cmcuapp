@@ -63,8 +63,8 @@
                                     <a href="{{ route('produits.pharmaceutique') }}" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success">Imprimer <i class="fas fa-print"></i>
-                                    </button>
+                                    <a href="{{ route('pharmacie.pdf') }}" class="btn btn-success">Imprimer <i class="fas fa-print"></i>
+                                    </a>
                                 </td>
                             </tr>
                             </tbody>
