@@ -1,14 +1,10 @@
 @extends('layouts.admin')
-
 @section('title', 'CMCU | Renseignement du dossier patient')
-
 @section('content')
-
     <body>
     <div class="se-pre-con"></div>
     <div class="wrapper">
     @include('partials.side_bar')
-
     <!-- Page Content Holder -->
         @include('partials.header')
         <div class="container">
@@ -22,7 +18,6 @@
                 </div>
                 <br>
                 <br>
-
                 <div class="col-md-6  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
@@ -32,12 +27,12 @@
                                         !! espace réservé au médécin</strong></i></small>
                             <table class="table table-user-information ">
                                 <tbody>
-
                                 <form action="{{ route("consultations.store") }}" method="post">
                                     @csrf
                                     <tr>
                                         <td>
-                                            <h4><strong>Consultation</strong></h4></td>
+                                            <h4><strong>Consultation</strong></h4>
+                                        </td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -71,20 +66,22 @@
                                     <tr id="chambre" style='display:none;'>
                                         <td>Chambre :</td>
                                         <td>
-                                            <select name="chambre" id="">
-                                                <option value="">Chambre 1</option>
-                                                <option value="">Chambre 2</option>
-                                                <option value="">Chambre 3</option>
+                                            <select name="chambre_id">
+                                                <option value="">Sélectionner une chambre</option>
+                                                @foreach($chambres as $chambre)
+                                                    <option value="{{ $chambre->id }}">Chambre {{ $c++ }}</option>
+                                                @endforeach
                                             </select>
                                         </td>
                                     </tr>
                                     <tr id="bloc" style='display:none;'>
                                         <td>Bloc :</td>
                                         <td>
-                                            <select name="bloc" id="">
-                                                <option value="">Bloc 1</option>
-                                                <option value="">Bloc 2</option>
-                                                <option value="">Bloc 3</option>
+                                            <select name="chambre_id" id="">
+                                                <option value="">Sélectionner le bloc opératoire</option>
+                                                @foreach($blocs as $blocs)
+                                                    <option value="{{ $blocs->id }}">Bloc {{ $b++ }}</option>
+                                                @endforeach
                                             </select>
                                         </td>
                                     </tr>
@@ -112,12 +109,10 @@
                                     <tr>
                                         <td>
                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
-
                                         </td>
                                         <td></td>
                                     </tr>
                                 </form>
-
                                 <div class="modal fade" id="ordonanceModal" tabindex="-1" role="dialog"
                                      aria-labelledby="ordonanceModal" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -135,7 +130,7 @@
                                                     <div class="form-group">
                                                         <label for="description" class="col-form-label">Ordonance
                                                             :</label>
-                                                        <textarea id="summernote" class="form-control" name="description" cols="30" rows="10"></textarea>
+                                                        <textarea id="" class="form-control" name="description" cols="30" rows="10"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="button" class="btn btn-secondary"
@@ -147,7 +142,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="modal fade" id="soinsModal" tabindex="-2" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
@@ -180,13 +174,11 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-6  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
@@ -195,7 +187,6 @@
                             </div>
                             <small class="text-info" title="La prise des paramètres du patient doit être quotidienne"><i
                                     class="fas fa-info-circle"></i></small>
-
                             <form action="{{ route('parametres.store') }}" method="post">
                                 @csrf
                                 <table class="table">
@@ -230,12 +221,10 @@
                             data-target="#soinsModal" data-whatever="">Soins quotidients
                     </button>
                 </div>
-
             </div>
         </div>
     </div>
     <script type="text/javascript">
-
         function ckChange(ckType){
             var ckName = document.getElementsByName(ckType.name);
             var checked = document.getElementById(ckType.id);
@@ -271,5 +260,4 @@
 
     </script>
     </body>
-
 @stop

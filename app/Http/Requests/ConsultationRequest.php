@@ -33,7 +33,7 @@ class ConsultationRequest extends FormRequest
             'cout'=> 'required',
             'dure_intervention'=> '',
             'resultat_examen'=> '',
-            'chambre'=> '',
+            'chambre_id'=> '',
         ];
     }
 }

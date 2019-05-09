@@ -21,15 +21,18 @@
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">CATEGORIE</label>
                         <select class="form-control" name="categorie" id="exampleFormControlSelect1">
-                            <option>Classique</option>
-                            <option>MVP</option>
-                            <option>VIP</option>
+                            <option value="">Veuillez choisir la catégorie</option>
+                            <option value="Classique">Classique</option>
+                            <option value="vip">VIP</option>
+                            <option value="bloc">Bloc</option>
                         </select>
                     </div>
                     <select class="form-control" name="prix" id="exampleFormControlSelect1">
-                        <option>2500</option>
-                        <option>5000</option>
-                        <option>10000</option>
+                        <option>Cout de la chambre</option>
+                        <option value="2500">2500</option>
+                        <option value="5000">5000</option>
+                        <option value="10000">10000</option>
+                        <option value="0">0</option>
                     </select>
                     <br>
                     <br>

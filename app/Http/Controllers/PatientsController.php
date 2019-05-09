@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Consultation;
 use App\Ordonance;
 use App\Patient;
 use Illuminate\Http\Request;
@@ -51,9 +52,11 @@ class PatientsController extends Controller
     public function show($id)
     {
         $patient = Patient::find($id);
+        $consultations = Consultation::with('chambres');
+//        dd($consultations);
         $ordonances = Ordonance::where('patient_id', $id)->orderBy('id', 'desc')->paginate(5);
 
-        return view('admin.patients.show', compact('patient', 'ordonances'));
+        return view('admin.patients.show', compact('patient', 'ordonances', 'consultations'));
     }
 
 

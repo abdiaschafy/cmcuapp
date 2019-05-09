@@ -18,4 +18,9 @@ class chambre extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function consultation()
+    {
+        return $this->hasMany(Consultation::class);
+    }
 }

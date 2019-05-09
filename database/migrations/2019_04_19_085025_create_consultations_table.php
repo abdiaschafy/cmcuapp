@@ -17,16 +17,17 @@ class CreateConsultationsTable extends Migration
             $table->increments('id');
             $table->integer('patient_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->integer('chambre_id')->unsigned()->nullable()->default(null);
             $table->string('diagnostique');
             $table->string('commentaire');
             $table->string('decision')->nullable();
-            $table->string('chambre')->nullable();
             $table->integer('cout')->nullable();
             $table->time('dure_intervention')->nullable();
             $table->string('resultat_examen')->nullable();
             $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('chambre_id')->references('id')->on('chambres')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

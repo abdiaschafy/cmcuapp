@@ -18,8 +18,8 @@ class CreateChambresTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('numero');
             $table->string('categorie');
-            $table->integer('prix');
-            $table->boolean('statut')->default(0);
+            $table->integer('prix')->default(null);
+            $table->enum('statut', ['libre', 'occupé'])->default('libre');
 
             $table->timestamps();
 

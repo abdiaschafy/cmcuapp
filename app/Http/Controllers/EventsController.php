@@ -26,13 +26,31 @@ class EventsController extends Controller
                     // Add color and link on event
                     [
                         'color' => $row->color,
-                        'url' => 'events/',
+//                        'url' => '',
                     ]
                 );
             }
         }
-        $calendar = Calendar::addEvents($event);
-        return view('admin.events.index', compact('calendar'));
+
+        $calendar = Calendar::addEvents($event)
+            ->setOptions([
+                'firstDay'=> 1,
+                'editable'=> true,
+                'navLinks'=> true,
+                'selectable'  => true,
+                'durationeditable' => true,
+                'locale' => 'fr',
+            ])->setCallbacks([
+                'eventClick' => 'function() 
+                {
+                    showModal();
+                }',
+                'themeSystem' => '"bootstrap4"',
+                'eventRender' => 'function(event, element) {
+                }'
+            ]);
+
+        return view('admin.events.index', compact('calendar', 'events'));
     }
 
     public function create()
