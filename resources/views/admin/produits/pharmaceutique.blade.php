@@ -17,6 +17,10 @@
         </div>
         <hr>
         <div class="container">
+            <a href="{{ route('pharmaceutique.facturation') }}" class="btn btn-success btn-xs col-md-1 float-right">
+                Facture
+                <span class="badge text-dark"><p>{{ Session::has('cart') ? Session::get('cart')->totalQte : 0 }}</p></span>
+            </a>
             <div class="row">
                 <div class="col-md-10 col-lg-8">
                     <form  action="#" method="#" role="search" class="card card-sm">
@@ -37,9 +41,7 @@
                     </form>
                 </div>
                 <!--end of col-->
-                <a href="{{ route('pharmaceutique.facturation') }}" class="btn btn-success btn-xs col-lg-1 offset-1">
-                    <span class="badge">{{ Session::has('cart') ? Session::get('cart')->totalQte : '' }}</span>
-                </a>
+
             </div>
             </br>
                 <div class="col-lg-12">
