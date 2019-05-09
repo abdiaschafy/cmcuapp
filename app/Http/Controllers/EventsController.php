@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\User;
 use Calendar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,9 @@ class EventsController extends Controller
 
     public function create()
     {
-        return view('admin.events.create');
+        $users = User::with('roles')->where('role_id', '=', '2')->get(['name']);
+//        dd($users);
+        return view('admin.events.create', compact('users'));
     }
 
     public function store(Request $request)
@@ -65,6 +68,7 @@ class EventsController extends Controller
            'color' => 'required',
            'start_date' => 'required',
            'end_date' => 'required',
+           'medecin' => 'required',
         ]);
 
         $events = new Event();
@@ -74,6 +78,7 @@ class EventsController extends Controller
         $events->start_date = $request->input('start_date');
         $events->end_date = $request->input('end_date');
         $events->user_id = Auth::id();
+        $events->medecin = $request->input('medecin');
 
         $events->save();
 

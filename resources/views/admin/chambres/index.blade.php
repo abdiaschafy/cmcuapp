@@ -43,7 +43,7 @@
                                 <td>{{$chambres->numero}}</td>
                                 <td>{{$chambres->categorie}}</td>
                                 <td>{{$chambres->prix}}</td>
-                                {{--<td>{{}}</td>--}}
+                                <td>{{$chambres->statut}}</td>
                                  <td><a href="{{ route('chambres.edit',$chambres->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                 {{--<td>--}}
                                     {{--<form action="{{ route('chambres.destroy', $chambres->id) }}" method="post">--}}

@@ -22,6 +22,15 @@
                         <label for="title" class="col-form-label text-md-right">{{ __('Titre') }}</label>
                         <input name="title" class="form-control" value="{{ old('title') }}" type="text" placeholder="Titre">
                     </div>
+                    <div class="form-group">
+                        <label for="medecin" class="col-form-label text-md-right">{{ __('Medecin') }}</label>
+                        <select name="medecin" id="">
+                            <option value="">Veuillez choisir le médécin</option>
+                            @foreach($users as $user)
+                            <option value="{{ $user->name }}">{{ $user->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="color" class="col-form-label text-md-right">{{ __('Couleur') }}</label>

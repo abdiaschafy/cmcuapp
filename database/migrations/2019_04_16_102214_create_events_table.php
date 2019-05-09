@@ -18,6 +18,7 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->dateTime('start_date');
             $table->string('color');
+            $table->string('medecin');
             $table->dateTime('end_date');
             $table->timestamps();
         });
