@@ -14,7 +14,7 @@
                 Tableau de bord
             </a>
         </li>
-        @can('create', \App\User::class)
+        @can('update', \App\User::class)
             <li>
                 <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-users"></i>

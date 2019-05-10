@@ -45,7 +45,7 @@
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         {{--@include('partials.flash')--}}
-                        @include('flashy::message')
+                        @include('partials.flash')
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>

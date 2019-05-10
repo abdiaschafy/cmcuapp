@@ -13,9 +13,8 @@ class UsersController extends Controller
 
     public function index()
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', User::class);
 
-        $this->authorize('view', User::class);
         $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
 
         return view('admin.users.index',compact('users', 'roles'));
@@ -23,14 +22,16 @@ class UsersController extends Controller
 
     public function create()
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', User::class);
+
         $roles = Role::all();
         return view('admin.users.create')->withRoles($roles);
     }
 
     public function store(Request $request)
     {
-        $this->authorize('create', User::class);
+        $this->authorize('update', User::class);
+
         $this->validate($request, [
             'name' => ['required', 'string', 'max:255'],
             'lieu_naissance' => ['required', 'string', 'max:15'],
@@ -56,31 +57,35 @@ class UsersController extends Controller
         $user->password = Hash::make($password);
         $user->save();
 
-//        if ($request->input('roles')) {
-//            $user->roles()->attach($request->input('roles'));
-//        }
 
         Flashy('Nous vous répondrons dans les plus brefs délais');
+
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
 
 
     }
 
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::where('id', $id)->with('roles')->first();
+        $this->authorize('update', $user);
+
+        $user = User::with('roles')->first();
+
         return view("admin.users.show")->withUser($user);
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
         $roles = Role::all();
-        $user = User::where('id', $id)->with('roles')->first();
+        $user = User::with('roles')->first();
+
         return view("admin.users.edit")->withUser($user)->withRoles($roles);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
+        $this->authorize('update', $user);
+
         $this->validateWith([
             'name' => ['required', 'string', 'max:255'],
             'lieu_naissance' => ['required', 'string', 'max:255'],
@@ -92,7 +97,7 @@ class UsersController extends Controller
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
 
-        $user = User::findOrFail($id);
+//        $user = User::findOrFail($id);
 
 
         $mdpuser = $request->input('password');
@@ -121,9 +126,8 @@ class UsersController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id);
 
         $user->delete();
 
