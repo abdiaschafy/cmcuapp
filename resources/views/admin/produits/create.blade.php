@@ -14,7 +14,7 @@
             @include('partials.flash')
             @include('partials.flash_form')
             <div class="col-md-6">
-                <form method="post" action="{{ route('produit.store') }}">
+                <form method="post" action="{{ route('produits.store') }}">
                     <div class="form-group">
                         @csrf
                         <label for="name">DESIGNATION:</label>

@@ -14,75 +14,79 @@
                 Tableau de bord
             </a>
         </li>
-        <li>
-            <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-users"></i>
-                Gestion des utilisateurs
-                <i class="fas fa-angle-down fa-pull-right"></i>
-            </a>
-            <ul class="collapse list-unstyled" id="usersSubmenu">
-                <li>
-                    <a href="{{ route('users.index') }}">
-                        <i class="fas fa-list-ul"></i>
-                        Liste des utlisateurs
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('roles.index') }}">
-                        <i class="fas fa-list-ul"></i>
-                        Roles
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
-                <i class="fas fa-users"></i>
-                Gestion des patients
-                <i class="fas fa-angle-down fa-pull-right"></i>
-            </a>
-            <ul class="collapse list-unstyled" id="patientsSubmenu">
-                <li>
-                    <a href="{{ route('patients.index') }}">
-                        <i class="fas fa-list-ul"></i>
-                        Liste des patients
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-print"></i>
-                        Etats de sorties
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
-                <i class="far fa-file"></i>
-                Gestion des produits
-                <i class="fas fa-angle-down fa-pull-right"></i>
-            </a>
-            <ul class="collapse list-unstyled" id="pageSubmenu1">
-                <li>
-                    <a href="{{ route('produits.index') }}">
-                        <i class="fas fa-list-ul"></i>
-                        Produits en stock
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('produits.pharmaceutique') }}">
-                        <i class="fab fa-python"></i>
-                        Produit pharmaceutiques
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('materiels.pharmaceutique') }}">
-                        <i class="fas fa-cogs"></i>
-                        Produit matériels
-                    </a>
-                </li>
-            </ul>
-        </li>
+        @can('view', \App\User::class)
+            <li>
+                <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-users"></i>
+                    Gestion des utilisateurs
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="usersSubmenu">
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Liste des utlisateurs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('roles.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Roles
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-users"></i>
+                    Gestion des patients
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="patientsSubmenu">
+                    <li>
+                        <a href="{{ route('patients.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Liste des patients
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-print"></i>
+                            Etats de sorties
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endcan
+        @can('create', \App\Produit::class)
+            <li>
+                <a href="#pageSubmenu1" data-toggle="collapse" aria-expanded="false">
+                    <i class="far fa-file"></i>
+                    Gestion des produits
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    <li>
+                        <a href="{{ route('produits.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Produits en stock
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('produits.pharmaceutique') }}">
+                            <i class="fab fa-python"></i>
+                            Produit pharmaceutiques
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('materiels.pharmaceutique') }}">
+                            <i class="fas fa-cogs"></i>
+                            Produit matériels
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @endcan
         <li>
             <a href="#chambresSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="far fa-file"></i>

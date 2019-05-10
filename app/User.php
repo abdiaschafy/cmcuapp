@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -53,12 +54,12 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsToMany('App\Event');
+        return $this->belongsTo('App\Event');
     }
 
     public function produits()
     {
-        return $this->belongsToMany('App\Produit');
+        return $this->belongsTo('App\Produit');
     }
 
     public function fiches()
@@ -77,4 +78,8 @@ class User extends Authenticatable
         return $this->hasMany(Consultation::class);
     }
 
+    public function isAdmin()
+    {
+        return Auth::user()->role_id === 1;
+    }
 }

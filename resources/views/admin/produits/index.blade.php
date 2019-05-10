@@ -67,7 +67,7 @@
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
-                                    <td><a href="{{ route('produits.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td><a href="{{ route('produits.edit', $produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{ route('produits.destroy', $produit->id) }}" method="post">
                                             @csrf @method('DELETE')

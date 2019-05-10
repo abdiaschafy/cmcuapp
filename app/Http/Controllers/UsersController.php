@@ -13,6 +13,7 @@ class UsersController extends Controller
 
     public function index()
     {
+        $this->authorize('view', User::class);
         $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
 
         return view('admin.users.index',compact('users', 'roles'));

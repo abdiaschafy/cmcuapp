@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Http\Requests\ProduitRequest;
 use App\Produit;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
@@ -15,6 +16,8 @@ class ProduitsController extends Controller
 {
     public function index()
     {
+
+        $this->authorize('view', Produit::class);
 
         $produitCount = Produit::count();
 
@@ -32,6 +35,8 @@ class ProduitsController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', Produit::class);
+
         $request->validate([
             'designation'=>'required',
             'categorie'=> 'required',
@@ -54,37 +59,27 @@ class ProduitsController extends Controller
 
     public function edit($id)
     {
+        $this->authorize('edit', Produit::class);
+
         $produit = Produit::find($id);
 
         return view('admin.produits.edit', compact('produit'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ProduitRequest $request, Produit $produit)
     {
-        $request->validate([
-            'designation'=> ['required'],
-            'categorie'=> ['required'],
-            'qte_stock'=> ['required', 'integer', 'numeric'],
-            'qte_alerte'=> ['required', 'integer', 'numeric'],
-            'prix_unitaire'=> ['required', 'integer', 'numeric'],
-        ]);
+        $this->authorize('update', $produit);
 
-        $produit = Produit::find($id);
+//        $produit = Produit::find($id);
 
-        $produit->designation = $request->get('designation');
-        $produit->categorie = $request->get('categorie');
 
         $input = Input::get('qte_stock');
         $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');
 
         $produit->qte_stock = $input + $nqte;
 
-        $produit->qte_alerte = $request->get('qte_alerte');
-        $produit->prix_unitaire = $request->get('prix_unitaire');
-        $produit->user_id = Auth::id();
-
-        $produit->save();
+        Produit::where('id',$id)->first()->update($request->only('categorie', 'qte_alerte', 'prix_unitaire', 'designation', 'qte_stock'));
 
         return redirect()->route('produits.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
@@ -92,6 +87,8 @@ class ProduitsController extends Controller
 
     public function destroy($id)
     {
+        $this->authorize('delete', $id);
+
         $produit = Produit::find($id);
         $produit->delete();
 
