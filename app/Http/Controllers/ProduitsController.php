@@ -67,11 +67,11 @@ class ProduitsController extends Controller
     }
 
 
-    public function update(ProduitRequest $request, Produit $produit)
+    public function update(ProduitRequest $request, $id)
     {
-        $this->authorize('update', $produit);
+        $this->authorize('update', $id);
 
-//        $produit = Produit::find($id);
+        $produit = Produit::find($id);
 
 
         $input = Input::get('qte_stock');
@@ -87,7 +87,7 @@ class ProduitsController extends Controller
 
     public function destroy($id)
     {
-        $this->authorize('delete', $id);
+        $this->authorize('delete', Produit::class);
 
         $produit = Produit::find($id);
         $produit->delete();

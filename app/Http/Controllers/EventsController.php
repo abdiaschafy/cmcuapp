@@ -63,6 +63,7 @@ class EventsController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', User::class);
         $this->validate($request, [
            'title' => 'required',
            'color' => 'required',

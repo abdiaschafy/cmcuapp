@@ -27,6 +27,8 @@ class FichesController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', Fiche::class);
+
         $request->validate([
             'nom'=>'required',
             'prenom'=> 'required',

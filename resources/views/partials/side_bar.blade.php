@@ -14,7 +14,7 @@
                 Tableau de bord
             </a>
         </li>
-        @can('view', \App\User::class)
+        @can('create', \App\User::class)
             <li>
                 <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-users"></i>
@@ -36,6 +36,8 @@
                     </li>
                 </ul>
             </li>
+        @endcan
+        @can('create', \App\Patient::class)
             <li>
                 <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-users"></i>
@@ -87,6 +89,7 @@
                 </ul>
             </li>
         @endcan
+        @can('create', \App\chambre::class)
         <li>
             <a href="#chambresSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="far fa-file"></i>
@@ -120,6 +123,8 @@
                 </li>
             </ul>
         </li>
+        @endcan
+        @can('create', \App\Facture::class)
         <li>
             <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
                 <i class="far fa-money-bill-alt"></i>
@@ -135,23 +140,28 @@
                 </li>
             </ul>
         </li>
-        <li>
-            <a href="grids.html">
-                <i class="far fa-money-bill-alt"></i>
-                Bilan financier
-            </a>
-        </li>
+        @endcan
+        {{--<li>--}}
+        {{--<a href="grids.html">--}}
+        {{--<i class="far fa-money-bill-alt"></i>--}}
+        {{--Bilan financier--}}
+        {{--</a>--}}
+        {{--</li>--}}
+        @can('create', \App\Event::class)
         <li>
             <a href="{{ route('events.index') }}">
                 <i class="far fa-calendar-times"></i>
                 Plages horaires
             </a>
         </li>
+        @endcan
+        @can('create', \App\Fiche::class)
         <li>
             <a href="{{ route('fiches.index') }}">
                 <i class="fas fa-list-ul"></i>
                 Fiches de satisfaction
             </a>
         </li>
+        @endcan
     </ul>
 </nav>

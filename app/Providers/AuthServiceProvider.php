@@ -2,7 +2,15 @@
 
 namespace App\Providers;
 
+use App\chambre;
+use App\Event;
+use App\Fiche;
+use App\Policies\ChambrePolicy;
+use App\Policies\EventPolicy;
+use App\Policies\FacturePolicy;
+use App\Policies\FichePolicy;
 use App\Policies\ProduitPolicy;
+use App\Policies\UserPolicy;
 use App\Produit;
 use App\User;
 use Illuminate\Support\Facades\Gate;
@@ -18,7 +26,11 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         Produit::class => ProduitPolicy::class,
-        User::class => UserPolicy::class
+        User::class => UserPolicy::class,
+        chambre::class => ChambrePolicy::class,
+        Event::class => EventPolicy::class,
+        Fiche::class => FichePolicy::class,
+        Facture::class => FacturePolicy::class,
     ];
 
     /**

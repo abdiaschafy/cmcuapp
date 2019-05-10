@@ -40,11 +40,15 @@ class ProduitPolicy
 
     public function delete(User $user, Produit $produit)
     {
-        return true;
+        return in_array(auth()->user()->role_id, [
+            1, 7
+        ]);
     }
 
-    public function edit(User $user, Produit $produit)
+    public function edit(User $user)
     {
-        return true;
+        return in_array(auth()->user()->role_id, [
+            1, 7
+        ]);
     }
 }
