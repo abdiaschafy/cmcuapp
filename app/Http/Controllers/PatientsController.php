@@ -27,7 +27,7 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
 
-        $this->authorize('create', User::class);
+        $this->authorize('create', Patient::class);
 
         $request->validate([
             'name'=> 'required',

@@ -13,6 +13,8 @@ class UsersController extends Controller
 
     public function index()
     {
+        $this->authorize('create', User::class);
+
         $this->authorize('view', User::class);
         $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
 
@@ -21,6 +23,7 @@ class UsersController extends Controller
 
     public function create()
     {
+        $this->authorize('create', User::class);
         $roles = Role::all();
         return view('admin.users.create')->withRoles($roles);
     }

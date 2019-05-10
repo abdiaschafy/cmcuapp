@@ -21,7 +21,9 @@ class PatientPolicy
 
     public function view(User $user, Patient $patient)
     {
-        //
+        return in_array(auth()->user()->role_id, [
+            1,
+        ]);
     }
 
     /**
@@ -37,16 +39,12 @@ class PatientPolicy
         ]);
     }
 
-    /**
-     * Determine whether the user can update the patient.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Patient  $patient
-     * @return mixed
-     */
+
     public function update(User $user, Patient $patient)
     {
-        //
+        return in_array(auth()->user()->role_id, [
+            1,
+        ]);
     }
 
     /**

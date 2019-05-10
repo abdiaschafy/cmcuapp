@@ -5,10 +5,12 @@ namespace App\Providers;
 use App\chambre;
 use App\Event;
 use App\Fiche;
+use App\Patient;
 use App\Policies\ChambrePolicy;
 use App\Policies\EventPolicy;
 use App\Policies\FacturePolicy;
 use App\Policies\FichePolicy;
+use App\Policies\PatientPolicy;
 use App\Policies\ProduitPolicy;
 use App\Policies\UserPolicy;
 use App\Produit;
@@ -31,6 +33,7 @@ class AuthServiceProvider extends ServiceProvider
         Event::class => EventPolicy::class,
         Fiche::class => FichePolicy::class,
         Facture::class => FacturePolicy::class,
+        Patient::class => PatientPolicy::class,
     ];
 
     /**

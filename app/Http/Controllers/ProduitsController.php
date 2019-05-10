@@ -9,7 +9,6 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class ProduitsController extends Controller
@@ -57,39 +56,31 @@ class ProduitsController extends Controller
         return redirect()->route('produits.index')->with('success', 'Le produit a été ajouté avec succès !');
     }
 
-    public function edit($id)
+    public function edit(Produit $produit)
     {
         $this->authorize('edit', Produit::class);
 
-        $produit = Produit::find($id);
+//        $produit = Produit::find($id);
 
         return view('admin.produits.edit', compact('produit'));
     }
 
 
-    public function update(ProduitRequest $request, $id)
+    public function update(ProduitRequest $request, Produit $produit)
     {
-        $this->authorize('update', $id);
-
-        $produit = Produit::find($id);
+        $this->authorize('update', $produit);
 
 
-        $input = Input::get('qte_stock');
-        $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');
-
-        $produit->qte_stock = $input + $nqte;
-
-        Produit::where('id',$id)->first()->update($request->only('categorie', 'qte_alerte', 'prix_unitaire', 'designation', 'qte_stock'));
+        $produit->update($request->only('categorie', 'qte_alerte', 'prix_unitaire', 'designation', 'qte_stock'));
 
         return redirect()->route('produits.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
 
 
-    public function destroy($id)
+    public function destroy(Produit $produit)
     {
-        $this->authorize('delete', Produit::class);
+        $this->authorize('delete', $produit);
 
-        $produit = Produit::find($id);
         $produit->delete();
 
         return redirect()->route('produits.index')->with('success', 'Le produit a bien été supprimé');
@@ -140,7 +131,6 @@ class ProduitsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
-//        dd($produits);
 
         return view('admin.produits.facturation', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
     }
@@ -184,9 +174,6 @@ class ProduitsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
-//        $myFile = public_path("dummy_pdf.pdf");
-//        $headers = ['Content-Type: application/pdf'];
-//        $newName = 'itsolutionstuff-pdf-file-'.time().'.pdf';
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 
