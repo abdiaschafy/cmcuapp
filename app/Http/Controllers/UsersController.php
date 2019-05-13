@@ -58,7 +58,7 @@ class UsersController extends Controller
         $user->save();
 
 
-        Flashy('Nous vous répondrons dans les plus brefs délais');
+//        Flashy('Nous vous répondrons dans les plus brefs délais');
 
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
 
@@ -103,8 +103,6 @@ class UsersController extends Controller
         $mdpuser = $request->input('password');
         $verifypass = password_verify($mdpuser, $user->password);
 
-        if ($verifypass == true)
-        {
             $user->name = $request->name;
             $user->lieu_naissance = $request->lieu_naissance;
             $user->date_naissance = $request->date_naissance;
@@ -113,14 +111,14 @@ class UsersController extends Controller
             $user->sexe = $request->sexe;
             $user->login = $request->login;
             $user->role_id = $request->roles;
+        if ($verifypass == true)
+        {
             $user->password = Hash::make($request->password);
 
             $user->save();
         }else{
             return redirect()->route('users.edit', $user->id)->with('error', "L'ancien mot de passe est invalide");
         }
-
-//        $user->roles()->attach($request->input('roles'));
 
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été modifier");
     }

@@ -51,6 +51,7 @@
 
 <!-- Required common Js -->
 <script src='{{ asset('admin/js/jquery-2.2.3.min.js') }}'></script>
+<script src='{{ asset('admin/js/parsley.min.js') }}'></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 

@@ -87,9 +87,11 @@ class PatientsController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Patient $patient)
     {
-        //
+        $patient->delete();
+
+        return redirect()->route('patients.index')->with('success', "Le dossier du patient a bien été supprimé");
     }
 
     public function export_pdf($id)

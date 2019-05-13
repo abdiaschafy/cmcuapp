@@ -44,7 +44,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        {{--@include('partials.flash')--}}
                         @include('partials.flash')
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
@@ -91,12 +90,12 @@
                         <div class="clearfix"></div>
                         {{ $users->links() }}
                     </div>
+                    <br>
+                    <div class="col-md-12 text-center">
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">Ajouter un utilisateur</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <br>
-        <div class="col-md-12 text-center">
-            <a href="{{ route('users.create') }}" type="submit" class="btn btn-primary">Ajouter un utilisateur</a>
         </div>
 
     </div>

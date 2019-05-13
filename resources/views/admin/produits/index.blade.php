@@ -67,11 +67,11 @@
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
-                                    <td><a href="{{ route('produits.edit', $produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td><a href="{{ route('produits.edit', $produit->id)}}" title="Enregistrer une nouvelle entré en stock" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{ route('produits.destroy', $produit->id) }}" method="post">
                                             @csrf @method('DELETE')
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                            <p data-placement="top" data-toggle="tooltip" title="Supprimer le produit du stock">
                                                 <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
                                             </p>
                                         </form>
@@ -86,7 +86,7 @@
                 </div>
             </div> </br>
             <div class="col-md-3 offset-md-4 text-center">
-                <a href="{{ route('produits.create') }}" class="btn btn-primary" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;AJOUTER UN PRODUIT</a>
+                <a href="{{ route('produits.create') }}" class="btn btn-primary" title="Enregistrement en stock d'un nouveau produit">Ajouter un produit</a>
             </div>
         </div>
     </div>

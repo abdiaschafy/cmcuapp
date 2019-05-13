@@ -44,17 +44,19 @@
                                     <td>{{ $patient->frais }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
-                                        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </form>
                                     </td>
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </p>
-                                    </td>
-                                    <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a class="btn btn-success btn-xs" title="Imprimer" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                            <a class="btn btn-success btn-xs" title="Imprimer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                     </td>
                                 </tr>
@@ -70,9 +72,16 @@
         </div>
 
         <div class="col-md-12 text-center">
-            <a href="{{ route('patients.create') }}" type="submit" class="btn btn-primary">Ajouter un patient</a>
+            <a href="{{ route('patients.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau patient dans le système">Ajouter un patient</a>
         </div>
     </div>
     </div>
+
+    <script>
+        function myFunction() {
+            if(!confirm("Veuillez confirmer la suppréssion du dossier patient"))
+                event.preventDefault();
+        }
+    </script>
     </body>
 @stop

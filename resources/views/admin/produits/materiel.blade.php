@@ -71,11 +71,11 @@
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
-                                    <td><a href="{{ route('produits.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td><a href="{{ route('produits.edit',$produit->id)}}" title="Enregistrer une nouvelle entré en stock" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{ route('produits.destroy', $produit->id)}}" method="post">
                                             @csrf @method('DELETE')
-                                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn btn-danger" title="Supprimer le produit du stock" type="submit"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>

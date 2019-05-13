@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CMCU | Ajouter un role')
+@section('title', 'CMCU | Ajouter un rôle')
 
 @section('content')
 
@@ -11,18 +11,30 @@
 
     <!-- Page Content Holder -->
         @include('partials.header')
-        @include('partials.flash_form')
 
-        <form action="{{ route('roles.store') }}" method="POST">
-            @csrf
+        <div class="container">
+            <form action="{{ route('roles.store') }}" method="POST">
+                <div class="row">
+                    <div class="col-md-6">
+                        @include('partials.flash_form')
+                    </div>
+                </div>
+                @csrf
+                <h4 class="">Ajouter un nouveau rôle</h4>
+                <small class="text-info" title="Le champs rôle est obligatoire et un rôle ne peut être enregistrer plusieurs fois"><i class="fas fa-info-circle"></i></small>
+                <div class="row">
+                    <div class="col-md-6">
+                        <hr>
+                    </div>
+                </div>
+                <label for="name">Nom du rôle  <span class="text-danger">*</span></label>
+                <br>
+                <br>
+                <input name="name" class="form-control col-md-6" type="text" value="{{ old('name') }}" placeholder="Nom du rôle" required><br>
 
-            <h4 class="modal-title custom_align" id="Heading">Modifier le role</h4>
-
-            <label for="exampleFormControlSelect1">Nom</label>
-            <input name="name" class="form-control col-md-6" type="text" value="{{ old('name') }}" required><br>
-
-            <button type="submit" class="btn btn-primary btn-xs col-md-2" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
-        </form>
+                <button type="submit" class="btn btn-primary btn-xs col-md-2" title="Valider votre enregistrement">Ajouter</button>
+            </form>
+        </div>
 
     </div>
     </div>

@@ -11,15 +11,16 @@
                 <h2 class="text-center">FACTURATION</h2>
                 <div class="row">
                     <div class="col-md-12 col-lg-10 offset-md-1">
-                        <table class="table table-hover">
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Produit</th>
                                     <th>Quantité</th>
                                     <th class="">Prix unitaire</th>
                                     <th class="text-center">Total</th>
-                                    <th class="text-center">Action</th>
-                                    <th>&#xA0;</th>
+                                    <th class="text-center">Reduire</th>
+                                    <th class="text-center">Ajouter</th>
+                                    <th class="text-center">Supprimer</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,14 +38,19 @@
                                     <td class="col-md-1 col-lg-1 text-center"><strong></strong></td>
                                     <td class="col-md-1 col-lg-1 text-center"><strong>{{ $totalPrix }}</strong></td>
                                     <td>
-                                        <a href="{{ route('facturation.reduire', ['id' => $produit['item']['id']]) }}" class="btn btn-primary"> <i class="fas fa-minus"></i></a>
+                                        <a href="{{ route('facturation.reduire', ['id' => $produit['item']['id']]) }}" title="Reduire la quantité" class="btn btn-primary"> <i class="fas fa-minus"></i></a>
                                     </td>
                                     <td>
-                                        <a href="{{ route('facturation.supprimer', ['id' => $produit['item']['id']]) }}" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
+                                        <a href="{{ route('pharmaceutique.cart', $produit['item']['id']) }}" class="btn btn-success" title="Ajouter la quantité"><i class="fas fa-plus-square"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('facturation.supprimer', ['id' => $produit['item']['id']]) }}" title="Supprimer le produit de la facture" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
                             <tr>
+                                <td>&#xA0;</td>
+                                <td>&#xA0;</td>
                                 <td>&#xA0;</td>
                                 <td>&#xA0;</td>
                                 <td>&#xA0;</td>
@@ -58,14 +64,15 @@
                             <tr>
                                 <td>&#xA0;</td>
                                 <td>&#xA0;</td>
-                                <td>&#xA0;</td>
                                 <td>
-                                    <a href="{{ route('produits.pharmaceutique') }}" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
+                                    <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
                                 </td>
                                 <td>
-                                    <a href="{{ route('pharmacie.pdf') }}" class="btn btn-success">Imprimer <i class="fas fa-print"></i>
-                                    </a>
+                                    <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success">Imprimer <i class="fas fa-print"></i></a>
                                 </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             </tbody>
                         </table>

@@ -89,7 +89,7 @@
         var template = $($("#flashy-template").html());
         $(".flashy").remove();
         template.find(".flashy__body").html(message).attr("href", link || "#").end()
-         .appendTo("body").hide().fadeIn(5000).delay(10000).animate({
+         .appendTo("body").hide().fadeIn(2000).delay(10000).animate({
             marginLeft: "-100%"
         }, 1000, "swing", function() {
             $(this).remove();

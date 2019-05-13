@@ -24,11 +24,7 @@ class ProduitRequest extends FormRequest
     public function rules()
     {
         return [
-            'designation'=> ['required'],
-            'categorie'=> ['required'],
-            'qte_stock'=> ['required', 'integer', 'numeric'],
-            'qte_alerte'=> ['required', 'integer', 'numeric'],
-            'prix_unitaire'=> ['required', 'integer', 'numeric'],
+            'qte_stock'=> ['required', 'integer', 'numeric']
         ];
     }
 }

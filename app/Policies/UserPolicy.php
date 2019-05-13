@@ -18,7 +18,7 @@ class UserPolicy
     }
 
 
-    public function update(User $user, User $model)
+    public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
             1,

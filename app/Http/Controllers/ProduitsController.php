@@ -9,7 +9,9 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use MercurySeries\Flashy\Flashy;
 
 class ProduitsController extends Controller
 {
@@ -70,8 +72,12 @@ class ProduitsController extends Controller
     {
         $this->authorize('update', $produit);
 
+        $input = Input::get('qte_stock');
+        $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');
 
-        $produit->update($request->only('categorie', 'qte_alerte', 'prix_unitaire', 'designation', 'qte_stock'));
+        $produit->qte_stock = $input + $nqte;
+        $produit->user_id = Auth::id();
+        $produit->save();
 
         return redirect()->route('produits.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
@@ -117,7 +123,9 @@ class ProduitsController extends Controller
 
         $request->session()->put('cart', $cart);
 
-        return redirect()->route('produits.pharmaceutique');
+        flashy()->success("La facture vient d'être mise à jour");
+
+        return redirect()->route('pharmaceutique.facturation');
     }
 
     public function facturation()
@@ -148,6 +156,8 @@ class ProduitsController extends Controller
             Session::forget('cart');
         }
 
+        flashy()->success("La facture vient d'être mise à jour");
+
         return redirect()->route('pharmaceutique.facturation');
     }
 
@@ -163,6 +173,8 @@ class ProduitsController extends Controller
         }else{
             Session::forget('cart');
         }
+
+        flashy()->info("La produit à bien été supprimer de la facture");
 
         return redirect()->route('pharmaceutique.facturation');
     }

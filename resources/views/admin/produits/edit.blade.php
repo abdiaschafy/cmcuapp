@@ -11,38 +11,47 @@
         <div class="container">
             <h1 class="text-center">MODIFIER UN PRODUIT</h1>
             <hr>
-            @include('partials.flash_form')
-            <div class="col-md-6">
-                <form method="post" action="{{ route('produits.update', $produit->id) }}">
-                @method('PATCH')
-                @csrf
-              <div class="form-group">
-                    <label for="name">designation:</label>
-                    <input type="text" class="form-control" name="designation" value={{ $produit->designation }} required/>
+            <div class="row">
+                <div class="col-md-7">
+                    @include('partials.flash_form')
                 </div>
-                <div class="form-group">
-                <label for="exampleFormControlSelect1">CATEGORIE</label>
-                <select class="form-control" name="categorie"  id="exampleFormControlSelect1" required>
-                    <option >PHARMACEUTIQUE</option>
-                    <option>MATERIEL</option>
-                </select>
+            </div>
+
+            <div class="card" style="width: 40rem;">
+                <div class="card-body">
+                    <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
+                    <hr>
+                    <form class="form-group col-md-10" method="post" action="{{ route('produits.update', $produit->id) }}">
+                        @method('PATCH')
+                        @csrf
+                        <div class="form-group">
+                            <label for="designation">Désignation</label>
+                            <input type="text" class="form-control" name="designation" value="{{ $produit->designation }}" disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="categorie">Catégorie</label>
+                            <select class="form-control" name="categorie" id="categorie" disabled>
+                                <option value="{{ $produit->id }}"  {{ $produit->id == ' ' ? 'selected' : '' }}>{{ $produit->categorie }}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="qte_stock">Quantité <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" name="qte_stock" value="{{ $produit->qte_stock }}" required/>
+                        </div>
+                        <div class="form-group">
+                            <label for="qte_alerte">Quanité d'alerte</label>
+                            <input type="text" class="form-control" name="qte_alerte" value="{{ $produit->qte_alerte }}" disabled/>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix_unitaire">Prix unitaire</label>
+                            <input type="text" class="form-control" name="prix_unitaire" value="{{ $produit->prix_unitaire }}" disabled/>
+                        </div>
+                        <button type="submit" class="btn btn-primary" title="Enregistrement d'un nouveau produit">Enregistrer</button>
+                        <a href="{{ route('produits.index') }}" class="btn btn-info float-right" title="Retour à la liste des produits"><i
+                                class="fas fa-arrow-left"></i> Retour à la liste des produits</a>
+                    </form>
                 </div>
-                 <div class="form-group">
-                    <label for="quantity">QUANTITE STOCK:</label>
-                    <input type="text" class="form-control" name="qte_stock" value="{{ $produit->qte_stock }}" required/>
-                </div>
-                <div class="form-group">
-                    <label for="quantity">QUANTITE ALERTE:</label>
-                    <input type="text" class="form-control" name="qte_alerte" value="{{ $produit->qte_alerte }}" required/>
-                </div>
-                
-                <div class="form-group">
-                    <label for="quantity">PRIX:</label>
-                    <input type="text" class="form-control" name="prix_unitaire" value="{{ $produit->prix_unitaire }}" required/>
-                </div>
-               <button type="submit" class="btn btn-primary">MODIFIER</button>
-            </form>
-        </div>
+            </div>
     </div>
     </div>
     </body>

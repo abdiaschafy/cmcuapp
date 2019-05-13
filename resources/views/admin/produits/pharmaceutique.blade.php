@@ -17,7 +17,7 @@
         </div>
         <hr>
         <div class="container">
-            <a href="{{ route('pharmaceutique.facturation') }}" class="btn btn-success btn-xs col-md-1 float-right">
+            <a href="{{ route('pharmaceutique.facturation') }}" title="Proceder à la facturation" class="btn btn-success btn-xs col-md-1 float-right">
                 Facture
                 <span class="badge text-dark"><p>{{ Session::has('cart') ? Session::get('cart')->totalQte : 0 }}</p></span>
             </a>
@@ -68,11 +68,11 @@
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
                                     <td><a href="{{ route('pharmaceutique.cart', $produit->id) }}" class="btn btn-success" title="Ajouter à la facture"><i class="fas fa-plus-square"></i></a></td>
-                                    <td><a href="{{ route('produits.edit',$produit->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td><a href="{{ route('produits.edit',$produit->id)}}" title="Enregistrer une nouvelle entré en stock" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>
                                         <form action="{{ route('produits.destroy', $produit->id)}}" method="post">
                                             @csrf @method('DELETE')
-                                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt"></i></button>
+                                            <button class="btn btn-danger" title="Supprimer le produit du stock" type="submit"><i class="fas fa-trash-alt"></i></button>
                                         </form>
                                     </td>
                                 </tr>
