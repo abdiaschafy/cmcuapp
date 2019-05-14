@@ -43,20 +43,13 @@ class Patient extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getUrlAttribute()
+    public function event()
     {
-        return route('patients.show', $this->id);
+        return $this->hasMany(Event::class);
     }
 
     public function getCreatedDateAttribute()
     {
         return $this->created_at->diffForHumans;
     }
-
-
-    public function path()
-    {
-        return $this->id;
-    }
-
 }

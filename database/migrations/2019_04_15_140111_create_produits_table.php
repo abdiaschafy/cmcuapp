@@ -11,7 +11,7 @@ class CreateProduitsTable extends Migration
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('designation');
+            $table->string('designation')->unique();
             $table->string('categorie');
             $table->integer('qte_stock')->default(0);
             $table->integer('qte_alerte');

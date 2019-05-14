@@ -39,7 +39,7 @@ class ProduitsController extends Controller
         $this->authorize('create', Produit::class);
 
         $request->validate([
-            'designation'=>'required',
+            'designation'=> ['required', 'unique:produits'],
             'categorie'=> 'required',
             'qte_alerte'=> 'required',
             'qte_stock'=> 'required',

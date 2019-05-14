@@ -30,6 +30,7 @@
                             <th>DATE DE CREATION</th>
                             <th>FRAIS DE CONSULTATION</th>
                             <th>CONSULTER</th>
+                            <th>Rendez-vous</th>
                             <th>SUPPRIMER</th>
                             <th>IMPRIMER</th>
                             </thead>
@@ -45,6 +46,9 @@
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     <td>
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-primary btn-xs"><i class="far fa-calendar-plus"></i></a>
                                     </td>
                                     <td>
                                         <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
