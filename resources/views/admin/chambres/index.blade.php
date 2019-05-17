@@ -8,6 +8,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+        @can('create', \App\chambre::class)
         <div class="container">
             <h1 class="text-center">LISTE DES CHAMBRES</h1>
         </div>
@@ -68,6 +69,7 @@
         <div class="col-md-3 offset-md-4 text-center">
             <a href="{{ route('chambres.create') }}" class="btn btn-primary">Ajouter une nouvelle chambre</a>
         </div>
+       @endcan
     </div>
     </div>
     </body>

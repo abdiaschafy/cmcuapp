@@ -60,6 +60,8 @@ class EventsController extends Controller
 
     public function store(EventRequest $request)
     {
+//
+        $this->authorize('create', Event::class);
 //        $this->authorize('create', User::class);
         $patient = Patient::findOrFail($request->patient_id);
 

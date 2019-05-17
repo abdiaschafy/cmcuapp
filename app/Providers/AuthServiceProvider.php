@@ -6,12 +6,14 @@ use App\chambre;
 use App\Event;
 use App\Fiche;
 use App\Patient;
+use App\Policies\CaissePolicy;
 use App\Policies\ChambrePolicy;
 use App\Policies\EventPolicy;
 use App\Policies\FacturePolicy;
 use App\Policies\FichePolicy;
 use App\Policies\PatientPolicy;
 use App\Policies\ProduitPolicy;
+use App\Policies\Stock_pharmaceutiquePolicy;
 use App\Policies\UserPolicy;
 use App\Produit;
 use App\User;
@@ -20,11 +22,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
+
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         Produit::class => ProduitPolicy::class,
@@ -34,13 +32,12 @@ class AuthServiceProvider extends ServiceProvider
         Fiche::class => FichePolicy::class,
         Facture::class => FacturePolicy::class,
         Patient::class => PatientPolicy::class,
+
+
+       
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
+
     public function boot()
     {
         $this->registerPolicies();

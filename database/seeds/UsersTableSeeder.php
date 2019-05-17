@@ -33,13 +33,13 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('aaaaaa')
         ]);
 
-        $user3 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'medecin',
-            'login' => 'medecin2',
+        $user22 = \App\User::create([
+            'role_id' => '9',
+            'name' => 'caisse',
+            'login' => 'caisse',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'homme',
-            'prenom' => 'medecin',
+            'prenom' => 'caisse',
             'lieu_naissance' => 'Yaounde',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')
@@ -245,6 +245,18 @@ class UsersTableSeeder extends Seeder
             'sexe' => 'femme',
             'prenom' => 'medecin',
             'lieu_naissance' => 'Bertoua',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
+            'password' => bcrypt('aaaaaa')
+        ]);
+
+        $user21 = \App\User::create([
+            'role_id' => '7',
+            'name' => 'medecin',
+            'login' => 'pharmacien1',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'homme',
+            'prenom' => 'medecin',
+            'lieu_naissance' => 'Yaounde',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')
         ]);

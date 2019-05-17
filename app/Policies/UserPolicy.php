@@ -2,6 +2,8 @@
 
 namespace App\Policies;
 
+use App\Patient;
+use App\Produit;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -24,4 +26,6 @@ class UserPolicy
             1,
         ]);
     }
+
+
 }

@@ -52,4 +52,9 @@ class Patient extends Model
     {
         return $this->created_at->diffForHumans;
     }
+    public function isMedecin()
+    {
+        return Auth::user()->role_id === 2;
+
+    }
 }

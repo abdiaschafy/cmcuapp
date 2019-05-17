@@ -17,7 +17,7 @@ class ProduitsController extends Controller
     public function index()
     {
 
-        $this->authorize('view', Produit::class);
+
 
         $produitCount = Produit::count();
 
@@ -35,7 +35,9 @@ class ProduitsController extends Controller
 
     public function store(Request $request)
     {
+
         $this->authorize('create', Produit::class);
+
 
         $request->validate([
             'designation'=> ['required', 'unique:produits'],
@@ -69,7 +71,8 @@ class ProduitsController extends Controller
 
     public function update(ProduitRequest $request, Produit $produit)
     {
-        $this->authorize('update', $produit);
+        $this->authorize('create', Produit::class);
+        $this->authorize('print', Produit::class);
 
         $input = Input::get('qte_stock');
         $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');

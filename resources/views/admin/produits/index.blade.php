@@ -8,6 +8,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+
         <div class="container">
             <h1 class="text-center">LISTE DES PRODUITS</h1>
         </div>
@@ -89,6 +90,7 @@
                 <a href="{{ route('produits.create') }}" class="btn btn-primary" title="Enregistrement en stock d'un nouveau produit">Ajouter un produit</a>
             </div>
         </div>
+
     </div>
     <script src="{{ asset('admin/js/main.js') }}"></script>
     </body>
