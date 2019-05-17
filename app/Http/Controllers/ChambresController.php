@@ -5,17 +5,31 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Chambre;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ChambresController extends Controller
 {
 
     public function index()
     {
+        $chambres = new Chambre;
 
-        $chambreCount = Chambre::count();
-        $chambre = Chambre::orderBy('id', 'asc')->paginate(8);
-        return view('admin.chambres.index',compact('chambre', 'chambreCount'));
+        if (\request()->has('categorie')){
+
+            $chambres = $chambres->where('categorie', request('categorie'));
+        }
+
+        if (\request()->has('order')) {
+
+            $chambres = $chambres->orderBy('id', \request('order'));
+        }
+
+        $chambres = $chambres->paginate(5)->appends([
+
+            'categorie' => \request('categorie'),
+            'order' => \request('order'),
+        ]);
+
+        return view('admin.chambres.index',compact('chambres'));
     }
 
 
@@ -44,9 +58,17 @@ class ChambresController extends Controller
     }
 
 
-    public function show($id)
+    public function search()
     {
-        //
+        $chambres = Chambre::search(request('search'))->paginate(5);
+//dd($chambres);
+//        if ($request->has('search')) {
+//
+//            $chambres->where('numero', $request->input('search'));
+//        }
+//        $chambres = Chambre::search('numero')->paginate(5);
+
+        return view('admin.chambres.index', ['chambres' => $chambres]);
     }
 
 
@@ -87,34 +109,4 @@ class ChambresController extends Controller
         //
     }
 
-    public function chambres_classique()
-    {
-
-        $chambre = DB::table('chambres')->where('categorie', 'classique')->paginate(8);
-        $classiqueCount = count($chambre);
-
-
-        return view('admin.chambres.classique', compact('chambre', 'classiqueCount'));
-    }
-
-
-    public function chambres_mvp()
-    {
-
-        $chambre = DB::table('chambres')->where('categorie', 'mvp')->paginate(8);
-        $mvpCount = count($chambre);
-
-
-        return view('admin.chambres.mvp', compact('chambre', 'mvpCount'));
-    }
-
-    public function chambres_vip()
-    {
-
-        $chambre = DB::table('chambres')->where('categorie', 'vip')->paginate(8);
-        $vipCount = count($chambre);
-
-
-        return view('admin.chambres.vip', compact('chambre', 'vipCount'));
-    }
 }

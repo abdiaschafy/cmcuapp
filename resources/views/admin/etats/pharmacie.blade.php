@@ -15,38 +15,23 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <style>
-        body { font-size: 7px }
 
-        thead > tr > th {
-            text-align: center;
-            padding: 5px;
-        }
         td {
             vertical-align: middle;
         }
-        .container{
-            border: 1px solid #000;
-        }
         .logo{
             width: 30px;
-            padding-top: 10px;
         }
 
         #inventory-invoice{
-            padding: 20px;
+            padding: 10px;
         }
         #inventory-invoice a{text-decoration:none ! important;}
         .invoice {
             position: relative;
             background-color: #FFF;
             min-height: 480px;
-            padding: 12px
-        }
-
-        .invoice header {
-            padding: 10px 0;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #3989c6
+            padding: 0px
         }
 
         .invoice .company-details {
@@ -82,16 +67,6 @@
             color: #3989c6
         }
 
-        .invoice main {
-            padding-bottom: 30px
-        }
-
-        .invoice main .thanks {
-            margin-top: -50px;
-            font-size: 2em;
-            margin-bottom: 50px
-        }
-
         .invoice main .notices {
             padding-left: 6px;
             border-left: 6px solid #3989c6
@@ -118,9 +93,6 @@
             white-space: nowrap;
             font-weight: 300;
             font-size: 14px;
-            border:1px solid #fff;
-        }
-        .invoice table td{
             border:1px solid #fff;
         }
         .invoice table td h3 {
@@ -203,8 +175,8 @@
 </head>
 <body>
 
-<div class="container">
-    <div class="row text-center">
+<div class="container-fluid">
+    <div class="row text- float-left">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>
         <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
@@ -212,21 +184,21 @@
         <strong>www.cmcu-cm.com</strong><br>
     </div>
 
-    <div id="inventory-invoice">
+    <div id="inventory-invoice col-md-2">
 
         {{--<div class="toolbar hidden-print">--}}
         {{--<hr>--}}
         {{--</div>--}}
-        <div class="invoice overflow-auto">
-            <div style="min-width: 300px">
+        <div class="invoice">
+            <div>
                 <main>
                     <div class="row contacts">
 
                         <div  class="col invoice-details ">
-                            <h4 class="invoice-id">FACTURE N° </h4>
+                            <h4 class="invoice-id">RECU N° </h4>
                             <br>
 
-                            <div class="date">Douala, le {{ $date = \Carbon\Carbon::now()->toDateTimeString() }}</div>
+                            <div class="date">{{ $date = \Carbon\Carbon::now()->toDateTimeString() }}</div>
                         </div>
                     </div>
                     <table border="0" cellspacing="0" cellpadding="0">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('admin/css/bar.css') }}">
@@ -22,92 +22,135 @@
     @include('partials.side_bar')
     <div class="container">
         @include('partials.header')
-        <div class="row">
-            @include('partials.flash')
-            <div class="col-md-8 offset-2">
-                {{--<div id="calendar">--}}
-
-                <div id="fullCalModal" class="modal fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                                <h4 id="modalTitle" class="modal-title"></h4>
-                            </div>
-                            <div id="modalBody" class="modal-body"> </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
+        <div id="fullCalModal" class="modal fade">
+            <div class="col-lg-12 col-md-12">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            @if (count($events)>0)
+                                <p class="btn btn-primary offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> la liste de vos rendez-vous en cours</p>
+                            @else
+                                <p class="btn btn-info offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
+                            @endif
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+                            <h4 id="modalTitle" class="modal-title"></h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Description</th>
+                                    <th>Patient</th>
+                                    <th>Date</th>
+                                    <th>Heure</th>
+                                    <th class="text-center">Edier</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($events as $event)
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td>{{ $event->title }}</td>
+                                            <td>{{ $event->patients->name }}</td>
+                                            <td>{{ $event->date }}</td>
+                                            <td>{{ $event->start_time }}</td>
+                                            <td class="td-actions text-right">
+                                                <a href="{{ route('events.edit', $event->id) }}" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" title="Modifier les informations relative a ce rendez-vous">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('events.destroy', $event->id) }}" method="post">
+                                                    @csrf @method('DELETE')
+                                                    <p data-placement="top" data-toggle="tooltip" title="Supprimer définiivement le rendez-vous">
+                                                        <button type="submit" class="btn btn-danger btn-just-icon btn-sm"  onclick="return myFunction()">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </p>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <div id="">
-                    {!! $calendar->calendar() !!}
-                    {!! $calendar->script() !!}
-                </div>
-                {{--<div class="response"></div>--}}
-                {{--<div id='calendar'></div>--}}
             </div>
         </div>
-        <br>
-        <div class="col-md-12 text-center">
-            <button class="btn btn-success"><a href="{{ route('events.create') }}" style="color: #ffffff;">Nouveau rendez-vous</a></button>
-            <button class="btn btn-primary"><a href="{{ route('events.create') }}" style="color: #ffffff;">Voire tous les rendez-vous</a></button>
+        <div class="col-md-8 offset-2">
+            @include('partials.flash')
+            <div id="calendar">
+                {{--{!! $calendar->calendar() !!}--}}
+                {{--{!! $calendar->script() !!}--}}
+            </div>
         </div>
-        <br>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
-    <script>
-        //paste this code under head tag or in a seperate js file.
-        // Wait for window load
-        $(window).load(function () {
-            // Animate loader off screen
-            $(".se-pre-con").fadeOut("slow");;
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('#sidebarCollapse').on('click', function () {
-                $('#sidebar').toggleClass('active');
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+        <script>
+            //paste this code under head tag or in a seperate js file.
+            // Wait for window load
+            $(window).load(function () {
+                // Animate loader off screen
+                $(".se-pre-con").fadeOut("slow");;
             });
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(".dropdown").hover(
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                    $(this).toggleClass('open');
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $(".dropdown").hover(
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                        $(this).toggleClass('open');
+                    },
+                    function () {
+                        $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                        $(this).toggleClass('open');
+                    }
+                );
+            });
+        </script>
+        <script>
+            $('#calendar').fullCalendar({
+                dayClick: function(date, jsEvent, view) {
+                    $('#fullCalModal').modal('show');
                 },
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                    $(this).toggleClass('open');
-                }
-            );
-        });
-    </script>
-    {{--<script>--}}
-        {{--$('#modalTitle').text(date.format());--}}
-        {{--$('#calendar').fullCalendar({--}}
-            {{--dayClick: function(date, jsEvent, view) {--}}
-                {{--// alert('Clicked on: ' + date.format());--}}
-                {{--$('#fullCalModal').modal('show');--}}
-            {{--},--}}
-            {{--header: {--}}
-                {{--left: 'prev,next today',--}}
-                {{--center: 'title',--}}
-                {{--right: 'month,basicWeek,basicDay',--}}
-            {{--},--}}
-            {{--navLinks: true,--}}
-            {{--editable: true,--}}
-            {{--eventLimit: false,--}}
-            {{--events: [--}}
-
-            {{--],--}}
-        {{--});--}}
-    {{--</script>--}}
-
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,basicWeek,basicDay',
+                },
+                navLinks: true,
+                editable: true,
+                eventLimit: false,
+                events: [
+                        @foreach($events as $event){
+                        title : '{{ $event->title }}',
+                        color : '{{ $event->color }}',
+                        medecin : '{{ $event->medecin }}',
+                        start : '{{ $event->date }}',
+                        end : '{{ $event->end_date }}'
+                    },
+                    @endforeach
+                ],
+            });
+        </script>
+        <script>
+            function myFunction() {
+                if (!confirm("Veuillez confirmer la suppréssion du rendez-vous"))
+                    event.preventDefault();
+            }
+        </script>
+    </div>
 </div>
 </body>
 </html>

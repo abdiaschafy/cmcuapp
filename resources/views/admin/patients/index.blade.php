@@ -33,17 +33,16 @@
                             @can('consulter', \App\Patient::class)
                             <th>CONSULTER</th>
                             @endcan
-                            {{--<th>SUPPRIMER</th>--}}
                             @can('print', \App\Patient::class)
+                            <th>SUPPRIMER</th>
                             <th>IMPRIMER</th>
                             @endcan
+                            <th>Rendez-vous</th>
                             </thead>
                             <tbody>
 
                             @foreach($patients as $patient)
                                 <tr>
-
-
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
@@ -52,6 +51,18 @@
                                     @can('consulter', \App\Patient::class)
                                     <td>
                                          <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-primary btn-xs"><i class="far fa-calendar-plus"></i></a>
+                                    </td>
+                                    <td>
+                                        <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
+                                            @csrf @method('DELETE')
+                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                <button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                            </p>
+                                        </form>
                                     </td>
                                     @endcan
                                     {{--<td>--}}

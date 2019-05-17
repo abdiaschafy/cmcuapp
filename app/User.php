@@ -5,13 +5,12 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
-
+  
     protected $fillable = [
         'name', 'prenom', 'login', 'telephone', 'sexe', 'lieu_naissance', 'date_naissance', 'password',
     ];
@@ -28,12 +27,6 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-//    gestion avec la table pivot
-
-//    public function roles()
-//    {
-//        return $this->belongsToMany(Role::class, 'user_role');
-//    }
 
     public function roles()
     {

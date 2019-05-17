@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
-use MercurySeries\Flashy\Flashy;
 
 class ProduitsController extends Controller
 {
@@ -41,7 +40,7 @@ class ProduitsController extends Controller
 
 
         $request->validate([
-            'designation'=>'required',
+            'designation'=> ['required', 'unique:produits'],
             'categorie'=> 'required',
             'qte_alerte'=> 'required',
             'qte_stock'=> 'required',
