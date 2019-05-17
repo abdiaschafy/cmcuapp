@@ -5,12 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
-use Laratrust\Traits\LaratrustUserTrait;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -40,12 +39,6 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
-//    gestion avec la table pivot
-
-//    public function roles()
-//    {
-//        return $this->belongsToMany(Role::class, 'user_role');
-//    }
 
     public function roles()
     {

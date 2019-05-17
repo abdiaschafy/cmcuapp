@@ -115,7 +115,7 @@
                                 </form>
                                 <div class="modal fade" id="ordonanceModal" tabindex="-1" role="dialog"
                                      aria-labelledby="ordonanceModal" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Ordonance</h5>
@@ -128,9 +128,9 @@
                                                 <form action="{{ route('ordonances.store') }}" method="post">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label for="description" class="col-form-label">Ordonance
+                                                        <label for="summernote" class="col-form-label">Ordonance
                                                             :</label>
-                                                        <textarea id="" class="form-control" name="description" cols="30" rows="10"></textarea>
+                                                        <textarea id="froala-editor1" name="description" class="form-control"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="button" class="btn btn-secondary"
@@ -142,9 +142,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="modal fade" id="soinsModal" tabindex="-2" role="dialog"
+                                <div class="modal fade" id="soinsModal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog" role="document">
+                                    <div class="modal-dialog modal-lg" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Soins quotidient</h5>
@@ -157,10 +157,9 @@
                                                 <form action="{{ route('soins.store') }}" method="post">
                                                     @csrf
                                                     <div class="form-group">
-                                                        <label for="message-text" class="col-form-label">Liste des
+                                                        <label for="" class="col-form-label">Liste des
                                                             soins:</label>
-                                                        <textarea name="content" class="form-control" id="content"
-                                                                  cols="30" rows="10"></textarea>
+                                                        <textarea id="froala-editor" name="content" class="form-control"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                 </form>
@@ -224,40 +223,6 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function ckChange(ckType){
-            var ckName = document.getElementsByName(ckType.name);
-            var checked = document.getElementById(ckType.id);
 
-            if (checked.checked) {
-                for(var i=0; i < ckName.length; i++){
-
-                    if(!ckName[i].checked){
-                        ckName[i].disabled = true;
-                    }else{
-                        ckName[i].disabled = false;
-                    }
-                }
-            }
-            else {
-                for(var i=0; i < ckName.length; i++){
-                    ckName[i].disabled = false;
-                }
-            }
-
-            if (document.getElementById('decision1').checked)
-            {
-                document.getElementById("chambre").style.display = 'contents';
-            }
-            else
-                document.getElementById("chambre").style.display = 'none';
-
-            if (document.getElementById('decision2').checked)
-                document.getElementById("bloc").style.display = 'contents';
-            else
-                document.getElementById("bloc").style.display = 'none';
-        }
-
-    </script>
     </body>
 @stop

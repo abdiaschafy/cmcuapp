@@ -11,5 +11,25 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js('resources/assets/js/app.js', 'public/js')
+   .sass('resources/assets/sass/app.scss', 'public/css');
+
+mix.styles([
+    'node_modules/froala-editor/css/froala_editor.pkgd.min.css',
+    'public/admin/css/style.css',
+    'public/admin/css/style4.css',
+    'public/admin/css/bar.css',
+    'public/admin/css/widgets.css',
+    ],
+    'public/css/all.css');
+
+
+mix.scripts([
+    'public/admin/js/jquery-2.2.3.min.js',
+    'node_modules/froala-editor/js/froala_editor.pkgd.min.js',
+    'public/admin/js/script.js',
+    'public/admin/js/main.js',
+    ],
+
+    'public/js/all.js');
+

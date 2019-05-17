@@ -50,6 +50,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::patch('produits/{produit}', 'ProduitsController@update')->name('produits.update');
     Route::delete('produits/{produit}', 'ProduitsController@destroy')->name('produits.destroy');
     Route::get('pharmaceutiques', 'ProduitsController@stock_pharmaceutique')->name('produits.pharmaceutique');
+//    Route::get('search', 'ProduitsController@search')->name('pharmaceutique.search');
     Route::get('materiels', 'ProduitsController@stock_materiel')->name('materiels.pharmaceutique');
     Route::get('pharmaceutiques/{id}', 'ProduitsController@add_to_cart')->name('pharmaceutique.cart');
     Route::get('facturation', 'ProduitsController@facturation')->name('pharmaceutique.facturation');
@@ -112,13 +113,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('parametres', 'ParametresController@store')->name('parametres.store');
 
 
-  Route::resource('/fiches', 'FichesController');
-    Route::resource('/chambres', 'ChambresController');
-    Route::get('/classique', 'ChambresController@chambres_classique')->name('chambres.classique');
-    Route::get('/mvp', 'ChambresController@chambres_mvp')->name('chambres.mvp');
-    Route::get('/vip', 'ChambresController@chambres_vip')->name('chambres.vip');
+//    Route::resource('/chambres', 'ChambresController');
+    Route::get('/chambres', 'ChambresController@index')->name('chambres.index');
+    Route::post('/chambres', 'ChambresController@store')->name('chambres.store');
+    Route::get('/chambres/create', 'ChambresController@create')->name('chambres.create');
+    Route::get('/chambres/{chambre}/edit', 'ChambresController@edit')->name('chambres.edit');
+    Route::get('/chambres/{chambre}', 'ChambresController@update')->name('chambres.update');
+    Route::get('search', 'ChambresController@search')->name('chambres.search');
 
 
+    Route::resource('/fiches', 'FichesController');
 //    Route::get('fiches', 'FichesController@index')->name('fiches.index');
 //    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');
 //    Route::post('fiches', 'FichesController@store')->name('fiches.store');
