@@ -13,7 +13,7 @@ class PatientPolicy
 
     public function before(User $user, $ability)
     {
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() && $user->isCaisse() && $user->isMedecin()) {
 
             return true;
         }
@@ -21,65 +21,60 @@ class PatientPolicy
 
     public function view(User $user, Patient $patient)
     {
-        return in_array(auth()->user()->role_id, [
-            1,
-        ]);
+        return true;
     }
 
-    /**
-     * Determine whether the user can create patients.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
+
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,
+            1,2,9,
         ]);
     }
 
 
-    public function update(User $user, Patient $patient)
+    public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,
+            1,2,9,
         ]);
     }
 
-    /**
-     * Determine whether the user can delete the patient.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Patient  $patient
-     * @return mixed
-     */
+
     public function delete(User $user, Patient $patient)
     {
         //
     }
 
-    /**
-     * Determine whether the user can restore the patient.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Patient  $patient
-     * @return mixed
-     */
+
     public function restore(User $user, Patient $patient)
     {
         //
     }
 
-    /**
-     * Determine whether the user can permanently delete the patient.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Patient  $patient
-     * @return mixed
-     */
+
     public function forceDelete(User $user, Patient $patient)
     {
         //
     }
+
+    public function print(User $user)
+    {
+        return in_array(auth()->user()->role_id, [
+            1,9,
+        ]);
+
+    }
+
+    public function consulter()
+    {
+        return in_array(auth()->user()->role_id, [
+            1,2,
+        ]);
+
+    }
+
+
+
+
 }

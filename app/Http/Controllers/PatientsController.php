@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Consultation;
 use App\Ordonance;
 use App\Patient;
+use App\Produit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,11 +16,17 @@ class PatientsController extends Controller
     {
         $patients = Patient::with('users')->latest()->paginate(8);
         return view('admin.patients.index', compact('patients'));
+
     }
 
 
     public function create()
     {
+        $this->authorize('create', Patient::class);
+        $this->authorize('update', Produit::class);
+        $this->authorize('consulter', Patient::class);
+
+
         return view('admin.patients.create', compact('patient'));
     }
 
@@ -27,17 +34,18 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
 
-        $this->authorize('create', Patient::class);
+        $this->authorize('update', Patient::class);
 
-        $request->validate([
-            'name'=> 'required',
-            'assurance'=> 'required',
-            'numero_assurance'=> 'required',
-            'numero_dossier'=> '',
-//            'frais'=> 'required',
-        ]);
 
-        $patient = new Patient();
+
+            $request->validate([
+                'name'=> 'required',
+                'assurance'=> 'required',
+                'numero_assurance'=> 'required',
+                'numero_dossier'=> '',
+    //            'frais'=> 'required',
+            ]);
+         $patient = new Patient();
 
         $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
         $patient->assurance = $request->get('assurance');
@@ -96,7 +104,7 @@ class PatientsController extends Controller
 
     public function export_pdf($id)
     {
-
+        $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
         $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
 

@@ -59,4 +59,12 @@ class Patient extends Model
         return $this->id;
     }
 
+
+
+    public function isMedecin()
+    {
+        return Auth::user()->role_id === 2;
+
+    }
+
 }

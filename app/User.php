@@ -11,29 +11,17 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+
     protected $fillable = [
         'name', 'prenom', 'login', 'telephone', 'sexe', 'lieu_naissance', 'date_naissance', 'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
+
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -81,5 +69,25 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return Auth::user()->role_id === 1;
+
     }
+    public function isPharmacien()
+    {
+        return Auth::user()->role_id === 7;
+
+    }
+
+    public function isGestionnaire()
+    {
+        return Auth::user()->role_id === 3;
+
+    }
+
+    public function isCaisse()
+    {
+        return Auth::user()->role_id === 9;
+
+    }
+
+
 }

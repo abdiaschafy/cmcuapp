@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Produit;
+
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ProduitPolicy
@@ -12,43 +13,53 @@ class ProduitPolicy
 
     public function before(User $user, $ability)
     {
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() && $user->isGestionnaire()) {
 
             return true;
         }
     }
 
+
+
     public function view(User $user, Produit $produit = null)
     {
-        return true;
+        return in_array(auth()->user()->role_id, [
+            1,3,7
+        ]);
     }
 
 
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-                1, 7
+                1,3,7
             ]);
     }
 
 
-    public function update(User $user, Produit $produit)
+    public function update(User $user)
     {
-        return true;
+        return in_array(auth()->user()->role_id, [
+            1,3,7
+        ]);
     }
 
 
     public function delete(User $user, Produit $produit)
     {
-        return in_array(auth()->user()->role_id, [
-            1, 7
-        ]);
+        //
     }
 
     public function edit(User $user)
     {
+        //
+    }
+
+    public function print(User $user)
+    {
         return in_array(auth()->user()->role_id, [
-            1, 7
+            1,3,
         ]);
     }
+
 }

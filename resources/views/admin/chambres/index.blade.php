@@ -8,6 +8,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+        @can('create', \App\chambre::class)
         <div class="container">
             <h1 class="text-center">LISTE DES CHAMBRES</h1>
         </div>
@@ -65,6 +66,7 @@
         <div class="col-md-3 offset-md-4 text-center">
             <a href="{{ route('chambres.create') }}" class="btn btn-primary" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;AJOUTER UNE NOUVELLE</a>
         </div>
+       @endcan
     </div>
     </div>
     <script src="{{ asset('admin/js/main.js') }}"></script>

@@ -12,6 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+
         <div class="container">
             <h1 class="text-center">AJOUTER UN DOSSIER PATIENT</h1>
             <hr>
@@ -48,6 +49,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     </body>
 

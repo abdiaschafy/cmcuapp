@@ -22,32 +22,23 @@ class FichePolicy
 
     public function view(User $user, Fiche $fiche)
     {
-        //
+        return true;
     }
 
-    /**
-     * Determine whether the user can create fiches.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
+
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,
+            1,8
         ]);
     }
 
-    /**
-     * Determine whether the user can update the fiche.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Fiche  $fiche
-     * @return mixed
-     */
+
     public function update(User $user, Fiche $fiche)
     {
-        //
+        return in_array(auth()->user()->role_id, [
+            1,8
+        ]);
     }
 
     public function delete(User $user, Fiche $fiche)

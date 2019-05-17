@@ -12,6 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+
         <div class="container">
             <h1 class="text-center">LISTE DES PATIENTS</h1>
         </div>
@@ -29,36 +30,46 @@
                             <th>NOM</th>
                             <th>DATE DE CREATION</th>
                             <th>FRAIS DE CONSULTATION</th>
+                            @can('consulter', \App\Patient::class)
                             <th>CONSULTER</th>
-                            <th>SUPPRIMER</th>
+                            @endcan
+                            {{--<th>SUPPRIMER</th>--}}
+                            @can('print', \App\Patient::class)
                             <th>IMPRIMER</th>
+                            @endcan
                             </thead>
                             <tbody>
 
                             @foreach($patients as $patient)
                                 <tr>
 
+
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     <td>{{ $patient->frais }}</td>
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
+                                    @can('consulter', \App\Patient::class)
                                     <td>
-                                        <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
-                                    <td>
-                                        <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
-                                            @csrf @method('DELETE')
-                                            <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
-                                            </p>
-                                        </form>
-                                    </td>
+                                    @endcan
+                                    {{--<td>--}}
+                                        {{--<form action="{{ route('patients.destroy', $patient->id) }}" method="post">--}}
+                                             {{--@csrf @method('DELETE')--}}
+                                                  {{--<p data-placement="top" data-toggle="tooltip" title="Delete">--}}
+                                                    {{--<button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>--}}
+
+                                                  {{--</p>--}}
+                                        {{--</form>--}}
+                                    {{--</td>--}}
+                                    @can('print', \App\Patient::class)
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <a class="btn btn-success btn-xs" title="Imprimer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                     </td>
+                                    @endcan
                                 </tr>
                             @endforeach
 
@@ -70,10 +81,14 @@
                 </div>
             </div>
         </div>
+        @can('print', \App\Patient::class)
+            <div class="col-md-12 text-center">
 
-        <div class="col-md-12 text-center">
-            <a href="{{ route('patients.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau patient dans le système">Ajouter un patient</a>
-        </div>
+                <a href="{{ route('patients.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau patient dans le système">Ajouter un patient</a>
+
+            </div>
+        @endcan
+
     </div>
     </div>
 
