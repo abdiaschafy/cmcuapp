@@ -61,12 +61,6 @@ class ChambresController extends Controller
     public function search()
     {
         $chambres = Chambre::search(request('search'))->paginate(5);
-//dd($chambres);
-//        if ($request->has('search')) {
-//
-//            $chambres->where('numero', $request->input('search'));
-//        }
-//        $chambres = Chambre::search('numero')->paginate(5);
 
         return view('admin.chambres.index', ['chambres' => $chambres]);
     }

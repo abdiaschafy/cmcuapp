@@ -15,7 +15,6 @@
             </a>
         </li>
         @can('update', \App\User::class)
-            @can('changeOwner')
                <li>
                     <a href="#usersSubmenu" data-toggle="collapse" aria-expanded="false">
                         <i class="fas fa-users"></i>
@@ -37,7 +36,6 @@
                         </li>
                     </ul>
                </li>
-            @endcan
         @endcan
         @can('create', \App\Patient::class)
 

@@ -69,22 +69,22 @@
                                             <select name="chambre_id">
                                                 <option value="">Sélectionner une chambre</option>
                                                 @foreach($chambres as $chambre)
-                                                    <option value="{{ $chambre->id }}">Chambre {{ $c++ }}</option>
+                                                    <option value="{{ $chambre->id }}">{{ $chambre->categorie }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr id="bloc" style='display:none;'>
-                                        <td>Bloc :</td>
-                                        <td>
-                                            <select name="bloc_id" id="">
-                                                <option value="">Sélectionner le bloc opératoire</option>
-                                                @foreach($blocs as $blocs)
-                                                    <option value="{{ $blocs->id }}">Bloc {{ $b++ }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    {{--<tr id="bloc" style='display:none;'>--}}
+                                        {{--<td>Bloc :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select name="chambre_id" id="">--}}
+                                                {{--<option value="">Sélectionner le bloc opératoire</option>--}}
+                                                {{--@foreach($blocs as $blocs)--}}
+                                                    {{--<option value="{{ $blocs->id }}">Bloc {{ $b++ }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
                                     <tr>
                                         <td>Coût de l'inervention :</td>
                                         <td>

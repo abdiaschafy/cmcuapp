@@ -26,10 +26,10 @@
 
 @yield('content')
 
-@include('flashy::message')
 
 
 <script src="{{ mix('js/all.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+@include('flashy::message')
 
 </html>
