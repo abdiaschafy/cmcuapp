@@ -64,18 +64,21 @@
                             <tr>
                                 <td>&#xA0;</td>
                                 <td>&#xA0;</td>
-                                <td>
-                                    <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success">Imprimer <i class="fas fa-print"></i></a>
-                                </td>
+                                <td>&#xA0;</td>
+                                <td>&#xA0;</td>
+
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             </tbody>
                         </table>
+                        <td>
+                            <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
+                        </td>
+                        <td>
+                            <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></a>
+                        </td>
                         @endif
                     </div>
                 </div>

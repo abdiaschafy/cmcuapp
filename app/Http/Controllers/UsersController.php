@@ -76,6 +76,8 @@ class UsersController extends Controller
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         $roles = Role::all();
         $user = User::with('roles')->first();
 
@@ -126,6 +128,7 @@ class UsersController extends Controller
 
     public function destroy(User $user)
     {
+        $this->authorize('update', $user);
 
         $user->delete();
 
