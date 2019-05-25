@@ -12,7 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-
+        @can('create', \App\Patient::class)
         <div class="container">
             <h1 class="text-center">LISTE DES PATIENTS</h1>
         </div>
@@ -89,9 +89,9 @@
             </div>
         @endcan
 
+        </div>
     </div>
-    </div>
-
+    @endcan
     <script>
         function myFunction() {
             if(!confirm("Veuillez confirmer la suppréssion du dossier patient"))
