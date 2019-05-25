@@ -34,10 +34,10 @@
                             <th>CONSULTER</th>
                             @endcan
                             @can('print', \App\Patient::class)
-                            <th>SUPPRIMER</th>
-                            <th>IMPRIMER</th>
-                            @endcan
                             <th>Rendez-vous</th>
+                            <th>SUPRIMER</th>
+                            @endcan
+                            <th>IMPRIMER</th>
                             </thead>
                             <tbody>
 
@@ -50,7 +50,7 @@
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
                                     <td>
-                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                         {{--<a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>--}}
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
