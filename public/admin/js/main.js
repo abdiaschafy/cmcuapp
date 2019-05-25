@@ -26,25 +26,35 @@ function searchFunction() {
         }
     }}
 
+    function ckChange(ckType){
+        var ckName = document.getElementsByName(ckType.name);
+        var checked = document.getElementById(ckType.id);
 
+        if (checked.checked) {
+            for(var i=0; i < ckName.length; i++){
 
-$(function () {
-    $('.calender').pignoseCalender({
-        select: function (date, obj) {
-            obj.calender.parent().next().show().text('You selected ' +
-                (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
-                '.');
+                if(!ckName[i].checked){
+                    ckName[i].disabled = true;
+                }else{
+                    ckName[i].disabled = false;
+                }
+            }
         }
-    });
-
-    $('.multi-select-calender').pignoseCalender({
-        multiple: true,
-        select: function (date, obj) {
-            obj.calender.parent().next().show().text('You selected ' +
-                (date[0] === null ? 'null' : date[0].format('YYYY-MM-DD')) +
-                '~' +
-                (date[1] === null ? 'null' : date[1].format('YYYY-MM-DD')) +
-                '.');
+        else {
+            for(var i=0; i < ckName.length; i++){
+                ckName[i].disabled = false;
+            }
         }
-    });
-});
+
+        if (document.getElementById('decision1').checked)
+        {
+            document.getElementById("chambre").style.display = 'contents';
+        }
+        else
+            document.getElementById("chambre").style.display = 'none';
+
+        if (document.getElementById('decision2').checked)
+            document.getElementById("bloc").style.display = 'contents';
+        else
+            document.getElementById("bloc").style.display = 'none';
+    }

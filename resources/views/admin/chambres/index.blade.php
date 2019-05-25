@@ -13,23 +13,34 @@
             <h1 class="text-center">LISTE DES CHAMBRES</h1>
         </div>
         <hr>
-        <div class="col-md-3 offset-md-8 text-center">
-
-
-            <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
-                <h2>TOTAL CHAMBRES :</h2>
-                <h1><P>{{ $chambreCount }}</P> </h1>
-            </a>
-        </div>
         <div class="container">
-             </br>
+            <div class="col-md-12">
+                <div class="row">
+                    <form class="col-md-6 form-inline" action="{{ route('chambres.search') }}" method="GET">
+                        <input class="form-control" type="text" placeholder="Rechercher" name="search">
+                        <button class="btn btn-primary btn-xs"><i class="fas fa-search"></i></button>
+                    </form>
+                    <br>
+                    <br>
+                    <div class="col-md-4 offset-md-2">
+                        <a href="{{ url('/admin/chambres/?categorie=vip') }}" class="btn btn-success">VIP</a>
+                        <a href="{{ url('/admin/chambres/?categorie=classique') }}" class="btn btn-primary">CLASSIQUE</a>
+                        <a href="{{ url('/admin/chambres/?categorie=bloc') }}" class="btn btn-info">BLOC</a>
+                        <a href="{{ url('/admin/chambres') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i></a>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-12">
                 <div class="table-responsive">
                     @include('partials.flash')
                     <table id="myTable" class="table table-bordred table-striped">
                         <thead>
                         <tr>
-                            <td>ID</td>
+                            <td>
+                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'asc']) }}"><i class="fas fa-sort-numeric-up"></i></a>
+                                ID
+                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'desc']) }}"><i class="fas fa-sort-numeric-down"></i></a>
+                            </td>
                             <td>NUMERO</td>
                             <td>CATEGORIE</td>
                             <td>PRIX</td>
@@ -38,38 +49,29 @@
                             {{--<td>SUPPRIMER</td>--}}
                         </tr>
                         <tbody>
-                        @foreach($chambre as $chambres)
+                        @foreach($chambres as $chambre)
                             <tr>
-                                <td>{{$chambres->id}}</td>
-                                <td>{{$chambres->numero}}</td>
-                                <td>{{$chambres->categorie}}</td>
-                                <td>{{$chambres->prix}}</td>
-                                <td>{{$chambres->statut}}</td>
-                                 <td><a href="{{ route('chambres.edit',$chambres->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
-                                {{--<td>--}}
-                                    {{--<form action="{{ route('chambres.destroy', $chambres->id) }}" method="post">--}}
-                                        {{--@csrf @method('DELETE')--}}
-                                        {{--<p data-placement="top" data-toggle="tooltip" title="Delete">--}}
-                                            {{--<button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>--}}
-                                        {{--</p>--}}
-                                    {{--</form>--}}
-                                {{--</td>--}}
+                                <td>{{$chambre->id}}</td>
+                                <td>{{$chambre->numero}}</td>
+                                <td>{{$chambre->categorie}}</td>
+                                <td>{{$chambre->prix}}</td>
+                                <td>{{$chambre->statut}}</td>
+                                 <td><a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $chambre->links() }}
+                    {{ $chambres->links() }}
                 </div>
 
             </div>
         </div> </br>
         <div class="col-md-3 offset-md-4 text-center">
-            <a href="{{ route('chambres.create') }}" class="btn btn-primary" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;AJOUTER UNE NOUVELLE</a>
+            <a href="{{ route('chambres.create') }}" class="btn btn-primary">Ajouter une nouvelle chambre</a>
         </div>
        @endcan
     </div>
     </div>
-    <script src="{{ asset('admin/js/main.js') }}"></script>
     </body>
 
 @endsection

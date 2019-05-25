@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Http\Requests\EventRequest;
+use App\Patient;
 use App\User;
 use Calendar;
 use Illuminate\Http\Request;
@@ -12,17 +14,20 @@ use Illuminate\Support\Facades\Auth;
 class EventsController extends Controller
 {
 
-    public function index()
+    public function index(Patient $patient)
     {
-        $events = Event::all();
+//        $events = Event::all();
+        $events = Event::with('patients')->get();
+
         $event = [];
         if($events->count()) {
             foreach ($events as $row) {
                 $event[] = Calendar::event(
                     $row->title,
-                    false,
-                    new \DateTime($row->start_date),
-                    new \DateTime($row->end_date),
+                    $row->medecin,
+                    true,
+                    new \DateTime($row->date),
+                    new \DateTime($row->end_time),
                     $row->id,
                     // Add color and link on event
                     [
@@ -41,73 +46,55 @@ class EventsController extends Controller
                 'selectable'  => true,
                 'durationeditable' => true,
                 'locale' => 'fr',
-            ])->setCallbacks([
-                'eventClick' => 'function() 
-                {
-                    showModal();
-                }',
-                'themeSystem' => '"bootstrap4"',
-                'eventRender' => 'function(event, element) {
-                }'
             ]);
 
-        return view('admin.events.index', compact('calendar', 'events'));
+        return view('admin.events.index', compact('calendar', 'events', 'patient'));
     }
 
-    public function create()
+    public function create(Patient $patient)
     {
         $users = User::with('roles')->where('role_id', '=', '2')->get(['name']);
-//        dd($users);
-        return view('admin.events.create', compact('users'));
+
+        return view('admin.events.create', compact('users', 'patient'));
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
 //
         $this->authorize('create', Event::class);
 //        $this->authorize('create', User::class);
-        $this->validate($request, [
-           'title' => 'required',
-           'color' => 'required',
-           'start_date' => 'required',
-           'end_date' => 'required',
-           'medecin' => 'required',
+        $patient = Patient::findOrFail($request->patient_id);
+
+        Event::create([
+            'user_id' => Auth::id(),
+            'patient_id' => $patient->id,
+            'title' => request('title'),
+            'color' => request('color'),
+            'date' => request('date'),
+            'medecin' => request('medecin'),
+            'start_time' => request('start_time'),
+            'end_time' => request('end_time'),
         ]);
 
-        $events = new Event();
-
-        $events->title = $request->input('title');
-        $events->color = $request->input('color');
-        $events->start_date = $request->input('start_date');
-        $events->end_date = $request->input('end_date');
-        $events->user_id = Auth::id();
-        $events->medecin = $request->input('medecin');
-
-        $events->save();
-
-        return redirect()->route('events.index')->with('success', 'Le rendez-vous a bien été créer');
+        return redirect()->route('events.index')->with('success', 'Le rendez-vous a bien été pris avec le médécin');
     }
 
-
-    public function show($id)
+    public function edit(Request $request, Event $event)
     {
-        $event = Event::find($id);
-
-        return view('admin.events.show', compact('event'));
+        $users = User::with('roles')->where('role_id', '=', '2')->get(['name']);
+        return view('admin.events.edit', compact('event', 'users'));
     }
 
-    public function edit($id)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        $event->update($request->all());
+        return redirect()->route('events.index')->with('success', 'La mise à jour du rendez-vous à bien été prise en compte');
     }
 
-    public function update(Request $request, $id)
+    public function destroy(Event $event)
     {
-        //
-    }
+        $event->delete();
 
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('events.index')->with('info', 'Le rendez-vous a bien été supprimer');
     }
 }

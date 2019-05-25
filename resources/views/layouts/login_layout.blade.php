@@ -20,10 +20,7 @@
     <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
 </head>
 <style>
-    body {
-        background-image: url("admin/images/home.jpg");
 
-    }
 </style>
 <body>
 @yield('content')

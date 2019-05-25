@@ -17,6 +17,11 @@ class AddUserIdFieldToFichesTables extends Migration
             $table->integer('user_id')->unsigned()->nullable()->after('id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
+
+        Schema::table('events', function (Blueprint $table) {
+            $table->integer('patient_id')->unsigned()->nullable()->after('id');
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+        });
     }
 
     /**
@@ -28,6 +33,10 @@ class AddUserIdFieldToFichesTables extends Migration
     {
         Schema::table('fiches', function (Blueprint $table) {
             $table->dropColumn('user_id');
+        });
+
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('patient_id');
         });
     }
 }
