@@ -10,11 +10,9 @@ class Patient extends Model
         'numero_dossier',
         'assurance',
         'numero_assurance',
-        'chambre_id',
         'user_id',
         'telephone',
         'motif',
-        'frais',
     ] ;
 
     public function soins()

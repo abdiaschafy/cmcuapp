@@ -86,6 +86,10 @@
                 {{--{!! $calendar->calendar() !!}--}}
                 {{--{!! $calendar->script() !!}--}}
             </div>
+            <br>
+            <div class="col-md-3 offset-md-4 text-center">
+                <a href="#" class="btn btn-primary">Ajouter un rendez-vous</a>
+            </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>

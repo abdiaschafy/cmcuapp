@@ -19,7 +19,7 @@ class Consultation extends Model
         return $this->belongsTo(Patient::class);
     }
 
-    public function chambre()
+    public function chambres()
     {
         return $this->belongsTo(Chambre::class);
     }

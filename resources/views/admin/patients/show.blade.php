@@ -51,6 +51,10 @@
                                         <td></td>
                                     </tr>
                                     @foreach ($patient->consultations as $consultation)
+                                        <tr>
+                                            <td class="table-active">DATE :</td>
+                                            <td class="table-active">{{ $consultation->created_at->toFormattedDateString() }}</td>
+                                        </tr>
                                     <tr>
                                         <td>DIAGNOSTIQUE :</td>
                                         <td>{{ $consultation->diagnostique }}</td>
@@ -61,7 +65,7 @@
                                     </tr>
                                     <tr>
                                         <td>CHAMBRE :</td>
-                                        <td>{{ $consultation->chambre }}</td>
+                                        <td>{{ $consultation->chambres }}</td>
                                     </tr>
                                     <tr>
                                         <td>COUT :</td>
