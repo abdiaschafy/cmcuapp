@@ -12,7 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-
+        @can('create', \App\Patient::class)
         <div class="container">
             <h1 class="text-center">LISTE DES PATIENTS</h1>
         </div>
@@ -34,10 +34,10 @@
                             <th>CONSULTER</th>
                             @endcan
                             @can('print', \App\Patient::class)
-                            <th>SUPPRIMER</th>
-                            <th>IMPRIMER</th>
-                            @endcan
                             <th>Rendez-vous</th>
+                            <th>SUPRIMER</th>
+                            @endcan
+                            <th>IMPRIMER</th>
                             </thead>
                             <tbody>
 
@@ -50,6 +50,10 @@
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
                                     <td>
+<<<<<<< HEAD
+=======
+                                         {{--<a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>--}}
+>>>>>>> 99f6f9f84ea91220c607066f8aec97eef4758dc9
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
@@ -90,9 +94,9 @@
             </div>
         @endcan
 
+        </div>
     </div>
-    </div>
-
+    @endcan
     <script>
         function myFunction() {
             if(!confirm("Veuillez confirmer la suppréssion du dossier patient"))

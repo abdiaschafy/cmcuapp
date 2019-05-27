@@ -16,7 +16,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
 
 mix.styles([
     'node_modules/froala-editor/css/froala_editor.pkgd.min.css',
-    'public/admin/css/style.css',
+    // 'public/admin/css/login.css',
     'public/admin/css/style4.css',
     'public/admin/css/bar.css',
     'public/admin/css/widgets.css',

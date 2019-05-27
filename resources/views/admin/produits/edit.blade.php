@@ -8,6 +8,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+        @can('create', App\Produit::class)
         <div class="container">
             <h1 class="text-center">MODIFIER UN PRODUIT</h1>
             <hr>
@@ -52,7 +53,9 @@
                     </form>
                 </div>
             </div>
-    </div>
+
+            </div>
+        @endcan
     </div>
     </body>
 @endsection

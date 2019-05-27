@@ -7,6 +7,7 @@
 
     <!-- Page Content Holder -->
         @include('partials.header')
+        @can('create', \App\Produit::class)
             <div class="container">
                 <h2 class="text-center">FACTURATION</h2>
                 <div class="row">
@@ -83,6 +84,7 @@
                     </div>
                 </div>
             </div>
+            @endcan
     </div>
     </div>
     <script src="{{ asset('admin/js/main.js') }}"></script>

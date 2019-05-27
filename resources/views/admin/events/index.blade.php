@@ -3,7 +3,7 @@
 <head>
     <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('admin/css/bar.css') }}">
-    <link href="{{ asset('admin/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ asset('login.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="stylesheet" href="{{ asset('admin/css/style4.css') }}">
     <link href="{{ asset('admin/css/fontawesome-all.css') }}" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">

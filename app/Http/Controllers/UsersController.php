@@ -67,7 +67,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        $this->authorize('update', $user);
+        $this->authorize('update', User::class);
 
         $user = User::with('roles')->first();
 
@@ -86,7 +86,7 @@ class UsersController extends Controller
 
     public function update(Request $request, User $user)
     {
-        $this->authorize('update', $user);
+        $this->authorize('update', User::class);
 
         $this->validateWith([
             'name' => ['required', 'string', 'max:255'],

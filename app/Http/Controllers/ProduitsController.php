@@ -29,7 +29,7 @@ class ProduitsController extends Controller
 
     public function create()
     {
-
+        $this->authorize('create', Produit::class);
         return view('admin.produits.create');
     }
 
@@ -61,7 +61,7 @@ class ProduitsController extends Controller
 
     public function edit(Produit $produit)
     {
-        $this->authorize('edit', Produit::class);
+        $this->authorize('create', Produit::class);
 
 //        $produit = Produit::find($id);
 
@@ -72,7 +72,7 @@ class ProduitsController extends Controller
     public function update(ProduitRequest $request, Produit $produit)
     {
         $this->authorize('create', Produit::class);
-        $this->authorize('print', Produit::class);
+
 
         $input = Input::get('qte_stock');
         $nqte = DB::table('produits')->where('qte_stock', $produit->qte_stock)->sum('qte_stock');
@@ -184,7 +184,7 @@ class ProduitsController extends Controller
 
     public function export_pdf(Request $request)
     {
-
+        $this->authorize('print', Produit::class);
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
