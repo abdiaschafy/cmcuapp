@@ -1,91 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Bootstrap Example</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <style>
-        body { font-size: 11px }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        thead > tr > th {
-            text-align: center;
-            padding: 5px;
-        }
-        .border-top-2{
-            border-top: 2px solid brown;
-        }
-        .page-section{
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .padding-top-10{
-            padding-top: 10px;
-        }
-        .text-bold{
-            font-weight: bold;
-            color: #000;
-        }
-        td {
-            vertical-align: middle;
-        }
-        .container{
-            border: 1px solid #000;
-        }
-        .logo{
-            width: 50px;
-            padding-top: 10px;
-        }
-    </style>
-</head>
-<body>
+<style>
+    .cpi-titulo3 {
+        font-size: 12px;
+    }
+    .logo{
+        width: 100px;
+    }
+    p {
+        line-height: 40%;
+    }
+    hr {
+        display: block; height: 1px;
+        border: 0; border-top: 1px solid red;
+        margin: 1em 0; padding: 0;
+    }
+    .footer {
+    padding-top: 1px;
+    padding-bottom: 15px;
+    position:fixed;
+    bottom:5;
+    width:100%;
+}
 
-<div class="container">
-    <div class="row text-center">
-        <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
-        <h5><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h5>
-        <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
-        <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
-        <strong>www.cmcu-cm.com</strong><br>
+</style>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-2">
+            <img class="logo img-responsive float-left" src="{{ asset('admin/images/logo.jpg') }}">
+        </div>
+        <div class="col-6 offset-3">
+            <div class="text-center">
+                <p>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</p>
+                <p>VALLEE MANGA BELL DOUALA-BALI</p>
+                <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
+                <small>www.cmcu-cm.com</small>
+            </div>
+        </div>
     </div>
-    <table id="myTable" class="table table-bordred table-striped">
-        <thead>
-        <h1>INFORMATIONS PERSONELLES</h1>
-        <tr>
-            <td>NOM</td>
-            <td>PRENOM</td>
 
-            <h2>ADRESSES DU PATIENT</h2>
+    <div class="row">
+        <hr class="text-danger">
+    </div>
 
-            <td>NUMERO DE CHAMBRE</td>
-            <td>AGE</td>
-            <td>SERVICE</td>
-            <td>INFIRMIER EN CHARGE</td>
-            <td>ACCUEIL</td>
-            <td>RESTAURANT</td>
-            <td>CHAMBRE</td>
-        </tr>
-        <tbody>
-
-        <tr>
-            {{--<td>{{$fiche->nom}}</td>--}}
-            {{--<td>{{$fiche->prenom}}</td>--}}
-            {{--<br>--}}
-            {{--<br>--}}
-            {{--<br>--}}
-            {{--<br>--}}
-            {{--<br>--}}
-            {{--<td>{{$fiche->chambre_numero}}</td>--}}
-            {{--<td>{{$fiche->age}}</td>--}}
-            {{--<td>{{$fiche->service}}</td>--}}
-            {{--<td>{{$fiche->infirmier_charge}}</td>--}}
-            {{--<td>{{$fiche->accueil}}</td>--}}
-            {{--<td>{{$fiche->restauration}}</td>--}}
-            {{--<td>{{$fiche->chambre}}</td>--}}
-          </tr>
-
-        </tbody>
-    </table>
+    <div class="row">
+        <div class="col-2">
+            <small>Docteur John Doe</small>
+        </div>
+        <div class="col-5 offset-5">
+            <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
+            <p><u>Nom du patient:</u> {{ $patient->name }}</p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <h5 class="text-center"><u>ORDONANCE</u></h5>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="">
+        <h5>
+            {{ $patient->ordonances[0]->description }}
+        </h5>
+    </div>
+    <footer class="footer">
+        <div class="text-center col-6 offset-2">
+            <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
+            <small>www.cmcu-cm.com</small>
+        </div>
+    </footer>
 </div>
-</body>
-</html>

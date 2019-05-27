@@ -166,34 +166,30 @@
                             </form>
                         </div>
                     </div>
+                    <br>
+                    <div class="table-responsive">
+                        <table id="myTable" class="table table-bordred table-striped">
+                            <thead>
+                            <th>DESCRIPTION</th>
+                            <th>DATE</th>
+                            <th>IMPPRIMER</th>
+                            </thead>
+                            <tbody>
 
-                    <div class="row">
-                        <div class="table-responsive">
-                            <table id="myTable" class="table table-bordred table-striped">
-                                <thead>
-                                <th>NUMERO</th>
-                                <th>DESCRIPTION</th>
-                                <th>DATE</th>
-                                <th>IMPPRIMER</th>
-                                </thead>
-                                <tbody>
+                            @foreach($patient->ordonances as $ordonance)
+                                <tr>
+                                    <td>{{ $ordonance->description }}</td>
+                                    <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
+                                    <td>
+                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
 
-                                @foreach($patient->ordonances as $ordonance)
-                                    <tr>
-                                        <td>{{ $ordonance->id }}</td>
-                                        <td>{{ $ordonance->description }}</td>
-                                        <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
-                                        <td>
-                                            <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonances.pdf', $ordonance->id) }}"><i class="fas fa-print"></i></a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                                </tbody>
-                            </table>
-                            <div class="clearfix"></div>
-                            {{ $ordonances->links() }}
-                        </div>
+                            </tbody>
+                        </table>
+                        <div class="clearfix"></div>
+                        {{ $ordonances->links() }}
                     </div>
 
                 </div>

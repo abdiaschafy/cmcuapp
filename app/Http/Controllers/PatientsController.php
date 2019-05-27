@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Patient;
 use App\Produit;
+use App\Ordonance;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -99,14 +100,26 @@ class PatientsController extends Controller
         return redirect()->route('patients.index')->with('success', "Le dossier du patient a bien été supprimé");
     }
 
-    public function export_pdf($id)
+    public function export_consultation($id)
     {
-        $this->authorize('print', Patient::class);
+        /**$this->authorize('print', Patient::class);**/
         $patient = Patient::find($id);
         $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
 
         $pdf->save(storage_path('consultation').'.pdf');
 
         return $pdf->download('consultation.pdf');
+    }
+
+    public function export_ordonance($id)
+    {
+        //$this->authorize('print', Patient::class);
+        $patient = Patient::with('ordonances')->limit(1)->findOrFail($id);
+
+        $pdf = \PDF::loadView('admin.etats.ordonance', compact('patient'));
+
+        $pdf->save(storage_path('ordonance').'.pdf');
+
+        return $pdf->download('ordonance.pdf');
     }
 }

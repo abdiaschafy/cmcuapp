@@ -44,14 +44,4 @@ class ConsultationsController extends Controller
         return back();
     }
 
-    public function export_pdf($id)
-    {
-
-        $patient = Patient::find($id);
-        $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
-
-        $pdf->save(storage_path('consultation').'.pdf');
-
-        return $pdf->download('consultation.pdf');
-    }
 }

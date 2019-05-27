@@ -16,6 +16,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('/', 'AdminController@index');
     Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
+//    Route::get('dashboard', 'TestController@index')->name('admin.dashboard');
 
 
 //    Route::resource('/users', 'UsersController');
@@ -80,6 +81,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patients/{patient}', 'PatientsController@show')->name('patients.show');
     Route::patch('patients/{patient}', 'PatientsController@update')->name('patients.update');
     Route::delete('patients/{patient}', 'PatientsController@destroy')->name('patients.destroy');
+    Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
+    Route::get('ordonance/{id}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
 
 //    Route::resource('/dossiers', 'DossiersController');
@@ -99,11 +102,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
-    Route::get('consultation/{id}','ConsultationsController@export_pdf')->name('consultation.pdf');
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
-    Route::get('ordonances/{id}','OrdonancesController@export_pdf')->name('ordonances.pdf');
+//    Route::get('ordonances/{id}','OrdonancesController@export_pdf')->name('ordonances.pdf');
 
 
 

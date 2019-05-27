@@ -29,7 +29,7 @@
                             </th>
                             <th>NOM</th>
                             <th>DATE DE CREATION</th>
-                            <th>FRAIS DE CONSULTATION</th>
+                            {{--<th>FRAIS DE CONSULTATION</th>--}}
                             @can('consulter', \App\Patient::class)
                             <th>CONSULTER</th>
                             @endcan
@@ -46,11 +46,10 @@
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
-                                    <td>{{ $patient->frais }}</td>
+                                    {{--<td>{{ $patient->frais }}</td>--}}
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
                                     <td>
-                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
@@ -65,15 +64,6 @@
                                         </form>
                                     </td>
                                     @endcan
-                                    {{--<td>--}}
-                                        {{--<form action="{{ route('patients.destroy', $patient->id) }}" method="post">--}}
-                                             {{--@csrf @method('DELETE')--}}
-                                                  {{--<p data-placement="top" data-toggle="tooltip" title="Delete">--}}
-                                                    {{--<button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>--}}
-
-                                                  {{--</p>--}}
-                                        {{--</form>--}}
-                                    {{--</td>--}}
                                     @can('print', \App\Patient::class)
                                     <td>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
