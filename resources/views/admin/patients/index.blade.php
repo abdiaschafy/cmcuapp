@@ -31,13 +31,18 @@
                             <th>DATE DE CREATION</th>
                             <th>FRAIS DE CONSULTATION</th>
                             @can('consulter', \App\Patient::class)
-                            <th>CONSULTER</th>
+                                <th>CONSULTER</th>
                             @endcan
+                            @can('consulter', \App\Patient::class)
+                                <th>Rendez-vous</th>
+                            @endcan
+                                @can('print', \App\Patient::class)
+                                <th>SUPPRIMER</th>
+                            @endcan
+                            {{--<th>SUPPRIMER</th>--}}
                             @can('print', \App\Patient::class)
-                            <th>SUPPRIMER</th>
-                            <th>IMPRIMER</th>
+                                <th>IMPRIMER</th>
                             @endcan
-                            <th>Rendez-vous</th>
                             </thead>
                             <tbody>
 
@@ -50,12 +55,14 @@
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
                                     <td>
-                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                         {{--<a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>--}}
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
                                         <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-primary btn-xs"><i class="far fa-calendar-plus"></i></a>
                                     </td>
+                                    @endcan
+                                    @can('print', \App\Patient::class)
                                     <td>
                                         <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
                                             @csrf @method('DELETE')
