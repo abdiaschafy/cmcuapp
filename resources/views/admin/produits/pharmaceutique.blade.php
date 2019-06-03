@@ -22,28 +22,7 @@
                 Facture
                 <span class="badge text-dark"><p>{{ Session::has('cart') ? Session::get('cart')->totalQte : 0 }}</p></span>
             </a>
-            <div class="row">
-                <div class="col-md-10 col-lg-8">
-                    <form  action="#" method="#" role="search" class="card card-sm">
-                        <div class="card-body row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <i class="fas fa-search h4 text-body"></i>
-                            </div>
-                            <!--end of col-->
-                            <div class="col">
-                                <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
-                            </div>
-                            <!--end of col-->
-                            <div class="col-">
-                                <a class="btn btn-lg btn-danger" href="#">Search</a>
-                            </div>
-                            <!--end of col-->
-                        </div>
-                    </form>
-                </div>
-                <!--end of col-->
 
-            </div>
             </br>
                 <div class="col-lg-12">
                     <div class="table-responsive">

@@ -160,5 +160,25 @@
                 </a>
             </li>
         @endcan
+        <li>
+            <a href="#factureSubmenu" data-toggle="collapse" aria-expanded="false">
+                <i class="fas fa-chart-line"></i>
+                Factures
+                <i class="fas fa-angle-down fa-pull-right"></i>
+            </a>
+            <ul class="collapse list-unstyled" id="factureSubmenu">
+                <li>
+                    <a href="{{ route('factures.index') }}">
+                        <i class="fas fa-list-ul"></i>
+                        Bilan consultation
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </ul>
 </nav>

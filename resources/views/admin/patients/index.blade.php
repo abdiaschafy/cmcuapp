@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>
                                 NUMERO
@@ -55,10 +55,6 @@
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
                                     <td>
-<<<<<<< HEAD
-=======
-                                         {{--<a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>--}}
->>>>>>> 99f6f9f84ea91220c607066f8aec97eef4758dc9
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                     </td>
                                     <td>
@@ -88,7 +84,7 @@
                             </tbody>
                         </table>
                         <div class="clearfix"></div>
-                        {{ $patients->links() }}
+                        {{--{{ $patients->links() }}--}}
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>
                                 ID
@@ -60,7 +60,7 @@
                             </tbody>
                         </table>
                         <div class="clearfix"></div>
-                        {{ $roles->links() }}
+                        {{--{{ $roles->links() }}--}}
                     </div>
                     <br>
                     <div class="col-md-12 text-center">

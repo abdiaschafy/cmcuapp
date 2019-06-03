@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Facture;
 use App\Http\Requests\ProduitRequest;
 use App\Produit;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -119,6 +120,7 @@ class ProduitsController extends Controller
     public function add_to_cart(Request $request, $id)
     {
         $produit = Produit::find($id);
+
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart =new Cart($oldCart);
         $cart->add($produit, $produit->id);
@@ -194,8 +196,6 @@ class ProduitsController extends Controller
         $pdf->save(storage_path('pharmacie').'.pdf');
 
         Session::forget('cart');
-        return $pdf->download('pharmacie.pdf');
-
-//        return redirect()->route('produits.pharmaceutique');
+        return $pdf->stream('pharmacie.pdf');
     }
 }

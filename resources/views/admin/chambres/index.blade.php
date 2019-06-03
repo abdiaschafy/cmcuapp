@@ -16,13 +16,7 @@
         <div class="container">
             <div class="col-md-12">
                 <div class="row">
-                    <form class="col-md-6 form-inline" action="{{ route('chambres.search') }}" method="GET">
-                        <input class="form-control" type="text" placeholder="Rechercher" name="search">
-                        <button class="btn btn-primary btn-xs"><i class="fas fa-search"></i></button>
-                    </form>
-                    <br>
-                    <br>
-                    <div class="col-md-4 offset-md-2">
+                    <div class="col-md-4">
                         <a href="{{ url('/admin/chambres/?categorie=vip') }}" class="btn btn-success">VIP</a>
                         <a href="{{ url('/admin/chambres/?categorie=classique') }}" class="btn btn-primary">CLASSIQUE</a>
                         <a href="{{ url('/admin/chambres/?categorie=bloc') }}" class="btn btn-info">BLOC</a>
@@ -30,6 +24,7 @@
                     </div>
                 </div>
             </div>
+            <br>
             <div class="col-lg-12">
                 <div class="table-responsive">
                     @include('partials.flash')
@@ -61,7 +56,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $chambres->links() }}
+                    {{--{{ $chambres->links() }}--}}
                 </div>
 
             </div>

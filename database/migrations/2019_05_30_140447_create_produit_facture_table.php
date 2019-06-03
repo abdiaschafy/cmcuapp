@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateProduitFactureTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('produit_facture', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->date('date');
-            $table->Time('start_time');
-            $table->Time('end_time')->nullable();
-            $table->string('color');
-            $table->string('medecin');
+            $table->unsignedInteger('produit_id')->index();
+            $table->unsignedInteger('facture_id')->index();
+            $table->integer('qte');
+            $table->integer('prix');
+            $table->integer('prix_total');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('produit_facture');
     }
 }

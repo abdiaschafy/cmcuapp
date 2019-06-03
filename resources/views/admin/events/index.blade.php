@@ -1,17 +1,13 @@
 <!doctype html>
 <html lang="fr">
 <head>
-    <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('admin/css/bar.css') }}">
-    <link href="{{ asset('login.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('admin/css/style4.css') }}">
-    <link href="{{ asset('admin/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
+    <link rel="stylesheet" href="{{ mix('css/all.css') }}"/>
+    <script src="{{ mix('js/all.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    <script src='{{ asset('admin/js/jquery-2.2.3.min.js') }}'></script>
     <script src="{{ asset('admin/js/modernizr.js') }}"></script>
-    <script src="{{ asset('admin/js/script.js') }}"></script>
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
     <style>
         /* ... */
@@ -82,13 +78,12 @@
         </div>
         <div class="col-md-8 offset-2">
             @include('partials.flash')
-            <div id="calendar">
-                {{--{!! $calendar->calendar() !!}--}}
-                {{--{!! $calendar->script() !!}--}}
-            </div>
-            <br>
-            <div class="col-md-3 offset-md-4 text-center">
-                <a href="#" class="btn btn-primary">Ajouter un rendez-vous</a>
+            <div class="row mt-0">
+                <div id="calendar">
+                    {{--{!! $calendar->calendar() !!}--}}
+                    {{--{!! $calendar->script() !!}--}}
+                </div>
+                <a href="{{ route('patients.index') }}" class="btn btn-info mt-1" title="Consulter la liste des patients"><i class="fas fa-users"></i> Liste des patients</a>
             </div>
         </div>
 

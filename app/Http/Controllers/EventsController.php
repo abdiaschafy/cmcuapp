@@ -62,19 +62,31 @@ class EventsController extends Controller
     {
 //
         $this->authorize('create', Event::class);
-//        $this->authorize('create', User::class);
+
         $patient = Patient::findOrFail($request->patient_id);
 
-        Event::create([
-            'user_id' => Auth::id(),
-            'patient_id' => $patient->id,
-            'title' => request('title'),
-            'color' => request('color'),
-            'date' => request('date'),
-            'medecin' => request('medecin'),
-            'start_time' => request('start_time'),
-            'end_time' => request('end_time'),
-        ]);
+        if (!empty($patient)){
+            Event::create([
+                'user_id' => Auth::id(),
+                'patient_id' => $patient->id,
+                'title' => request('title'),
+                'color' => request('color'),
+                'date' => request('date'),
+                'medecin' => request('medecin'),
+                'start_time' => request('start_time'),
+                'end_time' => request('end_time'),
+            ]);
+        }else {
+            Event::create([
+                'user_id' => Auth::id(),
+                'title' => request('title'),
+                'color' => request('color'),
+                'date' => request('date'),
+                'medecin' => request('medecin'),
+                'start_time' => request('start_time'),
+                'end_time' => request('end_time'),
+            ]);
+        }
 
         return redirect()->route('events.index')->with('success', 'Le rendez-vous a bien été pris avec le médécin');
     }

@@ -18,29 +18,8 @@
                 <h1><P>{{ $ficheCount }}</P> </h1>
              </a>
         </div>
+        <br>
     <div class="container">
-        <div class="row">
-            <div class="col-10 col-md-10 col-lg-8">
-                <form  action="/search" method="POST" role="search" class="card card-sm">
-                    {{ csrf_field() }}
-                    <div class="card-body row no-gutters align-items-center">
-                        <div class="col-auto">
-                            <i class="fas fa-search h4 text-body"></i>
-                        </div>
-                        <!--end of col-->
-                        <div class="col">
-                            <input class="form-control form-control-lg form-control-borderless" id="myInput" onkeyup="searchFunction()" type="text" class="form-control" name="q" placeholder="Rechercher un Produit">
-                        </div>
-                        <!--end of col-->
-                        <div class="col-auto">
-                            <button action="" class="btn btn-lg btn-danger" type="">Search</button>
-                        </div>
-                        <!--end of col-->
-                    </div>
-                </form>
-            </div>
-            <!--end of col-->
-        </div> </br>
         <div class="col-lg-12">
             <div class="table-responsive">
                 @include('partials.flash')
@@ -100,7 +79,7 @@
                     @endforeach
                     </tbody>
                 </table>
-                {{ $fiche->links() }}
+                {{--{{ $fiche->links() }}--}}
             </div>
 
         </div>
