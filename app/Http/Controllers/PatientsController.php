@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
+use Barryvdh\DomPDF\PDF as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -106,11 +107,11 @@ class PatientsController extends Controller
     {
         /**$this->authorize('print', Patient::class);**/
         $patient = Patient::find($id);
-        $pdf = \PDF::loadView('admin.etats.consultation', compact('patient'));
+        $pdf = PDF::loadView('admin.etats.consultation', compact('patient'));
 
-        $pdf->save(storage_path('consultation').'.pdf');
+        $pdf->save(storage_path('pdf/consultation').'.pdf');
 
-        return $pdf->download('consultation.pdf');
+        return $pdf->stream('consultation.pdf');
     }
 
     public function export_ordonance($id)
@@ -118,10 +119,10 @@ class PatientsController extends Controller
         //$this->authorize('print', Patient::class);
         $patient = Patient::with('ordonances')->limit(1)->findOrFail($id);
 
-        $pdf = \PDF::loadView('admin.etats.ordonance', compact('patient'));
+        $pdf = PDF::loadView('admin.etats.ordonance', compact('patient'));
 
         $pdf->save(storage_path('ordonance').'.pdf');
 
-        return $pdf->download('ordonance.pdf');
+        return $pdf->stream('ordonance.pdf');
     }
 }

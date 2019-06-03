@@ -59,6 +59,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('imprimer','ProduitsController@export_pdf')->name('pharmacie.pdf');
     Route::get('supprimer/{id}', 'ProduitsController@getRemoveItem')->name('facturation.supprimer');
     Route::get('reduire/{id}', 'ProduitsController@getReduceByOne')->name('facturation.reduire');
+    Route::post('produit/save-invoice/{produit}', 'ProduitsController@saveInvoice')->name('produit.invoice');
 
 
 //    Route::resource('/events', 'EventsController');
@@ -66,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('events', 'EventsController@index')->name('events.index');
     Route::get('events/create/{patient}', 'EventsController@create')->name('events.create');
+    Route::get('events/create', 'EventsController@create')->name('event.create');
     Route::post('events', 'EventsController@store')->name('events.store');
     Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');
     Route::patch('events/{event}', 'EventsController@update')->name('events.update');
@@ -124,6 +126,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('search', 'ChambresController@search')->name('chambres.search');
 
 
+    Route::resource('/factures', 'FactureController');
     Route::resource('/fiches', 'FichesController');
 //    Route::get('fiches', 'FichesController@index')->name('fiches.index');
 //    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');

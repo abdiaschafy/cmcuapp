@@ -27,7 +27,7 @@ class AddUserIdFieldToEventsTable extends Migration
     public function down()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->dropColumn('users_id');
+            $table->dropColumn('user_id');
         });
     }
 }
