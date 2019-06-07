@@ -7,7 +7,7 @@ use Laravel\Scout\Searchable;
 
 class Chambre extends Model
 {
-    use Searchable;
+//    use Searchable;
 
     protected $fillable = [
 
