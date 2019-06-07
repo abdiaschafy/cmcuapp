@@ -22,6 +22,11 @@ class Produit extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function produits()
+    {
+        return $this->belongsToMany(Produit::class);
+    }
 }
 
 

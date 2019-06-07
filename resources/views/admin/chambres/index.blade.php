@@ -32,9 +32,7 @@
                         <thead>
                         <tr>
                             <td>
-                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'asc']) }}"><i class="fas fa-sort-numeric-up"></i></a>
                                 ID
-                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'desc']) }}"><i class="fas fa-sort-numeric-down"></i></a>
                             </td>
                             <td>NUMERO</td>
                             <td>CATEGORIE</td>

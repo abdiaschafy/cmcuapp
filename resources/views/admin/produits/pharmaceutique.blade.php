@@ -24,6 +24,8 @@
             </a>
 
             </br>
+            </br>
+            </br>
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')

@@ -10,4 +10,9 @@ class Facture extends Model
 
     protected $fillable = ['numero'];
 
+    public function factures()
+    {
+        return $this->belongsToMany(Facture::class);
+    }
+
 }

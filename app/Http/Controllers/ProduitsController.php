@@ -17,11 +17,7 @@ class ProduitsController extends Controller
 {
     public function index()
     {
-
-
-
         $produitCount = Produit::count();
-
         $produits = Produit::orderBy('id', 'asc')->paginate(10);
 
         return view('admin.produits.index', compact('produits', 'produitCount'));
@@ -121,11 +117,19 @@ class ProduitsController extends Controller
     {
         $produit = Produit::find($id);
 
-        $oldCart = Session::has('cart') ? Session::get('cart') : null;
-        $cart =new Cart($oldCart);
-        $cart->add($produit, $produit->id);
+        if ($produit->qte_stock == 0){
+            return redirect()->route('produits.pharmaceutique')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
 
-        $request->session()->put('cart', $cart);
+        }elseif($produit->qte_alerte <= 20){
+
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart =new Cart($oldCart);
+            $cart->add($produit, $produit->id);
+
+            $request->session()->put('cart', $cart);
+
+            return redirect()->route('produits.pharmaceutique')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
+        }
 
         flashy()->success("La facture vient d'être mise à jour");
 
@@ -169,6 +173,7 @@ class ProduitsController extends Controller
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new  Cart($oldCart);
+
         $cart->removeItem($id);
 
         if (count($cart->items) > 0)
@@ -190,6 +195,12 @@ class ProduitsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
+
+//        foreach ($cart as $item) {
+//            $produit = Produit::find($item);
+//            dd($produit);
+//            $produit->decrement('qte_stock', $produit->items);
+//        }
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 
