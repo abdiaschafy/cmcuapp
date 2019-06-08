@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        body { font-size: 11px }
+        body { font-size: 10px }
 
         thead > tr > th {
             text-align: center;
@@ -36,6 +36,11 @@
             width: 50px;
             padding-top: 10px;
         }
+
+        h2{
+            width: 50%;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
@@ -48,44 +53,42 @@
         <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
         <strong>www.cmcu-cm.com</strong><br>
     </div>
-    <table id="myTable" class="table table-bordred table-striped">
-        <thead>
-        <h1>INFORMATIONS PERSONELLES</h1>
-        <tr>
-            <td>NOM</td>
-            <td>PRENOM</td>
+    <h1> FICHE DE SATISFACTION</h1>
+    <br>
 
-            <h2>ADRESSES DU PATIENT</h2>
+                <h2 class ="btn btn-primary text-bold text-center" > INFORMATION DU PATIENT </class>  </h2>
+            <br>
+            <br>
+            <h6>NOM : .............................................................................. <h8>{{$fiche->nom}}</h8></h6>
+            <br>
+            <h6>PRENOM : .............................................................................. {{$fiche->prenom}} </h6>
+            <br>
+             <h6>NUMERO DE CHAMBRE : .............................................................................. {{$fiche->chambre_numero}} </h6>
+            <br>
+            <h6>AGE : .............................................................................. {{$fiche->age}}</h6>
+            <br>
+                <h2 class= "btn btn-success text-bold text-center" > AVIS  DU PATIENT </class> </h2>
+                <br>
+                <br>
+            <h6>SERVICE : .............................................................................. {{$fiche->service}} </h6>
+            <br>
+            <h6>INFIRMIER EN CHARGE : .............................................................................. {{$fiche->infirmier_charge}} </h6>
+            <br>
+            <h6>ACCUEIL : .............................................................................. {{$fiche->accueil}} </h6>
+            <br>
+            <h6>RESTAURANT : .............................................................................. {{$fiche->restauration}} </h6>
+            <br>
+            <h6>CHAMBRE : .............................................................................. {{$fiche->chambre}} </h6>
+            <br>
+            <h6>SOINS : .............................................................................. {{$fiche->soins}} </h6>
 
-            <td>NUMERO DE CHAMBRE</td>
-            <td>AGE</td>
-            <td>SERVICE</td>
-            <td>INFIRMIER EN CHARGE</td>
-            <td>ACCUEIL</td>
-            <td>RESTAURANT</td>
-            <td>CHAMBRE</td>
-        </tr>
-        <tbody>
+             <h2 class= "btn btn-danger text-bold text-center" > REMARQUE ET SUGGESTION</class> </h2>
+            <h6>UNE NOTE : .............................................................................. {{$fiche->notes}} </h6>
+            <br>
+            <h6>SUGGEREZ VOUS LE CMCU A QUELQU'UN ? : .............................................................................. {{$fiche->quizz}} </h6>
+            <br>
+            <h6>SUUGESTIONS ET REMARQUES : .............................................................................. {{$fiche->remarque_suggestion}} </h6>
 
-        <tr>
-            <td>{{$fiche->nom}}</td>
-            <td>{{$fiche->prenom}}</td>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <td>{{$fiche->chambre_numero}}</td>
-            <td>{{$fiche->age}}</td>
-            <td>{{$fiche->service}}</td>
-            <td>{{$fiche->infirmier_charge}}</td>
-            <td>{{$fiche->accueil}}</td>
-            <td>{{$fiche->restauration}}</td>
-            <td>{{$fiche->chambre}}</td>
-          </tr>
-
-        </tbody>
-    </table>
 </div>
 </body>
 </html>

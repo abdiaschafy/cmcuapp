@@ -191,7 +191,7 @@ class ProduitsController extends Controller
 
     public function export_pdf(Request $request)
     {
-        $this->authorize('print', Produit::class);
+//        $this->authorize('print', Produit::class);
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);

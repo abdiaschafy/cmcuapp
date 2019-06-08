@@ -7,7 +7,7 @@
 
     <!-- Page Content Holder -->
         @include('partials.header')
-        @can('create', \App\Produit::class)
+
             <div class="container">
                 <h2 class="text-center">FACTURATION</h2>
                 <div class="row">
@@ -77,14 +77,16 @@
                         <td>
                             <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
                         </td>
+
                         <td>
                             <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></a>
                         </td>
+
                         @endif
                     </div>
                 </div>
             </div>
-            @endcan
+
     </div>
     </div>
     <script src="{{ asset('admin/js/main.js') }}"></script>

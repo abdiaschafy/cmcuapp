@@ -26,8 +26,8 @@ class EventsController extends Controller
                     $row->title,
                     $row->medecin,
                     true,
-                    new \DateTime($row->date),
-                    new \DateTime($row->end_time),
+                    new \DateTime( $row->date),
+                    new \DateTime( $row->end_time),
                     $row->id,
                     // Add color and link on event
                     [

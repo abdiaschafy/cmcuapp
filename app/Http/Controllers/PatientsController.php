@@ -22,9 +22,9 @@ class PatientsController extends Controller
 
     public function create()
     {
-        $this->authorize('create', Patient::class);
-        $this->authorize('update', Produit::class);
-        $this->authorize('consulter', Patient::class);
+
+
+
 
 
         return view('admin.patients.create', compact('patient'));
@@ -34,6 +34,7 @@ class PatientsController extends Controller
     public function store(Request $request)
     {
 
+//        $this->authorize('consulter', Patient::class);
         $this->authorize('update', Patient::class);
 
 
@@ -71,6 +72,7 @@ class PatientsController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Produit::class);
         $request->validate([
             'name'=> '',
             'assurance'=> '',

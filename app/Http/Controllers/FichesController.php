@@ -105,5 +105,6 @@ class FichesController extends Controller
 //        $content = $pdf->download()->getOriginalContent();
 //        Storage::put('public/admin/name.pdf',$content) ;
         return $pdf->stream('fiche.pdf');
+        
     }
 }
