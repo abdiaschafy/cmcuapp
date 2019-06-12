@@ -19,13 +19,8 @@ class CreateFactureProduitTable extends Migration
 
             $table->unsignedInteger('facture_id');
             $table->unsignedInteger('produit_id');
-            $table->integer('qte');
-            $table->integer('prix');
-            $table->integer('prix_total');
             $table->timestamps();
 
-//            $table->foreign('facture_id')->references('id')->on('factures')->onDelete('cascade')->onUpdate('cascade');
-//            $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

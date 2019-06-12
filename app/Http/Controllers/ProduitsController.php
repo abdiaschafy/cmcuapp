@@ -196,11 +196,13 @@ class ProduitsController extends Controller
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
 
-//        foreach ($cart as $item) {
-//            $produit = Produit::find($item);
-//            dd($produit);
-//            $produit->decrement('qte_stock', $produit->items);
-//        }
+        $facture = Facture::create([
+           'numero' => mt_rand(10000, 999999),
+           'quantite_total' => $cart->totalQte,
+           'prix_total' => $cart->totalPrix
+        ]);
+
+        $produit->factures()->attach($facture);
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 

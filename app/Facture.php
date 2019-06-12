@@ -8,7 +8,7 @@ class Facture extends Model
 {
     protected $guarded = ['id'];
 
-    protected $fillable = ['numero'];
+    protected $fillable = ['numero', 'prix_total', 'quantite_total'];
 
     public function factures()
     {

@@ -16,6 +16,8 @@ class CreateFacturesTable extends Migration
         Schema::create('factures', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('numero');
+            $table->integer('quantite_total');
+            $table->integer('prix_total');
             $table->timestamps();
         });
     }
