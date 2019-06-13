@@ -118,9 +118,10 @@ class ProduitsController extends Controller
         $produit = Produit::find($id);
 
         if ($produit->qte_stock == 0){
+
             return redirect()->route('produits.pharmaceutique')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
 
-        }elseif($produit->qte_alerte <= 20){
+        }elseif($produit->qte_stock <= $produit->qte_alerte){
 
             $oldCart = Session::has('cart') ? Session::get('cart') : null;
             $cart =new Cart($oldCart);
@@ -128,8 +129,15 @@ class ProduitsController extends Controller
 
             $request->session()->put('cart', $cart);
 
+
             return redirect()->route('produits.pharmaceutique')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
         }
+
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart =new Cart($oldCart);
+        $cart->add($produit, $produit->id);
+
+        $request->session()->put('cart', $cart);
 
         flashy()->success("La facture vient d'être mise à jour");
 
