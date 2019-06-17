@@ -105,7 +105,7 @@ class PatientsController extends Controller
 
     public function export_consultation($id)
     {
-        /**$this->authorize('print', Patient::class);**/
+//        $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
         $pdf = PDF::loadView('admin.etats.consultation', compact('patient'));
 

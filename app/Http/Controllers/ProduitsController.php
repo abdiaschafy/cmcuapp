@@ -197,7 +197,7 @@ class ProduitsController extends Controller
     }
 
 
-    public function export_pdf(Request $request)
+    public function export_pdf(Request $request, Produit $produit)
     {
 //        $this->authorize('print', Produit::class);
         $oldCart = Session::get('cart');
@@ -210,7 +210,7 @@ class ProduitsController extends Controller
            'prix_total' => $cart->totalPrix
         ]);
 
-        $produit->factures()->attach($facture);
+//        $facture->produits()->attach($cart->items);
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 
