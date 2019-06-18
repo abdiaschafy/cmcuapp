@@ -94,7 +94,7 @@ class ProduitsController extends Controller
     public function stock_pharmaceutique()
     {
 
-        $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->paginate(8);
+        $produits = Produit::where('categorie', 'pharmaceutique')->paginate(8);
         $pharmaCount = count($produits);
 
 
@@ -105,7 +105,7 @@ class ProduitsController extends Controller
     public function stock_materiel()
     {
 
-        $produits = DB::table('produits')->where('categorie', 'materiel')->paginate(8);
+        $produits = Produit::where('categorie', 'materiel')->paginate(8);
 
         $materielCount = count($produits);
 
