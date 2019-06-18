@@ -11,9 +11,25 @@ class FactureController extends Controller
 
     public function index(Request $request)
     {
-        $factures = Facture::paginate(5);
+        $factures = Facture::paginate(100);
+        $months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
-        return view('admin.factures.index', compact('factures'));
+        return view('admin.factures.index', compact('factures', 'months'));
+    }
+
+    public function desroy(Facture $factures)
+    {
+        $factures->delete();
+        return view('admin.factures.index')->with('info', 'La facture à bien été supprimer');
+    }
+
+    public function ajax()
+    {
+        $factures = Facture::all();
+
+        $months = $factures->sortBy('created_at')->pluck('created_at')->unique();
+
+        return view('admin.factures.index', compact('factures', 'months'));
     }
 
 }

@@ -126,7 +126,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('search', 'ChambresController@search')->name('chambres.search');
 
 
-    Route::resource('/factures', 'FactureController');
+    Route::get('/factures', 'FactureController@index')->name('factures.index');
+    Route::delete('/factures', 'FactureController@desroy')->name('factures.destroy');
+    Route::post('/factures/{facture}', 'FactureController@BilanProduit')->name('bilan.produit');
+
+
+
     Route::resource('/fiches', 'FichesController');
 //    Route::get('fiches', 'FichesController@index')->name('fiches.index');
 //    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');

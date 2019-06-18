@@ -15,8 +15,8 @@
         @can('create', \App\Produit::class)
             <div class="container">
                 <h1 class="text-center">LISTE DES FCATURES</h1>
+                <hr>
             </div>
-            <hr>
             <div class="col-md-3 offset-md-8 text-center">
             </div>
             <div class="container">
@@ -28,8 +28,15 @@
                             <tr>
                                 <td>ID</td>
                                 <td>NUMERO</td>
-                                <td>DATE</td>
-                                <td>EDITER</td>
+                                <td>
+                                    <select data-column="0" name="category" id="category" class="form-control filter-select">
+                                        <option value="">Month Search</option>
+                                        @foreach ($months as $month)
+                                            <option value="{{ $month }}">{{ $month }}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>MONTANT</td>
                                 <td>SUPPRIMER</td>
                             </tr>
                             <tbody>
@@ -37,12 +44,12 @@
                                 <tr>
                                     <td>{{$facture->id}}</td>
                                     <td>{{$facture->numero}}</td>
-                                    <td>{{$facture->created_at->toFormattedDateString() }}</td>
-                                    <td><a href="{{ route('produits.edit', $facture->id)}}" title="Enregistrer une nouvelle entré en stock" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                    <td>{{$facture->created_at->format('F') }}</td>
+                                    <td>{{$facture->prix_total }}  <b>FCFA</b></td>
                                     <td>
-                                        <form action="{{ route('produits.destroy', $facture->id) }}" method="post">
+                                        <form action="{{ route('factures.destroy', $facture->id) }}" method="post">
                                             @csrf @method('DELETE')
-                                            <p data-placement="top" data-toggle="tooltip" title="Supprimer le produit du stock">
+                                            <p data-placement="top" data-toggle="tooltip" title="Supprimer la facture">
                                                 <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
                                             </p>
                                         </form>
@@ -53,7 +60,7 @@
                         </table>
                         {{--{{ $factures->links() }}--}}
                     </div>
-
+                    <a href="#" class="btn btn-success">Imprimer le bilan</a>
                 </div>
             </div>
     </div>

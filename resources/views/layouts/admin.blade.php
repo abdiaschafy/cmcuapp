@@ -39,7 +39,14 @@
         $('#myTable').DataTable({
             scrollY: 300,
             paging: true,
-            processing: true
+            processing: true,
+            info: false,
+            ordering: false,
+        });
+        $('.filter-select').change(function () {
+            table.column( $(this).data('column'))
+                .search( $(this).val())
+                .draw();
         });
     } );
 </script>

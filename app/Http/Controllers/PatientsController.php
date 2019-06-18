@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
-use Barryvdh\DomPDF\PDF as PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -107,7 +107,7 @@ class PatientsController extends Controller
     {
 //        $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
-        $pdf = PDF::loadView('admin.etats.consultation', compact('patient'));
+        $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
         $pdf->save(storage_path('pdf/consultation').'.pdf');
 
