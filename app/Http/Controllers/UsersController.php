@@ -15,9 +15,9 @@ class UsersController extends Controller
     {
         $this->authorize('update', User::class);
 
-        $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
+        $users = User::with('roles')->orderBy('id', 'desc')->paginate(100);
 
-        return view('admin.users.index',compact('users', 'roles'));
+        return view('admin.users.index',compact('users'));
     }
 
     public function create()
