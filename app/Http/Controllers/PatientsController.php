@@ -23,11 +23,7 @@ class PatientsController extends Controller
     public function create()
     {
 
-
-
-
-
-        return view('admin.patients.create', compact('patient'));
+        return view('admin.patients.create');
     }
 
 
