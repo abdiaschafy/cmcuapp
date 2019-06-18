@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
 
-        Barryvdh\Debugbar\ServiceProvider::class,
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
