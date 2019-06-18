@@ -18,8 +18,8 @@
     </script>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
     <link rel="stylesheet" href="{{ mix('css/all.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/datatables/css/dataTables.bootstrap4.css') }}"/>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/faviconlogo.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset_secure('admin/datatables/css/dataTables.bootstrap4.css') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset_secure('admin/images/faviconlogo.ico') }}"/>
 
     <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -31,8 +31,8 @@
 
 <script src="{{ mix('js/all.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
-<script src="{{ asset('admin/datatables/js/jquery.dataTables.js') }}"></script>
-<script src="{{ asset('admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset_secure('admin/datatables/js/jquery.dataTables.js') }}"></script>
+<script src="{{ asset_secure('admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
 
 <script>
     $(document).ready(function() {
