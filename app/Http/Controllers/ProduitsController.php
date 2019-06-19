@@ -105,7 +105,7 @@ class ProduitsController extends Controller
     public function stock_materiel()
     {
 
-        $produits = Produit::where('categorie', 'materiel')->paginate(8);
+        $produits = Produit::where('categorie', '=', 'materiel')->paginate(8);
 
         $materielCount = count($produits);
 
