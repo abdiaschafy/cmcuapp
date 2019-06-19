@@ -106,7 +106,7 @@ class ProduitsController extends Controller
     {
 
         $produits = Produit::where('categorie', 'materiel')->paginate(8);
-dd($produits);
+
         $materielCount = count($produits);
 
         return view('admin.produits.materiel', compact('produits', 'materielCount'));
