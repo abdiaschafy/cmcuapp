@@ -1,6 +1,6 @@
 
 function myFunction() {
-    if (!confirm("Veuillez confirmer la suppréssion du produit"))
+    if (!confirm("Veuillez confirmer la suppréssion"))
         event.preventDefault();
 }
 
