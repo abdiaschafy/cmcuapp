@@ -30,17 +30,12 @@
                         <td>NOM</td>
                         <td>PRENOM</td>
 
-                        <td>NUMERO DE CHAMBRE</td>
-                        <td>AGE</td>
-                        <td>SERVICE</td>
                         <td>INFIRMIER EN CHARGE</td>
                         <td>ACCUEIL</td>
                         <td>RESTAURANT</td>
                         <td>CHAMBRE</td>
                        <td>SOINS</td>
                        <td>UNE NOTE</td>
-                       <td>QUESTION SECRETE</td>
-                        <td>SUUGESTIONS ET REMARQUES</td>
                         <td>VOIR</td>
                         <td>SUPPRIMER</td>
                         <td>IMPRIMER</td>
@@ -52,17 +47,12 @@
                         <td>{{$fiches->nom}}</td>
                         <td>{{$fiches->prenom}}</td>
 
-                        <td>{{$fiches->chambre_numero}}</td>
-                        <td>{{$fiches->age}}</td>
-                        <td>{{$fiches->service}}</td>
                         <td>{{$fiches->infirmier_charge}}</td>
                         <td>{{$fiches->accueil}}</td>
                         <td>{{$fiches->restauration}}</td>
                         <td>{{$fiches->chambre}}</td>
                         <td>{{$fiches->soins}}</td>
                      <td>{{$fiches->notes}}</td>
-                     <td>{{$fiches->quizz}}</td>
-                     <td>{{$fiches->remarque_suggestion}}</td>
                         <td><a href="{{ Route('fiches.show', $fiches->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a></td>
                         <td>
                             <form action="{{ Route('fiches.destroy', $fiches->id)}}" method="post">
