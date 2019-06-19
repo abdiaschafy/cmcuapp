@@ -130,7 +130,7 @@
                                                     <div class="form-group">
                                                         <label for="summernote" class="col-form-label">Ordonance
                                                             :</label>
-                                                        <textarea id="froala-editor1" name="description" class="form-control"></textarea>
+                                                        <textarea id="#" name="description" rows="15" class="form-control"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="button" class="btn btn-secondary"
@@ -159,7 +159,7 @@
                                                     <div class="form-group">
                                                         <label for="" class="col-form-label">Liste des
                                                             soins:</label>
-                                                        <textarea id="froala-editor" name="content" class="form-control"></textarea>
+                                                        <textarea id="1froala-editor" rows="15" name="content" class="form-control"></textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                 </form>
