@@ -4,7 +4,7 @@
 
 @section('content')
     <body>
-    {{--<div class="se-pre-con"></div>--}}
+    <div class="se-pre-con"></div>
     <div class="wrapper">
     @include('partials.side_bar')
 
@@ -34,7 +34,7 @@
                             </div>
                             <div class="s-r">
                                 <h6>{{ $patients }}
-                                    <i class="far fa-user"></i>
+                                    <i class="fas fa-users"></i>
                                 </h6>
                            </div>
                     </div>
@@ -42,11 +42,11 @@
                     @can('create', \App\chambre::class)
                         <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
                             <div class="s-l">
-                                <h5>Tasks</h5>
-                                <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
+                                <h5>Total des chambres</h5>
+                                <p class="paragraph-agileits-w3layouts">Toutes les catégories</p>
                             </div>
                             <div class="s-r">
-                                <h6>232
+                                <h6>{{ count(\App\Chambre::all()) }}
                                     <i class="fas fa-tasks"></i>
                                 </h6>
                             </div>
@@ -59,7 +59,8 @@
                 </div>
                 <div class="s-r">
                     <h6>
-                        <i class="fas fa-users"></i>
+                        {{ count(\App\Fiche::all()) }}
+                        <i class="fas fa-tasks"></i>
                     </h6>
                 </div>
             </div>
