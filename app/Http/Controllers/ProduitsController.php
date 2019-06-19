@@ -98,7 +98,7 @@ class ProduitsController extends Controller
         $pharmaCount = count($produits);
 
 
-        return view('admin.produits.pharmaceutique', compact('produits', 'pharmaCount'));
+        return view('admin.produits.pharmaceutique', array_merge(['produits' => $produits], ['pharmaCount' => $pharmaCount]));
     }
 
 
