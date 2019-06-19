@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{{ url('/admin/chambres/?categorie=vip') }}" class="btn btn-success">VIP</a>
-                        <a href="{{ url('/admin/chambres/?categorie=classique') }}" class="btn btn-primary">CLASSIQUE</a>
+                        <a href="{{ url('/admin/chambres/?categorie=Classique') }}" class="btn btn-primary">CLASSIQUE</a>
                         <a href="{{ url('/admin/chambres/?categorie=bloc') }}" class="btn btn-info">BLOC</a>
                         <a href="{{ url('/admin/chambres') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i></a>
                     </div>
