@@ -18,7 +18,7 @@ class ProduitsController extends Controller
     public function index()
     {
         $produitCount = Produit::count();
-        $produits = Produit::orderBy('id', 'asc')->paginate(10);
+        $produits = Produit::orderBy('id', 'asc')->paginate(100);
 
         return view('admin.produits.index', compact('produits', 'produitCount'));
     }
@@ -94,7 +94,7 @@ class ProduitsController extends Controller
     public function stock_pharmaceutique()
     {
 
-        $produits = Produit::where('categorie', '=', 'pharmaceutique')->paginate(8);
+        $produits = Produit::where('categorie', '=', 'pharmaceutique')->paginate(100);
         $pharmaCount = count($produits);
 
 
@@ -105,7 +105,7 @@ class ProduitsController extends Controller
     public function stock_materiel()
     {
 
-        $produits = Produit::where('categorie', '=', 'materiel')->paginate(8);
+        $produits = Produit::where('categorie', '=', 'materiel')->paginate(100);
 
         $materielCount = count($produits);
 
