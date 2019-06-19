@@ -24,7 +24,7 @@ class EventsController extends Controller
             foreach ($events as $row) {
                 $event[] = Calendar::event(
                     $row->title,
-                    $row->medecin,
+//                    $row->medecin,
                     true,
                     new \DateTime( $row->date),
                     new \DateTime( $row->end_time),
