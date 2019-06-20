@@ -65,15 +65,6 @@ class UsersController extends Controller
 
     }
 
-    public function show(User $user)
-    {
-        $this->authorize('update', User::class);
-
-        $user = User::with('roles')->first();
-
-        return view("admin.users.show")->withUser($user);
-    }
-
     public function edit(User $user)
     {
         $this->authorize('update', $user);

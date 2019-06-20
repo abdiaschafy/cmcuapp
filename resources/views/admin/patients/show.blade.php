@@ -163,6 +163,7 @@
                                     </tbody>
                                 </table>
                                 <button type="submit" class="btn btn-primary">Modifier</button>
+                                <a href="{{ route('dossiers.create') }}" class="btn btn-info float-right">Completer le dossier</a>
                             </form>
                         </div>
                     </div>

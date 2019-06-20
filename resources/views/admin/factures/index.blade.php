@@ -23,7 +23,7 @@
                 <div class="col-lg-12">
                     <div class="table-responsive">
                         @include('partials.flash')
-                        <table id="myTable" class="table table-striped table-bordered dt-responsive display nowrap" cellspacing="0" width="100%">
+                        <table id="myTable" class="table table-striped table-bordered dt-responsive display nowrap td-responsive" cellspacing="0" width="100%">
                             <thead>
                             <tr>
                                 <td>ID</td>
@@ -37,7 +37,7 @@
                                     </select>
                                 </td>
                                 <td>MONTANT</td>
-                                <td>SUPPRIMER</td>
+                                <td>ACTION</td>
                             </tr>
                             <tbody>
                             @foreach($factures as $facture)
@@ -46,7 +46,10 @@
                                     <td>{{$facture->numero}}</td>
                                     <td>{{$facture->created_at->format('F') }}</td>
                                     <td>{{$facture->prix_total }}  <b>FCFA</b></td>
-                                    <td>
+                                    <td style="display: inline-flex;">
+                                        <p class="mr-2" data-placement="top" data-toggle="tooltip" title="Voire les détails">
+                                            <a href="{{ route('factures.show', $facture->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                        </p>
                                         <form action="{{ route('factures.destroy', $facture->id) }}" method="post">
                                             @csrf @method('DELETE')
                                             <p data-placement="top" data-toggle="tooltip" title="Supprimer la facture">

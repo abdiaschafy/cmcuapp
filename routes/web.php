@@ -51,7 +51,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::patch('produits/{produit}', 'ProduitsController@update')->name('produits.update');
     Route::delete('produits/{produit}', 'ProduitsController@destroy')->name('produits.destroy');
     Route::get('pharmaceutiques', 'ProduitsController@stock_pharmaceutique')->name('produits.pharmaceutique');
-//    Route::get('search', 'ProduitsController@search')->name('pharmaceutique.search');
     Route::get('materiels', 'ProduitsController@stock_materiel')->name('materiels.pharmaceutique');
     Route::get('pharmaceutiques/{id}', 'ProduitsController@add_to_cart')->name('pharmaceutique.cart');
     Route::get('facturation', 'ProduitsController@facturation')->name('pharmaceutique.facturation');
@@ -87,19 +86,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('ordonance/{id}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
 
-//    Route::resource('/dossiers', 'DossiersController');
-
-
-    Route::get('dossiers', 'DossiersController@index')->name('dossiers.index');
     Route::get('dossiers/create', 'DossiersController@create')->name('dossiers.create');
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
-    Route::get('dossiers/{dossier}/edit', 'DossiersController@edit')->name('dossiers.edit');
-    Route::patch('dossiers/{dossier}', 'DossiersController@update')->name('dossiers.update');
-    Route::delete('dossiers/{dossier}', 'DossiersController@destroy')->name('dossiers.destroy');
-    Route::get('dossiers', 'DossiersController@parametre_store')->name('parametres.store');
-
-
-//    Route::resource('/consultations', 'ConsultationsController');
 
 
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
@@ -107,8 +95,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
-//    Route::get('ordonances/{id}','OrdonancesController@export_pdf')->name('ordonances.pdf');
-
 
 
     Route::post('soins', 'SoinsController@store')->name('soins.store');
@@ -127,17 +113,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::get('/factures', 'FactureController@index')->name('factures.index');
+    Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
     Route::delete('/factures', 'FactureController@desroy')->name('factures.destroy');
     Route::post('/factures/{facture}', 'FactureController@BilanProduit')->name('bilan.produit');
 
 
 
     Route::resource('/fiches', 'FichesController');
-//    Route::get('fiches', 'FichesController@index')->name('fiches.index');
-//    Route::get('fiches/create', 'FichesController@create')->name('fiches.create');
-//    Route::post('fiches', 'FichesController@store')->name('fiches.store');
-//    Route::get('fiches', 'FichesController@show')->name('fiches.show');
-//    Route::delete('fiches', 'FichesController@destroy')->name('fiches.destroy');
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
 

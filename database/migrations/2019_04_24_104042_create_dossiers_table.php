@@ -21,11 +21,9 @@ class CreateDossiersTable extends Migration
             $table->integer('tel_personne_contact')->nullable();
             $table->string('personne_contact')->nullable();
             $table->string('profession')->nullable();
-            $table->text('commentaire')->nullable();
             $table->string('adresse')->nullable();
             $table->string('lieu_naissance')->nullable();
             $table->date('date_naissance')->nullable();
-            $table->integer('temperature')->nullable();
 
             $table->timestamps();
 

@@ -93,7 +93,7 @@
                               <li>
 
                                 <a href="{{ route('produits.pharmaceutique') }}">
-                                       <i class="fab fa-python"></i>
+                                    <i class="fab fa-python"></i>
                                        Produit pharmaceutiques
                                 </a>
 
@@ -169,7 +169,11 @@
             <ul class="collapse list-unstyled" id="factureSubmenu">
                 <li>
                     <a href="{{ route('factures.index') }}">
-                        <i class="fas fa-list-ul"></i>
+                        <i class="far fa-money-bill-alt"></i>
+                        Bilan pharmacie
+                    </a>
+                    <a href="#">
+                        <i class="far fa-money-bill-alt"></i>
                         Bilan consultation
                     </a>
                 </li>

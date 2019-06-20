@@ -32,4 +32,9 @@ class FactureController extends Controller
         return view('admin.factures.index', compact('factures', 'months'));
     }
 
+    public function show(Facture $facture)
+    {
+        return view('admin.factures.show', ['facture' => $facture]);
+    }
+
 }
