@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\Facture;
+use App\Produit;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class FactureController extends Controller
 {
@@ -32,9 +35,16 @@ class FactureController extends Controller
         return view('admin.factures.index', compact('factures', 'months'));
     }
 
-    public function show(Facture $facture)
+    public function show(Facture $facture, Produit $produit)
     {
-        return view('admin.factures.show', ['facture' => $facture]);
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        return view('admin.factures.show', [
+            'produit' => $produit,
+            'produits' => $cart->items,
+            'totalPrix' => $cart->totalPrix,
+            'facture' => $facture
+        ]);
     }
 
 }

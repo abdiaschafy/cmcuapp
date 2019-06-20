@@ -216,7 +216,7 @@ class ProduitsController extends Controller
 
         $pdf->save(storage_path('pharmacie').'.pdf');
 
-        Session::forget('cart');
+//        Session::forget('cart');
         return $pdf->stream('pharmacie.pdf');
     }
 }

@@ -9,74 +9,43 @@
         @include('partials.header')
 
         <div class="container">
-            <h2 class="text-center">DETAILS DE LA FACTURE</h2>
+            <h2 class="text-center">DETAILS DE LA FACTURE - {{ $facture->numero }}</h2>
             <div class="row">
                 <div class="col-md-12 col-lg-10 offset-md-1">
                     <table class="table">
                         <thead>
-                        <tr>
-                            <th>Produit</th>
-                            <th>Quantité</th>
-                            <th class="">Prix unitaire</th>
-                            <th class="text-center">Total</th>
-                            <th class="text-center">Reduire</th>
-                            <th class="text-center">Ajouter</th>
-                            <th class="text-center">Supprimer</th>
-                        </tr>
+                            <tr>
+                                <th>DESIGNATION</th>
+                                <th>QUANTITE</th>
+                                <th>DATE D'EMISSION</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @if (Session::has('cart'))
                             @foreach($produits as $produit)
                                 <tr>
-                                    <td class="col-md-8 col-lg-6">
-                                        <div class="media-body">
-                                            <p class="">{{ $produit['item']['designation'] }}</p>
-                                        </div>
-                                    </td>
-                                    <td class="col-md-1 col-lg-1" style="text-align: center">
-                                        <input type="number" class="form-control" id="exampleInputEmail1" value="{{ $produit['quantite'] }}">
-                                    </td>
-                                    <td class="col-md-1 col-lg-1 text-center"><strong></strong></td>
-                                    <td class="col-md-1 col-lg-1 text-center"><strong>{{ $totalPrix }}</strong></td>
                                     <td>
-                                        <a href="{{ route('facturation.reduire', ['id' => $produit['item']['id']]) }}" title="Reduire la quantité" class="btn btn-primary"> <i class="fas fa-minus"></i></a>
+                                        <p class="">{{ $produit['item']['designation'] }}</p>
                                     </td>
                                     <td>
-                                        <a href="{{ route('pharmaceutique.cart', $produit['item']['id']) }}" class="btn btn-success" title="Ajouter la quantité"><i class="fas fa-plus-square"></i></a>
+                                        <p>{{ $produit['quantite'] }}</p>
                                     </td>
                                     <td>
-                                        <a href="{{ route('facturation.supprimer', ['id' => $produit['item']['id']]) }}" title="Supprimer le produit de la facture" class="btn btn-danger"> <i class="fas fa-trash-alt"></i></a>
+                                        <p>{{ $facture->created_at }}</p>
                                     </td>
                                 </tr>
                             @endforeach
                             <tr>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
                                 <td>
                                     <h3>Total</h3>
                                 </td>
+                                <td></td>
                                 <td class="text-right">
                                     <h3><strong>{{ $totalPrix }}</strong></h3>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-                                <td>&#xA0;</td>
-
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
                         </tbody>
                     </table>
-                    <td>
-                        <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
-                    </td>
 
                     <td>
                         <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></a>
