@@ -62,7 +62,7 @@ class PatientsController extends Controller
             'patient' => $patient,
             'consultations' => $patient->consultations->all(),
             'ordonances' => $patient->ordonances()->paginate(5),
-            'dossiers' => dd($patient->dossier())
+            'dossiers' => $patient->dossier()
         ]);
     }
 
