@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Dossier;
 use App\Http\Requests\DossierRequest;
+use App\Patient;
 use Illuminate\Support\Facades\Auth;
 
 class DossiersController extends Controller
@@ -12,7 +13,9 @@ class DossiersController extends Controller
 
     public function create()
     {
-        return view('admin.dossiers.create');
+        $patients = Patient::all();
+
+        return view('admin.dossiers.create', compact('patients'));
     }
 
 
@@ -20,7 +23,7 @@ class DossiersController extends Controller
     {
 
         Dossier::create([
-            'patient_id'=> Auth::id(),
+            'patient_id'=> request('patient_id'),
             'sexe'=> request('sexe'),
             'date_naissance'=> request('date_naissance'),
             'lieu_naissance'=> request('lieu_naissance'),

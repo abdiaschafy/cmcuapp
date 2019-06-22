@@ -23,12 +23,12 @@
                     <div class="form-group small">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="option1"> Homme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Homme"> Homme
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="option2"> Femme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Femme"> Femme
                             </label>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
 
                 <div class="col-sm-6 pb-3">
                     <label for="date_naissance">Date de naissance</label>
-                    <input type="text" class="form-control" value="{{ old('date_naissance') }}" name="date_naissance" placeholder="Date de naissance">
+                    <input type="date" class="form-control" value="{{ old('date_naissance') }}" name="date_naissance" placeholder="Date de naissance">
                 </div>
 
                 <div class="col-sm-6 pb-3">
@@ -64,9 +64,19 @@
                     <input type="number" class="form-control" value="{{ old('tel_personne_contact') }}" name="tel_personne_contact" placeholder="Téléphone personne à contacter">
                 </div>
 
-                <input type="hidden" name="patient_id">
+                <div class="col-sm-4 pb-3">
+                    <label for="">Veuillez sélectionner le patient</label>
+                    <select class="form-control" name="patient_id">
+                        <option value="">Veuillez sélectionner le patient</option>
+                        @foreach($patients as $patient)
+                            <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-                <button type="submit" class="btn btn-primary btn-lg col-sm-4" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
+                <div class="row col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg col-sm-4" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
+                </div>
             </form>
         </div>
     </div>

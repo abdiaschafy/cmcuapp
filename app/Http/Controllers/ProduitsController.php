@@ -210,7 +210,7 @@ class ProduitsController extends Controller
            'prix_total' => $cart->totalPrix
         ]);
 
-//        $facture->produits()->attach($cart->items);
+        $facture->produits()->attach([$facture->id, array_keys($cart->items, $produit)]);
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 

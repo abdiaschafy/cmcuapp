@@ -45,45 +45,73 @@
                                         <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     </tr>
                                     <tr>
+                                        <td>GENRE :</td>
+                                        <td>{{ $patient->dossiers->sexe }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PROFESSION :</td>
+                                        <td>{{ $patient->dossiers->profession }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ADRESSE :</td>
+                                        <td>{{ $patient->dossiers->adresse }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>LIEU DE NAISSANCE :</td>
+                                        <td>{{ $patient->dossiers->lieu_naissance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>DATE DE NAISSANCE :</td>
+                                        <td>{{ $patient->dossiers->date_naissance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PERSONNE A CONTACTER :</td>
+                                        <td>{{ $patient->dossiers->personne_contact }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>TELEPHONE PERSONNE A CONTACTER :</td>
+                                        <td>{{ $patient->dossiers->tel_personne_contact }}</td>
+                                    </tr>
+                                    <tr>
                                         <td>
                                             <h1 class="text-info">CONSULTATION</h1>
                                         </td>
                                         <td></td>
                                     </tr>
-                                    @foreach ($patient->consultations as $consultation)
-                                        <tr>
-                                            <td class="table-active">DATE :</td>
-                                            <td class="table-active">{{ $consultation->created_at->toFormattedDateString() }}</td>
-                                        </tr>
-                                    <tr>
-                                        <td>DIAGNOSTIQUE :</td>
-                                        <td>{{ $consultation->diagnostique }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DECISION :</td>
-                                        <td>{{ $consultation->decision }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>CHAMBRE :</td>
-                                        <td>{{ $consultation->chambres }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>COUT :</td>
-                                        <td>{{ $consultation->cout }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>COMMENTAIRE :</td>
-                                        <td>{{ $consultation->commentaire }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DUREE DE L'INTERVENTION :</td>
-                                        <td>{{ $consultation->dure_intervention }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>RESULTAT EXAMENTS :</td>
-                                        <td>RESULTAT ICI</td>
-                                    </tr>
-                                    @endforeach
+                                        @foreach ($patient->consultations as $consultation)
+                                                <tr>
+                                                <td class="table-active">DATE :</td>
+                                                <td class="table-active">{{ $consultation->created_at->toFormattedDateString() }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DIAGNOSTIQUE :</td>
+                                                <td>{{ $consultation->diagnostique }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DECISION :</td>
+                                                <td>{{ $consultation->decision }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CHAMBRE :</td>
+                                                <td>{{ $consultation->chambres }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>COUT :</td>
+                                                <td>{{ $consultation->cout }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>COMMENTAIRE :</td>
+                                                <td>{{ $consultation->commentaire }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DUREE DE L'INTERVENTION :</td>
+                                                <td>{{ $consultation->dure_intervention }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>RESULTAT EXAMENTS :</td>
+                                                <td>RESULTAT ICI</td>
+                                            </tr>
+                                        @endforeach
                                     <tr>
                                         <td>
                                             <h1 class="text-info">PARAMETRES</h1>
@@ -168,30 +196,34 @@
                         </div>
                     </div>
                     <br>
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-bordred table-striped">
-                            <thead>
-                            <th>DESCRIPTION</th>
-                            <th>DATE</th>
-                            <th>IMPPRIMER</th>
-                            </thead>
-                            <tbody>
+                    @if (count($patient->ordonances))
+                        <h3>Ordonances médicales</h3>
+                        <br>
+                        <div class="table-responsive">
+                            <table id="myTable" class="table table-bordred table-striped">
+                                <thead>
+                                <th>DESCRIPTION</th>
+                                <th>DATE</th>
+                                <th>IMPPRIMER</th>
+                                </thead>
+                                <tbody>
 
-                            @foreach($patient->ordonances as $ordonance)
-                                <tr>
-                                    <td>{{ $ordonance->description }}</td>
-                                    <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                @foreach($patient->ordonances as $ordonance)
+                                    <tr>
+                                        <td>{{ $ordonance->description }}</td>
+                                        <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
 
-                            </tbody>
-                        </table>
-                        <div class="clearfix"></div>
-                        {{ $ordonances->links() }}
-                    </div>
+                                </tbody>
+                            </table>
+                            <div class="clearfix"></div>
+                            {{ $ordonances->links() }}
+                        </div>
+                    @endif
 
                 </div>
             </div>

@@ -61,7 +61,8 @@ class PatientsController extends Controller
         return view('admin.patients.show', [
             'patient' => $patient,
             'consultations' => $patient->consultations->all(),
-            'ordonances' => $patient->ordonances()->paginate(5)
+            'ordonances' => $patient->ordonances()->paginate(5),
+            'dossiers' => $patient->dossiers->all()
         ]);
     }
 
