@@ -44,34 +44,34 @@
                                         <td>OUVERTURE DU DOSSIER :</td>
                                         <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     </tr>
-                                    <tr>
-                                        <td>GENRE :</td>
-                                        <td>{{ $patient->dossier->sexe }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>PROFESSION :</td>
-                                        <td>{{ $patient->dossier->profession }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ADRESSE :</td>
-                                        <td>{{ $patient->dossier->adresse }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>LIEU DE NAISSANCE :</td>
-                                        <td>{{ $patient->dossier->lieu_naissance }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DATE DE NAISSANCE :</td>
-                                        <td>{{ $patient->dossier->date_naissance }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>PERSONNE A CONTACTER :</td>
-                                        <td>{{ $patient->dossier->personne_contact }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TELEPHONE PERSONNE A CONTACTER :</td>
-                                        <td>{{ $patient->dossier->tel_personne_contact }}</td>
-                                    </tr>
+                                    {{--<tr>--}}
+                                        {{--<td>GENRE :</td>--}}
+                                        {{--<td>{{ $patient->dossier->sexe }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>PROFESSION :</td>--}}
+                                        {{--<td>{{ $patient->dossier->profession }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>ADRESSE :</td>--}}
+                                        {{--<td>{{ $patient->dossier->adresse }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>LIEU DE NAISSANCE :</td>--}}
+                                        {{--<td>{{ $patient->dossier->lieu_naissance }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>DATE DE NAISSANCE :</td>--}}
+                                        {{--<td>{{ $patient->dossier->date_naissance }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>PERSONNE A CONTACTER :</td>--}}
+                                        {{--<td>{{ $patient->dossier->personne_contact }}</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>TELEPHONE PERSONNE A CONTACTER :</td>--}}
+                                        {{--<td>{{ $patient->dossier->tel_personne_contact }}</td>--}}
+                                    {{--</tr>--}}
                                     <tr>
                                         <td>
                                             <h1 class="text-info">CONSULTATION</h1>
