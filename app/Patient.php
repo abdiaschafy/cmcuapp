@@ -36,9 +36,9 @@ class Patient extends Model
         return $this->hasMany(Parametre::class);
     }
 
-    public function dossiers()
+    public function dossier()
     {
-        return $this->belongsTo(Dossier::class);
+        return $this->hasOne(Dossier::class);
     }
 
     public function users()
