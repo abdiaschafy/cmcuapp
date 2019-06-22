@@ -18,6 +18,17 @@
             @include('partials.flash_form')
             <form class="form-row mt-4" method="post" action="{{ route('dossiers.store') }}">
                 @csrf
+
+                <div class="col-sm-4 pb-3">
+                    <label for="">Veuillez sélectionner le patient</label>
+                    <select class="form-control" name="patient_id">
+                        <option value="">Veuillez sélectionner le patient</option>
+                        @foreach($patients as $patient)
+                            <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
                 <div class="col-md-6 pb-3">
                     <label for="exampleAccount">Sexe</label>
                     <div class="form-group small">
@@ -62,16 +73,6 @@
                 <div class="col-sm-4 pb-3">
                     <label for="tel_personne_contact">Téléphone personne à contacter</label>
                     <input type="number" class="form-control" value="{{ old('tel_personne_contact') }}" name="tel_personne_contact" placeholder="Téléphone personne à contacter">
-                </div>
-
-                <div class="col-sm-4 pb-3">
-                    <label for="">Veuillez sélectionner le patient</label>
-                    <select class="form-control" name="patient_id">
-                        <option value="">Veuillez sélectionner le patient</option>
-                        @foreach($patients as $patient)
-                            <option value="{{ $patient->id }}">{{ $patient->name }}</option>
-                        @endforeach
-                    </select>
                 </div>
 
                 <div class="row col-md-12">
