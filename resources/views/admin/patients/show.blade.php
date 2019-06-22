@@ -46,31 +46,31 @@
                                     </tr>
                                     <tr>
                                         <td>GENRE :</td>
-                                        <td>{{ $patient->dossiers->sexe }}</td>
+                                        <td>{{ $patient->dossier->sexe }}</td>
                                     </tr>
                                     <tr>
                                         <td>PROFESSION :</td>
-                                        <td>{{ $patient->dossiers->profession }}</td>
+                                        <td>{{ $patient->dossier->profession }}</td>
                                     </tr>
                                     <tr>
                                         <td>ADRESSE :</td>
-                                        <td>{{ $patient->dossiers->adresse }}</td>
+                                        <td>{{ $patient->dossier->adresse }}</td>
                                     </tr>
                                     <tr>
                                         <td>LIEU DE NAISSANCE :</td>
-                                        <td>{{ $patient->dossiers->lieu_naissance }}</td>
+                                        <td>{{ $patient->dossier->lieu_naissance }}</td>
                                     </tr>
                                     <tr>
                                         <td>DATE DE NAISSANCE :</td>
-                                        <td>{{ $patient->dossiers->date_naissance }}</td>
+                                        <td>{{ $patient->dossier->date_naissance }}</td>
                                     </tr>
                                     <tr>
                                         <td>PERSONNE A CONTACTER :</td>
-                                        <td>{{ $patient->dossiers->personne_contact }}</td>
+                                        <td>{{ $patient->dossier->personne_contact }}</td>
                                     </tr>
                                     <tr>
                                         <td>TELEPHONE PERSONNE A CONTACTER :</td>
-                                        <td>{{ $patient->dossiers->tel_personne_contact }}</td>
+                                        <td>{{ $patient->dossier->tel_personne_contact }}</td>
                                     </tr>
                                     <tr>
                                         <td>
