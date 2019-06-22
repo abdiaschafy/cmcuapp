@@ -19,6 +19,6 @@ class Dossier extends Model
 
     public function patients()
     {
-        return $this->belongsTo('App\Patient');
+        return $this->belongsTo('App\Patient', 'patient_id');
     }
 }
