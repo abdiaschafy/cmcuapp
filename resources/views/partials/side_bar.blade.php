@@ -148,7 +148,7 @@
             <li>
                 <a href="{{ route('events.index') }}">
                     <i class="far fa-calendar-times"></i>
-                    Plages horaires
+                    Rendez-vous
                 </a>
             </li>
         @endcan
@@ -160,6 +160,7 @@
                 </a>
             </li>
         @endcan
+        @can('update', \App\User::class)
         <li>
             <a href="#factureSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-chart-line"></i>
@@ -179,6 +180,7 @@
                 </li>
             </ul>
         </li>
+        @endcan
         <br>
         <br>
         <br>
