@@ -30,19 +30,20 @@
                             <th>NOM</th>
                             <th>DATE DE CREATION</th>
                             {{--<th>FRAIS DE CONSULTATION</th>--}}
-                            @can('consulter', \App\Patient::class)
-                                <th>CONSULTER</th>
-                            @endcan
-                            @can('consulter', \App\Patient::class)
-                                <th>Rendez-vous</th>
-                            @endcan
-                                @can('print', \App\Patient::class)
-                                <th>SUPPRIMER</th>
-                            @endcan
+                            {{--@can('consulter', \App\Patient::class)--}}
+                                {{--<th>CONSULTER</th>--}}
+                            {{--@endcan--}}
+                            {{--@can('consulter', \App\Patient::class)--}}
+                                {{--<th>Rendez-vous</th>--}}
+                            {{--@endcan--}}
+                                {{--@can('print', \App\Patient::class)--}}
+                                {{--<th>SUPPRIMER</th>--}}
+                            {{--@endcan--}}
                             {{--<th>SUPPRIMER</th>--}}
-                            @can('print', \App\Patient::class)
-                                <th>IMPRIMER</th>
-                            @endcan
+                            {{--@can('print', \App\Patient::class)--}}
+                                {{--<th>IMPRIMER</th>--}}
+                            {{--@endcan--}}
+                            <th>ACTION</th>
                             </thead>
                             <tbody>
 
@@ -54,30 +55,24 @@
                                     {{--<td>{{ $patient->frais }}</td>--}}
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}
                                     @can('consulter', \App\Patient::class)
-                                    <td>
-                                        <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-primary btn-xs"><i class="far fa-calendar-plus"></i></a>
-                                    </td>
+                                    <td style="display: inline-flex;">
+                                        <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-info btn-xs mr-1"><i class="far fa-calendar-plus"></i></a>
                                     @endcan
                                     @can('print', \App\Patient::class)
-                                    <td>
+                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                        </p>
+                                    @endcan
+                                    @can('print', \App\Patient::class)
                                         <form action="{{ route('patients.destroy', $patient->id) }}" method="post">
                                             @csrf @method('DELETE')
                                             <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                <button type="submit" class="btn btn-danger btn-xs" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                                <button type="submit" class="btn btn-danger btn-xs mr-1" title="Supprimer le dossier du patient"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
                                             </p>
                                         </form>
-                                    </td>
                                     @endcan
-                                    @can('print', \App\Patient::class)
-                                    <td>
-                                        <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a class="btn btn-success btn-xs" title="Imprimer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
-                                        </p>
                                     </td>
-                                    @endcan
                                 </tr>
                             @endforeach
 

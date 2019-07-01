@@ -16,12 +16,12 @@
         margin: 1em 0; padding: 0;
     }
     .footer {
-    padding-top: 1px;
-    padding-bottom: 15px;
-    position:fixed;
-    bottom:5;
-    width:100%;
-}
+        padding-top: 1px;
+        padding-bottom: 15px;
+        position:fixed;
+        bottom:5;
+        width:100%;
+    }
 
 </style>
 <div class="container-fluid">
@@ -45,12 +45,12 @@
     </div>
 
     <div class="row">
-        <div class="col-2">
-            <small>Docteur John Doe</small>
+        <div class="col-3">
+            <small><b>Médécin: </b> {{ $lettre->medecin }}</small>
         </div>
         <div class="col-5 offset-5">
-            <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $patient->name }}</p>
+            <p><small><u>Date:</u><b> {{ $lettre->created_at }}</b></small></p>
+            <p><u>Nom du patient:</u> {{ $lettre->patient }}</p>
         </div>
     </div>
     <br>
@@ -58,14 +58,15 @@
     <br>
     <br>
     <div class="row">
-        <h5 class="text-center"><u>ORDONANCE</u></h5>
+        <h5 class="text-center"><u class="text-danger">{{ $lettre->objet }}</u></h5>
     </div>
+    <br>
     <br>
     <br>
     <br>
     <div class="">
         <h5>
-            {!! nl2br(e($patient->ordonances[1]->description)) !!}
+            {!! nl2br(e($lettre->message)) !!}
         </h5>
     </div>
     <footer class="footer">

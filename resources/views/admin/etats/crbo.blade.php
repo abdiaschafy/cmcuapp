@@ -16,12 +16,12 @@
         margin: 1em 0; padding: 0;
     }
     .footer {
-    padding-top: 1px;
-    padding-bottom: 15px;
-    position:fixed;
-    bottom:5;
-    width:100%;
-}
+        padding-top: 1px;
+        padding-bottom: 15px;
+        position:fixed;
+        bottom:5;
+        width:100%;
+    }
 
 </style>
 <div class="container-fluid">
@@ -45,8 +45,9 @@
     </div>
 
     <div class="row">
-        <div class="col-2">
-            <small>Docteur John Doe</small>
+        <div class="col-3">
+            <small><b>Chirurgien:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small>
+            <small><b>Anesthesiste:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small>
         </div>
         <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
@@ -58,14 +59,24 @@
     <br>
     <br>
     <div class="row">
-        <h5 class="text-center"><u>ORDONANCE</u></h5>
+        <h5 class="text-center"><u class="text-danger">{{ $patient->consultations->last()->diagnostique }}</u></h5>
     </div>
     <br>
     <br>
     <br>
+    <h4 class="text-"><u>Histoire de la maladie :</u></h4>
     <div class="">
         <h5>
-            {!! nl2br(e($patient->ordonances[1]->description)) !!}
+            {!! nl2br(e($patient->consultations->last()->commentaire)) !!}
+        </h5>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h4 class="text-"><u>Intervention :</u></h4>
+    <div class="">
+        <h5>
+            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->detail_intervention)) !!}
         </h5>
     </div>
     <footer class="footer">

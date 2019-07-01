@@ -16,10 +16,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('/', 'AdminController@index');
     Route::get('dashboard', 'AdminController@dashboard')->name('admin.dashboard');
-//    Route::get('dashboard', 'TestController@index')->name('admin.dashboard');
-
-
-//    Route::resource('/users', 'UsersController');
 
 
     Route::get('users', 'UsersController@index')->name('users.index');
@@ -30,18 +26,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('users/{user}', 'UsersController@destroy')->name('users.destroy');
 
 
-//    Route::resource('/roles', 'RolesController');
-
-
     Route::get('roles', 'RolesController@index')->name('roles.index');
     Route::get('roles/create', 'RolesController@create')->name('roles.create');
     Route::post('roles', 'RolesController@store')->name('roles.store');
     Route::get('roles/{role}/edit', 'RolesController@edit')->name('roles.edit');
     Route::patch('roles/{role}', 'RolesController@update')->name('roles.update');
     Route::delete('roles/{role}', 'RolesController@destroy')->name('roles.destroy');
-
-
-//    Route::resource('/produit', 'ProduitsController');
 
 
     Route::get('produits', 'ProduitsController@index')->name('produits.index');
@@ -61,9 +51,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('produit/save-invoice/{produit}', 'ProduitsController@saveInvoice')->name('produit.invoice');
 
 
-//    Route::resource('/events', 'EventsController');
-
-
     Route::get('events', 'EventsController@index')->name('events.index');
     Route::get('events/create/{patient}', 'EventsController@create')->name('events.create');
     Route::get('events/create', 'EventsController@create')->name('event.create');
@@ -71,9 +58,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('events/{event}/edit', 'EventsController@edit')->name('events.edit');
     Route::patch('events/{event}', 'EventsController@update')->name('events.update');
     Route::delete('events/{event}', 'EventsController@destroy')->name('events.destroy');
-
-
-//    Route::resource('/patients', 'PatientsController');
 
 
     Route::get('patients', 'PatientsController@index')->name('patients.index');
@@ -85,13 +69,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
     Route::get('ordonance/{id}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
+    Route::get('lettre-de-sortie','PatientsController@index_sortie')->name('index.sortie');
+    Route::get('lettre-de-sortie/create','PatientsController@create_sortie')->name('create.sortie');
+    Route::post('lettre-de-sortie','PatientsController@store_sortie')->name('store.sortie');
+    Route::get('lettre-de-sortie/{id}','PatientsController@print_sortie')->name('print.sortie');
+    Route::delete('lettre-de-sortie/{id}', 'PatientsController@destroy_sortie')->name('destroy.sortie');
+
 
     Route::get('dossiers/create', 'DossiersController@create')->name('dossiers.create');
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
 
 
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
+    Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
+    Route::get('consultations', 'ConsultationsController@index')->name('consultations.index');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
+
+
+    Route::post('compte-rendu-bloc', 'CompteRenduBlocOperatoireController@store')->name('compte_rendu_bloc.store');
+    Route::get('compte-rendu-bloc/{id}', 'CompteRenduBlocOperatoireController@compte_rendu_bloc_pdf')->name('compte_rendu_bloc_pdf.pdf');
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
@@ -103,7 +99,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('parametres', 'ParametresController@store')->name('parametres.store');
 
 
-//    Route::resource('/chambres', 'ChambresController');
     Route::get('/chambres', 'ChambresController@index')->name('chambres.index');
     Route::post('/chambres', 'ChambresController@store')->name('chambres.store');
     Route::get('/chambres/create', 'ChambresController@create')->name('chambres.create');

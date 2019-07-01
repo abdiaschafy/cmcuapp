@@ -63,6 +63,7 @@
                         </table>
                         {{--{{ $factures->links() }}--}}
                     </div>
+                    <a href="{{ route('produits.pharmaceutique') }}" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Ajouter une facture</a>
                     <a href="#" class="btn btn-success">Imprimer le bilan</a>
                 </div>
             </div>

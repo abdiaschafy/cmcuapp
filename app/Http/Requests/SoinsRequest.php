@@ -2,10 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Patient;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ConsultationRequest extends FormRequest
+class SoinsRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,16 +24,9 @@ class ConsultationRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'patient_id'=> 'required',
-            'diagnostique'=> 'required|max:255',
-            'commentaire'=> 'required|max:255',
-            'commentaire'=> 'max:255',
-            'decision'=> '',
-            'resultat_examen'=> '',
-            'chambre_id'=> '',
-            'allergie'=> '',
-            'groupe'=> '',
+            'patient_id' => 'required',
+            'content'=> 'required|max:255',
+            'contexte'=> 'required|max:255'
         ];
     }
 }

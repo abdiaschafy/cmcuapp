@@ -20,9 +20,10 @@ class CreateConsultationsTable extends Migration
             $table->unsignedInteger('chambre_id')->nullable()->default(null)->index();
             $table->string('diagnostique');
             $table->string('commentaire');
+            $table->string('antecedent')->default('Aucun');
             $table->string('decision')->nullable();
-            $table->integer('cout')->nullable();
-            $table->time('dure_intervention')->nullable();
+            $table->string('allergie')->nullable();
+            $table->string('groupe')->nullable();
             $table->string('resultat_examen')->nullable();
             $table->timestamps();
 

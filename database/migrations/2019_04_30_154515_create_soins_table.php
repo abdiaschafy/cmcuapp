@@ -18,6 +18,7 @@ class CreateSoinsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('patient_id');
             $table->text('content');
+            $table->string('contexte');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

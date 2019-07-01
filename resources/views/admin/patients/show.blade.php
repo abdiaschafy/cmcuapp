@@ -36,14 +36,6 @@
                                         <td>FARIS DE CONSULTATION :</td>
                                         <td>{{ $patient->frais }} FCFA</td>
                                     </tr>
-                                    <tr>
-                                        <td>ASSURANCE :</td>
-                                        <td>{{ $patient->assurance }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>OUVERTURE DU DOSSIER :</td>
-                                        <td>{{ $patient->created_at->toFormattedDateString() }}</td>
-                                    </tr>
                                     @foreach ($patient->dossiers as $dossier)
                                         <tr>
                                             <td>GENRE :</td>
@@ -76,84 +68,120 @@
                                     @endforeach
                                     <tr>
                                         <td>
-                                            <h1 class="text-info">CONSULTATION</h1>
+                                            <a href="{{ route('consultations.index') }}"><h1 class="text-info">CONSULTATION</h1></a>
                                         </td>
                                         <td></td>
                                     </tr>
-                                        @foreach ($patient->consultations as $consultation)
-                                                <tr>
-                                                <td class="table-active">DATE :</td>
-                                                <td class="table-active">{{ $consultation->created_at->toFormattedDateString() }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>DIAGNOSTIQUE :</td>
-                                                <td>{{ $consultation->diagnostique }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>DECISION :</td>
-                                                <td>{{ $consultation->decision }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>CHAMBRE :</td>
-                                                <td>{{ $consultation->chambres }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>COUT :</td>
-                                                <td>{{ $consultation->cout }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>COMMENTAIRE :</td>
-                                                <td>{{ $consultation->commentaire }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>DUREE DE L'INTERVENTION :</td>
-                                                <td>{{ $consultation->dure_intervention }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>RESULTAT EXAMENTS :</td>
-                                                <td>RESULTAT ICI</td>
-                                            </tr>
-                                        @endforeach
+
+                                    @if (count($patient->consultations))
+                                        <tr>
+                                            <td class="table-active">DATE :</td>
+                                            <td class="table-active">{{ $consultations->created_at->toFormattedDateString() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DIAGNOSTIQUE :</td>
+                                            {{--@if (strlen($consultations->diagnostique)>25)--}}
+                                                <td>{{ ($consultations->diagnostique) }}</td>
+                                            {{--@endif--}}
+                                        </tr>
+                                        <tr>
+                                            <td>ALLERGIES :</td>
+                                            {{--@if (strlen($consultations->allergie)>25)--}}
+                                                <td>{{ ($consultations->allergie) }}</td>
+                                            {{--@endif--}}
+                                        </tr>
+                                        <tr>
+                                            <td>GROUPE SANGUIN :</td>
+                                            <td><span class="badge badge-primary">{{ $consultations->groupe }}</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>ANTECEDENTS MEDICAUX :</td>
+                                            {{--@if (strlen($consultations->antecedent)>25)--}}
+                                                <td>{{ ($consultations->antecedent) }}</td>
+                                            {{--@endif--}}
+                                        </tr>
+                                        <tr>
+                                            <td>CHAMBRE :</td>
+                                            <td>{{ $consultations->chambres }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COMMENTAIRE :</td>
+                                            {{--@if (strlen($consultations->commentaire)>25)--}}
+                                                <td>{{ ($consultations->commentaire) }}</td>
+                                            {{--@endif--}}
+                                        </tr>
+                                        <tr>
+                                            <td>NOM DU CHIRURGIEN :</td>
+                                            <td>{{ $compte_rendu_bloc_operatoires->chirurgien }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DUREE DE L'INTERVENTION :</td>
+                                            <td>{{ $compte_rendu_bloc_operatoires->dure_intervention }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DETAILS DE L'INTERVENTION :</td>
+                                            <td>{{ $compte_rendu_bloc_operatoires->detail_intervention }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>COUT :</td>
+                                            <td>{{ $compte_rendu_bloc_operatoires->cout }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><a href="{{ route('compte_rendu_bloc_pdf.pdf', $patient->id) }}" class="btn btn-primary"><i class="fas fa-print"></i> Imprimer le dossier</a></td>
+                                            <td></td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td><b>Aucune consultation</b></td>
+                                            <td></td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td>
                                             <h1 class="text-info">PARAMETRES</h1>
                                         </td>
                                         <td></td>
                                     </tr>
-                                    @foreach($patient->parametres as $parametre)
-                                    <tr>
-                                        <td class="table-active">DATE :</td>
-                                        <td class="table-active">{{ $parametre->created_at->toFormattedDateString() }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>POIDS :</td>
-                                        <td>{{ $parametre->poids }} Kg</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TENSION :</td>
-                                        <td>{{ $parametre->tension }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TEMPERATURE</td>
-                                        <td>{{ $parametre->temperature }} °C</td>
-                                    </tr>
-                                    @endforeach
+
+                                    @if (count($patient->parametres)>0)
+                                        <tr>
+                                            <td class="table-active">DATE :</td>
+                                            <td class="table-active">{{ $parametres->created_at->toFormattedDateString() }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>POIDS :</td>
+                                            <td>{{ $parametres->poids }} Kg</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TENSION :</td>
+                                            <td>{{ $parametres->tension }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>TEMPERATURE</td>
+                                            <td>{{ $parametres->temperature }} °C</td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td><b>Aucun paramètre de disponible</b></td>
+                                            <td></td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td>
                                             <h1 class="text-info">SOINS RECUS</h1>
                                         </td>
                                         <td></td>
                                     </tr>
-                                    @foreach($patient->soins as $soins)
-                                        <tr>
-                                            <td class="table-active">DATE :</td>
-                                            <td class="table-active">{{ $soins->created_at->toFormattedDateString() }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>SOINS :</td>
-                                            <td>{{ $soins->content }}</td>
-                                        </tr>
-                                    @endforeach
+                                    {{--@foreach($patient->soins as $soins)--}}
+                                        {{--<tr>--}}
+                                            {{--<td class="table-active">DATE :</td>--}}
+                                            {{--<td class="table-active">{{ $soins->created_at->toFormattedDateString() }}</td>--}}
+                                        {{--</tr>--}}
+                                        {{--<tr>--}}
+                                            {{--<td>SOINS :</td>--}}
+                                            {{--<td>{{ $soins->content }}</td>--}}
+                                        {{--</tr>--}}
+                                    {{--@endforeach--}}
                                     </tbody>
                                 </table>
                                 <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>

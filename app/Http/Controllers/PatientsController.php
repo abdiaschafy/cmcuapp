@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Lettre;
 use App\Patient;
 use App\Produit;
-use App\Ordonance;
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,9 +61,11 @@ class PatientsController extends Controller
 
         return view('admin.patients.show', [
             'patient' => $patient,
-            'consultations' => $patient->consultations,
+            'consultations' => $patient->consultations()->latest()->first(),
             'ordonances' => $patient->ordonances()->paginate(5),
-            'dossier' => $patient->dossiers
+            'dossier' => $patient->dossiers,
+            'parametres' =>$patient->parametres()->latest()->first(),
+            'compte_rendu_bloc_operatoires' =>$patient->compte_rendu_bloc_operatoires()->latest()->first()
         ]);
     }
 
@@ -90,6 +93,56 @@ class PatientsController extends Controller
         $patient->save();
 
         return redirect()->route('patients.show', $patient->id)->with('success', 'Les informations du patient ont été mis à jour avec succès !');
+    }
+
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * Courier de sortie du patient
+     */
+
+    public function index_sortie()
+    {
+        $lettres = Lettre::all();
+        return view('admin.lettres.index', compact('lettres'));
+    }
+
+    public function create_sortie()
+    {
+        $patients = Patient::all();
+        $users = User::where('id', '=', 2)->get();
+        return view('admin.lettres.create', compact('patients', 'users'));
+    }
+
+    public function store_sortie()
+    {
+        Lettre::create([
+           'patient' => \request('patient'),
+           'medecin' => \request('medecin'),
+           'objet' => \request('objet'),
+           'message' => \request('message')
+        ]);
+
+        return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
+    }
+
+    public function destroy_sortie(Lettre $lettre)
+    {
+        $lettre->delete();
+
+        return redirect()->route('index.sortie')->with('success', "La lettre de sortie du patient vient d'etre suprimé");
+    }
+
+    public function print_sortie($id)
+    {
+        $lettre = Lettre::find($id);
+
+        $pdf = PDF::loadView('admin.etats.lettre', compact('lettre'));
+
+        $pdf->save(storage_path('lettre').'.pdf');
+
+        return $pdf->stream('lettre-sortie.pdf');
     }
 
 
