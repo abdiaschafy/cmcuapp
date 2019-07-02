@@ -38,25 +38,25 @@
                                     <tr>
                                         <td>Commentaire :</td>
                                         <td>
-                                            <textarea name="commentaire" value="{{ old('commentaire') }}" cols="45" rows="5" placeholder="Ici la note du médécin" required></textarea>
+                                            <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Diagnostique du médécin :</td>
                                         <td>
-                                            <textarea name="diagnostique" value="{{ old('diagnostique') }}" cols="45" rows="3" placeholder="Votre premier avis" required></textarea>
+                                            <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Antécédent médicaux :</td>
                                         <td>
-                                            <textarea name="antecedent" value="{{ old('antecedent') }}" cols="45" rows="3"></textarea>
+                                            <textarea name="antecedent" cols="45" rows="3">{{ old('antecedent') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Allergies :</td>
                                         <td>
-                                            <textarea name="allergie" value="{{ old('allergie') }}" cols="45" rows="2"></textarea>
+                                            <textarea name="allergie" cols="45" rows="2">{{ old('allergie') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -161,7 +161,7 @@
                                     <tr>
                                         <td>Détails de l'intervention :</td>
                                         <td>
-                                            <textarea name="detail_intervention" id="detail_intervention" cols="45" rows="3"></textarea>
+                                            <textarea name="detail_intervention" id="detail_intervention" cols="45" rows="3">{{ old('detail_intervention') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -199,7 +199,7 @@
                                                     <div class="form-group">
                                                         <label for="summernote" class="col-form-label">Ordonance
                                                             :</label>
-                                                        <textarea id="#" name="description" rows="15" class="form-control"></textarea>
+                                                        <textarea id="#" name="description" rows="15" class="form-control">{{ old('description') }}</textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="button" class="btn btn-secondary"
@@ -237,7 +237,7 @@
                                                     <div class="form-group">
                                                         <label for="" class="col-form-label">Liste des
                                                             soins:</label>
-                                                        <textarea id="1froala-editor" rows="15" name="content" class="form-control" required></textarea>
+                                                        <textarea id="1froala-editor" rows="15" name="content" class="form-control" required>{{ old('content') }}</textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="submit" class="btn btn-primary">Enegistrer</button>

@@ -18,9 +18,9 @@ class CreateConsultationsTable extends Migration
             $table->integer('patient_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->unsignedInteger('chambre_id')->nullable()->default(null)->index();
-            $table->string('diagnostique');
-            $table->string('commentaire');
-            $table->string('antecedent')->default('Aucun');
+            $table->text('diagnostique');
+            $table->text('commentaire');
+            $table->text('antecedent');
             $table->string('decision')->nullable();
             $table->string('allergie')->nullable();
             $table->string('groupe')->nullable();

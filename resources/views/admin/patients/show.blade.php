@@ -96,9 +96,9 @@
                                         </tr>
                                         <tr>
                                             <td>ANTECEDENTS MEDICAUX :</td>
-                                            {{--@if (strlen($consultations->antecedent)>25)--}}
-                                                <td>{{ ($consultations->antecedent) }}</td>
-                                            {{--@endif--}}
+                                            @if (strlen($consultations->antecedent)>25)
+                                                <td>{{ str_limit($consultations->antecedent, 20) }}</td>
+                                            @endif
                                         </tr>
                                         <tr>
                                             <td>CHAMBRE :</td>
@@ -110,26 +110,30 @@
                                                 <td>{{ ($consultations->commentaire) }}</td>
                                             {{--@endif--}}
                                         </tr>
-                                        <tr>
-                                            <td>NOM DU CHIRURGIEN :</td>
-                                            <td>{{ $compte_rendu_bloc_operatoires->chirurgien }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DUREE DE L'INTERVENTION :</td>
-                                            <td>{{ $compte_rendu_bloc_operatoires->dure_intervention }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>DETAILS DE L'INTERVENTION :</td>
-                                            <td>{{ $compte_rendu_bloc_operatoires->detail_intervention }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>COUT :</td>
-                                            <td>{{ $compte_rendu_bloc_operatoires->cout }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="{{ route('compte_rendu_bloc_pdf.pdf', $patient->id) }}" class="btn btn-primary"><i class="fas fa-print"></i> Imprimer le dossier</a></td>
-                                            <td></td>
-                                        </tr>
+                                        @if (isset($compte_rendu_bloc_operatoires))
+                                            <tr>
+                                                <td>NOM DU CHIRURGIEN :</td>
+                                                <td>{{ $compte_rendu_bloc_operatoires->chirurgien }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DUREE DE L'INTERVENTION :</td>
+                                                <td>{{ $compte_rendu_bloc_operatoires->dure_intervention }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>DETAILS DE L'INTERVENTION :</td>
+                                                @if (strlen($compte_rendu_bloc_operatoires) > 25)
+                                                <td>{{ str_limit($compte_rendu_bloc_operatoires->detail_intervention, 20) }}</td>
+                                                @endif
+                                            </tr>
+                                            <tr>
+                                                <td>COUT :</td>
+                                                <td>{{ $compte_rendu_bloc_operatoires->cout }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><a href="{{ route('compte_rendu_bloc_pdf.pdf', $patient->id) }}" class="btn btn-primary"><i class="fas fa-print"></i> Imprimer le dossier</a></td>
+                                                <td></td>
+                                            </tr>
+                                        @endif
                                     @else
                                         <tr>
                                             <td><b>Aucune consultation</b></td>

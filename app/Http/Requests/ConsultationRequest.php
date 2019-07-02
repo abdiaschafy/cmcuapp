@@ -27,13 +27,13 @@ class ConsultationRequest extends FormRequest
         return [
 
             'patient_id'=> 'required',
-            'diagnostique'=> 'required|max:255',
-            'commentaire'=> 'required|max:255',
-            'commentaire'=> 'max:255',
+            'diagnostique'=> 'required',
+            'commentaire'=> 'required',
+            'commentaire'=> '',
             'decision'=> '',
             'resultat_examen'=> '',
             'chambre_id'=> '',
-            'allergie'=> '',
+            'allergie'=> 'max:255',
             'groupe'=> '',
         ];
     }

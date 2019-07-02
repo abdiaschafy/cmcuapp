@@ -55,7 +55,7 @@
                      <td>{{$fiches->notes}}</td>
                         <td><a href="{{ Route('fiches.show', $fiches->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a></td>
                         <td>
-                            <form action="{{ Route('fiches.destroy', $fiches->id)}}" method="post">
+                            <form action="{{ route('fiches.destroy', $fiches->id)}}" method="post">
                                 @csrf @method('DELETE')
                                 <p data-placement="top" data-toggle="tooltip" title="Delete">
                                     <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>

@@ -127,12 +127,6 @@ class PatientsController extends Controller
         return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
     }
 
-    public function destroy_sortie(Lettre $lettre)
-    {
-        $lettre->delete();
-
-        return redirect()->route('index.sortie')->with('success', "La lettre de sortie du patient vient d'etre suprimé");
-    }
 
     public function print_sortie($id)
     {
