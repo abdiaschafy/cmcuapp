@@ -83,7 +83,8 @@
                     </div>
                 </div>
 
-                <div role="form">
+                @if(count($patient->compte_rendu_hospitalisations))
+                    <div role="form">
                     <div class="panel panel-primary setup-content" id="step-1">
                         <div class="panel-heading">
                              <h3 class="panel-title"><u>Données du patient</u></h3>
@@ -167,6 +168,7 @@
                     </div>
         </div>
                 </div>
+                @endif
                 <hr>
                 <div class="card" style="width: 69rem;">
                 <div class="card-body">
