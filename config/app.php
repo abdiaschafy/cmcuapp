@@ -169,6 +169,7 @@ return [
         MaddHatter\LaravelFullcalendar\ServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         MercurySeries\Flashy\FlashyServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
 
         /*
          * Application Service Providers...

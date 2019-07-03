@@ -31,6 +31,11 @@ class Patient extends Model
         return $this->hasMany(CompteRenduBlocOperatoire::class);
     }
 
+    public function compte_rendu_hospitalisations()
+    {
+        return $this->hasMany(CompteRenduHospitalisation::class);
+    }
+
     public function ordonances()
     {
         return $this->hasMany(Ordonance::class);

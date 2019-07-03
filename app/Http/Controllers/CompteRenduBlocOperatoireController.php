@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\CompteRenduBlocOperatoire;
-use App\Consultation;
 use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Http\Request;
 
 class CompteRenduBlocOperatoireController extends Controller
 {

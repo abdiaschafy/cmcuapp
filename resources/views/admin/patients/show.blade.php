@@ -14,6 +14,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
+                    <a href="{{ route('compte_rendu_hos.create', $patient->id) }}" class="btn btn-primary float-left"> Compte rendu d'hospitalisation</a>
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
                 </div>
                 <br>

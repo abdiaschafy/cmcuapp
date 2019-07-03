@@ -33,6 +33,12 @@
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+{{--<script>--}}
+    {{--CKEDITOR.replace( 'summary-ckeditor' );--}}
+    {{--CKEDITOR.replace( 'summary-ckeditor1' );--}}
+
+{{--</script>--}}
 
 <script>
     $(document).ready(function() {
