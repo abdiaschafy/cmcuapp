@@ -19,7 +19,7 @@
         padding-top: 1px;
         padding-bottom: 15px;
         position:fixed;
-        bottom:5;
+        bottom:5px;
         width:100%;
     }
 
@@ -49,9 +49,12 @@
             <small><b>Médécin: </b> {{ $lettre->medecin }}</small>
         </div>
         <div class="col-5 offset-5">
-            <p><small><u>Date:</u><b> {{ $lettre->created_at }}</b></small></p>
+            <p><small><u>Date:</u><b> {{ $lettre->created_at->toFormattedDateString() }}</b></small></p>
             <p><u>Nom du patient:</u> {{ $lettre->patient }}</p>
         </div>
+    </div>
+    <div class="row">
+        Ref: {{ $lettre->refference . '/' . $lettre->id }}
     </div>
     <br>
     <br>

@@ -17,6 +17,7 @@ class CreateLettresTable extends Migration
             $table->increments('id');
             $table->string('patient');
             $table->string('medecin');
+            $table->string('refference');
             $table->string('objet')->default('Lettre de sortie du patient')->nullable();
             $table->text('message');
             $table->timestamps();

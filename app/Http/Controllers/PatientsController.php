@@ -121,7 +121,8 @@ class PatientsController extends Controller
            'patient' => \request('patient'),
            'medecin' => \request('medecin'),
            'objet' => \request('objet'),
-           'message' => \request('message')
+           'message' => \request('message'),
+           'refference' => mt_rand(1000, 2000)
         ]);
 
         return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
