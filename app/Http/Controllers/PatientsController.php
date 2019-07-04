@@ -8,6 +8,9 @@ use App\Ordonance;
 use Barryvdh\DomPDF\PDF as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\image;
+
+
 
 class PatientsController extends Controller
 {
@@ -22,8 +25,6 @@ class PatientsController extends Controller
 
     public function create()
     {
-
-
 
 
 
@@ -125,4 +126,6 @@ class PatientsController extends Controller
 
         return $pdf->stream('ordonance.pdf');
     }
+
+
 }

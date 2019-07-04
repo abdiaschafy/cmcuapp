@@ -13,6 +13,8 @@ class Patient extends Model
         'user_id',
         'telephone',
         'motif',
+        'image',
+
     ] ;
 
     public function soins()
@@ -20,6 +22,10 @@ class Patient extends Model
         return $this->hasMany(Soin::class);
     }
 
+    public function images()
+    {
+        return $this->belongsToMany('Image','images_patients');
+    }
 
     public function consultations()
     {
@@ -55,4 +61,6 @@ class Patient extends Model
         return Auth::user()->role_id === 2;
 
     }
+
+
 }
