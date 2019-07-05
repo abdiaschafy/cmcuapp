@@ -55,6 +55,13 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('examens.index') }}">
+                                <i class="fas fa-list-ul"></i>
+                                Examens medicaux
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
                             <a href="{{ route('index.sortie') }}">
                                 <i class="fas fa-print"></i>
                                 Etats de sorties

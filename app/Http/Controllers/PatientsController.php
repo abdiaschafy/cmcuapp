@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Lettre;
 use App\Patient;
 use App\Produit;
-use App\User;
-use Barryvdh\DomPDF\Facade as PDF;
+use App\Ordonance;
+use Barryvdh\DomPDF\PDF as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\image;
+
+
 
 class PatientsController extends Controller
 {
@@ -170,4 +173,6 @@ class PatientsController extends Controller
 
         return $pdf->stream('ordonance.pdf');
     }
+
+
 }
