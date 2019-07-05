@@ -1,7 +1,7 @@
 @extends('layouts.admin') @section('title', 'CMCU | Liste des chambres') @section('content')
 
     <body>
-    <div class="se-pre-con"></div>
+    {{--<div class="se-pre-con"></div>--}}
     <div class="wrapper">
     @include('partials.side_bar')
 
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <a href="{{ url('/admin/chambres/?categorie=vip') }}" class="btn btn-success">VIP</a>
-                        <a href="{{ url('/admin/chambres/?categorie=classique') }}" class="btn btn-primary">CLASSIQUE</a>
+                        <a href="{{ url('/admin/chambres/?categorie=Classique') }}" class="btn btn-primary">CLASSIQUE</a>
                         <a href="{{ url('/admin/chambres/?categorie=bloc') }}" class="btn btn-info">BLOC</a>
                         <a href="{{ url('/admin/chambres') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i></a>
                     </div>
@@ -32,9 +32,7 @@
                         <thead>
                         <tr>
                             <td>
-                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'asc']) }}"><i class="fas fa-sort-numeric-up"></i></a>
                                 ID
-                                <a href="{{ route('chambres.index', ['order' => request('order'), 'order' => 'desc']) }}"><i class="fas fa-sort-numeric-down"></i></a>
                             </td>
                             <td>NUMERO</td>
                             <td>CATEGORIE</td>

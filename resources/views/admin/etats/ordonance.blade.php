@@ -65,7 +65,7 @@
     <br>
     <div class="">
         <h5>
-            {{ $patient->ordonances[0]->description }}
+            {!! nl2br(e($patient->ordonances[1]->description)) !!}
         </h5>
     </div>
     <footer class="footer">

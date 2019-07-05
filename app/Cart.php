@@ -3,6 +3,8 @@
 namespace App;
 
 
+use Illuminate\Support\Facades\DB;
+
 class Cart
 {
     public $items = null;
@@ -30,18 +32,33 @@ class Cart
                 $storeItem = $this->items[$id];
             }
         }
-
         $storeItem['quantite']++;
-        $storeItem['prix_unitaire'] = $item->prix_unitaire * $storeItem['quantite'];
-        $this->items[$id] = $storeItem;
 
-        $this->totalQte++;
-        $this->totalPrix += $item->prix_unitaire;
+//        Mise a jour de la qte en bd apres ajout du produit a la facture
+
+            $produit = Produit::find($item->id);
+            $value = Produit::where('id', '=', $id)->sum('qte_stock');
+            $new_qte_stock = $value - 1;
+            $produit->update(['qte_stock' => $new_qte_stock]);
+
+//        Calcul des sommes de produis present sur la facture
+
+            $storeItem['prix_unitaire'] = $item->prix_unitaire * $storeItem['quantite'];
+            $this->items[$id] = $storeItem;
+
+            $this->totalQte++;
+            $this->totalPrix += $item->prix_unitaire;
+
     }
 
     public function reduceByOne($id)
     {
+        $produit = Produit::find($id);
         $this->items[$id]['quantite']--;
+        $value = Produit::where('id', '=', $id)->sum('qte_stock');
+        $new_qte_stock = $value + 1;
+        $produit->update(['qte_stock' => $new_qte_stock]);
+
         $this->items[$id]['prix_unitaire'] -= $this->items[$id]['item']['prix_unitaire'];
         $this->totalQte--;
         $this->totalPrix -= $this->items[$id]['item']['prix_unitaire'];

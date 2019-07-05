@@ -5,7 +5,7 @@
 @section('content')
 
     <body>
-    <div class="se-pre-con"></div>
+    {{--<div class="se-pre-con"></div>--}}
     <div class="wrapper">
     @include('partials.side_bar')
 
@@ -23,6 +23,8 @@
                 <span class="badge text-dark"><p>{{ Session::has('cart') ? Session::get('cart')->totalQte : 0 }}</p></span>
             </a>
 
+            </br>
+            </br>
             </br>
                 <div class="col-lg-12">
                     <div class="table-responsive">
@@ -59,7 +61,6 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $produits->links() }}
                     </div>
 
                 </div>

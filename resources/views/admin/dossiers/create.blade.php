@@ -16,22 +16,17 @@
             <h1 class="text-center">RENSEIGNER LE DOSSIER DU PATIENT PATIENT</h1>
             <hr>
             @include('partials.flash_form')
-            <div class="form-row mt-4">
-                <div class="col-sm-5 pb-3">
-                    <label for="poids">Poids</label>
-                    <input type="text" class="form-control" value="{{ old('taille') }}" name="poids" placeholder="Poids du patient">
-                </div>
-
-                <div class="col-sm-3 pb-3">
-                    <label for="tension">Tension</label>
-                    <input type="text" class="form-control" value="{{ old('tension') }}" name="tension" placeholder="Tension du patient">
-                </div>
+            <form class="form-row mt-4" method="post" action="{{ route('dossiers.store') }}">
+                @csrf
 
                 <div class="col-sm-4 pb-3">
-                    <label for="temperature">Température</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" value="{{ old('temperature') }}" name="temperature" placeholder="Température du patient">
-                    </div>
+                    <label for="">Veuillez sélectionner le patient</label>
+                    <select class="form-control" name="patient_id">
+                        <option value="">Veuillez sélectionner le patient</option>
+                        @foreach($patients as $patient)
+                            <option value="{{ $patient->id }}">{{ $patient->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
 
                 <div class="col-md-6 pb-3">
@@ -39,20 +34,20 @@
                     <div class="form-group small">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="option1"> Homme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Homme"> Homme
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="option2"> Femme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Femme"> Femme
                             </label>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-6 pb-3">
-                    <label for="adresse">Adresse</label>
-                    <input type="text" class="form-control" value="{{ old('adresse') }}" name="adresse" placeholder="Adresse du patient">
+                    <label for="date_naissance">Date de naissance</label>
+                    <input type="date" class="form-control" value="{{ old('date_naissance') }}" name="date_naissance" placeholder="Date de naissance">
                 </div>
 
                 <div class="col-sm-6 pb-3">
@@ -61,36 +56,29 @@
                 </div>
 
                 <div class="col-sm-6 pb-3">
-                    <label for="date_naissance">Date de naissance</label>
-                    <input type="text" class="form-control" value="{{ old('date_naissance') }}" name="date_naissance" placeholder="Date de naissance">
-                </div>
-
-                <div class="col-sm-6 pb-3">
                     <label for="lieu_naissance">Lieu de naissance</label>
                     <input type="text" class="form-control" value="{{ old('lieu_naissance') }}" name="lieu_naissance" placeholder="Lieu de naissance">
                 </div>
 
-                <div class="col-sm-3 pb-3">
-                    <label for="lieu_naissance">Patient</label>
-                    <select class="form-control" name="">
-                        <option>Patient 1</option>
-                        <option>Patient 2</option>
-                    </select>
+                <div class="col-sm-6 pb-3">
+                    <label for="adresse">Adresse</label>
+                    <input type="text" class="form-control" value="{{ old('adresse') }}" name="adresse" placeholder="Adresse du patient">
                 </div>
 
-                <div class="col-md-6 pb-3">
-                    <label for="commentaire">Commentaire</label>
-                    <textarea class="form-control" name="commentaire"></textarea>
-                    <small class="text-info">
-                        Votre commentaire ici
-                    </small>
+                <div class="col-sm-6 pb-3">
+                    <label for="personne_contact">Personne à contacter</label>
+                    <input type="text" class="form-control" value="{{ old('personne_contact') }}" name="personne_contact" placeholder="Personne à contacter">
                 </div>
 
-            </div>
-            <div class="row">
-                <button type="submit" class="btn btn-primary btn-lg col-md-3" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
-                <a href="{{ route('patients.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Annulé</a>
-            </div>
+                <div class="col-sm-4 pb-3">
+                    <label for="tel_personne_contact">Téléphone personne à contacter</label>
+                    <input type="number" class="form-control" value="{{ old('tel_personne_contact') }}" name="tel_personne_contact" placeholder="Téléphone personne à contacter">
+                </div>
+
+                <div class="row col-md-12">
+                    <button type="submit" class="btn btn-primary btn-lg col-sm-4" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
+                </div>
+            </form>
         </div>
     </div>
     </body>

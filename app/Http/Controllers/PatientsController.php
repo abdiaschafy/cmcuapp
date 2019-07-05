@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lettre;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
@@ -17,7 +18,7 @@ class PatientsController extends Controller
 
     public function index()
     {
-        $patients = Patient::with('users')->latest()->paginate(8);
+        $patients = Patient::with('users')->latest()->paginate(100);
         return view('admin.patients.index', compact('patients'));
 
     }
@@ -26,9 +27,7 @@ class PatientsController extends Controller
     public function create()
     {
 
-
-
-        return view('admin.patients.create', compact('patient'));
+        return view('admin.patients.create');
     }
 
 
@@ -65,8 +64,11 @@ class PatientsController extends Controller
 
         return view('admin.patients.show', [
             'patient' => $patient,
-            'consultations' => $patient->consultations->all(),
-            'ordonances' => $patient->ordonances()->paginate(5)
+            'consultations' => $patient->consultations()->latest()->first(),
+            'ordonances' => $patient->ordonances()->paginate(5),
+            'dossier' => $patient->dossiers,
+            'parametres' =>$patient->parametres()->latest()->first(),
+            'compte_rendu_bloc_operatoires' =>$patient->compte_rendu_bloc_operatoires()->latest()->first()
         ]);
     }
 
@@ -97,6 +99,51 @@ class PatientsController extends Controller
     }
 
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * Courier de sortie du patient
+     */
+
+    public function index_sortie()
+    {
+        $lettres = Lettre::all();
+        return view('admin.lettres.index', compact('lettres'));
+    }
+
+    public function create_sortie()
+    {
+        $patients = Patient::all();
+        $users = User::where('id', '=', 2)->get();
+        return view('admin.lettres.create', compact('patients', 'users'));
+    }
+
+    public function store_sortie()
+    {
+        Lettre::create([
+           'patient' => \request('patient'),
+           'medecin' => \request('medecin'),
+           'objet' => \request('objet'),
+           'message' => \request('message'),
+           'refference' => mt_rand(1000, 2000)
+        ]);
+
+        return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
+    }
+
+
+    public function print_sortie($id)
+    {
+        $lettre = Lettre::find($id);
+
+        $pdf = PDF::loadView('admin.etats.lettre', compact('lettre'));
+
+        $pdf->save(storage_path('lettre').'.pdf');
+
+        return $pdf->stream('lettre-sortie.pdf');
+    }
+
+
     public function destroy(Patient $patient)
     {
         $patient->delete();
@@ -106,9 +153,9 @@ class PatientsController extends Controller
 
     public function export_consultation($id)
     {
-        /**$this->authorize('print', Patient::class);**/
+//        $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
-        $pdf = PDF::loadView('admin.etats.consultation', compact('patient'));
+        $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
         $pdf->save(storage_path('pdf/consultation').'.pdf');
 

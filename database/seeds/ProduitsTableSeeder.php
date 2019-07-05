@@ -68,7 +68,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Magnesium',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -140,7 +140,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Flotac crp',
                 'categorie'     => 'PHARMACEUTIQUE',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -268,7 +268,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Ban',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -316,7 +316,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Rien',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -324,7 +324,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Tube',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -364,7 +364,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'Portes',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -484,7 +484,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => '',
+                'designation'   => 'verre',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',
@@ -604,7 +604,7 @@ class ProduitsTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '10',
-                'designation'   => 'LIT D\'HÔPITAL / ÉLECTRIQUE / À HAUTEUR RÉGLABLE / TRENDELENBURG',
+                'designation'   => 'LIT D\'HÔPITAL / ÉLECTRIQUE / À HAUTEUR RÉGLABLE / TRENDELENBURG 2',
                 'categorie'     => 'MATERIEL',
                 'qte_stock'     => '45645',
                 'qte_alerte'    => '10',

@@ -6,6 +6,8 @@ use App\Chambre;
 use App\Consultation;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
+use App\Produit;
+use App\User;
 use Carbon\Carbon;
 
 class ConsultationsController extends Controller
@@ -17,8 +19,10 @@ class ConsultationsController extends Controller
         $mytime = Carbon::now();
         $chambres = Chambre::whereIn('categorie', ['vip', 'classique'])->get();
         $c = 1;
+        $produits = Produit::where('categorie', '=', 'PHARMACEUTIQUE')->get();
+        $users = User::where('id', '=', 2)->get();
 
-        return view('admin.consultations.create', compact('mytime', 'patient', 'chambres', 'c'));
+        return view('admin.consultations.create', compact('mytime', 'patient', 'chambres', 'c', 'produits', 'users'));
     }
 
     public function store(ConsultationRequest $request)
@@ -33,15 +37,23 @@ class ConsultationsController extends Controller
             'chambre_id' => request('chambre_id'),
             'diagnostique'=> request('diagnostique'),
             'commentaire'=> request('commentaire'),
+            'antecedent'=> request('antecedent'),
+            'allergie'=> request('allergie'),
+            'groupe'=> request('groupe'),
             'decision'=> request('decision'),
-            'cout'=> request('cout'),
-            'dure_intervention'=> request('dure_intervention'),
             'resultat_examen'=> request('resultat_examen'),
 
         ]);
         Flashy('La nouvelle consultation a été crée avec succès !!');
 
         return back();
+    }
+
+    public function index(Consultation $consultations)
+    {
+
+        $consultations = Consultation::latest()->get();
+        return view('admin.consultations.index', compact('consultations'));
     }
 
 }

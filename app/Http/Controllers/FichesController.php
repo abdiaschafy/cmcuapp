@@ -14,7 +14,7 @@ class FichesController extends Controller
     {
 
         $ficheCount = Fiche::count();
-        $fiche = Fiche::orderBy('id', 'asc')->paginate(8);
+        $fiche = Fiche::orderBy('id', 'asc')->paginate(100);
         return view('admin.fiches.index', compact('fiche', 'ficheCount'));
     }
 
@@ -104,6 +104,7 @@ class FichesController extends Controller
 
 //        $content = $pdf->download()->getOriginalContent();
 //        Storage::put('public/admin/name.pdf',$content) ;
-        return $pdf->download('fiche.pdf');
+        return $pdf->stream('fiche.pdf');
+        
     }
 }

@@ -15,9 +15,9 @@ class UsersController extends Controller
     {
         $this->authorize('update', User::class);
 
-        $users = User::with('roles')->orderBy('id', 'desc')->paginate(8);
+        $users = User::with('roles')->orderBy('id', 'desc')->paginate(100);
 
-        return view('admin.users.index',compact('users', 'roles'));
+        return view('admin.users.index',compact('users'));
     }
 
     public function create()
@@ -63,15 +63,6 @@ class UsersController extends Controller
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
 
 
-    }
-
-    public function show(User $user)
-    {
-        $this->authorize('update', User::class);
-
-        $user = User::with('roles')->first();
-
-        return view("admin.users.show")->withUser($user);
     }
 
     public function edit(User $user)

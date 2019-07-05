@@ -62,6 +62,7 @@
                         </li>
                         <li>
                             <a href="#">
+                            <a href="{{ route('index.sortie') }}">
                                 <i class="fas fa-print"></i>
                                 Etats de sorties
                             </a>
@@ -99,7 +100,7 @@
                               <li>
 
                                 <a href="{{ route('produits.pharmaceutique') }}">
-                                       <i class="fab fa-python"></i>
+                                    <i class="fab fa-python"></i>
                                        Produit pharmaceutiques
                                 </a>
 
@@ -154,7 +155,7 @@
             <li>
                 <a href="{{ route('events.index') }}">
                     <i class="far fa-calendar-times"></i>
-                    Plages horaires
+                    Rendez-vous
                 </a>
             </li>
         @endcan
@@ -166,6 +167,7 @@
                 </a>
             </li>
         @endcan
+        @can('update', \App\User::class)
         <li>
             <a href="#factureSubmenu" data-toggle="collapse" aria-expanded="false">
                 <i class="fas fa-chart-line"></i>
@@ -175,12 +177,17 @@
             <ul class="collapse list-unstyled" id="factureSubmenu">
                 <li>
                     <a href="{{ route('factures.index') }}">
-                        <i class="fas fa-list-ul"></i>
+                        <i class="far fa-money-bill-alt"></i>
+                        Bilan pharmacie
+                    </a>
+                    <a href="#">
+                        <i class="far fa-money-bill-alt"></i>
                         Bilan consultation
                     </a>
                 </li>
             </ul>
         </li>
+        @endcan
         <br>
         <br>
         <br>

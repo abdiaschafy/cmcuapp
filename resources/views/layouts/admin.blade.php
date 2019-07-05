@@ -36,6 +36,8 @@
 
 @yield('content')
 
+
+
 <script src="{{ mix('js/all.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/jquery.dataTables.js') }}"></script>
@@ -44,18 +46,29 @@
 
 
 
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+{{--<script>--}}
+    {{--CKEDITOR.replace( 'summary-ckeditor' );--}}
+    {{--CKEDITOR.replace( 'summary-ckeditor1' );--}}
+
+{{--</script>--}}
 
 <script>
     $(document).ready(function() {
         $('#myTable').DataTable({
             scrollY: 300,
             paging: true,
-            processing: true
+            processing: true,
+            info: false,
+            ordering: false,
+        });
+        $('.filter-select').change(function () {
+            table.column( $(this).data('column'))
+                .search( $(this).val())
+                .draw();
         });
     } );
 </script>
-{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>--}}
-
 @include('flashy::message')
 
 </html>

@@ -23,7 +23,7 @@ class ChambresController extends Controller
             $chambres = $chambres->orderBy('id', \request('order'));
         }
 
-        $chambres = $chambres->paginate(5)->appends([
+        $chambres = $chambres->paginate(100)->appends([
 
             'categorie' => \request('categorie'),
             'order' => \request('order'),

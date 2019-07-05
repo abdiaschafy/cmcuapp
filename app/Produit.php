@@ -22,6 +22,11 @@ class Produit extends Model
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function factures()
+    {
+        return $this->belongsToMany(Facture::class);
+    }
 }
 
 

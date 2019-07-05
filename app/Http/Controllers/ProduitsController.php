@@ -17,12 +17,8 @@ class ProduitsController extends Controller
 {
     public function index()
     {
-
-
-
         $produitCount = Produit::count();
-
-        $produits = Produit::orderBy('id', 'asc')->paginate(10);
+        $produits = Produit::orderBy('id', 'asc')->paginate(100);
 
         return view('admin.produits.index', compact('produits', 'produitCount'));
     }
@@ -98,18 +94,18 @@ class ProduitsController extends Controller
     public function stock_pharmaceutique()
     {
 
-        $produits = DB::table('produits')->where('categorie', 'pharmaceutique')->paginate(8);
+        $produits = Produit::where('categorie', '=', 'PHARMACEUTIQUE')->paginate(100);
         $pharmaCount = count($produits);
 
 
-        return view('admin.produits.pharmaceutique', compact('produits', 'pharmaCount'));
+        return view('admin.produits.pharmaceutique', array_merge(['produits' => $produits], ['pharmaCount' => $pharmaCount]));
     }
 
 
     public function stock_materiel()
     {
 
-        $produits = DB::table('produits')->where('categorie', 'materiel')->paginate(8);
+        $produits = Produit::where('categorie', '=', 'MATERIEL')->paginate(100);
 
         $materielCount = count($produits);
 
@@ -120,6 +116,22 @@ class ProduitsController extends Controller
     public function add_to_cart(Request $request, $id)
     {
         $produit = Produit::find($id);
+
+        if ($produit->qte_stock == 0){
+
+            return redirect()->route('produits.pharmaceutique')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
+
+        }elseif($produit->qte_stock <= $produit->qte_alerte){
+
+            $oldCart = Session::has('cart') ? Session::get('cart') : null;
+            $cart =new Cart($oldCart);
+            $cart->add($produit, $produit->id);
+
+            $request->session()->put('cart', $cart);
+
+
+            return redirect()->route('produits.pharmaceutique')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
+        }
 
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart =new Cart($oldCart);
@@ -169,6 +181,7 @@ class ProduitsController extends Controller
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new  Cart($oldCart);
+
         $cart->removeItem($id);
 
         if (count($cart->items) > 0)
@@ -184,18 +197,26 @@ class ProduitsController extends Controller
     }
 
 
-    public function export_pdf(Request $request)
+    public function export_pdf(Request $request, Produit $produit)
     {
 //        $this->authorize('print', Produit::class);
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
 
+        $facture = Facture::create([
+           'numero' => mt_rand(10000, 999999),
+           'quantite_total' => $cart->totalQte,
+           'prix_total' => $cart->totalPrix
+        ]);
+
+        $facture->produits()->attach([$facture->id, array_keys($cart->items, $produit)]);
+
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 
         $pdf->save(storage_path('pharmacie').'.pdf');
 
-        Session::forget('cart');
+//        Session::forget('cart');
         return $pdf->stream('pharmacie.pdf');
     }
 }

@@ -32,6 +32,16 @@ class Patient extends Model
         return $this->hasMany(Consultation::class);
     }
 
+    public function compte_rendu_bloc_operatoires()
+    {
+        return $this->hasMany(CompteRenduBlocOperatoire::class);
+    }
+
+    public function compte_rendu_hospitalisations()
+    {
+        return $this->hasMany(CompteRenduHospitalisation::class);
+    }
+
     public function ordonances()
     {
         return $this->hasMany(Ordonance::class);
@@ -40,6 +50,11 @@ class Patient extends Model
     public function parametres()
     {
         return $this->hasMany(Parametre::class);
+    }
+
+    public function dossiers()
+    {
+        return $this->hasMany(Dossier::class);
     }
 
     public function users()

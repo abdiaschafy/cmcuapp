@@ -8,6 +8,11 @@ class Facture extends Model
 {
     protected $guarded = ['id'];
 
-    protected $fillable = ['numero'];
+    protected $fillable = ['numero', 'prix_total', 'quantite_total'];
+
+    public function produits()
+    {
+        return $this->belongsToMany(Produit::class, 'facture_produit', 'facture_id','produit_id');
+    }
 
 }
