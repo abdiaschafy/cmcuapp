@@ -23,7 +23,7 @@
                     <h5 class="card-title">Ajouter un examen</h5>
                     <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
                     <hr>
-                    <form class="form-group col-md-10" action="{{ route('examens.store') }}" enctype="multipart/form-data" method="POST">
+                    <form class="form-group col-md-10" action="{{ route('examens.store') }}" method="POST">
                      @csrf
                    <div class="col-md-12">
                         <div class="form-group">

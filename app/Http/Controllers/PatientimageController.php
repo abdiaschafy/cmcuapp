@@ -28,14 +28,9 @@ class PatientimageController extends Controller
     public function store(ImagRequest $request)
     {
 
-//        $this->authorize('consulter', Patient::class);
-       
-
             $images = new Image();
             $images->image = $request->get('image');
-            //$patient->user_id = Auth::id();
-
-            // ($request->hasFile('image')){
+           
                 $image = $request->file('image');
                 $filename['imagename'] = time() . '.' . $image->getClientOriginalExtension();
                 $location = public_path('images/' . $filename['imagename']);
