@@ -69,13 +69,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
     Route::get('ordonance/{id}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
-//    Route::resource('/examens', 'ImageController');
+// route image examen patient
     Route::get('examens/', 'PatientimageController@index')->name('examens.index');
-    Route::get('examens/create', 'PatientimageController@create')->name('examens.create');
-    Route::post('examens/store', 'PatientimageController@store')->name('examens.store');
+    Route::get('examens/{patient}', 'PatientimageController@create')->name('examens.create');
+    Route::post('examens', 'PatientimageController@store')->name('examens.store');
     Route::get('examens/show', 'PatientimageController@show')->name('examens.show');
-    Route::post('image-upload/{patientsId}', 'PatientimageController@uploadImages')->name('uploadImages');
-
 
     Route::get('lettre-de-sortie','PatientsController@index_sortie')->name('index.sortie');
     Route::get('lettre-de-sortie/create','PatientsController@create_sortie')->name('create.sortie');

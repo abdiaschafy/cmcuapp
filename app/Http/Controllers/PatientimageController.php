@@ -7,6 +7,7 @@ use App\Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\ImagRequest;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades;
 
 class PatientimageController extends Controller
 {
@@ -20,25 +21,31 @@ class PatientimageController extends Controller
 
     public function create(Patient $patient)
     {
-       // $patients=Patient::pluck('name','id');
-        return view('admin.examens.create', compact('patients'));
+        return view('admin.examens.create', compact('patient'));
     }
 
 
-    public function store(ImagRequest $request)
+    public function store(ImagRequest $request, Patient $patient)
     {
 
-            $images = new Image();
-            $images->image = $request->get('image');
+        $patient = Patient::findOrFail($request->patient_id);
+        
+        Image::create([
+            'patient_id' => request('patient_id'),
+            'titre' => request('titre'),
+            //'image' => request('image')
+            ]);
+
+      if ($request->hasFile('image')){
+            $image = $request->file('image') ;
+            $filename['imagename'] = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename['imagename']);
+            Image::make($image)->resize(800, 400)->save($location);
+            $image->image = $filename['imagename'];
+
+            $image->save();
+       }
            
-                $image = $request->file('image');
-                $filename['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-                $location = public_path('images/' . $filename['imagename']);
-                Image::make($image)->resize(800, 400)->save($location);
-                $images->image = $filename['imagename'];
-
-        $images->save();
-
         return redirect()->route('examens.index')->with('success', 'examen ajouté avec succès !');
     }
    

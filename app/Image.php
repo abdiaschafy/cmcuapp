@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
-    protected $guarded = ['id'];
+    protected $fillable = [
+        
+        'patient_id',
+        'titre',
+        
+    ];
 
-    protected $fillable = ['url'];
 
     public function patients()
     {
-        return $this->belongsTo('patients', 'images_patients');
+        return $this->belongsTo('patients');
     }
 
 }
