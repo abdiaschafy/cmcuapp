@@ -62,7 +62,7 @@
                     <li>
                         <a href="{{ route('index.sortie') }}">
                             <i class="fas fa-print"></i>
-                            Lettre de sorties
+                            Lettre de sortie
                         </a>
                     </li>
                 </ul>
