@@ -77,7 +77,7 @@
                                 <div class="input-group col-md-5">
                                     <input name="password" type="password" class="form-control" id="myInput" placeholder="Ancien mot de passe" required>
                                     <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" onclick="myFunction()"><i class="fas fa-eye-slash"></i></button>
+                                    <button class="btn btn-default" type="button" onclick="show_password()"><i class="fas fa-eye-slash"></i></button>
                                 </span>
                                 </div>
                                 <div class="input-group col-md-6">
@@ -96,7 +96,7 @@
         <hr>
     </div>
     <script type="text/javascript">
-        function myFunction() {
+        function show_password() {
             var x = document.getElementById("myInput");
             var y = document.getElementById("password-confirm");
             if (x.type === "password" || y.type === "password") {

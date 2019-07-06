@@ -23,11 +23,11 @@ class UsersTableSeeder extends Seeder
 
         $user2 = \App\User::create([
             'role_id' => '2',
-            'name' => 'medecin',
+            'name' => 'Kamdem',
             'login' => 'medecin1',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'femme',
-            'prenom' => 'medecin',
+            'prenom' => 'Franck',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')
@@ -35,11 +35,11 @@ class UsersTableSeeder extends Seeder
 
         $user22 = \App\User::create([
             'role_id' => '9',
-            'name' => 'caisse',
+            'name' => 'Foku',
             'login' => 'caisse',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'homme',
-            'prenom' => 'caisse',
+            'prenom' => 'Luci',
             'lieu_naissance' => 'Yaounde',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')
@@ -47,11 +47,11 @@ class UsersTableSeeder extends Seeder
 
         $user4 = \App\User::create([
             'role_id' => '2',
-            'name' => 'medecin',
+            'name' => 'Bock',
             'login' => 'medecin3',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'homme',
-            'prenom' => 'medecin',
+            'prenom' => 'Julle',
             'lieu_naissance' => 'Yaounde',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')
@@ -59,11 +59,11 @@ class UsersTableSeeder extends Seeder
 
         $user5 = \App\User::create([
             'role_id' => '2',
-            'name' => 'medecin',
+            'name' => 'Owona',
             'login' => 'medecin4',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'femme',
-            'prenom' => 'medecin',
+            'prenom' => 'max',
             'lieu_naissance' => 'Yaounde',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('aaaaaa')

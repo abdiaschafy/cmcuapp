@@ -6,6 +6,7 @@ use App\Lettre;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
