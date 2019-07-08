@@ -36,6 +36,7 @@
                             {{--@can('consulter', \App\Patient::class)--}}
                                 {{--<th>Rendez-vous</th>--}}
                             {{--@endcan--}}
+
                                 {{--@can('print', \App\Patient::class)--}}
                                 {{--<th>SUPPRIMER</th>--}}
                             {{--@endcan--}}
@@ -58,6 +59,7 @@
                                     <td style="display: inline-flex;">
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-info btn-xs mr-1"><i class="far fa-calendar-plus"></i></a>
+                                       
                                     @endcan
                                     @can('print', \App\Patient::class)
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">

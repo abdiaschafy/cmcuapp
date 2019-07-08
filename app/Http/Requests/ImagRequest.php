@@ -26,7 +26,7 @@ class ImagRequest extends FormRequest
         return [
         
             'patient_id' =>'required',
-            'titre'=> 'required',
+            'type'=> 'required',
            
             
         ];

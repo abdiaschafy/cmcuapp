@@ -71,9 +71,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 // route image examen patient
     Route::get('examens/', 'PatientimageController@index')->name('examens.index');
-    Route::get('examens/{patient}', 'PatientimageController@create')->name('examens.create');
+    Route::get('examens/create/{patient}', 'PatientimageController@create')->name('examens.create');
     Route::post('examens', 'PatientimageController@store')->name('examens.store');
-    Route::get('examens/show', 'PatientimageController@show')->name('examens.show');
+    Route::get('examens/show/{patient}', 'PatientimageController@show')->name('examens.show');
+    Route::get('examens/{patient}', 'PatientimageController@destroy')->name('examens.destroy');
+
 
     Route::get('lettre-de-sortie','PatientsController@index_sortie')->name('index.sortie');
     Route::get('lettre-de-sortie/create','PatientsController@create_sortie')->name('create.sortie');

@@ -1,20 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Patient;
-use App\Image;
-use Illuminate\Http\Request;
 use App\Http\Requests\ImagRequest;
 use App\Http\Controllers\Controller;
-use Intervention\Image\Facades;
+use Intervention\Image\Facades\Image;
+use DB;
+use App\Examen;
 
 class PatientimageController extends Controller
 {
     public function index()
     {
         $patients = Patient::with('users')->latest()->paginate(8);
-        return view('admin.examens.index', compact('patients'));
+        $examens = Examen::all();
+        return view('admin.examens.index', compact('patients','examens'));
 
     }
 
@@ -29,24 +29,30 @@ class PatientimageController extends Controller
     {
 
         $patient = Patient::findOrFail($request->patient_id);
+       //dd($patient->id);
+       $examens = new Examen ();
         
-        Image::create([
-            'patient_id' => request('patient_id'),
-            'titre' => request('titre'),
-            //'image' => request('image')
-            ]);
+    $examens->type = $request->get('type');
+    $examens->patient_id = $request->patient_id;
+   // $patient->id = $request->get('patient_id');
 
-      if ($request->hasFile('image')){
             $image = $request->file('image') ;
             $filename['imagename'] = time() . '.' . $image->getClientOriginalExtension();
             $location = public_path('images/' . $filename['imagename']);
             Image::make($image)->resize(800, 400)->save($location);
-            $image->image = $filename['imagename'];
-
-            $image->save();
-       }
+            $examens->image = $filename['imagename'];
+     
+            $examens->save();
+    
            
         return redirect()->route('examens.index')->with('success', 'examen ajouté avec succès !');
+    }
+
+    public function show(ImagRequest $request, $id){
+
+        $examens = Examen::find($id);
+
+        return view('admin.examens.show');
     }
    
     

@@ -4,19 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Examen extends Model
 {
     protected $fillable = [
         
         'patient_id',
-        'titre',
-        
+        'type',
     ];
 
 
     public function patients()
     {
-        return $this->belongsTo('patients');
+        return $this->belongsTo('App\Patient');
     }
-
 }

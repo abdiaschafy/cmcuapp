@@ -26,9 +26,10 @@
                     <form class="form-group col-md-10" method="post" action="{{ route('examens.store') }}" enctype="multipart/form-data">
                         <div class="form-group">
                         @csrf
-                    <label for="titre">Titre  <span class="text-danger"></span></label>
-                    <input type="text" class="form-control" name="titre" value="{{ old('titre') }}" required/>
+                    <label for="type">TYpe d'examens <span class="text-danger"></span></label>
+                    <input type="text" class="form-control" name="type" value="{{ old('type') }}" required/>
                 </div>
+                
                 <div class="form-group">
                     <label for="image">Image  <span class="text-danger"></span></label>
                     <input type="file" class="form-control" class="custum-file-input" name="image" value="{{ old('image') }}"  required/>
