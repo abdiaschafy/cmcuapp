@@ -25,7 +25,7 @@
                             <option value="{{ $chambre->categorie }}"  {{ $chambre->id == ' ' ? 'selected' : '' }}>{{ $chambre->categorie }}</option>
                         </select>
                     </div>
-                    <input type="hidden" name="statut" value="Occupé">
+                    <input type="hidden" name="statut" value="occupé">
                     <select class="form-control" name="patient">
                         <option>Nom du patient</option>
                         @foreach($patients as $patient)
