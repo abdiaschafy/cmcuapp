@@ -20,7 +20,7 @@ class ConsultationsController extends Controller
         $chambres = Chambre::whereIn('categorie', ['vip', 'classique'])->get();
         $c = 1;
         $produits = Produit::where('categorie', '=', 'PHARMACEUTIQUE')->get();
-        $users = User::where('id', '=', 2)->get();
+        $users = User::where('role_id', '=', 2)->get();
 
         return view('admin.consultations.create', compact('mytime', 'patient', 'chambres', 'c', 'produits', 'users'));
     }
