@@ -17,7 +17,6 @@ class CreateConsultationsTable extends Migration
             $table->increments('id');
             $table->integer('patient_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->unsignedInteger('chambre_id')->nullable()->default(null)->index();
             $table->text('diagnostique');
             $table->text('commentaire');
             $table->text('antecedent');
@@ -28,7 +27,6 @@ class CreateConsultationsTable extends Migration
             $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('chambre_id')->references('id')->on('chambres')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

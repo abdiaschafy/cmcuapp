@@ -67,9 +67,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::patch('patients/{patient}', 'PatientsController@update')->name('patients.update');
     Route::delete('patients/{patient}', 'PatientsController@destroy')->name('patients.destroy');
     Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
-    Route::get('ordonance/{id}','PatientsController@export_ordonance')->name('ordonance.pdf');
+    Route::get('ordonance/{ordonance}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
-// route image examen patient
+    Route::post('patients/upload-image/{patientId}', 'PatientController@fileStore')->name('patients.upload');
+    Route::post('patients/delete-image', 'Patient@fileDestroy')->name('patients.deleteImage');
+
+    Route::resource('/examens', 'ImageController');
+
+
     Route::get('examens/', 'PatientimageController@index')->name('examens.index');
     Route::get('examens/create/{patient}', 'PatientimageController@create')->name('examens.create');
     Route::post('examens', 'PatientimageController@store')->name('examens.store');
@@ -115,8 +120,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('/chambres', 'ChambresController@store')->name('chambres.store');
     Route::get('/chambres/create', 'ChambresController@create')->name('chambres.create');
     Route::get('/chambres/{chambre}/edit', 'ChambresController@edit')->name('chambres.edit');
-    Route::get('/chambres/{chambre}', 'ChambresController@update')->name('chambres.update');
-    Route::get('search', 'ChambresController@search')->name('chambres.search');
+    Route::patch('/chambres-update/{chambre}', 'ChambresController@update')->name('chambres.update');
+    Route::patch('/chambres-attribute/{chambre}', 'ChambresController@updateStatus')->name('chambres_status.update');
+    Route::patch('/chambres-liberer/{chambre}', 'ChambresController@updateMinus')->name('chambres_minus.update');
+    Route::get('/chambres/{chambre}/attribute', 'ChambresController@attribute')->name('chambres.attribute');
 
 
     Route::get('/factures', 'FactureController@index')->name('factures.index');

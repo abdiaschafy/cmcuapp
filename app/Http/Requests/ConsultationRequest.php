@@ -32,7 +32,6 @@ class ConsultationRequest extends FormRequest
             'commentaire'=> '',
             'decision'=> '',
             'resultat_examen'=> '',
-            'chambre_id'=> '',
             'allergie'=> 'max:255',
             'groupe'=> '',
         ];
