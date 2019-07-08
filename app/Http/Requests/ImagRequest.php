@@ -13,7 +13,7 @@ class ImagRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,8 +24,9 @@ class ImagRequest extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'image|mimes:png,jpg,jpeg|max:10000',
-            'patient_id' => $patients->id,
+        
+            'patient_id' =>'required',
+            'type'=> 'required',
            
             
         ];

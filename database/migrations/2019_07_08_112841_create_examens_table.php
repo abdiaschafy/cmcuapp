@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesPatientsTable extends Migration
+class CreateExamensTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateImagesPatientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('images_patients', function (Blueprint $table) {
+        Schema::create('examens', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index();
-            $table->unsignedInteger('image_id')->index();
-
+            $table->string('type');
             $table->foreign('patient_id')->references('id')->on('patients');
-            $table->foreign('image_id')->references('id')->on('images');
             $table->timestamps();
         });
     }
@@ -31,6 +29,9 @@ class CreateImagesPatientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images_patients');
+        Schema::table('examens', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
+        
     }
 }

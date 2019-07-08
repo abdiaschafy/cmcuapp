@@ -23,15 +23,20 @@
                     <h5 class="card-title">Ajouter un examen</h5>
                     <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
                     <hr>
-                    <form class="form-group col-md-10" action="{{ route('examens.store') }}" method="POST">
-                     @csrf
-                   <div class="col-md-12">
+                    <form class="form-group col-md-10" method="post" action="{{ route('examens.store') }}" enctype="multipart/form-data">
                         <div class="form-group">
-                   <h4> <label for="image">Image<span class="text-danger"></span></label></h4>
+                        @csrf
+                    <label for="type">TYpe d'examens <span class="text-danger"></span></label>
+                    <input type="text" class="form-control" name="type" value="{{ old('type') }}" required/>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Image  <span class="text-danger"></span></label>
                     <input type="file" class="form-control" class="custum-file-input" name="image" value="{{ old('image') }}"  required/>
-                 </div>
+                    <input type="hidden" name="patient_id" value="{{ $patient->id }}">
+                       </div>
                             </br>
-                            <button type="submit" class="btn btn-primary btn-lg col-md-5" title="En cliquant sur ce bouton vous importez un nouveau examen">Ajouter</button>
+                            <button type="submit" class="btn btn-primary btn-lg col-sm-4" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;Ajouter</button>
                             <a href="{{ route('examens.index') }}" class="btn btn-warning btn-lg col-md-5 offset-md-1" title="Retour à la liste des patients">Annuler</a>
                         </div>
                     </form>

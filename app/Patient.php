@@ -22,9 +22,9 @@ class Patient extends Model
         return $this->hasMany(Soin::class);
     }
 
-    public function images()
+    public function examens()
     {
-        return $this->belongsToMany('Image','images_patients');
+        return $this->belongsToMany(Examen::class);
     }
 
     public function consultations()
