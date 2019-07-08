@@ -53,7 +53,7 @@ class EventsController extends Controller
 
     public function create(Patient $patient)
     {
-        $users = User::with('roles')->where('role_id', '=', '2')->get(['name']);
+        $users = User::with('roles')->where('role_id', '=', '2')->get(['name', 'prenom']);
 
         return view('admin.events.create', compact('users', 'patient'));
     }

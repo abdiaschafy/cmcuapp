@@ -27,7 +27,7 @@
                             <select class="form-control col-md-12" name="medecin">
                                 <option value="">Veuillez choisir le médécin</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                    <option value="{{ $user->name }}">{{ $user->name }} {{ $user->prenom }}</option>
                                 @endforeach
                             </select>
                         </div>
