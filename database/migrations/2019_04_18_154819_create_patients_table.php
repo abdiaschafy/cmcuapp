@@ -19,7 +19,7 @@ class CreatePatientsTable extends Migration
             $table->integer('numero_dossier')->unique();
             $table->string('name')->unique();
             $table->string('assurance')->nullable();
-            $table->string('numero_assurance')->nullable();            
+            $table->string('numero_assurance')->nullable();
             $table->integer('frais')->nullable()->default(15000);
 
 

@@ -120,8 +120,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('/chambres', 'ChambresController@store')->name('chambres.store');
     Route::get('/chambres/create', 'ChambresController@create')->name('chambres.create');
     Route::get('/chambres/{chambre}/edit', 'ChambresController@edit')->name('chambres.edit');
-    Route::get('/chambres/{chambre}', 'ChambresController@update')->name('chambres.update');
-    Route::get('search', 'ChambresController@search')->name('chambres.search');
+    Route::patch('/chambres-update/{chambre}', 'ChambresController@update')->name('chambres.update');
+    Route::patch('/chambres-attribute/{chambre}', 'ChambresController@updateStatus')->name('chambres_status.update');
+    Route::patch('/chambres-liberer/{chambre}', 'ChambresController@updateMinus')->name('chambres_minus.update');
+    Route::get('/chambres/{chambre}/attribute', 'ChambresController@attribute')->name('chambres.attribute');
 
 
     Route::get('/factures', 'FactureController@index')->name('factures.index');

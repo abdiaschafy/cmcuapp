@@ -17,12 +17,11 @@ class ConsultationsController extends Controller
     {
 
         $mytime = Carbon::now();
-        $chambres = Chambre::whereIn('categorie', ['vip', 'classique'])->get();
         $c = 1;
         $produits = Produit::where('categorie', '=', 'PHARMACEUTIQUE')->get();
         $users = User::where('role_id', '=', 2)->get();
 
-        return view('admin.consultations.create', compact('mytime', 'patient', 'chambres', 'c', 'produits', 'users'));
+        return view('admin.consultations.create', compact('mytime', 'patient', 'c', 'produits', 'users'));
     }
 
     public function store(ConsultationRequest $request)
@@ -34,7 +33,6 @@ class ConsultationsController extends Controller
         Consultation::create([
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
-            'chambre_id' => request('chambre_id'),
             'diagnostique'=> request('diagnostique'),
             'commentaire'=> request('commentaire'),
             'antecedent'=> request('antecedent'),
