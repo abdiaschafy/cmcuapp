@@ -24,7 +24,7 @@ class Patient extends Model
 
     public function examens()
     {
-        return $this->belongsToMany(Examen::class);
+        return $this->hasMany(Examen::class);
     }
 
     public function consultations()

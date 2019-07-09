@@ -59,6 +59,7 @@
                                     <td style="display: inline-flex;">
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-info btn-xs mr-1"><i class="far fa-calendar-plus"></i></a>
+                                        <a href="{{ route('examens.create', $patient->id) }}" title="Ajouter examens medicaux" class="btn btn-info btn-xs mr-1"><i class="fas fa-book"></i></a>
                                        
                                     @endcan
                                     @can('print', \App\Patient::class)
