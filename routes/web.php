@@ -72,8 +72,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('patients/upload-image/{patientId}', 'PatientController@fileStore')->name('patients.upload');
     Route::post('patients/delete-image', 'Patient@fileDestroy')->name('patients.deleteImage');
 
-    Route::resource('/examens', 'ImageController');
-
+   
 
     Route::get('examens/', 'PatientimageController@index')->name('examens.index');
     Route::get('examens/create/{patient}', 'PatientimageController@create')->name('examens.create');

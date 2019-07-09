@@ -5,6 +5,7 @@ use App\Patient;
 use App\Http\Requests\ImagRequest;
 use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Request;
 use DB;
 use App\Examen;
 
@@ -12,8 +13,8 @@ class PatientimageController extends Controller
 {
     public function index()
     {
-        $patients = Patient::with('users')->latest()->paginate(8);
-        $examens = Examen::all();
+        $patients = Patient::with('examens')->get();
+        
         return view('admin.examens.index', compact('patients','examens'));
 
     }
@@ -41,18 +42,16 @@ class PatientimageController extends Controller
             $location = public_path('images/' . $filename['imagename']);
             Image::make($image)->resize(800, 400)->save($location);
             $examens->image = $filename['imagename'];
-     
             $examens->save();
     
            
         return redirect()->route('examens.index')->with('success', 'examen ajouté avec succès !');
     }
 
-    public function show(ImagRequest $request, $id){
-
+    public function show(Request $request, $id){
+        
         $examens = Examen::find($id);
-
-        return view('admin.examens.show');
+        return view('admin.examens.show', compact('examens'));
     }
    
     

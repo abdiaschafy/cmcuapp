@@ -13,7 +13,7 @@ class Examen extends Model
     ];
 
 
-    public function patients()
+    public function patient()
     {
         return $this->belongsTo('App\Patient');
     }
