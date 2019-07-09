@@ -14,8 +14,8 @@ class Chambre extends Model
         'numero',
         'categorie',
         'prix',
-        'statut'
-
+        'statut',
+        'patient'
     ];
 
 

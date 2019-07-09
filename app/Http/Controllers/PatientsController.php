@@ -6,7 +6,8 @@ use App\Lettre;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
-use Barryvdh\DomPDF\PDF as PDF;
+use App\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
@@ -165,7 +166,7 @@ class PatientsController extends Controller
     public function export_ordonance($id)
     {
         //$this->authorize('print', Patient::class);
-        $patient = Patient::with('ordonances')->limit(1)->findOrFail($id);
+        $patient = Patient::with('ordonances')->findOrFail($id);
 
         $pdf = PDF::loadView('admin.etats.ordonance', compact('patient'));
 

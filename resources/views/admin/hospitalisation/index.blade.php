@@ -4,9 +4,9 @@
 
 @section('content')
 <style>
- body {
+ /*body {
     margin-top:30px;
-}
+}*/
 .stepwizard-step p {
     margin-top: 0px;
     color:#666;

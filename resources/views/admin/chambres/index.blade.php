@@ -38,7 +38,7 @@
                             <td>CATEGORIE</td>
                             <td>PRIX</td>
                             <td>STATUT</td>
-                            <td>EDITER</td>
+                            <td>ACTION</td>
                             {{--<td>SUPPRIMER</td>--}}
                         </tr>
                         <tbody>
@@ -48,8 +48,25 @@
                                 <td>{{$chambre->numero}}</td>
                                 <td>{{$chambre->categorie}}</td>
                                 <td>{{$chambre->prix}}</td>
-                                <td>{{$chambre->statut}}</td>
-                                 <td><a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                                <td><span class="badge badge-primary">{{$chambre->statut}}</span></td>
+                                 <td>
+                                    <a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary" title="Modifier les informations de la chambre"><i class="far fa-edit"></i>
+                                    </a>
+                                    @if($chambre->statut == 'occupé')
+                                        <form style="display: inline-flex;" action="{{ route('chambres_minus.update',$chambre->id)}}" method="post">
+                                            @csrf @method('PATCH')
+                                            <input type="hidden" name="patient" value="null">
+                                            <input type="hidden" name="statut" value="libre" name="statut">
+                                            <p data-placement="top" data-toggle="tooltip" title="Liberer la chambre">
+                                                <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-minus"></i></button>
+                                            </p>
+                                        </form>
+                                    @endif
+                                    @if($chambre->statut == 'libre')
+                                        <a href="{{ route('chambres.attribute',$chambre->id)}}" class="btn btn-success" title="Attribuer cette chambre à un patient"><i class="fas fa-plus"></i>
+                                        </a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

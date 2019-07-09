@@ -91,17 +91,17 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="chambre" style='display:none;'>
-                                        <td>Chambre :</td>
-                                        <td>
-                                            <select class="form-control" name="chambre_id">
-                                                <option value="">Sélectionner une chambre</option>
-                                                @foreach($chambres as $chambre)
-                                                    <option value="{{ $chambre->id }}">{{ $chambre->categorie }}</option>
-                                                @endforeach
-                                            </select>
-                                        </td>
-                                    </tr>
+                                    {{--<tr id="chambre" style='display:none;'>--}}
+                                        {{--<td>Chambre :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select class="form-control" name="chambre_id">--}}
+                                                {{--<option value="">Sélectionner une chambre</option>--}}
+                                                {{--@foreach($chambres as $chambre)--}}
+                                                    {{--<option value="{{ $chambre->id }}">{{ $chambre->categorie }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
                                     {{--<tr id="bloc" style='display:none;'>--}}
                                         {{--<td>Bloc :</td>--}}
                                         {{--<td>--}}

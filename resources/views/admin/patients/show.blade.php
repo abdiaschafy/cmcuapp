@@ -250,7 +250,7 @@
                                         <td>{{ $ordonance->description }}</td>
                                         <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
                                         <td>
-                                            <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                            <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $ordonance->id) }}"><i class="fas fa-print"></i></a>
                                         </td>
                                     </tr>
                                 @endforeach

@@ -23,8 +23,8 @@ class CompteRenduHospitalisationController extends Controller
             'consultations' => $patient->consultations()->latest()->first(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossier' => $patient->dossiers,
-            'compte_rendu_bloc_operatoires' =>$patient->compte_rendu_bloc_operatoires()->latest()->first(),
-            'compte_rendu_hospitalisations' =>$patient->compte_rendu_hospitalisations()->latest()->first()
+            'compte_rendu_bloc_operatoires' => $patient->compte_rendu_bloc_operatoires()->latest()->first(),
+            'compte_rendu_hospitalisations' => $patient->compte_rendu_hospitalisations()->latest()->first()
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Patient;
 use Illuminate\Http\Request;
 use App\Chambre;
 use Illuminate\Support\Facades\Auth;
@@ -58,11 +59,12 @@ class ChambresController extends Controller
     }
 
 
-    public function search()
+    public function attribute($id)
     {
-        $chambres = Chambre::search(request('search'))->paginate(5);
+        $chambre = Chambre::find($id);
+        $patients = Patient::all();
 
-        return view('admin.chambres.index', ['chambres' => $chambres]);
+        return view('admin.chambres.attribute', compact('chambre', 'patients'));
     }
 
 
@@ -89,18 +91,31 @@ class ChambresController extends Controller
         $chambre->categorie = $request->get('categorie');
         $chambre->prix = $request->get('prix');
 
-
-//        $chambre->user_id = Auth::id();
-
         $chambre->save();
 
         return redirect()->route('chambres.index')->with('success', 'La mise à jour a bien été éffectuer');
     }
 
-
-    public function destroy($id)
+    public function updateStatus(Request $request, Chambre $chambre)
     {
-        //
+        $chambre->update($request->only(
+            [
+                'patient',
+                'statut'
+            ]));
+
+        return redirect()->route('chambres.index')->with('success', 'La chambre a bien été attribué');
+    }
+
+    public function updateMinus(Request $request, Chambre $chambre)
+    {
+        $chambre->update($request->only(
+            [
+                'patient',
+                'statut'
+            ]));
+
+        return redirect()->route('chambres.index')->with('success', 'La chambre a bien été liberer');
     }
 
 }

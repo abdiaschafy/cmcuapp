@@ -24,7 +24,12 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             @if (count($events)>0)
-                                <p class="btn btn-primary offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> la liste de vos rendez-vous en cours</p>
+                                <p class="btn btn-primary offset-2">Dr 
+                                    <strong>
+                                        @foreach($events as $event)
+                                            {{ $event->medecin }}
+                                        @endforeach
+                                    </strong> la liste de vos rendez-vous en cours</p>
                             @else
                                 <p class="btn btn-info offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
                             @endif

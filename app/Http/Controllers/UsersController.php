@@ -65,12 +65,12 @@ class UsersController extends Controller
 
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
-        $this->authorize('update', $user);
+//        $this->authorize('update', $user);
 
         $roles = Role::all();
-        $user = User::with('roles')->first();
+        $user = User::with('roles')->find($id);
 
         return view("admin.users.edit")->withUser($user)->withRoles($roles);
     }
