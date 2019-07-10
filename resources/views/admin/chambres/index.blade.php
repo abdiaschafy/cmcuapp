@@ -48,7 +48,11 @@
                                 <td>{{$chambre->numero}}</td>
                                 <td>{{$chambre->categorie}}</td>
                                 <td>{{$chambre->prix}}</td>
-                                <td><span class="badge badge-primary">{{$chambre->statut}}</span></td>
+                                @if($chambre->statut == 'occupé')
+                                    <td><span class="badge badge-danger">{{$chambre->statut}}</span></td>
+                                @elseif($chambre->statut == 'libre')
+                                    <td><span class="badge badge-primary">{{$chambre->statut}}</span></td>
+                                @endif
                                  <td>
                                     <a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary" title="Modifier les informations de la chambre"><i class="far fa-edit"></i>
                                     </a>

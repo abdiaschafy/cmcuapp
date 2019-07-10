@@ -27,7 +27,9 @@
                                 <p class="btn btn-primary offset-2">Dr 
                                     <strong>
                                         @foreach($events as $event)
-                                            {{ $event->medecin }}
+                                            @if(Auth()->user()->name != $event->medecin )
+                                                {{ $event->medecin }}
+                                            @endif
                                         @endforeach
                                     </strong> la liste de vos rendez-vous en cours</p>
                             @else
@@ -56,6 +58,7 @@
                                             <td>{{ $event->title }}</td>
                                             <td>{{ $event->patients->name }}</td>
                                             <td>{{ $event->date }}</td>
+                                            <td>{{ $event->medecin }}</td>
                                             <td>{{ $event->start_time }}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('events.edit', $event->id) }}" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" title="Modifier les informations relative a ce rendez-vous">
