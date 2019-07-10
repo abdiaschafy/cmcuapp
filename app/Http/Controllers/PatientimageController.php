@@ -15,7 +15,7 @@ class PatientimageController extends Controller
     {
         $patients = Patient::with('examens')->get();
         
-        return view('admin.examens.index', compact('patients','examens'));
+        return view('admin.examens.index', compact('patients'));
 
     }
 
