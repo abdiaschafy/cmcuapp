@@ -52,10 +52,14 @@
                                     </tr>
                                     @endforeach 
                                   @endforeach  
-                                
-
+           
                             </tbody>
                         </table>
+                        <br>
+                        <div class="col-md-12 text-center">
+
+                        <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
+</div>
                         <div class="clearfix"></div>
                         {{--{{ $patients->links() }}--}}
                     </div>
