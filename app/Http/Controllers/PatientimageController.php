@@ -38,10 +38,10 @@ class PatientimageController extends Controller
    // $patient->id = $request->get('patient_id');
 
             $image = $request->file('image') ;
-            $filename['imagename'] = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $filename['imagename']);
+            $filename['image'] = time() . '.' . $image->getClientOriginalExtension();
+            $location = public_path('images/' . $filename['image']);
             Image::make($image)->resize(800, 400)->save($location);
-            $examens->image = $filename['imagename'];
+            $examens->image = $filename['image'];
             $examens->save();
     
            
@@ -52,6 +52,14 @@ class PatientimageController extends Controller
         
         $examens = Examen::find($id);
         return view('admin.examens.show', compact('examens'));
+    }
+
+    public function showall(Patient $patient ){
+       
+        $patients = Patient::with('examens')->where('id', $patient->id)->get();
+        
+
+        return view('admin.examens.index', compact('patients','examens'));
     }
    
     

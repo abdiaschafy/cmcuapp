@@ -191,11 +191,18 @@
                                     {{--@endforeach--}}
                                     </tbody>
                                 </table>
-                                <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>
-                            </div>
-                        </div>
-                    </div>
+                                <a class="btn btn-danger floa" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>
 
+                                @if(count($patient->examens))
+                                    <a class="btn btn-primary float-right " href="{{ route('examens.showall', $patient->id) }}">Voire les examens du patient</a>
+                                @endif
+                                
+                            </div>
+                         </div><br>
+                         
+                    </div>
+                   
+                    
                 <div class="col-md-6  offset-md-0  toppad">
 
                     <div class="card">
