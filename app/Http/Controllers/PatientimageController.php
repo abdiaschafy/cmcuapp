@@ -39,7 +39,7 @@ class PatientimageController extends Controller
 
             $image = $request->file('image') ;
             $filename['image'] = time() . '.' . $image->getClientOriginalExtension();
-            $location = public_path('images/' . $filename['image']);
+            $location = 'images/' . $filename['image'];
             Image::make($image)->resize(800, 400)->save($location);
             $examens->image = $filename['image'];
             $examens->save();
