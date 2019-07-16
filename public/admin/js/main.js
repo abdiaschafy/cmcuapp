@@ -48,13 +48,13 @@ function searchFunction() {
 
         if (document.getElementById('decision1').checked)
         {
-            document.getElementById("chambre").style.display = 'contents';
+            document.getElementById("traitement").style.display = 'contents';
         }
         else
-            document.getElementById("chambre").style.display = 'none';
+            document.getElementById("traitement").style.display = 'none';
 
         if (document.getElementById('decision2').checked)
-            document.getElementById("bloc").style.display = 'contents';
+            document.getElementById("cout").style.display = 'contents';
         else
-            document.getElementById("bloc").style.display = 'none';
+            document.getElementById("cout").style.display = 'none';
     }

@@ -17,6 +17,9 @@
                     @if (count($patient->consultations))
                         <a href="{{ route('compte_rendu_hos.create', $patient->id) }}" class="btn btn-primary float-left"> Compte rendu d'hospitalisation</a>
                     @endif
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal"
+                                data-whatever="@mdo"><i class="far fa-plus-square"></i> Nouvelle ordonance
+                        </button>
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right"><i class="fas fa-arrow-left"></i>  Retour à la liste des patients</a>
                 </div>
                 <br>
@@ -28,44 +31,48 @@
                                 <table class="table table-user-information ">
                                     <tbody>
                                     <tr>
-                                        <td>NOM DU PATIENT :</td>
+                                        <td><b>NOM DU PATIENT :</b></td>
                                         <td>{{ $patient->name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>NUMERO DE DOSSIER :</td>
+                                        <td><b>PRENOM :</b></td>
+                                        <td>{{ $patient->name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>NUMERO DE DOSSIER :</b></td>
                                         <td>{{ $patient->numero_dossier }}</td>
                                     </tr>
                                     <tr>
-                                        <td>FARIS DE CONSULTATION :</td>
+                                        <td><b>FARIS DE CONSULTATION :</b></td>
                                         <td>{{ $patient->frais }} FCFA</td>
                                     </tr>
                                     @foreach ($patient->dossiers as $dossier)
                                         <tr>
-                                            <td>GENRE :</td>
+                                            <td><b>GENRE :</b></td>
                                             <td>{{ $dossier->sexe }}</td>
                                         </tr>
                                         <tr>
-                                            <td>PROFESSION :</td>
+                                            <td><b>PROFESSION :</b></td>
                                             <td>{{ $dossier->profession }}</td>
                                         </tr>
                                         <tr>
-                                            <td>ADRESSE :</td>
+                                            <td><b>ADRESSE :</b></td>
                                             <td>{{ $dossier->adresse }}</td>
                                         </tr>
                                         <tr>
-                                            <td>LIEU DE NAISSANCE :</td>
+                                            <td><b>LIEU DE NAISSANCE :</b></td>
                                             <td>{{ $dossier->lieu_naissance }}</td>
                                         </tr>
                                         <tr>
-                                            <td>DATE DE NAISSANCE :</td>
+                                            <td><b>DATE DE NAISSANCE :</b></td>
                                             <td>{{ $dossier->date_naissance }}</td>
                                         </tr>
                                         <tr>
-                                            <td>PERSONNE A CONTACTER :</td>
+                                            <td><b>PERSONNE A CONTACTER :</b></td>
                                             <td>{{ $dossier->personne_contact }}</td>
                                         </tr>
                                         <tr>
-                                            <td>TELEPHONE PERSONNE A CONTACTER :</td>
+                                            <td><b>TELEPHONE PERSONNE A CONTACTER :</b></td>
                                             <td>{{ $dossier->tel_personne_contact }}</td>
                                         </tr>
                                     @endforeach
@@ -173,28 +180,12 @@
                                             <td></td>
                                         </tr>
                                     @endif
-                                    <tr>
-                                        <td>
-                                            <h1 class="text-info">SOINS RECUS</h1>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                    {{--@foreach($patient->soins as $soins)--}}
-                                        {{--<tr>--}}
-                                            {{--<td class="table-active">DATE :</td>--}}
-                                            {{--<td class="table-active">{{ $soins->created_at->toFormattedDateString() }}</td>--}}
-                                        {{--</tr>--}}
-                                        {{--<tr>--}}
-                                            {{--<td>SOINS :</td>--}}
-                                            {{--<td>{{ $soins->content }}</td>--}}
-                                        {{--</tr>--}}
-                                    {{--@endforeach--}}
                                     </tbody>
                                 </table>
-                                <a class="btn btn-danger floa" href="{{ route('consultations.create', $patient->id) }}">Nouvelle consultation</a>
+                                <a class="btn btn-danger floa" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient"><i class="fas fa-book"></i> Nouvelle consultation</a>
 
                                 @if(count($patient->examens))
-                                    <a class="btn btn-primary float-right " href="{{ route('examens.showall', $patient->id) }}">Voire les examens du patient</a>
+                                    <a class="btn btn-primary float-right " href="{{ route('examens.showall', $patient->id) }}">Résultats d'examens</a>
                                 @endif
                                 
                             </div>
@@ -215,19 +206,19 @@
                                 <table class="table table-user-information ">
                                     <tbody>
                                     <tr>
-                                        <td>Nom du patient</td>
+                                        <td><b>Nom du patient :</b></td>
                                         <td>
                                             <input name="name" type="text" value='{{ $patient->name }}'>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Assurance</td>
+                                        <td><b>Assurance :</b></td>
                                         <td>
                                             <Input name="assurance" type="text" value='{{ $patient->assurance }}'>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Numéro d'assurance</td>
+                                        <td><b>Numéro d'assurance :</b></td>
                                         <td>
                                             <Input name="numero_assurance" type="text" value='{{ $patient->numero_assurance }}'>
                                         </td>
@@ -270,6 +261,37 @@
                     @endif
 
                 </div>
+
+                <div class="modal fade" id="ordonanceModal" tabindex="-1" role="dialog"
+                     aria-labelledby="ordonanceModal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ordonance</h5>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('ordonances.store') }}" method="post">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="summernote" class="col-form-label">Ordonance
+                                            :</label>
+                                        <textarea id="summary-ckeditor" name="description" rows="15" class="form-control">{{ old('description') }}</textarea>
+                                    </div>
+                                    <input type="hidden" value="{{ $patient->id }}" name="patient_id">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Fermer
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -17,8 +17,7 @@
                 @can('update', \App\User::class)
                     <div class="stat-grid p-3 d-flex align-items-center justify-content-between bg-primary">
                         <div class="s-l">
-                            <h5>Utilisateurs</h5>
-                            <p class="paragraph-agileits-w3layouts text-white">inscrits</p>
+                            <h5>UTILISATEURS</h5>
                         </div>
                         <div class="s-r">
                             <h6>{{ $users }}
@@ -30,7 +29,7 @@
                 @can('create', \App\Patient::class)
                    <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
                            <div class="s-l">
-                                <h5>Patients</h5>
+                                <h5>PATIENTS</h5>
                             </div>
                             <div class="s-r">
                                 <h6>{{ $patients }}
@@ -42,8 +41,7 @@
                     @can('create', \App\chambre::class)
                         <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
                             <div class="s-l">
-                                <h5>Total des chambres</h5>
-                                <p class="paragraph-agileits-w3layouts">Toutes les catégories</p>
+                                <h5>CHAMBRES</h5>
                             </div>
                             <div class="s-r">
                                 <h6>{{ count(\App\Chambre::all()) }}
@@ -54,7 +52,7 @@
                     @endcan
                 <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
                 <div class="s-l">
-                    <h5>Fiche de Satisfaction</h5>
+                    <h5>FICHES DE SATISFACTIONS</h5>
                     <p class="paragraph-agileits-w3layouts"></p>
                 </div>
                 <div class="s-r">
@@ -70,7 +68,7 @@
             @can('create', \App\Produit::class)
                 <div class="col-xl mt-3">
                     <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
-                        <h2>TOTAL PRODUIT</h2>
+                        <h2>PRODUITS</h2>
                         <i class="fas fa-medkit"></i>
                         <h1><P>{{ $produits }}</P> </h1>
                     </a>

@@ -20,8 +20,9 @@ class ConsultationsController extends Controller
         $c = 1;
         $produits = Produit::where('categorie', '=', 'PHARMACEUTIQUE')->get();
         $users = User::where('role_id', '=', 2)->get();
+        $chambres = Chambre::all();
 
-        return view('admin.consultations.create', compact('mytime', 'patient', 'c', 'produits', 'users'));
+        return view('admin.consultations.create', compact('mytime', 'patient', 'c', 'produits', 'users', 'chambres'));
     }
 
     public function store(ConsultationRequest $request)

@@ -50,7 +50,7 @@
         </div>
         <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $patient->name }}</p>
+            <p><u>Nom du patient:</u> {{ $ordonance->patient->name }}</p>
         </div>
     </div>
     <br>
@@ -65,7 +65,7 @@
     <br>
     <div class="">
         <h5>
-            {!! nl2br(e($patient->ordonances[0]->description)) !!}
+            {!! nl2br(e($ordonance->description)) !!}
         </h5>
     </div>
     <footer class="footer">

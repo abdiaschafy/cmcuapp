@@ -12,9 +12,6 @@
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
                             class="fas fa-arrow-left"></i> Retour au dossier patients</a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal"
-                            data-whatever="@mdo">Nouvelle ordonance
-                    </button>
                 </div>
                 <br>
                 <br>
@@ -36,34 +33,42 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td>Commentaire :</td>
+                                        <td><b>Chirurgien de référence :</b></td>
                                         <td>
-                                            <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
+                                            <select class="form-control" name="groupe" id="groupe">
+                                                <option value="">Nom du chirurgien de référence</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Diagnostique du médécin :</td>
+                                        <td><b>Motif de consultation :</b></td>
                                         <td>
-                                            <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
+                                            <textarea name="motif" cols="45" rows="5" placeholder="Motif de la consultation" required>{{ old('motif') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Antécédent médicaux :</td>
+                                        <td><b>Antécédent médicaux :</b></td>
                                         <td>
                                             <textarea name="antecedent" cols="45" rows="3">{{ old('antecedent') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Allergies :</td>
+                                        <td><b>Antécédent chirurgicaux :</b></td>
+                                        <td>
+                                            <textarea name="antecedent_chi" cols="45" rows="3">{{ old('antecedent_chi') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Allergies :</b></td>
                                         <td>
                                             <textarea name="allergie" cols="45" rows="2">{{ old('allergie') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Goupes sanguin du patient :</td>
+                                        <td><b>Goupe sanguin du patient :</b></td>
                                         <td>
                                             <select class="form-control" name="groupe" id="groupe">
-                                                <option value="">Groupe sanguin</option>
+                                                <option value="">Groupes sanguins</option>
                                                 <option value="O-">O-</option>
                                                 <option value="O+">O+</option>
                                                 <option value="B-">B-</option>
@@ -79,100 +84,53 @@
                                         <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
-                                        <td>Décision :</td>
+                                        <td><b>Commentaire :</b></td>
+                                        <td>
+                                            <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Examens physique :</b></td>
+                                        <td>
+                                            <textarea name="examen_physique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('examen_physique') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Examens corporels :</b></td>
+                                        <td>
+                                            <textarea name="examen_corporel" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('examen_corporel') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Diagnostique du médécin :</b></td>
+                                        <td>
+                                            <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Décision :</b></td>
                                         <td class="form-group small">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" onchange="valueChanged()" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision1" value="Hospitalisation"> Hospitalisation
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision1" value="Hospitalisation"> Hospitalisation
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" onchange="valueChanged()" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision2" value="Intervention chirurgicale"> Intervention
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision2" value="Intervention chirurgicale"> Intervention chirurgicale
                                                 </label>
                                             </div>
                                         </td>
                                     </tr>
-                                    {{--<tr id="chambre" style='display:none;'>--}}
-                                        {{--<td>Chambre :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select class="form-control" name="chambre_id">--}}
-                                                {{--<option value="">Sélectionner une chambre</option>--}}
-                                                {{--@foreach($chambres as $chambre)--}}
-                                                    {{--<option value="{{ $chambre->id }}">{{ $chambre->categorie }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr id="bloc" style='display:none;'>--}}
-                                        {{--<td>Bloc :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select name="chambre_id" id="">--}}
-                                                {{--<option value="">Sélectionner le bloc opératoire</option>--}}
-                                                {{--@foreach($blocs as $blocs)--}}
-                                                    {{--<option value="{{ $blocs->id }}">Bloc {{ $b++ }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    <tr>
+                                    <tr id="traitement" style='display:none;'>
+                                        <td><b>Traitement proposé :</b></td>
                                         <td>
-                                            <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                        </td>
-                                        <td></td>
-                                    </tr>
-                                </form>
-
-                                <tr>
-                                    <td>
-                                        <h4><strong>Compte rendu opératoire</strong></h4>
-                                    </td>
-                                    <td></td>
-                                </tr>
-                                <form action="{{ route('compte_rendu_bloc.store') }}" method="post">
-                                    @csrf
-                                    <tr>
-                                        <td>Nom du chirurgien :</td>
-                                        <td>
-                                            <select class="form-control" name="chirurgien" id="chirurgien" required>
-                                                <option value=""> Nom du chirurgien</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->name }}">{{ $user->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <textarea name="traitement" cols="45" rows="4" placeholder="Traitement proposé" required>{{ old('traitement') }}</textarea>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Nom de l'anesthésiste :</td>
+                                    <tr id="cout" style='display:none;'>
+                                        <td><b>Coût de l'opération :</b></td>
                                         <td>
-                                            <select class="form-control" name="anesthesiste" id="anesthesiste" required>
-                                                <option value=""> Nom de l'anesthésiste</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->name }}">{{ $user->name }}</option>
-                                                @endforeach
-                                            </select>
+                                            <input class="form-control col-md-5" type="number" name="cout" id="cout" value="{{ old('cout') }}">
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Durée de l'inervention :</td>
-                                        <td>
-                                            <input name="dure_intervention" value="{{ old('dure_intervention') }}"
-                                                   type="time">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Détails de l'intervention :</td>
-                                        <td>
-                                            <textarea name="detail_intervention" id="detail_intervention" cols="45" rows="3">{{ old('detail_intervention') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Coût de l'inervention :</td>
-                                        <td>
-                                            <input name="cout" value="{{ old('cout') }}" type="number"
-                                                   placeholder="En fcfa" required>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
                                         <td>
@@ -182,35 +140,67 @@
                                     </tr>
                                 </form>
 
-                                <div class="modal fade" id="ordonanceModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="ordonanceModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Ordonance</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('ordonances.store') }}" method="post">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="summernote" class="col-form-label">Ordonance
-                                                            :</label>
-                                                        <textarea id="summary-ckeditor" name="description" rows="15" class="form-control">{{ old('description') }}</textarea>
-                                                    </div>
-                                                    <input type="hidden" value="{{ $patient->id }}" name="patient_id">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Fermer
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{--<tr>--}}
+                                    {{--<td>--}}
+                                        {{--<h4><strong>Compte rendu opératoire</strong></h4>--}}
+                                    {{--</td>--}}
+                                    {{--<td></td>--}}
+                                {{--</tr>--}}
+                                {{--<form action="{{ route('compte_rendu_bloc.store') }}" method="post">--}}
+                                    {{--@csrf--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Nom du chirurgien :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select class="form-control" name="chirurgien" id="chirurgien" required>--}}
+                                                {{--<option value=""> Nom du chirurgien</option>--}}
+                                                {{--@foreach ($users as $user)--}}
+                                                    {{--<option value="{{ $user->name }}">{{ $user->name }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Nom de l'anesthésiste :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<select class="form-control" name="anesthesiste" id="anesthesiste" required>--}}
+                                                {{--<option value=""> Nom de l'anesthésiste</option>--}}
+                                                {{--@foreach ($users as $user)--}}
+                                                    {{--<option value="{{ $user->name }}">{{ $user->name }}</option>--}}
+                                                {{--@endforeach--}}
+                                            {{--</select>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Durée de l'inervention :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<input name="dure_intervention" value="{{ old('dure_intervention') }}"--}}
+                                                   {{--type="time">--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Détails de l'intervention :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<textarea name="detail_intervention" id="detail_intervention" cols="45" rows="3">{{ old('detail_intervention') }}</textarea>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>Coût de l'inervention :</td>--}}
+                                        {{--<td>--}}
+                                            {{--<input name="cout" value="{{ old('cout') }}" type="number"--}}
+                                                   {{--placeholder="En fcfa" required>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<input name="patient_id" value="{{ $patient->id }}" type="hidden">--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>--}}
+                                            {{--<button type="submit" class="btn btn-primary">Enregistrer</button>--}}
+                                        {{--</td>--}}
+                                        {{--<td></td>--}}
+                                    {{--</tr>--}}
+                                {{--</form>--}}
+
                                 <div class="modal fade" id="soinsModal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-lg" role="document">
