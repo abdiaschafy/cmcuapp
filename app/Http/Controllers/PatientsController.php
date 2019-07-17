@@ -42,9 +42,10 @@ class PatientsController extends Controller
 
             $request->validate([
                 'name'=> 'required',
-                'assurance'=> 'required',
-                'numero_assurance'=> 'required',
+                'assurance'=> '',
+                'numero_assurance'=> '',
                 'numero_dossier'=> '',
+                'prise_en_charge'=> '',
             ]);
          $patient = new Patient();
 
@@ -52,6 +53,7 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
+        $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->user_id = Auth::id();
 
         $patient->save();

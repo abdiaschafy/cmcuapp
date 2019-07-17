@@ -28,8 +28,9 @@ class CreatePatientRequest extends FormRequest
 
         return [
             'name'=> 'required',
-            'assurance'=> 'required',
-            'numero_assurance'=> 'required',
+            'assurance'=> '',
+            'numero_assurance'=> '',
+            'prise_en_charge'=> '',
             'motif'=> '',
             'numero_dossier'=> '',
         ];

@@ -5,7 +5,7 @@
 @section('content')
 
     <body>
-    {{--<div class="se-pre-con"></div>--}}
+    <div class="se-pr-con"></div>
     <div class="wrapper">
     @include('partials.side_bar')
 
@@ -30,16 +30,31 @@
                                 <label for="name" class="col-form-label text-md-right">Nom <span class="text-danger">*</span></label>
                                 <input name="name" class="form-control" value="{{ old('name') }}" type="text" placeholder="Nom du patient" required>
                             </div>
-
+                            <div class="form-group">
+                            
                             <div class="form-group">
                                 <label for="assurance" class="col-form-label text-md-right">Assurance</label>
-                                <input name="assurance" class="form-control" value="{{ old('assurance') }}" type="text" placeholder="Assurance" required>
+                                <input name="assurance" class="form-control" value="{{ old('assurance') }}" type="text" placeholder=" nom de l'assurance si le patient est assuré" >
                             </div>
 
                             <div class="form-group">
                                 <label for="numero_assurance" class="col-form-label text-md-right">Numéro d'assurance</label>
-                                <input name="numero_assurance" class="form-control" value="{{ old('numero_assurance') }}" type="text" placeholder="Numéro d'assurance" required>
+                                <input name="numero_assurance" class="form-control" value="{{ old('numero_assurance') }}" type="text" placeholder="Numéro d'assurance si le patient est assuré" >
                             </div>
+                            <div class="form-group">
+                            <label for="prise_en_charge"> Taux de Prise en Charge : <span class="text-danger"></span></label>
+                            <select class="form-control" name="prise_en_charge" id="prise_en_charge" required>
+                            <option>aucune</option>
+                                <option>25%</option>
+                                <option>30%</option>
+                                <option>50%</option>
+                                 <option>70%</option>
+                                <option>75%</option>
+                                <option>100%</option>
+                            </select>
+                        </div>
+                        </div>
+
                             </br>
 
                             <button type="submit" class="btn btn-primary btn-lg col-md-5" title="En cliquant sur ce bouton vous enregistrer un nouveau patient">Ajouter</button>
