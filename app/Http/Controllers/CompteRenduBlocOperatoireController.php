@@ -5,10 +5,18 @@ namespace App\Http\Controllers;
 use App\CompteRenduBlocOperatoire;
 use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 
 class CompteRenduBlocOperatoireController extends Controller
 {
+    public function create(Patient $patient)
+    {
+        $users = User::where('role_id', '=', 2)->get();
+        return view('admin.operations.create', compact('patient', 'users'));
+    }
+
+
     public function store(CompteRenduBlocOperatoireRequest $request, Patient $patient)
     {
         $patient = Patient::findOrFail($request->patient_id);

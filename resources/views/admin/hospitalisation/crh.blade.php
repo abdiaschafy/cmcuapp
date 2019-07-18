@@ -61,6 +61,11 @@
         @include('partials.header')
 
         <div class="container">
+        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right">
+                                <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
+                            </a>
+                            <br>
+                            <br>
         @include('partials.flash')
             <div class="stepwizard">
                     <div class="stepwizard-row setup-panel">
@@ -71,14 +76,6 @@
                         <div class="stepwizard-step col-xs-3">
                             <a href="#step-2" type="button" class="btn btn-default btn-circle" disabled="disabled">2</a>
                             <p><small>Traitement de sortie</small></p>
-                        </div>
-                        <div class="stepwizard-step col-xs-3">
-                            <a href="#step-3" type="button" class="btn btn-default btn-circle" disabled="disabled">3</a>
-                            <p><small>Suite opératoires</small></p>
-                        </div>
-                        <div class="stepwizard-step col-xs-3">
-                            <a href="#step-4" type="button" class="btn btn-default btn-circle" disabled="disabled">4</a>
-                            <p><small>Sortie</small></p>
                         </div>
                     </div>
                 </div>
@@ -98,7 +95,7 @@
                                 @endforeach
                             </p>
                             <p>
-                                Médecin Traitant : 
+                                Médecin Traitant :
                                 @if(isset($compte_rendu_bloc_operatoires))
                                     {{ $compte_rendu_bloc_operatoires->chirurgien }}
                                 @endif
@@ -155,7 +152,7 @@
                     </div>
                     <div class="panel panel-primary setup-content" id="step-4">
                     <div class="panel-heading">
-                         <h3 class="panel-title"><u>Sortie</u></h3>
+                         <h3 class="panel-title"><u>Conclusion</u></h3>
                     </div>
                     <div class="panel-body">
                         <p>
@@ -173,7 +170,7 @@
                 <div class="card" style="width: 69rem;">
                 <div class="card-body">
                 @include('partials.flash_form')
-                    <h5 class="card-title">Compte rendu d'hospitalisation:</h5>
+                    <h5 class="card-title">Compte rendu opératoire:</h5>
                     <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
                     <hr>
                     <form class="form-group col-md-10" action="{{ route('compte_rendu_hos.store') }}" method="POST">
@@ -190,7 +187,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="sortie" class="col-form-label text-md-right">Sortie du patient: <span class="text-danger">*</span></label>
+                                <label for="sortie" class="col-form-label text-md-right">Conclusions: <span class="text-danger">*</span></label>
                                 <textarea name="sortie" class="form-control" cols="15" rows="4">{{ old('sortie') }}</textarea>
                             </div>
                             <input type="hidden" name="patient_id" value="{{ $patient->id }}">

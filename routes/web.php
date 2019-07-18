@@ -99,12 +99,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
 
 
+    Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');
     Route::post('compte-rendu-bloc', 'CompteRenduBlocOperatoireController@store')->name('compte_rendu_bloc.store');
     Route::get('compte-rendu-bloc/{id}', 'CompteRenduBlocOperatoireController@compte_rendu_bloc_pdf')->name('compte_rendu_bloc_pdf.pdf');
 
     Route::get('compte-rendu-hospitalisation/create/{patient}', 'CompteRenduHospitalisationController@create')->name('compte_rendu_hos.create');
     Route::post('compte-rendu-hospitalisation', 'CompteRenduHospitalisationController@store')->name('compte_rendu_hos.store');
     Route::get('compte-rendu-hospitalisation-etat/{id}', 'CompteRenduHospitalisationController@compte_rendu_hos')->name('compte_rendu_hos_pdf.pdf');
+
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');

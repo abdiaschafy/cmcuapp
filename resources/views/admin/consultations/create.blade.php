@@ -90,7 +90,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Examens physique :</b></td>
+                                        <td><b>Examens physiques :</b></td>
                                         <td>
                                             <textarea name="examen_physique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('examen_physique') }}</textarea>
                                         </td>

@@ -34,12 +34,12 @@
                     <div class="form-group small">
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Homme"> Homme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Masculin"> Masculin
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Femme"> Femme
+                                <input class="form-check-input" type="radio" name="sexe" id="sexe" value="Féminin"> Féminin
                             </label>
                         </div>
                     </div>

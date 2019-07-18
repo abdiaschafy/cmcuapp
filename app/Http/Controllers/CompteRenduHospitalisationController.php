@@ -17,7 +17,7 @@ class CompteRenduHospitalisationController extends Controller
     public function create(Patient $patient)
     {
 
-        return view('admin.hospitalisation.index', [
+        return view('admin.hospitalisation.crh', [
 
             'patient' => $patient,
             'consultations' => $patient->consultations()->latest()->first(),
