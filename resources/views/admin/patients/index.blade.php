@@ -28,6 +28,7 @@
                                 NUMERO
                             </th>
                             <th>NOM</th>
+                            <th>Assurance</th>
                             <th>DATE DE CREATION</th>
                             {{--<th>FRAIS DE CONSULTATION</th>--}}
                             {{--@can('consulter', \App\Patient::class)--}}
@@ -52,6 +53,7 @@
                                 <tr>
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
+                                    <td>{{ $patient->prise_en_charge }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
                                     {{--<td>{{ $patient->frais }}</td>--}}
                                     {{--<td>{{ $user->updated_at->toFormattedDateString() }}</td>--}}

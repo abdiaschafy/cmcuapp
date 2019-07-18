@@ -10,6 +10,7 @@ class Patient extends Model
         'numero_dossier',
         'assurance',
         'numero_assurance',
+        'prise_en_charge',
         'user_id',
         'telephone',
         'motif',
