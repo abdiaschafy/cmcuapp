@@ -1,10 +1,22 @@
 @extends('layouts.admin') @section('title', 'CMCU | dossier patient') @section('content')
 
 
+    <style>
+        .grid-container {
+            display: grid;
+            grid-gap: 50px 100px;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+        }
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 12px;
+            margin-right: 1px;
+        }
+    </style>
     <body>
-    {{--
-
-	<div class="se-pre-con"></div>--}}
 
     <div class="wrapper">
     @include('partials.side_bar')
@@ -37,7 +49,9 @@
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
-                                <tbody>
+                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye-slash"></i> Détails personnels</button>
+
+                                <tbody id="myDIV">
                                 <tr>
                                     <td>
                                         <b>NOM DU PATIENT :</b>
@@ -131,7 +145,9 @@
                                         <td>{{ $dossier->tel_personne_contact }}</td>
                                     </tr>
                                 @endforeach
+                                </tbody>
 
+                                <tbody>
                                 <tr>
                                     <td>
                                         <a href="{{ route('consultations.index') }}">
@@ -451,10 +467,11 @@
                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                                         </form>
                                     </div>
-                                    <div id="menu1" class="tab-pane fade">
-                                        <h3>Menu 1</h3>
-                                        <p>Some content in menu 1.</p>
-                                    </div>
+                                    <form id="menu1" class="tab-pane fade" action="">
+                                        <h3 class="text-center mb-4">Feuille d'examens complémentaire</h3>
+                                        @include('partials.feuille_examen')
+                                        <button class="btn btn-primary btn-md mt-2">Enregistrer</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -463,6 +480,16 @@
             </div>
         </div>
     </div>
+    <script>
+        function ShowDetailsPatient() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "contents";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     </body>
 
 @stop

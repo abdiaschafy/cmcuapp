@@ -114,26 +114,6 @@ class PatientsController extends Controller
         return view('admin.lettres.index', compact('lettres'));
     }
 
-    public function create_sortie()
-    {
-        $patients = Patient::all();
-        $users = User::where('id', '=', 2)->get();
-        return view('admin.lettres.create', compact('patients', 'users'));
-    }
-
-    public function store_sortie()
-    {
-        Lettre::create([
-           'patient' => \request('patient'),
-           'medecin' => \request('medecin'),
-           'objet' => \request('objet'),
-           'message' => \request('message'),
-           'refference' => mt_rand(1000, 2000)
-        ]);
-
-        return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
-    }
-
 
     public function print_sortie($id)
     {

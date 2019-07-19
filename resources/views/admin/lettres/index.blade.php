@@ -61,13 +61,6 @@
                 </div>
             </div>
         </div>
-        @can('print', \App\Patient::class)
-            <div class="col-md-12 text-center">
-
-                <a href="{{ route('create.sortie') }}" class="btn btn-primary" title="Enregistrer la nouvelle lettre de sortie">Nouveau</a>
-
-            </div>
-        @endcan
 
         </div>
     </div>
