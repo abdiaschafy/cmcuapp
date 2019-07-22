@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Lettre;
+use App\Consultation;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
-use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
@@ -115,11 +115,13 @@ class PatientsController extends Controller
     }
 
 
-    public function print_sortie($id)
+    public function print_sortie(Patient $patient)
     {
-        $lettre = Lettre::find($id);
 
-        $pdf = PDF::loadView('admin.etats.lettre', compact('lettre'));
+        $pdf = PDF::loadView('admin.etats.lettre', [
+
+            'consultations' => Consultation::latest()->first()
+        ]);
 
         $pdf->save(storage_path('lettre').'.pdf');
 

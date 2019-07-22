@@ -69,7 +69,7 @@
 
         <div class="container">
             <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right">
-                <i class="fas fa-arrow-left"></i> Retour à la liste des patients
+                <i class="fas fa-arrow-left"></i> Retour au dossier patient
             </a>
             <br>
             <br>

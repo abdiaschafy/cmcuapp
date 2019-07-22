@@ -55,18 +55,23 @@
                     <input type="text" class="form-control" value="{{ old('lieu_naissance') }}" name="lieu_naissance" placeholder="Lieu de naissance">
                 </div>
 
-                <div class="col-sm-5 pb-3">
+                <div class="col-sm-4 pb-3">
                     <label for="exampleLast"><b>Portable :</b></label>
                     <input type="number" value="{{ old('portable') }}" class="form-control" name="portable" placeholder="Portable">
                 </div>
-                <div class="col-sm-5 pb-3">
-                    <label for="exampleLast"><b>Portable2 :</b></label>
+                <div class="col-sm-4 offset-2 pb-3">
+                    <label for="exampleLast"><b>Portable :</b></label>
                     <input type="number" value="{{ old('portable') }}" class="form-control" name="portable" placeholder="Portable 2">
                 </div>
 
-                <div class="col-sm-5 pb-3">
+                <div class="col-sm-4 pb-3">
                     <label for="exampleLast"><b>Fax :</b></label>
                     <input type="number" value="{{ old('fax') }}" class="form-control" name="fax" placeholder="Fax">
+                </div>
+
+                <div class="col-sm-4 offset-2 pb-3">
+                    <label for="email"><b>Email :</b></label>
+                    <input type="email" value="{{ old('email') }}" class="form-control" name="email" placeholder="Profession du patient">
                 </div>
 
                 <div class="col-sm-6 pb-3">
@@ -74,7 +79,7 @@
                     <input type="text" value="{{ old('proffession') }}" class="form-control" name="profession" placeholder="Profession du patient">
                 </div>
 
-                <div class="col-sm-6 pb-3">
+                <div class="col-sm-4 pb-3">
                     <label for="adresse"><b>Adresse :</b></label>
                     <input type="text" class="form-control" value="{{ old('adresse') }}" name="adresse" placeholder="Adresse du patient">
                 </div>

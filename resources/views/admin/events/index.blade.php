@@ -97,6 +97,7 @@
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/lang-all.js"></script>
         <script>
             //paste this code under head tag or in a seperate js file.
             // Wait for window load
@@ -139,6 +140,7 @@
                 navLinks: true,
                 editable: true,
                 eventLimit: false,
+                lang: 'fr',
                 events: [
                         @foreach($events as $event){
                         title : '{{ $event->title }}',

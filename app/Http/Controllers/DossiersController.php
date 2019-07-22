@@ -11,11 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class DossiersController extends Controller
 {
 
-    public function create()
+    public function create(Patient $patient)
     {
-        $patients = Patient::all();
 
-        return view('admin.dossiers.create', compact('patients'));
+        return view('admin.dossiers.create', compact('patient'));
     }
 
 

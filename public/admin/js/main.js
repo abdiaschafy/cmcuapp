@@ -1,3 +1,34 @@
+function ckChange(ckType){
+    // var ckName = document.getElementsByName(ckType.name);
+    // var checked = document.getElementById(ckType.id);
+    //
+    // if (checked.checked) {
+    //     for(var i=0; i < ckName.length; i++){
+    //
+    //         if(!ckName[i].checked){
+    //             ckName[i].disabled = true;
+    //         }else{
+    //             ckName[i].disabled = false;
+    //         }
+    //     }
+    // }
+    // else {
+    //     for(var i=0; i < ckName.length; i++){
+    //         ckName[i].disabled = false;
+    //     }
+    // }
+
+    if (document.getElementById('decision1').checked) {
+        document.getElementById("traitement").style.display = 'contents';
+    } else
+        document.getElementById("traitement").style.display = 'none';
+
+    if (document.getElementById('decision2').checked) {
+        document.getElementById("cout").style.display = 'contents';
+    } else
+        document.getElementById("cout").style.display = 'none';
+}
+
 
 function myFunction() {
     if (!confirm("Veuillez confirmer la suppréssion"))
@@ -25,36 +56,3 @@ function searchFunction() {
             }
         }
     }}
-
-    function ckChange(ckType){
-        var ckName = document.getElementsByName(ckType.name);
-        var checked = document.getElementById(ckType.id);
-
-        if (checked.checked) {
-            for(var i=0; i < ckName.length; i++){
-
-                if(!ckName[i].checked){
-                    ckName[i].disabled = true;
-                }else{
-                    ckName[i].disabled = false;
-                }
-            }
-        }
-        else {
-            for(var i=0; i < ckName.length; i++){
-                ckName[i].disabled = false;
-            }
-        }
-
-        if (document.getElementById('decision1').checked)
-        {
-            document.getElementById("traitement").style.display = 'contents';
-        }
-        else
-            document.getElementById("traitement").style.display = 'none';
-
-        if (document.getElementById('decision2').checked)
-            document.getElementById("cout").style.display = 'contents';
-        else
-            document.getElementById("cout").style.display = 'none';
-    }

@@ -16,11 +16,17 @@ class CreateDossiersTable extends Migration
         Schema::create('dossiers', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('patient_id')->unsigned();
-            $table->string('sexe')->nullable();
-            $table->integer('tel_personne_contact')->nullable();
+            $table->unsignedInteger('patient_id')->index();
+            $table->string('sexe');
+            $table->string('personne_confiance')->nullable();
+            $table->integer('tel_personne_confiance')->nullable();
+            $table->integer('portable_1')->nullable();
+            $table->integer('portable_2')->nullable();
             $table->string('personne_contact')->nullable();
+            $table->integer('tel_personne_contact')->nullable();
             $table->string('profession')->nullable();
+            $table->string('email')->nullable();
+            $table->string('fax')->nullable();
             $table->string('adresse')->nullable();
             $table->string('lieu_naissance')->nullable();
             $table->date('date_naissance')->nullable();

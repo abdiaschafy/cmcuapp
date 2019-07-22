@@ -33,35 +33,38 @@
                                         <td></td>
                                     </tr>
                                     <tr>
-                                        <td><b>Chirurgien de référence :</b></td>
+                                        <td><b>Médécin de référence :</b></td>
                                         <td>
-                                            <select class="form-control" name="groupe" id="groupe">
-                                                <option value="">Nom du chirurgien de référence</option>
+                                            <select class="form-control" name="medecin" id="medecin" required>
+                                                <option value=""> Nom du médécin</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->name }} {{ $user->prenom }}">{{ $user->name }} {{ $user->prenom }}</option>
+                                                @endforeach
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Motif de consultation :</b></td>
                                         <td>
-                                            <textarea name="motif" cols="45" rows="5" placeholder="Motif de la consultation" required>{{ old('motif') }}</textarea>
+                                            <textarea maxlength="30" name="motif" cols="45" rows="5" placeholder="Motif de la consultation" required>{{ old('motif') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Antécédent médicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent" cols="45" rows="3">{{ old('antecedent') }}</textarea>
+                                            <textarea maxlength="30" name="antecedent_m" cols="45" rows="3">{{ old('antecedent_m') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Antécédent chirurgicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent_chi" cols="45" rows="3">{{ old('antecedent_chi') }}</textarea>
+                                            <textarea maxlength="30" name="antecedent_c" cols="45" rows="3">{{ old('antecedent_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Allergies :</b></td>
                                         <td>
-                                            <textarea name="allergie" cols="45" rows="2">{{ old('allergie') }}</textarea>
+                                            <textarea maxlength="30" name="allergie" cols="45" rows="2">{{ old('allergie') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -86,25 +89,25 @@
                                     <tr>
                                         <td><b>Commentaire :</b></td>
                                         <td>
-                                            <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
+                                            <textarea maxlength="30" name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Examens physiques :</b></td>
                                         <td>
-                                            <textarea name="examen_physique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('examen_physique') }}</textarea>
+                                            <textarea maxlength="30" name="examen_p" cols="45" rows="3" placeholder="Examens physiques" required>{{ old('examen_p') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Examens corporels :</b></td>
                                         <td>
-                                            <textarea name="examen_corporel" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('examen_corporel') }}</textarea>
+                                            <textarea maxlength="30" name="examen_c" cols="45" rows="3" placeholder="Examens corporels" required>{{ old('examen_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Diagnostique du médécin :</b></td>
                                         <td>
-                                            <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
+                                            <textarea maxlength="30" name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -123,7 +126,7 @@
                                     <tr id="traitement" style='display:none;'>
                                         <td><b>Traitement proposé :</b></td>
                                         <td>
-                                            <textarea name="traitement" cols="45" rows="4" placeholder="Traitement proposé" required>{{ old('traitement') }}</textarea>
+                                            <textarea maxlength="30" name="traitement" cols="45" rows="4" placeholder="Traitement proposé" required>{{ old('traitement') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr id="cout" style='display:none;'>
@@ -139,67 +142,6 @@
                                         <td></td>
                                     </tr>
                                 </form>
-
-                                {{--<tr>--}}
-                                    {{--<td>--}}
-                                        {{--<h4><strong>Compte rendu opératoire</strong></h4>--}}
-                                    {{--</td>--}}
-                                    {{--<td></td>--}}
-                                {{--</tr>--}}
-                                {{--<form action="{{ route('compte_rendu_bloc.store') }}" method="post">--}}
-                                    {{--@csrf--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Nom du chirurgien :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select class="form-control" name="chirurgien" id="chirurgien" required>--}}
-                                                {{--<option value=""> Nom du chirurgien</option>--}}
-                                                {{--@foreach ($users as $user)--}}
-                                                    {{--<option value="{{ $user->name }}">{{ $user->name }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Nom de l'anesthésiste :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<select class="form-control" name="anesthesiste" id="anesthesiste" required>--}}
-                                                {{--<option value=""> Nom de l'anesthésiste</option>--}}
-                                                {{--@foreach ($users as $user)--}}
-                                                    {{--<option value="{{ $user->name }}">{{ $user->name }}</option>--}}
-                                                {{--@endforeach--}}
-                                            {{--</select>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Durée de l'inervention :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<input name="dure_intervention" value="{{ old('dure_intervention') }}"--}}
-                                                   {{--type="time">--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Détails de l'intervention :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<textarea name="detail_intervention" id="detail_intervention" cols="45" rows="3">{{ old('detail_intervention') }}</textarea>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>Coût de l'inervention :</td>--}}
-                                        {{--<td>--}}
-                                            {{--<input name="cout" value="{{ old('cout') }}" type="number"--}}
-                                                   {{--placeholder="En fcfa" required>--}}
-                                        {{--</td>--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<input name="patient_id" value="{{ $patient->id }}" type="hidden">--}}
-                                    {{--</tr>--}}
-                                    {{--<tr>--}}
-                                        {{--<td>--}}
-                                            {{--<button type="submit" class="btn btn-primary">Enregistrer</button>--}}
-                                        {{--</td>--}}
-                                        {{--<td></td>--}}
-                                    {{--</tr>--}}
-                                {{--</form>--}}
 
                                 <div class="modal fade" id="soinsModal" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -227,7 +169,7 @@
                                                     <div class="form-group">
                                                         <label for="" class="col-form-label">Liste des
                                                             soins:</label>
-                                                        <textarea id="summary-ckeditor1" rows="15" name="content" class="form-control" required>{{ old('content') }}</textarea>
+                                                        <textarea maxlength="30" id="summary-ckeditor1" rows="15" name="content" class="form-control" required>{{ old('content') }}</textarea>
                                                     </div>
                                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                                     <button type="submit" class="btn btn-primary">Enegistrer</button>

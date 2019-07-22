@@ -87,7 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('lettre-de-sortie/{id}', 'PatientsController@destroy_sortie')->name('destroy.sortie');
 
 
-    Route::get('dossiers/create', 'DossiersController@create')->name('dossiers.create');
+    Route::get('dossiers/create/{patient}', 'DossiersController@create')->name('dossiers.create');
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
 
 

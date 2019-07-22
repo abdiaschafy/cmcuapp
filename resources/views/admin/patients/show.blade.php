@@ -49,9 +49,9 @@
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
-                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye-slash"></i> Détails personnels</button>
+                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
 
-                                <tbody id="myDIV">
+                                <tbody style="display: none;" id="myDIV">
                                 <tr>
                                     <td>
                                         <b>NOM DU PATIENT :</b>
@@ -165,21 +165,15 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <b>NOM DU MEDECIN :</b>
+                                            <b>NOM et PRENOM du MEDECIN :</b>
                                         </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <b>PRENOM :</b>
-                                        </td>
-                                        <td></td>
+                                        <td>{{ ($consultations->medecin) }}</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <b>MOTIF DE LA CONSULTATION :</b>
                                         </td>
-                                        <td></td>
+                                        <td>{{ ($consultations->motif) }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>ALLERGIES :</b></td>
@@ -198,34 +192,21 @@
                                     <tr>
                                         <td><b>ANTECEDENTS MEDICAUX :</b></td>
                                         {{--@if (strlen($consultations->antecedent)>25)--}}
-
-                                            <td>{{ str_limit($consultations->antecedent, 20) }}</td>
+                                            {{--<td>{{ str_limit($consultations->antecedent, 20) }}</td>--}}
                                         {{--@endif--}}
-
+                                        <td>{{ $consultations->antecedent_m }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>ANTECEDENTS CHIRURGICAUX :</b></td>
-                                        {{--@if (strlen($consultations->antecedent)>25)--}}
-
-                                            <td>{{ str_limit($consultations->antecedent, 20) }}</td>
-                                        {{--@endif--}}
-
+                                        <td>{{ $consultations->antecedent_c }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>COMMENTAIRE :</b></td>
-                                        {{--@if (strlen($consultations->commentaire)>25)--}}
-
                                         <td>{{ ($consultations->commentaire) }}</td>
-                                        {{--@endif--}}
-
                                     </tr>
                                     <tr>
                                         <td><b>DIAGNOSTIQUE :</b></td>
-                                        {{--@if (strlen($consultations->diagnostique)>25)--}}
-
                                         <td>{{ ($consultations->diagnostique) }}</td>
-                                        {{--@endif--}}
-
                                     </tr>
                                     <tr>
                                         <td>
@@ -269,7 +250,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" title="Imprimer la lettre de sortie" href="">
+                                            <a class="btn btn-success" title="Imprimer la lettre de sortie" href="{{ route('print.sortie', $patient->id) }}">
                                                 <i class="fas fa-print"></i> Lettre de sortie
                                             </a>
                                         </td>
@@ -431,7 +412,7 @@
                                     </tbody>
                                 </table>
                                 <button type="submit" class="btn btn-primary">Modifier</button>
-                                <a href="{{ route('dossiers.create') }}" class="btn btn-info float-right">Completer le dossier</a>
+                                <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info float-right">Completer le dossier</a>
                             </form>
                         </div>
                     </div>
