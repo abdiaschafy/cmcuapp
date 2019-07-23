@@ -20,8 +20,8 @@ class CreateConsultationsTable extends Migration
             $table->unsignedInteger('cout');
             $table->text('diagnostique');
             $table->text('commentaire');
-            $table->text('antecedent_m')->nullable()->default('Aucun');
-            $table->text('antecedent_c')->nullable()->default('Aucun');
+            $table->text('antecedent_m')->nullable();
+            $table->text('antecedent_c')->nullable();
             $table->string('decision')->nullable();
             $table->string('medecin');
             $table->text('allergie')->nullable();

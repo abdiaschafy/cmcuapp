@@ -33,6 +33,8 @@ class PrescriptionRequest extends FormRequest
             'Bactériologie_Parasitologie' =>'',
             'Spermiologie' =>'',
             'Urines' =>'',
+            'Sérologie' =>'',
+            'Examen' =>'',
         ];
     }
 }

@@ -23,16 +23,19 @@ class PrescriptionController extends Controller
         $patient = Patient::findOrFail($request->patient_id);
       
        $prescriptions = new Prescription ();
-        //dd($request->Hématologie);
-   // $prescriptions->name = $request->name;
-    $prescriptions->Hématologie = implode(",",$request->Hématologie);
-    // $prescriptions->Hémostase = $request->get('Hémostase');
-    // $prescriptions->Biochimie = $request->get('Biochimie');
-    // $prescriptions->Hormonologie_Sérologie = $request->get('Hormonologie_Sérologie');
-    // $prescriptions->Marqueurs_Tumoraux = $request->get('Marqueurs_Tumoraux');
-    // $prescriptions->Bactériologie_Parasitologie = $request->get('Bactériologie_Parasitologie');
-    // $prescriptions->Spermiologie = $request->get('Spermiologie');
-    // $prescriptions->Urines = $request->get('Urines');
+
+        
+    $prescriptions->Hématologie = implode(",", $request['Hématologie']);
+    $prescriptions->Hémostase = implode(",", $request['Hémostase']);
+    $prescriptions->Biochimie = implode(",", $request['Biochimie']);
+    $prescriptions->Hormonologie_Sérologie = implode(",", $request['Hormonologie_Sérologie']);
+    $prescriptions->Marqueurs_Tumoraux = implode(",", $request['Marqueurs_Tumoraux']);
+    $prescriptions->Bactériologie_Parasitologie = implode(",", $request['Bactériologie_Parasitologie']);
+    $prescriptions->Spermiologie = implode(",", $request['Spermiologie']);
+    $prescriptions->Urines = implode(",", $request['Urines']);
+    $prescriptions->Urines = implode(",", $request['Sérologie']);
+    $prescriptions->Urines = implode(",", $request['Examen']);
+    
     $prescriptions->patient_id = $request->patient_id;
 
            $prescriptions->save();
