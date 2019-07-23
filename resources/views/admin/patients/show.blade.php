@@ -1,10 +1,22 @@
 @extends('layouts.admin') @section('title', 'CMCU | dossier patient') @section('content')
 
 
+    <style>
+        .grid-container {
+            display: grid;
+            grid-gap: 50px 100px;
+            grid-template-columns: auto auto auto;
+            padding: 10px;
+        }
+        .grid-item {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 12px;
+            margin-right: 1px;
+        }
+    </style>
     <body>
-    {{--
-
-	<div class="se-pre-con"></div>--}}
 
     <div class="wrapper">
     @include('partials.side_bar')
@@ -18,7 +30,6 @@
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
                         <i class="far fa-plus-square"></i> Ordonance / Examens complémentaires
-                        
 
                     </button>
                     @if (count($patient->consultations))
@@ -38,7 +49,9 @@
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
-                                <tbody>
+                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
+
+                                <tbody style="display: none;" id="myDIV">
                                 <tr>
                                     <td>
                                         <b>NOM DU PATIENT :</b>
@@ -132,7 +145,9 @@
                                         <td>{{ $dossier->tel_personne_contact }}</td>
                                     </tr>
                                 @endforeach
+                                </tbody>
 
+                                <tbody>
                                 <tr>
                                     <td>
                                         <a href="{{ route('consultations.index') }}">
@@ -150,21 +165,15 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <b>NOM DU MEDECIN :</b>
+                                            <b>NOM et PRENOM du MEDECIN :</b>
                                         </td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <b>PRENOM :</b>
-                                        </td>
-                                        <td></td>
+                                        <td>{{ ($consultations->medecin) }}</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <b>MOTIF DE LA CONSULTATION :</b>
                                         </td>
-                                        <td></td>
+                                        <td>{{ ($consultations->motif) }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>ALLERGIES :</b></td>
@@ -183,34 +192,21 @@
                                     <tr>
                                         <td><b>ANTECEDENTS MEDICAUX :</b></td>
                                         {{--@if (strlen($consultations->antecedent)>25)--}}
-
-                                            <td>{{ str_limit($consultations->antecedent, 20) }}</td>
+                                            {{--<td>{{ str_limit($consultations->antecedent, 20) }}</td>--}}
                                         {{--@endif--}}
-
+                                        <td>{{ $consultations->antecedent_m }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>ANTECEDENTS CHIRURGICAUX :</b></td>
-                                        {{--@if (strlen($consultations->antecedent)>25)--}}
-
-                                            <td>{{ str_limit($consultations->antecedent, 20) }}</td>
-                                        {{--@endif--}}
-
+                                        <td>{{ $consultations->antecedent_c }}</td>
                                     </tr>
                                     <tr>
                                         <td><b>COMMENTAIRE :</b></td>
-                                        {{--@if (strlen($consultations->commentaire)>25)--}}
-
                                         <td>{{ ($consultations->commentaire) }}</td>
-                                        {{--@endif--}}
-
                                     </tr>
                                     <tr>
                                         <td><b>DIAGNOSTIQUE :</b></td>
-                                        {{--@if (strlen($consultations->diagnostique)>25)--}}
-
                                         <td>{{ ($consultations->diagnostique) }}</td>
-                                        {{--@endif--}}
-
                                     </tr>
                                     <tr>
                                         <td>
@@ -254,7 +250,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <a class="btn btn-success" title="Imprimer la lettre de sortie" href="">
+                                            <a class="btn btn-success" title="Imprimer la lettre de sortie" href="{{ route('print.sortie', $patient->id) }}">
                                                 <i class="fas fa-print"></i> Lettre de sortie
                                             </a>
                                         </td>
@@ -416,7 +412,7 @@
                                     </tbody>
                                 </table>
                                 <button type="submit" class="btn btn-primary">Modifier</button>
-                                <a href="{{ route('dossiers.create') }}" class="btn btn-info float-right">Completer le dossier</a>
+                                <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info float-right">Completer le dossier</a>
                             </form>
                         </div>
                     </div>
@@ -435,7 +431,6 @@
                                     <li class="active"><a data-toggle="tab" class="btn btn-primary mr-5" href="#home">Ordonance</a></li>
                                     <li><a data-toggle="tab" class="btn btn-primary" href="#menu1">Feuille d'examen complémentaire</a></li>
                                 </ul>
-                               
 
                                 <div class="tab-content">
                                     <div id="home" class="tab-pane fade in active">
@@ -453,8 +448,13 @@
                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                                         </form>
                                     </div>
+                                    <form id="menu1" class="tab-pane fade" action="">
+                                        <h3 class="text-center mb-4">Feuille d'examens complémentaire</h3>
+                                        @include('partials.feuille_examen')
+                                        <button class="btn btn-primary btn-md mt-2">Enregistrer</button>
+                                    </form>
                                     <div id="menu1" class="tab-pane fade">
-                                       
+
 
 
                <div class="card" style="width: 48rem;">
@@ -465,60 +465,60 @@
                     @include('partials.flash_form')
                     <form class="form-group" action="{{ route('prescriptions.store') }}" method="POST" files="true">
                         @csrf
-                        
+
                         <div class="col-md-12">
 
                         <div class="checkbox">
                 <div class="container">
                     <div class="row">
-                        
+
 			    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
+
 					<div class="box-part text-center">
 						<label>Hématologie</label>
 						<br>
                             <div class="checkbox">
                                 <label>
                                   <input type="checkbox" name="Hématologie[]" value="NFS">NFS
-                                    
+
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"  
+                                    <input type="checkbox"
                                     name="Hématologie[]" value="Groupe">Groupe
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"  
+                                    <input type="checkbox"
                                     name="Hématologie[]" value="rhésus">rhésus
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"  
+                                    <input type="checkbox"
                                     name="Hématologie[]" value="CRP">CRP
                                 </label>
                             </div>
 
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"  
+                                    <input type="checkbox"
                                     name="Hématologie[]" value="Autres">Autres
                                 </label>
                             </div>
- 
+
 					 </div>
-				</div>	 
+				</div>
 				<br>
 				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
+
 					<div class="box-part text-center">
-                    
+
 						<div class="title">
 							<h6>Hémostase</h6>
 						</div><br>
@@ -530,7 +530,7 @@
                                 <input type="checkbox" class="custom-control-input" id="Temps de céphaline activé" name="Temps de céphaline activé">
                                 <label class="custom-control-label" for="Temps de céphaline activé">Temps de céphaline activé</label>
                             </div>
-                            
+
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="Temps de saignement" name="Temps de saignement">
                                 <label class="custom-control-label" for="Temps de saignement">Temps de saignement</label>
@@ -548,10 +548,10 @@
                                 <label class="custom-control-label" for="Autres">Autres</label>
                             </div>
 					 </div>
-				</div>	 
-				
+				</div>
+
 				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-               
+
 					<div class="box-part text-center">
 						<div class="title">
 							<h6>Biochimie</h6>
@@ -608,10 +608,10 @@
                                 <input type="checkbox" class="custom-control-input" id="Autres" name="Autres">
                                 <label class="custom-control-label" for="Autres">Autres</label>
                             </div>
-                            
+
 					 </div>
-				</div>	 
-				
+				</div>
+
 				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <br>
 					<div class="box-part text-center">
@@ -675,8 +675,8 @@
                                 <label class="custom-control-label" for="Autr">Autres</label>
                             </div>
 					 </div>
-				</div>	 
-				
+				</div>
+
 				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                  <br>
 					<div class="box-part text-center">
@@ -720,8 +720,8 @@
                                 <label class="custom-control-label" for="Autr1">Autr1</label>
                             </div>
 					 </div>
-				</div>	 
-				
+				</div>
+
 				 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                  <br>
 					<div class="box-part text-center">
@@ -762,12 +762,12 @@
                             </div>
 						</div>
                 </div>
-                
+
 
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <br>
 					<div class="box-part text-center">
-					    
+
 						<div class="title">
 							<h6>Spermiologie</h6>
 						</div><br>
@@ -795,9 +795,9 @@
                                 <input type="checkbox" class="custom-control-input" id="Autres" name="Autres">
                                 <label class="custom-control-label" for="Autres">Autres6</label>
                             </div>
-                           
+
 					 </div>
-				</div>	 
+				</div>
                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                 <br>
 					<div class="box-part text-center">
@@ -825,9 +825,9 @@
                                 <label class="custom-control-label" for="autre2">Autres</label>
                             </div>
 					 </div>
-				</div>	 
-                
-		</div>		
+				</div>
+
+		</div>
     </div>
 </div>
 <input type="hidden" value="{{ $patient->id }}" name="patient_id">
@@ -835,7 +835,7 @@
    <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>
                 </div>
-                
+
                                     </div>
                                 </div>
                             </div>
@@ -845,8 +845,16 @@
             </div>
         </div>
     </div>
-
-                            
+    <script>
+        function ShowDetailsPatient() {
+            var x = document.getElementById("myDIV");
+            if (x.style.display === "none") {
+                x.style.display = "contents";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
     </body>
 
 @stop

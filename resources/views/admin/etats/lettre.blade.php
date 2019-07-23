@@ -1,3 +1,4 @@
+<html lang="fr">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <style>
@@ -46,32 +47,35 @@
 
     <div class="row">
         <div class="col-3">
-            <small><b>Médécin: </b> {{ $lettre->medecin }}</small>
+            <small><b>Médécin: </b> {{ $consultations->medecin }}</small>
         </div>
         <div class="col-5 offset-5">
-            <p><small><u>Date:</u><b> {{ $lettre->created_at->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $lettre->patient }}</p>
+            <p><small><u>Date:</u><b> {{ $consultations->created_at->formatLocalized('%d %B %Y') }}</b></small></p>
+            <p><u>Nom du patient:</u> {{ $consultations->patient->name }}</p>
         </div>
     </div>
     <div class="row">
-        Ref: {{ $lettre->refference . '/' . $lettre->id }}
+        Ref: {{ $consultations->refference . '/' . $consultations->id }}
+    </div>
+    <br>
+    <div class="row col-md-4 offset-8">
+        <p>Douala, le {{ \Carbon\Carbon::now()->formatLocalized('%d %B %Y') }}</p>
     </div>
     <br>
     <br>
     <br>
+    <p>Cher {{ $consultations->medecin }}</p>
     <br>
-    <div class="row">
-        <h5 class="text-center"><u class="text-danger">{{ $lettre->objet }}</u></h5>
-    </div>
+    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation au CMCU</p>
+    le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostique suivant: {!! nl2br(e($consultations->diagnostique)) !!}
+    <p></p>
     <br>
     <br>
     <br>
     <br>
-    <div class="">
-        <h5>
-            {!! nl2br(e($lettre->message)) !!}
-        </h5>
-    </div>
+    <br>
+    <br>
+    <p>Cordialement</p>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>

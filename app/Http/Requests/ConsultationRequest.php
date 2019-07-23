@@ -25,15 +25,20 @@ class ConsultationRequest extends FormRequest
     public function rules()
     {
         return [
-
-            'patient_id'=> 'required',
+            'patient_id' => 'required',
             'diagnostique'=> 'required',
             'commentaire'=> 'required',
-            'commentaire'=> '',
-            'decision'=> '',
-            'resultat_examen'=> '',
-            'allergie'=> 'max:255',
-            'groupe'=> '',
+            'antecedent_m'=> '',
+            'antecedent_c'=> '',
+            'allergie'=> 'required',
+            'groupe'=> 'required',
+            'decision'=> 'required',
+            'examen_c'=> 'required',
+            'examen_p'=> 'required',
+            'traitement'=> 'required',
+            'cout'=> 'required',
+            'motif'=> 'required',
+            'medecin'=> 'required',
         ];
     }
 }

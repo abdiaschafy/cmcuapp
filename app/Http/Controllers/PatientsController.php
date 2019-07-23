@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Lettre;
+use App\Consultation;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
-use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
@@ -114,32 +114,14 @@ class PatientsController extends Controller
         return view('admin.lettres.index', compact('lettres'));
     }
 
-    public function create_sortie()
-    {
-        $patients = Patient::all();
-        $users = User::where('id', '=', 2)->get();
-        return view('admin.lettres.create', compact('patients', 'users'));
-    }
 
-    public function store_sortie()
+    public function print_sortie(Patient $patient)
     {
-        Lettre::create([
-           'patient' => \request('patient'),
-           'medecin' => \request('medecin'),
-           'objet' => \request('objet'),
-           'message' => \request('message'),
-           'refference' => mt_rand(1000, 2000)
+
+        $pdf = PDF::loadView('admin.etats.lettre', [
+
+            'consultations' => Consultation::latest()->first()
         ]);
-
-        return redirect()->route('index.sortie')->with('success', 'La lettre de sortie du patient a bien été enregistrer');
-    }
-
-
-    public function print_sortie($id)
-    {
-        $lettre = Lettre::find($id);
-
-        $pdf = PDF::loadView('admin.etats.lettre', compact('lettre'));
 
         $pdf->save(storage_path('lettre').'.pdf');
 

@@ -36,11 +36,17 @@ class ConsultationsController extends Controller
             'patient_id' => $patient->id,
             'diagnostique'=> request('diagnostique'),
             'commentaire'=> request('commentaire'),
-            'antecedent'=> request('antecedent'),
+            'antecedent_m'=> request('antecedent_m'),
+            'antecedent_c'=> request('antecedent_c'),
             'allergie'=> request('allergie'),
             'groupe'=> request('groupe'),
             'decision'=> request('decision'),
-            'resultat_examen'=> request('resultat_examen'),
+            'examen_c'=> request('examen_c'),
+            'examen_p'=> request('examen_p'),
+            'traitement'=> request('traitement'),
+            'cout'=> request('cout'),
+            'motif'=> request('motif'),
+            'medecin'=> request('medecin'),
 
         ]);
         Flashy('La nouvelle consultation a été crée avec succès !!');

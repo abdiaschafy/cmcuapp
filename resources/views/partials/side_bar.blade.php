@@ -59,12 +59,6 @@
                             Examens medicaux
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('index.sortie') }}">
-                            <i class="fas fa-print"></i>
-                            Lettre de sortie
-                        </a>
-                    </li>
                 </ul>
             </li>
         @endcan
