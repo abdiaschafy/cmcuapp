@@ -83,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::get('lettre-de-sortie','PatientsController@index_sortie')->name('index.sortie');
-    Route::get('lettre-de-sortie/{id}','PatientsController@print_sortie')->name('print.sortie');
+    Route::get('lettre-de-sortie/{patient}','PatientsController@print_sortie')->name('print.sortie');
     Route::delete('lettre-de-sortie/{id}', 'PatientsController@destroy_sortie')->name('destroy.sortie');
 
 

@@ -1,6 +1,9 @@
 <html lang="fr">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+<head>
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
 <style>
     .cpi-titulo3 {
         font-size: 12px;
@@ -55,7 +58,7 @@
         </div>
     </div>
     <div class="row">
-        Ref: {{ $consultations->refference . '/' . $consultations->id }}
+        Ref: {{ $patient->numero_dossier .'/'. $consultations->id }}
     </div>
     <br>
     <div class="row col-md-4 offset-8">
@@ -68,9 +71,9 @@
     <br>
     <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation au CMCU</p>
     le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostique suivant: {!! nl2br(e($consultations->diagnostique)) !!}
-    <p></p>
     <br>
     <br>
+    <p>Je reste bien entendu à votre entiere disposition pour tout échange d'informations.</p>
     <br>
     <br>
     <br>
