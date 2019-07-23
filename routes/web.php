@@ -89,6 +89,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('lettre-de-sortie/{id}', 'PatientsController@destroy_sortie')->name('destroy.sortie');
 
 
+    Route::get('prescriptions/create/{patient}', 'PrescriptionController@create')->name('prescriptions.create');
+    Route::post('examens', 'PrescriptionController@store')->name('prescriptions.store');
+
     Route::get('dossiers/create', 'DossiersController@create')->name('dossiers.create');
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
 
