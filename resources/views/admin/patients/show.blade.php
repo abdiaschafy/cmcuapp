@@ -100,19 +100,22 @@
                                         <td>
                                             <b>PORTABLE :</b>
                                         </td>
-                                        <td></td>
+                                        <td>
+                                            {{ $dossier->portable_1 }}<br>
+                                            {{ $dossier->portable_2 }}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <b>FAX :</b>
                                         </td>
-                                        <td></td>
+                                        <td>{{ $dossier->fax }}</td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <b>EMAIL :</b>
                                         </td>
-                                        <td></td>
+                                        <td>{{ $dossier->email }}</td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -130,7 +133,13 @@
                                         <td>
                                             <b>PERSONNE DE CONFIANCE :</b>
                                         </td>
-                                        <td></td>
+                                        <td>{{ $dossier->personne_confiance }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>TELEPHONE PERSONNE DE CONFIANCE :</b>
+                                        </td>
+                                        <td>{{ $dossier->tel_personne_confiance }}</td>
                                     </tr>
                                     <tr>
                                         <td>

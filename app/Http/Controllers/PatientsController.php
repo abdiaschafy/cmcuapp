@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
+use App\Dossier;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
 use Barryvdh\DomPDF\Facade as PDF;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
@@ -119,7 +119,7 @@ class PatientsController extends Controller
     {
 
         $pdf = PDF::loadView('admin.etats.lettre', [
-
+            'patient' => $patient,
             'consultations' => Consultation::latest()->first()
         ]);
 

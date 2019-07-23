@@ -19,16 +19,6 @@
             <form class="form-row mt-4" method="post" action="{{ route('dossiers.store') }}">
                 @csrf
 
-                <div class="col-sm-4 pb-3">
-                    <label for=""><b>Veuillez sélectionner le patient</b></label>
-                    <select class="form-control" name="patient_id">
-                        <option value="">Veuillez sélectionner le patient</option>
-                        @foreach($patients as $patient)
-                            <option value="{{ $patient->id }}">{{ $patient->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-
                 <div class="col-md-6 pb-3">
                     <label for="exampleAccount"><b>Sexe :</b></label>
                     <div class="form-group small">
@@ -45,7 +35,12 @@
                     </div>
                 </div>
 
-                <div class="col-sm-6 pb-3">
+                <div class="col-sm-4 pb-3">
+                    <label for=""><b></b></label>
+                    <input class="form-control" type="hidden" name="patient_id" value="{{ $patient->id }}">
+                </div>
+
+                <div class="col-sm-4 pb-3">
                     <label for="date_naissance"><b>Date de naissance :</b></label>
                     <input type="date" class="form-control" value="{{ old('date_naissance') }}" name="date_naissance" placeholder="Date de naissance">
                 </div>
@@ -56,27 +51,27 @@
                 </div>
 
                 <div class="col-sm-4 pb-3">
-                    <label for="exampleLast"><b>Portable :</b></label>
-                    <input type="number" value="{{ old('portable') }}" class="form-control" name="portable" placeholder="Portable">
+                    <label for="portable_1"><b>Portable :</b></label>
+                    <input type="number" value="{{ old('portable_1') }}" class="form-control" name="portable_1" placeholder="Portable">
                 </div>
                 <div class="col-sm-4 offset-2 pb-3">
-                    <label for="exampleLast"><b>Portable :</b></label>
-                    <input type="number" value="{{ old('portable') }}" class="form-control" name="portable" placeholder="Portable 2">
+                    <label for="portable_2"><b>Portable :</b></label>
+                    <input type="number" value="{{ old('portable_2') }}" class="form-control" name="portable_2" placeholder="Portable 2">
                 </div>
 
                 <div class="col-sm-4 pb-3">
-                    <label for="exampleLast"><b>Fax :</b></label>
-                    <input type="number" value="{{ old('fax') }}" class="form-control" name="fax" placeholder="Fax">
+                    <label for="fax"><b>Fax :</b></label>
+                    <input type="text" value="{{ old('fax') }}" class="form-control" name="fax" placeholder="Fax">
                 </div>
 
                 <div class="col-sm-4 offset-2 pb-3">
                     <label for="email"><b>Email :</b></label>
-                    <input type="email" value="{{ old('email') }}" class="form-control" name="email" placeholder="Profession du patient">
+                    <input type="email" value="{{ old('email') }}" class="form-control" name="email" placeholder="Adresse email du patient">
                 </div>
 
                 <div class="col-sm-6 pb-3">
                     <label for="exampleLast"><b>Profession :</b></label>
-                    <input type="text" value="{{ old('proffession') }}" class="form-control" name="profession" placeholder="Profession du patient">
+                    <input type="text" value="{{ old('profession') }}" class="form-control" name="profession" placeholder="Profession du patient">
                 </div>
 
                 <div class="col-sm-4 pb-3">
@@ -85,12 +80,12 @@
                 </div>
 
                 <div class="col-sm-6 pb-3">
-                    <label for="personne_contact"><b>Personne de confiance :</b></label>
+                    <label for="personne_confiance"><b>Personne de confiance :</b></label>
                     <input type="text" class="form-control" value="{{ old('personne_confiance') }}" name="personne_confiance" placeholder="Personne de confiance">
                 </div>
 
                 <div class="col-sm-4 pb-3">
-                    <label for="tel_personne_contact"><b>Téléphone personne de confiance :</b></label>
+                    <label for="tel_personne_confiance"><b>Téléphone personne de confiance :</b></label>
                     <input type="number" class="form-control" value="{{ old('tel_personne_confiance') }}" name="tel_personne_confiance" placeholder="Téléphone personne de confiance">
                 </div>
 
