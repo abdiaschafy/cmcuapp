@@ -21,16 +21,17 @@
                             @include('partials.flash_form')
                             <h3 class="card-title">Informations relatives au dossier patient</h3>
                             <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
-                                        !! espace réservé au médécin</strong></i></small>
+                                        !! espace réservé au médécin</strong></i>
+                            </small>
                             <table class="table table-user-information ">
                                 <tbody>
                                 <form action="{{ route("consultations.store") }}" method="post">
                                     @csrf
                                     <tr>
-                                        <td>
-                                            <h4><strong>Consultation</strong></h4>
-                                        </td>
                                         <td></td>
+                                        <td>
+                                            <h5 class="text-primary"><strong>CONSULTATION DE SUIVI</strong></h5>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td><b>Médécin de référence :</b></td>
@@ -84,13 +85,17 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <input name="patient_id" value="{{ $patient->id }}" type="hidden">
-                                    </tr>
-                                    <tr>
-                                        <td><b>Commentaire :</b></td>
+                                        <td><b>Intérogatoire :</b></td>
                                         <td>
                                             <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td><h5 class="text-primary">EXAMENS A REALISER</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
                                         <td><b>Examens physiques :</b></td>
@@ -99,38 +104,32 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Examens corporels :</b></td>
+                                        <td><b>Examens compléméntaires:</b></td>
                                         <td>
-                                            <textarea name="examen_c" cols="45" rows="3" placeholder="Examens corporels" required>{{ old('examen_c') }}</textarea>
+                                            <textarea name="examen_c" cols="45" rows="3" placeholder="Examens compléméntaires" required>{{ old('examen_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Diagnostique du médécin :</b></td>
+                                        <td><b>Diagnostic médical :</b></td>
                                         <td>
                                             <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Décision :</b></td>
+                                        <td><b>Proposition de suivi :</b></td>
                                         <td class="form-group small">
-                                            <div class="form-check form-check-inline">
+                                            <div class="form-check">
                                                 <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision1" value="Hospitalisation"> Hospitalisation
                                                 </label>
                                             </div>
-                                            <div class="form-check form-check-inline">
+                                            <div class="form-check">
                                                 <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision2" value="Intervention chirurgicale"> Intervention chirurgicale
                                                 </label>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr id="traitement" style='display:none;'>
-                                        <td><b>Traitement proposé :</b></td>
-                                        <td>
-                                            <textarea name="traitement" cols="45" rows="4" placeholder="Traitement proposé" required>{{ old('traitement') }}</textarea>
-                                        </td>
-                                    </tr>
                                     <tr id="cout" style='display:none;'>
-                                        <td><b>Coût de l'opération :</b></td>
+                                        <td><b>Devis prévisionnel :</b></td>
                                         <td>
                                             <input class="form-control col-md-5" type="number" name="cout" id="cout" value="{{ old('cout') }}">
                                         </td>
@@ -143,46 +142,9 @@
                                     </tr>
                                 </form>
 
-                                <div class="modal fade" id="soinsModal" tabindex="-1" role="dialog"
-                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Soins quotidiens</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('soins.store') }}" method="post">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="" class="col-form-label">Liste des
-                                                            soins:</label>
-                                                        <select class="form-control col-md-5" name="contexte" id="contexte" required>
-                                                            <option value="">Veuillez choisir le contexte des soins</option>
-                                                            <option value="Bloc opératoire">Bloc opératoire</option>
-                                                            <option value="Hospitlisation">Hospitalisation</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="" class="col-form-label">Liste des
-                                                            soins:</label>
-                                                        <textarea id="summary-ckeditor1" rows="15" name="content" class="form-control" required>{{ old('content') }}</textarea>
-                                                    </div>
-                                                    <input type="hidden" value="{{ $patient->id }}" name="patient_id">
-                                                    <button type="submit" class="btn btn-primary">Enegistrer</button>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Fermer
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{-- MODAL SOINS QUOTIDIENTS ICI --}}
+                                    @include('partials.admin.modal.soins_quotidient')
+                                {{-- FIN DU MODAL SOINS QUOTIDIEN ICI --}}
                                 </tbody>
                             </table>
                         </div>
