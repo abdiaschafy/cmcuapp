@@ -4,7 +4,7 @@ namespace App\http\Requests;
 
 use Illuminate\Foundation\http\FormRequest;
 
-class PrescriptionRequest extends FormRequest
+class prescriptionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,8 @@ class PrescriptionRequest extends FormRequest
             'hemostase' =>'',
             'biochimie' =>'',
             'hormonologie_serologie' =>'',
-            'marqueurs_Tumoraux' =>'',
-            'bacteriologie_Parasitologie' =>'',
+            'marqueurs_tumoraux' =>'',
+            'bacteriologie_parasitologie' =>'',
             'spermiologie' =>'',
             'urines' =>'',
            'serologie' =>'',
