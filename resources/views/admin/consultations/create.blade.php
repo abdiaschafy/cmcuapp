@@ -15,7 +15,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="col-md-6  offset-md-0  toppad">
+                <div class="col-md-7  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             @include('partials.flash_form')
@@ -34,38 +34,52 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Médécin de référence :</b></td>
+                                        <td><b>Médécin de référence :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <select class="form-control" name="medecin" id="medecin" required>
+                                            <select class="form-control" name="medecin_r" id="medecin_r" required>
                                                 <option value=""> Nom du médécin</option>
                                                 @foreach ($users as $user)
-                                                    <option value="{{ $user->name }} {{ $user->prenom }}">{{ $user->name }} {{ $user->prenom }}</option>
+                                                    <option
+                                                        value="{{ $user->name }} {{ $user->prenom }}">{{ $user->name }} {{ $user->prenom }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Motif de consultation :</b></td>
+                                        <td><b>Motif de consultation :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea id="splitLines" wrap="hard" name="motif" cols="45" rows="5" placeholder="Motif de la consultation" required>{{ old('motif') }}</textarea>
+                                            <textarea id="splitLines" wrap="hard" name="motif_c" cols="45" rows="5"
+                                                      placeholder="Motif de la consultation"
+                                                      required>{{ old('motif_c') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Intérrogatoire :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <textarea name="interrogatoire" cols="45" rows="5"
+                                                      placeholder="Ici la note du médécin"
+                                                      required>{{ old('interrogatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Antécédent médicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent_m" cols="45" rows="3">{{ old('antecedent_m') }}</textarea>
+                                            <textarea name="antecedent_m" cols="45"
+                                                      rows="3">{{ old('antecedent_m') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Antécédent chirurgicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent_c" cols="45" rows="3">{{ old('antecedent_c') }}</textarea>
+                                            <textarea name="antecedent_c" cols="45"
+                                                      rows="3">{{ old('antecedent_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Allergies :</b></td>
                                         <td>
-                                            <textarea name="allergie" cols="45" rows="2">{{ old('allergie') }}</textarea>
+                                            <textarea name="allergie" cols="45"
+                                                      rows="2">{{ old('allergie') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -85,12 +99,6 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Intérogatoire :</b></td>
-                                        <td>
-                                            <textarea name="commentaire" cols="45" rows="5" placeholder="Ici la note du médécin" required>{{ old('commentaire') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td></td>
                                         <td><h5 class="text-primary">EXAMENS A REALISER</h5></td>
                                     </tr>
@@ -98,40 +106,96 @@
                                         <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </tr>
                                     <tr>
-                                        <td><b>Examens physiques :</b></td>
+                                        <td><b>Examens physiques :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="examen_p" cols="45" rows="3" placeholder="Examens physiques" required>{{ old('examen_p') }}</textarea>
+                                            <textarea name="examen_p" cols="45" rows="3" placeholder="Examens physiques"
+                                                      required>{{ old('examen_p') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Examens compléméntaires:</b></td>
+                                        <td><b>Examens compléméntaires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="examen_c" cols="45" rows="3" placeholder="Examens compléméntaires" required>{{ old('examen_c') }}</textarea>
+                                            <textarea name="examen_c" cols="45" rows="3"
+                                                      placeholder="Examens compléméntaires"
+                                                      required>{{ old('examen_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Diagnostic médical :</b></td>
+                                        <td><b>Diagnostic médical :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="diagnostique" cols="45" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostique') }}</textarea>
+                                            <textarea name="diagnostic" cols="45" rows="3"
+                                                      placeholder="Votre premier avis"
+                                                      required>{{ old('diagnostic') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Proposition de suivi :</b></td>
+                                        <td><b>Proposition de suivi :</b> <span class="text-danger">*</span></td>
                                         <td class="form-group small">
                                             <div class="form-check">
-                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision1" value="Hospitalisation"> Hospitalisation
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)"
+                                                       type="checkbox" name="proposition[]" id="decision1"
+                                                       value="Hospitalisation"> Hospitalisation
                                                 </label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="decision" id="decision2" value="Intervention chirurgicale"> Intervention chirurgicale
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)"
+                                                       type="checkbox" name="proposition[]" id="decision2"
+                                                       value="Intervention chirurgicale"> Intervention chirurgicale
                                                 </label>
                                             </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Date d'entré :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <b>Type :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="date_e" class="form-control col-md-10"/>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="type_e">
+                                                <option value="">Motif d'entrer</option>
+                                                <option value="Urgence">Urgence</option>
+                                                <option value="Hospitalisation">Hospitalisation</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Date de sortie :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <b>Type :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="date_s" class="form-control col-md-10"/>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="type_s">
+                                                <option value="">Motif de sortie</option>
+                                                <option value="Retour au domicile">Retour au domicile</option>
+                                                <option value="Transfert">Transfert</option>
+                                                <option value="Convalescence">Convalescence</option>
+                                                <option value="Décédé">Décédé</option>
+                                            </select>
                                         </td>
                                     </tr>
                                     <tr id="cout" style='display:none;'>
-                                        <td><b>Devis prévisionnel :</b></td>
+                                        <td><b>Devis prévisionnel :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <input class="form-control col-md-5" type="number" name="cout" id="cout" value="{{ old('cout') }}">
+                                            <input class="form-control col-md-5" type="number" name="devis_p" id="cout"
+                                                   value="{{ old('devis_p') }}">
                                         </td>
                                     </tr>
                                     <tr>
@@ -142,15 +206,12 @@
                                     </tr>
                                 </form>
 
-                                {{-- MODAL SOINS QUOTIDIENTS ICI --}}
-                                    @include('partials.admin.modal.soins_quotidient')
-                                {{-- FIN DU MODAL SOINS QUOTIDIEN ICI --}}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6  offset-md-0  toppad">
+                <div class="col-md-5  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">Prise des paramètres du
@@ -165,13 +226,13 @@
                                     <tr>
                                         <td>Poids</td>
                                         <td>
-                                            <input name="poids" type="text" value='{{ old(' poids ') }}'>
+                                            <input name="poids" type="number" value='{{ old(' poids ') }}'>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Température</td>
                                         <td>
-                                            <Input name="temperature" type="text" value='{{ old(' temperature ') }}'>
+                                            <Input name="temperature" type="number" value='{{ old(' temperature ') }}'>
                                         </td>
                                     </tr>
                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
@@ -187,10 +248,6 @@
                             </form>
                         </div>
                     </div>
-                    <br>
-                    <button type="button" class="btn btn-primary float-right" data-toggle="modal"
-                            data-target="#soinsModal" data-whatever="">Soins quotidients
-                    </button>
                 </div>
             </div>
         </div>
@@ -198,11 +255,12 @@
 
     <script type="text/javascript">
         var textarea = document.getElementById("splitLines");
-        textarea.onkeyup = function() {
+        textarea.onkeyup = function () {
             var lines = textarea.value.split("\n");
             for (var i = 0; i < lines.length; i++) {
                 if (lines[i].length <= 27) continue;
-                var j = 0; space = 27;
+                var j = 0;
+                space = 27;
                 while (j++ <= 27) {
                     if (lines[i].charAt(j) === " ") space = j;
                 }

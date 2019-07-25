@@ -18,13 +18,13 @@
         <td>
             <b>NOM et PRENOM du MEDECIN :</b>
         </td>
-        <td>{{ ($consultations->medecin) }}</td>
+        <td>{{ ($consultations->medecin_r) }}</td>
     </tr>
     <tr>
         <td>
             <b>MOTIF DE LA CONSULTATION :</b>
         </td>
-        <td>{{ ($consultations->motif) }}</td>
+        <td>{{ ($consultations->motif_c) }}</td>
     </tr>
     <tr>
         <td><b>ALLERGIES :</b></td>
@@ -52,12 +52,12 @@
         <td>{{ $consultations->antecedent_c }}</td>
     </tr>
     <tr>
-        <td><b>COMMENTAIRE :</b></td>
-        <td>{{ ($consultations->commentaire) }}</td>
+        <td><b>INTERROGATOIRE :</b></td>
+        <td>{{ ($consultations->interrogatoire) }}</td>
     </tr>
     <tr>
-        <td><b>DIAGNOSTIQUE :</b></td>
-        <td>{{ ($consultations->diagnostique) }}</td>
+        <td><b>DIAGNOSTIC :</b></td>
+        <td>{{ ($consultations->diagnostic) }}</td>
     </tr>
     <tr>
         <td>

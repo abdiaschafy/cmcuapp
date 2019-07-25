@@ -9,6 +9,7 @@ use App\Patient;
 use App\Produit;
 use App\User;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class ConsultationsController extends Controller
 {
@@ -25,7 +26,7 @@ class ConsultationsController extends Controller
         return view('admin.consultations.create', compact('mytime', 'patient', 'c', 'produits', 'users', 'chambres'));
     }
 
-    public function store(ConsultationRequest $request)
+    public function store(Request $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);
@@ -34,19 +35,22 @@ class ConsultationsController extends Controller
         Consultation::create([
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
-            'diagnostique'=> request('diagnostique'),
-            'commentaire'=> request('commentaire'),
+            'diagnostic'=> request('diagnostic'),
+            'interrogatoire'=> request('interrogatoire'),
             'antecedent_m'=> request('antecedent_m'),
             'antecedent_c'=> request('antecedent_c'),
             'allergie'=> request('allergie'),
             'groupe'=> request('groupe'),
-            'decision'=> request('decision'),
+            'proposition'=> implode(",", $request->proposition),
             'examen_c'=> request('examen_c'),
             'examen_p'=> request('examen_p'),
-            'traitement'=> request('traitement'),
-            'cout'=> request('cout'),
-            'motif'=> request('motif'),
-            'medecin'=> request('medecin'),
+            'devis_p'=> request('devis_p'),
+            'motif_c'=> request('motif_c'),
+            'date_e'=> request('date_e'),
+            'date_s'=> request('date_s'),
+            'type_e'=> request('type_e'),
+            'type_s'=> request('type_s'),
+            'medecin_r'=> request('medecin_r'),
 
         ]);
         Flashy('La nouvelle consultation a été crée avec succès !!');
