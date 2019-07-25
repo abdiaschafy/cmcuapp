@@ -76,6 +76,12 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><b>Traitement proposé :</b></td>
+                                        <td>
+                                            <textarea name="traitement" cols="45" rows="4" placeholder="Traitement proposé" required>{{ old('traitement') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td><b>Conclusions :</b></td>
                                         <td>
                                             <textarea name="conclusion" id="conclusion" cols="45" rows="3">{{ old('conclusion') }}</textarea>

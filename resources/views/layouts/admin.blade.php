@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="fr">
 
 <head>
     <title>
@@ -22,15 +22,10 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('admin/images/faviconlogo.ico') }}"/>
 
     <link href="//fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://stackpath.bootsrapcdn.com/bootsrap/4.1.3/css/bootsrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootsrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs..cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome/4.7.0./css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css" />
-   {{--//dropzone--}}
-
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
-
 
 </head>
 
@@ -48,8 +43,8 @@
 
 <script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
 {{--<script>--}}
-    {{--CKEDITOR.replace( 'summary-ckeditor' );--}}
-    {{--CKEDITOR.replace( 'summary-ckeditor1' );--}}
+{{--CKEDITOR.replace( 'summary-ckeditor' );--}}
+{{--CKEDITOR.replace( 'summary-ckeditor1' );--}}
 
 {{--</script>--}}
 
@@ -61,28 +56,6 @@
             processing: true,
             info: false,
             ordering: false,
-            language: {
-                processing:     "Traitement en cours...",
-                search:         "Rechercher&nbsp;:",
-                lengthMenu:    "Afficher _MENU_ &eacute;l&eacute;ments",
-                info:           "Affichage de l'&eacute;lement _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                infoEmpty:      "Affichage de l'&eacute;lement 0 &agrave; 0 sur 0 &eacute;l&eacute;ments",
-                infoFiltered:   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                infoPostFix:    "",
-                loadingRecords: "Chargement en cours...",
-                zeroRecords:    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                emptyTable:     "Aucune donnée disponible dans le tableau",
-                paginate: {
-                    first:      "Premier",
-                    previous:   "Pr&eacute;c&eacute;dent",
-                    next:       "Suivant",
-                    last:       "Dernier"
-                },
-                aria: {
-                    sortAscending:  ": activer pour trier la colonne par ordre croissant",
-                    sortDescending: ": activer pour trier la colonne par ordre décroissant"
-                }
-            }
         });
         $('.filter-select').change(function () {
             table.column( $(this).data('column'))
