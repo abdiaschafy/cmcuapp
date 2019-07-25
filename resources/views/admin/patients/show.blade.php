@@ -79,7 +79,7 @@
                 {{-- TOUS LES MODAL IC --}}
                 @include('partials.admin.modal.ordonance_feuille')
                 @include('partials.admin.modal.ordonance_show')
-                @include('partials.admin.modal.feuille_show')
+               
                 {{-- FIN DE TOUS LES MODAL --}}
 
             </div>

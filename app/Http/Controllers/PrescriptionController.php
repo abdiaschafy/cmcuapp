@@ -25,16 +25,16 @@ class PrescriptionController extends Controller
       $prescriptions = new Prescription ();
 
        
-    $prescriptions->hematologie = implode(",",$request->hematologie);
+    $prescriptions->hematologie = implode(",", $request->hematologie);
     $prescriptions->hemostase = implode(",", $request->hemostase);
     $prescriptions->biochimie = implode(",", $request->biochimie);
     $prescriptions->hormonologie_serologie = implode(",", $request->hormonologie_serologie);
-    $prescriptions->marqueurs_Tumoraux = implode(",", $request->marqueurs_Tumoraux);
-    $prescriptions->bacteriologie_Parasitologie = implode(",", $request->bacteriologie_Parasitologie);
-    $prescriptions->spermiologie = implode(",", $request->spermiologie);
-    $prescriptions->urines = implode(",", $request->urines);
-    $prescriptions->serologie = implode(',', $request->serologie);
-     $prescriptions->examen = implode(',', $request->examen);
+    $prescriptions->marqueurs_tumoraux = implode(",", $request->marqueurs_tumoraux);
+     $prescriptions->bacteriologie_parasitologie = implode(",", $request->bacteriologie_parasitologie);
+     $prescriptions->spermiologie = implode(",", $request->spermiologie);
+     $prescriptions->urines = implode(",", $request->urines);
+     $prescriptions->serologie = implode(",", $request->serologie);
+   $prescriptions->examen = implode(",", $request->examen);
     $prescriptions->patient_id = $request->patient_id;
 
            $prescriptions->save();
