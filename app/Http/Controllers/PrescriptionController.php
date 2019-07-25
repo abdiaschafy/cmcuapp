@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\PrescriptionRequest;
+use Illuminate\http\Request;
+use App\http\Controllers\Controller;
+use App\http\Requests\PrescriptionRequest;
 use App\Prescription;
 use App\Patient;
-use DB;
+use Db;
 
 class PrescriptionController extends Controller
 {
@@ -21,26 +21,25 @@ class PrescriptionController extends Controller
     {
 
         $patient = Patient::findOrFail($request->patient_id);
-      
-       $prescriptions = new Prescription ();
 
-        
-    $prescriptions->Hématologie = implode(",", $request['Hématologie']);
-    $prescriptions->Hémostase = implode(",", $request['Hémostase']);
-    $prescriptions->Biochimie = implode(",", $request['Biochimie']);
-    $prescriptions->Hormonologie_Sérologie = implode(",", $request['Hormonologie_Sérologie']);
-    $prescriptions->Marqueurs_Tumoraux = implode(",", $request['Marqueurs_Tumoraux']);
-    $prescriptions->Bactériologie_Parasitologie = implode(",", $request['Bactériologie_Parasitologie']);
-    $prescriptions->Spermiologie = implode(",", $request['Spermiologie']);
-    $prescriptions->Urines = implode(",", $request['Urines']);
-    $prescriptions->Urines = implode(",", $request['Sérologie']);
-    $prescriptions->Urines = implode(",", $request['Examen']);
-    
+      $prescriptions = new Prescription ();
+
+       
+    $prescriptions->hematologie = implode(",",$request->hematologie);
+    $prescriptions->hemostase = implode(",", $request->hemostase);
+    $prescriptions->biochimie = implode(",", $request->biochimie);
+    $prescriptions->hormonologie_serologie = implode(",", $request->hormonologie_serologie);
+    $prescriptions->marqueurs_Tumoraux = implode(",", $request->marqueurs_Tumoraux);
+    $prescriptions->bacteriologie_Parasitologie = implode(",", $request->bacteriologie_Parasitologie);
+    $prescriptions->spermiologie = implode(",", $request->spermiologie);
+    $prescriptions->urines = implode(",", $request->urines);
+    $prescriptions->serologie = implode(',', $request->serologie);
+     $prescriptions->examen = implode(',', $request->examen);
     $prescriptions->patient_id = $request->patient_id;
 
            $prescriptions->save();
     
            
-        return redirect()->route('patients.index')->with('success', 'examen ajouté avec succès !');
+        return redirect()->route('patients.index')->with('success', 'examen ajoute avec succès !');
     }
 }

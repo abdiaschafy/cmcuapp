@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
+use Illuminate\support\Facades\schema;
+use Illuminate\Database\schema\Blueprint;
+use Illuminate\Database\migrations\migration;
 
-class CreatePrescriptionsTable extends Migration
+class Createprescriptionstable extends migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,19 @@ class CreatePrescriptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('prescriptions', function (Blueprint $table) {
+        schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index()->nullable();
-            $table->string('Hématologie')->nullable();
-            $table->string('Hémostase')->nullable();
-            $table->string('Biochimie')->nullable();
-            $table->string('Hormonologie_Sérologie')->nullable();
-            $table->string('Marqueurs_Tumoraux')->nullable();
-            $table->string('Bactériologie_Parasitologie')->nullable();
-            $table->string('Spermiologie')->nullable();
-            $table->string('Urines')->nullable();
-            $table->string('Sérologie')->nullable();
-            $table->string('Examen')->nullable();
+            $table->string('hematologie')->nullable();
+            $table->string('hemostase')->nullable();
+            $table->string('biochimie')->nullable();
+            $table->string('hormonologie_serologie')->nullable();
+            $table->string('marqueurs_tumoraux')->nullable();
+            $table->string('bacteriologie_parasitologie')->nullable();
+            $table->string('spermiologie')->nullable();
+            $table->string('urines')->nullable();
+            $table->string('serologie')->nullable();
+            $table->string('examen')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
         });
@@ -38,6 +38,6 @@ class CreatePrescriptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prescriptions');
+        schema::dropIfexists('prescriptions');
     }
 }

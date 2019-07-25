@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Foundation\http\FormRequest;
 
 class PrescriptionRequest extends FormRequest
 {
@@ -25,16 +25,16 @@ class PrescriptionRequest extends FormRequest
     {
         return [
             'patient_id' =>'',
-            'Hématologie' =>'',
-            'Hémostase' =>'',
-            'Biochimie' =>'',
-            'Hormonologie_Sérologie' =>'',
-            'Marqueurs_Tumoraux' =>'',
-            'Bactériologie_Parasitologie' =>'',
-            'Spermiologie' =>'',
-            'Urines' =>'',
-            'Sérologie' =>'',
-            'Examen' =>'',
+            'hematologie' =>'',
+            'hemostase' =>'',
+            'biochimie' =>'',
+            'hormonologie_serologie' =>'',
+            'marqueurs_Tumoraux' =>'',
+            'bacteriologie_Parasitologie' =>'',
+            'spermiologie' =>'',
+            'urines' =>'',
+           'serologie' =>'',
+           'examen' =>'',
         ];
     }
 }

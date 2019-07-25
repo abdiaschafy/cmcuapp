@@ -2,21 +2,22 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\eloquent\model;
 
-class Prescription extends Model
+class Prescription extends model
 {
     protected $fillable = [
         'patient_id',
-        'Hématologie',
-        'Hémostase',
-        'Biochimie',
-        'Hormonologie_Sérologie',
-        'Marqueurs_Tumoraux',
-        'Bactériologie_Parasitologie',
-        'Spermiologie',
-        'Urines',
-        
+        'hematologie',
+        'hemostase',
+        'biochimie',
+        'hormonologie_serologie',
+        'marqueurs_Tumoraux',
+        'bacteriologie_Parasitologie',
+        'spermiologie',
+        'urines',
+        'serologie',
+        'examen',
 
     ] ;
 
