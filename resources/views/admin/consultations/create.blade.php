@@ -48,7 +48,7 @@
                                     <tr>
                                         <td><b>Motif de consultation :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea id="splitLines" wrap="hard" name="motif_c" cols="45" rows="5"
+                                            <textarea class="splitLines" wrap="hard" name="motif_c" cols="45" rows="5"
                                                       placeholder="Motif de la consultation"
                                                       required>{{ old('motif_c') }}</textarea>
                                         </td>
@@ -56,7 +56,7 @@
                                     <tr>
                                         <td><b>Intérrogatoire :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="interrogatoire" cols="45" rows="5"
+                                            <textarea class="splitLines" name="interrogatoire" cols="45" rows="5"
                                                       placeholder="Ici la note du médécin"
                                                       required>{{ old('interrogatoire') }}</textarea>
                                         </td>
@@ -64,21 +64,21 @@
                                     <tr>
                                         <td><b>Antécédent médicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent_m" cols="45"
+                                            <textarea class="splitLines" name="antecedent_m" cols="45"
                                                       rows="3">{{ old('antecedent_m') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Antécédent chirurgicaux :</b></td>
                                         <td>
-                                            <textarea name="antecedent_c" cols="45"
+                                            <textarea class="splitLines" name="antecedent_c" cols="45"
                                                       rows="3">{{ old('antecedent_c') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Allergies :</b></td>
                                         <td>
-                                            <textarea name="allergie" cols="45"
+                                            <textarea class="splitLines" name="allergie" cols="45"
                                                       rows="2">{{ old('allergie') }}</textarea>
                                         </td>
                                     </tr>
@@ -108,14 +108,14 @@
                                     <tr>
                                         <td><b>Examens physiques :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="examen_p" cols="45" rows="3" placeholder="Examens physiques"
+                                            <textarea class="splitLines" name="examen_p" cols="45" rows="3" placeholder="Examens physiques"
                                                       required>{{ old('examen_p') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Examens compléméntaires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="examen_c" cols="45" rows="3"
+                                            <textarea class="splitLines" name="examen_c" cols="45" rows="3"
                                                       placeholder="Examens compléméntaires"
                                                       required>{{ old('examen_c') }}</textarea>
                                         </td>
@@ -123,7 +123,7 @@
                                     <tr>
                                         <td><b>Diagnostic médical :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="diagnostic" cols="45" rows="3"
+                                            <textarea class="splitLines" name="diagnostic" cols="45" rows="3"
                                                       placeholder="Votre premier avis"
                                                       required>{{ old('diagnostic') }}</textarea>
                                         </td>
@@ -254,21 +254,25 @@
     </div>
 
     <script type="text/javascript">
-        var textarea = document.getElementById("splitLines");
-        textarea.onkeyup = function () {
-            var lines = textarea.value.split("\n");
-            for (var i = 0; i < lines.length; i++) {
-                if (lines[i].length <= 27) continue;
-                var j = 0;
-                space = 27;
-                while (j++ <= 27) {
-                    if (lines[i].charAt(j) === " ") space = j;
+        let splitLines = document.getElementsByClassName("splitLines")
+        let textarea = [];
+        for(let x=0; x<splitLines.length; x++){
+            textarea[x] = splitLines[x];
+            textarea[x].onkeyup = function () {
+                var lines = textarea[x].value.split("\n");
+                for (var i = 0; i < lines.length; i++) {
+                    if (lines[i].length <= 27) continue;
+                    var j = 0;
+                    space = 27;
+                    while (j++ <= 27) {
+                        if (lines[i].charAt(j) === " ") space = j;
+                    }
+                    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
+                    lines[i] = lines[i].substring(0, space);
                 }
-                lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
-                lines[i] = lines[i].substring(0, space);
-            }
-            textarea.value = lines.slice(0, 30).join("\n");
-        };
+                textarea[x].value = lines.slice(0, 30).join("\n");
+            };
+        }
     </script>
     </body>
 @stop

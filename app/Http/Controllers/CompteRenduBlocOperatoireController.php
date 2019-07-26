@@ -7,6 +7,7 @@ use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Http\Request;
 
 class CompteRenduBlocOperatoireController extends Controller
 {
@@ -17,7 +18,7 @@ class CompteRenduBlocOperatoireController extends Controller
     }
 
 
-    public function store(CompteRenduBlocOperatoireRequest $request, Patient $patient)
+    public function store(Request $request, Patient $patient)
     {
         $patient = Patient::findOrFail($request->patient_id);
 
@@ -25,9 +26,14 @@ class CompteRenduBlocOperatoireController extends Controller
             'patient_id' => $patient->id,
             'anesthesiste' => \request('anesthesiste'),
             'chirurgien' => \request('chirurgien'),
-            'cout' => \request('cout'),
+            'compte_rendu_o' => \request('compte_rendu_o'),
+            'resultat_histo' => \request('resultat_histo'),
+            'suite_operatoire' => \request('suite_operatoire'),
+            'traitement_propose' => \request('traitement_propose'),
+            'soins' => \request('soins'),
+            'conclusion' => \request('conclusion'),
             'dure_intervention' => \request('dure_intervention'),
-            'detail_intervention' => \request('detail_intervention')
+            'date_intervention' => \request('date_intervention')
         ]);
 
         Flashy('Le compte rendu du bloc opérqtoire a été ajouté avec succes');

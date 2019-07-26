@@ -16,11 +16,16 @@ class CreateCompteRenduBlocOperatoiresTable extends Migration
         Schema::create('compte_rendu_bloc_operatoires', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index();
-            $table->text('detail_intervention');
             $table->string('chirurgien');
-            $table->string('anesthesiste')->nullable();
-            $table->integer('cout')->nullable();
+            $table->string('anesthesiste');
+            $table->date('date_intervention');
             $table->time('dure_intervention');
+            $table->text('compte_rendu_o');
+            $table->text('resultat_histo');
+            $table->text('suite_operatoire');
+            $table->text('traitement_propose');
+            $table->text('soins');
+            $table->text('conclusion');
             $table->timestamps();
         });
     }
