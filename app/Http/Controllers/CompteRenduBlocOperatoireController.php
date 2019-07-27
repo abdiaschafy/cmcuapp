@@ -7,7 +7,6 @@ use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Http\Request;
 
 class CompteRenduBlocOperatoireController extends Controller
 {
@@ -18,7 +17,7 @@ class CompteRenduBlocOperatoireController extends Controller
     }
 
 
-    public function store(Request $request, Patient $patient)
+    public function store(CompteRenduBlocOperatoireRequest $request, Patient $patient)
     {
         $patient = Patient::findOrFail($request->patient_id);
 

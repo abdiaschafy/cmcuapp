@@ -17,7 +17,7 @@ class CreateConsultationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index();
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('devis_p');
+            $table->unsignedInteger('devis_p')->nullable();
             $table->text('diagnostic');
             $table->text('interrogatoire');
             $table->text('antecedent_m')->nullable();

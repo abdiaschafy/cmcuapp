@@ -28,45 +28,45 @@
                                 <form action="{{ route('compte_rendu_bloc.store') }}" method="post">
                                     @csrf
                                     <tr>
-                                        <td><b>Nom du chirurgien :</b></td>
+                                        <td><b>Nom du chirurgien :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <select class="form-control" name="chirurgien" id="chirurgien" required>
                                                 <option value=""> Nom du chirurgien</option>
                                                 @foreach ($users as $user)
-                                                    <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("chirurgien") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Nom de l'anesthésiste :</b></td>
+                                        <td><b>Nom de l'anesthésiste :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <select class="form-control" name="anesthesiste" id="anesthesiste" required>
                                                 <option value=""> Nom de l'anesthésiste</option>
                                                 @foreach ($users as $user)
-                                                    <option value="{{ $user->name }}">{{ $user->name }}</option>
+                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("anesthesiste") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Date de l'inervention :</b></td>
+                                        <td><b>Date de l'inervention :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <input class="form-control col-md-5" name="date_intervention" value="{{ old('date_intervention') }}"
-                                                   type="date">
+                                                   type="date" required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Durée de l'inervention :</b></td>
+                                        <td><b>Durée de l'inervention :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <input class="form-control col-md-5" name="dure_intervention" value="{{ old('dure_intervention') }}"
-                                                   type="time">
+                                                   type="time" required>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Compte rendu opératoire :</b></td>
+                                        <td><b>Compte rendu opératoire :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3">{{ old('compte_rendu_o') }}</textarea>
+                                            <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -76,27 +76,27 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Suites opératoires:</b></td>
+                                        <td><b>Suites opératoires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <input class="form-control" name="suite_operatoire"  value="{{ old('suite_operatoire') }}"/>
+                                            <input class="form-control" name="suite_operatoire"  value="{{ old('suite_operatoire') }}" required/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Traitement proposé :</b></td>
                                         <td>
-                                            <textarea class="splitLines" name="traitement_propose" cols="55" rows="4" placeholder="Traitement proposé" required>{{ old('traitement_propose') }}</textarea>
+                                            <textarea class="splitLines" name="traitement_propose" cols="55" rows="4" placeholder="Traitement proposé">{{ old('traitement_propose') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Soins et examens à réaliser :</b></td>
                                         <td>
-                                            <textarea class="splitLines" name="soins" cols="55" rows="4" placeholder="Traitement proposé" required>{{ old('soins') }}</textarea>
+                                            <textarea class="splitLines" name="soins" cols="55" rows="4" placeholder="Traitement proposé">{{ old('soins') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Conclusions :</b></td>
+                                        <td><b>Conclusions :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea class="splitLines" name="conclusion" id="conclusion" cols="55" rows="3">{{ old('conclusion') }}</textarea>
+                                            <textarea class="splitLines" name="conclusion" id="conclusion" cols="55" rows="3" required>{{ old('conclusion') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>

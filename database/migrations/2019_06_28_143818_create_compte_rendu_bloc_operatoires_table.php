@@ -21,10 +21,10 @@ class CreateCompteRenduBlocOperatoiresTable extends Migration
             $table->date('date_intervention');
             $table->time('dure_intervention');
             $table->text('compte_rendu_o');
-            $table->text('resultat_histo');
+            $table->text('resultat_histo')->nullable();
             $table->text('suite_operatoire');
-            $table->text('traitement_propose');
-            $table->text('soins');
+            $table->text('traitement_propose')->nullable();
+            $table->text('soins')->nullable();
             $table->text('conclusion');
             $table->timestamps();
         });

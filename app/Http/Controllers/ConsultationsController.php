@@ -9,7 +9,6 @@ use App\Patient;
 use App\Produit;
 use App\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class ConsultationsController extends Controller
 {
@@ -26,7 +25,7 @@ class ConsultationsController extends Controller
         return view('admin.consultations.create', compact('mytime', 'patient', 'c', 'produits', 'users', 'chambres'));
     }
 
-    public function store(Request $request)
+    public function store(ConsultationRequest $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);

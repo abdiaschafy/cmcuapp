@@ -25,10 +25,13 @@ class CompteRenduBlocOperatoireRequest extends FormRequest
     {
         return [
             'patient_id'=> 'required',
-            'cout'=> '',
-            'detail_intervention'=> 'required',
             'chirurgien'=> 'required',
-            'anesthesiste'=> '',
+            'anesthesiste'=> 'required',
+            'date_intervention'=> 'required',
+            'dure_intervention'=> 'required',
+            'compte_rendu_o'=> 'required',
+            'compte_rendu_o'=> 'required',
+            'conclusion'=> 'required',
         ];
     }
 }

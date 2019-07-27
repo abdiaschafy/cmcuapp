@@ -40,7 +40,8 @@
                                                 <option value=""> Nom du médécin</option>
                                                 @foreach ($users as $user)
                                                     <option
-                                                        value="{{ $user->name }} {{ $user->prenom }}">{{ $user->name }} {{ $user->prenom }}</option>
+                                                        value="{{ $user->name }} {{ $user->prenom }}" {{old("medecin_r") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </td>
@@ -87,14 +88,14 @@
                                         <td>
                                             <select class="form-control" name="groupe" id="groupe">
                                                 <option value="">Groupes sanguins</option>
-                                                <option value="O-">O-</option>
-                                                <option value="O+">O+</option>
-                                                <option value="B-">B-</option>
-                                                <option value="B+">B+</option>
-                                                <option value="A-">A-</option>
-                                                <option value="A+">A+</option>
-                                                <option value="AB-">AB-</option>
-                                                <option value="AB+">AB+</option>
+                                                <option value="O-" {{old("groupe") ?: '' ? "selected": ""}}>O-</option>
+                                                <option value="O+" {{old("groupe") ?: '' ? "selected": ""}}>O+</option>
+                                                <option value="B-" {{old("groupe") ?: '' ? "selected": ""}}>B-</option>
+                                                <option value="B+" {{old("groupe") ?: '' ? "selected": ""}}>B+</option>
+                                                <option value="A-" {{old("groupe") ?: '' ? "selected": ""}}>A-</option>
+                                                <option value="A+" {{old("groupe") ?: '' ? "selected": ""}}>A+</option>
+                                                <option value="AB- {{old("groupe") ?: '' ? "selected": ""}}">AB-</option>
+                                                <option value="AB+ {{old("groupe") ?: '' ? "selected": ""}}">AB+</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -157,13 +158,13 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="date" name="date_e" class="form-control col-md-10"/>
+                                            <input type="date" name="date_e" value="{{ old('date_e') }}" class="form-control col-md-10" required/>
                                         </td>
                                         <td>
-                                            <select class="form-control" name="type_e">
+                                            <select class="form-control" name="type_e" required>
                                                 <option value="">Motif d'entrer</option>
-                                                <option value="Urgence">Urgence</option>
-                                                <option value="Hospitalisation">Hospitalisation</option>
+                                                <option value="Urgence" {{old("type_e") ?: '' ? "selected": ""}}>Urgence</option>
+                                                <option value="Hospitalisation" {{old("type_e") ?: '' ? "selected": ""}}>Hospitalisation</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -179,20 +180,20 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <input type="date" name="date_s" class="form-control col-md-10"/>
+                                            <input type="date" name="date_s" value="{{ old('date_s') }}" class="form-control col-md-10" required/>
                                         </td>
                                         <td>
-                                            <select class="form-control" name="type_s">
+                                            <select class="form-control" name="type_s" {{ old('type_s') }} required>
                                                 <option value="">Motif de sortie</option>
-                                                <option value="Retour au domicile">Retour au domicile</option>
-                                                <option value="Transfert">Transfert</option>
-                                                <option value="Convalescence">Convalescence</option>
-                                                <option value="Décédé">Décédé</option>
+                                                <option value="Retour au domicile" {{old("type_s") ?: '' ? "selected": ""}}>Retour au domicile</option>
+                                                <option value="Transfert" {{old("type_s") ?: '' ? "selected": ""}}>Transfert</option>
+                                                <option value="Convalescence" {{old("type_s") ?: '' ? "selected": ""}}>Convalescence</option>
+                                                <option value="Décédé" {{old("type_s") ?: '' ? "selected": ""}}>Décédé</option>
                                             </select>
                                         </td>
                                     </tr>
                                     <tr id="cout" style='display:none;'>
-                                        <td><b>Devis prévisionnel :</b> <span class="text-danger">*</span></td>
+                                        <td><b>Devis prévisionnel :</b></td>
                                         <td>
                                             <input class="form-control col-md-5" type="number" name="devis_p" id="cout"
                                                    value="{{ old('devis_p') }}">
