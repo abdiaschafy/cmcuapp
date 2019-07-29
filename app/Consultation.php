@@ -7,23 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Consultation extends Model
 {
 
-	protected $fillable = [
-	    'user_id',
-        'patient_id',
-        'diagnostique',
-        'medecin',
-        'commentaire',
-        'decision',
-        'cout',
-        'antecedent_m',
-        'antecedent_c',
-        'allergie',
-        'groupe',
-        'motif',
-        'examen_p',
-        'examen_c',
-        'traitement',
-    ];
+	protected $guarded = [];
 
     public function user()
     {

@@ -26,19 +26,22 @@ class ConsultationRequest extends FormRequest
     {
         return [
             'patient_id' => 'required',
-            'diagnostique'=> 'required',
-            'commentaire'=> 'required',
+            'diagnostic'=> 'required',
+            'interrogatoire'=> 'required',
             'antecedent_m'=> '',
             'antecedent_c'=> '',
-            'allergie'=> 'required',
-            'groupe'=> 'required',
-            'decision'=> 'required',
+            'allergie'=> '',
+            'groupe'=> '',
+            'proposition'=> 'required',
             'examen_c'=> 'required',
             'examen_p'=> 'required',
-            'traitement'=> 'required',
-            'cout'=> 'required',
-            'motif'=> 'required',
-            'medecin'=> 'required',
+            'devis_p'=> '',
+            'motif_c'=> 'required',
+            'medecin_r'=> 'required',
+            'date_e'=> 'required',
+            'date_s'=> 'required',
+            'type_e'=> 'required',
+            'type_s'=> 'required',
         ];
     }
 }

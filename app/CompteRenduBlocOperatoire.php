@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CompteRenduBlocOperatoire extends Model
 {
-    protected $fillable = ['patient_id', 'chirurgien', 'anesthesiste', 'cout', 'dure_intervention', 'detail_intervention'];
+    protected $guarded = [];
 
     public function patient()
     {

@@ -27,7 +27,7 @@
                             <th>
                                 NUMERO
                             </th>
-                            <th>NOM</th>
+                            <th>NOM / PRENOM</th>
                             <th>Assurance</th>
                             <th>DATE DE CREATION</th>
                             {{--<th>FRAIS DE CONSULTATION</th>--}}

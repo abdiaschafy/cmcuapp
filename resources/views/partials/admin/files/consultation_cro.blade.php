@@ -18,21 +18,17 @@
         <td>
             <b>NOM et PRENOM du MEDECIN :</b>
         </td>
-        <td>{{ ($consultations->medecin) }}</td>
+        <td>{{ ($consultations->medecin_r) }}</td>
     </tr>
     <tr>
         <td>
             <b>MOTIF DE LA CONSULTATION :</b>
         </td>
-        <td>{{ ($consultations->motif) }}</td>
+        <td>{{ ($consultations->motif_c) }}</td>
     </tr>
     <tr>
         <td><b>ALLERGIES :</b></td>
-        {{--@if (strlen($consultations->allergie)>25)--}}
-
         <td>{{ ($consultations->allergie) }}</td>
-        {{--@endif--}}
-
     </tr>
     <tr>
         <td><b>GROUPE SANGUIN :</b></td>
@@ -42,9 +38,6 @@
     </tr>
     <tr>
         <td><b>ANTECEDENTS MEDICAUX :</b></td>
-        {{--@if (strlen($consultations->antecedent)>25)--}}
-        {{--<td>{{ str_limit($consultations->antecedent, 20) }}</td>--}}
-        {{--@endif--}}
         <td>{{ $consultations->antecedent_m }}</td>
     </tr>
     <tr>
@@ -52,12 +45,12 @@
         <td>{{ $consultations->antecedent_c }}</td>
     </tr>
     <tr>
-        <td><b>COMMENTAIRE :</b></td>
-        <td>{{ ($consultations->commentaire) }}</td>
+        <td><b>INTERROGATOIRE :</b></td>
+        <td>{{ ($consultations->interrogatoire) }}</td>
     </tr>
     <tr>
-        <td><b>DIAGNOSTIQUE :</b></td>
-        <td>{{ ($consultations->diagnostique) }}</td>
+        <td><b>DIAGNOSTIC :</b></td>
+        <td>{{ ($consultations->diagnostic) }}</td>
     </tr>
     <tr>
         <td>
@@ -122,32 +115,40 @@
 
     @if (count($patient->compte_rendu_bloc_operatoires))
         <tr>
-            <td><b>NOM DU CHIRURGIEN :</b></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td><b>PRENOM :</b></td>
-            <td></td>
+            <td><b>NOM ET PRENOM DU CHIRURGIEN :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->chirurgien }}</td>
         </tr>
         <tr>
             <td><b>DATE DE L'INTERVENTION :</b></td>
-            <td></td>
+            <td>{{ $compte_rendu_bloc_operatoires->date_intervention }}</td>
         </tr>
         <tr>
             <td><b>DUREE DE L'INTERVENTION :</b></td>
-            <td></td>
+            <td>{{ $compte_rendu_bloc_operatoires->dure_intervention }}</td>
         </tr>
         <tr>
-            <td><b>DETAILS DE L'INTERVENTION :</b></td>
-            {{--@if (strlen($compte_rendu_bloc_operatoires) > 25)--}}
-
-            <td></td>
-            {{--@endif--}}
-
+            <td><b>COMPTE RENDU OPERATOIRE :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->compte_rendu_o }}</td>
         </tr>
         <tr>
-            <td><b>COUT DE L'INTERVENTION :</b></td>
-            <td></td>
+            <td><b>RESULTATS HISTO-PATHOLOGIQUES :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->resultat_histo }}</td>
+        </tr>
+        <tr>
+            <td><b>SUITES OPERATOIRES :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->suite_operatoire }}</td>
+        </tr>
+        <tr>
+            <td><b>TRAITEMENT PROPOSE :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->traitement_propose }}</td>
+        </tr>
+        <tr>
+            <td><b>SOINS ET EXAMENS A REALISER :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->soins }}</td>
+        </tr>
+        <tr>
+            <td><b>CONCLUSION :</b></td>
+            <td>{{ $compte_rendu_bloc_operatoires->conclusion }}</td>
         </tr>
         <tr>
             <td>
