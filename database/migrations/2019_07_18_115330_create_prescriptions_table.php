@@ -19,9 +19,9 @@ class Createprescriptionstable extends migration
             $table->string('hematologie')->nullable();
             $table->string('hemostase')->nullable();
             $table->string('biochimie')->nullable();
-            $table->string('hormonologie_serologie')->nullable();
-            $table->string('marqueurs_tumoraux')->nullable();
-            $table->string('bacteriologie_parasitologie')->nullable();
+            $table->string('hormonologie')->nullable();
+            $table->string('marqueurs')->nullable();
+            $table->string('bacteriologie')->nullable();
             $table->string('spermiologie')->nullable();
             $table->string('urines')->nullable();
             $table->string('serologie')->nullable();

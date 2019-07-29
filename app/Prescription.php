@@ -8,18 +8,20 @@ class Prescription extends model
 {
     protected $fillable = [
         'patient_id',
-        'hematologie',
-        'hemostase',
-        'biochimie',
-        'hormonologie_serologie',
-        'marqueurs_tumoraux',
-        'bacteriologie_parasitologie',
-        'spermiologie',
-        'urines',
-        'serologie',
-        'examen',
-
+        'hematologie' => 'array',
+        'hemostase'=> 'array',
+        'biochimie'=> 'array',
+        'hormonologie'=> 'array',
+        'marqueurs'=> 'array',
+        'bacteriologie'=> 'array',
+        'spermiologie'=> 'array',
+        'urines'=> 'array',
+        'serologie'=> 'array',
+        'examen'=> 'array',
+       
     ] ;
+
+   
 
     public function patient()
     {

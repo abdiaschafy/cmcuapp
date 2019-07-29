@@ -94,7 +94,22 @@
                 x.style.display = "none";
             }
         }
-    </script>
+
+     </script>
+   <!-- <script>
+    function Mycheckbox()
+    {
+        if ( document.test.hematologie.checked == true)
+        {
+            document.getElementById("2").checked = false;
+        }
+        else if ( document.test.hemostase.checked == true )
+        {
+            document.getElementById("1").checked = false;
+        }
+    }
+ </script> -->
+
     </body>
 
 @stop
