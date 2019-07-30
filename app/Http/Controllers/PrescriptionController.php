@@ -27,16 +27,17 @@ class PrescriptionController extends Controller
         $prescriptions = new Prescription ();
 
        
-    $prescriptions->hematologie = implode(',', $request->hematologie);
-    $prescriptions->hemostase = implode(',', $request->hemostase);
-//    $prescriptions->biochimie = implode(',', $request->biochimie);
-//   $prescriptions->hormonologie = implode(',', $request->hormonologie);
-//   $prescriptions->marqueurs = implode(',', $request->marqueurs);
-//   $prescriptions->bacteriologie = implode(',', $request->bacteriologie);
-//   $prescriptions->spermiologie = implode(',', $request->spermiologie);
-//   $prescriptions->urines = implode(',', $request->urines);
-//   $prescriptions->serologie = implode(',', $request->serologie);
-//   $prescriptions->examen = implode(',', $request->examen);
+    $prescriptions->hematologie = implode(',', $request->hematologie ?? []);
+    $prescriptions->hemostase = implode(',', $request->hemostase  ?? []);
+   $prescriptions->biochimie = implode(',', $request->biochimie ?? []);
+  $prescriptions->hormonologie = implode(',', $request->hormonologie ?? []);
+  $prescriptions->marqueurs = implode(',', $request->marqueurs ?? []);
+  $prescriptions->bacteriologie = implode(',', $request->bacteriologie ?? []);
+  $prescriptions->spermiologie = implode(',', $request->spermiologie ?? []);
+  $prescriptions->urines = implode(',', $request->urines ?? []);
+  $prescriptions->serologie = implode(',', $request->serologie ?? []);
+  $prescriptions->examen = implode(',', $request->examen ?? []);
+  
   $prescriptions->patient_id = $request->patient_id;
 
            $prescriptions->save();

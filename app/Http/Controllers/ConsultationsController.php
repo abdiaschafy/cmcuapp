@@ -64,4 +64,13 @@ class ConsultationsController extends Controller
         return view('admin.consultations.index', compact('consultations'));
     }
 
+    
+    public function show(ConsultationRequest $request, $id)
+    {
+
+        $consultations = Consultation::find($id);
+
+        return view('admin.consultations.show', compact('consultations'));
+    }
+
 }

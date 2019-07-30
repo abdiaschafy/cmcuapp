@@ -16,9 +16,8 @@
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
                             <th>DIAGNOSTIQUE</th>
-                            <th>PROPOSITION</th>
                             <th>DATE</th>
-                            <th>IMPPRIMER</th>
+                            <th>PLUS DE DETAILS</th>
                             </thead>
                             <tbody>
 
@@ -26,11 +25,11 @@
 
                                 <tr>
                                     <td>{{ $consultation->diagnostic }}</td>
-                                    <td>{{ $consultation->proposition }}</td>
+                                    
                                     <td>{{ $consultation->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        <a class="btn btn-success btn-xs" title="Imprimer la consultation" href="#">
-                                            <i class="fas fa-print"></i>
+                                        <a class="btn btn-success btn-xs" title=" plus de details" href="{{ route('consultations.show', $consultation->id) }}">
+                                            <i class="fas fa-eye"></i>
                                         </a>
                                     </td>
                                 </tr>
