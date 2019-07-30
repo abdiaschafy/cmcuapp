@@ -20,16 +20,15 @@ class PrescriptionController extends Controller
 
     public function store(PrescriptionRequest $request, Patient $patient)
     {
-        
-        $prescriptions = input($request->all());
        
+        $prescriptions = [];
         $patient = Patient::findOrFail($request->patient_id);
 
- $prescriptions = new Prescription ();
+        $prescriptions = new Prescription ();
 
        
-    $prescriptions->hematologie = input(',', $request->hematologie);
-    $prescriptions->hemostase = input(',', $request->hemostase);
+    $prescriptions->hematologie = implode(',', $request->hematologie);
+    $prescriptions->hemostase = implode(',', $request->hemostase);
 //    $prescriptions->biochimie = implode(',', $request->biochimie);
 //   $prescriptions->hormonologie = implode(',', $request->hormonologie);
 //   $prescriptions->marqueurs = implode(',', $request->marqueurs);

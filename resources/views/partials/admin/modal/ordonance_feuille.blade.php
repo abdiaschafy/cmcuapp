@@ -29,12 +29,13 @@
                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                         </form>
                     </div>
-                    <form id="menu1" class="tab-pane fade" action="{{ route('prescriptions.store') }}" method="POST" >
+                    <form onsubmit="return envoi();" id="menu1" class="tab-pane fade" action="{{ route('prescriptions.store') }}" method="POST" >
                         <h3 class="text-center mb-4">Veuillez cocher les examens à prescrire</h3>
                         @csrf
 
                         @include('partials.admin.files.feuille_examen')
 
+                        
                         <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                         <button type="button" class="btn btn-secondary btn-md mt-2" data-dismiss="modal">Fermer</button>
                         <button type="submit"class="btn btn-primary btn-md mt-2">Enregistrer</button>
@@ -45,4 +46,28 @@
         </div>
     </div>
 </div>
+
+<script>
+function envoi()
+{
+	prepare("hematologie",  "s1");
+	prepare("hemostase", "s2");
+	return false;
+}
+
+function prepare(name1, name2)
+{
+	var node1 = document.getElementsByName(name1);
+	var node2 = document.getElementsByName(name2)[0];
+	var text = "";
+	for (var i=0; i<node1.length; i++)
+	{
+		if (node1[i].checked)
+			text += "O ";
+		else	text += "N ";
+	}
+	node2.value = text;
+}
+
+</script>
  

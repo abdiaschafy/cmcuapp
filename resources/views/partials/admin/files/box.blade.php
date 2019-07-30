@@ -78,14 +78,17 @@
                 <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
 
                 <div class="title">
-                    <h5>AUTRES ...</h5>
+                    <h5>CONSULTATIONS</h5>
                 </div>
 
                 <div class="text">
                     <span></span>
                 </div>
 
-                <a class="btn btn-primary" href="#">Voir plus</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#consultationAll" data-whatever="@mdo">
+                 <i class="fas fa-eye"></i>
+                 Voir plus
+                </button>
 
             </div>
         </div>

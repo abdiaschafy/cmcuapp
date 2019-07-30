@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
     Route::get('consultations', 'ConsultationsController@index')->name('consultations.index');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
+    Route::get('consultations/{id}','ConsultationsController@export_pdf')->name('consulatations.pdf');
 
 
     Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');
