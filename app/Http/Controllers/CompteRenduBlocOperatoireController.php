@@ -24,15 +24,23 @@ class CompteRenduBlocOperatoireController extends Controller
         CompteRenduBlocOperatoire::create([
             'patient_id' => $patient->id,
             'anesthesiste' => \request('anesthesiste'),
+            'aide_op' => \request('aide_op'),
             'chirurgien' => \request('chirurgien'),
+            'infirmier_anesthesiste' => \request('infirmier_anesthesiste'),
             'compte_rendu_o' => \request('compte_rendu_o'),
+            'indication_operatoire' => \request('indication_operatoire'),
             'resultat_histo' => \request('resultat_histo'),
             'suite_operatoire' => \request('suite_operatoire'),
             'traitement_propose' => \request('traitement_propose'),
             'soins' => \request('soins'),
+            'aide_op' => \request('aide_op'),
             'conclusion' => \request('conclusion'),
             'dure_intervention' => \request('dure_intervention'),
-            'date_intervention' => \request('date_intervention')
+            'date_intervention' => \request('date_intervention'),
+            'date_e'=> request('date_e'),
+            'date_s'=> request('date_s'),
+            'type_e'=> request('type_e'),
+            'type_s'=> request('type_s'),
         ]);
 
         Flashy('Le compte rendu du bloc opérqtoire a été ajouté avec succes');

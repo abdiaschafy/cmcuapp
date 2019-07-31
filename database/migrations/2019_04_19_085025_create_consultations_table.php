@@ -29,10 +29,9 @@ class CreateConsultationsTable extends Migration
             $table->text('examen_p')->nullable();
             $table->text('examen_c')->nullable();
             $table->text('motif_c')->nullable();
-            $table->date('date_e');
-            $table->date('date_s');
-            $table->string('type_e');
-            $table->string('type_s');
+            $table->date('date_intervention');
+            $table->string('acte');
+            $table->string('type_intervention');
             $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');

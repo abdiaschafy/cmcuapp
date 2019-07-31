@@ -38,10 +38,9 @@ class ConsultationRequest extends FormRequest
             'devis_p'=> '',
             'motif_c'=> 'required',
             'medecin_r'=> 'required',
-            'date_e'=> 'required',
-            'date_s'=> 'required',
-            'type_e'=> 'required',
-            'type_s'=> 'required',
+            'acte'=> 'required',
+            'date_intervention'=> 'required',
+            'type_intervention'=> 'required',
         ];
     }
 }

@@ -24,9 +24,66 @@
                                         !! espace réservé au médécin</strong></i></small>
                             <table class="table table-user-information ">
                                 <tbody>
-                                </tr>
                                 <form action="{{ route('compte_rendu_bloc.store') }}" method="post">
                                     @csrf
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-primary"><strong>ENTRE / SORTIE PATIENT</strong></h5>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Date d'entré :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <b>Type :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="date_e" value="{{ old('date_e') }}" class="form-control col-md-10" required/>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="type_e" required>
+                                                <option value="">Motif d'entrer</option>
+                                                <option value="Urgence" {{old("type_e") ?: '' ? "selected": ""}}>Urgence</option>
+                                                <option value="Hospitalisation" {{old("type_e") ?: '' ? "selected": ""}}>Hospitalisation</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <b>Date de sortie :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                        <td>
+                                            <b>Type :</b>
+                                            <span class="text-danger">*</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" name="date_s" value="{{ old('date_s') }}" class="form-control col-md-10" required/>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" name="type_s" {{ old('type_s') }} required>
+                                                <option value="">Motif de sortie</option>
+                                                <option value="Retour au domicile" {{old("type_s") ?: '' ? "selected": ""}}>Retour au domicile</option>
+                                                <option value="Transfert" {{old("type_s") ?: '' ? "selected": ""}}>Transfert</option>
+                                                <option value="Convalescence" {{old("type_s") ?: '' ? "selected": ""}}>Convalescence</option>
+                                                <option value="Décédé" {{old("type_s") ?: '' ? "selected": ""}}>Décédé</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-primary"><strong>EQUIPE MEDICALE</strong></h5>
+                                        </td>
+                                        <td></td>
+                                    </tr>
                                     <tr>
                                         <td><b>Nom du chirurgien :</b> <span class="text-danger">*</span></td>
                                         <td>
@@ -39,7 +96,18 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Nom de l'anesthésiste :</b> <span class="text-danger">*</span></td>
+                                        <td><b>Aide opératoire :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <select class="form-control" name="aide_op" id="aide_op" required>
+                                                <option value=""> Nom de l'aide opératoire</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("aide_op") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Anesthésiste :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <select class="form-control" name="anesthesiste" id="anesthesiste" required>
                                                 <option value=""> Nom de l'anesthésiste</option>
@@ -48,6 +116,23 @@
                                                 @endforeach
                                             </select>
                                         </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Infirmier anesthésiste :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <select class="form-control" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
+                                                <option value=""> Nom de l'infirmier anesthésiste</option>
+                                                @foreach ($users as $user)
+                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("infirmier_anesthesiste") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
+                                                @endforeach
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5 class="text-primary"><strong>DETAILS OPERATIONS</strong></h5>
+                                        </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td><b>Date de l'inervention :</b> <span class="text-danger">*</span></td>
@@ -67,6 +152,12 @@
                                         <td><b>Compte rendu opératoire :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Indications opératoires :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <textarea class="splitLines" name="indication_operatoire" id="indication_operatoire" cols="55" rows="3" required>{{ old('indication_operatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>

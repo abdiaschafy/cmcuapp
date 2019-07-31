@@ -28,10 +28,10 @@
                                 <form action="{{ route("consultations.store") }}" method="post">
                                     @csrf
                                     <tr>
-                                        <td></td>
                                         <td>
-                                            <h5 class="text-primary"><strong>CONSULTATION DE SUIVI</strong></h5>
+                                            <h5 class="text-primary"><strong>CONSULTATION</strong></h5>
                                         </td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td><b>Médécin de référence :</b> <span class="text-danger">*</span></td>
@@ -62,46 +62,48 @@
                                                       required>{{ old('interrogatoire') }}</textarea>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><b>Antécédent médicaux :</b></td>
-                                        <td>
+                                    @if (count($consutation) == 0)
+                                        <tr>
+                                            <td><b>Antécédent médicaux :</b></td>
+                                            <td>
                                             <textarea class="splitLines" name="antecedent_m" cols="45"
                                                       rows="3">{{ old('antecedent_m') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Antécédent chirurgicaux :</b></td>
-                                        <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Antécédent chirurgicaux :</b></td>
+                                            <td>
                                             <textarea class="splitLines" name="antecedent_c" cols="45"
                                                       rows="3">{{ old('antecedent_c') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Allergies :</b></td>
-                                        <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Allergies :</b></td>
+                                            <td>
                                             <textarea class="splitLines" name="allergie" cols="45"
                                                       rows="2">{{ old('allergie') }}</textarea>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Goupe sanguin du patient :</b></td>
+                                            <td>
+                                                <select class="form-control" name="groupe" id="groupe">
+                                                    <option value="">Groupes sanguins</option>
+                                                    <option value="O-" {{old("groupe") ?: '' ? "selected": ""}}>O-</option>
+                                                    <option value="O+" {{old("groupe") ?: '' ? "selected": ""}}>O+</option>
+                                                    <option value="B-" {{old("groupe") ?: '' ? "selected": ""}}>B-</option>
+                                                    <option value="B+" {{old("groupe") ?: '' ? "selected": ""}}>B+</option>
+                                                    <option value="A-" {{old("groupe") ?: '' ? "selected": ""}}>A-</option>
+                                                    <option value="A+" {{old("groupe") ?: '' ? "selected": ""}}>A+</option>
+                                                    <option value="AB- {{old("groupe") ?: '' ? "selected": ""}}">AB-</option>
+                                                    <option value="AB+ {{old("groupe") ?: '' ? "selected": ""}}">AB+</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    @endif
                                     <tr>
-                                        <td><b>Goupe sanguin du patient :</b></td>
-                                        <td>
-                                            <select class="form-control" name="groupe" id="groupe">
-                                                <option value="">Groupes sanguins</option>
-                                                <option value="O-" {{old("groupe") ?: '' ? "selected": ""}}>O-</option>
-                                                <option value="O+" {{old("groupe") ?: '' ? "selected": ""}}>O+</option>
-                                                <option value="B-" {{old("groupe") ?: '' ? "selected": ""}}>B-</option>
-                                                <option value="B+" {{old("groupe") ?: '' ? "selected": ""}}>B+</option>
-                                                <option value="A-" {{old("groupe") ?: '' ? "selected": ""}}>A-</option>
-                                                <option value="A+" {{old("groupe") ?: '' ? "selected": ""}}>A+</option>
-                                                <option value="AB- {{old("groupe") ?: '' ? "selected": ""}}">AB-</option>
-                                                <option value="AB+ {{old("groupe") ?: '' ? "selected": ""}}">AB+</option>
-                                            </select>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                        <td><h5 class="text-primary">EXAMENS</h5></td>
                                         <td></td>
-                                        <td><h5 class="text-primary">EXAMENS A REALISER</h5></td>
                                     </tr>
                                     <tr>
                                         <input name="patient_id" value="{{ $patient->id }}" type="hidden">
@@ -147,49 +149,23 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><b>Actes à réaliser :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <b>Date d'entré :</b>
-                                            <span class="text-danger">*</span>
-                                        </td>
-                                        <td>
-                                            <b>Type :</b>
-                                            <span class="text-danger">*</span>
+                                            <textarea class="splitLines" name="acte" cols="45" rows="3"
+                                                      required>{{ old('acte') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><b>Type d'intervention :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <input type="date" name="date_e" value="{{ old('date_e') }}" class="form-control col-md-10" required/>
-                                        </td>
-                                        <td>
-                                            <select class="form-control" name="type_e" required>
-                                                <option value="">Motif d'entrer</option>
-                                                <option value="Urgence" {{old("type_e") ?: '' ? "selected": ""}}>Urgence</option>
-                                                <option value="Hospitalisation" {{old("type_e") ?: '' ? "selected": ""}}>Hospitalisation</option>
-                                            </select>
+                                            <textarea class="splitLines" name="type_intervention" cols="45" rows="3"
+                                                      required>{{ old('type_intervention') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><b>Date intervention :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <b>Date de sortie :</b>
-                                            <span class="text-danger">*</span>
-                                        </td>
-                                        <td>
-                                            <b>Type :</b>
-                                            <span class="text-danger">*</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <input type="date" name="date_s" value="{{ old('date_s') }}" class="form-control col-md-10" required/>
-                                        </td>
-                                        <td>
-                                            <select class="form-control" name="type_s" {{ old('type_s') }} required>
-                                                <option value="">Motif de sortie</option>
-                                                <option value="Retour au domicile" {{old("type_s") ?: '' ? "selected": ""}}>Retour au domicile</option>
-                                                <option value="Transfert" {{old("type_s") ?: '' ? "selected": ""}}>Transfert</option>
-                                                <option value="Convalescence" {{old("type_s") ?: '' ? "selected": ""}}>Convalescence</option>
-                                                <option value="Décédé" {{old("type_s") ?: '' ? "selected": ""}}>Décédé</option>
-                                            </select>
+                                            <input type="date" class="form-control col-md-6" name="date_intervention" value="{{ old('date_intervention') }}" required>
                                         </td>
                                     </tr>
                                     <tr id="cout" style='display:none;'>
