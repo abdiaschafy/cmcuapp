@@ -65,7 +65,7 @@ class ConsultationsController extends Controller
     }
 
     
-    public function show(ConsultationRequest $request, $id)
+    public function show( $id)
     {
 
         $consultations = Consultation::find($id);
