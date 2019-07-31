@@ -95,7 +95,7 @@
         </td>
         <td>
             <a class="btn btn-success" title="Imprimer la lettre de sortie" href="{{ route('print.sortie', $patient->id) }}">
-                <i class="fas fa-print"></i> Lettre de sortie
+                <i class="fas fa-print"></i> Lettre de consultation
             </a>
         </td>
     </tr>

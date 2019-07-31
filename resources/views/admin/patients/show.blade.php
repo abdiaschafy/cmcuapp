@@ -32,6 +32,9 @@
                         <i class="far fa-plus-square"></i> Ordonance / Examens complémentaires
 
                     </button>
+                    <a href="#" class="btn btn-primary">
+                        <i class="far fa-plus-square"></i> Fiche d'intervention
+                    </a>
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
                     </a>

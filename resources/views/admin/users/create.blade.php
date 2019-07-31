@@ -107,6 +107,17 @@
                 y.type = "password";
             }
         }
+
+        $("#roles").change(function() {
+            if ($(this).val() == 'MEDECIN') {
+                $('#otherFieldDiv').show();
+                $('#specialite').attr('required', '');
+            } else {
+                $('#otherFieldDiv').hide();
+                $('#specialite').removeAttr('required');
+            }
+        });
+        $("#roles").trigger("change");
     </script>
     </body>
 @stop
