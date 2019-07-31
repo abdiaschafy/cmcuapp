@@ -32,12 +32,6 @@
                         <i class="far fa-plus-square"></i> Ordonance / Examens complémentaires
 
                     </button>
-                    @if (count($patient->consultations))
-
-                        <a href="{{ route('compte_rendu_hos.create', $patient->id) }}" class="btn btn-primary">
-                            <i class="far fa-plus-square"></i> Compte rendu d'hospitalisation
-                        </a> @endif @if(count($patient->examens))
-                    @endif
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
                     </a>
