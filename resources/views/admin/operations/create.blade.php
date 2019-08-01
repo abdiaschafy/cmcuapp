@@ -19,7 +19,7 @@
                     <div class="card col-md-8">
                         <div class="card-body">
                             @include('partials.flash_form')
-                            <h3 class="card-title">COMPTE RENDU OPERATOIRE</h3>
+                            <h3 class="card-title">COMPTE-RENDU OPERATOIRE</h3>
                             <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
                                         !! espace réservé au médécin</strong></i></small>
                             <table class="table table-user-information ">
@@ -149,7 +149,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Compte rendu opératoire :</b> <span class="text-danger">*</span></td>
+                                        <td><b>Compte-rendu opératoire :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
                                         </td>
