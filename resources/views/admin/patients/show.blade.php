@@ -32,9 +32,10 @@
                         <i class="far fa-plus-square"></i> Ordonance / Examens complémentaires
 
                     </button>
-                    <a href="#" class="btn btn-primary">
-                        <i class="far fa-plus-square"></i> Fiche d'intervention
-                    </a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Fiche d'intervention
+                    </button>
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
                     </a>
@@ -78,8 +79,10 @@
                 @include('partials.admin.modal.ordonance_show')
                 @include('partials.admin.modal.consultation_show')
                 @include('partials.admin.modal.feuille_show')
-                
-               
+
+                @include('partials.admin.modal.fiche_intervention')
+
+
                 {{-- FIN DE TOUS LES MODAL --}}
 
             </div>

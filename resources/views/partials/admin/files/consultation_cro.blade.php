@@ -103,7 +103,7 @@
     <tr>
         <td>
             <a href="">
-                <h1 class="text-info">COMPTE RENDU</h1>
+                <h1 class="text-info">COMPTE-RENDU</h1>
             </a>
         </td>
         <td>
@@ -127,7 +127,7 @@
             <td>{{ $compte_rendu_bloc_operatoires->dure_intervention }}</td>
         </tr>
         <tr>
-            <td><b>COMPTE RENDU OPERATOIRE :</b></td>
+            <td><b>COMPTE-RENDU OPERATOIRE :</b></td>
             <td>{{ $compte_rendu_bloc_operatoires->compte_rendu_o }}</td>
         </tr>
         <tr>
@@ -152,13 +152,13 @@
         </tr>
         <tr>
             <td>
-                <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte rendu opératoire" class="btn btn-danger">
+                <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte-rendu opératoire" class="btn btn-danger">
                     <i class="far fa-plus-square"></i> Nouveau CRO
                 </a>
             </td>
             <td>
                 @if (count($patient->compte_rendu_bloc_operatoires))
-                    <a class="btn btn-success" title="Imprimer le compte rendu opératoire" href="">
+                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="">
                         <i class="fas fa-print"></i> Imprimer le CRO
                     </a>
                 @endif
@@ -167,7 +167,7 @@
     @else
         <tr>
             <td>
-                <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte rendu opératoire" class="btn btn-danger">
+                <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte-rendu opératoire" class="btn btn-danger">
                     <i class="far fa-plus-square"></i> Nouveau CRO
                 </a>
             </td>

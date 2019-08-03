@@ -13,7 +13,7 @@
     @include('partials.header')
     <!--// top-bar -->
         <div class="container">
-            <h1 class="text-center">RENSEIGNER LE DOSSIER DU PATIENT PATIENT</h1>
+            <h1 class="text-center">RENSEIGNER LE DOSSIER DU PATIENT</h1>
             <hr>
             @include('partials.flash_form')
             <form class="form-row mt-4" method="post" action="{{ route('dossiers.store') }}">
