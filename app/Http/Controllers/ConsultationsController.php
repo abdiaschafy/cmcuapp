@@ -8,6 +8,7 @@ use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use App\Produit;
 use App\User;
+use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class ConsultationsController extends Controller
@@ -61,12 +62,14 @@ class ConsultationsController extends Controller
     }
 
     
-    public function show( $id)
+    public function show(Request $request, $id)
     {
 
         $consultations = Consultation::find($id);
 
         return view('admin.consultations.show', compact('consultations'));
     }
+
+   
 
 }

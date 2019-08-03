@@ -47,27 +47,5 @@
     </div>
 </div>
 
-<script>
-function envoi()
-{
-	prepare("hematologie",  "s1");
-	prepare("hemostase", "s2");
-	return false;
-}
 
-function prepare(name1, name2)
-{
-	var node1 = document.getElementsByName(name1);
-	var node2 = document.getElementsByName(name2)[0];
-	var text = "";
-	for (var i=0; i<node1.length; i++)
-	{
-		if (node1[i].checked)
-			text += "O ";
-		else	text += "N ";
-	}
-	node2.value = text;
-}
-
-</script>
  

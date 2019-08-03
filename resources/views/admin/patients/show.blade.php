@@ -75,12 +75,14 @@
                 {{-- FIN DES BOUTONS DE MODAL --}}
 
                 {{-- TOUS LES MODAL IC --}}
-                @include('partials.admin.modal.ordonance_feuille')
+                @include('partials.admin.modal.feuille_precription_examen')
                 @include('partials.admin.modal.ordonance_show')
                 @include('partials.admin.modal.consultation_show')
+                @include('partials.admin.modal.feuille_show')
+
                 @include('partials.admin.modal.fiche_intervention')
 
-               
+
                 {{-- FIN DE TOUS LES MODAL --}}
 
             </div>

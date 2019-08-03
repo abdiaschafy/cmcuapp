@@ -33,6 +33,11 @@ class Patient extends Model
         return $this->hasMany(Consultation::class);
     }
 
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
+    }
+
     public function compte_rendu_bloc_operatoires()
     {
         return $this->hasMany(CompteRenduBlocOperatoire::class);

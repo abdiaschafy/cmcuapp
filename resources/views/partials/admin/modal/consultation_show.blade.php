@@ -8,8 +8,8 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if (count($patient->consultations))
-
+                
+            @if (count($patient->consultations))
                     <h3>consultation</h3>
                     <br>
                     <div class="table-responsive">
@@ -42,7 +42,7 @@
                         
 
                     </div>
-                @endif
+                    @endif
             </div>
         </div>
     </div>
