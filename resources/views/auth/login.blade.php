@@ -34,7 +34,7 @@
         </div>
     </div>
     <div class="art-left-w3ls">
-        <img class="header-w3ls img" src="{{ asset('admin/images/logo.jpg') }}" alt="">
+        <img class="header-w3ls img" src="{{ asset('admin/images/logo.jpg') }}">
         <p class="text-center">
         <h1 align="center"> CENTRE MEDICO-CHIRURGICAL d'UROLOGIE et de CHIRURGIE MINI-INVASIVE</h1>
         <h3 align="center"> VALLEE MANGA BELL</h3>

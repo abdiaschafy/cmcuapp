@@ -47,9 +47,11 @@ class UsersController extends Controller
         $password = $input['password'];
         $user = new User();
         $user->name = $request->name;
+        $user->prenom = $request->prenom;
+        $user->onmc = $request->onmc;
+        $user->specialite = $request->specialite;
         $user->lieu_naissance = $request->lieu_naissance;
         $user->date_naissance = $request->date_naissance;
-        $user->prenom = $request->prenom;
         $user->telephone = $request->telephone;
         $user->sexe = $request->sexe;
         $user->login = $request->login;

@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('sexe', 254);
             $table->string('lieu_naissance', 254);
             $table->date('date_naissance');
+            $table->string('specialite')->nullable();
+            $table->string('onmc')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

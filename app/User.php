@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
   
     protected $fillable = [
-        'name', 'prenom', 'login', 'telephone', 'sexe', 'lieu_naissance', 'date_naissance', 'password',
+        'name', 'prenom', 'login', 'telephone', 'sexe', 'lieu_naissance', 'date_naissance', 'password', 'specialite', 'onmc'
     ];
 
 
@@ -57,6 +57,11 @@ class User extends Authenticatable
     public function consultations()
     {
         return $this->hasMany(Consultation::class);
+    }
+
+    public function ordonances()
+    {
+        return $this->hasMany(Ordonance::class);
     }
 
     public function isAdmin()

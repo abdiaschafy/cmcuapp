@@ -59,16 +59,30 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label class="col-form-label" for="roles">ROLE <span class="text-danger">*</span></label>
-                                    <select name="roles" class="form-control" id="exampleFormControlSelect1">
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role->id }}"  {{ $role->id == ' ' ? 'selected' : '' }}>{{ $role->name }}</option>
-                                        @endforeach
+                                    <select name="roles" class="form-control" id="roles">
+                                        <option value="1">ADMINISTRATEUR</option>
+                                        <option value="2">MEDECIN</option>
+                                        <option value="7">PHARMACIEN</option>
+                                        <option value="5">LOGISTIQUE</option>
+                                        <option value="4">INFIRMIER</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group col-md-5">
                                     <label for="login" class="col-form-label">Login <span class="text-danger">*</span></label>
                                     <input name="login" class="form-control" value="{{ old('login') }}" type="text" placeholder="Login" required>
+                                </div>
+                            </div>
+
+                            <div class="row"  id="otherFieldDiv">
+                                <div class="form-group col-md-5">
+                                    <label class="col-form-label" for="specialite">Spécialité <span class="text-danger">*</span></label>
+                                    <input type="text" name="specialite" class="form-control">
+                                </div>
+
+                                <div class="form-group col-md-5">
+                                    <label for="onmc" class="col-form-label">Onmc <span class="text-danger">*</span></label>
+                                    <input name="onmc" class="form-control" value="{{ old('onmc') }}" type="text" placeholder="onmc" required>
                                 </div>
                             </div>
 
@@ -95,6 +109,7 @@
         </div>
         <hr>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script type="text/javascript">
         function show_password() {
             var x = document.getElementById("myInput");
@@ -109,12 +124,12 @@
         }
 
         $("#roles").change(function() {
-            if ($(this).val() == 'MEDECIN') {
+            if ($(this).val() == '2') {
                 $('#otherFieldDiv').show();
-                $('#specialite').attr('required', '');
+                // $('#specialite').attr('required', '');
             } else {
                 $('#otherFieldDiv').hide();
-                $('#specialite').removeAttr('required');
+                // $('#specialite').removeAttr('required');
             }
         });
         $("#roles").trigger("change");
