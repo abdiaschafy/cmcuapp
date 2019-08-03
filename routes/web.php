@@ -89,6 +89,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('prescriptions/create/{patient}', 'PrescriptionController@create')->name('prescriptions.create');
     Route::post('examens', 'PrescriptionController@store')->name('prescriptions.store');
+    Route::get('prescription_examens/{prescription_examens}','PatientsController@export_prescription')->name('prescription_examens.pdf');
 
     Route::get('dossiers/create', 'DossiersController@create')->name('dossiers.create');
     Route::get('dossiers/create/{patient}', 'DossiersController@create')->name('dossiers.create');

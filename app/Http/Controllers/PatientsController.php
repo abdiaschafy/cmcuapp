@@ -7,6 +7,7 @@ use App\Dossier;
 use App\Patient;
 use App\Produit;
 use App\Ordonance;
+use App\Prescription;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +69,7 @@ class PatientsController extends Controller
         return view('admin.patients.show', [
             'patient' => $patient,
             'consultations' => $patient->consultations()->latest()->first(),
+            'prescriptions' => $patient->prescriptions()->latest()->first(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossier' => $patient->dossiers,
             'parametres' =>$patient->parametres()->latest()->first(),
@@ -158,6 +160,19 @@ class PatientsController extends Controller
         $pdf->save(storage_path('ordonance').'.pdf');
 
         return $pdf->stream('ordonance.pdf');
+    }
+
+    public function export_prescription($id)
+    {
+        
+        $prescription = Prescription::with('patient')->find($id);
+
+
+        $pdf = PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
+
+        $pdf->save(storage_path('prescription_examens').'.pdf');
+
+        return $pdf->stream('prescription_examens.pdf');
     }
 
 

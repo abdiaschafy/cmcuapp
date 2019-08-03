@@ -8,9 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if (count($patient->ordonances))
+            @if (count($patient->prescriptions))
 
-                    <h3>Ordonances médicales</h3>
+                    <h3>Prescription des examens</h3>
                     <br>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
@@ -21,13 +21,14 @@
                             </thead>
                             <tbody>
 
-                            @foreach($patient->ordonances as $ordonance)
+                            @foreach($patient->prescriptions as $prescription)
 
                                 <tr>
-                                    <td>{{ $ordonance->description }}</td>
-                                    <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $prescription->hematologie }}</td>
+                                    <td>{{ $prescription->hemostase }}</td>
+                                    <td>{{ $prescription->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('ordonance.pdf', $ordonance->id) }}">
+                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('prescription_examens.pdf', $prescription->id) }}">
                                             <i class="fas fa-print"></i>
                                         </a>
                                     </td>
@@ -41,9 +42,8 @@
                         {{ $ordonances->links() }}
 
                     </div>
-                @endif
+            @endif
             </div>
         </div>
     </div>
 </div>
-

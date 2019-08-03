@@ -14,57 +14,61 @@ class PrescriptionController extends Controller
 {
     public function create(patient $patient)
     {
-        return view('admin.prescriptions.create', compact('patient'));
+        $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->get();
+        return view('admin.prescriptions.create', compact('patient', 'prescriptions'));
     }
 
 
     public function store(PrescriptionRequest $request, Patient $patient)
     {
        
-        $prescriptions = [];
+       $prescriptions = [];
         $patient = Patient::findOrFail($request->patient_id);
 
         $prescriptions = new Prescription ();
 
        
-    $prescriptions->hematologie = implode(',', $request->hematologie ?? []);
-    $prescriptions->hemostase = implode(',', $request->hemostase  ?? []);
-   $prescriptions->biochimie = implode(',', $request->biochimie ?? []);
-  $prescriptions->hormonologie = implode(',', $request->hormonologie ?? []);
-  $prescriptions->marqueurs = implode(',', $request->marqueurs ?? []);
-  $prescriptions->bacteriologie = implode(',', $request->bacteriologie ?? []);
-  $prescriptions->spermiologie = implode(',', $request->spermiologie ?? []);
-  $prescriptions->urines = implode(',', $request->urines ?? []);
-  $prescriptions->serologie = implode(',', $request->serologie ?? []);
-  $prescriptions->examen = implode(',', $request->examen ?? []);
-  
-  $prescriptions->patient_id = $request->patient_id;
+            $prescriptions->hematologie = implode(',', $request->hematologie ?? []);
+            $prescriptions->hemostase = implode(',', $request->hemostase  ?? []);
+        $prescriptions->biochimie = implode(',', $request->biochimie ?? []);
+        $prescriptions->hormonologie = implode(',', $request->hormonologie ?? []);
+        $prescriptions->marqueurs = implode(',', $request->marqueurs ?? []);
+        $prescriptions->bacteriologie = implode(',', $request->bacteriologie ?? []);
+        $prescriptions->spermiologie = implode(',', $request->spermiologie ?? []);
+        $prescriptions->urines = implode(',', $request->urines ?? []);
+        $prescriptions->serologie = implode(',', $request->serologie ?? []);
+        $prescriptions->examen = implode(',', $request->examen ?? []);
+        
+        $prescriptions->patient_id = $request->patient_id;
 
-           $prescriptions->save();
+                $prescriptions->save();
 
 
+                Flashy('La nouvelle prescription a été crée avec succès !!');
 
-        //    Prescription::create([
-           
-        //     'patient_id' => $patient->id,
-        //     // 'hematologie'=> request(implode(',', $prescriptions)),
-        //     'hemostase'=> implode(',', $request->hemostase),
-        //     'biochimie'=> dd(request('biochimie')),
-        //     // 'hormonologie'=> request('hormonologie'),
-        //     // 'marqueurs'=> request('marqueurs'),
-        //     // 'bacteriologie'=> request('bacteriologie'),
-        //     // 'spermiologie '=> request('spermiologie '),
-        //     // 'serologie'=> request('serologie'),
-        //     // 'urines'=> request('urines'),
-        //     // 'examen'=> request('examen'),
-
-        // ]);
-
-        Flashy('La nouvelle prescription a été crée avec succès !!');
-
-        return back();
+                return back();
     
     }
+
+    public function show(Request $request, $id)
+    {
+
+        $prescriptions = Prescription::find( $id);
+
+        return view('admin.prescriptions.show', compact('prescriptions'));
+    }
+
+    public function export_prescription($id)
+    {
+
+        $prescription = Prescription::find($id);
+        $pdf = \PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
+
+        $pdf->save(storage_path('prescription_examens').'.pdf');
+
+        return $pdf->download('prescription_examens.pdf');
+    }
+
 }
 
 
