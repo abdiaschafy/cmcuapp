@@ -26,11 +26,7 @@
                             @if (count($events)>0)
                                 <p class="btn btn-primary offset-2">Dr 
                                     <strong>
-                                        @foreach($events as $event)
-                                            @if(Auth()->user()->name != $event->medecin )
-                                                {{ $event->medecin }}
-                                            @endif
-                                        @endforeach
+                                    {{ Auth()->user()->name }} {{ Auth()->user()->prenom }}
                                     </strong> la liste de vos rendez-vous en cours</p>
                             @else
                                 <p class="btn btn-info offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
