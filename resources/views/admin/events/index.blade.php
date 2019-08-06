@@ -29,7 +29,9 @@
                                     {{ Auth()->user()->name }} {{ Auth()->user()->prenom }}
                                     </strong> la liste de vos rendez-vous en cours</p>
                             @else
-                                <p class="btn btn-info offset-2">Dr <strong>{{ Auth()->user()->name }}</strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
+                                <p class="btn btn-info offset-2">Dr <strong>
+                                    {{ Auth()->user()->name }} {{ Auth()->user()->prenom }}
+                                </strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
                             @endif
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
                             <h4 id="modalTitle" class="modal-title"></h4>

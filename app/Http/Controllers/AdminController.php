@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Patient;
 use App\Produit;
 use App\User;
@@ -16,8 +17,10 @@ class AdminController extends Controller
         $users = User::count();
 
         $patients = Patient::count();
+        $patient = Patient::with('user')->where('user_id', '=', \auth()->id())->get();
+        $events = Event::with('patients', 'user')->where('user_id', '=', \auth()->id())->get();
 
-        return view('admin.dashboard', compact('produits', 'users', 'patients'));
+        return view('admin.dashboard', compact('produits', 'users', 'patients', 'events', 'patient'));
     }
 
     public function index()
