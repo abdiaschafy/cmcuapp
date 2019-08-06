@@ -43,12 +43,13 @@
                                 <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th>Description</th>
-                                    <th>Patient</th>
-                                    <th>Date</th>
-                                    <th>Heure</th>
-                                    <th class="text-center">Edier</th>
-                                    <th class="text-center">Supprimer</th>
+                                    <th>MOTIF</th>
+                                    <th>PATIENT</th>
+                                    <th>DATE</th>
+                                    <th>MEDECIN</th>
+                                    <th class="text-center">HEURE</th>
+                                    <th class="text-center">EDITER</th>
+                                    <th class="text-center">SUPPRIMER</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +60,7 @@
                                             <td>{{ $event->patients->name }}</td>
                                             <td>{{ $event->date }}</td>
                                             <td>{{ $event->medecin }}</td>
-                                            <td>{{ $event->start_time }}</td>
+                                            <td>{{ date("H:i", strtotime($event->start_time)) }}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('events.edit', $event->id) }}" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" title="Modifier les informations relative a ce rendez-vous">
                                                     <i class="far fa-edit"></i>

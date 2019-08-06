@@ -17,7 +17,8 @@ class EventsController extends Controller
     public function index(Patient $patient)
     {
 //        $events = Event::all();
-        $events = Event::with('patients')->get();
+        $events = Event::with('patients', 'user')->where('user_id', '=', \auth()->id())->get();
+//        dd($events);
 
         $event = [];
         if($events->count()) {
@@ -93,7 +94,7 @@ class EventsController extends Controller
 
     public function edit(Request $request, Event $event)
     {
-        $users = User::with('roles')->where('role_id', '=', '2')->get(['name']);
+        $users = User::with('roles')->where('role_id', '=', '2')->get(['name', 'prenom']);
         return view('admin.events.edit', compact('event', 'users'));
     }
 

@@ -18,36 +18,42 @@
                     <hr>
                     <form class="form-group col-md-10" action="{{ route('events.update', $event->id) }}" method="POST">
                         {{method_field('PATCH')}} {{csrf_field()}}
+                        @include('partials.flash_form')
                         <div class="form-group">
-                            <label for="title" class="col-form-label text-md-right">Description du rendez-vous <span class="text-danger">*</span></label>
-                            <input name="title" class="form-control" value="{{ $event->title }}" type="text" placeholder="Ex: rendez-vous avec le patient John Doe">
+                            <label for="title" class="col-form-label text-md-right">Motfif de consultation :<span class="text-danger">*</span></label>
+                            <select name="title" id="title" class="form-control" required>
+                                <option value="">Motif de consultation</option>
+                                <option value="Première consultation" {{old("title") ?: '' ? "selected": ""}}>Première consultation</option>
+                                <option value="Consultation de suivis" {{old("title") ?: '' ? "selected": ""}}>Consultation de suivis</option>
+                                <option value="Consultation post-opératoire" {{old("title") ?: '' ? "selected": ""}}>Consultation post-opératoire</option>
+                            </select>
                         </div>
-                        <label for="medecin" class="col-form-label text-md-right">Mon du médécin <span class="text-danger">*</span></label>
+                        <label for="medecin" class="col-form-label text-md-right">Mon du médécin :<span class="text-danger">*</span></label>
                         <div class="form-group">
-                            <select class="form-control col-md-12" name="medecin">
+                            <select class="form-control col-md-12" name="medecin" required>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }}"  {{ $user->name == ' ' ? 'selected' : '' }}>{{ $user->name }}</option>
+                                    <option value="{{ $user->name }} {{ $user->prenom }}">{{ $user->name }} {{ $user->prenom }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="color" class="col-form-label text-md-right">Couleur <span class="text-danger">*</span></label>
+                                <label for="color" class="col-form-label text-md-right">Couleur :</label>
                                 <input name="color" class="form-control" value="{{ $event->color }}" type="color" placeholder="Couleur">
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="date" class="col-form-label text-md-right">Date du rendez-vous <span class="text-danger">*</span></label>
-                                <input name="date" class="form-control" value="{{ $event->date }}" type="date">
+                                <label for="date" class="col-form-label text-md-right">Date du rendez-vous :<span class="text-danger">*</span></label>
+                                <input name="date" class="form-control" value="{{ $event->date }}" type="date" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="start_time" class="col-form-label text-md-right">Heure du début <span class="text-danger">*</span></label>
-                                <input name="start_time" type="time" value="{{ $event->end_time }}" class="form-control">
+                                <label for="start_time" class="col-form-label text-md-right">Heure du début :<span class="text-danger">*</span></label>
+                                <input name="start_time" type="time" value="{{ $event->end_time }}" class="form-control" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="end_time" class="col-form-label text-md-right">Heure du fin</label>
-                                <input name="end_time" type="time" value="{{ $event->start_time }}" class="form-control">
+                                <label for="end_time" class="col-form-label text-md-right">Heure du fin :</label>
+                                <input name="end_time" type="time" value="{{ $event->start_time }}" class="form-control" required>
                             </div>
                         </div>
                         <input name="patient_id" type="hidden" value="{{ $event->patient_id }}">

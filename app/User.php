@@ -35,7 +35,7 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsTo('App\Event');
+        return $this->hasMany(Event::class);
     }
 
     public function produits()
