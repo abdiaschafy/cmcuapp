@@ -71,7 +71,6 @@
                         <i class="fas fa-angle-down fa-pull-right"></i>
                     @endcan
                 </a>
-                {{--// ca marche bien pour le pharmacien--}}
                 @can('print', \App\Produit::class)
                     <ul class="collapse list-unstyled" id="pageSubmenu1">
                         <li>

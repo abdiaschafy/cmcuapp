@@ -52,7 +52,7 @@
                                 <input name="start_time" type="time" value="{{ $event->end_time }}" class="form-control" required>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="end_time" class="col-form-label text-md-right">Heure du fin :</label>
+                                <label for="end_time" class="col-form-label text-md-right">Heure du fin :<span class="text-danger">*</span></label>
                                 <input name="end_time" type="time" value="{{ $event->start_time }}" class="form-control" required>
                             </div>
                         </div>

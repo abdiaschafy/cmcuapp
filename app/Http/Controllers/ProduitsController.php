@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Facture;
 use App\Http\Requests\ProduitRequest;
+use App\Patient;
 use App\Produit;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
@@ -155,8 +156,15 @@ class ProduitsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
+        $patient = Patient::all();
 
-        return view('admin.produits.facturation', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
+        return view('admin.produits.facturation',
+            [
+                'produit' => $produit,
+                'produits' => $cart->items,
+                'totalPrix' => $cart->totalPrix,
+                'patient' => $patient
+            ]);
     }
 
     public function getReduceByOne($id)
@@ -197,7 +205,7 @@ class ProduitsController extends Controller
     }
 
 
-    public function export_pdf(Request $request, Produit $produit)
+    public function export_pdf(Request $request, Produit $produit, Patient $patient)
     {
 //        $this->authorize('print', Produit::class);
         $oldCart = Session::get('cart');
@@ -205,14 +213,15 @@ class ProduitsController extends Controller
         $produit = DB::table('produits')->where('id', $cart);
 
         $facture = Facture::create([
-           'numero' => mt_rand(10000, 999999),
-           'quantite_total' => $cart->totalQte,
-           'prix_total' => $cart->totalPrix
+            'numero' => mt_rand(10000, 999999),
+            'quantite_total' => $cart->totalQte,
+            'prix_total' => $cart->totalPrix,
+//            'patient' => $patient
         ]);
 
         $facture->produits()->attach([$facture->id, array_keys($cart->items, $produit)]);
 
-        $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
+        $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'patient' => $patient, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
 
         $pdf->save(storage_path('pharmacie').'.pdf');
 

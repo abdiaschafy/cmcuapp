@@ -22,7 +22,8 @@
                             </h6>
                         </div>
                     </div>
-                @endcan @can('create', \App\Patient::class)
+                @endcan
+                @can('create', \App\Patient::class)
                     <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-success">
                         <div class="s-l">
                             <h5>PATIENTS</h5>
@@ -33,7 +34,9 @@
                             </h6>
                         </div>
                     </div>
-                @endcan @can('create', \App\chambre::class)
+                @endcan
+
+                @can('create', \App\chambre::class)
                     <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
                         <div class="s-l">
                             <h5>CHAMBRES</h5>
@@ -57,8 +60,17 @@
                         </h6>
                     </div>
                 </div>
-
+                    {{--@can('create', \App\Produit::class)--}}
+                        {{--<div class="col-xl mt-3">--}}
+                            {{--<a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;--}}
+                                {{--<h2>PRODUITS</h2>--}}
+                                {{--<i class="fas fa-medkit"></i>--}}
+                                {{--<h1><P>{{ $produits }}</P> </h1>--}}
+                            {{--</a>--}}
+                        {{--</div>--}}
+                    {{--@endcan--}}
                 {{--------------------------------MARGE IC-------------------------------------}}
+                @can('create', \App\Patient::class)
                 <div class="row mt-2">
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -82,7 +94,7 @@
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Patient suivis</div>
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Patients suivis</div>
                                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count($consultation) }}</div>
                                     </div>
                                     <div class="col-auto">
@@ -92,6 +104,8 @@
                             </div>
                         </div>
                     </div>
+
+                    @endcan
 
                     {{--<!-- Earnings (Monthly) Card Example -->--}}
                     {{--<div class="col-xl-3 col-md-6 mb-4">--}}
@@ -138,18 +152,7 @@
                 {{--</div>--}}
                 {{--------------------------------MARGE IC-------------------------------------}}
             </div>
-            <!--// Stats -->
-            <!-- Calender -->
-            @can('create', \App\Produit::class)
-                <div class="col-xl mt-3">
-                    <a href="" class=" btn btn-danger " style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span>&#xA0;
-                        <h2>PRODUITS</h2>
-                        <i class="fas fa-medkit"></i>
-                        <h1><P>{{ $produits }}</P> </h1>
-                    </a>
-                </div>
-        @endcan
-        <!--// Calender -->
+
         </div>
 
     </div>

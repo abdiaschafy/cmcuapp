@@ -239,6 +239,7 @@
                                         <div class="notices">
                                             <H4><div>LA PHARMACIE</div></H4>
                                             <div class="notice">{{ auth()->user()->name }}</div>
+                                            <div class="notice">{{ $patient->name }}</div>
                                         </div>
                                     </tr>
                                     </tbody>

@@ -45,7 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('pharmaceutiques/{id}', 'ProduitsController@add_to_cart')->name('pharmaceutique.cart');
     Route::get('facturation', 'ProduitsController@facturation')->name('pharmaceutique.facturation');
 
-    Route::get('imprimer','ProduitsController@export_pdf')->name('pharmacie.pdf');
+    Route::get('imprimer{patient}','ProduitsController@export_pdf')->name('pharmacie.pdf');
     Route::get('supprimer/{id}', 'ProduitsController@getRemoveItem')->name('facturation.supprimer');
     Route::get('reduire/{id}', 'ProduitsController@getReduceByOne')->name('facturation.reduire');
     Route::post('produit/save-invoice/{produit}', 'ProduitsController@saveInvoice')->name('produit.invoice');
@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('examens/', 'PatientimageController@index')->name('examens.index');
     Route::get('examens/create/{patient}', 'PatientimageController@create')->name('examens.create');
-    Route::post('examens', 'PatientimageController@store')->name('examens.store');
+    Route::post('examen', 'PatientimageController@store')->name('examens.store');
     Route::get('examens/show/{patient}', 'PatientimageController@show')->name('examens.show');
     Route::get('examensf/{patient}', 'PatientimageController@showall')->name('examens.showall');
     Route::get('examens/{patient}', 'PatientimageController@destroy')->name('examens.destroy');

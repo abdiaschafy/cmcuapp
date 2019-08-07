@@ -6,7 +6,6 @@ use App\Cart;
 use App\Facture;
 use App\Produit;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class FactureController extends Controller
