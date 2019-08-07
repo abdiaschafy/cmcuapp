@@ -74,23 +74,25 @@
                             </tr>
                             </tbody>
                         </table>
-                        <td>
-                            <label for="patient"><b>Nom du patient :</b></label>
-                            <select name="patient" id="" class="form-control col-md-5 mb-2">
-                                <option value="">Nom du patient</option>
-                                @foreach ($patient as $patients)
-                                    <option value="{{ $patients->name }}">{{ $patients->name }}</option>
-                                @endforeach
-                            </select>
-                        </td>
+                        <form action="{{ route('pharmacie.pdf') }}" method="post" class="form-group">
+                            @csrf
+                            <td>
+                                <label for="patient"><b>Nom du patient :</b></label>
+                                <select name="patient" id="patient" class="form-control col-md-5 mb-2">
+                                    <option value="">Nom du patient</option>
+                                    @foreach ($patient as $patients)
+                                        <option value="{{ $patients->name }}">{{ $patients->name }}</option>
+                                    @endforeach
+                                </select>
+                            </td>
+                            <td>
+                                <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
+                            </td>
 
-                        <td>
-                            <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
-                        </td>
-
-                        <td>
-                            <a href="{{ route('pharmacie.pdf', $patients->id) }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></a>
-                        </td>
+                            <td>
+                                <button type="submit" href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></button>
+                            </td>
+                        </form>
                         @endif
                     </div>
                 </div>

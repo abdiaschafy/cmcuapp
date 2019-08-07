@@ -211,6 +211,7 @@ class ProduitsController extends Controller
         $oldCart = Session::get('cart');
         $cart = new Cart($oldCart);
         $produit = DB::table('produits')->where('id', $cart);
+        $patient = \request('patient');
 
         $facture = Facture::create([
             'numero' => mt_rand(10000, 999999),
