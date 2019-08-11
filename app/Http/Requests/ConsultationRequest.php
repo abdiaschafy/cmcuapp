@@ -38,9 +38,10 @@ class ConsultationRequest extends FormRequest
             'devis_p'=> '',
             'motif_c'=> 'required',
             'medecin_r'=> 'required',
-            'acte'=> 'required',
-            'date_intervention'=> 'required',
-            'type_intervention'=> 'required',
+            'acte'=> '',
+            'date_intervention'=> '',
+            'type_intervention'=> '',
+            'proposition_therapeutique'=> 'required',
         ];
     }
 }

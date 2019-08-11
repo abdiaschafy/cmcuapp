@@ -132,6 +132,13 @@
                                         </td>
                                     </tr>
                                     <tr>
+                                        <td><b>Proposition thérapeutique :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <textarea class="splitLines" name="proposition_therapeutique" cols="45" rows="3"
+                                                      required>{{ old('proposition_therapeutique') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td><b>Proposition de suivi :</b> <span class="text-danger">*</span></td>
                                         <td class="form-group small">
                                             <div class="form-check">
@@ -146,33 +153,67 @@
                                                        value="Intervention chirurgicale"> Intervention chirurgicale
                                                 </label>
                                             </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)"
+                                                       type="checkbox" name="proposition[]" id="decision3"
+                                                       value="Consultation"> Consultation
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)"
+                                                       type="checkbox" name="proposition[]" id="decision4"
+                                                       value="Actes à réaliser"> Actes à réaliser
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" tabIndex="1" onClick="ckChange(this)"
+                                                       type="checkbox" name="proposition[]" id="decision5"
+                                                       value="Consultation d'anesthésiste"> Consultation d'anesthésiste
+                                                </label>
+                                            </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td><b>Actes à réaliser :</b> <span class="text-danger">*</span></td>
-                                        <td>
-                                            <textarea class="splitLines" name="acte" cols="45" rows="3"
-                                                      required>{{ old('acte') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Type d'intervention :</b> <span class="text-danger">*</span></td>
+                                    <tr id="type_intervention" style='display:none;'>
+                                        <td><b>Type d'intervention :</b></td>
                                         <td>
                                             <textarea class="splitLines" name="type_intervention" cols="45" rows="3"
-                                                      required>{{ old('type_intervention') }}</textarea>
+                                                      >{{ old('type_intervention') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Date intervention :</b> <span class="text-danger">*</span></td>
+                                        <td><b>Date intervention :</b></td>
                                         <td>
-                                            <input type="date" class="form-control col-md-6" name="date_intervention" value="{{ old('date_intervention') }}" required>
+                                            <input type="date" class="form-control col-md-6" name="date_intervention" value="{{ old('date_intervention') }}" >
                                         </td>
                                     </tr>
-                                    <tr id="cout" style='display:none;'>
+                                    <tr id="type_acte" style='display:none;'>
+                                        <td><b>Type d'actes à réaliser :</b></td>
+                                        <td>
+                                            <textarea class="splitLines" name="acte" cols="45" rows="3"
+                                                      >{{ old('acte') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td><b>Devis prévisionnel :</b></td>
                                         <td>
                                             <input class="form-control col-md-5" type="number" name="devis_p" id="cout"
                                                    value="{{ old('devis_p') }}">
+                                        </td>
+                                    </tr>
+                                    <tr id="anesthesiste" style='display:none;'>
+                                        <td><b>Date consultation d'anesthésiste :</b></td>
+                                        <td>
+                                            <input type="date" class="form-control col-md-6" name="date_consultation_anesthesiste" value="{{ old('date_consultation_anesthesiste') }}" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr id="consultation" style='display:none;'>
+                                        <td><b>Date de consultation :</b></td>
+                                        <td>
+                                            <input type="date" class="form-control col-md-6" name="date_consultation" value="{{ old('date_consultation') }}" >
                                         </td>
                                     </tr>
                                     <tr>

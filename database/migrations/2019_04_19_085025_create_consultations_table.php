@@ -25,13 +25,16 @@ class CreateConsultationsTable extends Migration
             $table->string('medecin_r');
             $table->text('allergie')->nullable();
             $table->string('groupe')->nullable();
+            $table->string('proposition_therapeutique');
             $table->string('proposition');
             $table->text('examen_p')->nullable();
             $table->text('examen_c')->nullable();
             $table->text('motif_c')->nullable();
-            $table->date('date_intervention');
-            $table->string('acte');
-            $table->string('type_intervention');
+            $table->date('date_intervention')->nullable();
+            $table->date('date_consultation')->nullable();
+            $table->date('date_consultation_anesthesiste')->nullable();
+            $table->string('acte')->nullable();
+            $table->string('type_intervention')->nullable();
             $table->timestamps();
 
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');

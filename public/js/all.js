@@ -74,15 +74,26 @@ function ckChange(ckType){
     //     }
     // }
 
-    // if (document.getElementById('decision1').checked) {
-    //     document.getElementById("traitement").style.display = 'contents';
-    // } else
-    //     document.getElementById("traitement").style.display = 'none';
+    if (document.getElementById('decision5').checked) {
+        document.getElementById("anesthesiste").style.display = 'contents';
+    } else
+        document.getElementById("anesthesiste").style.display = 'none';
+
+    if (document.getElementById('decision4').checked) {
+        document.getElementById("type_acte").style.display = 'contents';
+    } else
+        document.getElementById("type_acte").style.display = 'none';
+
+    if (document.getElementById('decision3').checked) {
+        document.getElementById("consultation").style.display = 'contents';
+    } else
+        document.getElementById("consultation").style.display = 'none';
 
     if (document.getElementById('decision2').checked) {
-        document.getElementById("cout").style.display = 'contents';
+        document.getElementById("type_intervention").style.display = 'contents';
     } else
-        document.getElementById("cout").style.display = 'none';
+        document.getElementById("type_intervention").style.display = 'none';
+
 }
 
 

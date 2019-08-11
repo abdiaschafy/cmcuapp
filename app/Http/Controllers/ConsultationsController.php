@@ -46,9 +46,13 @@ class ConsultationsController extends Controller
             'acte'=> request('acte'),
             'type_intervention' => request('type_intervention'),
             'date_intervention' => request('date_intervention'),
+            'date_consultation' => request('date_consultation'),
+            'date_consultation_anesthesiste' => request('date_consultation_anesthesiste'),
             'medecin_r'=> request('medecin_r'),
+            'proposition_therapeutique'=> request('proposition_therapeutique'),
 
         ]);
+
         Flashy('La nouvelle consultation a été crée avec succès !!');
 
         return back();

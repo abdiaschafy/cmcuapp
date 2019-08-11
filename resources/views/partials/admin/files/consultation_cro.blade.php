@@ -53,6 +53,10 @@
         <td>{{ ($consultations->diagnostic) }}</td>
     </tr>
     <tr>
+        <td><b>PROPOSITION THERAPEUTIQUE :</b></td>
+        <td>{{ ($consultations->proposition_therapeutique) }}</td>
+    </tr>
+    <tr>
         <td>
             <h1 class="text-info">PARAMETRES</h1>
         </td>

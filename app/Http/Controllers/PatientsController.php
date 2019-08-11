@@ -68,7 +68,8 @@ class PatientsController extends Controller
 
         return view('admin.patients.show', [
             'patient' => $patient,
-            'consultations' => $patient->consultations()->latest()->first(),
+            'consultations' => Consultation::with('patient', 'user')->latest()->first(),
+//            'consultations' => dd($patient->consultations()->latest()->first()),
             'prescriptions' => $patient->prescriptions()->latest()->first(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossier' => $patient->dossiers,

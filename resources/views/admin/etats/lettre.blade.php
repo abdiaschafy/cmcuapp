@@ -36,7 +36,7 @@
         </div>
         <div class="col-6 offset-3">
             <div class="text-center">
-                <p>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</p>
+                <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
                 <small>www.cmcu-cm.com</small>
@@ -50,7 +50,9 @@
 
     <div class="row">
         <div class="col-3">
-            <small><b>Médécin: </b> {{ $consultations->medecin }}</small>
+            <p>Dr {{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></p>
+            <p><small>{{ $consultations->user->specialite }}</small></p>
+            <p>Onmc: <small>{{ $consultations->user->onmc }}</small></p>
         </div>
         <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $consultations->created_at->formatLocalized('%d %B %Y') }}</b></small></p>

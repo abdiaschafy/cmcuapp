@@ -18,10 +18,10 @@ function ckChange(ckType){
     //     }
     // }
 
-    // if (document.getElementById('decision1').checked) {
-    //     document.getElementById("traitement").style.display = 'contents';
-    // } else
-    //     document.getElementById("traitement").style.display = 'none';
+    if (document.getElementById('decision3').checked) {
+        document.getElementById("consultation").style.display = 'contents';
+    } else
+        document.getElementById("consultation").style.display = 'none';
 
     if (document.getElementById('decision2').checked) {
         document.getElementById("cout").style.display = 'contents';
