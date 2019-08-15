@@ -149,17 +149,18 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><b>Compte-rendu opératoire :</b> <span class="text-danger">*</span></td>
-                                        <td>
-                                            <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td><b>Indications opératoires :</b> <span class="text-danger">*</span></td>
                                         <td>
                                             <textarea class="splitLines" name="indication_operatoire" id="indication_operatoire" cols="55" rows="3" required>{{ old('indication_operatoire') }}</textarea>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td><b>Compte-rendu opératoire :</b> <span class="text-danger">*</span></td>
+                                        <td>
+                                            <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
+                                        </td>
+                                    </tr>
+                                    
                                     <tr>
                                         <td><b>Résultats histo-pathologiques :</b></td>
                                         <td>
