@@ -45,9 +45,10 @@
     </div>
 
     <div class="row">
-        <div class="col-2">
-            <small>Dr. {{ $ordonance->user->prenom }} {{ $ordonance->user->name }}</small>
-            <p class="mt-2">{{ $ordonance->user->onmc }}</p>
+        <div class="col-3">
+            <p>Dr.<small> {{ $ordonance->user->prenom }} {{ $ordonance->user->name }}</small></p>
+            <p><small>{{ $ordonance->user->specialite }}</small></p>
+            <p class="mt-2">Onmc: <small>{{ $ordonance->user->onmc }}</small></p>
         </div>
         <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>

@@ -71,7 +71,7 @@
     <br>
     <p>Cher {{ $consultations->medecin }}</p>
     <br>
-    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation au CMCU</p>
+    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation</p>
     le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostic suivant: {!! nl2br(e($consultations->diagnostic)) !!}
     <br>
     <br>
