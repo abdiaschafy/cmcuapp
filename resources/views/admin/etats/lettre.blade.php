@@ -69,7 +69,7 @@
     <br>
     <br>
     <br>
-    <p>Cher {{ $consultations->medecin }}</p>
+    <p>Cher confrère, {{ $consultations->medecin }}</p>
     <br>
     <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation</p>
     le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostic suivant: {!! nl2br(e($consultations->diagnostic)) !!}
@@ -80,7 +80,7 @@
     <br>
     <br>
     <br>
-    <p>Cordialement</p>
+    <p>Bien cordialement</p>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>

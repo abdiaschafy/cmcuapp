@@ -162,7 +162,7 @@
             </td>
             <td>
                 @if (count($patient->compte_rendu_bloc_operatoires))
-                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="">
+                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="{{ route('compte_rendu_bloc_pdf.pdf', $patient->id) }}">
                         <i class="fas fa-print"></i> Imprimer le CRO
                     </a>
                 @endif

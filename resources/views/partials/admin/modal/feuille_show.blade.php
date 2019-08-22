@@ -10,8 +10,6 @@
             <div class="modal-body">
             @if (count($patient->prescriptions))
 
-                    <h3>Prescription des examens</h3>
-                    <br>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
@@ -24,8 +22,7 @@
                             @foreach($patient->prescriptions as $prescription)
 
                                 <tr>
-                                    <td>{{ $prescription->hematologie }}</td>
-                                    <td>{{ $prescription->hemostase }}</td>
+                                    <td>{{ $prescription->pluck('hemostase','hematologie','biochimie') }}</td>
                                     <td>{{ $prescription->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('prescription_examens.pdf', $prescription->id) }}">
