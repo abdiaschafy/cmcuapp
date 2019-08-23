@@ -15,9 +15,9 @@
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
-                            <th>DIAGNOSTIQUE</th>
+                            <th>DIAGNOSTIC</th>
                             <th>DATE</th>
-                            <th>PLUS DE DETAILS</th>
+                            <th>DETAILS</th>
                             </thead>
                             <tbody>
 
@@ -33,6 +33,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                <tr></tr>
                             @endforeach
 
 

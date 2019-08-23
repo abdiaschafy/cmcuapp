@@ -32,7 +32,7 @@
         </div>
         <div class="col-6 offset-3">
             <div class="text-center">
-                <p>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</p>
+                <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
                 <small>www.cmcu-cm.com</small>
@@ -45,11 +45,11 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
-            <small><b>Chirurgien:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small>
-            <small><b>Anesthesiste:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small>
+        <div class="col-md-4">
+            <p><small><b>Chirurgien:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></p>
+            <p><small><b>Anesthesiste:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></p>
         </div>
-        <div class="col-5 offset-5">
+        <div class="col-md-3 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
             <p><u>Nom du patient:</u> {{ $patient->name }}</p>
         </div>

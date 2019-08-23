@@ -60,7 +60,7 @@
     <br>
     <br>
     <div class="row">
-        <h5 class="text-center"><u>ORDONANCE</u></h5>
+        <h5 class="text-center"><u>ORDONNANCE</u></h5>
     </div>
     <br>
     <br>

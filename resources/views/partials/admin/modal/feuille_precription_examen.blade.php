@@ -2,14 +2,14 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ordonance</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Ordonnance</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" class="btn btn-primary mr-5" href="#home">Ordonance</a></li>
+                    <li class="active"><a data-toggle="tab" class="btn btn-primary mr-5" href="#home">Ordonnance</a></li>
                     <li><a data-toggle="tab" class="btn btn-primary" href="#menu1">Feuille d'examen complémentaire</a></li>
                 </ul>
 
@@ -19,7 +19,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="summernote" class="col-form-label">Ordonance :
+                                <label for="summernote" class="col-form-label">Ordonnance :
                                 </label>
                                 <textarea id="summary-ckeditor" name="description" rows="15" class="form-control">{{ old('description') }}</textarea>
                             </div>

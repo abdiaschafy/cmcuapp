@@ -22,7 +22,17 @@
                             @foreach($patient->prescriptions as $prescription)
 
                                 <tr>
-                                    <td>{{ $prescription->pluck('hemostase','hematologie','biochimie') }}</td>
+                                    <td>
+                                        {{ $prescription->hematologie }}
+                                        {{ $prescription->hemostase }}
+                                        {{ $prescription->biochimie }}
+                                        {{ $prescription->hormonologie }}
+                                        {{ $prescription->marqeurs }}
+                                        {{ $prescription->bacteriologie }}
+                                        {{ $prescription->spermiologie }}
+                                        {{ $prescription->serologie }}
+                                        {{ $prescription->examen }}
+                                    </td>
                                     <td>{{ $prescription->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('prescription_examens.pdf', $prescription->id) }}">

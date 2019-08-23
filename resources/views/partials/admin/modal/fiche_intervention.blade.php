@@ -29,12 +29,12 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-3">
-                                <p><b>Anesthesiste :</b></p><br>
+                                <p><b>Anesthésiste :</b></p><br>
                                 <p><b>Position :</b></p>
                             </div>
                             <div class="col-md-3">
                                 <input type="checkbox"> Locale<br>
-                                <input type="checkbox"> Rachi-anesthesie<br>
+                                <input type="checkbox"> Rachi-anesthésie<br>
                                 <input type="checkbox"> Gynécologique
                             </div>
                             <div class="col-md-3">
@@ -57,7 +57,7 @@
                             <td style="width: 10%"><input class="form-control" type="number"></td>
                         </tr>
                         <tr>
-                            <td>Compresse</td>
+                            <td>Compresses</td>
                             <td style="width: 10%"><input class="form-control" type="number"></td>
                             <td>Poche à urines</td>
                             <td style="width: 10%"><input class="form-control" type="number"></td>
@@ -67,7 +67,7 @@
                         <tr>
                             <td>Bétadine</td>
                             <td style="width: 10%"><input class="form-control" type="number"></td>
-                            <td>Trouce d'irrigation</td>
+                            <td>Trousse d'irrigation</td>
                             <td style="width: 10%"><input class="form-control" type="number"></td>
                             <td>Resecteur</td>
                             <td style="width: 10%"><input class="form-control" type="number"></td>
