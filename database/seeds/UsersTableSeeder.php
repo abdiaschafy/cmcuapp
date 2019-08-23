@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'prenom' => 'Stephane',
             'lieu_naissance' => 'Mbouda',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('admin2019@')
+            'password' => bcrypt('Admin2019@')
         ]);
 
         $user2 = \App\User::create([
