@@ -11,171 +11,305 @@ class UsersTableSeeder extends Seeder
     {
         $user1 = \App\User::create([
             'role_id' => '1',
-            'name' => 'administrateur',
+            'name' => 'KOUAMO',
             'login' => 'sysadmin',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'homme',
-            'prenom' => 'admin',
+            'prenom' => 'Stephane',
             'lieu_naissance' => 'Mbouda',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'password' => bcrypt('admin2019@')
         ]);
 
-        $user22 = \App\User::create([
-            'role_id' => '9',
-            'name' => 'Fokemne',
-            'login' => 'caisse',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'femme',
-            'prenom' => 'Lucienne',
+        $user2 = \App\User::create([
+            'role_id' => '8',
+            'name' => 'MOUSSINGA',
+            'prenom' => 'GENEVIEVE ',
+            'login' => 'GENEVIEVE MOUSSINGA',
+            'telephone' => '694573129',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1979,01,03)->toDateTimeString(),
+            'password' => bcrypt('qualite@cmcu2019')
+        ]);
+
+        $user3 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'TOMDIO',
+            'prenom' => 'PRISCA',
+            'login' => 'TOMDIO PRISCA',
+            'telephone' => '654275011',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1985,10,05)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
+        ]);
+
+        $user4 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'DEMGNE KAMDEM',
+            'prenom' => 'VIVIANE',
+            'login' => 'DEMGNE KAMDEM VIVIANE',
+            'telephone' => '694259512',
+            'sexe' => 'Féminin',
             'lieu_naissance' => 'Yaounde',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'date_naissance' => \Carbon\Carbon::createFromDate(1987,12,31)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
+        ]);
+
+        $user5 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'NKANKO',
+            'prenom' => 'LYNDA',
+            'login' => 'NKANKO LYNDA',
+            'telephone' => '670014098',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Bafoussam',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,06,13)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
+        ]);
+
+        $user6 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'TOUDJEU',
+            'prenom' => 'RAÏSSA',
+            'login' => 'TOUDJEU RAISSA',
+            'telephone' => '656635252',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1994,03,02)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
+        ]);
+
+        $user7 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'NANA',
+            'prenom' => 'DOMINIQUE',
+            'login' => 'NANA DOMINIQUE',
+            'telephone' => '677761482',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Yaounde',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,11)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
+        ]);
+
+        $user8 = \App\User::create([
+            'role_id' => '4',
+            'name' => 'NGUMNJUEN',
+            'prenom' => 'MOREEN',
+            'login' => 'NGUMNJUEN MOREEN',
+            'telephone' => '673013200',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Njisse',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1985,05,28)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
         ]);
 
         $user9 = \App\User::create([
             'role_id' => '4',
-            'name' => 'Kamdem',
-            'login' => 'infirmier',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'homme',
-            'prenom' => 'Martin',
-            'lieu_naissance' => 'Douala',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'name' => 'SEUTIO TCHOUBI',
+            'prenom' => 'ROMEO',
+            'login' => 'SEUTIO TCHOUBI ROMEO',
+            'telephone' => '694546170',
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Njisse',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1985,05,28)->toDateTimeString(),
+            'password' => bcrypt('infirmiere@cmcu2019')
         ]);
 
         $user10 = \App\User::create([
-            'role_id' => '5',
-            'name' => 'Owona',
-            'login' => 'logistique',
+            'role_id' => '2',
+            'name' => 'NJINOU NGNINKEU',
+            'prenom' => 'Bertin',
+            'login' => 'NJINOU NGNINKEU',
             'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'femme',
-            'prenom' => 'Jeanne Flore',
-            'lieu_naissance' => 'Yaounde',
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'password' => bcrypt('Njinou@2019')
         ]);
 
         $user11 = \App\User::create([
-            'role_id' => '6',
-            'name' => 'Mbock',
-            'login' => 'secretaire',
+            'role_id' => '2',
+            'name' => 'KAMADJOU',
+            'prenom' => 'Cyril',
+            'login' => 'KAMADJOU',
             'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'femme',
-            'prenom' => 'Victorine',
-            'lieu_naissance' => 'Mbouda',
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'password' => bcrypt('Kamadjou@2019')
         ]);
 
         $user12 = \App\User::create([
-            'role_id' => '7',
-            'name' => 'Ebebda',
-            'login' => 'pharmacien',
+            'role_id' => '2',
+            'name' => 'TENKE',
+            'prenom' => 'Christelle',
+            'login' => 'TENKE',
             'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'femme',
-            'prenom' => 'carlos franck',
-            'lieu_naissance' => 'Bafang',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Anesthésiste',
+            'onmc' => '0000',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'password' => bcrypt('Tenke@2019')
         ]);
 
         $user13 = \App\User::create([
-            'role_id' => '8',
-            'name' => 'Takam',
-            'login' => 'qualite',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'homme',
-            'prenom' => 'Bimoule',
-            'lieu_naissance' => 'Yaounde',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user131 = \App\User::create([
             'role_id' => '2',
-            'name' => 'Bilonda Kolela',
-            'login' => 'medecin',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'Féminin',
-            'prenom' => 'Dolly',
-            'lieu_naissance' => 'Yaounde',
-            'specialite' => 'Chirurgien urologue',
-            'onmc' => '21565',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user132 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'Njinou Ngninkeu',
-            'login' => 'medecin1',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'Masculin',
-            'prenom' => 'Bertin',
-            'specialite' => 'Chirurgien urologue',
-            'onmc' => '21565',
-            'lieu_naissance' => 'Yaounde',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user132 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'Kuitché',
-            'login' => 'medecin2',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'Masculin',
+            'name' => 'KUITCHE',
             'prenom' => 'Jerry',
-            'specialite' => 'Chirurgien urologue',
-            'onmc' => '21565',
-            'lieu_naissance' => 'Bertoua',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user133 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'Tenke',
-            'login' => 'medecin3',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'Féminin',
-            'prenom' => 'Christelle',
-            'specialite' => 'Anesthésiste réanimateur',
-            'onmc' => '21565',
-            'lieu_naissance' => 'Bertoua',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user134 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'Kameni',
-            'login' => 'medecin4',
-            'telephone' => mt_rand(10000000, 99999999),
-            'sexe' => 'Féminin',
-            'prenom' => 'Annie',
-            'specialite' => 'Médecin généraliste',
-            'onmc' => '21565',
-            'lieu_naissance' => 'Bertoua',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
-        ]);
-
-        $user135 = \App\User::create([
-            'role_id' => '2',
-            'name' => 'Nwaha Makon',
-            'login' => 'medecin5',
+            'login' => 'KUITCHE',
             'telephone' => mt_rand(10000000, 99999999),
             'sexe' => 'Masculin',
-            'prenom' => 'Stephane',
+            'lieu_naissance' => 'Douala',
             'specialite' => 'Chirurgien urologue',
-            'onmc' => '21565',
-            'lieu_naissance' => 'Bertoua',
+            'onmc' => '0000',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
-            'password' => bcrypt('aaaaaa')
+            'password' => bcrypt('Kuitche@2019')
         ]);
+
+        $user14 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'DJOUFANG',
+            'prenom' => 'Rodrigue',
+            'login' => 'DJOUFANG',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
+            'password' => bcrypt('Djofang@2019')
+        ]);
+
+        $user15 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'MAKON',
+            'prenom' => 'Stéphane',
+            'login' => 'MAKON',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
+            'password' => bcrypt('Makon@2019')
+        ]);
+
+        $user16 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'NGANDEU',
+            'prenom' => 'Marcel Jerry',
+            'login' => 'NGANDEU',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Douala',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
+            'password' => bcrypt('Ngadeu@2019')
+        ]);
+
+        $user17 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'NTEHJOUEN',
+            'prenom' => 'Aminatou',
+            'login' => 'NTEHJOUEN',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Foumbot',
+            'specialite' => 'Médecin généraliste',
+            'onmc' => '7175',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Ntehjouen@2019')
+        ]);
+
+        $user18 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'KEMEZE',
+            'prenom' => 'Sandrine',
+            'login' => 'KEMEZE',
+            'telephone' => '697112288',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Médecin généraliste',
+            'onmc' => '8014',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Kemeze@2019')
+        ]);
+
+        $user19 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'NGAYAP',
+            'prenom' => 'FRANK',
+            'login' => 'NGAYAP',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Médecin généraliste',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Ngayap@2019')
+        ]);
+
+        $user20 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'TCHIEJI',
+            'prenom' => 'Audrey',
+            'login' => 'TCHIEJI',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Médecin de travail',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Tchieji@2019')
+        ]);
+
+        $user21 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'HAPPI',
+            'prenom' => 'Mireille',
+            'login' => 'HAPPI',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Pédiatre',
+            'onmc' => '4609',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Happi@2019')
+        ]);
+
+        $user22 = \App\User::create([
+            'role_id' => '5',
+            'name' => 'ENDALE',
+            'prenom' => 'TITI AMELIE',
+            'login' => 'ENDALE',
+            'telephone' => '699838118',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1980,12,15)->toDateTimeString(),
+            'password' => bcrypt('Endale@2019')
+        ]);
+
+        $user23 = \App\User::create([
+            'role_id' => '6',
+            'name' => 'SALAMATOU',
+            'prenom' => 'HASSAN',
+            'login' => 'SALAMATOU',
+            'telephone' => '699892626',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1987,08,05)->toDateTimeString(),
+            'password' => bcrypt('Salamatou@2019')
+        ]);
+
+
 
 
 //        $user1 = User::findOrFail(1);
