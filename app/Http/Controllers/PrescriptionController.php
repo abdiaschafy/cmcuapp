@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\http\Request;
-use App\http\Requests\PrescriptionRequest;
 use App\Prescription;
 use App\Patient;
 use Db;
@@ -18,7 +17,7 @@ class PrescriptionController extends Controller
     }
 
 
-    public function store(PrescriptionRequest $request, Patient $patient)
+    public function store(Request $request, Patient $patient)
     {
        
        $prescriptions = [];
