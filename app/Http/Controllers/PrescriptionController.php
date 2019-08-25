@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\http\Request;
-use App\http\Controllers\Controller;
 use App\http\Requests\PrescriptionRequest;
 use App\Prescription;
 use App\Patient;
