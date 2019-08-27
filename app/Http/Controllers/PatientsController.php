@@ -163,18 +163,5 @@ class PatientsController extends Controller
         return $pdf->stream('ordonance.pdf');
     }
 
-    public function export_prescription($id)
-    {
-        
-        $prescription = Prescription::with('patient')->find($id);
-
-
-        $pdf = PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
-
-        $pdf->save(storage_path('prescription_examens').'.pdf');
-
-        return $pdf->stream('prescription_examens.pdf');
-    }
-
 
 }

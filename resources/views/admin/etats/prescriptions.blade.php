@@ -1,48 +1,86 @@
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <style>
-    .cpi-titulo3 {
+
+    body{
+        background: #eee;
+    }
+    span{
+        font-size:15px;
+    }
+    .text{
+        margin:20px 0px;
+    }
+
+    .fa{
+        color:#4183D7;
+    }
+.cpi-titulo3 {
         font-size: 12px;
     }
-    .logo{
+    
+    .logo {
         width: 100px;
     }
+    
     p {
         line-height: 40%;
     }
-    hr {
-        display: block; height: 1px;
-        border: 0; border-top: 1px solid red;
-        margin-right: 1px;
-    }
-    .footer {
-    padding-top: 1px;
-    padding-bottom: 15px;
-    position:fixed;
-    bottom:5;
-    width:100%;
-}   
-
-
-
-        .grid-container {
-            display: grid;
-            grid-gap: 30px 60px;
-            grid-template-columns: auto auto auto;
-            padding: 10px;
-        }
-        .grid-item {
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 10px;
-            font-size: 12px;
-            margin-right: 1px;
-        }
     
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid red;
+        margin: 1em 0;
+        padding: 0;
+    }
+    
+    .footer {
+        padding-top: 1px;
+        padding-bottom: 15px;
+        position: fixed;
+        bottom: 5;
+        width: 100%;
+    }
+    
+    background: #eee;
+}
+span {
+    font-size: 15px;
+}
+a {
+    text-decoration: none;
+    color: #0062cc;
+    border-bottom: 2px solid #0062cc;
+}
+.box {
+    padding: 30px 0px;
+}
+.box-part {
+    background: #FFF;
+    border-radius: 0;
+    padding: 20px 6px;
+    margin: 10px 0px;
+    
+}
+.box-a {
+    background: #FFF;
+    border-radius: 0;
+    padding: 20px 6px;
+    margin: 10px 0px;
+    float:right;
+}
+.text {
+    margin: 5px 0px;
+}
+.fa {
+    color: #4183D7;
+}
+
 
 </style>
-
-
 <div class="container-fluid">
 
     <div class="row">
@@ -58,120 +96,141 @@
             </div>
         </div>
     </div>
-
+    <br>
+    <br>
+    <br>
     <div class="row">
-        <hr class="text-danger">
-    </div>
-
-    <div class="row">
-        <div class="col-2">
-            <small>Docteur John Doe</small>
+        <div class="col-3">
+            <p>Dr.<small></small></p>
+            <p><small></small></p>
+            <p class="mt-2">Onmc: <small></small></p>
         </div>
         <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> </p>
         </div>
-    </div>
+       </div>
     <br>
+     <div class="text-center"><h3><u>LISTE(S) DE(S) EXAMEN(S)</u> </h3></div>
     <br>
-    <br>
-    <br>
+    <di>
     <div class="row">
-        <h5 class="text-center"><u>PRESCRIPTIONS DES EXAMENS</u></h5>
-    </div>
-    <br>
-    <br>
-    <br>
-    <div class="">
-        <h5>
-            
-        </h5>
-    </div>
+        <div >
 
-    <div class="row" style="text-align:center; pading-top: 50px;">
- 
- <div class="grid-container">
-<div class="grid-item">
-       <h5 class="text-center mb-2"><u><b></b></u></h5>
-       <p></p>
-       <p></p>
-       <p></p>
-       <p></p>
-       
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>hemostase</b></u></h5>
-       <p></p>
-      
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>biochimie</b></u></h5>
-       <p></p>
-    </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>hormonologie/serologie</b></u></h5>
-       <p></p>
-     
-       
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>marqueurs tumoraux</b></u></h5>
-       <p></p>
-      
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>bacteriologie/parasitologie</b></u></h5>
-       <p></p>
-       
+            <div class="box-part ">
 
+                <i ></i>
 
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-2"><u><b>spermiologie</b></u></h5>
-       <p></p>
-      
+                <div class="title">
+                    <h5>HEMATOLOGIE</h5>
 
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-3"><u><b>urines</b></u></h5>
-       <p></p>
-       
+                </div>
 
-      
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-3"><u><b>serologie</b></u></h5>
-       <p></p>
-       
+                
+                    {{$prescriptions->hematologie}}
 
-      
-   </div>
-   <div class="grid-item">
-       <h5 class="text-center mb-3"><u><b>examen</b></u></h5>
-       <p></p>
-       
-   </div>
-  
-</div>
-
-
-   </div>
-
-
-    <footer class="footer">
-        <div class="text-center col-6 offset-2">
-            <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
-            <small>www.cmcu-cm.com</small>
+            </div>
         </div>
-    </footer>
-</div>
+            <div class="box-a ">
 
+                <i ></i>
 
+                <div class="title">
+                    <h5>HEMOSTASE</h5>
+                    
+                </div>
 
+                {{$prescriptions->hemostase}}
+            </div>
+    </div>
+    <div class="row">
+        <div >
 
- 
+            <div class="box-part ">
 
+                <i ></i>
 
-    
+                <div class="title">
+                    <h5>BIOCHIMIE</h5>
+                </div>
+                {{$prescriptions->biochimie}}
+            </div>
+        </div>
+        <div class="box-a ">
 
+                <i ></i>
 
+                <div class="title">
+                    <h5>SEROLOGIE</h5>
+                    
+                </div>
+                {{$prescriptions->serologie}}
+            </div>
+    </div>
+    <div class="row">
+        <div  >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5>HORMONOLOGIE</h5>
+                </div>
+                {{$prescriptions->hormonologie}}
+            </div>
+        </div>
+        <div class="box-a ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5>MARQUEURS</h5>
+                    
+                </div>
+                {{$prescriptions->marqueurs}}
+            </div>
+    </div>
+    <div class="row">
+        <div  >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5>BACTERIOLOGIE</h5>
+
+                </div>
+
+                {{$prescriptions->bacteriologie}}
+            </div>
+        </div>
+        <div class="box-a ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5>SPERMIOLOGIE</h5>
+                    
+                </div>
+                {{$prescriptions->spermiologie}}
+            </div>
+    </div>
+    <div class="row">
+        <div >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5>URINES</h5>
+                </div>
+                {{$prescriptions->urines}}
+            </div>
+        </div>
+       
+    </div>
+  </div>
+
+  

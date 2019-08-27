@@ -61,12 +61,12 @@ class PrescriptionController extends Controller
     public function export_prescription($id)
     {
 
-        $prescription = Prescription::find($id);
+        $prescriptions = Prescription::find($id);
         $pdf = \PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
 
-        $pdf->save(storage_path('prescription_examens').'.pdf');
+        $pdf->save(storage_path('prescriptions').'.pdf');
 
-        return $pdf->download('prescription_examens.pdf');
+        return $pdf->download('prescriptions.pdf');
     }
 
 }
