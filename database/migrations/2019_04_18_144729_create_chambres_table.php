@@ -16,7 +16,7 @@ class CreateChambresTable extends Migration
         Schema::create('chambres', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('numero');
+            $table->string('numero');
             $table->string('categorie');
             $table->string('patient')->nullable()->default('Vide');
             $table->integer('prix')->default(null);

@@ -39,7 +39,7 @@
                 @can('create', \App\chambre::class)
                     <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
                         <div class="s-l">
-                            <h5>CHAMBRES</h5>
+                            <h5>LITS</h5>
                         </div>
                         <div class="s-r">
                             <h6>{{ count(\App\Chambre::all()) }}

@@ -32,7 +32,7 @@ class ProduitPolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-                1,3,7
+                1,3,7,5
             ]);
     }
 
@@ -40,7 +40,7 @@ class ProduitPolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,3,7
+            1,3,7,5
         ]);
     }
 
@@ -58,7 +58,7 @@ class ProduitPolicy
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,3,
+            1,3,5,2
         ]);
     }
 

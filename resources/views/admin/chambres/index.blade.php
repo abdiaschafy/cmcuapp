@@ -17,9 +17,9 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-4">
-                        <a href="{{ url('/admin/chambres/?categorie=vip') }}" class="btn btn-success">VIP</a>
-                        <a href="{{ url('/admin/chambres/?categorie=Classique') }}" class="btn btn-primary">CLASSIQUE</a>
-                        <a href="{{ url('/admin/chambres/?categorie=bloc') }}" class="btn btn-info">BLOC</a>
+                        <a href="{{ url('/admin/chambres/?categorie=VIP') }}" class="btn btn-success">VIP</a>
+                        <a href="{{ url('/admin/chambres/?categorie=CLASSIQUE') }}" class="btn btn-primary">CLASSIQUE</a>
+                        <a href="{{ url('/admin/chambres/?categorie=BLOC OPERATOIRE') }}" class="btn btn-info">BLOC</a>
                         <a href="{{ url('/admin/chambres') }}" class="btn btn-info"><i class="fas fa-sync-alt"></i></a>
                     </div>
                 </div>
@@ -54,8 +54,10 @@
                                     <td><span class="badge badge-primary">{{$chambre->statut}}</span></td>
                                 @endif
                                  <td>
+                                    @can('update', \App\User::class)
                                     <a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary" title="Modifier les informations de la chambre"><i class="far fa-edit"></i>
                                     </a>
+                                    @endcan
                                     @if($chambre->statut == 'occupé')
                                         <form style="display: inline-flex;" action="{{ route('chambres_minus.update',$chambre->id)}}" method="post">
                                             @csrf @method('PATCH')
@@ -81,7 +83,9 @@
             </div>
         </div> </br>
         <div class="col-md-3 offset-md-4 text-center">
+            @can('update', \App\User::class)
             <a href="{{ route('chambres.create') }}" class="btn btn-primary">Ajouter une nouvelle chambre</a>
+            @endcan
         </div>
        @endcan
     </div>

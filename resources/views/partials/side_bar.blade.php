@@ -55,10 +55,18 @@
                     </li>
                     <li>
                         <a href="{{ route('examens.index') }}">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-search"></i>
                             Examens medicaux
                         </a>
                     </li>
+                    @can('anesthesiste', \App\Patient::class)
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-list-ul"></i>
+                            Produits anesthésiste
+                        </a>
+                    </li>
+                    @endcan
                 </ul>
             </li>
         @endcan
@@ -72,30 +80,29 @@
                     @endcan
                 </a>
                 @can('print', \App\Produit::class)
-                    <ul class="collapse list-unstyled" id="pageSubmenu1">
+                <ul class="collapse list-unstyled" id="pageSubmenu1">
+                    <li>
+                        <a href="{{ route('produits.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Produits en stock
+                        </a>
+                    </li>
+                    @endcan
+                    <li>
+                        <a href="{{ route('produits.pharmaceutique') }}">
+                            <i class="fab fa-python"></i>
+                            Produits pharmaceutiques
+                        </a>
+                    </li>
+                    @can('print', \App\Produit::class)
                         <li>
-                            <a href="{{ route('produits.index') }}">
-                                <i class="fas fa-list-ul"></i>
-                                Produits en stock
+                            <a href="{{ route('materiels.pharmaceutique') }}">
+                                <i class="fas fa-cogs"></i>
+                                Produit matériels
                             </a>
                         </li>
-                        @endcan
-                        <li>
-                            <a href="{{ route('produits.pharmaceutique') }}">
-                                <i class="fab fa-python"></i>
-                                Produit pharmaceutiques
-                            </a>
-                        </li>
-                        {{--// ca marche bien pour le pharmacien--}}
-                        @can('print', \App\Produit::class)
-                            <li>
-                                <a href="{{ route('materiels.pharmaceutique') }}">
-                                    <i class="fas fa-cogs"></i>
-                                    Produit matériels
-                                </a>
-                            </li>
-                        @endcan
-                    </ul>
+                    @endcan
+                </ul>
             </li>
         @endcan
         @can('create', \App\chambre::class)
@@ -118,7 +125,7 @@
                         <a href="{{ route('patients.index') }}">Consultation</a>
                     </li>
                     <li>
-                        <a href="login.html">Intervation</a>
+                        <a href="login.html">Intervention</a>
                     </li>
                 </ul>
             </li>
