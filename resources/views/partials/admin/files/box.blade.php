@@ -34,7 +34,7 @@
                 <i class="fa fa-instagram fa-3x" aria-hidden="true"></i>
 
                 <div class="title">
-                    <h5>ORDONANCES</h5>
+                    <h5>ORDONNANCES</h5>
                 </div>
 
                 <div class="text">

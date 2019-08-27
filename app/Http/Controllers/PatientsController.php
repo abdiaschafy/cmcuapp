@@ -70,7 +70,7 @@ class PatientsController extends Controller
             'patient' => $patient,
             'consultations' => Consultation::with('patient', 'user')->latest()->first(),
 //            'consultations' => dd($patient->consultations()->latest()->first()),
-            'prescriptions' => $patient->prescriptions()->latest()->first(),
+            'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossier' => $patient->dossiers,
             'parametres' =>$patient->parametres()->latest()->first(),

@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
-                        <i class="far fa-plus-square"></i> Ordonance / Examens complémentaires
+                        <i class="far fa-plus-square"></i> Ordonnance / Examens complémentaires
 
                     </button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">

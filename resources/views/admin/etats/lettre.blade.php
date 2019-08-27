@@ -50,7 +50,7 @@
 
     <div class="row">
         <div class="col-3">
-            <p>Dr {{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></p>
+            <p>Dr <small>{{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></p>
             <p><small>{{ $consultations->user->specialite }}</small></p>
             <p>Onmc: <small>{{ $consultations->user->onmc }}</small></p>
         </div>

@@ -100,7 +100,7 @@
         <h5 class="text-center mb-3"><u><b>serologie</b></u></h5>
         <p><input type="checkbox" id="serologie" name="serologie[]" value="hiV">hiV</p>
         <p><input type="checkbox" id="serologie" name="serologie[]" value="hepatite b">hepatite b</p>
-        <p><input type="checkbox" id="serologie" name="serologie[]" value="hepatite c">hepatite b</p>
+        <p><input type="checkbox" id="serologie" name="serologie[]" value="hepatite c">hepatite c</p>
         <p><input type="checkbox" id="serologie" name="serologie[]" value="autres8">autres</p>
        
     </div>
