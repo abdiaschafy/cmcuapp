@@ -87,7 +87,7 @@ class ChambresTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '5',
-                'numero'       => '1',
+                'numero'       => 'BLOC 1',
                 'categorie'       => 'BLOC OPERATOIRE',
                 'patient'       => 'null',
                 'prix'       => '',
@@ -95,7 +95,7 @@ class ChambresTableSeeder extends Seeder
             ],
             [
                 'user_id'       => '5',
-                'numero'       => '2',
+                'numero'       => 'BLOC 2',
                 'categorie'       => 'BLOC OPERATOIRE',
                 'patient'       => 'null',
                 'prix'       => '',

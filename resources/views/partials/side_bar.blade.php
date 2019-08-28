@@ -53,12 +53,14 @@
                             Liste des patients
                         </a>
                     </li>
+                    @can('show', \App\User::class)
                     <li>
                         <a href="{{ route('examens.index') }}">
                             <i class="fas fa-search"></i>
                             Examens medicaux
                         </a>
                     </li>
+                    @endcan
                     @can('anesthesiste', \App\Patient::class)
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
