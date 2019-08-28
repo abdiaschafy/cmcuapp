@@ -62,4 +62,12 @@ class ProduitPolicy
         ]);
     }
 
+    public function anesthesiste()
+    {
+        return in_array(auth()->user()->id, [
+            12,
+        ]);
+
+    }
+
 }

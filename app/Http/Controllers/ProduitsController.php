@@ -114,13 +114,29 @@ class ProduitsController extends Controller
 
     }
 
+    public function stock_anesthesiste()
+    {
+        $this->authorize('anesthesiste', Produit::class);
+
+        $produits = Produit::where('categorie', '=', 'ANESTHESISTE')->paginate(100);
+        $pharmaCount = count($produits);
+
+
+        return view('admin.produits.anesthesiste', array_merge(['produits' => $produits], ['pharmaCount' => $pharmaCount]));
+
+    }
+
     public function add_to_cart(Request $request, $id)
     {
         $produit = Produit::find($id);
 
         if ($produit->qte_stock == 0){
 
-            return redirect()->route('produits.pharmaceutique')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
+            if (auth()->user()->id === 7 ) {
+                return redirect()->route('produits.pharmaceutique')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
+            }else{
+                return redirect()->route('produits.anesthesiste')->with('error', 'Le produit n\'est plus disponible en stock impossible de l\'ajouter à la facture');
+            }
 
         }elseif($produit->qte_stock <= $produit->qte_alerte){
 
@@ -131,7 +147,11 @@ class ProduitsController extends Controller
             $request->session()->put('cart', $cart);
 
 
-            return redirect()->route('produits.pharmaceutique')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
+            if (auth()->user()->role_id === 7 ) {
+                return redirect()->route('produits.pharmaceutique')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
+            }else{
+                return redirect()->route('produits.anesthesiste')->with('info', 'Le produit a bien été ajouté à la facture, mais attention le stock d\'alerte pour ce produit a été atteind');
+            }
         }
 
         $oldCart = Session::has('cart') ? Session::get('cart') : null;

@@ -85,9 +85,16 @@
                                     @endforeach
                                 </select>
                             </td>
+                            @can('update', \App\Produit::class)
                             <td>
                                 <a href="{{ route('produits.pharmaceutique') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
                             </td>
+                            @endcan
+                            @can('anesthesiste', \App\Produit::class)
+                            <td>
+                                <a href="{{ route('produits.anesthesiste') }}" title="Retour à la liste des produits" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Ajouter des produits</a>
+                            </td>
+                            @endcan
 
                             <td>
                                 <button type="submit" href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></button>

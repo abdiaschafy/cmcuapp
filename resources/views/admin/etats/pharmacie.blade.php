@@ -236,11 +236,20 @@
                                         <td class="text-left"><h3> {{ $totalPrix }} XAF</h3></td>
                                     </tr>
                                     <tr>
+                                        @if(auth()->user()->role_id === '5')
                                         <div class="notices">
                                             <H4><div>LA PHARMACIE</div></H4>
                                             <div class="notice"><b>Pharmacien :</b>{{ auth()->user()->name }} {{ auth()->user()->prenom }}</div>
                                             <div class="notice"><b>Patient : </b>{{ $patient }}</div>
                                         </div>
+                                        @endif
+                                        @if(auth()->user()->role_id === '2')
+                                        <div class="notices">
+                                            <H4><div>LA PHARMACIE</div></H4>
+                                            <div class="notice"><b>Anesthésiste :</b>{{ auth()->user()->name }} {{ auth()->user()->prenom }}</div>
+                                            <div class="notice"><b>Patient : </b>{{ $patient }}</div>
+                                        </div>
+                                        @endif
                                     </tr>
                                     </tbody>
                                 </table>

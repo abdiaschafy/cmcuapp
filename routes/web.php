@@ -41,6 +41,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::patch('produits/{produit}', 'ProduitsController@update')->name('produits.update');
     Route::delete('produits/{produit}', 'ProduitsController@destroy')->name('produits.destroy');
     Route::get('pharmaceutiques', 'ProduitsController@stock_pharmaceutique')->name('produits.pharmaceutique');
+    Route::get('anesthesiste', 'ProduitsController@stock_anesthesiste')->name('produits.anesthesiste');
     Route::get('materiels', 'ProduitsController@stock_materiel')->name('materiels.pharmaceutique');
     Route::get('pharmaceutiques/{id}', 'ProduitsController@add_to_cart')->name('pharmaceutique.cart');
     Route::get('facturation', 'ProduitsController@facturation')->name('pharmaceutique.facturation');

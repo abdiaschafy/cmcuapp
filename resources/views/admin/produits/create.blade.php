@@ -34,8 +34,9 @@
                         <div class="form-group">
                             <label for="categorie">Catégorie <span class="text-danger">*</span></label>
                             <select class="form-control" name="categorie" id="categorie" required>
-                                <option>PHARMACEUTIQUE</option>
-                                <option>MATERIEL</option>
+                                <option value="PHARMACEUTIQUE">PHARMACEUTIQUE</option>
+                                <option value="MATERIEL">MATERIEL</option>
+                                <option value="ANESTHESISTE">ANESTHESISTE</option>
                             </select>
                         </div>
                         <div class="form-group">

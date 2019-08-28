@@ -61,7 +61,7 @@
                     </li>
                     @can('anesthesiste', \App\Patient::class)
                     <li>
-                        <a href="#">
+                        <a href="{{ route('produits.anesthesiste') }}">
                             <i class="fas fa-list-ul"></i>
                             Produits anesthésiste
                         </a>
