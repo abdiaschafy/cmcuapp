@@ -37,7 +37,7 @@
                     </li>
                 </ul>
             </li>
-            {{--@endcan--}}
+            {{--@endcan--}} 
         @endcan
         @can('update', \App\Patient::class)
             <li>

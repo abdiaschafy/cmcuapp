@@ -100,7 +100,7 @@ class ChambresTableSeeder extends Seeder
                 'patient'       => 'null',
                 'prix'       => '',
                 'statut'       => 'libre',
-            ]
+            ] 
             
 
         ];
