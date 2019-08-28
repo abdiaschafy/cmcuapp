@@ -71,6 +71,7 @@
                     {{--@endcan--}}
                 {{--------------------------------MARGE IC-------------------------------------}}
                 @can('create', \App\Patient::class)
+                @can('show', \App\User::class)
                 <div class="row mt-2">
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
@@ -105,6 +106,7 @@
                         </div>
                     </div>
 
+                    @endcan
                     @endcan
 
                     {{--<!-- Earnings (Monthly) Card Example -->--}}

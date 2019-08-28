@@ -39,7 +39,7 @@
             </li>
             {{--@endcan--}}
         @endcan
-        @can('create', \App\Patient::class)
+        @can('update', \App\Patient::class)
             <li>
                 <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-users"></i>
