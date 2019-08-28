@@ -297,6 +297,18 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('Endale@2019')
         ]);
 
+        $user22 = \App\User::create([
+            'role_id' => '6',
+            'name' => 'ETINDE',
+            'prenom' => 'SANDRINE',
+            'login' => 'TINDE',
+            'telephone' => '000000000',
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Douala',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1980,12,15)->toDateTimeString(),
+            'password' => bcrypt('Etinde@2019')
+        ]);
+
 
 
 

@@ -18,7 +18,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '101 Lit 1',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -26,7 +26,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '101 Lit 2',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -34,7 +34,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '102 Lit 1',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -42,7 +42,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '102 Lit 2',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -50,7 +50,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '103 Lit 1',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -58,7 +58,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '103 Lit 2',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -66,7 +66,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '104 Lit 1',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -74,7 +74,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '104 Lit 2',
                 'categorie'       => 'CLASSIQUE',
                 'patient'       => 'null',
-                'prix'       => '50 000',
+                'prix'       => '50000',
                 'statut'       => 'libre',
             ],
             [
@@ -82,7 +82,7 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => '105',
                 'categorie'       => 'VIP',
                 'patient'       => 'null',
-                'prix'       => '100 000',
+                'prix'       => '100000',
                 'statut'       => 'libre',
             ],
             [
