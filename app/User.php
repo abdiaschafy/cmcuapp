@@ -64,6 +64,10 @@ class User extends Authenticatable
         return $this->hasMany(Ordonance::class);
     }
 
+    public function prescriptions()
+    {
+        return $this->hasMany(Prescription::class);
+    }
     public function isAdmin()
     {
         return Auth::user()->role_id === 1;

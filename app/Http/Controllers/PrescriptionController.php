@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use App\Prescription;
 use App\Patient;
+use Illuminate\Support\Facades\Auth;
 use Db;
 use function GuzzleHttp\Promise\all;
 
@@ -17,7 +18,7 @@ class PrescriptionController extends Controller
     }
 
 
-    public function store(Request $request, Patient $patient)
+    public function store(Request $request)
     {
        
        $prescriptions = [];
@@ -38,7 +39,8 @@ class PrescriptionController extends Controller
         $prescriptions->examen = implode(',', $request->examen ?? []);
         
         $prescriptions->patient_id = $request->patient_id;
-
+        $prescriptions->user_id = Auth::id();
+        
                 $prescriptions->save();
 
 

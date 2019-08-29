@@ -15,6 +15,7 @@ class Createprescriptionstable extends migration
     {
         schema::create('prescriptions', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id')->index()->nullable();
             $table->unsignedInteger('patient_id')->index()->nullable();
             $table->string('hematologie')->nullable();
             $table->string('hemostase')->nullable();
@@ -26,7 +27,9 @@ class Createprescriptionstable extends migration
             $table->string('urines')->nullable();
             $table->string('serologie')->nullable();
             $table->string('examen')->nullable();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }

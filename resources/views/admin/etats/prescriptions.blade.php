@@ -25,7 +25,7 @@
     }
     
     p {
-        line-height: 40%;
+        line-height: 43%;
     }
     
     hr {
@@ -89,26 +89,53 @@ a {
         </div>
         <div class="col-6 offset-3">
             <div class="text-center">
-                <p>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</p>
+                <h4>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</h4>
+                <p class="mt-2"><small>ONMC : N° 5531 007/10/D/ONMC</small></p>
+                <p><small> Arrêté N° 3203/A/MINSANTE/SG/DOSTS/SDOS/SFSP </small></p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
-                <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
-                <small>www.cmcu-cm.com</small>
+                <p>Consultation sur RDV </p>
+                <p><small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small></p>
+                <p>Email : <small> contac@yahoo.fr</small></p>
+                <p>Site internet : <small> www.cmcu-cm.com</small></p>
             </div>
         </div>
     </div>
     <br>
+    <div class="row">
+        <hr class="text-danger">
+    </div>
     <br>
     <br>
     <div class="row">
-        <div class="col-3">
-            <p>Dr.<small></small></p>
-            <p><small></small></p>
-            <p class="mt-2">Onmc: <small></small></p>
-        </div>
-        <div class="col-5 offset-5">
+    <div class="col-5 offset-5">
             <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
         </div>
+     </div>
+     <br>
+     <br>
+        <div class="row">
+        <div >
+        
+        <div class="box-part ">
+           <div class="title">
+            <p>NOM DU PATIENT: <small></small></p>
+            <small>{{ $prescriptions->patient->name }} </small>
+             </div>
+            
+        </div>
+        
+        </div>
+        <div class="box-a">
+            <p>Prescripteur <small></small></p>
+
+            <div class="title">
+            <p>DR : <small> {{ $prescriptions->user->prenom }} {{ $prescriptions->user->name }} </small></p>
+
+                </div>
+            
+        </div>
        </div>
+    <br>
     <br>
      <div class="text-center"><h3><u>LISTE(S) DE(S) EXAMEN(S)</u> </h3></div>
     <br>
