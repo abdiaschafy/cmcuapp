@@ -24,7 +24,6 @@ php artisan migrate
 
 php artisan db:seed
 
-#############################################################################################
+##########################################################################################################################################
 
-login => voire au niveau de la base de donnees
-password => aaaaaa
+Voire le fichier de seed des utilisateurs 
