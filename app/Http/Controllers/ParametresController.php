@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
-use Illuminate\Http\Request;
 
 class ParametresController extends Controller
 {
 
-    public function store(Request $request)
+    public function store(ParametreRequest $request)
     {
         $patient = Patient::findOrFail($request->patient_id);
 
@@ -17,8 +17,12 @@ class ParametresController extends Controller
 
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
+            'ta' => request('ta'),
+            'fr' => request('fr'),
+            'fc' => request('fc'),
+            'glycemie' => request('glycemie'),
+            'spo2' => request('spo2'),
             'poids' => request('poids'),
-            'tension' => request('tension'),
             'temperature' => request('temperature'),
 
         ]);

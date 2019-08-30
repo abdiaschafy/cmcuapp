@@ -30,12 +30,12 @@
         <div class="col-2">
             <img class="logo img-responsive float-left" src="{{ asset('admin/images/logo.jpg') }}">
         </div>
-        <div class="col-6 offset-3">
+        <div class="col-7 offset-3">
             <div class="text-center">
                 <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
-                <small>www.cmcu-cm.com</small>
+                <p><small>www.cmcu-cm.com</small></p>
             </div>
         </div>
     </div>

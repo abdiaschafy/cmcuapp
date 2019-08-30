@@ -148,7 +148,7 @@
                 </a>
             </li>
         @endcan
-        @can('update', \App\User::class)
+        @can('view', \App\User::class)
             <li>
                 <a href="#factureSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-chart-line"></i>
@@ -159,14 +159,28 @@
                     <li>
                         <a href="{{ route('factures.index') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Bilan pharmacie
+                            Factures pharmacie
                         </a>
                         <a href="#">
                             <i class="far fa-money-bill-alt"></i>
-                            Bilan consultation
+                            Factures anesthésiste
+                        </a>
+                        <a href="#">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures consultations
+                        </a>
+                        <a href="#">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures chambres
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-list-ul"></i>
+                    Devis prévisionnel
+                </a>
             </li>
         @endcan
         <br>

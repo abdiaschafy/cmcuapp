@@ -28,7 +28,7 @@ class PatientPolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6
+            1,2,6,4
         ]);
     }
 
@@ -36,7 +36,7 @@ class PatientPolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6
+            1,2,6,4
         ]);
     }
 
@@ -59,7 +59,7 @@ class PatientPolicy
     public function consulter()
     {
         return in_array(auth()->user()->role_id, [
-            1,2
+            1,2,4
         ]);
 
     }

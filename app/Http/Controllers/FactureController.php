@@ -13,6 +13,7 @@ class FactureController extends Controller
 
     public function index(Request $request)
     {
+        $this->authorize('create', Facture::class);
         $factures = Facture::paginate(100);
         $months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
@@ -21,6 +22,7 @@ class FactureController extends Controller
 
     public function desroy(Facture $factures)
     {
+        $this->authorize('create', Facture::class);
         $factures->delete();
         return view('admin.factures.index')->with('info', 'La facture à bien été supprimer');
     }
