@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patients/{patient}', 'PatientsController@show')->name('patients.show');
     Route::patch('patients/{patient}', 'PatientsController@update')->name('patients.update');
     Route::delete('patients/{patient}', 'PatientsController@destroy')->name('patients.destroy');
-    Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
+    Route::get('patient/{id}','PatientsController@generate_consultation')->name('consultation.pdf');
     Route::get('ordonance/{ordonance}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
     //Route::post('patients/upload-image/{patientId}', 'PatientController@fileStore')->name('patients.upload');
@@ -137,7 +137,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/factures', 'FactureController@index')->name('factures.index');
     Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
     Route::delete('/facture', 'FactureController@destroy')->name('factures.destroy');
-    Route::post('/factures/{facture}', 'FactureController@BilanProduit')->name('bilan.produit');
+    Route::get('/factures-consultation', 'FactureConsultationController@index')->name('factures.consultation');
+    Route::get('patient-facture/{id}','FactureConsultationController@export_consultation')->name('factures.consultation_pdf');
 
 
 

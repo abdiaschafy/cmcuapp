@@ -161,7 +161,7 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures produits
                         </a>
-                        <a href="#">
+                        <a href="{{ route('factures.consultation') }}">
                             <i class="far fa-money-bill-alt"></i>
                             Factures consultations
                         </a>

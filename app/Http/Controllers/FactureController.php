@@ -29,7 +29,7 @@ class FactureController extends Controller
     public function show(Facture $facture, Produit $produit)
     {
         $factures = Facture::find($facture);
-//dd($facture);
+
         return view('admin.factures.show', [
             'facture' => $facture
         ]);
