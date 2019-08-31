@@ -153,7 +153,7 @@ class PatientsController extends Controller
         ]);
 
 
-        return back()->with('success', 'La facture a bien été générer veuiller consulter votre liste de facture');
+        return back()->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
     public function export_ordonance($id)
