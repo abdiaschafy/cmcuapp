@@ -43,7 +43,7 @@ class Cart
 
 //        Calcul des sommes de produis present sur la facture
 
-            $storeItem['prix_unitaire'] = $item->prix_unitaire * $storeItem['quantite'];
+            $storeItem['prix_unitaire'] = $item->prix_unitaire;
             $this->items[$id] = $storeItem;
 
             $this->totalQte++;

@@ -2,6 +2,7 @@
 
 namespace App\Policies;
 
+use App\Facture;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -14,10 +15,12 @@ class FacturePolicy
         if ($user->isAdmin()) {
 
             return true;
+        }else{
+            return false;
         }
     }
 
-    public function view(User $user)
+    public function view(Facture $facture)
     {
         return in_array(auth()->user()->role_id, [
             1,6

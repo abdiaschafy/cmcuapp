@@ -159,11 +159,7 @@
                     <li>
                         <a href="{{ route('factures.index') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Factures pharmacie
-                        </a>
-                        <a href="#">
-                            <i class="far fa-money-bill-alt"></i>
-                            Factures anesthésiste
+                            Factures produits
                         </a>
                         <a href="#">
                             <i class="far fa-money-bill-alt"></i>

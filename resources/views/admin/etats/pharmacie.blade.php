@@ -196,7 +196,7 @@
             <div class="container">
                 <div class="row text-center">
                     <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
-                    <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>
+                    <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
                     <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
                     <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
                     <strong>www.cmcu-cm.com</strong><br>
@@ -209,7 +209,7 @@
                                 <div class="row contacts">
 
                                     <div  class="col invoice-details ">
-                                        <h4 class="invoice-id">FACTURE N°5555555</h4>
+                                        <h4 class="invoice-id">FACTURE N°{{ $facture->numero }}</h4>
                                         <br>
 
                                         <div class="date">{{ $date = \Carbon\Carbon::now()->toDateTimeString() }}</div>

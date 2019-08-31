@@ -237,16 +237,19 @@ class ProduitsController extends Controller
             'numero' => mt_rand(10000, 999999),
             'quantite_total' => $cart->totalQte,
             'prix_total' => $cart->totalPrix,
-//            'patient' => $patient
+            'patient' => $patient,
+            'user_id' => \auth()->user()->id,
+            'patient_id' => \request('patient')
         ]);
 
-        $facture->produits()->attach([$facture->id, array_keys($cart->items, $produit)]);
 
-        $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'patient' => $patient, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix]);
+        $facture->produits()->attach($cart->items);
+
+        $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'patient' => $patient, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix, 'facture' => $facture]);
 
         $pdf->save(storage_path('pharmacie').'.pdf');
 
-//        Session::forget('cart');
+        Session::forget('cart');
         return $pdf->stream('pharmacie.pdf');
     }
 }

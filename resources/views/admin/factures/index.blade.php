@@ -12,7 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-        @can('create', \App\Produit::class)
+        @can('view', \App\User::class)
             <div class="container">
                 <h1 class="text-center">LISTE DES FCATURES</h1>
                 <hr>
@@ -28,15 +28,8 @@
                             <tr>
                                 <td>ID</td>
                                 <td>NUMERO</td>
-                                <td>
-                                    <select data-column="0" name="category" id="category" class="form-control filter-select">
-                                        <option value="">Month Search</option>
-                                        @foreach ($months as $month)
-                                            <option value="{{ $month }}">{{ $month }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
                                 <td>MONTANT</td>
+                                <td>DATE</td>
                                 <td>ACTION</td>
                             </tr>
                             <tbody>
@@ -44,18 +37,20 @@
                                 <tr>
                                     <td>{{$facture->id}}</td>
                                     <td>{{$facture->numero}}</td>
-                                    <td>{{$facture->created_at->format('F') }}</td>
                                     <td>{{$facture->prix_total }}  <b>FCFA</b></td>
+                                    <td>{{$facture->created_at }}</td>
                                     <td style="display: inline-flex;">
                                         <p class="mr-2" data-placement="top" data-toggle="tooltip" title="Voire les détails">
                                             <a href="{{ route('factures.show', $facture->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
                                         </p>
+                                        @can('update', \App\User::class)
                                         <form action="{{ route('factures.destroy', $facture->id) }}" method="post">
                                             @csrf @method('DELETE')
                                             <p data-placement="top" data-toggle="tooltip" title="Supprimer la facture">
                                                 <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
                                             </p>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -63,8 +58,7 @@
                         </table>
                         {{--{{ $factures->links() }}--}}
                     </div>
-                    <a href="{{ route('produits.pharmaceutique') }}" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Ajouter une facture</a>
-                    <a href="#" class="btn btn-success">Imprimer le bilan</a>
+                    <a href="#" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Ajouter une facture</a>
                 </div>
             </div>
     </div>

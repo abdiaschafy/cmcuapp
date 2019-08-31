@@ -136,7 +136,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('/factures', 'FactureController@index')->name('factures.index');
     Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
-    Route::delete('/factures', 'FactureController@desroy')->name('factures.destroy');
+    Route::delete('/facture', 'FactureController@destroy')->name('factures.destroy');
     Route::post('/factures/{facture}', 'FactureController@BilanProduit')->name('bilan.produit');
 
 

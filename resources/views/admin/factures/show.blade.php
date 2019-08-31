@@ -16,33 +16,40 @@
                         <thead>
                             <tr>
                                 <th>DESIGNATION</th>
+                                <th>PATIENT</th>
                                 <th>QUANTITE</th>
+                                <th>PRIX UNITAIRE</th>
                                 <th>DATE D'EMISSION</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @if (Session::has('cart'))
-                            @foreach($produits as $produit)
                                 <tr>
                                     <td>
-                                        <p class="">{{ $produit['item']['designation'] }}</p>
+                                        <p class="">Produits pharmaceutiques</p>
                                     </td>
                                     <td>
-                                        <p>{{ $produit['quantite'] }}</p>
+                                        <p class="">{{ $facture->patient }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $facture->quantite_total }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $facture->pivot }}</p>
                                     </td>
                                     <td>
                                         <p>{{ $facture->created_at }}</p>
                                     </td>
                                 </tr>
-                            @endforeach
                             <tr>
                                 <td>
                                     <h3>Total</h3>
                                 </td>
                                 <td></td>
                                 <td class="text-right">
-                                    <h3><strong>{{ $totalPrix }}</strong></h3>
+                                    <h3><strong>{{ $facture->prix_total }} Fcfa</strong></h3>
                                 </td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -51,7 +58,6 @@
                         <a href="{{ route('pharmacie.pdf') }}" title="Imprimer la facture" class="btn btn-success float-right">Imprimer <i class="fas fa-print"></i></a>
                     </td>
 
-                    @endif
                 </div>
             </div>
         </div>
