@@ -301,7 +301,7 @@ class UsersTableSeeder extends Seeder
             'role_id' => '6',
             'name' => 'ETINDE',
             'prenom' => 'SANDRINE',
-            'login' => 'TINDE',
+            'login' => 'ETINDE',
             'telephone' => '000000000',
             'sexe' => 'Féminin',
             'lieu_naissance' => 'Douala',

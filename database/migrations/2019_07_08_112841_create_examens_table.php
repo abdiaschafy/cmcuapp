@@ -17,6 +17,7 @@ class CreateExamensTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index();
             $table->string('type');
+            $table->string('image')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
         });
@@ -29,9 +30,7 @@ class CreateExamensTable extends Migration
      */
     public function down()
     {
-        Schema::table('examens', function (Blueprint $table) {
-            $table->dropColumn('image');
-        });
+        Schema::dropIfExists('examens');
         
     }
 }

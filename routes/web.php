@@ -144,5 +144,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::resource('/fiches', 'FichesController');
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
+    Route::get('devis', 'DevisController@index')->name('devis.index');
+
 
 });

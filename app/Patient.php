@@ -18,6 +18,11 @@ class Patient extends Model
 
     ] ;
 
+    public function devis()
+    {
+        return $this->hasMany(Devis::class);
+    }
+
     public function soins()
     {
         return $this->hasMany(Soin::class);

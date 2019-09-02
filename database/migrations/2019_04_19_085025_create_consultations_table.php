@@ -17,7 +17,7 @@ class CreateConsultationsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('patient_id')->index();
             $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('devis_p')->nullable();
+           
             $table->text('diagnostic');
             $table->text('interrogatoire');
             $table->text('antecedent_m')->nullable();
@@ -36,7 +36,7 @@ class CreateConsultationsTable extends Migration
             $table->string('acte')->nullable();
             $table->string('type_intervention')->nullable();
             $table->timestamps();
-
+         
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
         });
     }

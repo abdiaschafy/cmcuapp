@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Chambre;
 use App\Consultation;
+use App\Devis;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use App\Produit;
 use App\User;
+
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+
 
 class ConsultationsController extends Controller
 {
@@ -18,9 +21,10 @@ class ConsultationsController extends Controller
     {
 
         $users = User::where('role_id', '=', 2)->get();
+        $devis = Devis::all();
         $consutation = Consultation::with('patient')->where('patient_id', $patient->id)->get();
 
-        return view('admin.consultations.create', compact('patient', 'users', 'consutation'));
+        return view('admin.consultations.create', compact('patient', 'users', 'consutation','devis'));
     }
 
     public function store(ConsultationRequest $request)

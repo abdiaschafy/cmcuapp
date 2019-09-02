@@ -28,7 +28,7 @@ class PatientPolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,9,
+            1,2,6
         ]);
     }
 
@@ -36,32 +36,22 @@ class PatientPolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,9,
+            1,2,6
         ]);
-    }
-
-
-    public function delete(User $user, Patient $patient)
-    {
-        //
-    }
-
-
-    public function restore(User $user, Patient $patient)
-    {
-        //
-    }
-
-
-    public function forceDelete(User $user, Patient $patient)
-    {
-        //
     }
 
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,9,
+            1,6
+        ]);
+
+    }
+
+    public function delete(User $user)
+    {
+        return in_array(auth()->user()->role_id, [
+            1
         ]);
 
     }
@@ -69,7 +59,7 @@ class PatientPolicy
     public function consulter()
     {
         return in_array(auth()->user()->role_id, [
-            1,2,
+            1,2
         ]);
 
     }

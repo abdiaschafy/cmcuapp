@@ -24,4 +24,10 @@ class Consultation extends Model
         return $this->belongsTo(Chambre::class);
     }
 
+    public function devis()
+    {
+        return $this->belongsTo(Devis::class);
+    }
+
+
 }

@@ -2,7 +2,7 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <h1>
-            <a href="index.html">{{ config('app.name') }}</a>
+            <a href="#">{{ config('app.name') }}</a>
         </h1>
         <span>M</span>
     </div>
@@ -37,9 +37,9 @@
                     </li>
                 </ul>
             </li>
-            {{--@endcan--}}
+            {{--@endcan--}} 
         @endcan
-        @can('create', \App\Patient::class)
+        @can('update', \App\Patient::class)
             <li>
                 <a href="#patientsSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-users"></i>
@@ -53,12 +53,14 @@
                             Liste des patients
                         </a>
                     </li>
+                    @can('show', \App\User::class)
                     <li>
                         <a href="{{ route('examens.index') }}">
                             <i class="fas fa-search"></i>
                             Examens medicaux
                         </a>
                     </li>
+                    @endcan
                     @can('anesthesiste', \App\Patient::class)
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
@@ -69,6 +71,7 @@
                     @endcan
                 </ul>
             </li>
+           
         @endcan
         @can('create', \App\Produit::class)
             <li>
@@ -167,6 +170,33 @@
                 </ul>
             </li>
         @endcan
+
+        @can('update', \App\Patient::class)
+            <li>
+                <a href="#devisSubmenu" data-toggle="collapse" aria-expanded="false">
+                    <i class="fas fa-book"></i>
+                    Gestion des Devis
+                    <i class="fas fa-angle-down fa-pull-right"></i>
+                </a>
+                <ul class="collapse list-unstyled" id="devisSubmenu">
+                    <li>
+                        <a href="{{ route('devis.index') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Liste des devis
+                        </a>
+                    </li>
+                    @can('show', \App\User::class)
+                    <li>
+                        <a href="{{ route('devis.index') }}">
+                            <i class="fas fa-lock"></i>
+                            Devis ajusté
+                        </a>
+                    </li>
+                    @endcan
+                   
+                </ul>
+            </li>
+            @endcan
         <br>
         <br>
         <br>

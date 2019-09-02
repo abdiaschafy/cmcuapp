@@ -20,6 +20,7 @@ class PatientsController extends Controller
 
     public function index()
     {
+        $this->authorize('update', Patient::class);
         $patients = Patient::with('users')->latest()->paginate(100);
         return view('admin.patients.index', compact('patients'));
 
@@ -28,6 +29,7 @@ class PatientsController extends Controller
 
     public function create()
     {
+        $this->authorize('update', Patient::class);
 
         return view('admin.patients.create');
     }
@@ -35,8 +37,6 @@ class PatientsController extends Controller
 
     public function store(Request $request)
     {
-
-//        $this->authorize('consulter', Patient::class);
         $this->authorize('update', Patient::class);
 
 
@@ -65,11 +65,11 @@ class PatientsController extends Controller
 
     public function show(Patient $patient)
     {
+        $this->authorize('update', Patient::class);
 
         return view('admin.patients.show', [
             'patient' => $patient,
             'consultations' => Consultation::with('patient', 'user')->latest()->first(),
-//            'consultations' => dd($patient->consultations()->latest()->first()),
             'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossier' => $patient->dossiers,
@@ -81,7 +81,7 @@ class PatientsController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->authorize('update', Produit::class);
+        $this->authorize('update', Patient::class);
         $request->validate([
             'name'=> '',
             'assurance'=> '',
@@ -141,7 +141,8 @@ class PatientsController extends Controller
 
     public function export_consultation($id)
     {
-//        $this->authorize('print', Patient::class);
+        $this->authorize('update', Patient::class);
+        $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 

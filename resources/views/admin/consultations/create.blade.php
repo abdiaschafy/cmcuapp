@@ -196,8 +196,15 @@
                                     <tr>
                                         <td><b>Devis prévisionnel :</b></td>
                                         <td>
-                                            <input class="form-control col-md-5" type="number" name="devis_p" id="cout"
-                                                   value="{{ old('devis_p') }}">
+                                        <select class="form-control" name="devis_p" id="cout" required>
+                                                <option value=""> Sélectionner un devis</option>
+                                                @foreach ($devis as $devi)
+                                                    <option
+                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                           
                                         </td>
                                     </tr>
                                     <tr id="anesthesiste" style='display:none;'>

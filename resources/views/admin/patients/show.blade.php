@@ -24,8 +24,8 @@
 
     <!-- Page Content Holder -->
         @include('partials.header')
-
-        <div class="container">
+        @can('show', \App\User::class)
+            <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
@@ -87,6 +87,7 @@
 
             </div>
         </div>
+        @endcan
     </div>
     <script>
         function ShowDetailsPatient() {
