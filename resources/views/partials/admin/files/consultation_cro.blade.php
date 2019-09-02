@@ -1,7 +1,7 @@
 <tbody>
 <tr>
     <td>
-        <a href="{{ route('consultations.index') }}">
+        <a href="{{ route('consultations.index', $patient->id) }}">
             <h1 class="text-info">CONSULTATION</h1>
         </a>
     </td>

@@ -14,6 +14,17 @@ use Carbon\Carbon;
 class ConsultationsController extends Controller
 {
 
+    public function index(Consultation $consultations, Patient $patient)
+    {
+
+        return view('admin.consultations.index', [
+            'patient' => $patient,
+            'consultations' => Consultation::with('patient', 'user')->get(),
+        ]);
+    }
+
+
+
     public function create(Patient $patient)
     {
 
@@ -56,13 +67,6 @@ class ConsultationsController extends Controller
         Flashy('La nouvelle consultation a été crée avec succès !!');
 
         return back();
-    }
-
-    public function index(Consultation $consultations)
-    {
-
-        $consultations = Consultation::latest()->get();
-        return view('admin.consultations.index', compact('consultations'));
     }
 
     

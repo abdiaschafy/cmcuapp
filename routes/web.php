@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
     
-    Route::get('consultations', 'ConsultationsController@index')->name('consultations.index');
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
