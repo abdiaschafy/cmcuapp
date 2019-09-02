@@ -170,7 +170,7 @@
                                     <tr>
                                         <td><b>Suites opératoires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <input class="form-control" name="suite_operatoire"  value="{{ old('suite_operatoire') }}" required/>
+                                            <textarea name="suite_operatoire" id="suite_operatoire" cols="55" rows="3"required>{{ old('suite_operatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>

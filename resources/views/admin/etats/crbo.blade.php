@@ -57,7 +57,6 @@
     <br>
     <br>
     <br>
-    <br>
     <div class="row">
         <h5 class="text-center"><u class="text-danger">{{ $patient->consultations->last()->diagnostique }}</u></h5>
     </div>
@@ -69,7 +68,6 @@
         </h5>
     </div>
     <br>
-    <br>
     <h4 class="text-"><u>INDICATION OPERATOIRE :</u></h4>
     <div class="">
         <h5>
@@ -78,11 +76,18 @@
     </div>
     <br>
     <br>
-    <br>
     <h4 class="text-"><u>INTERVENTION :</u></h4>
     <div class="">
         <h5>
             {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->indication_operatoire)) !!}
+        </h5>
+    </div>
+    <br>
+    <br>
+    <h4 class="text-"><u>SUITES OPERATOIRES :</u></h4>
+    <div class="">
+        <h5>
+            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->suite_operatoire)) !!}
         </h5>
     </div>
     <footer class="footer">
