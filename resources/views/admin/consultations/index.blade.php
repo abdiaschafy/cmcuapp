@@ -47,7 +47,6 @@
                                     <ul class="list-group">
                                         <li class="list-group-item"><b>NOM ET PRENOM DU PATIENT :</b> {{ $patient->name }}</li>
                                         <li class="list-group-item"><b>TELEPHONE :</b> {{ $patient->telephone }}</li>
-                                        <li class="list-group-item">Google Inc.</li>
                                         <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000</li>
                                         <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
                                     </ul>
@@ -64,7 +63,7 @@
                                 <li class="list-group-item"><b>NOM ET PRENOM DU MEDECIN :</b> Dr. {{ $consultation->user->name }}</li>
                                 <hr>
                                 <li class="list-group-item"><b>MOTIF DE CONSULTATION :</b> {{ $consultation->motif_c }}</li>
-                                <li class="list-group-item"><b>INTERROGATOIE :</b> {{ $consultation->interrogatoire }}</li>
+                                <li class="list-group-item"><b>INTERROGATOIE :</b> {!! nl2br($consultation->interrogatoire) !!}</li>
                                 <li class="list-group-item"><b>EXAMENS PHYSIQUES :</b> {{ $consultation->examen_p }}</li>
                                 <li class="list-group-item"><b>EXAMENS COMPLEMENTAIRES :</b> {{ $consultation->examen_c }}</li>
                                 <li class="list-group-item"><b>PROPOSITIONS THERAPEUTIQUES :</b> {{ $consultation->proposition_therapeutique }}</li>

@@ -40,6 +40,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                <tr></tr>
                             @endforeach
 
 
