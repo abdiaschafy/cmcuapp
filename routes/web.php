@@ -137,8 +137,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/factures', 'FactureController@index')->name('factures.index');
     Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
     Route::delete('/facture', 'FactureController@destroy')->name('factures.destroy');
-    Route::get('/factures-consultation', 'FactureConsultationController@index')->name('factures.consultation');
-    Route::get('patient-facture/{id}','FactureConsultationController@export_consultation')->name('factures.consultation_pdf');
+    Route::get('/factures-consultation', 'FactureController@FactureConsultation')->name('factures.consultation');
+    Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
+    Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
 
 

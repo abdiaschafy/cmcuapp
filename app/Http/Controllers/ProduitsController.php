@@ -239,7 +239,6 @@ class ProduitsController extends Controller
             'prix_total' => $cart->totalPrix,
             'patient' => $patient,
             'user_id' => \auth()->user()->id,
-//            'patient_id' => \request('patient')
         ]);
 
 

@@ -19,7 +19,8 @@ class CreateChambresTable extends Migration
             $table->string('numero');
             $table->string('categorie');
             $table->string('patient')->nullable()->default('Vide');
-            $table->integer('prix')->default(null);
+            $table->integer('prix')->default('null');
+            $table->integer('jour')->nullable()->default('null');
             $table->enum('statut', ['libre', 'occupé'])->default('libre');
 
             $table->timestamps();

@@ -101,18 +101,20 @@ class ChambresController extends Controller
         $chambre->update($request->only(
             [
                 'patient',
-                'statut'
+                'statut',
+                'jour'
             ]));
 
         return redirect()->route('chambres.index')->with('success', 'La chambre a bien été attribué');
     }
 
-    public function updateMinus(Request $request, Chambre $chambre)
+    public function updateMinus(Request $request, Chambre $chambre, Patient $patient)
     {
         $chambre->update($request->only(
             [
                 'patient',
-                'statut'
+                'statut',
+                'jour'
             ]));
 
         return redirect()->route('chambres.index')->with('success', 'La chambre a bien été liberer');

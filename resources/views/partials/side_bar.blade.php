@@ -111,7 +111,7 @@
             <li>
                 <a href="{{ route('chambres.index') }}">
                     <i class="fas fa-bed"></i>
-                    Nos Chambres
+                    Chambres
                 </a>
             </li>
         @endcan
@@ -165,7 +165,7 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures consultations
                         </a>
-                        <a href="#">
+                        <a href="{{ route('factures.chambre') }}">
                             <i class="far fa-money-bill-alt"></i>
                             Factures chambres
                         </a>

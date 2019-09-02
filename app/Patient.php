@@ -23,6 +23,11 @@ class Patient extends Model
         return $this->hasMany(FactureConsultation::class);
     }
 
+    public function facture_chambres()
+    {
+        return $this->hasMany(FactureConsultation::class);
+    }
+
     public function soins()
     {
         return $this->hasMany(Soin::class);
