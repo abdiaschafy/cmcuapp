@@ -96,7 +96,7 @@ class DevisController extends Controller
         $devis->montant11 = $request->get('montant11');
         
        $devis->user_id = Auth::id();
-       $devis->consultation_id= $request->consultation_id;
+      
         $devis->save();
 
         return redirect()->route('devis.index')->with('success', 'ajouté avec succès !');
