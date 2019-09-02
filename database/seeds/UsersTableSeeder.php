@@ -42,7 +42,7 @@ class UsersTableSeeder extends Seeder
             'sexe' => 'Féminin',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1985,10,05)->toDateTimeString(),
-            'password' => bcrypt('infirmiere@cmcu2019')
+            'password' => bcrypt('Tomdio@2019')
         ]);
 
         $user4 = \App\User::create([

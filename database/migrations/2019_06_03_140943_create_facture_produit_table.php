@@ -19,6 +19,9 @@ class CreateFactureProduitTable extends Migration
 
             $table->unsignedInteger('facture_id');
             $table->unsignedInteger('produit_id');
+            $table->integer('item');
+            $table->integer('prix_unitaire');
+            $table->integer('quantite');
             $table->timestamps();
 
         });

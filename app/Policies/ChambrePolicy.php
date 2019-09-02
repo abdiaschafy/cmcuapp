@@ -27,7 +27,7 @@ class ChambrePolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,5,2
+            1,2,4,6
         ]);
     }
 

@@ -2,48 +2,70 @@
 
 namespace App\Http\Controllers;
 
-use App\Cart;
 use App\Facture;
+use App\FactureChambre;
+use Barryvdh\DomPDF\Facade as PDF;
+use App\FactureConsultation;
+use App\Patient;
 use App\Produit;
+use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
 class FactureController extends Controller
 {
 
     public function index(Request $request)
     {
+        $this->authorize('view', User::class);
         $factures = Facture::paginate(100);
-        $months = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
 
-        return view('admin.factures.index', compact('factures', 'months'));
+        return view('admin.factures.index', compact('factures'));
     }
 
-    public function desroy(Facture $factures)
+    public function destroy(Facture $factures)
     {
+        $this->authorize('view', User::class);
         $factures->delete();
         return view('admin.factures.index')->with('info', 'La facture à bien été supprimer');
     }
 
-    public function ajax()
-    {
-        $factures = Facture::all();
-
-        $months = $factures->sortBy('created_at')->pluck('created_at')->unique();
-
-        return view('admin.factures.index', compact('factures', 'months'));
-    }
-
     public function show(Facture $facture, Produit $produit)
     {
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+        $factures = Facture::find($facture);
+
         return view('admin.factures.show', [
-            'produit' => $produit,
-            'produits' => $cart->items,
-            'totalPrix' => $cart->totalPrix,
             'facture' => $facture
         ]);
+    }
+
+    public function FactureConsultation(Patient $patient)
+    {
+        $this->authorize('view', User::class);
+        $factureConsultations = FactureConsultation::with('patient')->get();
+
+        return view('admin.factures.consultation', compact('factureConsultations'));
+    }
+
+    public function FactureChambre(Patient $patient)
+    {
+        $this->authorize('view', User::class);
+        $factureChambres = FactureChambre::with('patient')->get();
+
+        return view('admin.factures.chambre', compact('factureChambres'));
+    }
+
+    public function export_consultation($id)
+    {
+        $this->authorize('update', Patient::class);
+        $this->authorize('print', Patient::class);
+        $patient = Patient::find($id);
+
+        $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
+
+
+        $pdf->save(storage_path('pdf/consultation').'.pdf');
+
+        return $pdf->stream('consultation.pdf');
     }
 
 }

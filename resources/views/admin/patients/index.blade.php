@@ -40,15 +40,15 @@
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->prise_en_charge }}</td>
                                     <td>{{ $patient->created_at->toFormattedDateString() }}</td>
-                                    @can('consulter', \App\Patient::class)
                                     <td style="display: inline-flex;">
+                                    @can('consulter', \App\Patient::class)
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>
                                         <a href="{{ route('events.create', $patient->id) }}" title="Prendre un rendez-vous" class="btn btn-info btn-xs mr-1"><i class="far fa-calendar-plus"></i></a>
                                         <a href="{{ route('examens.create', $patient->id) }}" title="Ajouter examens medicaux" class="btn btn-info btn-xs mr-1"><i class="fas fa-book"></i></a>
                                     @endcan
                                     @can('print', \App\Patient::class)
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}"><i class="fas fa-print"></i></a>
+                                            <a class="btn btn-success btn-xs mr-1" title="Générer la facture de consultation" href="{{ route('consultation.pdf', $patient->id) }}" onClick='if(this.disabled){ return false; } else { this.disabled = true; }'><i class="far fa-plus-square"></i></a>
                                         </p>
                                     @endcan
                                     @can('delete', \App\Patient::class)

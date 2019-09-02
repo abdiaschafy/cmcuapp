@@ -18,6 +18,16 @@ class Patient extends Model
 
     ] ;
 
+    public function facture_consultations()
+    {
+        return $this->hasMany(FactureConsultation::class);
+    }
+
+    public function facture_chambres()
+    {
+        return $this->hasMany(FactureConsultation::class);
+    }
+
     public function devis()
     {
         return $this->hasMany(Devis::class);

@@ -239,32 +239,57 @@
                 <div class="col-md-5  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Prise des paramètres du
+                            <div class="card-title">Prise des paramètres du patient
                                 <small><strong></strong></small>
                             </div>
                             <small class="text-info" title="La prise des paramètres du patient doit être quotidienne"><i
                                     class="fas fa-info-circle"></i></small>
                             <form action="{{ route('parametres.store') }}" method="post">
                                 @csrf
+                                @include('partials.flash_form')
                                 <table class="table">
                                     <tbody>
                                     <tr>
-                                        <td>Poids</td>
+                                        <td>TA :</td>
                                         <td>
-                                            <input name="poids" type="number" value='{{ old(' poids ') }}'>
+                                            <input name="ta" type="text" value='{{ old(' ta ') }}' placeholder=" mmHg">
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Température</td>
+                                        <td>Température : <span class="text-danger">*</span></td>
                                         <td>
-                                            <Input name="temperature" type="number" value='{{ old(' temperature ') }}'>
+                                            <Input name="temperature" type="text" value='{{ old(' temperature ') }}' placeholder=" °C" required>
                                         </td>
                                     </tr>
                                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                                     <tr>
-                                        <td>Tenssion</td>
+                                        <td>FR :</td>
                                         <td>
-                                            <Input name="tension" type="text" value='{{ old(' tension ') }}'>
+                                            <Input name="fr" type="text" value='{{ old(' fr ') }}' placeholder=" Mvts/min">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FC :</td>
+                                        <td>
+                                            <Input name="fc" type="text" value='{{ old(' fc ') }}' placeholder=" Pls/min">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gly : <span class="text-danger">*</span></td>
+                                        <td>
+                                            <Input name="glycemie" type="text" value='{{ old(' glycemie ') }}' placeholder=" g/l" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>SPO2 :</td>
+                                        <td>
+                                            <Input name="spo2" type="text" value='{{ old(' spo2 ') }}' placeholder=" %">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Poids :</td>
+                                        <td>
+                                            <Input name="poids" type="text" value='{{ old(' poids ') }}'  placeholder=" Kgs">
                                         </td>
                                     </tr>
                                     </tbody>
@@ -278,26 +303,26 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        let splitLines = document.getElementsByClassName("splitLines")
-        let textarea = [];
-        for(let x=0; x<splitLines.length; x++){
-            textarea[x] = splitLines[x];
-            textarea[x].onkeyup = function () {
-                var lines = textarea[x].value.split("\n");
-                for (var i = 0; i < lines.length; i++) {
-                    if (lines[i].length <= 27) continue;
-                    var j = 0;
-                    space = 27;
-                    while (j++ <= 27) {
-                        if (lines[i].charAt(j) === " ") space = j;
-                    }
-                    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
-                    lines[i] = lines[i].substring(0, space);
-                }
-                textarea[x].value = lines.slice(0, 30).join("\n");
-            };
-        }
-    </script>
+    {{--<script type="text/javascript">--}}
+        {{--let splitLines = document.getElementsByClassName("splitLines")--}}
+        {{--let textarea = [];--}}
+        {{--for(let x=0; x<splitLines.length; x++){--}}
+            {{--textarea[x] = splitLines[x];--}}
+            {{--textarea[x].onkeyup = function () {--}}
+                {{--var lines = textarea[x].value.split("\n");--}}
+                {{--for (var i = 0; i < lines.length; i++) {--}}
+                    {{--if (lines[i].length <= 27) continue;--}}
+                    {{--var j = 0;--}}
+                    {{--space = 27;--}}
+                    {{--while (j++ <= 27) {--}}
+                        {{--if (lines[i].charAt(j) === " ") space = j;--}}
+                    {{--}--}}
+                    {{--lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");--}}
+                    {{--lines[i] = lines[i].substring(0, space);--}}
+                {{--}--}}
+                {{--textarea[x].value = lines.slice(0, 30).join("\n");--}}
+            {{--};--}}
+        {{--}--}}
+    {{--</script>--}}
     </body>
 @stop

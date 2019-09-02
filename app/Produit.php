@@ -25,7 +25,9 @@ class Produit extends Model
 
     public function factures()
     {
-        return $this->belongsToMany(Facture::class);
+        return $this->belongsToMany(Facture::class)
+            ->withPivot('item', 'prix_total')
+            ->withTimestamps();
     }
 }
 

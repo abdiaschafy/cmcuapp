@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parametre extends Model
+class FactureChambre extends Model
 {
-    protected $fillable = [
-        'user_id', 'patient_id', 'poids', 'temperature', 'ta', 'fc', 'fr', 'spo2', 'glycemie'
-    ];
+    protected $guarded = [];
 
     public function patient()
     {

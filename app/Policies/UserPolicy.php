@@ -2,8 +2,6 @@
 
 namespace App\Policies;
 
-use App\Patient;
-use App\Produit;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -23,14 +21,21 @@ class UserPolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,
+            1
         ]);
     }
 
     public function show(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2
+            1,2,4
+        ]);
+    }
+
+    public function view(User $user)
+    {
+        return in_array(auth()->user()->role_id, [
+            1,6
         ]);
     }
 

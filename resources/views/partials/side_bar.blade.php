@@ -112,7 +112,7 @@
             <li>
                 <a href="{{ route('chambres.index') }}">
                     <i class="fas fa-bed"></i>
-                    Nos Chambres
+                    Chambres
                 </a>
             </li>
         @endcan
@@ -149,7 +149,7 @@
                 </a>
             </li>
         @endcan
-        @can('update', \App\User::class)
+        @can('view', \App\User::class)
             <li>
                 <a href="#factureSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-chart-line"></i>
@@ -160,14 +160,24 @@
                     <li>
                         <a href="{{ route('factures.index') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Bilan pharmacie
+                            Factures produits
                         </a>
-                        <a href="#">
+                        <a href="{{ route('factures.consultation') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Bilan consultation
+                            Factures consultations
+                        </a>
+                        <a href="{{ route('factures.chambre') }}">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures chambres
                         </a>
                     </li>
                 </ul>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-list-ul"></i>
+                    Devis prévisionnel
+                </a>
             </li>
         @endcan
 

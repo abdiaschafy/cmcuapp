@@ -1,7 +1,7 @@
 <tbody>
 <tr>
     <td>
-        <a href="{{ route('consultations.index') }}">
+        <a href="{{ route('consultations.index', $patient->id) }}">
             <h1 class="text-info">CONSULTATION</h1>
         </a>
     </td>
@@ -74,12 +74,28 @@
             <td>{{ $parametres->poids }} Kg</td>
         </tr>
         <tr>
-            <td><b>TENSION :</b></td>
-            <td>{{ $parametres->tension }}</td>
-        </tr>
-        <tr>
             <td><b>TEMPERATURE :</b></td>
             <td>{{ $parametres->temperature }} °C</td>
+        </tr>
+        <tr>
+            <td><b>GLYCEMIE :</b></td>
+            <td>{{ $parametres->glycemie }}</td>
+        </tr>
+        <tr>
+            <td><b>SPO2 :</b></td>
+            <td>{{ $parametres->spo2 }}</td>
+        </tr>
+        <tr>
+            <td><b>TA :</b></td>
+            <td>{{ $parametres->ta }}</td>
+        </tr>
+        <tr>
+            <td><b>FR :</b></td>
+            <td>{{ $parametres->fr }}</td>
+        </tr>
+        <tr>
+            <td><b>FC :</b></td>
+            <td>{{ $parametres->temperature }}</td>
         </tr>
     @else
 

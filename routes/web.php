@@ -67,7 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patients/{patient}', 'PatientsController@show')->name('patients.show');
     Route::patch('patients/{patient}', 'PatientsController@update')->name('patients.update');
     Route::delete('patients/{patient}', 'PatientsController@destroy')->name('patients.destroy');
-    Route::get('patient/{id}','PatientsController@export_consultation')->name('consultation.pdf');
+    Route::get('patient/{id}','PatientsController@generate_consultation')->name('consultation.pdf');
     Route::get('ordonance/{ordonance}','PatientsController@export_ordonance')->name('ordonance.pdf');
 
     //Route::post('patients/upload-image/{patientId}', 'PatientController@fileStore')->name('patients.upload');
@@ -100,7 +100,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
     
-    Route::get('consultations', 'ConsultationsController@index')->name('consultations.index');
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
@@ -136,8 +136,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('/factures', 'FactureController@index')->name('factures.index');
     Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
-    Route::delete('/factures', 'FactureController@desroy')->name('factures.destroy');
-    Route::post('/factures/{facture}', 'FactureController@BilanProduit')->name('bilan.produit');
+    Route::delete('/facture', 'FactureController@destroy')->name('factures.destroy');
+    Route::get('/factures-consultation', 'FactureController@FactureConsultation')->name('factures.consultation');
+    Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
+    Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
 
 

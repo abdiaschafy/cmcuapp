@@ -38,6 +38,7 @@
                             <td>CATEGORIE</td>
                             <td>PRIX</td>
                             <td>STATUT</td>
+                            <td>DUREE</td>
                             <td>ACTION</td>
                             {{--<td>SUPPRIMER</td>--}}
                         </tr>
@@ -53,6 +54,7 @@
                                 @elseif($chambre->statut == 'libre')
                                     <td><span class="badge badge-primary">{{$chambre->statut}}</span></td>
                                 @endif
+                                <td>{{ $chambre->jour }}</td>
                                  <td>
                                     @can('update', \App\User::class)
                                     <a href="{{ route('chambres.edit',$chambre->id)}}" class="btn btn-primary" title="Modifier les informations de la chambre"><i class="far fa-edit"></i>
@@ -62,7 +64,8 @@
                                         <form style="display: inline-flex;" action="{{ route('chambres_minus.update',$chambre->id)}}" method="post">
                                             @csrf @method('PATCH')
                                             <input type="hidden" name="patient" value="null">
-                                            <input type="hidden" name="statut" value="libre" name="statut">
+                                            <input type="hidden" name="statut" value="libre">
+                                            <input type="hidden" name="jour" value="null">
                                             <p data-placement="top" data-toggle="tooltip" title="Liberer la chambre">
                                                 <button type="submit" class="btn btn-danger btn-xs"><i class="fas fa-minus"></i></button>
                                             </p>

@@ -36,7 +36,7 @@
                                     <td class="col-md-1 col-lg-1" style="text-align: center">
                                         <input type="number" class="form-control" id="exampleInputEmail1" value="{{ $produit['quantite'] }}">
                                     </td>
-                                    <td class="col-md-1 col-lg-1 text-center"><strong></strong></td>
+                                    <td class="col-md-1 col-lg-1 text-center"><strong>{{ $produit['prix_unitaire'] }}</strong></td>
                                     <td class="col-md-1 col-lg-1 text-center"><strong>{{ $totalPrix }}</strong></td>
                                     <td>
                                         <a href="{{ route('facturation.reduire', ['id' => $produit['item']['id']]) }}" title="Reduire la quantité" class="btn btn-primary"> <i class="fas fa-minus"></i></a>

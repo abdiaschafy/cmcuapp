@@ -7,7 +7,6 @@ use Laravel\Scout\Searchable;
 
 class Chambre extends Model
 {
-//    use Searchable;
 
     protected $fillable = [
 
@@ -15,14 +14,9 @@ class Chambre extends Model
         'categorie',
         'prix',
         'statut',
-        'patient'
+        'patient',
+        'jour'
     ];
-
-
-    public function searchableAs()
-    {
-        return 'numero';
-    }
 
     public function users()
     {

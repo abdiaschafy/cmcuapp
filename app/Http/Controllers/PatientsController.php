@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
-use App\Dossier;
+use App\FactureConsultation;
 use App\Patient;
-use App\Produit;
 use App\Ordonance;
-use App\Prescription;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,6 +124,7 @@ class PatientsController extends Controller
             'consultations' => Consultation::latest()->first()
         ]);
 
+
         $pdf->save(storage_path('lettre').'.pdf');
 
         return $pdf->stream('lettre-sortie.pdf');
@@ -139,16 +138,22 @@ class PatientsController extends Controller
         return redirect()->route('patients.index')->with('success', "Le dossier du patient a bien été supprimé");
     }
 
-    public function export_consultation($id)
+    public function generate_consultation($id)
     {
         $this->authorize('update', Patient::class);
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
-        $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
-        $pdf->save(storage_path('pdf/consultation').'.pdf');
+        $facture = FactureConsultation::create([
+            'numero' => $patient->numero_dossier,
+            'patient_id' => $patient->id,
+            'motif' => 'Frais de consultation',
+            'montant' => '15000',
+            'user_id' => \auth()->user()->id,
+        ]);
 
-        return $pdf->stream('consultation.pdf');
+
+        return back()->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
     public function export_ordonance($id)

@@ -7,7 +7,7 @@
     <!-- Page Content Holder -->
         @include('partials.header')
         <div class="container">
-            <h1 class="text-center">ATTRIBUTION DE LA CHAMBRE AU PATIENT</h1>
+            <h1 class="text-center">ATTRIBUTION DE CHAMBRE AU PATIENT</h1>
             <hr>
             @include('partials.flash')
             @include('partials.flash_form')
@@ -16,22 +16,24 @@
                     @method('PATCH')
                     @csrf
                     <div class="form-group">
-                        <label for="name">NUMERO:</label>
+                        <label for="name">NUMERO :</label>
                         <input type="text" class="form-control" name="numero"  value="{{ $chambre->numero }}" disabled/>
                     </div>
                     <div class="form-group">
-                        <label>CATEGORIE</label>
+                        <label>CATEGORIE :</label>
                         <select class="form-control" name="categorie" id="exampleFormControlSelect1" disabled>
                             <option value="{{ $chambre->categorie }}"  {{ $chambre->id == ' ' ? 'selected' : '' }}>{{ $chambre->categorie }}</option>
                         </select>
                     </div>
                     <input type="hidden" name="statut" value="occupé">
-                    <select class="form-control" name="patient">
-                        <option>Nom du patient</option>
+                    <select class="form-control" name="patient" id="patient" required>
+                        <option>Nom du patient :</option>
                         @foreach($patients as $patient)
                             <option value="{{ $patient->name }}">{{ $patient->name }} {{ $patient->prenom }}</option>
                         @endforeach
                     </select>
+                    <label>Nombre de jours :</label>
+                    <input type="number" class="form-control col-md-4" name="jour" value="{{ request('jour') }}" placeholder="nombre de jours">
                     <br>
                     <br>
                  <button type="submit" class="btn btn-primary ">ENREGISTRER</button>

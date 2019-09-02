@@ -14,7 +14,7 @@
     <!--// top-bar -->
         @can('view', \App\User::class)
             <div class="container">
-                <h1 class="text-center">FACTURES PRODUITS</h1>
+                <h1 class="text-center">FACTURES CONSULTATION</h1>
                 <hr>
             </div>
             <div class="col-md-3 offset-md-8 text-center">
@@ -28,28 +28,32 @@
                             <tr>
                                 <td>ID</td>
                                 <td>NUMERO</td>
+                                <td>PATIENT</td>
+                                <td>MOTIF</td>
                                 <td>MONTANT</td>
                                 <td>DATE</td>
                                 <td>ACTION</td>
                             </tr>
                             <tbody>
-                            @foreach($factures as $facture)
+                            @foreach($factureConsultations as $facture)
                                 <tr>
                                     <td>{{$facture->id}}</td>
                                     <td>{{$facture->numero}}</td>
-                                    <td>{{$facture->prix_total }}  <b>FCFA</b></td>
+                                    <td>{{$facture->patient->name }}</td>
+                                    <td>{{$facture->motif }}</td>
+                                    <td>{{$facture->montant }} <b>FCFA</b></td>
                                     <td>{{$facture->created_at }}</td>
                                     <td style="display: inline-flex;">
                                         <p class="mr-2" data-placement="top" data-toggle="tooltip" title="Voire les détails">
-                                            <a href="{{ route('factures.show', $facture->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-eye"></i></a>
+                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer la facture de consultation" href="{{ route('factures.consultation_pdf', $facture->patient->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                         @can('update', \App\User::class)
-                                        <form action="{{ route('factures.destroy', $facture->id) }}" method="post">
-                                            @csrf @method('DELETE')
-                                            <p data-placement="top" data-toggle="tooltip" title="Supprimer la facture">
-                                                <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
-                                            </p>
-                                        </form>
+                                            <form action="{{ route('factures.destroy', $facture->id) }}" method="post">
+                                                @csrf @method('DELETE')
+                                                <p data-placement="top" data-toggle="tooltip" title="Supprimer la facture">
+                                                    <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
+                                                </p>
+                                            </form>
                                         @endcan
                                     </td>
                                 </tr>
@@ -58,7 +62,6 @@
                         </table>
                         {{--{{ $factures->links() }}--}}
                     </div>
-                    <a href="#" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Ajouter une facture</a>
                 </div>
             </div>
     </div>

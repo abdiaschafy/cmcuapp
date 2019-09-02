@@ -53,7 +53,7 @@ class CompteRenduBlocOperatoireController extends Controller
     {
 
         $patient = Patient::with('compte_rendu_bloc_operatoires', 'consultations')->findOrFail($id);
-
+//dd($patient);
         $pdf = PDF::loadView('admin.etats.crbo', compact('patient'));
 
         $pdf->save(storage_path('crbo').'.pdf');

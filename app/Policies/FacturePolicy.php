@@ -2,8 +2,8 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Facture;
+use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class FacturePolicy
@@ -15,72 +15,22 @@ class FacturePolicy
         if ($user->isAdmin()) {
 
             return true;
+        }else{
+            return false;
         }
     }
 
-    public function view(User $user, Facture $facture)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create factures.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
+    public function view(Facture $facture)
     {
         return in_array(auth()->user()->role_id, [
-            1,
+            1,6
         ]);
     }
 
-    /**
-     * Determine whether the user can update the facture.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Facture  $facture
-     * @return mixed
-     */
-    public function update(User $user, Facture $facture)
+    public function create(User $user)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can delete the facture.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Facture  $facture
-     * @return mixed
-     */
-    public function delete(User $user, Facture $facture)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the facture.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Facture  $facture
-     * @return mixed
-     */
-    public function restore(User $user, Facture $facture)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the facture.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Facture  $facture
-     * @return mixed
-     */
-    public function forceDelete(User $user, Facture $facture)
-    {
-        //
+        return in_array(auth()->user()->role_id, [
+            1,6
+        ]);
     }
 }
