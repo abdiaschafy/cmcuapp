@@ -196,8 +196,8 @@
                                     <tr>
                                         <td><b>Devis prévisionnel :</b></td>
                                         <td>
-                                        <select class="form-control" name="devis_p" id="cout" required>
-                                                <option value=""> Sélectionner un devis</option>
+                                        <select class="form-control" name="devis_p">
+                                                <option> Sélectionner un devis</option>
                                                 @foreach ($devis as $devi)
                                                     <option
                                                         value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )
