@@ -16,8 +16,8 @@ class DevisController extends Controller
 {
     public function index(Consultation $consultation)
     {
-        $devis = Devis::with('consultation')->where('consultation_id', $consultation->id)->get();
-        $devis = Devis::orderBy('id', 'asc')->paginate(10);
+       
+        $devis = Devis::orderBy('id', 'asc')->paginate(100);
 
         return view('admin.devis.index', compact('devis'));
     }
@@ -31,7 +31,7 @@ class DevisController extends Controller
         $request->validate([
 
             //orchidectomie bilaterale
-            $consultation = Consultation::findOrFail($request->consultation_id),
+           
             'nom'=> ['required', 'unique:devis'],
             'qte1'=> 'required|integer',
             'qte2'=> 'required|integer',
