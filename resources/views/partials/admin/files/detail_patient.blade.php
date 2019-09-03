@@ -1,13 +1,7 @@
 <tbody style="display: none;" id="myDIV">
 <tr>
     <td>
-        <b>NOM DU PATIENT :</b>
-    </td>
-    <td>{{ $patient->name }}</td>
-</tr>
-<tr>
-    <td>
-        <b>PRENOM :</b>
+        <b>NOM ET PRENOM DU PATIENT :</b>
     </td>
     <td>{{ $patient->name }}</td>
 </tr>
