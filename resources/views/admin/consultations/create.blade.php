@@ -15,7 +15,7 @@
                 </div>
                 <br>
                 <br>
-                <div class="col-md-7  offset-md-0  toppad">
+                <div class="col-md-8  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             @include('partials.flash_form')
@@ -236,7 +236,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-5  offset-md-0  toppad">
+                <div class="col-md-4  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">Prise des paramètres du patient
