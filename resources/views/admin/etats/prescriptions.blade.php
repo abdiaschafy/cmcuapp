@@ -89,7 +89,7 @@ a {
         </div>
         <div class="col-6 offset-3">
             <div class="text-center">
-                <h4>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</h4>
+                <h4>CENTRE MEDICO CHIRURGICAL D'UROLOGIE</h4>
                 <p class="mt-2"><small>ONMC : N° 5531 007/10/D/ONMC</small></p>
                 <p><small> Arrêté N° 3203/A/MINSANTE/SG/DOSTS/SDOS/SFSP </small></p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>

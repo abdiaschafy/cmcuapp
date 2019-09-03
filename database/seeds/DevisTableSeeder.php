@@ -485,39 +485,7 @@ class DevisTableSeeder extends Seeder
     'montant10' => '1 655 000',
     'montant11' => '98 000',
     ],
-    [ 
-        //ABLATION SONDE DOUBLE J
-    'nom'  => 'ABLATION SONDE DOUBLE J',
-    'qte1' => '27',
-    'qte2' => '13',
-    'qte3'  => '00',
-    'qte4' => '00',
-    'qte5' => '00',
-    'qte6' => '00',
-    'qte7' => '00',
-    'qte8' => '00',
-    'prix_u' => '1 500',
-    'prix_u1' => '1 500',
-    'prix_u2' => '2 5000',
-    'prix_u3' => '00',
-    'prix_u4' => ' 00',
-    'prix_u5' => '00',
-    'prix_u6' => '00',
-    'prix_u7' => '00',
-    'prix_u8' => '00',
-    'montant' => '40 500',
-    'montant1' => '19 500',
-    'montant2' => '25 000',
-    'montant3' => '00',
-    'montant4' => '00',
-    'montant5' => '00',
-    'montant6' => '00',
-    'montant7' => '00',
-    'montant8' => '00',
-    'montant9' => '00',
-    'montant10' => '85 000',
-    'montant11' => '00',
-    ],
+    
 
     [ 
         //CATHETER SUS-PUBIEN
@@ -554,7 +522,7 @@ class DevisTableSeeder extends Seeder
     ],
     [ 
         //CYSTOCOPIE DIAGNOSTIQUE + ECHOGRAPHIE
-    'nom'  => 'CYSTOCOPIE DIAGNOSTIQUE + ECHOGRAPHIE',
+    'nom'  => 'ECHOGRAPHIE + CYSTOCOPIE DIAGNOSTIQUE  ',
     'qte1' => '27',
     'qte2' => '13',
     'qte3'  => '01',
@@ -587,8 +555,8 @@ class DevisTableSeeder extends Seeder
     ],
 
     [ 
-        //CYSTOCOPIE +DEBITMETRIE
-    'nom'  => 'CYSTOCOPIE +DEBITMETRIE',
+        //DEBITMETRIE + CYSTOCOPIE
+    'nom'  => ' DEBITMETRIE + CYSTOCOPIE',
     'qte1' => '27',
     'qte2' => '13',
     'qte3'  => '01',
@@ -652,9 +620,41 @@ class DevisTableSeeder extends Seeder
     'montant10' => '85 000',
     'montant11' => '00',
     ],
-
     [ 
-        //CYSTOCOPIE
+        //CYSTOCOPIE SOUS LOCAL
+    'nom'  => 'CYSTOCOPIE SOUS LOCALE',
+    'qte1' => '27',
+    'qte2' => '13',
+    'qte3'  => '00',
+    'qte4' => '00',
+    'qte5' => '00',
+    'qte6' => '00',
+    'qte7' => '00',
+    'qte8' => '00',
+    'prix_u' => '1 500',
+    'prix_u1' => '1 500',
+    'prix_u2' => '25 000',
+    'prix_u3' => '00',
+    'prix_u4' => ' 00',
+    'prix_u5' => '00',
+    'prix_u6' => '00',
+    'prix_u7' => '00',
+    'prix_u8' => '00',
+    'montant' => '40 500',
+    'montant1' => '19 500',
+    'montant2' => '25 000',
+    'montant3' => '00',
+    'montant4' => '00',
+    'montant5' => '00',
+    'montant6' => '00',
+    'montant7' => '00',
+    'montant8' => '00',
+    'montant9' => '00',
+    'montant10' => '85 000',
+    'montant11' => '00',
+    ],
+    [ 
+        //ABLATION SONDE DOUBLE J
     'nom'  => 'ABLATION SONDE DOUBLE J',
     'qte1' => '27',
     'qte2' => '13',
@@ -687,39 +687,7 @@ class DevisTableSeeder extends Seeder
     'montant11' => '00',
     ],
 
-    [ 
-        //CYSTOCOPIE +DEBITMETRIE
-    'nom'  => 'CYSTOCOPIE +DEBITMETRIE',
-    'qte1' => '27',
-    'qte2' => '13',
-    'qte3'  => '01',
-    'qte4' => '00',
-    'qte5' => '00',
-    'qte6' => '00',
-    'qte7' => '00',
-    'qte8' => '00',
-    'prix_u' => '1 500',
-    'prix_u1' => '1 500',
-    'prix_u2' => '25 000',
-    'prix_u3' => '15 000',
-    'prix_u4' => ' 00',
-    'prix_u5' => '00',
-    'prix_u6' => '00',
-    'prix_u7' => '00',
-    'prix_u8' => '00',
-    'montant' => '40 500',
-    'montant1' => '19 500',
-    'montant2' => '25 000',
-    'montant3' => '15 000',
-    'montant4' => '00',
-    'montant5' => '00',
-    'montant6' => '00',
-    'montant7' => '00',
-    'montant8' => '00',
-    'montant9' => '00',
-    'montant10' => '100 000',
-    'montant11' => '00',
-    ],
+   
 
     [ 
         //CYSTOCOPIE +DEBITMETRIE
@@ -823,40 +791,7 @@ class DevisTableSeeder extends Seeder
     'montant11' => '00',
     ],
 
-    [ 
-        //CACHETER SUS PUBIEN SOUS LOCALE
-    'nom'  => 'CACHETER SUS PUBIEN SOUS LOCALE',
-    'qte1' => '20',
-    'qte2' => '10',
-    'qte3'  => '15',
-    'qte4' => '00',
-    'qte5' => '00',
-    'qte6' => '00',
-    'qte7' => '00',
-    'qte8' => '00',
-    'prix_u' => '1 500',
-    'prix_u1' => '1 500',
-    'prix_u2' => '1 500',
-    'prix_u3' => '37 500',
-    'prix_u4' => ' 00',
-    'prix_u5' => '00',
-    'prix_u6' => '00',
-    'prix_u7' => '00',
-    'prix_u8' => '00',
-    'montant' => '30 000',
-    'montant1' => '15 000',
-    'montant2' => '22 500',
-    'montant3' => '37 500',
-    'montant4' => '00',
-    'montant5' => '00',
-    'montant6' => '00',
-    'montant7' => '00',
-    'montant8' => '00',
-    'montant9' => '00',
-    'montant10' => '105 000',
-    'montant11' => '00',
-    ],
-
+    
     
         ];
         foreach ($data as $key => $value) {

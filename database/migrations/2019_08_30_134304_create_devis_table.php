@@ -19,7 +19,7 @@ class CreateDevisTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index()->nullable();
             $table->unsignedInteger('patient_id')->index()->nullable();
-           // $table->unsignedInteger('consultation_id')->index()->nullable();
+           
             $table->string('nom')->unique();
             $table->integer('qte1')->nullable();
             $table->integer('qte2')->nullable();
@@ -50,7 +50,7 @@ class CreateDevisTable extends Migration
             $table->integer('montant9')->nullable();
             $table->integer('montant10')->nullable();
             $table->integer('montant11')->nullable();
-           // $table->foreign('consultation_id')->references('id')->on('consultation')->onUpdate('cascade')->onDelete('cascade'); 
+          
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

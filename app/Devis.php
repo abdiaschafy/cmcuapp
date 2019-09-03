@@ -10,7 +10,7 @@ class Devis extends Model
     protected $fillable = [
 
     //orchidectomie bilaterale
-            'consultation_id',
+            
             'patient_id',
             'user_id',
             'nom',
