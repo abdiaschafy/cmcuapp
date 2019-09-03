@@ -20,7 +20,7 @@
                     <form class="form-group col-md-10" method="post" action="{{ route('examens.store') }}" enctype="multipart/form-data">
                         <div class="form-group">
                             @csrf
-                            <label for="type">TYpe d'examens <span class="text-danger"></span></label>
+                            <label for="type">Type d'examens <span class="text-danger"></span></label>
                             <input type="text" class="form-control" name="type" value="{{ old('type') }}" required/>
                         </div>
                         <label for="image">Image  <span class="text-danger"></span></label>

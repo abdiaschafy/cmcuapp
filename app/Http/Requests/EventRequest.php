@@ -30,7 +30,6 @@ class EventRequest extends FormRequest
             'date' => 'required',
             'start_time' => 'required',
             'end_time' => '',
-            'medecin' => 'required',
         ];
     }
 }

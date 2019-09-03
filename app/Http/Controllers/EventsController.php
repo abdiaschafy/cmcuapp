@@ -16,9 +16,13 @@ class EventsController extends Controller
 
     public function index(Patient $patient)
     {
-//        $events = Event::all();
-        $events = Event::with('patients', 'user')->where('user_id', '=', \auth()->id())->get();
-//        dd($events);
+
+        if(\auth()->user()->role_id === '4'){
+            $events = Event::all();
+        }else{
+
+            $events = Event::with('patients', 'user')->where('user_id', '=', \auth()->user()->id)->get();
+        }
 
         $event = [];
         if($events->count()) {
@@ -54,7 +58,7 @@ class EventsController extends Controller
 
     public function create(Patient $patient)
     {
-        $users = User::with('roles')->where('role_id', '=', '2')->get(['name', 'prenom']);
+        $users = User::with('roles')->where('role_id', '=', '2')->get(['name', 'prenom', 'id']);
 
         return view('admin.events.create', compact('users', 'patient'));
     }
@@ -68,22 +72,20 @@ class EventsController extends Controller
 
         if (!empty($patient)){
             Event::create([
-                'user_id' => Auth::id(),
+                'user_id' => request('user_id'),
                 'patient_id' => $patient->id,
                 'title' => request('title'),
                 'color' => request('color'),
                 'date' => request('date'),
-                'medecin' => request('medecin'),
                 'start_time' => request('start_time'),
                 'end_time' => request('end_time'),
             ]);
         }else {
             Event::create([
-                'user_id' => Auth::id(),
+                'user_id' => \request('user_id'),
                 'title' => request('title'),
                 'color' => request('color'),
                 'date' => request('date'),
-                'medecin' => request('medecin'),
                 'start_time' => request('start_time'),
                 'end_time' => request('end_time'),
             ]);
