@@ -72,6 +72,14 @@ class PatientPolicy
 
     }
 
+    public function infirmier_chirurgien()
+    {
+        return in_array(auth()->user()->role_id, [
+            4,2
+        ]);
+
+    }
+
     public function medecin()
     {
         return in_array(auth()->user()->role_id, [

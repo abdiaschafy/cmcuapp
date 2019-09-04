@@ -57,8 +57,13 @@
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
-                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
-
+                                <button class="btn btn-secondary mr-2" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
+                                @can('infirmier', \App\Patient::class)
+                                    <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}"
+                                       title="Nouvelle consultation du patient">
+                                        <i class="fas fa-book"></i> Fiche de paramètres
+                                    </a>
+                                @endcan
                                 @include('partials.admin.files.detail_patient')
 
                                 @include('partials.admin.files.consultation_cro')
