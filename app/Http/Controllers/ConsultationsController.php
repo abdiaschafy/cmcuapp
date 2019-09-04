@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Chambre;
 use App\Consultation;
 use App\Devis;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
-use App\Produit;
 use App\User;
 
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 
 class ConsultationsController extends Controller
@@ -65,6 +62,24 @@ class ConsultationsController extends Controller
             'date_consultation_anesthesiste' => request('date_consultation_anesthesiste'),
             'medecin_r'=> request('medecin_r'),
             'proposition_therapeutique'=> request('proposition_therapeutique'),
+
+        ]);
+
+        Flashy('La nouvelle consultation a été crée avec succès !!');
+
+        return back();
+    }
+
+    public function Astore(ConsultationRequest $request)
+    {
+
+        $patient = Patient::findOrFail($request->patient_id);
+
+
+        Consultation::create([
+            'user_id' => auth()->id(),
+            'patient_id' => $patient->id,
+            'diagnostic'=> request('diagnostic'),
 
         ]);
 

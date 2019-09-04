@@ -64,6 +64,11 @@ class User extends Authenticatable
         return $this->hasMany(Consultation::class);
     }
 
+    public function consultation_anesthesistes()
+    {
+        return $this->hasMany(ConsultationAnesthesiste::class);
+    }
+
     public function ordonances()
     {
         return $this->hasMany(Ordonance::class);

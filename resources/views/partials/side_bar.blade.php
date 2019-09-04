@@ -175,7 +175,7 @@
             </li>
         @endcan
 
-        @can('update', \App\Patient::class)
+        @can('devis', \App\User::class)
             <li>
                 <a href="#devisSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-book"></i>
@@ -189,18 +189,16 @@
                             Liste des devis
                         </a>
                     </li>
-                    @can('show', \App\User::class)
                     <li>
                         <a href="{{ route('devis.index') }}">
                             <i class="fas fa-lock"></i>
                             Devis ajusté
                         </a>
                     </li>
-                    @endcan
                    
                 </ul>
             </li>
-            @endcan
+        @endcan
         <br>
         <br>
         <br>

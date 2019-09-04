@@ -39,5 +39,12 @@ class UserPolicy
         ]);
     }
 
+    public function devis(User $user)
+    {
+        return in_array(auth()->user()->role_id, [
+            1,2
+        ]);
+    }
+
 
 }

@@ -39,7 +39,7 @@
                     </button>
                     @endcan
                     @can('anesthesiste', \App\Patient::class)
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheInterventionAnesthesiste" data-whatever="@mdo">
                         <i class="fas fa-eye"></i>
                         Fiche d'intervention annesthésiste
                     </button>
@@ -89,6 +89,7 @@
                 @include('partials.admin.modal.feuille_show')
 
                 @include('partials.admin.modal.fiche_intervention')
+                @include('partials.admin.modal.fiche_intervention_anesthesiste')
 
 
                 {{-- FIN DE TOUS LES MODAL --}}
