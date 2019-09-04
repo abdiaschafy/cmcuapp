@@ -1,4 +1,5 @@
 <tbody>
+@can('medecin', \App\Patient::class)
 <tr>
     <td>
         <a href="{{ route('consultations.index', $patient->id) }}">
@@ -56,6 +57,7 @@
         <td><b>PROPOSITION THERAPEUTIQUE :</b></td>
         <td>{{ ($consultations->proposition_therapeutique) }}</td>
     </tr>
+    @endcan
     <tr>
         <td>
             <h1 class="text-info">PARAMETRES</h1>
@@ -113,13 +115,18 @@
                 <i class="fas fa-book"></i> Nouvelle consultation
             </a>
         </td>
+        @can('anesthesiste', \App\Patient::class)
+        <td></td>
+        @endcan
+        @can('chirurgien', \App\Patient::class)
         <td>
             <a class="btn btn-success" title="Imprimer la lettre de sortie" href="{{ route('print.sortie', $patient->id) }}">
                 <i class="fas fa-print"></i> Lettre de consultation
             </a>
         </td>
+        @endcan
     </tr>
-
+    @can('chirurgien', \App\Patient::class)
     <tr>
         <td>
             <a href="">
@@ -194,15 +201,19 @@
             <td></td>
         </tr>
     @endif
-@else
-    <tr>
-        <td>
-            <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient">
-                <i class="fas fa-book"></i> Nouvelle consultation
-            </a>
-        </td>
-        <td></td>
-    </tr>
-@endif
+    @else
+        @can('chirurgien', \App\Patient::class)
+        <tr>
+            <td>
+                <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}"
+                   title="Nouvelle consultation du patient">
+                    <i class="fas fa-book"></i> Nouvelle consultation
+                </a>
+            </td>
+            <td></td>
+        </tr>
+        @endcan
+    @endif
+    @endcan
 
 </tbody>

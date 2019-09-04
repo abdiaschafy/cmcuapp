@@ -1,3 +1,4 @@
+@can('medecin', \App\Patient::class)
 <style>
     body{
         background: #eee;
@@ -95,3 +96,4 @@
 
     </div>
 </div>
+@endcan

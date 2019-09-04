@@ -28,6 +28,7 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
+                    @can('chirurgien', \App\Patient::class)
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
                         <i class="far fa-plus-square"></i> Ordonnance / Examens complémentaires
 
@@ -36,6 +37,13 @@
                         <i class="fas fa-eye"></i>
                         Fiche d'intervention
                     </button>
+                    @endcan
+                    @can('anesthesiste', \App\Patient::class)
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Fiche d'intervention annesthésiste
+                    </button>
+                    @endcan
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
                     </a>
