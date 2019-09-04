@@ -173,12 +173,6 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-list-ul"></i>
-                    Devis prévisionnel
-                </a>
-            </li>
         @endcan
 
         @can('update', \App\Patient::class)
