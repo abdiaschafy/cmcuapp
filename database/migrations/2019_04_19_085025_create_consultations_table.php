@@ -34,6 +34,7 @@ class CreateConsultationsTable extends Migration
             $table->date('date_consultation')->nullable();
             $table->date('date_consultation_anesthesiste')->nullable();
             $table->string('acte')->nullable();
+            $table->string('devis_p')->nullable();
             $table->string('type_intervention')->nullable();
             $table->timestamps();
          

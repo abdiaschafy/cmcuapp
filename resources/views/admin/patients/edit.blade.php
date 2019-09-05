@@ -1,3 +1,4 @@
+@can('infirmier', \App\Patient::class)
 <div class="card">
     <div class="card-body">
         <h3 class="card-title">Modifier les informations du patients</h3>
@@ -40,3 +41,4 @@
         </form>
     </div>
 </div>
+@endcan

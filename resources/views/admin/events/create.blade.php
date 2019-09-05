@@ -28,12 +28,12 @@
                                 <option value="Consultation post-opératoire" {{old("title") ?: '' ? "selected": ""}}>Consultation post-opératoire</option>
                             </select>
                         </div>
-                        <label for="medecin" class="col-form-label text-md-right">Mon du médécin :<span class="text-danger">*</span></label>
+                        <label for="user_id" class="col-form-label text-md-right">Mon du médécin :<span class="text-danger">*</span></label>
                         <div class="form-group">
-                            <select class="form-control col-md-12" name="medecin" required>
+                            <select class="form-control col-md-12" name="user_id" required>
                                 <option value="">Veuillez choisir le médécin</option>
                                 @foreach($users as $user)
-                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("medecin") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
+                                    <option value="{{ $user->id }}" {{old("user_id") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
                                 @endforeach
                             </select>
                         </div>

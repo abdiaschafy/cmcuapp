@@ -90,7 +90,6 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => 'BLOC 1',
                 'categorie'       => 'BLOC OPERATOIRE',
                 'patient'       => 'null',
-                'prix'       => '',
                 'statut'       => 'libre',
             ],
             [
@@ -98,7 +97,6 @@ class ChambresTableSeeder extends Seeder
                 'numero'       => 'BLOC 2',
                 'categorie'       => 'BLOC OPERATOIRE',
                 'patient'       => 'null',
-                'prix'       => '',
                 'statut'       => 'libre',
             ] 
             

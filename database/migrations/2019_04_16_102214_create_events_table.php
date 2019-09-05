@@ -20,7 +20,6 @@ class CreateEventsTable extends Migration
             $table->Time('start_time');
             $table->Time('end_time')->nullable();
             $table->string('color');
-            $table->string('medecin');
             $table->timestamps();
         });
     }

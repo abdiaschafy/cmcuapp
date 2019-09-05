@@ -28,6 +28,7 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
+                    @can('chirurgien', \App\Patient::class)
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
                         <i class="far fa-plus-square"></i> Ordonnance / Examens complémentaires
 
@@ -36,6 +37,13 @@
                         <i class="fas fa-eye"></i>
                         Fiche d'intervention
                     </button>
+                    @endcan
+                    @can('anesthesiste', \App\Patient::class)
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheInterventionAnesthesiste" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Fiche d'intervention annesthésiste
+                    </button>
+                    @endcan
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
                     </a>
@@ -49,8 +57,13 @@
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
-                                <button class="btn btn-secondary" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
-
+                                <button class="btn btn-secondary mr-2" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
+                                @can('infirmier', \App\Patient::class)
+                                    <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}"
+                                       title="Nouvelle consultation du patient">
+                                        <i class="fas fa-book"></i> Fiche de paramètres
+                                    </a>
+                                @endcan
                                 @include('partials.admin.files.detail_patient')
 
                                 @include('partials.admin.files.consultation_cro')
@@ -81,6 +94,7 @@
                 @include('partials.admin.modal.feuille_show')
 
                 @include('partials.admin.modal.fiche_intervention')
+                @include('partials.admin.modal.fiche_intervention_anesthesiste')
 
 
                 {{-- FIN DE TOUS LES MODAL --}}

@@ -24,7 +24,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             @if (count($events)>0)
-                                <p class="btn btn-primary offset-2">Dr 
+                                <p class="btn btn-primary offset-2">Dr
                                     <strong>
                                     {{ Auth()->user()->name }} {{ Auth()->user()->prenom }}
                                     </strong> la liste de vos rendez-vous en cours</p>
@@ -33,6 +33,11 @@
                                     {{ Auth()->user()->name }} {{ Auth()->user()->prenom }}
                                 </strong> Vous n'avez pas de rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>
                             @endif
+                            {{--@if(auth()->user()->role_id == 4)--}}
+                                    {{--<p class="btn btn-info offset-2"><strong>--}}
+                                            {{--{{ Auth()->user()->name }} {{ Auth()->user()->prenom }}--}}
+                                {{--</strong> La liste des rendez-vous disponible <i class="fas fa-exclamation-circle"></i></p>--}}
+                            {{--@endif--}}
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
                             <h4 id="modalTitle" class="modal-title"></h4>
                         </div>
@@ -57,7 +62,7 @@
                                             <td>{{ $event->title }}</td>
                                             <td>{{ $event->patients->name }}</td>
                                             <td>{{ $event->date }}</td>
-                                            <td>{{ $event->medecin }}</td>
+                                            <td>{{ $event->user->name }} {{ $event->user->prenom }}</td>
                                             <td>{{ date("H:i", strtotime($event->start_time)) }}</td>
                                             <td class="td-actions text-right">
                                                 <a href="{{ route('events.edit', $event->id) }}" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" title="Modifier les informations relative a ce rendez-vous">

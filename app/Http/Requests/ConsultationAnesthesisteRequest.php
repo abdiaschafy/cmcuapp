@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EventRequest extends FormRequest
+class ConsultationAnesthesisteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,14 @@ class EventRequest extends FormRequest
     public function rules()
     {
         return [
-            'paitent_id' => '',
-            'title' => 'required',
-            'color' => 'required',
-            'date' => 'required',
-            'start_time' => 'required',
-            'end_time' => '',
+            'anesthesi_salle' => 'required',
+            'antecedent_traitement' => 'required',
+            'examen_clinique' => 'required',
+            'traitement_en_cours' => 'required',
+            'risque' => 'required',
+            'information_patient' => 'required',
+            'synthese_preop' => 'required',
+            'technique_anesthesie' => 'required',
         ];
     }
 }

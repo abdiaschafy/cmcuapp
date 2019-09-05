@@ -32,7 +32,7 @@
         </div>
         <div class="col-7 offset-3">
             <div class="text-center">
-                <p>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</p>
+                <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
                 <p><small>www.cmcu-cm.com</small></p>
