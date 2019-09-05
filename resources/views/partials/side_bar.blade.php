@@ -105,6 +105,12 @@
                             </a>
                         </li>
                     @endcan
+                    <li>
+                        <a href="{{ route('produits.anesthesiste') }}">
+                            <i class="fas fa-list-ul"></i>
+                            Produits anesthésiste
+                        </a>
+                    </li>
                 </ul>
             </li>
         @endcan

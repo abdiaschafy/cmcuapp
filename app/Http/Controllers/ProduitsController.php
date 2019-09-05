@@ -116,7 +116,8 @@ class ProduitsController extends Controller
 
     public function stock_anesthesiste()
     {
-        $this->authorize('anesthesiste', Produit::class);
+//        $this->authorize('anesthesiste', Produit::class);
+//        $this->authorize('update', Produit::class);
 
         $produits = Produit::where('categorie', '=', 'ANESTHESISTE')->paginate(100);
         $pharmaCount = count($produits);

@@ -17,10 +17,12 @@
         </div>
         <hr>
         <div class="container">
+            @can('anesthesiste', \App\Patient::class)
             <a href="{{ route('pharmaceutique.facturation') }}" title="Proceder à la facturation" class="btn btn-success btn-xs col-md-1 float-right">
                 Facture
                 <span class="badge text-dark"><p>{{ Session::has('cart') ? Session::get('cart')->totalQte : 0 }}</p></span>
             </a>
+            @endcan
 
             </br>
             </br>
@@ -36,7 +38,9 @@
                                 <td>QUANTITE STOCK</td>
                                 <td>QUANTITE ALERTE</td>
                                 <td>PRIX UNITAIRE</td>
+                                @can('anesthesiste', \App\Patient::class)
                                 <td>AJOUTER A LA FACTURE</td>
+                                @endcan
                                 @can('update', \App\Produit::class)
                                 <td>EDITER</td>
                                 <td>SUPPRIMER</td>
@@ -50,7 +54,9 @@
                                     <td>{{$produit->qte_stock}}</td>
                                     <td>{{$produit->qte_alerte}}</td>
                                     <td>{{$produit->prix_unitaire}}</td>
+                                    @can('anesthesiste', \App\Patient::class)
                                     <td><a href="{{ route('pharmaceutique.cart', $produit->id) }}" class="btn btn-success" title="Ajouter à la facture"><i class="fas fa-plus-square"></i></a></td>
+                                    @endcan
                                     @can('update', \App\Produit::class)
                                     <td><a href="{{ route('produits.edit',$produit->id)}}" title="Enregistrer une nouvelle entré en stock" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
                                     <td>

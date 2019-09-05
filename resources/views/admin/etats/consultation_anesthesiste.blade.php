@@ -85,6 +85,19 @@
         </div>
     </div>
 
+    <div class="row ">
+        <div class="col-3">
+            <p>Nom / Pénom :</p>
+            <p>Né(e)le :</p>
+            <p>Prévenir :</p>
+        </div>
+        <div class="col-3 offset-9">
+            <p>Profession :</p>
+            <p>Adresse :</p>
+            <p>Téléphone :</p>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
