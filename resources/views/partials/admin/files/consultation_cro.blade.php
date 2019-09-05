@@ -116,7 +116,13 @@
             </a>
         </td>
         @can('anesthesiste', \App\Patient::class)
-        <td></td>
+            <td>
+                @if (count($patient->consultation_anesthesistes))
+                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="{{ route('consultation_anesthesiste.pdf', $patient->id) }}">
+                        <i class="fas fa-print"></i> Fiche de consultation
+                    </a>
+                @endif
+            </td>
         @endcan
         @can('chirurgien', \App\Patient::class)
         <td>

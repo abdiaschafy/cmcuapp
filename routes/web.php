@@ -103,6 +103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
+    Route::get('consultation-anesthesiste/{id}', 'ConsultationsController@Export_consultation_anesthesiste')->name('consultation_anesthesiste.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
 

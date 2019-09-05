@@ -19,8 +19,14 @@
         padding-top: 1px;
         padding-bottom: 15px;
         position:fixed;
-        bottom:5;
+        bottom:5px;
         width:100%;
+    }
+
+    .cmcu_dossier_cons{
+        border: solid 1px;
+        border-radius: 2px;
+        text-align: center;
     }
 
 </style>
@@ -32,45 +38,53 @@
         </div>
         <div class="col-7 offset-3">
             <div class="text-center">
-                <p>CENTRE MEDICO-HIRURGICAL D'UROLOGIE</p>
+                <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
                 <p><small>www.cmcu-cm.com</small></p>
             </div>
         </div>
     </div>
-
     <div class="row">
         <hr class="text-danger">
     </div>
-    <h4 class="text-danger text-center"><b><u>Compte rendu d'hospitalisation</u></b></h4>
+    <br>
+    <br>
     <div class="row">
-        <div class="col-10">
-            <h4><b><u>Nom du patient:</u></b> {{ $patient->name }}</h4>
-            <br>
-            <h4><b><u>Médécin traitant:</u></b> {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</h4>
+        <div class="col-6 cmcu_dossier_cons">
+            <h4>DOSSIER DE CONSULTATION</h4>
+        </div>
+        <div class="col-4 offset-7">
+            Anesthésiste :
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <h4 class=""><u>Suite opératoire :</u></h4>
-    <br>
-        <p>{!! nl2br(e($patient->compte_rendu_hospitalisations->last()->suite_operatoire)) !!}</p>
-    <br>
-    <h4 class="text-"><u>Détails d'intervention:</u></h4>
-    <div class="">
-        <h5>
-            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->detail_intervention)) !!}
-        </h5>
+
+    <div class="row">
+        <div class="col-3">
+            <p>Nom / Pénom :</p>
+            <p>Né(e)le :</p>
+            <p>Prévenir :</p>
+        </div>
+        <div class="col-3 offset-3">
+            <p>Profession :</p>
+            <p>Adresse :</p>
+            <p>Téléphone :</p>
+        </div>
+        <div class="col-3 offset-6">
+            <p>TA :</p>
+            <p>B.D :</p>
+            <p>B.G :</p>
+            <p>Pouls :</p>
+            <p>T²C :</p>
+        </div>
+        <div class="col-3 offset-9">
+            <p>Taille :</p>
+            <p>Poids :</p>
+            <p>B.M.I :</p>
+            <p>Sexe :</p>
+        </div>
     </div>
-    <br>
-    <h4 class="text-"><u>Traitement de sortie:</u></h4>
-    <div class="">
-        <h5>
-            {!! nl2br(e($patient->compte_rendu_hospitalisations->last()->traitement_sortie)) !!}
-        </h5>
-    </div>
+
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>

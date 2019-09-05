@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
+use App\ConsultationAnesthesiste;
+use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
+use App\Http\Requests\ConsultationAnesthesisteRequest;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use App\User;
@@ -70,16 +73,33 @@ class ConsultationsController extends Controller
         return back();
     }
 
-    public function Astore(ConsultationRequest $request)
+    public function Astore(ConsultationAnesthesisteRequest $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);
 
 
-        Consultation::create([
+        ConsultationAnesthesiste::create([
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
-            'diagnostic'=> request('diagnostic'),
+            'anesthesi_salle'=> implode(",", $request->anesthesi_salle),
+            'date_hospitalisation'=> request('date_hospitalisation'),
+            'service'=> request('service'),
+            'classe_asa'=> request('classe_asa'),
+            'antecedent_traitement'=> request('antecedent_traitement'),
+            'examen_clinique'=> request('examen_clinique'),
+            'allergie'=> request('allergie'),
+            'intubation'=> request('intubation'),
+            'mallampati'=> request('mallampati'),
+            'distance_interincisive'=> request('distance_interincisive'),
+            'distance_thyromentoniere'=> request('distance_thyromentoniere'),
+            'mobilite_servicale'=> request('mobilite_servicale'),
+            'traitement_en_cours'=> request('traitement_en_cours'),
+            'risque'=> request('risque'),
+            'information_patient'=> request('information_patient'),
+            'technique_anesthesie'=> implode(",", $request->technique_anesthesie),
+            'synthese_preop'=> request('synthese_preop'),
+            'examen_paraclinique'=> implode(",", $request->examen_paraclinique),
 
         ]);
 
@@ -95,6 +115,18 @@ class ConsultationsController extends Controller
         $consultations = Consultation::find($id);
 
         return view('admin.consultations.show', compact('consultations'));
+    }
+
+    public function Export_consultation_anesthesiste($id)
+    {
+
+        $ConsultationAnesthesiste = ConsultationAnesthesiste::with('patient', 'user')->find($id);
+
+        $pdf = PDF::loadView('admin.etats.consultation_anesthesiste', compact('ConsultationAnesthesiste', 'user'));
+
+        $pdf->save(storage_path('consultation_anesthesiste').'.pdf');
+
+        return $pdf->stream('consultation_anesthesiste.pdf');
     }
 
    

@@ -22,26 +22,26 @@
                             <td class="form-group small">
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
-                                           type="checkbox" name="anesthesie_salle[]"
-                                           value="Ambulatoire"> Ambulatoire
+                                           type="checkbox" name="anesthesi_salle[]"
+                                           value="Ambulatoire" {{ (old('anesthesi_salle') == 'Ambulatoire') ? 'checked' : '' }}> Ambulatoire
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
-                                           type="checkbox" name="anesthesie_salle[]"
-                                           value="Urgence"> Urgence
+                                           type="checkbox" name="anesthesi_salle[]"
+                                           value="Urgence" {{ (old('anesthesi_salle') == 'Urgence') ? 'checked' : '' }}> Urgence
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
-                                           type="checkbox" name="anesthesie_salle[]"
-                                           value="Entrée le jour de l'intervention"> Entrée le jour de l'intervention
+                                           type="checkbox" name="anesthesi_salle[]"
+                                           value="Entrée le jour de l'intervention" {{ (old('anesthesi_salle') == 'Entrée le jour de l\'intervention') ? 'checked' : '' }}> Entrée le jour de l'intervention
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
-                                           type="checkbox" name="anesthesie_salle[]"
-                                           value="Hospit < 10 jours"> Hospit < 10 jours
+                                           type="checkbox" name="anesthesi_salle[]"
+                                           value="Hospit < 10 jours" {{ (old('anesthesi_salle') == 'Hospit < 10 jours') ? 'checked' : '' }}> Hospit < 10 jours
                                     </label>
                                 </div>
                             </td>
@@ -54,11 +54,11 @@
                         </tr>
                         <tr>
                             <td><b>Service :</b></td>
-                            <td><input type="text" class="form-control" name="service" placeholder="Ex: Urologie"></td>
+                            <td><input type="text" class="form-control" value="{{ old('service') }}" name="service" placeholder="Ex: Urologie"></td>
                         </tr>
                         <tr>
                             <td><b>Classe ASA :</b></td>
-                            <td><input type="text" class="form-control" name="classe_asa" placeholder="Classe ASA"></td>
+                            <td><input type="text" class="form-control" value="{{ old('classe_asa') }}" name="classe_asa" placeholder="Classe ASA"></td>
                         </tr>
                         <tr>
                             <td><b>Antécédents / Traitements :</b> <span class="text-danger">*</span></td>
@@ -75,31 +75,31 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><b>Allergies :</b> <span class="text-danger">*</span></td>
+                            <td><b>Allergies :</b></td>
                             <td>
                                             <textarea wrap="hard" name="allergie" cols="45" rows="5"
-                                                      required>{{ old('allergie') }}</textarea>
+                                                      >{{ old('allergie') }}</textarea>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Intubation :</b></td>
-                            <td><input type="text" class="form-control" name="intubation"></td>
+                            <td><input type="text" class="form-control" value="{{ old('intubation') }}" name="intubation"></td>
                         </tr>
                         <tr>
                             <td><b>Mallampati :</b></td>
-                            <td><input type="text" class="form-control" name="mallampati"></td>
+                            <td><input type="text" class="form-control" value="{{ old('mallampati') }}" name="mallampati"></td>
                         </tr>
                         <tr>
                             <td><b>Distance-interincisive :</b></td>
-                            <td><input type="text" class="form-control" name="distance-interincisive"></td>
+                            <td><input type="text" class="form-control" value="{{ old('distance_interincisive') }}" name="distance_interincisive"></td>
                         </tr>
                         <tr>
                             <td><b>Distance thyromentonière :</b></td>
-                            <td><input type="text" class="form-control" name="distance_thyromentoniere"></td>
+                            <td><input type="text" class="form-control" value="{{ old('distance_thyromentoniere') }}" name="distance_thyromentoniere"></td>
                         </tr>
                         <tr>
                             <td><b>Mobilité cervicale :</b></td>
-                            <td><input type="text" class="form-control" name="mobilite_servicale"></td>
+                            <td><input type="text" class="form-control" value="{{ old('mobilite_servicale') }}" name="mobilite_servicale"></td>
                         </tr>
                         <tr>
                             <td><b>Traitement en cours :</b> <span class="text-danger">*</span></td>
@@ -134,13 +134,13 @@
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="technique_anesthesie[]"
-                                           value="Anesthésie"> Anesthésie
+                                           value="Anesthésie" {{ (old('technique_anesthesie') == 'Anesthésie') ? 'checked' : '' }}> Anesthésie
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="technique_anesthesie[]"
-                                           value="Antibiopraphilaxie"> Antibiopraphilaxie
+                                           value="Antibiopraphilaxie" {{ (old('technique_anesthesie') == 'Antibiopraphilaxie') ? 'checked' : '' }}> Antibiopraphilaxie
                                     </label>
                                 </div>
                             </td>
@@ -158,48 +158,45 @@
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="E.C.G"> E.C.G
+                                           value="E.C.G" {{ (old('examen_paraclinique[]') == 'E.C.G') ? 'checked' : '' }}> E.C.G
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="Rx.Torax"> Rx.Torax
+                                           value="Rx.Torax" {{ (old('examen_paraclinique[]') == 'Rx.Torax') ? 'checked' : '' }}> Rx.Torax
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="Gr / Rh"> Gr / Rh
+                                           value="Gr / Rh" {{ (old('examen_paraclinique[]') == 'Gr / Rh') ? 'checked' : '' }}> Gr / Rh
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="Hospit < 10 jours"> Hospit < 10 jours
+                                           value="NFS" {{ (old('examen_paraclinique[]') == 'NFS') ? 'checked' : '' }}> NFS
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="NFS"> NFS
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" tabIndex="1"
-                                           type="checkbox" name="anesthesie_salle[]"
-                                           value="Iono - urée Créat"> Iono - urée Créat
+                                           value="Iono - urée Créat" {{ (old('examen_paraclinique[]') == 'Iono - urée Créat') ? 'checked' : '' }}> Iono - urée Créat
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" tabIndex="1"
                                            type="checkbox" name="examen_paraclinique[]"
-                                           value="TP - TCK"> TP - TCK
+                                           value="TP - TCK" {{ (old('examen_paraclinique[]') == 'TP - TCK') ? 'checked' : '' }}> TP - TCK
                                     </label>
                                 </div>
                                 <label for="autre">Autres :</label>
-                                <input type="text" class="form-control" name="examen_paraclinique[]">
+                                <input type="text" class="form-control" value="{{ old('examen_paraclinique[]') }}" name="examen_paraclinique[]">
                             </td>
+                        </tr>
+                        <tr>
+                            <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                         </tr>
                         <tr>
                             <td>
