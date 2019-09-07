@@ -49,12 +49,12 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <p>Dr <small>{{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></p>
             <p><small>{{ $consultations->user->specialite }}</small></p>
             <p>Onmc: <small>{{ $consultations->user->onmc }}</small></p>
         </div>
-        <div class="col-5 offset-5">
+        <div class="col-6 offset-5">
             <p><small><u>Date:</u><b> {{ $consultations->created_at->formatLocalized('%d %B %Y') }}</b></small></p>
             <p><u>Nom du patient:</u> {{ $consultations->patient->name }}</p>
         </div>
@@ -63,7 +63,7 @@
         Ref: {{ $patient->numero_dossier .'/'. $consultations->id }}
     </div>
     <br>
-    <div class="row col-md-4 offset-8">
+    <div class="row col-md-5 offset-7">
         <p>Douala, le {{ \Carbon\Carbon::now()->formatLocalized('%d %B %Y') }}</p>
     </div>
     <br>
@@ -71,7 +71,7 @@
     <br>
     <p>Cher confrère, {{ $consultations->medecin }}</p>
     <br>
-    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation</p>
+    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation au CMCU</p>
     le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostic suivant: {!! nl2br(e($consultations->diagnostic)) !!}
     <br>
     <br>
