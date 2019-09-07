@@ -220,6 +220,7 @@
                                     <tr>
                                         <th class="text-left">DESIGNATION</th>
                                         <th class="text-left">QUANTITE</th>
+                                        <th class="text-left">PRIX UNITAIRE</th>
                                         <th class="text-left">TOTAL</th>
                                     </tr>
                                     </thead>
@@ -228,9 +229,11 @@
                                         <tr>
                                             <td class="text-left"><h3> {{ $produit['item']['designation'] }}</h3></td>
                                             <td class="text-left"><h3> {{ $produit['quantite'] }}</h3></td>
+                                            <td class="text-left"><h3> {{ $produit['prix_unitaire'] }}</h3></td>
                                         </tr>
                                     @endforeach
                                     <tr>
+                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td class="text-left"><h3> {{ $totalPrix }} XAF</h3></td>
