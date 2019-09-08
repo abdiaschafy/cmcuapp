@@ -714,6 +714,606 @@ class ProduitsTableSeeder extends Seeder
                 'qte_alerte'    => '10',
                 'prix_unitaire' => '2582'
             ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Alfentanil 5mg/10ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Alizapride 50mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Amiodarone 150mg/3ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Atracurium 50mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Atropine 0.5mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Bupivacaine Adrénaline 100mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Bupivacaine Hyperbare 20mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Bupivacaine Isobare 100mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Carbocaine 200mg/20ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Diogxine 0.50mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ephédrine 30mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Esmolol 100mg/10ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Etilèfrine 10mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Etomidate 20mg/10ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Exayl 10.5mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Fer 100mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Flumawenil 0.5mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Fragmine 2500 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Fragmine 5000 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ketamine 50mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ketoprofène 100mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Lidocaine 400mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Lidocaine Adrénaline 400mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Levonox 2000 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Levonox 4000 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Nalbuphine 20mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Naloxone 0.4mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Nefropan 20mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Nicardipine 10mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Noradrénaline 10mg/10ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Noradrénaline 8mg/4ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ondansetron 4mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ondansetron 8mg/4ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Pantoprazole 40mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Paracetamol 1000mg/100ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Soluvite',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Sufentanile 10mcg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Sufentanile 50mcg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Carmyne 40mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Cefazoline 2g',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Cls Atracurium 10mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Clonazepam 1mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Clonidine 0.15mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Depakine 400mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Dexamethasone 20mg/4ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Dexamethasone 4mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Diazepam 10mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Geloplasma 4%',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Gluconate Ca2+ 10%',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Haloperidol 5mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'I-Gel',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Innohep 14000 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Innohep 3500 UI',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Insoflurane 250ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Kétamine 250mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Methylprednisolone 120g',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Methylprednisolone 1g',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Methylprednisolone 40mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Metocloparamide 20mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Midazolam 5mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'NaCl 20%',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Phoroglucinol 40mg/4ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Prpanolol 5mg/5ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Prostigmine 0.5mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ranitidine 75mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Remifentanil 2mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ropivacaine 40mg/20ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Propofof 200',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Sugammadex 200mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Thiopental 500mg',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Tracutil 10ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Tranxene 50mg/2ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Vitamine K1 10mg/1ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Ropivacaine 75mg/20ml',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
+            [
+                'user_id'       => '10',
+                'designation'   => 'Tramadol 100',
+                'categorie'     => 'ANESTHESISTE',
+                'qte_stock'     => '0',
+                'qte_alerte'    => '20',
+                'prix_unitaire' => '15000'
+            ],
 
         ];
         foreach ($data as $key => $value) {
