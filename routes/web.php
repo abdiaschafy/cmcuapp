@@ -149,6 +149,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
     Route::get('devis', 'DevisController@index')->name('devis.index');
-
+    Route::get('devis/{id}','DevisController@export_devis')->name('devis.pdf');
 
 });

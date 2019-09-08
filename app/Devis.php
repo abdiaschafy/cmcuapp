@@ -22,6 +22,7 @@ class Devis extends Model
             'qte6',
             'qte7',
             'qte8',
+            'qte9',
             'prix_u',
             'prix_u1',
             'prix_u2',
@@ -43,7 +44,18 @@ class Devis extends Model
             'montant9',
             'montant10',
             'montant11',
-       
+            'elements',
+            'elements1',
+            'elements2',
+            'elements3',
+            'elements4',
+            'elements5',
+            'elements6',
+            'elements7',
+            'elements8',
+            'arreter',
+
+
 
     ] ;
 

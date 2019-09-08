@@ -40,6 +40,8 @@ class DevisController extends Controller
             'qte5'=> 'required|integer',
             'qte6'=> 'required|integer',
             'qte7'=> 'required|integer',
+            'qte8'=> 'required|integer',
+            'qte9'=> 'required|integer',
             'prix_u'=> 'required|integer',
             'prix_u1'=> 'required|integer',
             'prix_u2'=> 'required|integer',
@@ -61,7 +63,18 @@ class DevisController extends Controller
             'montant9'=> 'required|integer',
             'montant10'=> 'required|integer',
             'montant11'=> 'required|integer',
-          
+            'elements'=> 'required',
+            'elements1'=> 'required',
+            'elements2'=> 'required',
+            'elements3'=> 'required',
+            'elements4'=> 'required',
+            'elements5'=> 'required',
+            'elements6'=> 'required',
+            'elements7'=> 'required',
+            'elements8'=> 'required',
+            'arreter'=> 'required',
+
+
 
         ]);
         $devis = new Devis();
@@ -73,6 +86,8 @@ class DevisController extends Controller
         $devis->qte5= $request->get('qte5');
         $devis->qte6 = $request->get('qte6');
         $devis->qte7= $request->get('qte7');
+        $devis->qte8= $request->get('qte8');
+        $devis->qte9= $request->get('qte9');
         $devis->prix_u = $request->get('prix_u');
         $devis->prix_u1 = $request->get('prix_u1');
         $devis->prix_u2 = $request->get('prix_u2');
@@ -94,11 +109,35 @@ class DevisController extends Controller
         $devis->montant9 = $request->get('montant9');
         $devis->montant10 = $request->get('montant10');
         $devis->montant11 = $request->get('montant11');
-        
+        $devis->elements = $request->get('elements');
+        $devis->elements1 = $request->get('elements1');
+        $devis->elements2 = $request->get('elements2');
+        $devis->elements3 = $request->get('elements3');
+        $devis->elements4 = $request->get('elements4');
+        $devis->elements5 = $request->get('elements5');
+        $devis->elements6 = $request->get('elements6');
+        $devis->elements7 = $request->get('elements7');
+        $devis->elements8 = $request->get('elements8');
+        $devis->arreter = $request->get('arreter');
+
+
        $devis->user_id = Auth::id();
       
         $devis->save();
 
         return redirect()->route('devis.index')->with('success', 'ajouté avec succès !');
     }
+
+    public function export_devis($id)
+    {
+
+        $devis = Devis::find($id);
+
+        $pdf = \PDF::loadView('admin.etats.devis', compact('devis'));
+
+        $pdf->save(storage_path('devis').'.pdf');
+
+        return $pdf->download('devis.pdf');
+    }
+
 }
