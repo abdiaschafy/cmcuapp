@@ -196,9 +196,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('devis.index') }}">
+                        <a href="{{ route('devisimage.index') }}">
                             <i class="fas fa-lock"></i>
-                            Devis ajusté
+                            Devis Débité
                         </a>
                     </li>
                    

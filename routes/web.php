@@ -149,6 +149,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
     Route::get('devis', 'DevisController@index')->name('devis.index');
+    Route::get('devis/{id}','DevisController@export_devis')->name('devis.pdf');
 
+    Route::get('devisimage/', 'DevisImageController@index')->name('devisimage.index');
+    Route::get('devisimage/create', 'DevisImageController@create')->name('devisimage.create');
+    Route::post('devisimage', 'DevisImageController@store')->name('devisimage.store');
+    Route::get('devisimage/show/{patient}', 'DevisImageController@show')->name('devisimage.show');
+    Route::get('devisimagef/{patient}', 'DevisImageController@showall')->name('devisimage.showall');
 
 });

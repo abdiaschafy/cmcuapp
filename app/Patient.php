@@ -18,6 +18,10 @@ class Patient extends Model
 
     ] ;
 
+    public function devisimage()
+    {
+        return $this->hasMany(DevisImage::class);
+    }
     public function facture_consultations()
     {
         return $this->hasMany(FactureConsultation::class);

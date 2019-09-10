@@ -33,6 +33,10 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'role_id');
     }
 
+    public function devisimage()
+    {
+        return $this->hasMany(DevisImage::class);
+    }
     public function events()
     {
         return $this->hasMany(Event::class);

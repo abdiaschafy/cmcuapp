@@ -45,7 +45,7 @@
                                    
                                     @can('print', \App\Patient::class)
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="#"><i class="fas fa-print"></i></a>
+                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="{{ route('devis.pdf', $devi->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                     @endcan
                                    
