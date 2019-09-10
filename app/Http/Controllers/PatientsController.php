@@ -99,6 +99,7 @@ class PatientsController extends Controller
             'reste'=> '',
             'demarcheur'=> '',
             'prise_en_charge'=> '',
+            'date_insertion' => 'date_insertion',
         ]);
 
 
@@ -113,6 +114,8 @@ class PatientsController extends Controller
         $patient->demarcheur = $request->get('demarcheur');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->motif = $request->get('motif');
+        $patient->date_insertion = $request->get('date_insertion');
+
 
         $patient->user_id = Auth::id();
         $patient->save();
@@ -170,6 +173,7 @@ class PatientsController extends Controller
             'demarcheur' => $patient->demarcheur,
             'avance' => $patient->avance,
             'reste' => $patient->reste,
+            'date_insertion' => $patient->date_insertion,
             'user_id' => \auth()->user()->id,
         ]);
 

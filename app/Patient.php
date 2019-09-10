@@ -18,6 +18,7 @@ class Patient extends Model
         'avance',
         'reste',
         'demarcheur',
+        'date_insertion',
         'image',
 
     ] ;

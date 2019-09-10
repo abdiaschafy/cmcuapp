@@ -23,6 +23,7 @@ class CreateFactureConsultationsTable extends Migration
             $table->string('avance');
             $table->string('reste');
             $table->string('demarcheur');
+            $table->date('date_insertion')->nullable();
             
             $table->timestamps();
         });

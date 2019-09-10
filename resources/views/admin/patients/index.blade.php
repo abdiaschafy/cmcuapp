@@ -39,7 +39,7 @@
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
                                     <td>{{ $patient->prise_en_charge }}</td>
-                                    <td>{{ $patient->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $patient->date_insertion}}</td>
                                     <td style="display: inline-flex;">
                                     @can('consulter', \App\Patient::class)
                                         <a href="{{ route('patients.show', $patient->id) }}" title="consulter le dossier du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>

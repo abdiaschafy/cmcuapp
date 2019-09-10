@@ -76,6 +76,11 @@
                                 <option>100%</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                                <label for="assurance" class="col-form-label text-md-right">Date de consultation</label>
+                                <input type="date" name="date_insertion" class="form-control" value="{{ old('date_insertion') }}"  placeholder=" date de création du dossier au cmcu" >
+                            </div>
+                       
                         </div>
 
                             </br>
