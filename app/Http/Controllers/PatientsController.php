@@ -48,6 +48,7 @@ class PatientsController extends Controller
                 'numero_assurance'=> '',
                 'numero_dossier'=> '',
                 'prise_en_charge'=> '',
+                'date_insertion'=> '',
             ]);
          $patient = new Patient();
 
@@ -61,6 +62,7 @@ class PatientsController extends Controller
         $patient->reste = $request->get('reste');
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = $request->get('motif');
+        $patient->date_insertion = $request->get('date_insertion');
         $patient->user_id = Auth::id();
 
         $patient->save();
