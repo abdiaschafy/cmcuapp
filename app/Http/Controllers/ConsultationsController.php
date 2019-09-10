@@ -28,10 +28,10 @@ class ConsultationsController extends Controller
 
 
 
-    public function create(Patient $patient)
+    public function create(Patient $patient, User $user)
     {
 
-        $users = User::where('role_id', '=', 2)->get();
+        $users = User::where('role_id', '=', 2)->with('patients')->get();
         $devis = Devis::all();
         $consutation = Consultation::with('patient')->where('patient_id', $patient->id)->get();
 
