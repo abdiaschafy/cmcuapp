@@ -20,6 +20,10 @@ class CreateFactureConsultationsTable extends Migration
             $table->integer('numero');
             $table->string('motif');
             $table->string('montant');
+            $table->string('avance');
+            $table->string('reste');
+            $table->string('demarcheur');
+            
             $table->timestamps();
         });
     }

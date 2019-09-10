@@ -21,7 +21,11 @@ class CreatePatientsTable extends Migration
             $table->string('assurance')->nullable();
             $table->string('numero_assurance')->nullable();
             $table->string('prise_en_charge')->nullable();
-            $table->integer('frais')->nullable()->default(15000);
+            $table->integer('montant')->nullable();
+            $table->integer('avance')->nullable();
+            $table->integer('reste')->nullable();
+            $table->integer('demarcheur')->nullable();
+            $table->integer('motif')->nullable();
 
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
