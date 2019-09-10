@@ -77,7 +77,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                                <label for="assurance" class="col-form-label text-md-right">Date Création du patient</label>
+                                <label for="assurance" class="col-form-label text-md-right">Date Création</label>
                                 <input type="date" name="date_insertion" class="form-control" value="{{ old('date_insertion') }}"  placeholder=" date de création du dossier au cmcu" >
                             </div>
                        
