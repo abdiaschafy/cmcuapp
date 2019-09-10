@@ -1,4 +1,4 @@
-@can('infirmier', \App\Patient::class)
+@can('infirmier_secretaire', \App\Patient::class)
 <div class="card">
     <div class="card-body">
         <h3 class="card-title">Modifier les informations du patients</h3>
