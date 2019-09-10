@@ -14,6 +14,10 @@ class Patient extends Model
         'user_id',
         'telephone',
         'motif',
+        'montant',
+        'avance',
+        'reste',
+        'demarcheur',
         'image',
 
     ] ;

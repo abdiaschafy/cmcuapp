@@ -8,7 +8,7 @@
 
     {{--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
     <style>
-        body { font-size: 7px }
+        body { font-size: 8px }
 
         thead > tr > th {
             text-align: center;
@@ -223,22 +223,25 @@
                     </div>
                 </div>
                 <table border="0" cellspacing="0" cellpadding="0">
-                    <thead>
-                    <tr>
-                        <th class="text-left">NOM</th>
-                        <th class="text-left">MOTIF DE LA FACTURE</th>
-                        <th class="text-left"> MONTANT </th>
-                        <th class="text-left">TOTAL</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="text-left"><h3> {{ $patient->name }}</h3></td>
-                        <td class="text-left"><h3> FRAIS DE CONSULTATION</h3></td>
-                        <td class="text-left"><h3> 15000</h3></td>
-                        <td class="text-left"><h3> 15000</h3></td>
-
-                     </tr>
+                <thead>
+                        <tr>
+                            <th class="text-left">NOM</th>
+                            <th class="text-left">MOTIF </th>
+                            <th class="text-left"> MONTANT </th>
+                            <th class="text-left"> AVANCE </th>
+                            <th class="text-left"> RESTE </th>
+                            <th class="text-left"> DEMARCHEUR </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="text-left"><h3> {{ $patient->name }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->motif }}</h3></td>
+                            <td class="text-left"><h3> {{ $patient->montant }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->avance }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->reste }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->demarcheur }}</h3></td>
+                        </tr>
                     <tr>
                         <div class="notices">
                            <H4><div>LA CAISSE:</div></H4>
@@ -288,18 +291,21 @@
                         <thead>
                         <tr>
                             <th class="text-left">NOM</th>
-                            <th class="text-left">MOTIF DE LA FACTURE</th>
+                            <th class="text-left">MOTIF </th>
                             <th class="text-left"> MONTANT </th>
-                            <th class="text-left">TOTAL</th>
+                            <th class="text-left"> AVANCE </th>
+                            <th class="text-left"> RESTE </th>
+                            <th class="text-left"> DEMARCHEUR </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
                             <td class="text-left"><h3> {{ $patient->name }}</h3></td>
-                            <td class="text-left"><h3> FRAIS DE CONSULTATION</h3></td>
-                            <td class="text-left"><h3> 15000</h3></td>
-                            <td class="text-left"><h3> 15000</h3></td>
-
+                            <td class="text-left"><h3>{{ $patient->motif }}</h3></td>
+                            <td class="text-left"><h3> {{ $patient->montant }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->avance }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->reste }}</h3></td>
+                            <td class="text-left"><h3>{{ $patient->demarcheur }}</h3></td>
                         </tr>
                         <tr>
                             <div class="notices">

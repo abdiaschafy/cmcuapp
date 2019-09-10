@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'CMCU | Liste des examens')
+@section('title', 'CMCU | Liste des devis débités')
 
 @section('content')
 
@@ -14,7 +14,7 @@
     <!--// top-bar -->
         @can('create', \App\Patient::class)
         <div class="container">
-            <h1 class="text-center">LISTE DES EXAMENS</h1>
+            <h1 class="text-center">LISTE DES DEVIS DEBITES</h1>
         </div>
         <hr>
         <div class="container">

@@ -16,6 +16,8 @@ class DevisTableSeeder extends Seeder
             [
                 //orchidectomie bilaterale
                 // 'consultation_id' => '1',
+                
+                
                 'nom'  => 'ORCHIDECTOMIE BILATERALE',
                 'qte1' => '01',
                 'qte2' => '100',
@@ -60,6 +62,8 @@ class DevisTableSeeder extends Seeder
 
             [ //COELIOSCOPIE GYNECOLOGIQUE
                 //'consultation_id' => '2',
+                
+                
                 'nom'  => 'COELIOSCOPIE GYNECOLOGIQUE',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -104,6 +108,8 @@ class DevisTableSeeder extends Seeder
 
             [ //PYELOTOMIE LAPAROSCOPIQUE + JJ
                 // 'consultation_id' => '3',
+                
+                
                 'nom'  => 'PYELOTOMIE LAPAROSCOPIQUE + JJ',
                 'qte1' => '01',
                 'qte2' => '120',
@@ -147,6 +153,8 @@ class DevisTableSeeder extends Seeder
 
             [ //POSTHECTOMIE SOUS ANESTHESIE GENERALE
                 // 'consultation_id' => '4',
+                
+                
                 'nom'  => 'POSTHECTOMIE SOUS ANESTHESIE GENERALE',
                 'qte1' => '01',
                 'qte2' => '30',
@@ -189,6 +197,8 @@ class DevisTableSeeder extends Seeder
 
             [ //HYSTEROSCOPIE RESECTION
                 // 'consultation_id' => '5',
+                
+               
                 'nom'  => 'HYSTEROSCOPIE RESECTION',
                 'qte1' => '01',
                 'qte2' => '50',
@@ -232,7 +242,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //CURE DE VARICOCELE LAPAROSCOPIQUE
-
+                
+                
                 'nom'  => 'CURE DE VARICOCELE LAPAROSCOPIQUE',
                 'qte1' => '01',
                 'qte2' => '120',
@@ -275,7 +286,8 @@ class DevisTableSeeder extends Seeder
             ],
             [
                 //BIOPSIES PROSTATIQUES SOUS ECHOGUIDEES
-
+                
+                
                 'nom'  => 'BIOPSIES PROSTATIQUES SOUS ECHOGUIDEES',
                 'qte1' => '40',
                 'qte2' => '20',
@@ -301,7 +313,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //BIOPSIES PROSTATIQUES ECHO-GUIDEES SOUS SEDATION
-
+                
+                
                 'nom'  => 'BIOPSIES PROSTATIQUES ECHO-GUIDEES SOUS SEDATION',
                 'qte1' => '50',
                 'qte2' => '30',
@@ -329,7 +342,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //NLPC + NEPHROSTOMIE
-
+                
+                
                 'nom'  => 'NLPC + NEPHROSTOMIE',
                 'qte1' => '01',
                 'qte2' => '160',
@@ -374,7 +388,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //PROSTATECTOMIE RADICALE TOTALE PAR COELIOSCOPIE
-
+                
+                
                 'nom'  => 'PROSTATECTOMIE RADICALE TOTALE PAR COELIOSCOPIE',
                 'qte1' => '01',
                 'qte2' => '250',
@@ -422,6 +437,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //MISE EN PLACE SONDE DOUBLE J PAR VOIE ENDOSCOPIQUE
+                
+                
                 'nom'  => 'MISE EN PLACE SONDE DOUBLE J PAR VOIE ENDOSCOPIQUE',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -468,6 +485,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //URETEROSCOPIE SOUPLE LASER +MISE EN PLACE SONDE JJ
+                
+                
                 'nom'  => 'URETEROSCOPIE SOUPLE LASER +MISE EN PLACE SONDE JJ',
                 'qte1' => '01',
                 'qte2' => '160',
@@ -514,6 +533,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //CATHETER SUS-PUBIEN
+                
+                
                 'nom'  => 'CATHETER SUS-PUBIEN SOUS LOCALE',
                 'qte1' => '20',
                 'qte2' => '10',
@@ -556,6 +577,8 @@ class DevisTableSeeder extends Seeder
             ],
             [
                 //CYSTOCOPIE DIAGNOSTIQUE + ECHOGRAPHIE
+                
+                
                 'nom'  => 'ECHOGRAPHIE + CYSTOCOPIE DIAGNOSTIQUE  ',
                 'qte1' => '27',
                 'qte2' => '13',
@@ -599,6 +622,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //DEBITMETRIE + CYSTOCOPIE
+                
+                
                 'nom'  => ' DEBITMETRIE + CYSTOCOPIE',
                 'qte1' => '27',
                 'qte2' => '13',
@@ -642,6 +667,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //CYSTOCOPIE SOUS LOCAL
+                
+                
                 'nom'  => 'CYSTOCOPIE SOUS LOCALE',
                 'qte1' => '27',
                 'qte2' => '13',
@@ -684,6 +711,8 @@ class DevisTableSeeder extends Seeder
             ],
             [
                 //ABLATION SONDE DOUBLE J
+                
+                
                 'nom'  => 'ABLATION SONDE DOUBLE J',
                 'qte1' => '27',
                 'qte2' => '13',
@@ -728,6 +757,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //CYSTOCOPIE DIAGNOSTIQUE + ECHOGRAPHIE
+                
+                
                 'nom'  => 'CYSTOCOPIE DIAGNOSTIQUE + ECHOGRAPHIE',
                 'qte1' => '27',
                 'qte2' => '13',
@@ -771,6 +802,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //CACHETER SUS PUBIEN SOUS LOCALE
+                
+                
                 'nom'  => 'CACHETER SUS PUBIEN SOUS LOCALE',
                 'qte1' => '20',
                 'qte2' => '10',
@@ -815,6 +848,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //URETEROSCOPIE RETROGRADE SEMI-RIGIDE
+                
+                
                 'nom'  => 'URETEROSCOPIE RETROGRADE SEMI-RIGIDE',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -858,6 +893,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //PROSTATECTOMIE RADICALE TOTALE PAR COELIOSCOPIE
+                
+                
                 'nom'  => 'PROSTATECTOMIE RADICALE TOTALE PAR COELIOSCOPIE			',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -902,7 +939,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //NEPHROSTOMIE UNILATERALE
-
+                
+                
                 'nom'  => 'NEPHROSTOMIE UNILATERALE',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -946,7 +984,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //SONDE DOUBLE J
-
+                
+                
                 'nom'  => 'SONDE DOUBLE J',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -990,7 +1029,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //URETEROSCOPIE SOUPLE LASER ET SONDE JJ
-
+                
+                
                 'nom'  => 'URETEROSCOPIE SOUPLE LASER ET SONDE JJ',
                 'qte1' => '01',
                 'qte2' => '80',
@@ -1035,7 +1075,8 @@ class DevisTableSeeder extends Seeder
 
             [
                 //URETROTOMIE INTERNE ENDOSCOPIQUE
-
+                
+                
                 'nom'  => 'URETROTOMIE INTERNE ENDOSCOPIQUE',
                 'qte1' => '01',
                 'qte2' => '80',
