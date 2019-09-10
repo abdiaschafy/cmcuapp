@@ -26,12 +26,16 @@ class ParametreRequest extends FormRequest
         return [
             'user_id' => '',
             'patient_id' => 'required',
-            'ta' => '',
-            'fr' => '',
-            'fc' => '',
+            'date_naissance' => 'required',
+            'age' => 'required',
+            'bras_gauche' => 'required',
+            'bras_droit' => 'required',
+            'fr' => 'required',
+            'inc_bmi' => '',
+            'fc' => 'required',
             'glycemie' => 'required',
-            'spo2' => '',
-            'poids' => '',
+            'spo2' => 'required',
+            'poids' => 'required',
             'temperature' => 'required'
         ];
     }

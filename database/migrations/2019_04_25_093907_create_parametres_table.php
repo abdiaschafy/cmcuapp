@@ -17,13 +17,18 @@ class CreateParametresTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('patient_id')->unsigned();
-            $table->string('poids')->nullable();
+            $table->string('poids');
+            $table->string('taille');
+            $table->string('bras_gauche');
+            $table->string('bras_droit');
+            $table->string('inc_bmi');
+            $table->date('date_naissance');
+            $table->integer('age');
             $table->string('temperature');
-            $table->string('ta')->nullable();
             $table->string('fr')->nullable();
             $table->string('fc')->nullable();
             $table->string('spo2')->nullable();
-            $table->string('glycemie');
+            $table->string('glycemie')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
