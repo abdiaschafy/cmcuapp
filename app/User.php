@@ -56,12 +56,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Patient::class);
     }
-
-//un users medecin aura plusieurs commentaires
+    
     public function devis()
-     {
-         return $this->hasMany(Devis::class);
-     }
+    {
+        return $this->hasMany(Devis::class);
+    }
+    
+//un users medecin aura plusieurs commentaires
+   
 
     public function consultations()
     {

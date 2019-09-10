@@ -176,6 +176,7 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures chambres
                         </a>
+                        
                     </li>
                 </ul>
             </li>

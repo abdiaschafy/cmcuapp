@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Patient;
-use App\Produit;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -119,11 +118,9 @@ class DevisController extends Controller
         $devis->elements7 = $request->get('elements7');
         $devis->elements8 = $request->get('elements8');
         $devis->arreter = $request->get('arreter');
-
-
-       $devis->user_id = Auth::id();
-      
-        $devis->save();
+        $devis->patient_id = $request->patient_id;
+        $devis->user_id = Auth::id();
+         $devis->save();
 
         return redirect()->route('devis.index')->with('success', 'ajouté avec succès !');
     }
