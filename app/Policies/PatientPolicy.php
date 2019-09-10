@@ -43,7 +43,7 @@ class PatientPolicy
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,6
+            1,6,2
         ]);
 
     }
@@ -59,7 +59,7 @@ class PatientPolicy
     public function consulter()
     {
         return in_array(auth()->user()->role_id, [
-            1,2,4
+            1,2,4,6
         ]);
 
     }
@@ -67,7 +67,15 @@ class PatientPolicy
     public function infirmier()
     {
         return in_array(auth()->user()->role_id, [
-            4,
+            4
+        ]);
+
+    }
+
+    public function infirmier_secretaire()
+    {
+        return in_array(auth()->user()->role_id, [
+            4,6
         ]);
 
     }

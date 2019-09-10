@@ -2,7 +2,7 @@
     <div class="col-md-6  offset-md-0  toppad">
         <div class="card">
             <div class="card-body">
-                <div class="card-title">Prise des paramètres du patient
+                <div class="card-title text-uppercase text-primary"><b>Prise des paramètres du patient</b>
                     <small><strong></strong></small>
                 </div>
                 <small class="text-info" title="La prise des paramètres du patient doit être quotidienne"><i
@@ -13,46 +13,72 @@
                     <table class="table">
                         <tbody>
                         <tr>
-                            <td>TA :</td>
                             <td>
-                                <input name="ta" type="text" value='{{ old(' ta ') }}' placeholder=" mmHg">
+                                <b>Date de naissance / Age : <span class="text-danger">*</span></b>
+                            </td>
+                            <td>
+                                <label for="date_naissance">Date de naissance :</label>
+                                <input type="date" name="date_naissance" class="form-control" placeholder="Date de naissance" required>
+                                <label for="age">Age :</label>
+                                <input type="number" name="age" class="form-control col-md-5" required>
                             </td>
                         </tr>
                         <tr>
-                            <td>Température : <span class="text-danger">*</span></td>
+                            <td><b>TA :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="temperature" type="text" value='{{ old(' temperature ') }}' placeholder=" °C" required>
-                            </td>
-                        </tr>
-                        <input type="hidden" value="{{ $patient->id }}" name="patient_id">
-                        <tr>
-                            <td>FR :</td>
-                            <td>
-                                <Input name="fr" type="text" value='{{ old(' fr ') }}' placeholder=" Mvts/min">
+                                <label for="bras_gauche">Bras gauche :</label>
+                                <input name="bras_gauche" class="form-control" type="text" value='{{ old(' bras_gauche ') }}' placeholder=" mmHg" required>
+                                <label for="bras_droit">Bras droit :</label>
+                                <input name="bras_droit" class="form-control" type="text" value='{{ old(' bras_droit ') }}' placeholder=" mmHg" required>
                             </td>
                         </tr>
                         <tr>
-                            <td>FC :</td>
+                            <td><b>INC / BMI :</b> </td>
                             <td>
-                                <Input name="fc" type="text" value='{{ old(' fc ') }}' placeholder=" Pls/min">
+                                <Input name="inc_bmi" class="form-control" type="text" value='{{ old(' inc_bmi ') }}' >
                             </td>
                         </tr>
                         <tr>
-                            <td>Gly : <span class="text-danger">*</span></td>
+                            <td><b>Température :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="glycemie" type="text" value='{{ old(' glycemie ') }}' placeholder=" g/l" required>
+                                <Input name="temperature" class="form-control col-md-5" type="text" value='{{ old(' temperature ') }}' placeholder=" °C" required>
+                            </td>
+                        </tr>
+                        <input type="hidden" class="form-control" value="{{ $patient->id }}" name="patient_id">
+                        <tr>
+                            <td><b>FR :</b> <span class="text-danger">*</span></td>
+                            <td>
+                                <Input name="fr" class="form-control" type="text" value='{{ old(' fr ') }}' placeholder=" Mvts/min" required>
                             </td>
                         </tr>
                         <tr>
-                            <td>SPO2 :</td>
+                            <td><b>FC :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="spo2" type="text" value='{{ old(' spo2 ') }}' placeholder=" %">
+                                <Input name="fc" class="form-control" type="text" value='{{ old(' fc ') }}' placeholder=" Pls/min" required>
                             </td>
                         </tr>
                         <tr>
-                            <td>Poids :</td>
+                            <td><b>Gly :</b> </td>
                             <td>
-                                <Input name="poids" type="text" value='{{ old(' poids ') }}'  placeholder=" Kgs">
+                                <Input name="glycemie" class="form-control" type="text" value='{{ old(' glycemie ') }}' placeholder=" g/l">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>SPO2 :</b></td>
+                            <td>
+                                <Input name="spo2" class="form-control" type="text" value='{{ old(' spo2 ') }}' placeholder=" %">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Poids :</b> <span class="text-danger">*</span></td>
+                            <td>
+                                <Input name="poids" class="form-control" type="text" value='{{ old(' poids ') }}'  placeholder=" Kgs" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Taille :</b> </td>
+                            <td>
+                                <Input name="taille" class="form-control" type="text" value='{{ old(' taille ') }}'  placeholder=" M">
                             </td>
                         </tr>
                         </tbody>

@@ -28,7 +28,7 @@ class UserPolicy
     public function show(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,4
+            1,2,4,6
         ]);
     }
 
