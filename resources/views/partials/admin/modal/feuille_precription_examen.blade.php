@@ -21,8 +21,53 @@
                             <div class="form-group">
                                 <label for="summernote" class="col-form-label">Ordonnance :
                                 </label>
-                                <textarea id="summary-ckeditor" name="description" rows="15" class="form-control">{{ old('description') }}</textarea>
                             </div>
+                            <div class="container">
+    <div class="row clearfix">
+    	<div class="col-md-12 table-responsive">
+			<table class="table table-bordered table-hover table-sortable" id="tab_logic">
+				<thead>
+					<tr >
+						<th class="text-center">
+							Médicament
+						</th>
+						<th class="text-center">
+							Quantité
+						</th>
+						<th class="text-center">
+							posolologie
+						</th>
+    					
+        				<th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+    				<tr id='addr0' data-id="0" class="hidden">
+						<td data-name="medicament">
+						    <input type="text" name='medicament'  placeholder='médicament' class="form-control"/>
+						</td>
+						<td data-name="quantite">
+						    <input type="text" name='quantite' placeholder='quantite' class="form-control"/>
+						</td>
+						<td data-name="description">
+						    <textarea name="description" name="description" placeholder="Posologie" class="form-control">{{ old('description') }}</textarea>
+						</td>
+    					
+                        <td data-name="del">
+                            <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                        </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<a id="add_row" class="btn btn-primary float-right">Ajouter</a>
+</div>
+<br>
+<br>
+<br>
+
                             <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
                             </button>

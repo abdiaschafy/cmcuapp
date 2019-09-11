@@ -31,6 +31,10 @@
                                 <input name="name" class="form-control" value="{{ old('name') }}" type="text" placeholder="Nom" required>
                             </div>
                             <div class="form-group">
+                                <label for="prenom" class="col-form-label text-md-right">Prenom <span class="text-danger">*</span></label>
+                                <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="prenom" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="motif" class="col-form-label text-md-right">motif</label>
                                 <input name="motif" class="form-control" value="{{ old('motif') }}" type="text" placeholder="motif" >
                             </div>
@@ -48,9 +52,9 @@
                             </div>
                             <div class="form-group">
                             <label for="demarcheur"> Démarcheur : <span class="text-danger"></span></label>
-                            <select class="form-control" name="demarcheur" id="demarcheur" required>
-                                <option>aucun</option>
-                                <option>oui</option>
+                            <select class="form-control" name="demarcheur" id="demarcheur" >
+                                <option></option>
+                                <option>DMH</option>
                             </select>
                         </div>
                             <div class="form-group">
@@ -76,6 +80,11 @@
                                 <option>100%</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                                <label for="assurance" class="col-form-label text-md-right">Date Création</label>
+                                <input type="date" name="date_insertion" class="form-control" value="{{ old('date_insertion') }}"  placeholder=" date de création du dossier au cmcu" >
+                            </div>
+                       
                         </div>
 
                             </br>

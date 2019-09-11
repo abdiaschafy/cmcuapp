@@ -17,6 +17,8 @@ class OrdonancesController extends Controller
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
             'description'=> request('description'),
+            'medicament'=> request('medicament'),
+            'quantite'=> request('quantite'),
 
         ]);
 

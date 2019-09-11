@@ -8,7 +8,7 @@
 
     {{--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
     <style>
-        body { font-size: 8px }
+        body { font-size: 5px }
 
         thead > tr > th {
             text-align: center;
@@ -216,36 +216,34 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h4 class="invoice-id">FACTURE N°{{ $patient->numero_dossier }}</h4>
+                        <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
                         <br>
-
-                        <div class="date">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div>
                     </div>
                 </div>
+                <h6 class="text-center">{{ $patient->demarcheur }}</h6>
                 <table border="0" cellspacing="0" cellpadding="0">
                 <thead>
                         <tr>
                             <th class="text-left">NOM</th>
-                            <th class="text-left">MOTIF </th>
+                            <th class="text-left">PRENOM</th>
                             <th class="text-left"> MONTANT </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                            <th class="text-left"> DEMARCHEUR </th>
+                            
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left"><h3> {{ $patient->name }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->motif }}</h3></td>
-                            <td class="text-left"><h3> {{ $patient->montant }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->avance }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->reste }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->demarcheur }}</h3></td>
+                            <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
+                            <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
+                            <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
+                            <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
+                            <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
                         </tr>
                     <tr>
                         <div class="notices">
-                           <H4><div>LA CAISSE:</div></H4>
-                            <div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div>
+                           <H6><div>LA CAISSE:</div></H6>
+                           <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
                         </div>
                     </tr>
                     </tbody>
@@ -281,36 +279,33 @@
                     <div class="row contacts">
 
                         <div  class="col invoice-details ">
-                            <h4 class="invoice-id">FACTURE N°{{ $patient->numero_dossier }}</h4>
+                            <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
                             <br>
-
-                            <div class="date">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div>
                         </div>
                     </div>
+                    <h6 class="text-center">{{ $patient->demarcheur }}</h6>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <thead>
                         <tr>
-                            <th class="text-left">NOM</th>
-                            <th class="text-left">MOTIF </th>
+                        <th class="text-left">NOM</th>
+                            <th class="text-left">PRENOM</th>
                             <th class="text-left"> MONTANT </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                            <th class="text-left"> DEMARCHEUR </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left"><h3> {{ $patient->name }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->motif }}</h3></td>
-                            <td class="text-left"><h3> {{ $patient->montant }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->avance }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->reste }}</h3></td>
-                            <td class="text-left"><h3>{{ $patient->demarcheur }}</h3></td>
+                        <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
+                            <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
+                            <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
+                            <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
+                            <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
                         </tr>
                         <tr>
                             <div class="notices">
-                                <H4><div>LA CAISSE:</div></H4>
-                                <div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div>
+                                <H6><div>LA CAISSE:</div></H6>
+                                <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
                             </div>
                         </tr>
                         </tbody>

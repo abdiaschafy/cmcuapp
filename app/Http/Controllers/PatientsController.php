@@ -39,6 +39,7 @@ class PatientsController extends Controller
 
             $request->validate([
                 'name'=> 'required',
+                'name'=> '',
                 'assurance'=> '',
                 'motif'=> '',
                 'montant'=> '',
@@ -48,6 +49,7 @@ class PatientsController extends Controller
                 'numero_assurance'=> '',
                 'numero_dossier'=> '',
                 'prise_en_charge'=> '',
+                'date_insertion'=> '',
             ]);
          $patient = new Patient();
 
@@ -55,12 +57,14 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
+        $patient->prenom = $request->get('prenom');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
         $patient->reste = $request->get('reste');
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = $request->get('motif');
+        $patient->date_insertion = $request->get('date_insertion');
         $patient->user_id = Auth::id();
 
         $patient->save();
@@ -90,6 +94,7 @@ class PatientsController extends Controller
         $this->authorize('update', Patient::class);
         $request->validate([
             'name'=> '',
+            'prenom'=> '',
             'assurance'=> '',
             'numero_assurance'=> '',
             'numero_dossier'=> '',
@@ -99,6 +104,7 @@ class PatientsController extends Controller
             'reste'=> '',
             'demarcheur'=> '',
             'prise_en_charge'=> '',
+            'date_insertion' => 'date_insertion',
         ]);
 
 
@@ -113,6 +119,10 @@ class PatientsController extends Controller
         $patient->demarcheur = $request->get('demarcheur');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->motif = $request->get('motif');
+        $patient->date_insertion = $request->get('date_insertion');
+        $patient->prenom = $request->get('prenom');
+
+
 
         $patient->user_id = Auth::id();
         $patient->save();
@@ -170,6 +180,8 @@ class PatientsController extends Controller
             'demarcheur' => $patient->demarcheur,
             'avance' => $patient->avance,
             'reste' => $patient->reste,
+            'prenom' => $patient->prenom,
+            'date_insertion' => $patient->date_insertion,
             'user_id' => \auth()->user()->id,
         ]);
 

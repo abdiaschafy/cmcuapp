@@ -15,6 +15,10 @@
             font-size: 12px;
             margin-right: 1px;
         }
+
+        .table-sortable tbody tr {
+    cursor: move;
+}
     </style>
     <body>
 
@@ -31,7 +35,7 @@
                     @can('chirurgien', \App\Patient::class)
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
                         <i class="far fa-plus-square"></i> Ordonnance / Examens complémentaires
-
+                        
                     </button>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">
                         <i class="fas fa-eye"></i>
@@ -113,20 +117,9 @@
             }
         }
 
+        
      </script>
-   <!-- <script>
-    function Mycheckbox()
-    {
-        if ( document.test.hematologie.checked == true)
-        {
-            document.getElementById("2").checked = false;
-        }
-        else if ( document.test.hemostase.checked == true )
-        {
-            document.getElementById("1").checked = false;
-        }
-    }
- </script> -->
+   
 
     </body>
 
