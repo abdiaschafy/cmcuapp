@@ -73,7 +73,7 @@ class ConsultationsController extends Controller
         return back();
     }
 
-    public function Astore(ConsultationAnesthesisteRequest $request)
+    public function Astore(Request $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);
@@ -82,7 +82,14 @@ class ConsultationsController extends Controller
         ConsultationAnesthesiste::create([
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
-            'anesthesi_salle'=> implode(",", $request->anesthesi_salle),
+            'anesthesi_salle'=> implode(",", $request->anesthesi_salle ?? []),
+            'specialite'=> request('specialite'),
+            'medecin_traitant'=> request('medecin_traitant'),
+            'operateur'=> request('operateur'),
+            'date_intervention'=> request('date_intervention'),
+            'motif_admission'=> request('motif_admission'),
+            'technique_anesthesie'=> implode(",", $request->technique_anesthesie ?? []),
+            'technique_anesthesie'=> \request('technique_anesthesie1'),
             'date_hospitalisation'=> request('date_hospitalisation'),
             'service'=> request('service'),
             'classe_asa'=> request('classe_asa'),
@@ -96,10 +103,9 @@ class ConsultationsController extends Controller
             'mobilite_servicale'=> request('mobilite_servicale'),
             'traitement_en_cours'=> request('traitement_en_cours'),
             'risque'=> request('risque'),
-            'information_patient'=> request('information_patient'),
-            'technique_anesthesie'=> implode(",", $request->technique_anesthesie),
+            'benefice_risque'=> request('benefice_risque'),
             'synthese_preop'=> request('synthese_preop'),
-            'examen_paraclinique'=> implode(",", $request->examen_paraclinique),
+            'examen_paraclinique'=> implode(",", $request->examen_paraclinique ?? []),
 
         ]);
 
