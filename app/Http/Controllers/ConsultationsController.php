@@ -78,38 +78,23 @@ class ConsultationsController extends Controller
 
         $patient = Patient::findOrFail($request->patient_id);
 
+        $ConsultationAnesthesiste = new ConsultationAnesthesiste();
 
-        ConsultationAnesthesiste::create([
-            'user_id' => auth()->id(),
-            'patient_id' => $patient->id,
-            'anesthesi_salle'=> implode(",", $request->anesthesi_salle ?? []),
-            'specialite'=> request('specialite'),
-            'medecin_traitant'=> request('medecin_traitant'),
-            'operateur'=> request('operateur'),
-            'date_intervention'=> request('date_intervention'),
-            'motif_admission'=> request('motif_admission'),
-            'technique_anesthesie1'=> \request('technique_anesthesie1'),
-            'technique_anesthesie'=> implode(",", $request->technique_anesthesie ?? []),
-            'date_hospitalisation'=> request('date_hospitalisation'),
-            'service'=> request('service'),
-            'classe_asa'=> request('classe_asa'),
-            'antecedent_traitement'=> request('antecedent_traitement'),
-            'examen_clinique'=> request('examen_clinique'),
-            'allergie'=> request('allergie'),
-            'solide'=> request('solide'),
-            'liquide'=> request('liquide'),
-            'intubation'=> request('intubation'),
-            'mallampati'=> request('mallampati'),
-            'distance_interincisive'=> request('distance_interincisive'),
-            'distance_thyromentoniere'=> request('distance_thyromentoniere'),
-            'mobilite_servicale'=> request('mobilite_servicale'),
-            'traitement_en_cours'=> request('traitement_en_cours'),
-            'risque'=> request('risque'),
-            'benefice_risque'=> request('benefice_risque'),
-            'synthese_preop'=> request('synthese_preop'),
-            'examen_paraclinique'=> implode(",", $request->examen_paraclinique ?? []),
+        $ConsultationAnesthesiste->user_id = auth()->id();
+        $ConsultationAnesthesiste->patient_id = $patient->id;
+        $ConsultationAnesthesiste->specialite = \request('specialite');
+        $ConsultationAnesthesiste->medecin_traitant = \request('medecin_traitant');
+        $ConsultationAnesthesiste->operateur = \request('operateur');
+        $ConsultationAnesthesiste->date_intervention = \request('date_intervention');
+        $ConsultationAnesthesiste->motif_admission = \request('motif_admission');
+        $ConsultationAnesthesiste->anesthesi_salle = implode(",", $request->anesthesi_salle ?? []);
+        $ConsultationAnesthesiste->risque = \request('risque');
+        $ConsultationAnesthesiste->solide = \request('solide');
+        $ConsultationAnesthesiste->liquide = \request('liquide');
+        $ConsultationAnesthesiste->benefice_risque = \request('benefice_risque');
+        $ConsultationAnesthesiste->technique_anesthesie = implode(",", $request->technique_anesthesie ?? []);
 
-        ]);
+        $ConsultationAnesthesiste->save();
 
         Flashy('La nouvelle consultation a été crée avec succès !!');
 

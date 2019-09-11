@@ -181,41 +181,41 @@
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="Anesthésie générale" {{ (old('technique_anesthesie') == 'Anesthésie') ? 'checked' : '' }}> Anesthésie générale
+                                               value="Anesthésie générale" {{ (old('technique_anesthesie[]') == 'Anesthésie') ? 'checked' : '' }}> Anesthésie générale
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="Sédation" {{ (old('technique_anesthesie') == 'Sédation') ? 'checked' : '' }}> Sédation
+                                               value="Sédation" {{ (old('technique_anesthesie[]') == 'Sédation') ? 'checked' : '' }}> Sédation
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="Rachidienne" {{ (old('technique_anesthesie') == 'Rachidienne') ? 'checked' : '' }}> Rachidienne
+                                               value="Rachidienne" {{ (old('technique_anesthesie[]') == 'Rachidienne') ? 'checked' : '' }}> Rachidienne
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="Péridurale" {{ (old('technique_anesthesie') == 'Péridurale') ? 'checked' : '' }}> Péridurale
+                                               value="Péridurale" {{ (old('technique_anesthesie[]') == 'Péridurale') ? 'checked' : '' }}> Péridurale
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="ALR" {{ (old('technique_anesthesie') == 'ALR') ? 'checked' : '' }}> ALR
+                                               value="ALR" {{ (old('technique_anesthesie[]') == 'ALR') ? 'checked' : '' }}> ALR
                                         </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
-                                               value="Locale" {{ (old('technique_anesthesie') == 'Locale') ? 'checked' : '' }}> Locale
+                                               value="Locale" {{ (old('technique_anesthesie[]') == 'Locale') ? 'checked' : '' }}> Locale
                                         </label>
                                     </div>
                                     <label for="autre2">Autres :</label>
-                                    <input type="text" class="form-control" value="{{ old('technique_anesthesie') }}" name="technique_anesthesie">
+                                    <input type="text" class="form-control" value="{{ old('technique_anesthesie[]') }}" name="technique_anesthesie[]">
                                 </td>
                             </tr>
                             <tr>
