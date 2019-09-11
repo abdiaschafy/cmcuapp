@@ -16,9 +16,6 @@
                         <div class="col-md-10  toppad">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="card-title">FICHE D'INTERVENTION ANESTHESISTE
-                                        <small><strong></strong></small>
-                                    </div>
                                         <table class="table">
                                             <tbody>
                                             <tr>
@@ -28,19 +25,19 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Nom et prénom du patient :</td>
+                                                <td><b>Nom et prénom du patient :</b></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Sexe :</td>
+                                                <td><b>Sexe :</b></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Date de naissance :</td>
+                                                <td><b>Date de naissance :</b></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Téléphone :</td>
+                                                <td><b>Téléphone :</b></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
@@ -50,20 +47,61 @@
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Type :</td>
+                                                <td><b>Type :</b></td>
                                                 <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Côté :</td>
-                                                <td><input class="form-control" name="cote" type="text" value='{{ old(' cote ') }}'></td>
+                                                <td><b>Durée :</b></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Date :</td>
+                                                <td><b>Position du patient :</b></td>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input"> Décubitus
+                                                        <div class="row offset-1">
+                                                            <input type="checkbox" class="form-check-input checkmark"> Latéral
+                                                            <div class="row offset-2">
+                                                                <input type="checkbox" class="form-check-input"> Droite
+                                                            </div>
+                                                            <div class="row offset-3">
+                                                                <input type="checkbox" class="form-check-input"> Gauche
+                                                            </div>
+                                                        </div>
+                                                        <div class="row offset-1">
+                                                            <input type="checkbox" class="form-check-input"> Dorsal
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input"> Lithotomie
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <div class="row offset-1">
+                                                            <input type="checkbox" class="form-check-input"> Lombotomie
+                                                            <div class="row offset-2">
+                                                                <input type="checkbox" class="form-check-input"> Droite
+                                                            </div>
+                                                            <div class="row offset-3">
+                                                                <input type="checkbox" class="form-check-input"> Gauche
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input"> Trendelenburg
+                                                    </div>
+                                                    <label for="autre">Autre :</label>
+                                                    <input type="text" class="form-control" name="autre">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Date :</b></td>
                                                 <td><input class="form-control" name="date" type="date" value='{{ old(' date ') }}'></td>
                                             </tr>
                                             <tr>
-                                                <td>Chirurgien :</td>
-                                                <td></td>
+                                                <td><b>Chirurgien :</b></td>
+                                                <td>
+                                                    <input type="text" class="form-control" name="autre">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td><b>Aide opératoire :</b> <span class="text-danger">*</span></td>
@@ -89,6 +127,7 @@
                                                                type="checkbox" name="hospitalisation"
                                                                value="Hospitalisation"> Hospitalisation
                                                         </label>
+                                                        <input type="text" placeholder="Heure">
                                                     </div>
                                             </tr>
                                             <tr>
@@ -137,7 +176,7 @@
                                                     <div class="form-check">
                                                         <input class="form-check-input" tabIndex="1"
                                                                type="checkbox" name="anesthesie[]"
-                                                               value="Bloc"> Bloc
+                                                               value="ALR"> ALR
                                                         </label>
                                                     </div>
                                             </tr>
