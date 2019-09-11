@@ -29,14 +29,14 @@ class CreateConsultationAnesthesistesTable extends Migration
             $table->text('liquide');
             $table->text('benefice_risque');
             $table->text('adaptation_traitement')->nullable();
-            $table->string('technique_anesthesie');
+            $table->text('technique_anesthesie');
             $table->string('technique_anesthesie1');
             $table->text('synthese_preop');
             $table->date('date_hospitalisation')->nullable();
             $table->string('service')->nullable();
             $table->string('classe_asa')->nullable();
-            $table->longText('antecedent_traitement');
-            $table->longText('examen_clinique');
+            $table->text('antecedent_traitement');
+            $table->text('examen_clinique');
             $table->text('allergie')->nullable();
             $table->text('traitement_en_cours');
             $table->string('antibiotique');
