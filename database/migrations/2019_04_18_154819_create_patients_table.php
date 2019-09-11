@@ -24,8 +24,9 @@ class CreatePatientsTable extends Migration
             $table->integer('montant')->nullable();
             $table->integer('avance')->nullable();
             $table->integer('reste')->nullable();
-            $table->integer('demarcheur')->nullable();
-            $table->integer('motif')->nullable();
+            $table->string('demarcheur')->nullable();
+            $table->string('motif')->nullable();
+            $table->string('prenom')->nullable();
             $table->date('date_insertion')->nullable();
 
 

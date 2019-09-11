@@ -18,6 +18,8 @@ class CreateOrdonancesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('patient_id');
             $table->text('description');
+            $table->text('medicament');
+            $table->text('quantite');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');

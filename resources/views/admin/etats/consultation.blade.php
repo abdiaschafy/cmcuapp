@@ -216,27 +216,29 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h4 class="invoice-id">RECU {{ $patient->motif }} N°{{ $patient->numero_dossier }}</h4>
+                        <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
                         <br>
                     </div>
                 </div>
+                <h6 class="text-center">{{ $patient->demarcheur }}</h6>
                 <table border="0" cellspacing="0" cellpadding="0">
                 <thead>
                         <tr>
                             <th class="text-left">NOM</th>
+                            <th class="text-left">PRENOM</th>
                             <th class="text-left"> MONTANT </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                            <th class="text-left"> DEMARCHEUR </th>
+                            
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left"><h4> {{ $patient->name }}</h4></td>
+                            <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
+                            <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
                             <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
-                            <td class="text-left"><h4>{{ $patient->demarcheur }}</h4></td>
                         </tr>
                     <tr>
                         <div class="notices">
@@ -277,27 +279,28 @@
                     <div class="row contacts">
 
                         <div  class="col invoice-details ">
-                            <h4 class="invoice-id">RECU {{ $patient->motif }} N°{{ $patient->numero_dossier }}</h4>
+                            <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
                             <br>
                         </div>
                     </div>
+                    <h6 class="text-center">{{ $patient->demarcheur }}</h6>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <thead>
                         <tr>
-                            <th class="text-left">NOM</th>
+                        <th class="text-left">NOM</th>
+                            <th class="text-left">PRENOM</th>
                             <th class="text-left"> MONTANT </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                            <th class="text-left"> DEMARCHEUR </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left"><h4> {{ $patient->name }}</h4></td>
+                        <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
+                            <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
                             <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
-                            <td class="text-left"><h4>{{ $patient->demarcheur }}</h4></td>
                         </tr>
                         <tr>
                             <div class="notices">

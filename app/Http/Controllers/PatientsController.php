@@ -39,6 +39,7 @@ class PatientsController extends Controller
 
             $request->validate([
                 'name'=> 'required',
+                'name'=> '',
                 'assurance'=> '',
                 'motif'=> '',
                 'montant'=> '',
@@ -56,6 +57,7 @@ class PatientsController extends Controller
         $patient->assurance = $request->get('assurance');
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
+        $patient->prenom = $request->get('prenom');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
@@ -92,6 +94,7 @@ class PatientsController extends Controller
         $this->authorize('update', Patient::class);
         $request->validate([
             'name'=> '',
+            'prenom'=> '',
             'assurance'=> '',
             'numero_assurance'=> '',
             'numero_dossier'=> '',
@@ -117,6 +120,8 @@ class PatientsController extends Controller
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->motif = $request->get('motif');
         $patient->date_insertion = $request->get('date_insertion');
+        $patient->prenom = $request->get('prenom');
+
 
 
         $patient->user_id = Auth::id();
@@ -175,6 +180,7 @@ class PatientsController extends Controller
             'demarcheur' => $patient->demarcheur,
             'avance' => $patient->avance,
             'reste' => $patient->reste,
+            'prenom' => $patient->prenom,
             'date_insertion' => $patient->date_insertion,
             'user_id' => \auth()->user()->id,
         ]);
