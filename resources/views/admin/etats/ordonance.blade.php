@@ -65,10 +65,55 @@
     <br>
     <br>
     <br>
-    <div class="">
-        <h5>
-            {!! nl2br(e($ordonance->description)) !!}
-        </h5>
+    
+    <div class="row">
+        <div >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5><u> Médicament(s)</u></h5>
+                </div>
+                {!! nl2br(e($ordonance->medicament)) !!}
+            </div>
+        </div>
+        
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5><u> Quantité(s)</u></h5>
+                </div>
+                {!! nl2br(e($ordonance->quantité)) !!}
+            </div>
+        </div>
+        
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div >
+
+            <div class="box-part ">
+
+                <i ></i>
+
+                <div class="title">
+                    <h5><u>Posologie(s)</u></h5>
+                </div>
+                {!! nl2br(e($ordonance->description)) !!}
+            </div>
+        </div>
+        
     </div>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
