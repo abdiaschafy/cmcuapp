@@ -226,7 +226,7 @@
                         <tr>
                             <th class="text-left">NOM</th>
                             <th class="text-left">PRENOM</th>
-                            <th class="text-left"> MONTANT </th>
+                            <th class="text-left"> MONTANT (FCFA)</th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
                             
@@ -289,7 +289,7 @@
                         <tr>
                         <th class="text-left">NOM</th>
                             <th class="text-left">PRENOM</th>
-                            <th class="text-left"> MONTANT </th>
+                            <th class="text-left"> MONTANT (FCFA) </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
                         </tr>
