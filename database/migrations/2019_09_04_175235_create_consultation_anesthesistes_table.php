@@ -25,6 +25,8 @@ class CreateConsultationAnesthesistesTable extends Migration
             $table->text('memo')->nullable();
             $table->text('anesthesi_salle');
             $table->text('risque');
+            $table->text('solide');
+            $table->text('liquide');
             $table->text('benefice_risque');
             $table->text('adaptation_traitement')->nullable();
             $table->string('technique_anesthesie');
