@@ -29,8 +29,8 @@ class DossierRequest extends FormRequest
             'date_naissance'=> 'required',
             'lieu_naissance'=> '',
             'personne_confiance'=> '',
-            'tel_personne_confiance'=> 'integer|numeric|digits:9',
-            'portable_1'=> 'required|integer|numeric|digits:9',
+            'tel_personne_confiance'=> '',
+            'portable_1'=> '',
         ];
     }
 }
