@@ -27,8 +27,8 @@ class PrescriptionController extends Controller
         $prescriptions = new Prescription ();
 
        
-            $prescriptions->hematologie = implode(',', $request->hematologie ?? []);
-            $prescriptions->hemostase = implode(',', $request->hemostase  ?? []);
+        $prescriptions->hematologie = implode(',', $request->hematologie ?? []);
+        $prescriptions->hemostase = implode(',', $request->hemostase  ?? []);
         $prescriptions->biochimie = implode(',', $request->biochimie ?? []);
         $prescriptions->hormonologie = implode(',', $request->hormonologie ?? []);
         $prescriptions->marqueurs = implode(',', $request->marqueurs ?? []);

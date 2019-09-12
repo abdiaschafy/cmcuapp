@@ -93,7 +93,7 @@
                 <div class="title">
                     <h5><u> Quantité(s)</u></h5>
                 </div>
-                {!! nl2br(e($ordonance->quantité)) !!}
+                {!! nl2br(e($ordonance->quantite)) !!}
             </div>
         </div>
         
