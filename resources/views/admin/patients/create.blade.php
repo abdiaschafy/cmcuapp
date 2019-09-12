@@ -35,20 +35,8 @@
                                 <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="prenom" required>
                             </div>
                             <div class="form-group">
-                                <label for="motif" class="col-form-label text-md-right">motif</label>
-                                <input name="motif" class="form-control" value="{{ old('motif') }}" type="text" placeholder="motif" >
-                            </div>
-                            <div class="form-group">
-                                <label for="montant" class="col-form-label text-md-right">montant</label>
-                                <input name="montant" class="form-control" value="{{ old('montant') }}" type="text" placeholder="montant" >
-                            </div>
-                            <div class="form-group">
                                 <label for="avance" class="col-form-label text-md-right">avance</label>
                                 <input name="avance" class="form-control" value="{{ old('avance') }}" type="text" placeholder="avance" >
-                            </div>
-                            <div class="form-group">
-                                <label for="reste" class="col-form-label text-md-right">reste</label>
-                                <input name="reste" class="form-control" value="{{ old('reste') }}" type="text" placeholder=" reste " >
                             </div>
                             <div class="form-group">
                             <label for="demarcheur"> Démarcheur : <span class="text-danger"></span></label>
