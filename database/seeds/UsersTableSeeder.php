@@ -168,7 +168,7 @@ class UsersTableSeeder extends Seeder
             'sexe' => 'Masculin',
             'lieu_naissance' => 'Douala',
             'specialite' => 'Chirurgien urologue',
-            'onmc' => '0000',
+            'onmc' => '7858',
             'date_naissance' => \Carbon\Carbon::createFromDate(1990,01,01)->toDateTimeString(),
             'password' => bcrypt('Kuitche@2019')
         ]);

@@ -43,6 +43,14 @@ class PatientPolicy
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
+            1,6
+        ]);
+
+    }
+
+    public function print_devis(User $user)
+    {
+        return in_array(auth()->user()->role_id, [
             1,6,2
         ]);
 

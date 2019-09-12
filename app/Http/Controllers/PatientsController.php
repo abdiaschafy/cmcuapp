@@ -59,11 +59,11 @@ class PatientsController extends Controller
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
         $patient->prise_en_charge = $request->get('prise_en_charge');
-        $patient->montant = $request->get('montant');
+        $patient->montant = 15000;
         $patient->avance = $request->get('avance');
-        $patient->reste = $request->get('reste');
+        $patient->reste = 15000 - $request->get('avance');
         $patient->demarcheur = $request->get('demarcheur');
-        $patient->motif = $request->get('motif');
+        $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
         $patient->user_id = Auth::id();
 
