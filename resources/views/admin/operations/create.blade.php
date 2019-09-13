@@ -170,7 +170,7 @@
                                     <tr>
                                         <td><b>Suites opératoires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="suite_operatoire" id="suite_operatoire" cols="55" rows="3"required>{{ old('suite_operatoire') }}</textarea>
+                                            <textarea class="splitLines" name="suite_operatoire" id="suite_operatoire" cols="55" rows="3"required>{{ old('suite_operatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -210,26 +210,26 @@
         </div>
     </div>
 
-    {{--<script type="text/javascript">--}}
-        {{--let splitLines = document.getElementsByClassName("splitLines")--}}
-        {{--let textarea = [];--}}
-        {{--for(let x=0; x<splitLines.length; x++){--}}
-            {{--textarea[x] = splitLines[x];--}}
-            {{--textarea[x].onkeyup = function () {--}}
-                {{--var lines = textarea[x].value.split("\n");--}}
-                {{--for (var i = 0; i < lines.length; i++) {--}}
-                    {{--if (lines[i].length <= 27) continue;--}}
-                    {{--var j = 0;--}}
-                    {{--space = 27;--}}
-                    {{--while (j++ <= 27) {--}}
-                        {{--if (lines[i].charAt(j) === " ") space = j;--}}
-                    {{--}--}}
-                    {{--lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");--}}
-                    {{--lines[i] = lines[i].substring(0, space);--}}
-                {{--}--}}
-                {{--textarea[x].value = lines.slice(0, 30).join("\n");--}}
-            {{--};--}}
-        {{--}--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        let splitLines = document.getElementsByClassName("splitLines")
+        let textarea = [];
+        for(let x=0; x<splitLines.length; x++){
+            textarea[x] = splitLines[x];
+            textarea[x].onkeyup = function () {
+                var lines = textarea[x].value.split("\n");
+                for (var i = 0; i < lines.length; i++) {
+                    if (lines[i].length <= 67) continue;
+                    var j = 0;
+                    space = 67;
+                    while (j++ <= 67) {
+                        if (lines[i].charAt(j) === " ") space = j;
+                    }
+                    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
+                    lines[i] = lines[i].substring(0, space);
+                }
+                textarea[x].value = lines.slice(0, 69).join("\n");
+            };
+        }
+    </script>
     </body>
 @stop

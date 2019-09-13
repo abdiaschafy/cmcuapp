@@ -33,19 +33,20 @@
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     @can('chirurgien', \App\Patient::class)
+                    <a href="{{ route('ordonance.create', $patient->id) }}" class="btn btn-success">
+                        Ordonnance
+                    </a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" data-whatever="@mdo">
-                        <i class="far fa-plus-square"></i> Ordonnance / Examens complémentaires
+                        <i class="far fa-plus-square"></i> Examens complémentaires
                         
                     </button>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">
-                        <i class="fas fa-eye"></i>
-                        Fiche d'intervention
-                    </button>
-                    @endcan
-                    @can('anesthesiste', \App\Patient::class)
+                    {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">--}}
+                        {{--<i class="fas fa-eye"></i>--}}
+                        {{--Fiche d'intervention--}}
+                    {{--</button>--}}
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheInterventionAnesthesiste" data-whatever="@mdo">
                         <i class="fas fa-eye"></i>
-                        Fiche d'intervention annesthésiste
+                        Fiche d'intervention
                     </button>
                     @endcan
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right">
@@ -56,7 +57,12 @@
                 <br>
 
                 {{-- PRESENTATION DU DOSSIER PATIENT --}}
-                <div class="col-md-6  offset-md-0  toppad">
+                @if(auth()->user()->role_id == 6)
+                <div class="col-md-7  offset-md-0  toppad">
+                @endif
+                @if(auth()->user()->role_id == 2)
+                <div class="col-md-10  offset-md-0  toppad">
+                @endif
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
@@ -81,12 +87,30 @@
                 {{-- FIN DE PRESENTATION DU DOSSIER PATIENT --}}
 
                 {{-- LES BOUTTONS DE MODAL IC --}}
-                <div class="col-md-6  offset-md-0  toppad">
-                    @include('partials.admin.files.box')
+                @if(auth()->user()->role_id == 6)
+                <div class="col-md-5  offset-md-0  toppad">
+                @endif
+                @if(auth()->user()->role_id == 2)
+                <div class="col-md-2  offset-md-0  toppad">
+                @endif
+                    @can('medecin', \App\Patient::class)
+                    <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#ordonanceAll" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Ordonances
+                    </button>
+                    <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#feuilleAll" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Examens
+                    </button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#consultationAll" data-whatever="@mdo">
+                        <i class="fas fa-eye"></i>
+                        Consultations
+                    </button>
+                    @endcan
 
-                    {{-- MODIFIER LES INFOS DU PATIENT IC --}}
+                     {{--MODIFIER LES INFOS DU PATIENT IC --}}
                     @include('admin.patients.edit')
-                    {{-- FIN DE MOFIFICATION DES INFOS PATIENT --}}
+                     {{--FIN DE MOFIFICATION DES INFOS PATIENT --}}
 
                 </div>
                 {{-- FIN DES BOUTONS DE MODAL --}}
@@ -119,7 +143,6 @@
 
         
      </script>
-   
 
     </body>
 

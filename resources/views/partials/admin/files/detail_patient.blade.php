@@ -15,7 +15,7 @@
     <td>
         <b>FARIS DE CONSULTATION :</b>
     </td>
-    <td>{{ $patient->frais }} FCFA</td>
+    <td>{{ $patient->montant }} FCFA</td>
 </tr>
 @foreach ($patient->dossiers as $dossier)
 

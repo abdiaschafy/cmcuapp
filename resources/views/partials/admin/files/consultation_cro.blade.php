@@ -1,6 +1,7 @@
 <tbody>
 @can('medecin', \App\Patient::class)
     @can('chirurgien', \App\Patient::class)
+        <tr></tr>
         <tr>
             <td>
                 <a href="{{ route('consultations.index', $patient->id) }}">
@@ -209,7 +210,6 @@
                 @endif
             </td>
         @endcan
-        <td></td>
         @if (count($patient->consultations))
             @can('chirurgien', \App\Patient::class)
                 <td>

@@ -118,6 +118,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
+    Route::get('ordonance-creation/create/{patient}','OrdonancesController@ordonance_create')->name('ordonance.create');
 
 
     Route::post('soins', 'SoinsController@store')->name('soins.store');
