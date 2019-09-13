@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="prenom" class="col-form-label text-md-right">Prenom <span class="text-danger">*</span></label>
-                                <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="prenom" required>
+                                <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="prenom" >
                             </div>
                             <div class="form-group">
                                 <label for="avance" class="col-form-label text-md-right">avance</label>
