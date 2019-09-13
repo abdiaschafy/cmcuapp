@@ -17,6 +17,7 @@ class Patient extends Model
         'montant',
         'avance',
         'reste',
+        'reste1',
         'prenom',
         'demarcheur',
         'date_insertion',

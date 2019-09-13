@@ -45,6 +45,7 @@ class PatientsController extends Controller
                 'montant'=> '',
                 'avance'=> '',
                 'reste'=> '',
+                'reste1'=> '',
                 'demarcheur'=> '',
                 'numero_assurance'=> '',
                 'numero_dossier'=> '',
@@ -59,9 +60,10 @@ class PatientsController extends Controller
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
         $patient->prise_en_charge = $request->get('prise_en_charge');
-        $patient->montant = 15000;
+        $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
-        $patient->reste = 15000 - $request->get('avance','reste');
+        $patient->reste = $patient->montant - $patient->avance;
+     
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
@@ -102,6 +104,7 @@ class PatientsController extends Controller
             'motif'=> '',
             'avance'=> '',
             'reste'=> '',
+            'reste1'=> '',
             'demarcheur'=> '',
             'prise_en_charge'=> '',
             'date_insertion' => 'date_insertion',
@@ -116,6 +119,7 @@ class PatientsController extends Controller
         $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
         $patient->reste = $request->get('reste');
+        $patient->reste1 = $request->get('reste1');
         $patient->demarcheur = $request->get('demarcheur');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->motif = $request->get('motif');

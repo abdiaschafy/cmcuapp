@@ -22,8 +22,9 @@ class CreatePatientsTable extends Migration
             $table->string('numero_assurance')->nullable();
             $table->string('prise_en_charge')->nullable();
             $table->integer('montant')->nullable();
-            $table->integer('avance')->nullable();
-            $table->integer('reste')->nullable();
+            $table->integer('avance')->nullable()->default('00');
+            $table->integer('reste')->nullable()->default('15000');
+            $table->integer('reste1')->nullable();
             $table->string('demarcheur')->nullable();
             $table->string('motif')->nullable();
             $table->string('prenom')->nullable();

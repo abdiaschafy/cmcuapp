@@ -35,6 +35,10 @@
                                 <input name="prenom" class="form-control" value="{{ old('prenom') }}" type="text" placeholder="prenom" >
                             </div>
                             <div class="form-group">
+                                <label for="montant" class="col-form-label text-md-right">Montant <span class="text-danger">*</span></label>
+                                <input name="montant" class="form-control" value="{{ old('montant') }}" type="text" placeholder="montant" >
+                            </div>
+                            <div class="form-group">
                                 <label for="avance" class="col-form-label text-md-right">avance</label>
                                 <input name="avance" class="form-control" value="{{ old('avance') }}" type="text" placeholder="avance" >
                             </div>
