@@ -6,7 +6,6 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
-use App\Http\Requests\ConsultationAnesthesisteRequest;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use App\User;

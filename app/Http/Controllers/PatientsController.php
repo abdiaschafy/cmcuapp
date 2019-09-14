@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use App\FactureConsultation;
+use App\FicheIntervention;
 use App\Patient;
 use App\Ordonance;
+use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,10 +83,12 @@ class PatientsController extends Controller
 
         return view('admin.patients.show', [
             'patient' => $patient,
+            'medecin' => User::where('role_id', '=', 2)->get(),
             'consultations' => Consultation::with('patient', 'user')->latest()->first(),
+            'fiche_interventions' => FicheIntervention::with('patient', 'user')->get(),
             'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),
-            'dossier' => $patient->dossiers,
+            'dossiers' => $patient->dossiers()->latest()->first(),
             'parametres' =>$patient->parametres()->latest()->first(),
             'compte_rendu_bloc_operatoires' =>$patient->compte_rendu_bloc_operatoires()->latest()->first()
         ]);

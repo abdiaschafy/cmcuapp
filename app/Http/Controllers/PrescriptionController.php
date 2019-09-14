@@ -7,7 +7,6 @@ use App\Prescription;
 use App\Patient;
 use Illuminate\Support\Facades\Auth;
 use Db;
-use function GuzzleHttp\Promise\all;
 
 class PrescriptionController extends Controller
 {

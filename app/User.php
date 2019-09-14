@@ -56,6 +56,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Patient::class);
     }
+
+    public function fiche_interventions()
+    {
+        return $this->hasMany(FicheIntervention::class);
+    }
     
     public function devis()
     {

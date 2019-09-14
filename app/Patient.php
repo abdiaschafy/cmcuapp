@@ -89,6 +89,11 @@ class Patient extends Model
         return $this->hasMany(Ordonance::class);
     }
 
+    public function fiche_interventions()
+    {
+        return $this->hasMany(FicheIntervention::class);
+    }
+
     public function parametres()
     {
         return $this->hasMany(Parametre::class);

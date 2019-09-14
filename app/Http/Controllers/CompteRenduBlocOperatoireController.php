@@ -3,17 +3,32 @@
 namespace App\Http\Controllers;
 
 use App\CompteRenduBlocOperatoire;
+use App\FicheIntervention;
 use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Http\Request;
 
 class CompteRenduBlocOperatoireController extends Controller
 {
+
+    public function index(CompteRenduBlocOperatoire $compteRenduBlocOperatoire, Patient $patient)
+    {
+
+        return view('admin.operations.index', [
+            'patient' => $patient,
+            'compteRenduBlocOperatoires' => CompteRenduBlocOperatoire::with('patient')->get(),
+        ]);
+    }
+
+
     public function create(Patient $patient)
     {
         $users = User::where('role_id', '=', 2)->get();
-        return view('admin.operations.create', compact('patient', 'users'));
+        $anesthesiste = User::where('name', '=', 'TENKE')->get();
+        $infirmierAnesthesiste = User::where('role_id', '=', 4)->get();
+        return view('admin.operations.create', compact('patient', 'users', 'anesthesiste', 'infirmierAnesthesiste'));
     }
 
 
@@ -48,12 +63,44 @@ class CompteRenduBlocOperatoireController extends Controller
         return back();
     }
 
+    public function StoreFicheIntervention(Request $request, Patient $patient)
+    {
+        $patient = Patient::findOrFail($request->patient_id);
+
+        FicheIntervention::create([
+            'user_id' => auth()->user()->id,
+            'patient_id' => $patient->id,
+            'nom_patient' => \request('nom_patient'),
+            'prenom_patient' => \request('prenom_patient'),
+            'sexe_patient' => \request('sexe_patient'),
+            'date_naiss_patient' => \request('date_naiss_patient'),
+            'portable_patient' => \request('portable_patient'),
+            'type_intervention' => \request('type_intervention'),
+            'dure_intervention' => \request('dure_intervention'),
+            'position_patient' => implode(",", $request->position_patient ?? []),
+            'decubitus' => implode(",", $request->decubitus ?? []),
+            'laterale' => implode(",", $request->laterale ?? []),
+            'lombotomie' => implode(",", $request->lombotomie ?? []),
+            'date_intervention' => \request('date_intervention'),
+            'medecin' => \request('medecin'),
+            'aide_op' => implode(",", $request->aide_op ?? []),
+            'hospitalisation' => \request('hospitalisation'),
+            'ambulatoire' => \request('ambulatoire'),
+            'anesthesie' => implode(",", $request->anesthesie ?? []),
+            'recommendation' => \request('recommendation'),
+        ]);
+
+        Flashy('La fiche d\'inteventtion a bien été');
+
+        return back();
+    }
+
 
     public function compte_rendu_bloc_pdf($id)
     {
 
         $patient = Patient::with('compte_rendu_bloc_operatoires', 'consultations')->findOrFail($id);
-//dd($patient);
+
         $pdf = PDF::loadView('admin.etats.crbo', compact('patient'));
 
         $pdf->save(storage_path('crbo').'.pdf');

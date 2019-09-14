@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
-                            class="fas fa-arrow-left"></i> Retour au dossier patients</a>
+                            class="fas fa-arrow-left"></i> Retour au dossier patient</a>
                 </div>
                 <br>
                 <br>

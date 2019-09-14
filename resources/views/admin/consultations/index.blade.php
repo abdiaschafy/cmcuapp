@@ -36,7 +36,10 @@
         @include('partials.header')
         <div class="container">
 <div class="row">
-
+    <div class="col-md-12  toppad  offset-md-0 ">
+        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
+                class="fas fa-arrow-left"></i> Retour au dossier patient</a>
+    </div>
             <div class="col-md-9">
                 <!-- resumt -->
                 <div class="card">
@@ -45,10 +48,9 @@
                             <div class="col-xl-12">
                                 <div class="col-12 col-md-12">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><b>NOM ET PRENOM DU PATIENT :</b> {{ $patient->name }}</li>
-                                        <li class="list-group-item"><b>TELEPHONE :</b> {{ $patient->telephone }}</li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000</li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                                        <li class="list-group-item"><b>NOM ET PRENOM DU PATIENT :</b> {{ $patient->name }} {{ $patient->prenom }}</li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i> <b>TELEPHONE :</b> {{ $patient->telephone }}</li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i> {{ $patient->email }}</li>
                                     </ul>
                                 </div>
                             </div>
