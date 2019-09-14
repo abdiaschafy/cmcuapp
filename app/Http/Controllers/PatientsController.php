@@ -198,7 +198,7 @@ class PatientsController extends Controller
         //$this->authorize('print', Patient::class);
         $ordonance = Ordonance::with('patient', 'user')->find($id);
 
-        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance', 'user'));
+        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance'));
 
         $pdf->save(storage_path('ordonance').'.pdf');
 
