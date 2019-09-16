@@ -52,16 +52,26 @@ class User extends Authenticatable
         return $this->hasMany('App\Fiche');
     }
 
+    public function autresfactures()
+    {
+        return $this->hasMany(Autresfactures::class);
+    }
+
     public function patients()
     {
         return $this->hasMany(Patient::class);
+    }
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
     }
 
     public function fiche_interventions()
     {
         return $this->hasMany(FicheIntervention::class);
     }
-    
+
     public function devis()
     {
         return $this->hasMany(Devis::class);

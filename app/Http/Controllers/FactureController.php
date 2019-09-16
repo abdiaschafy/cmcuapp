@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use App\Facture;
 use App\FactureChambre;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\FactureConsultation;
+use App\FactureClient;
 use App\Patient;
 use App\Produit;
 use App\User;
@@ -54,6 +56,14 @@ class FactureController extends Controller
         return view('admin.factures.chambre', compact('factureChambres'));
     }
 
+    public function FactureClient()
+    {
+        $this->authorize('view', User::class);
+        $facturesClients = FactureClient::with('client')->get();
+
+        return view('admin.factures.client', compact('facturesClients'));
+    }
+
     public function export_consultation($id)
     {
         $this->authorize('update', Patient::class);
@@ -66,6 +76,20 @@ class FactureController extends Controller
         $pdf->save(storage_path('pdf/consultation').'.pdf');
 
         return $pdf->stream('consultation.pdf');
+    }
+
+    public function export_client($id)
+    {
+       
+
+        $client = Client::find($id);
+
+        $pdf = PDF::loadView('admin.etats.clientP', ['client' => $client]);
+
+
+        $pdf->save(storage_path('pdf/clientP').'.pdf');
+
+        return $pdf->stream('clientP.pdf');
     }
 
 }

@@ -143,6 +143,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/factures-consultation', 'FactureController@FactureConsultation')->name('factures.consultation');
     Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
     Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
+
+    Route::get('/factures-client', 'FactureController@FactureClient')->name('factures.client');
+    Route::get('facture/{id}','FactureController@export_client')->name('factures.client_pdf');
    
 
 
@@ -157,5 +160,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('devisimage', 'DevisImageController@store')->name('devisimage.store');
     Route::get('devisimage/show/{patient}', 'DevisImageController@show')->name('devisimage.show');
     Route::get('devisimagef/{patient}', 'DevisImageController@showall')->name('devisimage.showall');
+
+
+    Route::get('clients', 'ClientController@index')->name('clients.index');
+    Route::get('clients/create', 'ClientController@create')->name('clients.create');
+    Route::post('clients', 'ClientController@store')->name('clients.store');
+    Route::patch('clients/{client}', 'ClientController@update')->name('clients.update');
+    Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
+
+    Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
+    
 
 });
