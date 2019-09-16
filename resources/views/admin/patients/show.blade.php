@@ -32,15 +32,23 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
-                    @can('chirurgien', \App\Patient::class)
-                    <a href="{{ route('ordonance.create', $patient->id) }}" title="Nouvelle ordonnance médicale" class="btn btn-success">
-                        <i class="far fa-plus-square"></i>
-                        Ordonnance
+                    @can('medecin', \App\Patient::class)
+                        <a href="{{ route('ordonance.create', $patient->id) }}" title="Nouvelle ordonnance médicale" class="btn btn-success">
+                            <i class="far fa-plus-square"></i>
+                            Ordonnance
+                        </a>
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" title="Prescrire un examen complémentaire" data-whatever="@mdo">
+                            <i class="far fa-plus-square"></i> Examens complémentaires
+
+                        </button>
+                    @endcan
+                    @can('anesthesiste', \App\Patient::class)
+                    <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-success">
+                        <i class="fas fa-eye"></i>
+                        Consultations
                     </a>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordonanceModal" title="Prescrire un examen complémentaire" data-whatever="@mdo">
-                        <i class="far fa-plus-square"></i> Examens complémentaires
-                        
-                    </button>
+                        @endcan
+                    @can('chirurgien', \App\Patient::class)
                     {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">--}}
                         {{--<i class="fas fa-eye"></i>--}}
                         {{--Fiche d'intervention--}}
@@ -49,6 +57,10 @@
                         <i class="far fa-plus-square"></i>
                         Fiche d'intervention
                     </button>
+                    <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}" class="btn btn-success">
+                        <i class="fas fa-eye"></i>
+                        Consultations
+                    </a>
                     @endcan
                     <a href="{{ route('patients.index') }}" class="btn btn-success float-right" title="Retour à la liste des patients">
                         <i class="fas fa-arrow-left"></i>  Retour à la liste des patients
@@ -63,6 +75,9 @@
                 @endif
                 @if(auth()->user()->role_id == 2)
                 <div class="col-md-10  offset-md-0  toppad">
+                @endif
+                @if(auth()->user()->role_id == 4)
+                <div class="col-md-7  offset-md-0  toppad">
                 @endif
                     <div class="card">
                         <div class="card-body">

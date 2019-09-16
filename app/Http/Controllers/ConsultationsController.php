@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use App\ConsultationAnesthesiste;
+use App\Prescription;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
 use App\Http\Requests\ConsultationRequest;
@@ -25,6 +26,15 @@ class ConsultationsController extends Controller
         ]);
     }
 
+    public function index_anesthesiste(ConsultationAnesthesiste $consultationAnesthesiste, Patient $patient)
+    {
+
+        return view('admin.consultations.index_anesthesiste', [
+            'patient' => $patient,
+            'consultationAnesthesiste' => ConsultationAnesthesiste::with('patient', 'user')->get(),
+        ]);
+    }
+
 
 
     public function create(Patient $patient, User $user)
@@ -33,8 +43,9 @@ class ConsultationsController extends Controller
         $users = User::where('role_id', '=', 2)->with('patients')->get();
         $devis = Devis::all();
         $consutation = Consultation::with('patient')->where('patient_id', $patient->id)->get();
+        $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->latest()->first();
 
-        return view('admin.consultations.create', compact('patient', 'users', 'consutation','devis'));
+        return view('admin.consultations.create', compact('patient', 'users', 'consutation','devis', 'prescriptions'));
     }
 
     public function store(ConsultationRequest $request)
@@ -92,6 +103,26 @@ class ConsultationsController extends Controller
         $ConsultationAnesthesiste->liquide = \request('liquide');
         $ConsultationAnesthesiste->benefice_risque = \request('benefice_risque');
         $ConsultationAnesthesiste->technique_anesthesie = implode(",", $request->technique_anesthesie ?? []);
+        $ConsultationAnesthesiste->technique_anesthesie1 = \request('technique_anesthesie1');
+        $ConsultationAnesthesiste->synthese_preop = \request('synthese_preop');
+        $ConsultationAnesthesiste->antecedent_traitement = \request('antecedent_traitement');
+        $ConsultationAnesthesiste->examen_clinique = \request('examen_clinique');
+        $ConsultationAnesthesiste->traitement_en_cours = \request('traitement_en_cours');
+        $ConsultationAnesthesiste->antibiotique = \request('antibiotique');
+        $ConsultationAnesthesiste->jeune_preop = implode(",", $request->jeune_preop ?? []);
+        $ConsultationAnesthesiste->autre1 = \request('autre1');
+        $ConsultationAnesthesiste->memo = \request('memo');
+        $ConsultationAnesthesiste->adaptation_traitement = \request('adaptation_traitement');
+        $ConsultationAnesthesiste->date_hospitalisation = \request('date_hospitalisation');
+        $ConsultationAnesthesiste->service = \request('service');
+        $ConsultationAnesthesiste->classe_asa = \request('classe_asa');
+        $ConsultationAnesthesiste->allergie = \request('allergie');
+        $ConsultationAnesthesiste->examen_paraclinique = implode(",", $request->examen_paraclinique ?? []);
+        $ConsultationAnesthesiste->intubation = \request('intubation');
+        $ConsultationAnesthesiste->mallampati = \request('mallampati');
+        $ConsultationAnesthesiste->distance_interincisive = \request('distance_interincisive');
+        $ConsultationAnesthesiste->distance_thyromentoniere = \request('distance_thyromentoniere');
+        $ConsultationAnesthesiste->mobilite_servicale = \request('mobilite_servicale');
 
         $ConsultationAnesthesiste->save();
 

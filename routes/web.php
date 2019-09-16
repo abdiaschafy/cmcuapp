@@ -101,12 +101,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
     
     Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
+    Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
     Route::get('consultation-anesthesiste/{id}', 'ConsultationsController@Export_consultation_anesthesiste')->name('consultation_anesthesiste.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
     Route::post('fiche-intervention', 'CompteRenduBlocOperatoireController@StoreFicheIntervention')->name('fiche_intervention.store');
+    Route::get('fiche-intervention-preview/{id}', 'CompteRenduBlocOperatoireController@Print_ficheIntervention')->name('fiche_intervention.pdf');
 
     Route::get('compte-rendu-bloc-global/{patient}', 'CompteRenduBlocOperatoireController@index')->name('compte_rendu_bloc.index');
     Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');

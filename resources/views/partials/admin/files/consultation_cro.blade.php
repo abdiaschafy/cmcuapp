@@ -59,66 +59,190 @@
                 <td><b>PROPOSITION THERAPEUTIQUE :</b></td>
                 <td>{{ ($consultations->proposition_therapeutique) }}</td>
             </tr>
+        @else
+        <tr>
+            <td>
+                <b>Aucune consultation de disponible</b>
+            </td>
+            <td></td>
+        </tr>
         @endif
     @endcan
 
     @can('anesthesiste', \App\Patient::class)
         <tr>
             <td>
-                <a href="#">
+                <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}">
                     <h1 class="text-info">CONSULTATION</h1>
                 </a>
             </td>
             <td></td>
         </tr>
 
-        @if (count($patient->consultations))
+        @if (count($patient->consultation_anesthesistes))
 
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $consultations->created_at->toFormattedDateString() }}</b></td>
+                <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b></td>
+            </tr>
+            <tr>
+                <td><b>SERVICE :</b></td>
+                <td>{{ ($consultation_anesthesistes->service) }}</td>
             </tr>
             <tr>
                 <td>
-                    <b>NOM et PRENOM du MEDECIN :</b>
+                    <b>SPECAIALITE :</b>
                 </td>
-                <td>{{ ($consultations->medecin_r) }}</td>
+                <td>{{ ($consultation_anesthesistes->specialite) }}</td>
             </tr>
             <tr>
                 <td>
-                    <b>MOTIF DE LA CONSULTATION :</b>
+                    <b>MEDECIN TRAITANT :</b>
                 </td>
-                <td>{{ ($consultations->motif_c) }}</td>
+                <td>{{ ($consultation_anesthesistes->medecin_traitant) }}</td>
             </tr>
             <tr>
-                <td><b>ALLERGIES :</b></td>
-                <td>{{ ($consultations->allergie) }}</td>
+                <td><b>OPERATEUR :</b></td>
+                <td>{{ ($consultation_anesthesistes->operateur) }}</td>
             </tr>
             <tr>
-                <td><b>GROUPE SANGUIN :</b></td>
+                <td><b>DATE D'INTERVENTION :</b></td>
                 <td>
-                    <span class="badge badge-primary">{{ $consultations->groupe }}</span>
+                    <span class="badge badge-primary">{{ $consultation_anesthesistes->date_intervention }}</span>
                 </td>
             </tr>
             <tr>
-                <td><b>ANTECEDENTS MEDICAUX :</b></td>
-                <td>{{ $consultations->antecedent_m }}</td>
+                <td><b>MOTIF D'ADMISSION :</b></td>
+                <td>{{ $consultation_anesthesistes->motif_admission }}</td>
             </tr>
             <tr>
-                <td><b>ANTECEDENTS CHIRURGICAUX :</b></td>
-                <td>{{ $consultations->antecedent_c }}</td>
+                <td><b>MEMO :</b></td>
+                <td>{{ $consultation_anesthesistes->memo }}</td>
             </tr>
             <tr>
-                <td><b>INTERROGATOIRE :</b></td>
-                <td>{{ ($consultations->interrogatoire) }}</td>
+                <td><b>ANESTHESIE EN SALLE :</b></td>
+                <td>{{ ($consultation_anesthesistes->anesthesi_salle) }}</td>
             </tr>
             <tr>
-                <td><b>DIAGNOSTIC :</b></td>
-                <td>{{ ($consultations->diagnostic) }}</td>
+                <td><b>DATE D'HOSPITALISATION :</b></td>
+                <td>{{ ($consultation_anesthesistes->date_hospitalisation) }}</td>
             </tr>
             <tr>
-                <td><b>PROPOSITION THERAPEUTIQUE :</b></td>
-                <td>{{ ($consultations->proposition_therapeutique) }}</td>
+                <td><b>CLASSE ASA :</b></td>
+                <td>{{ ($consultation_anesthesistes->classe_asa) }}</td>
+            </tr>
+            <tr>
+                <td><b>ANTECEDENTS / TRAITEMENT :</b></td>
+                <td>{{ ($consultation_anesthesistes->antecedent_traitement) }}</td>
+            </tr>
+            <tr>
+                <td><b>EXAMENS CLINIQUES :</b></td>
+                <td>{{ ($consultation_anesthesistes->examen_clinique) }}</td>
+            </tr>
+            <tr>
+                <td><b>ALLERGIE :</b></td>
+                <td>
+                    <span class="badge badge-primary">{{ ($consultation_anesthesistes->allergie) }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Intubation :</b></td>
+                <td>{{ ($consultation_anesthesistes->intubation) }}</td>
+            </tr>
+            <tr>
+                <td><b>Mallampati :</b></td>
+                <td>{{ ($consultation_anesthesistes->mallampati) }}</td>
+            </tr>
+            <tr>
+                <td><b>Distance-interincisive :</b></td>
+                <td>{{ ($consultation_anesthesistes->distance_interincisive) }}</td>
+            </tr>
+            <tr>
+                <td><b>Distance thyromentonière :</b></td>
+                <td>{{ ($consultation_anesthesistes->distance_thyromentoniere) }}</td>
+            </tr>
+            <tr>
+                <td><b>Mobilité cervicale :</b></td>
+                <td>{{ ($consultation_anesthesistes->mobilite_servicale) }}</td>
+            </tr>
+            <tr>
+                <td><b>Technique d'anesthésie :</b></td>
+                <td>{{ ($consultation_anesthesistes->technique_anesthesie1) }}</td>
+            </tr>
+            <tr>
+                <td><b>Bénéfice / Risque  :</b></td>
+                <td>{{ ($consultation_anesthesistes->benefice_risque) }}</td>
+            </tr>
+            <tr>
+                <td><b>Jeune préopératoire :</b></td>
+                <td>
+                    {{--<p>{{ ($consultation_anesthesistes->jeune_preop) }}</p>--}}
+                    <p><b>Solide :</b></p>
+                    <p>{{ ($consultation_anesthesistes->solide) }}</p>
+                    <p><b>Liquide :</b></p>
+                    <p>{{ ($consultation_anesthesistes->liquide) }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td><b>Adaptation au traitement personnel :</b></td>
+                <td>{{ ($consultation_anesthesistes->adaptation_traitement) }}</td>
+            </tr>
+            <tr>
+                <td><b>Autres adaptations :</b></td>
+                <td>{{ ($consultation_anesthesistes->autre1) }}</td>
+            </tr>
+            <tr>
+                <td><b>Technique d'anesthésie envisagée :</b></td>
+                <td>
+                    @foreach(explode(",", $consultation_anesthesistes->technique_anesthesie1) as $technique)
+                        <ul>
+                            <li>
+                                {{ $technique }}
+                            </li>
+                        </ul>
+                    @endforeach
+                </td>
+            </tr>
+            <tr>
+                <td><b>Antibioprophylaxie  :</b></td>
+                <td>{{ ($consultation_anesthesistes->antibiotique) }}</td>
+            </tr>
+            <tr>
+                <td><b>Synthèse pré-opératoire :</b></td>
+                <td>{{ ($consultation_anesthesistes->synthese_preop) }}</td>
+            </tr>
+            <tr>
+                <td><b>Examens paracliniques :</b></td>
+                <td>
+                    @foreach(explode(",", $consultation_anesthesistes->examen_paraclinique) as $examen)
+                        <ul>
+                            <li>
+                                {{ $examen }}
+                            </li>
+                        </ul>
+                    @endforeach
+                    {{--<p><b>Gr / Rh : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[9] }}</b></p>--}}
+                    {{--<p><b>NFS : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[6] }}</b></p>--}}
+                    {{--<p><b>Créatinemie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[1] }}</b></p>--}}
+                    {{--<p><b>Ionograme : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[2] }}</b></p>--}}
+                    {{--<p><b>Urée : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[0] }}</b></p>--}}
+                    {{--<p><b>Glycémie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[5] }}</b></p>--}}
+                    {{--<p><b>ECBU : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[3] }}</b></p>--}}
+                    {{--<p><b>VIH : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[4] }}</b></p>--}}
+                    {{--<p><b>E.C.G : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
+                    {{--<p><b>Echographie cardiaque : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
+                    {{--<p><b>TP / INR : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[7] }}</b></p>--}}
+                    {{--<p><b>TCK : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[8] }}</b></p>--}}
+                    {{--<p><b>Autres : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
+                </td>
+            </tr>
+
+        @else
+            <tr>
+                <td>
+                    <b>Aucune consultation de disponible</b>
+                </td>
+                <td></td>
             </tr>
         @endif
     @endcan

@@ -25,11 +25,11 @@ class CreateConsultationAnesthesistesTable extends Migration
             $table->text('memo')->nullable();
             $table->text('anesthesi_salle');
             $table->text('risque');
-            $table->text('solide');
-            $table->text('liquide');
+            $table->text('solide')->nullable();
+            $table->text('liquide')->nullable();
             $table->text('benefice_risque');
             $table->text('adaptation_traitement')->nullable();
-            $table->text('technique_anesthesie');
+            $table->string('technique_anesthesie');
             $table->string('technique_anesthesie1');
             $table->text('synthese_preop');
             $table->date('date_hospitalisation')->nullable();
@@ -39,9 +39,9 @@ class CreateConsultationAnesthesistesTable extends Migration
             $table->text('examen_clinique');
             $table->text('allergie')->nullable();
             $table->text('traitement_en_cours');
-            $table->string('antibiotique');
-            $table->string('jeune_preop');
-            $table->string('aute1');
+            $table->string('antibiotique')->nullable();
+            $table->string('jeune_preop')->nullable();
+            $table->string('autre1')->nullable();
             $table->text('examen_paraclinique')->nullable();
             $table->string('intubation')->nullable();
             $table->string('mallampati')->nullable();

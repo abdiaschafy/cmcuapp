@@ -107,4 +107,16 @@ class CompteRenduBlocOperatoireController extends Controller
 
         return $pdf->stream('crbo.pdf');
     }
+
+    public function Print_ficheIntervention($id)
+    {
+
+        $fiche_intervention = FicheIntervention::findOrFail($id);
+
+        $pdf = PDF::loadView('admin.etats.fiche_intervention', compact('fiche_intervention'));
+
+        $pdf->save(storage_path('fiche_intervention').'.pdf');
+
+        return $pdf->stream('fiche_intervention.pdf');
+    }
 }

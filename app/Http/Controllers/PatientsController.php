@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Consultation;
+use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
 use App\FicheIntervention;
 use App\Patient;
@@ -85,6 +86,7 @@ class PatientsController extends Controller
             'patient' => $patient,
             'medecin' => User::where('role_id', '=', 2)->get(),
             'consultations' => Consultation::with('patient', 'user')->latest()->first(),
+            'consultation_anesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->latest()->first(),
             'fiche_interventions' => FicheIntervention::with('patient', 'user')->get(),
             'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),

@@ -48,10 +48,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Mémo :</b> <span class="text-danger">*</span></td>
+                                <td><b>Mémo :</b> </td>
                                 <td>
                                             <textarea wrap="hard" class="form-control splitLines" name="memo" cols="45" rows="3"
-                                                      required>{{ old('memo') }}</textarea>
+                                                      >{{ old('memo') }}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -61,32 +61,28 @@
                                         <input class="form-check-input" tabIndex="1"
                                                type="radio" id="anesthesi_salle" name="anesthesi_salle[]"
                                                value="Ambulatoire" {{ (old('anesthesi_salle') == 'Ambulatoire') ? 'checked' : '' }}> Ambulatoire
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="radio" id="anesthesi_salle" name="anesthesi_salle[]"
                                                value="Urgence" {{ (old('anesthesi_salle') == 'Urgence') ? 'checked' : '' }}> Urgence
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="radio" id="anesthesi_salle" name="anesthesi_salle[]"
                                                value="Entrée le jour de l'intervention" {{ (old('anesthesi_salle') == 'Entrée le jour de l\'intervention') ? 'checked' : '' }}> Entrée le jour de l'intervention
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="radio" id="anesthesi_salle" name="anesthesi_salle[]"
                                                value="Hospit < 10 jours" {{ (old('anesthesi_salle') == 'Hospit < 10 jours') ? 'checked' : '' }}> Hospit < 10 jours
-                                        </label>
                                     </div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><b>Date d'hospitalisation :</b></td>
                                 <td>
-                                    <input type="date" class="form-control col-md-6" name="date_hospitalisation" value="{{ old('date_hospitalisation') }}" >
+                                    <input type="date" class="form-control col-md-6" name="date_hospitalisation" value="{{ old('date_hospitalisation') }}">
                                 </td>
                             </tr>
                             <tr>
@@ -154,25 +150,25 @@
                                 <td></td>
                             </tr>
                             <tr>
-                                <td><b>Informations données au patient :</b> <span class="text-danger">*</span></td>
+                                <td><b>Informations données au patient :</b> </td>
                                 <td>
-                                    <label for="">Technique d'anesthésie :</label>
-                                    <input type="text" class="form-control" name="technique_anesthesie1">
-                                    <label for="">Bénéfice / Risque :</label>
-                                    <textarea class="form-control splitLines" name="benefice_risque" id="benefice_risque" cols="45" rows="3">{{ old('benefice_risque') }}</textarea>
+                                    <label for="">Technique d'anesthésie : <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="technique_anesthesie1" required>
+                                    <label for="">Bénéfice / Risque : <span class="text-danger">*</span></label>
+                                    <textarea class="form-control splitLines" name="benefice_risque" id="benefice_risque" cols="45" rows="3" required>{{ old('benefice_risque') }}</textarea>
                                     <label for="">Jeune préopératoire :</label>
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="jeune_preop[]"> Solides : <input name="solide" class="offset-2 mb-1 ml-10" type="text" placeholder=" H-">
+                                        <input type="checkbox" class="form-check-input" value="Oui" name="jeune_preop[]"> Solides : <input name="solide" class="offset-2 mb-1 ml-10" type="text" placeholder=" H-">
                                     </div>
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" name="jeune_preop[]"> Liquides clairs : <input name="liquide" class="offset-1 ml-4" type="text" placeholder=" H-">
+                                        <input type="checkbox" class="form-check-input" value="Non" name="jeune_preop[]"> Liquides clairs : <input name="liquide" class="offset-1 ml-4" type="text" placeholder=" H-">
                                     </div>
                                     <label for="">Adaptation au traitement personnel :</label>
                                     <textarea wrap="hard" class="form-control splitLines" name="adaptation_traitement" cols="45" rows="3"
-                                              required>{{ old('adaptation_traitement') }}</textarea>
+                                              >{{ old('adaptation_traitement') }}</textarea>
                                     <label for="">Autre :</label>
                                     <textarea wrap="hard" class="form-control splitLines" name="autre1" cols="45" rows="3"
-                                              required>{{ old('autre1') }}</textarea>
+                                              >{{ old('autre1') }}</textarea>
                                 </td>
                             </tr>
                             <tr>
@@ -182,46 +178,40 @@
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="Anesthésie générale" {{ (old('technique_anesthesie[]') == 'Anesthésie') ? 'checked' : '' }}> Anesthésie générale
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="Sédation" {{ (old('technique_anesthesie[]') == 'Sédation') ? 'checked' : '' }}> Sédation
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="Rachidienne" {{ (old('technique_anesthesie[]') == 'Rachidienne') ? 'checked' : '' }}> Rachidienne
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="Péridurale" {{ (old('technique_anesthesie[]') == 'Péridurale') ? 'checked' : '' }}> Péridurale
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="ALR" {{ (old('technique_anesthesie[]') == 'ALR') ? 'checked' : '' }}> ALR
-                                        </label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" tabIndex="1"
                                                type="checkbox" id="technique_anesthesie" name="technique_anesthesie[]"
                                                value="Locale" {{ (old('technique_anesthesie[]') == 'Locale') ? 'checked' : '' }}> Locale
-                                        </label>
                                     </div>
                                     <label for="autre2">Autres :</label>
                                     <input type="text" class="form-control" value="{{ old('technique_anesthesie[]') }}" name="technique_anesthesie[]">
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Antibioprophylaxie :</b> <span class="text-danger">*</span></td>
+                                <td><b>Antibioprophylaxie :</b> </td>
                                 <td>
-                                    <input name="antibiotique" type="text" class="form-control" required>
+                                    <input name="antibiotique" type="text" class="form-control">
                                 </td>
                             </tr>
                             <tr>
@@ -234,81 +224,54 @@
                             <tr>
                                 <td><b>Examens paracliniques :</b> </td>
                                 <td class="form-group small">
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Urée" {{ (old('examen_paraclinique[]') == 'Urée') ? 'checked' : '' }}> Urée
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Créatinemie" {{ (old('examen_paraclinique[]') == 'Créatinemie') ? 'checked' : '' }}> Créatinemie
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Ionograme" {{ (old('examen_paraclinique[]') == 'Ionograme') ? 'checked' : '' }}> Ionograme
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="ECBU" {{ (old('examen_paraclinique[]') == 'ECBU') ? 'checked' : '' }}> ECBU
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique"  name="examen_paraclinique[]"
-                                               value="VIH" {{ (old('examen_paraclinique[]') == 'VIH') ? 'checked' : '' }}> VIH
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Glycémie" {{ (old('examen_paraclinique[]') == 'Glycémie') ? 'checked' : '' }}> Glycémie
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="NFS" {{ (old('examen_paraclinique[]') == 'NFS') ? 'checked' : '' }}> NFS
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="TP / INR" {{ (old('examen_paraclinique[]') == 'TP / INR') ? 'checked' : '' }}> TP / INR
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="TCK" {{ (old('examen_paraclinique[]') == 'TCK') ? 'checked' : '' }}> TCK
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Gr / Rh" {{ (old('examen_paraclinique[]') == 'Gr / Rh') ? 'checked' : '' }}> Gr / Rh
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="E.C.G" {{ (old('examen_paraclinique[]') == 'E.C.G') ? 'checked' : '' }}> E.C.G
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" tabIndex="1"
-                                               type="checkbox" id="examen_paraclinique" name="examen_paraclinique[]"
-                                               value="Echographie cardiaque" {{ (old('examen_paraclinique[]') == 'Echographie cardiaque') ? 'checked' : '' }}> Echographie cardiaque
-                                        </label>
-                                    </div>
+                                    {{--@if(!empty($prescriptions->marqueurs))--}}
+                                    {{--@endif--}}
+                                    {{--@if(!empty($prescriptions->hormonologie))--}}
+                                    {{--@endif--}}
+                                    {{--@if(!empty($prescriptions->spermiologie))--}}
+                                    {{--@endif--}}
+                                    {{--@if(!empty($prescriptions->bacteriologie))--}}
+                                    {{--@endif--}}
+
+                                    @if(!empty($prescriptions->hematologie))
+                                    <label for="autre">Gr / Rh :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">NFS :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
+                                    @if(!empty($prescriptions->hemostase))
+                                    <label for="autre">TCK :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">TP / INR :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
+                                    @if(!empty($prescriptions->biochimie))
+                                    <label for="autre">Créatinemie :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">Ionograme :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">Urée :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">Glycémie :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
+                                    @if(!empty($prescriptions->urines))
+                                    <label for="autre">ECBU :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
+                                    @if(!empty($prescriptions->serologie))
+                                    <label for="autre">VIH :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
+                                    @if(!empty($prescriptions->examen))
+                                    <label for="autre">E.C.G :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    <label for="autre">Echographie cardiaque :</label>
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
+                                    @endif
 
                                     <label for="autre">Autres :</label>
-                                    <input type="text" id="examen_paraclinique" class="form-control" value="{{ old('examen_paraclinique[]') }}" name="examen_paraclinique[]">
+                                    <input type="text" class="form-control" value="{{ old('examen_paraclinique') }}" name="examen_paraclinique[]">
                                 </td>
                             </tr>
                             <tr>
