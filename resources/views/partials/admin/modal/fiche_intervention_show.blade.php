@@ -13,35 +13,37 @@
                     <h3>FICHES D'INTERVENTION</h3>
                     <br>
                     <div class="table-responsive">
-                        <table id="myTable" class="table table-bordred table-striped">
-                            <thead>
-                            <th>TYPE D'INTERVENTION</th>
-                            <th>POSITION PATIENT</th>
-                            <th>ANESTHESIE</th>
-                            <th>DATE INTERVENTION</th>
-                            <th>IMPPRIMER</th>
-                            </thead>
-                            <tbody>
+                        @if(count($fiche_interventions))
+                            <table id="myTable" class="table table-bordred table-striped">
+                                <thead>
+                                <th>TYPE D'INTERVENTION</th>
+                                <th>POSITION PATIENT</th>
+                                <th>ANESTHESIE</th>
+                                <th>DATE INTERVENTION</th>
+                                <th>IMPPRIMER</th>
+                                </thead>
+                                <tbody>
 
-                            @foreach($patient->fiche_interventions as $fiche_intervention)
+                                @foreach($patient->fiche_interventions as $fiche_intervention)
 
-                                <tr>
-                                    <td>{{ $fiche_intervention->type_intervention }}</td>
-                                    <td>{{ $fiche_intervention->position_patient }}</td>
-                                    <td>{{ $fiche_intervention->anesthesie }}</td>
-                                    <td>{{ $fiche_intervention->date_intervention }}</td>
-                                    <td>
-                                        <a class="btn btn-success btn-xs" title="Imprimer la fiche d'intervention" href="#">
-                                            <i class="fas fa-print"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr></tr>
-                            @endforeach
+                                    <tr>
+                                        <td>{{ $fiche_intervention->type_intervention }}</td>
+                                        <td>{{ $fiche_intervention->position_patient }}</td>
+                                        <td>{{ $fiche_intervention->anesthesie }}</td>
+                                        <td>{{ $fiche_intervention->date_intervention }}</td>
+                                        <td>
+                                            <a class="btn btn-success btn-xs" title="Imprimer la fiche d'intervention" href="#">
+                                                <i class="fas fa-print"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr></tr>
+                                @endforeach
 
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        @endif
                         <div class="clearfix"></div>
                         {{--{{ $fiche_intervention->links() }}--}}
 
