@@ -55,4 +55,5 @@ function searchFunction() {
                 tr[i].style.display = "none";
             }
         }
-    }}
+    }
+}

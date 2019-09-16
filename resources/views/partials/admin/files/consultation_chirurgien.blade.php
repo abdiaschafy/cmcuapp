@@ -5,7 +5,7 @@
                 @include('partials.flash_form')
                 <h3 class="card-title">Informations relatives au dossier patient</h3>
                 <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
-                            !! espace réservé au médécin</strong></i>
+                            !! espace réservé au médecin</strong></i>
                 </small>
                 <table class="table table-user-information ">
                     <tbody>
@@ -18,10 +18,10 @@
                             <td></td>
                         </tr>
                         <tr>
-                            <td><b>Médécin de référence :</b> <span class="text-danger">*</span></td>
+                            <td><b>Médecin de référence :</b> <span class="text-danger">*</span></td>
                             <td>
                                 <select class="form-control" name="medecin_r" id="medecin_r" required>
-                                    <option value=""> Nom du médécin</option>
+                                    <option value=""> Nom du médecin</option>
                                     @foreach ($users as $user)
                                         <option
                                             value="{{ $user->name }} {{ $user->prenom }}" {{old("medecin_r") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}
@@ -33,38 +33,38 @@
                         <tr>
                             <td><b>Motif de consultation :</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" wrap="hard" name="motif_c" cols="45" rows="5"
+                                            <textarea class="splitLines form-control" wrap="hard" name="motif_c" cols="55" rows="5"
                                                       placeholder="Motif de la consultation"
                                                       required>{{ old('motif_c') }}</textarea>
                             </td>
                         </tr>
                         <tr>
-                            <td><b>Intérrogatoire :</b> <span class="text-danger">*</span></td>
+                            <td><b>Interrogatoire :</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" name="interrogatoire" cols="45" rows="5"
-                                                      placeholder="Ici la note du médécin"
+                                            <textarea class="splitLines form-control" name="interrogatoire" cols="55" rows="5"
+                                                      placeholder="Ici la note du médecin"
                                                       required>{{ old('interrogatoire') }}</textarea>
                             </td>
                         </tr>
                         @if (count($consutation) == 0)
                             <tr>
-                                <td><b>Antécédent médicaux :</b></td>
+                                <td><b>Antécédents médicaux :</b></td>
                                 <td>
-                                            <textarea class="splitLines" name="antecedent_m" cols="45"
+                                            <textarea class="splitLines form-control" name="antecedent_m" cols="55"
                                                       rows="3">{{ old('antecedent_m') }}</textarea>
                                 </td>
                             </tr>
                             <tr>
-                                <td><b>Antécédent chirurgicaux :</b></td>
+                                <td><b>Antécédents chirurgicaux :</b></td>
                                 <td>
-                                            <textarea class="splitLines" name="antecedent_c" cols="45"
+                                            <textarea class="splitLines form-control" name="antecedent_c" cols="55"
                                                       rows="3">{{ old('antecedent_c') }}</textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td><b>Allergies :</b></td>
                                 <td>
-                                            <textarea class="splitLines" name="allergie" cols="45"
+                                            <textarea class="splitLines form-control" name="allergie" cols="55"
                                                       rows="2">{{ old('allergie') }}</textarea>
                                 </td>
                             </tr>
@@ -95,14 +95,14 @@
                         <tr>
                             <td><b>Examens physiques :</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" name="examen_p" cols="45" rows="3" placeholder="Examens physiques"
+                                            <textarea class="splitLines form-control" name="examen_p" cols="55" rows="3" placeholder="Examens physiques"
                                                       required>{{ old('examen_p') }}</textarea>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Examens compléméntaires:</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" name="examen_c" cols="45" rows="3"
+                                            <textarea class="splitLines form-control" name="examen_c" cols="55" rows="3"
                                                       placeholder="Examens compléméntaires"
                                                       required>{{ old('examen_c') }}</textarea>
                             </td>
@@ -110,7 +110,7 @@
                         <tr>
                             <td><b>Diagnostic médical :</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" name="diagnostic" cols="45" rows="3"
+                                            <textarea class="splitLines form-control" name="diagnostic" cols="55" rows="3"
                                                       placeholder="Votre premier avis"
                                                       required>{{ old('diagnostic') }}</textarea>
                             </td>
@@ -118,7 +118,7 @@
                         <tr>
                             <td><b>Proposition thérapeutique :</b> <span class="text-danger">*</span></td>
                             <td>
-                                            <textarea class="splitLines" name="proposition_therapeutique" cols="45" rows="3"
+                                            <textarea class="splitLines form-control" name="proposition_therapeutique" cols="55" rows="3"
                                                       required>{{ old('proposition_therapeutique') }}</textarea>
                             </td>
                         </tr>
@@ -160,7 +160,7 @@
                         <tr id="type_intervention" style='display:none;'>
                             <td><b>Type d'intervention :</b></td>
                             <td>
-                                            <textarea class="splitLines" name="type_intervention" cols="45" rows="3"
+                                            <textarea class="splitLines form-control" name="type_intervention" cols="55" rows="3"
                                             >{{ old('type_intervention') }}</textarea>
                             </td>
                         </tr>
@@ -173,15 +173,28 @@
                         <tr id="type_acte" style='display:none;'>
                             <td><b>Type d'actes à réaliser :</b></td>
                             <td>
-                                            <textarea class="splitLines" name="acte" cols="45" rows="3"
-                                            >{{ old('acte') }}</textarea>
+                                <div class="form-check">
+                                    <input type="checkbox" name="acte[]" value="Echographie de l'arbre urinaire" class="form-check-input"> Echographie de l'arbre urinaire
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="acte[]" value="Cystoscopie" class="form-check-input"> Cystoscopie
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="acte[]" value="Biopsie prostatique" class="form-check-input"> Biopsie prostatique
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="acte[]" value="Débitmétrie" class="form-check-input"> Débitmétrie
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" name="acte[]" value="Echographie prostatique sous rectale" class="form-check-input"> Echographie prostatique sous rectale
+                                </div>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Devis prévisionnel :</b></td>
                             <td>
                                 <select class="form-control" name="devis_p">
-                                    <option> Sélectionner un devis</option>
+                                    <option value=""> Sélectionnez un devis</option>
                                     @foreach ($devis as $devi)
                                         <option
                                             value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )
@@ -192,7 +205,7 @@
                             </td>
                         </tr>
                         <tr id="anesthesiste" style='display:none;'>
-                            <td><b>Date consultation d'anesthésiste :</b></td>
+                            <td><b>Date consultation anesthésiste :</b></td>
                             <td>
                                 <input type="date" class="form-control col-md-6" name="date_consultation_anesthesiste" value="{{ old('date_consultation_anesthesiste') }}" >
                             </td>

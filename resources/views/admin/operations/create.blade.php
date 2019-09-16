@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
                     <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
-                            class="fas fa-arrow-left"></i> Retour au dossier patients</a>
+                            class="fas fa-arrow-left"></i> Retour au dossier patient</a>
                 </div>
                 <br>
                 <br>
@@ -21,7 +21,7 @@
                             @include('partials.flash_form')
                             <h3 class="card-title">COMPTE-RENDU OPERATOIRE</h3>
                             <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
-                                        !! espace réservé au médécin</strong></i></small>
+                                        !! espace réservé au médecin</strong></i></small>
                             <table class="table table-user-information ">
                                 <tbody>
                                 <form action="{{ route('compte_rendu_bloc.store') }}" method="post">
@@ -100,6 +100,7 @@
                                         <td>
                                             <select class="form-control" name="aide_op" id="aide_op" required>
                                                 <option value=""> Nom de l'aide opératoire</option>
+                                                <option value="Aucun"> Aucun</option>
                                                 @foreach ($users as $user)
                                                     <option value="{{ $user->name }} {{ $user->prenom }}" {{old("aide_op") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
                                                 @endforeach
@@ -111,8 +112,8 @@
                                         <td>
                                             <select class="form-control" name="anesthesiste" id="anesthesiste" required>
                                                 <option value=""> Nom de l'anesthésiste</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("anesthesiste") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
+                                                @foreach ($anesthesiste as $anesthesistes)
+                                                    <option value="{{ $anesthesistes->name }} {{ $anesthesistes->prenom }}" {{old("anesthesiste") ?: '' ? "selected": ""}}>{{ $anesthesistes->name }} {{ $anesthesistes->prenom }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
@@ -122,8 +123,8 @@
                                         <td>
                                             <select class="form-control" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
                                                 <option value=""> Nom de l'infirmier anesthésiste</option>
-                                                @foreach ($users as $user)
-                                                    <option value="{{ $user->name }} {{ $user->prenom }}" {{old("infirmier_anesthesiste") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}</option>
+                                                @foreach ($infirmierAnesthesiste as $infirmierAnesthesistes)
+                                                    <option value="{{ $infirmierAnesthesistes->name }} {{ $infirmierAnesthesistes->prenom }}" {{old("infirmier_anesthesiste") ?: '' ? "selected": ""}}>{{ $infirmierAnesthesistes->name }} {{ $infirmierAnesthesistes->prenom }}</option>
                                                 @endforeach
                                             </select>
                                         </td>
@@ -151,44 +152,44 @@
                                     <tr>
                                         <td><b>Indications opératoires :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea class="splitLines" name="indication_operatoire" id="indication_operatoire" cols="55" rows="3" required>{{ old('indication_operatoire') }}</textarea>
+                                            <textarea class="splitLines form-control" name="indication_operatoire" id="indication_operatoire" cols="55" rows="3" required>{{ old('indication_operatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Compte-rendu opératoire :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea class="splitLines" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
+                                            <textarea class="splitLines form-control" name="compte_rendu_o" id="compte_rendu_o" cols="55" rows="3" required>{{ old('compte_rendu_o') }}</textarea>
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td><b>Résultats histo-pathologiques :</b></td>
                                         <td>
-                                            <textarea class="splitLines" name="resultat_histo" id="resultat_histo" cols="55" rows="3">{{ old('resultat_histo') }}</textarea>
+                                            <textarea class="splitLines form-control" name="resultat_histo" id="resultat_histo" cols="55" rows="3">{{ old('resultat_histo') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Suites opératoires:</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea name="suite_operatoire" id="suite_operatoire" cols="55" rows="3"required>{{ old('suite_operatoire') }}</textarea>
+                                            <textarea class="splitLines form-control" name="suite_operatoire" id="suite_operatoire" cols="55" rows="3"required>{{ old('suite_operatoire') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Traitement proposé :</b></td>
                                         <td>
-                                            <textarea class="splitLines" name="traitement_propose" cols="55" rows="4" placeholder="Traitement proposé">{{ old('traitement_propose') }}</textarea>
+                                            <textarea class="splitLines form-control" name="traitement_propose" cols="55" rows="4" placeholder="Traitement proposé">{{ old('traitement_propose') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Soins et examens à réaliser :</b></td>
                                         <td>
-                                            <textarea class="splitLines" name="soins" cols="55" rows="4" placeholder="Traitement proposé">{{ old('soins') }}</textarea>
+                                            <textarea class="splitLines form-control" name="soins" cols="55" rows="4" placeholder="Traitement proposé">{{ old('soins') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><b>Conclusions :</b> <span class="text-danger">*</span></td>
                                         <td>
-                                            <textarea class="splitLines" name="conclusion" id="conclusion" cols="55" rows="3" required>{{ old('conclusion') }}</textarea>
+                                            <textarea class="splitLines form-control" name="conclusion" id="conclusion" cols="55" rows="3" required>{{ old('conclusion') }}</textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -210,26 +211,26 @@
         </div>
     </div>
 
-    {{--<script type="text/javascript">--}}
-        {{--let splitLines = document.getElementsByClassName("splitLines")--}}
-        {{--let textarea = [];--}}
-        {{--for(let x=0; x<splitLines.length; x++){--}}
-            {{--textarea[x] = splitLines[x];--}}
-            {{--textarea[x].onkeyup = function () {--}}
-                {{--var lines = textarea[x].value.split("\n");--}}
-                {{--for (var i = 0; i < lines.length; i++) {--}}
-                    {{--if (lines[i].length <= 27) continue;--}}
-                    {{--var j = 0;--}}
-                    {{--space = 27;--}}
-                    {{--while (j++ <= 27) {--}}
-                        {{--if (lines[i].charAt(j) === " ") space = j;--}}
-                    {{--}--}}
-                    {{--lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");--}}
-                    {{--lines[i] = lines[i].substring(0, space);--}}
-                {{--}--}}
-                {{--textarea[x].value = lines.slice(0, 30).join("\n");--}}
-            {{--};--}}
-        {{--}--}}
-    {{--</script>--}}
+    <script type="text/javascript">
+        let splitLines = document.getElementsByClassName("splitLines")
+        let textarea = [];
+        for(let x=0; x<splitLines.length; x++){
+            textarea[x] = splitLines[x];
+            textarea[x].onkeyup = function () {
+                var lines = textarea[x].value.split("\n");
+                for (var i = 0; i < lines.length; i++) {
+                    if (lines[i].length <= 67) continue;
+                    var j = 0;
+                    space = 67;
+                    while (j++ <= 67) {
+                        if (lines[i].charAt(j) === " ") space = j;
+                    }
+                    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");
+                    lines[i] = lines[i].substring(0, space);
+                }
+                textarea[x].value = lines.slice(0, 69).join("\n");
+            };
+        }
+    </script>
     </body>
 @stop

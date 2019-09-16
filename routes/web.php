@@ -106,18 +106,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultation-anesthesiste/{id}', 'ConsultationsController@Export_consultation_anesthesiste')->name('consultation_anesthesiste.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
+    Route::post('fiche-intervention', 'CompteRenduBlocOperatoireController@StoreFicheIntervention')->name('fiche_intervention.store');
 
+    Route::get('compte-rendu-bloc-global/{patient}', 'CompteRenduBlocOperatoireController@index')->name('compte_rendu_bloc.index');
     Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');
     Route::post('compte-rendu-bloc', 'CompteRenduBlocOperatoireController@store')->name('compte_rendu_bloc.store');
     Route::get('compte-rendu-bloc/{id}', 'CompteRenduBlocOperatoireController@compte_rendu_bloc_pdf')->name('compte_rendu_bloc_pdf.pdf');
 
-    Route::get('compte-rendu-hospitalisation/create/{patient}', 'CompteRenduHospitalisationController@create')->name('compte_rendu_hos.create');
-    Route::post('compte-rendu-hospitalisation', 'CompteRenduHospitalisationController@store')->name('compte_rendu_hos.store');
-    Route::get('compte-rendu-hospitalisation-etat/{id}', 'CompteRenduHospitalisationController@compte_rendu_hos')->name('compte_rendu_hos_pdf.pdf');
-
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
+    Route::get('ordonance-creation/create/{patient}','OrdonancesController@ordonance_create')->name('ordonance.create');
 
 
     Route::post('soins', 'SoinsController@store')->name('soins.store');

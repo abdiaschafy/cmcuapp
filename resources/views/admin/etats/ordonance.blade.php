@@ -45,7 +45,7 @@
     </div>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-4">
             <p>Dr.<small> {{ $ordonance->user->prenom }} {{ $ordonance->user->name }}</small></p>
             <p><small>{{ $ordonance->user->specialite }}</small></p>
             <p class="mt-2">Onmc: <small>{{ $ordonance->user->onmc }}</small></p>
@@ -65,56 +65,37 @@
     <br>
     <br>
     <br>
-    
+
     <div class="row">
-        <div >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5><u> Médicament(s)</u></h5>
-                </div>
-                {!! nl2br(e($ordonance->medicament)) !!}
-            </div>
+        <div class="col-md-4">
+            @foreach(explode(",", $ordonance->medicament) as $medicament)
+                <ul>
+                    <li>
+                        {{ $medicament }}
+                    </li>
+                </ul>
+            @endforeach
         </div>
-        
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <div >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5><u> Quantité(s)</u></h5>
-                </div>
-                {!! nl2br(e($ordonance->quantite)) !!}
-            </div>
+        <div class="col-md-4 offset-3">
+            @foreach(explode(",", $ordonance->quantite) as $quantite)
+                <ul>
+                    <li>
+                        {{ $quantite }}
+                    </li>
+                </ul>
+            @endforeach
         </div>
-        
-    </div>
-    <br>
-    <br>
-    <div class="row">
-        <div >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5><u>Posologie(s)</u></h5>
-                </div>
-                {!! nl2br(e($ordonance->description)) !!}
-            </div>
+        <div class="col-md-4 offset-6">
+            @foreach(explode(",", $ordonance->description) as $description)
+                <ul>
+                    <li>
+                        {{ $description }}
+                    </li>
+                </ul>
+            @endforeach
         </div>
-        
     </div>
+
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>

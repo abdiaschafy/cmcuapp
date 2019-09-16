@@ -36,7 +36,10 @@
         @include('partials.header')
         <div class="container">
 <div class="row">
-
+    <div class="col-md-12  toppad  offset-md-0 ">
+        <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
+                class="fas fa-arrow-left"></i> Retour au dossier patient</a>
+    </div>
             <div class="col-md-9">
                 <!-- resumt -->
                 <div class="card">
@@ -45,10 +48,9 @@
                             <div class="col-xl-12">
                                 <div class="col-12 col-md-12">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><b>NOM ET PRENOM DU PATIENT :</b> {{ $patient->name }}</li>
-                                        <li class="list-group-item"><b>TELEPHONE :</b> {{ $patient->telephone }}</li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i> 000-000-0000</li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
+                                        <li class="list-group-item"><b>NOM ET PRENOM DU PATIENT :</b> {{ $patient->name }} {{ $patient->prenom }}</li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i> <b>TELEPHONE :</b> {{ $patient->telephone }}</li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i> {{ $patient->email }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,18 +64,30 @@
                                 <li class="list-group-item"><b>MEDECIN DE REFERENCE :</b> Dr. {{ $consultation->medecin_r }}</li>
                                 <li class="list-group-item"><b>NOM ET PRENOM DU MEDECIN :</b> Dr. {{ $consultation->user->name }}</li>
                                 <hr>
-                                <li class="list-group-item"><b>MOTIF DE CONSULTATION :</b> {{ $consultation->motif_c }}</li>
-                                <li class="list-group-item"><b>INTERROGATOIE :</b> {!! nl2br($consultation->interrogatoire) !!}</li>
-                                <li class="list-group-item"><b>EXAMENS PHYSIQUES :</b> {{ $consultation->examen_p }}</li>
-                                <li class="list-group-item"><b>EXAMENS COMPLEMENTAIRES :</b> {{ $consultation->examen_c }}</li>
-                                <li class="list-group-item"><b>PROPOSITIONS THERAPEUTIQUES :</b> {{ $consultation->proposition_therapeutique }}</li>
-                                <li class="list-group-item"><b>PROPOSITIONS DE SUIVI :</b> {{ $consultation->proposition }}</li>
-                                <li class="list-group-item"><b>TYPE D'INTERVENTION :</b> {{ $consultation->type_intervention }}</li>
-                                <li class="list-group-item"><b>DATE INTERVENTION :</b> {{ $consultation->date_intervention }}</li>
-                                <li class="list-group-item"><b>TYPE D'ACTES A REALISER :</b> {{ $consultation->acte }}</li>
-                                <li class="list-group-item"><b>DEVIS PREVISIONNEL :</b> {{ $consultation->devis_p }}</li>
-                                <li class="list-group-item"><b>DATE CONSULTATION ANESTHESISTE :</b> {{ $consultation->date_consultation_anesthesiste }}</li>
-                                <li class="list-group-item"><b>DATE DE CONSULTATION :</b> {{ $consultation->date_consultation }}</li>
+                                <li class="list-group-item"><b>MOTIF DE CONSULTATION :</b> </li>
+                                <p>{{ $consultation->motif_c }}</p>
+                                <li class="list-group-item"><b>INTERROGATOIE :</b> </li>
+                                <p>{!! nl2br($consultation->interrogatoire) !!}</p>
+                                <li class="list-group-item"><b>EXAMENS PHYSIQUES :</b> </li>
+                                <p>{{ $consultation->examen_p }}</p>
+                                <li class="list-group-item"><b>EXAMENS COMPLEMENTAIRES :</b> </li>
+                                <p>{{ $consultation->examen_c }}</p>
+                                <li class="list-group-item"><b>PROPOSITIONS THERAPEUTIQUES :</b> </li>
+                                <p>{{ $consultation->proposition_therapeutique }}</p>
+                                <li class="list-group-item"><b>PROPOSITIONS DE SUIVI :</b> </li>
+                                <p>{{ $consultation->proposition }}</p>
+                                <li class="list-group-item"><b>TYPE D'INTERVENTION :</b> </li>
+                                <p>{{ $consultation->type_intervention }}</p>
+                                <li class="list-group-item"><b>DATE INTERVENTION :</b> </li>
+                                <p>{{ $consultation->date_intervention }}</p>
+                                <li class="list-group-item"><b>TYPE D'ACTES A REALISER :</b> </li>
+                                <p>{{ $consultation->acte }}</p>
+                                <li class="list-group-item"><b>DEVIS PREVISIONNEL :</b> </li>
+                                <p>{{ $consultation->devis_p }}</p>
+                                <li class="list-group-item"><b>DATE CONSULTATION ANESTHESISTE :</b> </li>
+                                <p>{{ $consultation->date_consultation_anesthesiste }}</p>
+                                <li class="list-group-item"><b>DATE DE CONSULTATION :</b> </li>
+                                <p>{{ $consultation->date_consultation }}</p>
                             </ul>
                         </div>
                     @endforeach

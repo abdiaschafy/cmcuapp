@@ -1,6 +1,7 @@
 <tbody>
 @can('medecin', \App\Patient::class)
     @can('chirurgien', \App\Patient::class)
+        <tr></tr>
         <tr>
             <td>
                 <a href="{{ route('consultations.index', $patient->id) }}">
@@ -209,7 +210,6 @@
                 @endif
             </td>
         @endcan
-        <td></td>
         @if (count($patient->consultations))
             @can('chirurgien', \App\Patient::class)
                 <td>
@@ -224,15 +224,11 @@
     @can('chirurgien', \App\Patient::class)
         <tr>
             <td>
-                <a href="">
+                <a href="{{ route('compte_rendu_bloc.index', $patient->id) }}">
                     <h1 class="text-info">COMPTE-RENDU</h1>
                 </a>
             </td>
-            <td>
-                <a href="">
-                    <h1 class="text-info">OPERATOIRE</h1>
-                </a>
-            </td>
+            <td></td>
         </tr>
 
         @if (count($patient->compte_rendu_bloc_operatoires))
@@ -274,9 +270,11 @@
             </tr>
             <tr>
                 <td>
+                    @if (count($patient->consultations))
                     <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte-rendu opératoire" class="btn btn-danger">
                         <i class="far fa-plus-square"></i> Nouveau CRO
                     </a>
+                    @endif
                 </td>
                 <td>
                     @if (count($patient->compte_rendu_bloc_operatoires))
@@ -289,9 +287,11 @@
         @else
             <tr>
                 <td>
+                    @if (count($patient->consultations))
                     <a href="{{ route('compte_rendu_bloc.create', $patient->id) }}" title="Rédiger un compte-rendu opératoire" class="btn btn-danger">
                         <i class="far fa-plus-square"></i> Nouveau CRO
                     </a>
+                    @endif
                 </td>
                 <td></td>
             </tr>

@@ -15,7 +15,9 @@
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
-                            <th>DESCRIPTION</th>
+                            <th>MEDICAMENT</th>
+                            <th>QUANTITE</th>
+                            <th>POSOLOGIE</th>
                             <th>DATE</th>
                             <th>IMPPRIMER</th>
                             </thead>
@@ -24,6 +26,8 @@
                             @foreach($patient->ordonances as $ordonance)
 
                                 <tr>
+                                    <td>{{ $ordonance->medicament }}</td>
+                                    <td>{{ $ordonance->quantite }}</td>
                                     <td>{{ $ordonance->description }}</td>
                                     <td>{{ $ordonance->created_at->toFormattedDateString() }}</td>
                                     <td>

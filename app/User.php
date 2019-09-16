@@ -66,7 +66,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Client::class);
     }
-    
+
+    public function fiche_interventions()
+    {
+        return $this->hasMany(FicheIntervention::class);
+    }
+
     public function devis()
     {
         return $this->hasMany(Devis::class);

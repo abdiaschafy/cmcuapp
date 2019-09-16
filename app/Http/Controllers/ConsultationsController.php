@@ -6,7 +6,6 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
-use App\Http\Requests\ConsultationAnesthesisteRequest;
 use App\Http\Requests\ConsultationRequest;
 use App\Patient;
 use App\User;
@@ -58,7 +57,7 @@ class ConsultationsController extends Controller
             'examen_p'=> request('examen_p'),
             'devis_p'=> request('devis_p'),
             'motif_c'=> request('motif_c'),
-            'acte'=> request('acte'),
+            'acte'=> implode(",", $request->acte),
             'type_intervention' => request('type_intervention'),
             'date_intervention' => request('date_intervention'),
             'date_consultation' => request('date_consultation'),

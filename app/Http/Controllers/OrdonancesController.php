@@ -11,14 +11,14 @@ class OrdonancesController extends Controller
 
     public function store(Request $request)
     {
-        $patient = Patient::findOrFail($request->patient_id);
 
+        $patient = Patient::findOrFail($request->patient_id);
         Ordonance::create([
             'user_id' => auth()->id(),
             'patient_id' => $patient->id,
-            'description'=> request('description'),
-            'medicament'=> request('medicament'),
-            'quantite'=> request('quantite'),
+            'description'=> implode(",", $request->description),
+            'medicament'=> implode(",", $request->medicament),
+            'quantite'=> implode(",", $request->quantite),
 
         ]);
 
@@ -36,6 +36,11 @@ class OrdonancesController extends Controller
         $pdf->save(storage_path('ordonance').'.pdf');
 
         return $pdf->download('ordonance.pdf');
+    }
+
+    public function ordonance_create(Patient $patient)
+    {
+        return view('admin.prescriptions.ordonance_create', compact('patient'));
     }
 
 }
