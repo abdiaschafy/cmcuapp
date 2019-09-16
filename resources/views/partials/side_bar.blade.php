@@ -71,6 +71,14 @@
                     @endcan
                 </ul>
             </li>
+
+            <li>
+                <a href="{{ route('clients.index') }}">
+                <i class="fas fa-list-ul"></i>
+                 Clients Externes
+                </a>        
+           </li>
+           
            
         @endcan
         @can('create', \App\Produit::class)
@@ -122,24 +130,7 @@
                 </a>
             </li>
         @endcan
-        @can('create', \App\Facture::class)
-            <li>
-                <a href="#pageSubmenu3" data-toggle="collapse" aria-expanded="false">
-                    <i class="far fa-money-bill-alt"></i>
-                    Factures
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="pageSubmenu3">
-                    <li>
-                        <a href="{{ route('patients.index') }}">Consultation</a>
-                    </li>
-                    <li>
-                        <a href="login.html">Intervention</a>
-                    </li>
-                </ul>
-            </li>
-        @endcan
-        @can('create', \App\Event::class)
+      @can('create', \App\Event::class)
             <li>
                 <a href="{{ route('events.index') }}">
                     <i class="far fa-calendar-times"></i>
@@ -176,9 +167,14 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures chambres
                         </a>
-                        
+                        <a href="{{ route('factures.client') }}">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures clients externes
+                        </a>
+                       
                     </li>
                 </ul>
+               
             </li>
         @endcan
 
