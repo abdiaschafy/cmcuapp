@@ -44,6 +44,8 @@ class PatientsController extends Controller
                 'name'=> 'required',
                 'name'=> '',
                 'assurance'=> '',
+                'assurancec'=> '',
+                'assurec'=> '',
                 'motif'=> '',
                 'montant'=> '',
                 'avance'=> '',
@@ -56,9 +58,13 @@ class PatientsController extends Controller
                 'date_insertion'=> '',
             ]);
          $patient = new Patient();
-
         $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
         $patient->assurance = $request->get('assurance');
+        $patient->reste1= (($request->get('montant')));
+
+        $patient->assurec =((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+
+        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
@@ -66,7 +72,6 @@ class PatientsController extends Controller
         $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
         $patient->reste = $patient->montant - $patient->avance;
-     
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
@@ -104,6 +109,8 @@ class PatientsController extends Controller
             'name'=> '',
             'prenom'=> '',
             'assurance'=> '',
+            'assurancec'=> '',
+            'assurec'=> '',
             'numero_assurance'=> '',
             'numero_dossier'=> '',
             'montant'=> '',
@@ -126,6 +133,8 @@ class PatientsController extends Controller
         $patient->avance = $request->get('avance');
         $patient->reste = $request->get('reste');
         $patient->reste1 = $request->get('reste1');
+        $patient->assurancec = $request->get('assurancec');
+        $patient->assurec = $request->get('assurec');
         $patient->demarcheur = $request->get('demarcheur');
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->motif = $request->get('motif');
@@ -185,6 +194,9 @@ class PatientsController extends Controller
         $facture = FactureConsultation::create([
             'numero' => $patient->numero_dossier,
             'patient_id' => $patient->id,
+            'assurance' => $patient->assurance,
+            'assurancec' => $patient->assurancec,
+            'assurec' => $patient->assurec,
             'motif' => $patient->motif,
             'montant' => $patient->montant,
             'demarcheur' => $patient->demarcheur,

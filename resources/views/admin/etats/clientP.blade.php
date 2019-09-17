@@ -216,7 +216,7 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h4 class="invoice-id">RECU {{ $client->name }} </h4>
+                        <h4 class="invoice-id">RECU {{ $client->motif }}</h4>
                         <br>
                     </div>
                 </div>

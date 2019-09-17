@@ -8,7 +8,7 @@
 
     {{--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
     <style>
-        body { font-size: 5px }
+        body { font-size: 3px }
 
         thead > tr > th {
             text-align: center;
@@ -191,7 +191,7 @@
                 page-break-before: always
             }
         }
-
+        
     </style>
 </head>
 <body>
@@ -216,12 +216,14 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
+                        <h6 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h6>
                         <br>
                     </div>
                 </div>
+                <h6 class="text-center">ASSURANCE:{{ $patient->assurance }}</h6>
                 <h6 class="text-center">{{ $patient->demarcheur }}</h6>
-                <table border="0" cellspacing="0" cellpadding="0">
+               <h6>COUT ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUT PATIENT: {{ $patient->assurec }}</h6>
+               <table border="0" cellspacing="0" cellpadding="0">
                 <thead>
                         <tr>
                             <th class="text-left">NOM</th>
@@ -229,7 +231,6 @@
                             <th class="text-left"> MONTANT (FCFA)</th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                            
                         </tr>
                         </thead>
                         <tbody>
@@ -257,9 +258,6 @@
         </div>
      </div>
 </div>
-    <br>
-    <br>
-
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>
@@ -267,23 +265,21 @@
         <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
         <strong>www.cmcu-cm.com</strong><br>
     </div>
-
     <div id="inventory-invoice">
-
-        {{--<div class="toolbar hidden-print">--}}
-        {{--<hr>--}}
-        {{--</div>--}}
         <div class="invoice overflow-auto">
             <div style="min-width: 300px">
                 <main>
                     <div class="row contacts">
 
                         <div  class="col invoice-details ">
-                            <h4 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h4>
+                            <h6 class="invoice-id">RECU CONSULTATION N°{{ $patient->numero_dossier }}</h6>
                             <br>
                         </div>
                     </div>
+                    <h6 class="text-center">ASSURANCE:{{ $patient->assurance }}</h6>
                     <h6 class="text-center">{{ $patient->demarcheur }}</h6>
+                    <h6>COUT ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUT PATIENT: {{ $patient->assurec }}</h6>
                     <table border="0" cellspacing="0" cellpadding="0">
                         <thead>
                         <tr>
@@ -292,7 +288,7 @@
                             <th class="text-left"> MONTANT (FCFA) </th>
                             <th class="text-left"> AVANCE </th>
                             <th class="text-left"> RESTE </th>
-                        </tr>
+                         </tr>
                         </thead>
                         <tbody>
                         <tr>
@@ -301,7 +297,7 @@
                             <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
                             <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
-                        </tr>
+                         </tr>
                         <tr>
                             <div class="notices">
                                 <H6><div>LA CAISSE:</div></H6>
