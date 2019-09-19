@@ -23,7 +23,7 @@ class CreateFactureConsultationsTable extends Migration
             $table->string('avance')->nullable();
             $table->string('reste')->nullable();
             $table->string('reste1')->nullable();
-            $table->integer('assurance')->nullable();
+            $table->string('assurance')->nullable();
             $table->integer('assurancec')->nullable();
             $table->integer('assurec')->nullable();
             $table->string('demarcheur')->nullable();
