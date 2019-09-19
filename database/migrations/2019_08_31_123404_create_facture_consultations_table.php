@@ -20,16 +20,6 @@ class CreateFactureConsultationsTable extends Migration
             $table->integer('numero');
             $table->string('motif');
             $table->string('montant');
-            $table->string('avance')->nullable();
-            $table->string('reste')->nullable();
-            $table->string('reste1')->nullable();
-            $table->integer('assurance')->nullable();
-            $table->integer('assurancec')->nullable();
-            $table->integer('assurec')->nullable();
-            $table->string('demarcheur')->nullable();
-            $table->string('prenom')->nullable();
-            $table->date('date_insertion');
-            
             $table->timestamps();
         });
     }
