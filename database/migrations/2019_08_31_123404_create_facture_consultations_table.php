@@ -19,10 +19,10 @@ class CreateFactureConsultationsTable extends Migration
             $table->unsignedInteger('patient_id')->index();
             $table->integer('numero');
             $table->string('motif');
-            $table->string('montant');
-            $table->string('avance')->nullable();
-            $table->string('reste')->nullable();
-            $table->string('reste1')->nullable();
+            $table->integer('montant');
+            $table->integer('avance')->nullable();
+            $table->integer('reste')->nullable();
+            $table->integer('reste1')->nullable();
             $table->string('assurance')->nullable();
             $table->integer('assurancec')->nullable();
             $table->integer('assurec')->nullable();
