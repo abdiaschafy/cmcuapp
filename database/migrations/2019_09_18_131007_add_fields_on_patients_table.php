@@ -35,16 +35,7 @@ class AddFieldsOnPatientsTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->dropColumn('reste1');
-            $table->dropColumn('reste');
-            $table->dropColumn('assurancec');
-            $table->dropColumn('assurec');
-            $table->dropColumn('demarcheur');
-            $table->dropColumn('prenom');
-            $table->dropColumn('date_insertion');
-            $table->dropColumn('montant');
-            $table->dropColumn('avance');
-
+            $table->dropColumn('reste1', 'reste', 'assurancec', 'assurec', 'demarcheur', 'prenom', 'date_insertion', 'montant', 'avance');
         });
     }
 }
