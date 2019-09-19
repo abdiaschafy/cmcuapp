@@ -27,7 +27,7 @@
                             <th>
                                 NUMERO
                             </th>
-                            <th>NOM / PRENOM</th>
+                            <th>NOM </th>
                             <th>PRENOM</th>
                             <th>Assurance</th>
                             <th>DATE DE CREATION</th>

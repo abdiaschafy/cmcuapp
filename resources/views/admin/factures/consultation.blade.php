@@ -14,7 +14,7 @@
     <!--// top-bar -->
         @can('view', \App\User::class)
             <div class="container">
-                <h1 class="text-center">FACTURES CONSULTATION</h1>
+                <h1 class="text-center">FACTURES CONSULTATIONS</h1>
                 <hr>
             </div>
             <div class="col-md-3 offset-md-8 text-center">

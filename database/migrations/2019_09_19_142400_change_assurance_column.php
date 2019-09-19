@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldsOnFactureConsultationsTable extends Migration
+class ChangeAssuranceColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddFieldsOnFactureConsultationsTable extends Migration
     public function up()
     {
         Schema::table('facture_consultations', function (Blueprint $table) {
-            $table->string('assurance')->nullable();
+            $table->string('assurance')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddFieldsOnFactureConsultationsTable extends Migration
     public function down()
     {
         Schema::table('facture_consultations', function (Blueprint $table) {
-            $table->dropColumn('assurance');
+            //
         });
     }
 }
