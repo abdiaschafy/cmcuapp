@@ -43,6 +43,7 @@ class PatientsController extends Controller
             $request->validate([
                 'name'=> 'required',
                 'name'=> '',
+                'prenom'=> '',
                 'assurance'=> '',
                 'assurancec'=> '',
                 'assurec'=> '',

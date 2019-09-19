@@ -28,6 +28,7 @@
                                 NUMERO
                             </th>
                             <th>NOM / PRENOM</th>
+                            <th>PRENOM</th>
                             <th>Assurance</th>
                             <th>DATE DE CREATION</th>
                             <th>ACTION</th>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>CMCU - {{ $patient->numero_dossier }}</td>
                                     <td>{{ $patient->name }}</td>
+                                    <td>{{ $patient->prenom }}</td>
                                     <td>{{ $patient->prise_en_charge }}</td>
                                     <td>{{ $patient->date_insertion}}</td>
                                     <td style="display: inline-flex;">
