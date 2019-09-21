@@ -106,7 +106,7 @@ class Patient extends Model
         return $this->hasMany(Dossier::class);
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

@@ -22,7 +22,7 @@ class PatientsController extends Controller
     public function index()
     {
         $this->authorize('update', Patient::class);
-        $patients = Patient::with('users')->latest()->paginate(100);
+        $patients = Patient::with('user')->latest()->paginate(100);
         return view('admin.patients.index', compact('patients'));
 
     }
@@ -141,9 +141,6 @@ class PatientsController extends Controller
         $patient->motif = $request->get('motif');
         $patient->date_insertion = $request->get('date_insertion');
         $patient->prenom = $request->get('prenom');
-
-
-
         $patient->user_id = Auth::id();
         $patient->save();
 
