@@ -32,7 +32,7 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
-                    @can('medecin', \App\Patient::class)
+                    @can('chirurgien', \App\Patient::class)
                         <a href="{{ route('ordonance.create', $patient->id) }}" title="Nouvelle ordonnance médicale" class="btn btn-success">
                             <i class="far fa-plus-square"></i>
                             Ordonnance
@@ -43,6 +43,9 @@
                         </button>
                     @endcan
                     @can('anesthesiste', \App\Patient::class)
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SpostAnesth" title="Surveillance post anesthésique" data-whatever="@mdo">
+                        <i class="far fa-plus-square"></i> Surveillance post anesthésique
+                    </button>
                     <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-success">
                         <i class="fas fa-eye"></i>
                         Consultations
@@ -154,6 +157,7 @@
                 @include('partials.admin.modal.fiche_intervention')
                 @include('partials.admin.modal.fiche_intervention_anesthesiste')
                 @include('partials.admin.modal.visite_preanesthesique')
+                @include('partials.admin.modal.surveillance_post_a')
 
 
                 {{-- FIN DE TOUS LES MODAL --}}
