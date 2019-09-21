@@ -104,10 +104,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
-    Route::get('consentement-eclaire/{id}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
+    Route::get('consentement-eclaire/{patient}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
-    Route::get('premedication-adaptation-traitement/{patient}', 'ConsultationsController@Premdication_Tritement')->name('premedication_adaptation.index');
+    Route::get('premedication-adaptation-traitement/{patient}', 'ConsultationsController@Premdication_Traitement')->name('premedication_adaptation.index');
 
     Route::post('fiche-intervention', 'CompteRenduBlocOperatoireController@StoreFicheIntervention')->name('fiche_intervention.store');
     Route::get('fiche-intervention-preview/{id}', 'CompteRenduBlocOperatoireController@Print_ficheIntervention')->name('fiche_intervention.pdf');

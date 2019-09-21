@@ -131,7 +131,7 @@ class ConsultationsController extends Controller
         return back();
     }
 
-    public function Premdication_Tritement(Patient $patient)
+    public function Premdication_Traitement(Patient $patient)
     {
         return view('admin.consultations.premdication_tritement', compact('patient'));
     }
@@ -145,12 +145,15 @@ class ConsultationsController extends Controller
         return view('admin.consultations.show', compact('consultations'));
     }
 
-    public function Export_consentement_eclaire($id)
+    public function Export_consentement_eclaire(Patient $patient)
     {
 
-        $ConsultationAnesthesiste = ConsultationAnesthesiste::with('patient', 'user')->find($id);
+        $pdf = PDF::loadView('admin.etats.consentement_eclaire', [
 
-        $pdf = PDF::loadView('admin.etats.consentement_eclaire', compact('ConsultationAnesthesiste', 'user'));
+            'patient' => $patient,
+            'dossiers' => $patient->dossiers()->latest()->first(),
+            'consultation_anesthesiste' => $patient->consultation_anesthesistes()->latest()->first()
+        ]);
 
         $pdf->save(storage_path('consentement_eclaire').'.pdf');
 

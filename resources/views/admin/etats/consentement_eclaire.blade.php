@@ -62,17 +62,18 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-3">
-            <p>Nom / Pénom patient :</p>
+        <div class="col-5">
+            <p>Nom patient : <b>{{ $patient->name }}</b></p>
+            <p>Pénom patient : <b>{{ $patient->prenom }}</b></p>
             <p>Nom parent :</p>
-            <p>Adresse :</p>
-            <p>Téléphone :</p>
+            <p>Adresse : <b>{{ $dossiers->adresse }}</b></p>
+            <p>Téléphone : <b>{{ $dossiers->portable_1 }}</b></p>
         </div>
-        <div class="col-3 offset-6">
-            <p>Date intervention :</p>
-            <p>Type intrvention :</p>
-            <p>Type d'anesthésie :</p>
-            <p>Chirugien :</p>
+        <div class="col-8 offset-6">
+            <p>Date intervention : <b>{{ $consultation_anesthesiste->date_intervention }}</b></p>
+            <p>Type intrvention : <b>{{ $consultation_anesthesiste->technique_anesthesie1 }}</b></p>
+            <p>Type d'anesthésie : <b>{{ $consultation_anesthesiste->technique_anesthesie1 }}</b></p>
+            <p>Chirugien : <b>{{ $consultation_anesthesiste->operateur }}</b></p>
         </div>
     </div>
 
@@ -80,7 +81,7 @@
         <div class="row ">
             <div class="col-12">
                 <p class="par_first">
-                    Je déclare avoir reçu une information claire sur les risques et bénéfices des techniques d’anesthésies pour l’intervention prévue le (), lors de la consultation d’anesthésie du ()
+                    Je déclare avoir reçu une information claire sur les risques et bénéfices des techniques d’anesthésies pour l’intervention prévue le <b>{{ $consultation_anesthesiste->date_intervention }}</b>, lors de la consultation d’anesthésie du <b>{{ $consultation_anesthesiste->created_at }}</b>
                     Je suis conscient d’une possibilité d’un changement de technique d’anesthésie au dernier moment selon l’évolution de mon état de santé ou de l’acte chirurgical.
                     Je suis conscient du changement d’anesthésie avant l’intervention.
                 </p>
@@ -94,7 +95,7 @@
     <div class="row">
         <div class="col-12">
             <p>
-                Fait à Douala,
+                Fait à Douala, {{ Carbon\Carbon::now()->ToDateString() }}
             </p>
         </div>
     </div>
