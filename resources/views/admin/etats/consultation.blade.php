@@ -191,7 +191,10 @@
                         <br>
                     </div>
                 </div>
+                @if($patient->assurance)
                 <h6 class="text-center">ASSURANCE:{{ $patient->assurance }}</h6>
+                @else
+                @endif
                 <h6 class="text-center">{{ $patient->demarcheur }}</h6>
                 @if($patient->assurec)
                   <h6>PART ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $patient->assurec }}</h6>
@@ -226,7 +229,7 @@
                     <tr>
                         <div class="notices">
                            <H6><div>LA CAISSE:{{ $patient->user->prenom }} {{ $patient->user->name }}</div></H6>
-                           <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
+                           <H6><div class="notice">Douala,{{ $patient->created_at->toFormattedDateString() }}</div></H6>
                         </div>
                     </tr>
                     </tbody>
@@ -242,7 +245,7 @@
 </div>
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
-        <h6><strong>CENTRE MEDICAL CHIRURGICAL-D'UROLOGIE</strong></h6>
+        <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
         <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
         <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
         <strong>www.cmcu-cm.com</strong><br>
@@ -295,7 +298,7 @@
                         <tr>
                             <div class="notices">
                                 <H6><div>LA CAISSE: {{ $patient->user->prenom }} {{ $patient->user->name }}</div></H6>
-                                <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
+                                <H6><div class="notice">Douala,{{ $patient->created_at->toFormattedDateString() }}</div></H6>
                             </div>
                         </tr>
                         </tbody>
