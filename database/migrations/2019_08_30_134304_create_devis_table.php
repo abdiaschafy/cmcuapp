@@ -25,7 +25,7 @@ class CreateDevisTable extends Migration
             $table->integer('qte2')->nullable();
             $table->integer('qte3')->nullable();
             $table->integer('qte4')->nullable();
-            $table->integer('qte5')->nullable();
+            $table->string('qte5')->nullable();
             $table->integer('qte6')->nullable();
             $table->integer('qte7')->nullable();
             $table->integer('qte8')->nullable();
