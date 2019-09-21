@@ -9,7 +9,6 @@
     {{--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">--}}
     <style>
         body { font-size: 3px }
-
         thead > tr > th {
             text-align: center;
             padding: 5px;
@@ -24,7 +23,6 @@
             width: 30px;
             padding-top: 10px;
         }
-
         #inventory-invoice{
             padding: 20px;
         }
@@ -35,78 +33,63 @@
             min-height: 480px;
             padding: 12px
         }
-
         .invoice header {
             padding: 10px 0;
             margin-bottom: 10px;
             border-bottom: 1px solid #3989c6
         }
-
         .invoice .company-details {
             text-align: right
         }
-
         .invoice .company-details .name {
             margin-top: 0;
             margin-bottom: 0
         }
-
         .invoice .contacts {
             margin-bottom: 10px;
             text-align: center
         }
-
         .invoice .invoice-to {
             text-align: left
         }
-
         .invoice .invoice-to .to {
             margin-top: 0;
             margin-bottom: 0
         }
-
         .invoice .invoice-details {
             text-align: right
         }
-
         .invoice .invoice-details .invoice-id {
             margin-top: 0;
             text-align: center;
             color: #3989c6
         }
-
         .invoice main {
             padding-bottom: 30px
         }
-
         .invoice main .thanks {
             margin-top: -50px;
             font-size: 2em;
             margin-bottom: 50px
         }
-
         .invoice main .notices {
             padding-left: 6px;
             border-left: 6px solid #3989c6
         }
-
         .invoice main .notices .notice {
             font-size: 1.2em
         }
-
         .invoice table {
             width: 90%;
             border-collapse: collapse;
             border-spacing: 0;
             margin-bottom: 20px
         }
-
         .invoice table td,.invoice table th {
             padding: 15px;
             background: #eee;
             border-bottom: 1px solid #fff
         }
-
         .invoice table th{
             white-space: nowrap;
             font-weight: 300;
@@ -122,27 +105,22 @@
             color: #3989c6;
             font-size: 1.2em
         }
-
         .invoice table .tax,.invoice table .total,.invoice table .unit {
             text-align: right;
             font-size: 1.2em
         }
-
         .invoice table .no {
             color: #fff;
             font-size: 1.6em;
             background: #17a2b8
         }
-
         .invoice table .unit {
             background: #ddd
         }
-
         .invoice table .total {
             background: #17a2b8;
             color: #fff
         }
-
         .invoice table tfoot td {
             background: 0 0;
             border-bottom: none;
@@ -152,21 +130,17 @@
             font-size: 1.2em;
             border-top: 1px solid #aaa
         }
-
         .invoice table tfoot tr:first-child td {
             border-top: none
         }
-
         .invoice table tfoot tr:last-child td {
             color: #3989c6;
             font-size: 1.4em;
             border-top: 1px solid #3989c6
         }
-
         .invoice table tfoot tr td:first-child {
             border: none
         }
-
         .invoice footer {
             width: 90%;
             text-align: center;
@@ -174,19 +148,16 @@
             border-top: 1px solid #aaa;
             padding: 8px 0
         }
-
         @media print {
             .invoice {
                 font-size: 11px!important;
                 overflow: hidden!important
             }
-
             .invoice footer {
                 position: absolute;
                 bottom: 10px;
                 page-break-after: always
             }
-
             .invoice>div:last-child {
                 page-break-before: always
             }
@@ -222,8 +193,11 @@
                 </div>
                 <h6 class="text-center">ASSURANCE:{{ $patient->assurance }}</h6>
                 <h6 class="text-center">{{ $patient->demarcheur }}</h6>
-               <h6>COUT ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUT PATIENT: {{ $patient->assurec }}</h6>
-               <table border="0" cellspacing="0" cellpadding="0">
+                @if($patient->assurec)
+                  <h6>PART ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $patient->assurec }}</h6>
+                  @else
+               @endif  
+                 <table border="0" cellspacing="0" cellpadding="0">
                 <thead>
                         <tr>
                             <th class="text-left">NOM</th>
@@ -238,12 +212,20 @@
                             <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
                             <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
                             <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
+                            @if($patient->avance)
                             <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
+                            @else
+                            <td class="text-left"><h4>0</h4></td>
+                            @endif
+                            @if($patient->avance)
                             <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
+                            @else
+                                <td class="text-left"><h4>0</h4></td>
+                            @endif
                         </tr>
                     <tr>
                         <div class="notices">
-                           <H6><div>LA CAISSE:</div></H6>
+                           <H6><div>LA CAISSE:{{ $patient->user->prenom }} {{ $patient->user->name }}</div></H6>
                            <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
                         </div>
                     </tr>
@@ -278,9 +260,13 @@
                     </div>
                     <h6 class="text-center">ASSURANCE:{{ $patient->assurance }}</h6>
                     <h6 class="text-center">{{ $patient->demarcheur }}</h6>
-                    <h6>COUT ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;COUT PATIENT: {{ $patient->assurec }}</h6>
-                    <table border="0" cellspacing="0" cellpadding="0">
+                    @if($patient->assurec)
+                      <h6>PART ASSURANCE: {{ $patient->assurancec }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $patient->assurec }}</h6>
+                     @else
+                     
+                   @endif
+                        <table border="0" cellspacing="0" cellpadding="0">
                         <thead>
                         <tr>
                         <th class="text-left">NOM</th>
@@ -295,12 +281,20 @@
                         <td class="text-left" ><h5> {{ $patient->name }}</h5></td>
                             <td class="text-left" ><h5> {{ $patient->prenom }}</h5></td>
                             <td class="text-left"><h4> {{ $patient->montant }}</h4></td>
-                            <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
-                            <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
+                            @if($patient->avance)
+                                <td class="text-left"><h4>{{ $patient->avance }}</h4></td>
+                                @else
+                                <td class="text-left"><h4>0</h4></td>
+                            @endif
+                             @if($patient->avance)
+                                <td class="text-left"><h4>{{ $patient->reste }}</h4></td>
+                                @else
+                                <td class="text-left"><h4>0</h4></td>
+                            @endif
                          </tr>
                         <tr>
                             <div class="notices">
-                                <H6><div>LA CAISSE:</div></H6>
+                                <H6><div>LA CAISSE: {{ $patient->user->prenom }} {{ $patient->user->name }}</div></H6>
                                 <H6><div class="notice">Douala, le {{ $patient->created_at->toFormattedDateString() }}</div></H6>
                             </div>
                         </tr>
