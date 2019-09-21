@@ -77,7 +77,7 @@
                 <div class="col-md-10  offset-md-0  toppad">
                 @endif
                 @if(auth()->user()->role_id == 4)
-                <div class="col-md-7  offset-md-0  toppad">
+                <div class="col-md-10  offset-md-0  toppad">
                 @endif
                     <div class="card">
                         <div class="card-body">
@@ -109,7 +109,10 @@
                 @if(auth()->user()->role_id == 2)
                 <div class="col-md-2  offset-md-0  toppad">
                 @endif
-                    @can('medecin', \App\Patient::class)
+                @if(auth()->user()->role_id == 4)
+                <div class="col-md-2  offset-md-0  toppad">
+                @endif
+                    @can('med_inf_anes', \App\Patient::class)
                     <div class="card">
                         <div class="card-header mb-2"><small>DETAILS ACTION</small></div>
                         <div class="card-content">
@@ -129,12 +132,13 @@
                                 <i class="fas fa-eye"></i>
                                 <small>Fiches d'intervention</small>
                             </button>
+                            <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info btn-block">Completer le dossier</a>
                         </div>
                     </div>
                     @endcan
 
                      {{--MODIFIER LES INFOS DU PATIENT IC --}}
-                    @include('admin.patients.edit')
+                    {{--@include('admin.patients.edit')--}}
                      {{--FIN DE MOFIFICATION DES INFOS PATIENT --}}
 
                 </div>
@@ -149,6 +153,7 @@
 
                 @include('partials.admin.modal.fiche_intervention')
                 @include('partials.admin.modal.fiche_intervention_anesthesiste')
+                @include('partials.admin.modal.visite_preanesthesique')
 
 
                 {{-- FIN DE TOUS LES MODAL --}}

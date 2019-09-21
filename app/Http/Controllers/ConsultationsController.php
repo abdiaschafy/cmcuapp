@@ -131,6 +131,11 @@ class ConsultationsController extends Controller
         return back();
     }
 
+    public function Premdication_Tritement(Patient $patient)
+    {
+        return view('admin.consultations.premdication_tritement', compact('patient'));
+    }
+
     
     public function show(Request $request, $id)
     {

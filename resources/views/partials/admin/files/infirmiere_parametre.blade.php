@@ -33,7 +33,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><b>INC / BMI :</b> </td>
+                            <td><b>IMC / BMI :</b> </td>
                             <td>
                                 <Input name="inc_bmi" class="form-control" type="text" value='{{ old(' inc_bmi ') }}' >
                             </td>

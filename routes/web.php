@@ -107,6 +107,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultation-anesthesiste/{id}', 'ConsultationsController@Export_consultation_anesthesiste')->name('consultation_anesthesiste.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
+    Route::get('premedication-adaptation-traitement/{patient}', 'ConsultationsController@Premdication_Tritement')->name('premedication_adaptation.index');
+
     Route::post('fiche-intervention', 'CompteRenduBlocOperatoireController@StoreFicheIntervention')->name('fiche_intervention.store');
     Route::get('fiche-intervention-preview/{id}', 'CompteRenduBlocOperatoireController@Print_ficheIntervention')->name('fiche_intervention.pdf');
 

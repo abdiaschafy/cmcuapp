@@ -99,7 +99,15 @@ class PatientPolicy
     public function medecin()
     {
         return in_array(auth()->user()->role_id, [
-            2,
+            2
+        ]);
+
+    }
+
+    public function med_inf_anes()
+    {
+        return in_array(auth()->user()->role_id, [
+            2,4
         ]);
 
     }

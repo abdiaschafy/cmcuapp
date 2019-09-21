@@ -1,5 +1,5 @@
 <tbody>
-@can('medecin', \App\Patient::class)
+@can('med_inf_anes', \App\Patient::class)
     @can('chirurgien', \App\Patient::class)
         <tr></tr>
         <tr>
@@ -76,7 +76,14 @@
                     <h1 class="text-info">CONSULTATION</h1>
                 </a>
             </td>
-            <td></td>
+            <td>
+                @if(count($patient->consultation_anesthesistes))
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#VisiteAnesthesiste" title="Visite pré-anesthésique du patient" data-whatever="@mdo">
+                        <i class="far fa-plus-square"></i>
+                        Visite pré-anesthésique
+                    </button>
+                @endif
+            </td>
         </tr>
 
         @if (count($patient->consultation_anesthesistes))
@@ -251,7 +258,14 @@
         <td>
             <h1 class="text-info">PARAMETRES</h1>
         </td>
-        <td></td>
+        <td>
+            @can('anesthesiste', App\Patient::class)
+            <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
+                <i class="fas fa-eye"></i>
+                PREMEDICATION
+            </a>
+            @endcan
+        </td>
     </tr>
 
     @if (count($patient->parametres)>0)
@@ -289,7 +303,7 @@
             <td>{{ $parametres->spo2 }}</td>
         </tr>
         <tr>
-            <td><b>INC / BMI :</b></td>
+            <td><b>IMC / BMI :</b></td>
             <td>{{ $parametres->inc_bmi }}</td>
         </tr>
         <tr>
@@ -308,6 +322,17 @@
             <td><b>FC :</b></td>
             <td>{{ $parametres->temperature }}</td>
         </tr>
+        @can('infirmier', App\Patient::class)
+        <tr>
+            <td>
+                <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
+                    <i class="fas fa-eye"></i>
+                    PREMEDICATION
+                </a>
+            </td>
+            <td></td>
+        </tr>
+        @endcan
     @else
 
         <tr>
@@ -320,9 +345,11 @@
 
     <tr>
         <td>
+            @can('medecin', \App\Patient::class)
             <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient">
                 <i class="fas fa-book"></i> Nouvelle consultation
             </a>
+            @endcan
         </td>
 
         @can('anesthesiste', \App\Patient::class)
@@ -343,6 +370,7 @@
                 </td>
             @endcan
         @endif
+        <td></td>
     </tr>
 
     @can('chirurgien', \App\Patient::class)
