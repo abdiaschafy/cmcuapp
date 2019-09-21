@@ -228,21 +228,34 @@
                             </li>
                         </ul>
                     @endforeach
-                    {{--<p><b>Gr / Rh : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[9] }}</b></p>--}}
-                    {{--<p><b>NFS : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[6] }}</b></p>--}}
-                    {{--<p><b>Créatinemie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[1] }}</b></p>--}}
-                    {{--<p><b>Ionograme : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[2] }}</b></p>--}}
-                    {{--<p><b>Urée : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[0] }}</b></p>--}}
-                    {{--<p><b>Glycémie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[5] }}</b></p>--}}
-                    {{--<p><b>ECBU : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[3] }}</b></p>--}}
-                    {{--<p><b>VIH : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[4] }}</b></p>--}}
-                    {{--<p><b>E.C.G : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
-                    {{--<p><b>Echographie cardiaque : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
-                    {{--<p><b>TP / INR : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[7] }}</b></p>--}}
-                    {{--<p><b>TCK : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[8] }}</b></p>--}}
-                    {{--<p><b>Autres : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}">
+                        <h1 class="text-info">VPA / LEMENTS NOUVEAUX</h1>
+                    </a>
+                </td>
+                <td>
+                    @if(count($patient->consultation_anesthesistes))
+                        <a class="btn btn-info" title="Imprimer le consentement éclairé" href="{{ route('consentement_eclaire.pdf', $patient->id) }}">
+                            <i class="far fa-check-circle"></i> Consentement éclairé
+                        </a>
+                    @endif
+                </td>
+            </tr>
+            @if (count($patient->consultation_anesthesistes))
+
+                <tr>
+                    <td class="table-active"><b>DATE :</b></td>
+                    <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b></td>
+                </tr>
+                <tr>
+                    <td><b>Eléments nouveaux :</b></td>
+                    <td></td>
+                </tr>
+            @endif
+
 
         @else
             <tr>
@@ -351,16 +364,6 @@
             </a>
             @endcan
         </td>
-
-        @can('anesthesiste', \App\Patient::class)
-            <td>
-                @if (count($patient->consultation_anesthesistes))
-                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="{{ route('consultation_anesthesiste.pdf', $patient->id) }}">
-                        <i class="fas fa-print"></i> Fiche de consultation
-                    </a>
-                @endif
-            </td>
-        @endcan
         @if (count($patient->consultations))
             @can('chirurgien', \App\Patient::class)
                 <td>

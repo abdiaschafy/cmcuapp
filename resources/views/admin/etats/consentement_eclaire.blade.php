@@ -24,9 +24,13 @@
     }
 
     .cmcu_dossier_cons{
-        border: solid 1px;
-        border-radius: 2px;
+        /*border: solid 1px;*/
+        /*border-radius: 2px;*/
         text-align: center;
+    }
+    .par_first{
+        line-height: 240%;
+        text-align: justify;
     }
 
 </style>
@@ -51,51 +55,57 @@
     <br>
     <br>
     <div class="row">
-        <div class="col-6 cmcu_dossier_cons">
-            <h4>DOSSIER DE CONSULTATION</h4>
-        </div>
-        <div class="col-4 offset-7">
-            Anesthésiste :
+        <div class="cmcu_dossier_cons">
+            <h2 class="text-center"><u>CONSENTEMENT ECLAIRE</u></h2>
         </div>
     </div>
-
+    <br>
+    <br>
     <div class="row">
         <div class="col-3">
-            <p>Nom / Pénom :</p>
-            <p>Né(e)le :</p>
-            <p>Prévenir :</p>
-        </div>
-        <div class="col-3 offset-3">
-            <p>Profession :</p>
+            <p>Nom / Pénom patient :</p>
+            <p>Nom parent :</p>
             <p>Adresse :</p>
             <p>Téléphone :</p>
         </div>
         <div class="col-3 offset-6">
-            <p>TA :</p>
-            <p>B.D :</p>
-            <p>B.G :</p>
-            <p>Pouls :</p>
-            <p>T²C :</p>
-        </div>
-        <div class="col-3 offset-9">
-            <p>Taille :</p>
-            <p>Poids :</p>
-            <p>B.M.I :</p>
-            <p>Sexe :</p>
+            <p>Date intervention :</p>
+            <p>Type intrvention :</p>
+            <p>Type d'anesthésie :</p>
+            <p>Chirugien :</p>
         </div>
     </div>
 
-    <div class="row ">
-        <div class="col-3">
-            <p>Nom / Pénom :</p>
-            <p>Né(e)le :</p>
-            <p>Prévenir :</p>
+    <div class="row">
+        <div class="row ">
+            <div class="col-12">
+                <p class="par_first">
+                    Je déclare avoir reçu une information claire sur les risques et bénéfices des techniques d’anesthésies pour l’intervention prévue le (), lors de la consultation d’anesthésie du ()
+                    Je suis conscient d’une possibilité d’un changement de technique d’anesthésie au dernier moment selon l’évolution de mon état de santé ou de l’acte chirurgical.
+                    Je suis conscient du changement d’anesthésie avant l’intervention.
+                </p>
+            </div>
         </div>
-        <div class="col-3 offset-9">
-            <p>Profession :</p>
-            <p>Adresse :</p>
-            <p>Téléphone :</p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                Fait à Douala,
+            </p>
         </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <p>
+            Signature du patient ou de son représentant (précédée de la mention lu, approuvé et compris)
+        </p>
     </div>
 
     <footer class="footer">
