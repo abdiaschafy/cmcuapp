@@ -87,6 +87,9 @@
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
                                 <button class="btn btn-secondary mr-2" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
+                                @can('secretaire', \App\Patient::class)
+                                    <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info">Completer le dossier</a>
+                                @endcan
                                 @can('infirmier', \App\Patient::class)
                                     <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}"
                                        title="Nouvelle consultation du patient pour la prise des paramètres">
