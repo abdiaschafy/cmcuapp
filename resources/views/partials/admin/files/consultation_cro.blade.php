@@ -393,6 +393,10 @@
 
         @if (count($patient->compte_rendu_bloc_operatoires))
             <tr>
+                <td class="table-active"><b>DATE :</b></td>
+                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
+            </tr>
+            <tr>
                 <td><b>NOM ET PRENOM DU CHIRURGIEN :</b></td>
                 <td>{{ $compte_rendu_bloc_operatoires->chirurgien }}</td>
             </tr>
@@ -471,6 +475,18 @@
         @endcan
 
     @endif
+    <tr>
+        <td>
+            <h5 class="text-info">SURVEILLANCE POST ANESTHESIQUE</h5>
+        </td>
+        <td></td>
+    </tr>
+
+    <tr>
+        <td class="table-active"><b>DATE :</b></td>
+        <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
+    </tr>
+
 @endcan
 
 </tbody>
