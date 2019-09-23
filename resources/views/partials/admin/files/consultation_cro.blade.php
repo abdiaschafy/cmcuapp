@@ -309,11 +309,11 @@
         </tr>
         <tr>
             <td><b>GLYCEMIE :</b></td>
-            <td>{{ $parametres->glycemie }}</td>
+            <td>{{ $parametres->glycemie }} g/l</td>
         </tr>
         <tr>
             <td><b>SPO2 :</b></td>
-            <td>{{ $parametres->spo2 }}</td>
+            <td>{{ $parametres->spo2 }} %</td>
         </tr>
         <tr>
             <td><b>IMC / BMI :</b></td>
@@ -322,18 +322,18 @@
         <tr>
             <td><b>TA :</b></td>
             <td>
-                <b>Bg :</b> {{ $parametres->bras_gauche }}
+                <b>Bg :</b> {{ $parametres->bras_gauche }} mmHg
                 <br>
-                <b>Bd :</b> {{ $parametres->bras_droit }}
+                <b>Bd :</b> {{ $parametres->bras_droit }} mmHg
             </td>
         </tr>
         <tr>
             <td><b>FR :</b></td>
-            <td>{{ $parametres->fr }}</td>
+            <td>{{ $parametres->fr }} Mvts/min</td>
         </tr>
         <tr>
             <td><b>FC :</b></td>
-            <td>{{ $parametres->temperature }}</td>
+            <td>{{ $parametres->temperature }} Pls/min</td>
         </tr>
         @can('infirmier', App\Patient::class)
         <tr>

@@ -29,7 +29,7 @@
         text-align: center;
     }
     .par_first{
-        line-height: 240%;
+        line-height: 200%;
         text-align: justify;
     }
 
@@ -71,9 +71,10 @@
         </div>
         <div class="col-8 offset-6">
             <p>Date intervention : <b>{{ $consultation_anesthesiste->date_intervention }}</b></p>
-            <p>Type intrvention : <b>{{ $consultation_anesthesiste->technique_anesthesie1 }}</b></p>
+            <p>Type intrvention : <b>{{ $fiche_intervention->type_intervention }}</b></p>
             <p>Type d'anesthésie : <b>{{ $consultation_anesthesiste->technique_anesthesie1 }}</b></p>
-            <p>Chirugien : <b>{{ $consultation_anesthesiste->operateur }}</b></p>
+            <p>Chirugien : <b>Dr. {{ $consultation_anesthesiste->operateur }}</b></p>
+            <p>Anesthésiste : <b>Dr. {{ $consultation_anesthesiste->user->name }} {{ $consultation_anesthesiste->user->prenom }}</b></p>
         </div>
     </div>
 
@@ -81,7 +82,15 @@
         <div class="row ">
             <div class="col-12">
                 <p class="par_first">
-                    Je déclare avoir reçu une information claire sur les risques et bénéfices des techniques d’anesthésies pour l’intervention prévue le <b>{{ $consultation_anesthesiste->date_intervention }}</b>, lors de la consultation d’anesthésie du <b>{{ $consultation_anesthesiste->created_at }}</b>
+                    Je déclare avoir reçu une information claire sur les risques et bénéfices des techniques d’anesthésies pour l’intervention prévue le <b>{{ $consultation_anesthesiste->date_intervention }}</b>, lors de la consultation d’anesthésie du <b>{{ $consultation_anesthesiste->created_at->ToDateString() }}</b>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row">
+            <div class="col-12">
+                <p class="par_first">
                     Je suis conscient d’une possibilité d’un changement de technique d’anesthésie au dernier moment selon l’évolution de mon état de santé ou de l’acte chirurgical.
                     Je suis conscient du changement d’anesthésie avant l’intervention.
                 </p>
@@ -90,17 +99,15 @@
     </div>
     <br>
     <br>
-    <br>
-    <br>
     <div class="row">
-        <div class="col-12">
-            <p>
-                Fait à Douala, {{ Carbon\Carbon::now()->ToDateString() }}
-            </p>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    Fait à Douala, {{ Carbon\Carbon::now()->ToDateString() }}
+                </p>
+            </div>
         </div>
     </div>
-    <br>
-    <br>
     <br>
     <br>
     <div class="row">

@@ -152,6 +152,7 @@ class ConsultationsController extends Controller
 
             'patient' => $patient,
             'dossiers' => $patient->dossiers()->latest()->first(),
+            'fiche_intervention' => $patient->fiche_interventions()->latest()->first(),
             'consultation_anesthesiste' => $patient->consultation_anesthesistes()->latest()->first()
         ]);
 

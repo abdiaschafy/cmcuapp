@@ -14,71 +14,62 @@
                         <tbody>
                         <tr>
                             <td>
-                                <b>Date de naissance / Age : <span class="text-danger">*</span></b>
+                                <b>Date de naissance : <span class="text-danger">*</span></b>
                             </td>
                             <td>
-                                <label for="date_naissance">Date de naissance :</label>
-                                <input type="date" name="date_naissance" class="form-control" placeholder="Date de naissance" required>
-                                <label for="age">Age :</label>
-                                <input type="number" name="age" class="form-control col-md-5" required>
+                                <input type="date" name="date_naissance" value="{{ old('date_naissance') }}" class="form-control" placeholder="Date de naissance" required>
                             </td>
                         </tr>
                         <tr>
                             <td><b>TA :</b> <span class="text-danger">*</span></td>
                             <td>
                                 <label for="bras_gauche">Bras gauche :</label>
-                                <input name="bras_gauche" class="form-control" type="text" value='{{ old(' bras_gauche ') }}' placeholder=" mmHg" required>
+                                <input name="bras_gauche" class="form-control" type="text" value='{{ old('bras_gauche') }}' placeholder=" mmHg" required>
                                 <label for="bras_droit">Bras droit :</label>
-                                <input name="bras_droit" class="form-control" type="text" value='{{ old(' bras_droit ') }}' placeholder=" mmHg" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><b>IMC / BMI :</b> </td>
-                            <td>
-                                <Input name="inc_bmi" class="form-control" type="text" value='{{ old(' inc_bmi ') }}' >
+                                <input name="bras_droit" class="form-control" type="text" value='{{ old('bras_droit') }}' placeholder=" mmHg" required>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Température :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="temperature" class="form-control col-md-5" type="text" value='{{ old(' temperature ') }}' placeholder=" °C" required>
+                                <Input name="temperature" class="form-control col-md-5" type="number" step="any" value='{{ old('temperature') }}' placeholder=" 36.2 °C" required>
                             </td>
                         </tr>
                         <input type="hidden" class="form-control" value="{{ $patient->id }}" name="patient_id">
                         <tr>
                             <td><b>FR :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="fr" class="form-control" type="text" value='{{ old(' fr ') }}' placeholder=" Mvts/min" required>
+                                <Input name="fr" class="form-control" type="text" value='{{ old('fr') }}' placeholder=" Mvts/min" required>
                             </td>
                         </tr>
                         <tr>
                             <td><b>FC :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="fc" class="form-control" type="text" value='{{ old(' fc ') }}' placeholder=" Pls/min" required>
+                                <Input name="fc" class="form-control" type="text" value='{{ old('fc') }}' placeholder=" Pls/min" required>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Gly :</b> </td>
                             <td>
-                                <Input name="glycemie" class="form-control" type="text" value='{{ old(' glycemie ') }}' placeholder=" g/l">
+                                <Input name="glycemie" class="form-control" type="text" value='{{ old('glycemie') }}' placeholder=" g/l">
                             </td>
                         </tr>
                         <tr>
                             <td><b>SPO2 :</b></td>
                             <td>
-                                <Input name="spo2" class="form-control" type="text" value='{{ old(' spo2 ') }}' placeholder=" %">
+                                <Input name="spo2" class="form-control" type="text" value='{{ old('spo2') }}' placeholder=" %">
                             </td>
                         </tr>
                         <tr>
                             <td><b>Poids :</b> <span class="text-danger">*</span></td>
                             <td>
-                                <Input name="poids" class="form-control" type="text" value='{{ old(' poids ') }}'  placeholder=" Kgs" required>
+                                <Input name="poids" class="form-control col-md-5" type="number" step="any" value='{{ old('poids') }}'  placeholder=" Kgs" required>
                             </td>
                         </tr>
                         <tr>
                             <td><b>Taille :</b> </td>
                             <td>
-                                <Input name="taille" class="form-control" type="text" value='{{ old(' taille ') }}'  placeholder=" M">
+                                <Input name="taille" class="form-control col-md-5" type="number" step="any" value='{{ old('taille') }}'  placeholder="1.75 M">
                             </td>
                         </tr>
                         </tbody>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
+use Carbon\Carbon;
 
 class ParametresController extends Controller
 {
@@ -22,9 +23,9 @@ class ParametresController extends Controller
             'bras_gauche' => request('bras_gauche'),
             'bras_droit' => request('bras_droit'),
             'taille' => request('taille'),
-            'inc_bmi' => request('inc_bmi'),
+            'inc_bmi' => request('poids')/((request('taille'))*(request('taille'))),
             'date_naissance' => request('date_naissance'),
-            'age' => request('age'),
+            'age' => Carbon::parse(request('date_naissance'))->age,
             'glycemie' => request('glycemie'),
             'spo2' => request('spo2'),
             'poids' => request('poids'),
