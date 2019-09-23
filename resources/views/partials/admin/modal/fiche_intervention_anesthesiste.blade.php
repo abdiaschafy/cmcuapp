@@ -204,7 +204,7 @@
                                                 <td><b>RECOMMENDATION(S) :</b></td>
                                                 <td>
                                             <textarea wrap="hard" name="recommendation" cols="45" rows="5"
-                                                      required>{{ old('recommendation') }}</textarea>
+                                                      >{{ old('recommendation') }}</textarea>
                                                 </td>
                                             </tr>
 

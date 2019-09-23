@@ -9,6 +9,7 @@ use App\FicheIntervention;
 use App\Patient;
 use App\Ordonance;
 use App\User;
+use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,6 +94,7 @@ class PatientsController extends Controller
             'medecin' => User::where('role_id', '=', 2)->get(),
             'consultations' => Consultation::with('patient', 'user')->latest()->first(),
             'consultation_anesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->latest()->first(),
+            'visite_anesthesistes' => VisitePreanesthesique::with('patient', 'user')->latest()->first(),
             'fiche_interventions' => FicheIntervention::with('patient', 'user')->get(),
             'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),

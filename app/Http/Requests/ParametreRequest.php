@@ -27,7 +27,6 @@ class ParametreRequest extends FormRequest
             'user_id' => '',
             'patient_id' => 'required',
             'date_naissance' => 'required',
-            'age' => 'required',
             'bras_gauche' => 'required',
             'bras_droit' => 'required',
             'fr' => 'required',

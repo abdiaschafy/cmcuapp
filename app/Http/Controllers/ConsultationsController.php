@@ -31,7 +31,7 @@ class ConsultationsController extends Controller
 
         return view('admin.consultations.index_anesthesiste', [
             'patient' => $patient,
-            'consultationAnesthesiste' => ConsultationAnesthesiste::with('patient', 'user')->get(),
+            'consultationAnesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->get(),
         ]);
     }
 
@@ -140,16 +140,20 @@ class ConsultationsController extends Controller
         return view('admin.consultations.show', compact('consultations'));
     }
 
-    public function Export_consultation_anesthesiste($id)
+    public function Export_consentement_eclaire(Patient $patient)
     {
 
-        $ConsultationAnesthesiste = ConsultationAnesthesiste::with('patient', 'user')->find($id);
+        $pdf = PDF::loadView('admin.etats.consentement_eclaire', [
 
-        $pdf = PDF::loadView('admin.etats.consultation_anesthesiste', compact('ConsultationAnesthesiste', 'user'));
+            'patient' => $patient,
+            'dossiers' => $patient->dossiers()->latest()->first(),
+            'fiche_intervention' => $patient->fiche_interventions()->latest()->first(),
+            'consultation_anesthesiste' => $patient->consultation_anesthesistes()->latest()->first()
+        ]);
 
-        $pdf->save(storage_path('consultation_anesthesiste').'.pdf');
+        $pdf->save(storage_path('consentement_eclaire').'.pdf');
 
-        return $pdf->stream('consultation_anesthesiste.pdf');
+        return $pdf->stream('consentement_eclaire.pdf');
     }
 
    

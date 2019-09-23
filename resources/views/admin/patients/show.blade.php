@@ -32,7 +32,7 @@
             <div class="container">
             <div class="row">
                 <div class="col-md-12  toppad  offset-md-0 ">
-                    @can('medecin', \App\Patient::class)
+                    @can('chirurgien', \App\Patient::class)
                         <a href="{{ route('ordonance.create', $patient->id) }}" title="Nouvelle ordonnance médicale" class="btn btn-success">
                             <i class="far fa-plus-square"></i>
                             Ordonnance
@@ -43,6 +43,9 @@
                         </button>
                     @endcan
                     @can('anesthesiste', \App\Patient::class)
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SpostAnesth" title="Surveillance post anesthésique" data-whatever="@mdo">
+                        <i class="far fa-plus-square"></i> Surveillance post anesthésique
+                    </button>
                     <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-success">
                         <i class="fas fa-eye"></i>
                         Consultations
@@ -77,13 +80,16 @@
                 <div class="col-md-10  offset-md-0  toppad">
                 @endif
                 @if(auth()->user()->role_id == 4)
-                <div class="col-md-7  offset-md-0  toppad">
+                <div class="col-md-10  offset-md-0  toppad">
                 @endif
                     <div class="card">
                         <div class="card-body">
                             <h2 class="card-title text-danger text-center">DOSSIER PATIENT</h2>
                             <table class="table table-user-information ">
                                 <button class="btn btn-secondary mr-2" title="Cacher / Afficher les données personelles du patient" onclick="ShowDetailsPatient()"><i class="fas fa-eye"></i> Détails personnels</button>
+                                @can('secretaire', \App\Patient::class)
+                                    <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info">Completer le dossier</a>
+                                @endcan
                                 @can('infirmier', \App\Patient::class)
                                     <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}"
                                        title="Nouvelle consultation du patient pour la prise des paramètres">
@@ -109,7 +115,10 @@
                 @if(auth()->user()->role_id == 2)
                 <div class="col-md-2  offset-md-0  toppad">
                 @endif
-                    @can('medecin', \App\Patient::class)
+                @if(auth()->user()->role_id == 4)
+                <div class="col-md-2  offset-md-0  toppad">
+                @endif
+                    @can('med_inf_anes', \App\Patient::class)
                     <div class="card">
                         <div class="card-header mb-2"><small>DETAILS ACTION</small></div>
                         <div class="card-content">
@@ -129,12 +138,13 @@
                                 <i class="fas fa-eye"></i>
                                 <small>Fiches d'intervention</small>
                             </button>
+                            <a href="{{ route('dossiers.create', $patient->id) }}" class="btn btn-info btn-block">Completer le dossier</a>
                         </div>
                     </div>
                     @endcan
 
                      {{--MODIFIER LES INFOS DU PATIENT IC --}}
-                    @include('admin.patients.edit')
+                    {{--@include('admin.patients.edit')--}}
                      {{--FIN DE MOFIFICATION DES INFOS PATIENT --}}
 
                 </div>
@@ -149,6 +159,8 @@
 
                 @include('partials.admin.modal.fiche_intervention')
                 @include('partials.admin.modal.fiche_intervention_anesthesiste')
+                @include('partials.admin.modal.visite_preanesthesique')
+                @include('partials.admin.modal.surveillance_post_a')
 
 
                 {{-- FIN DE TOUS LES MODAL --}}

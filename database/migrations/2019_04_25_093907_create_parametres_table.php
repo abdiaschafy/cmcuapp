@@ -17,8 +17,8 @@ class CreateParametresTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('patient_id')->unsigned();
-            $table->string('poids');
-            $table->string('taille');
+            $table->float('poids');
+            $table->float('taille');
             $table->string('bras_gauche');
             $table->string('bras_droit');
             $table->string('inc_bmi');

@@ -1,5 +1,5 @@
 <tbody>
-@can('medecin', \App\Patient::class)
+@can('med_inf_anes', \App\Patient::class)
     @can('chirurgien', \App\Patient::class)
         <tr></tr>
         <tr>
@@ -76,7 +76,14 @@
                     <h1 class="text-info">CONSULTATION</h1>
                 </a>
             </td>
-            <td></td>
+            <td>
+                @if(count($patient->consultation_anesthesistes))
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#VisiteAnesthesiste" title="Visite pré-anesthésique du patient" data-whatever="@mdo">
+                        <i class="far fa-plus-square"></i>
+                        Visite pré-anesthésique
+                    </button>
+                @endif
+            </td>
         </tr>
 
         @if (count($patient->consultation_anesthesistes))
@@ -194,7 +201,7 @@
             <tr>
                 <td><b>Technique d'anesthésie envisagée :</b></td>
                 <td>
-                    @foreach(explode(",", $consultation_anesthesistes->technique_anesthesie1) as $technique)
+                    @foreach(explode(",", $consultation_anesthesistes->technique_anesthesie) as $technique)
                         <ul>
                             <li>
                                 {{ $technique }}
@@ -221,21 +228,39 @@
                             </li>
                         </ul>
                     @endforeach
-                    {{--<p><b>Gr / Rh : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[9] }}</b></p>--}}
-                    {{--<p><b>NFS : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[6] }}</b></p>--}}
-                    {{--<p><b>Créatinemie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[1] }}</b></p>--}}
-                    {{--<p><b>Ionograme : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[2] }}</b></p>--}}
-                    {{--<p><b>Urée : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[0] }}</b></p>--}}
-                    {{--<p><b>Glycémie : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[5] }}</b></p>--}}
-                    {{--<p><b>ECBU : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[3] }}</b></p>--}}
-                    {{--<p><b>VIH : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[4] }}</b></p>--}}
-                    {{--<p><b>E.C.G : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
-                    {{--<p><b>Echographie cardiaque : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
-                    {{--<p><b>TP / INR : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[7] }}</b></p>--}}
-                    {{--<p><b>TCK : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[8] }}</b></p>--}}
-                    {{--<p><b>Autres : {{ explode(",", $consultation_anesthesistes->examen_paraclinique)[10] }}</b></p>--}}
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}">
+                        <h1 class="text-info">VPA / LEMENTS NOUVEAUX</h1>
+                    </a>
+                </td>
+                <td>
+                    @if(count($patient->visite_preanesthesiques))
+                        <a class="btn btn-info" title="Imprimer le consentement éclairé" href="{{ route('consentement_eclaire.pdf', $patient->id) }}">
+                            <i class="far fa-check-circle"></i> Consentement éclairé
+                        </a>
+                    @endif
+                </td>
+            </tr>
+            @if (count($patient->visite_preanesthesiques))
+
+                <tr>
+                    <td class="table-active"><b>DATE :</b></td>
+                    <td class="table-active"><b>{{ $visite_anesthesistes->date_visite }}</b></td>
+                </tr>
+                <tr>
+                    <td><b>Eléments nouveaux :</b></td>
+                    <td>{{ $visite_anesthesistes->element_nouveau }}</td>
+                </tr>
+            @else
+                <tr>
+                    <td><b>Aucune visite pré-anesthésique disponible :</b></td>
+                    <td></td>
+                </tr>
+            @endif
+
 
         @else
             <tr>
@@ -251,7 +276,14 @@
         <td>
             <h1 class="text-info">PARAMETRES</h1>
         </td>
-        <td></td>
+        <td>
+            @can('anesthesiste', App\Patient::class)
+            <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
+                <i class="fas fa-eye"></i>
+                PREMEDICATION
+            </a>
+            @endcan
+        </td>
     </tr>
 
     @if (count($patient->parametres)>0)
@@ -282,32 +314,43 @@
         </tr>
         <tr>
             <td><b>GLYCEMIE :</b></td>
-            <td>{{ $parametres->glycemie }}</td>
+            <td>{{ $parametres->glycemie }} g/l</td>
         </tr>
         <tr>
             <td><b>SPO2 :</b></td>
-            <td>{{ $parametres->spo2 }}</td>
+            <td>{{ $parametres->spo2 }} %</td>
         </tr>
         <tr>
-            <td><b>INC / BMI :</b></td>
+            <td><b>IMC / BMI :</b></td>
             <td>{{ $parametres->inc_bmi }}</td>
         </tr>
         <tr>
             <td><b>TA :</b></td>
             <td>
-                <b>Bg :</b> {{ $parametres->bras_gauche }}
+                <b>Bg :</b> {{ $parametres->bras_gauche }} mmHg
                 <br>
-                <b>Bd :</b> {{ $parametres->bras_droit }}
+                <b>Bd :</b> {{ $parametres->bras_droit }} mmHg
             </td>
         </tr>
         <tr>
             <td><b>FR :</b></td>
-            <td>{{ $parametres->fr }}</td>
+            <td>{{ $parametres->fr }} Mvts/min</td>
         </tr>
         <tr>
             <td><b>FC :</b></td>
-            <td>{{ $parametres->temperature }}</td>
+            <td>{{ $parametres->temperature }} Pls/min</td>
         </tr>
+        @can('infirmier', App\Patient::class)
+        <tr>
+            <td>
+                <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
+                    <i class="fas fa-eye"></i>
+                    PREMEDICATION
+                </a>
+            </td>
+            <td></td>
+        </tr>
+        @endcan
     @else
 
         <tr>
@@ -320,20 +363,12 @@
 
     <tr>
         <td>
+            @can('medecin', \App\Patient::class)
             <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient">
                 <i class="fas fa-book"></i> Nouvelle consultation
             </a>
+            @endcan
         </td>
-
-        @can('anesthesiste', \App\Patient::class)
-            <td>
-                @if (count($patient->consultation_anesthesistes))
-                    <a class="btn btn-success" title="Imprimer le compte-rendu opératoire" href="{{ route('consultation_anesthesiste.pdf', $patient->id) }}">
-                        <i class="fas fa-print"></i> Fiche de consultation
-                    </a>
-                @endif
-            </td>
-        @endcan
         @if (count($patient->consultations))
             @can('chirurgien', \App\Patient::class)
                 <td>
@@ -343,6 +378,7 @@
                 </td>
             @endcan
         @endif
+        <td></td>
     </tr>
 
     @can('chirurgien', \App\Patient::class)

@@ -104,7 +104,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
     Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
-    Route::get('consultation-anesthesiste/{id}', 'ConsultationsController@Export_consultation_anesthesiste')->name('consultation_anesthesiste.pdf');
+    Route::get('consentement-eclaire/{patient}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
     Route::post('fiche-intervention', 'CompteRenduBlocOperatoireController@StoreFicheIntervention')->name('fiche_intervention.store');
@@ -172,6 +172,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
-    
+
+
+
+    Route::get('premedication-adaptation-traitement/{patient}', 'AnesthesisteController@Premdication_Traitement')->name('premedication_adaptation.index');
+    Route::post('visite-pre-anesthesique', 'AnesthesisteController@VisitePreanesthesiqueStore')->name('visite_preanesthesique.store');
+    Route::post('premedication-consigne-preparation', 'AnesthesisteController@PremedicationConsignePreparationStore')->name('premedication_consigne_preparation.store');
+    Route::post('traitement-hospitalisation', 'AnesthesisteController@TraitementHospitalisationStore')->name('traitement_hospitalisation.store');
+    Route::post('adaptation-traitement', 'AnesthesisteController@AdaptationTraitementPersoStore')->name('adaptation_traitement.store');
+
 
 });
