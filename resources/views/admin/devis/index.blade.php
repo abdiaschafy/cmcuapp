@@ -37,7 +37,7 @@
                             @foreach($devis as $devi)
                                 <tr>
                                     <td>{{ $devi->nom}}</td>
-                                    <td>{{ $devi->montant10}}</td>
+                                    <td>{{ $devi->total3}}</td>
                                    
                                     <td>{{ $devi->created_at->toFormattedDateString() }}</td>
                                     
@@ -61,7 +61,13 @@
                 </div>
             </div>
         </div>
-       
+        @can('print', \App\Patient::class)
+            <div class="col-md-12 text-center">
+
+                <a href="{{ route('devis.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau devis ">Ajouter un devis</a>
+
+            </div>
+        @endcan
 
         </div>
     </div>
