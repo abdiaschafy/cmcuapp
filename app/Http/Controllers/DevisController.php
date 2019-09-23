@@ -134,7 +134,7 @@ class DevisController extends Controller
 
         $pdf->save(storage_path('devis').'.pdf');
 
-        return $pdf->download('devis.pdf');
+        return $pdf->stream('devis.pdf');
     }
 
 }
