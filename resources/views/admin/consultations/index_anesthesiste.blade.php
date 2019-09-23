@@ -56,41 +56,74 @@
                                 </div>
                             </div>
                         </div>
-                        {{--@foreach($consultations as $consultation)--}}
-                            {{--<div class="bs-callout bs-callout-danger">--}}
-                                {{--<h4>CONSULTATION DU <small class="text-danger"><b>{{ $consultation->created_at->toFormattedDateString() }}</b></small></h4>--}}
-                                {{--<hr>--}}
-                                {{--<ul class="list-group">--}}
-                                    {{--<li class="list-group-item"><b>MEDECIN DE REFERENCE :</b> Dr. {{ $consultation->medecin_r }}</li>--}}
-                                    {{--<li class="list-group-item"><b>NOM ET PRENOM DU MEDECIN :</b> Dr. {{ $consultation->user->name }}</li>--}}
-                                    {{--<hr>--}}
-                                    {{--<li class="list-group-item"><b>MOTIF DE CONSULTATION :</b> </li>--}}
-                                    {{--<p>{{ $consultation->motif_c }}</p>--}}
-                                    {{--<li class="list-group-item"><b>INTERROGATOIE :</b> </li>--}}
-                                    {{--<p>{!! nl2br($consultation->interrogatoire) !!}</p>--}}
-                                    {{--<li class="list-group-item"><b>EXAMENS PHYSIQUES :</b> </li>--}}
-                                    {{--<p>{{ $consultation->examen_p }}</p>--}}
-                                    {{--<li class="list-group-item"><b>EXAMENS COMPLEMENTAIRES :</b> </li>--}}
-                                    {{--<p>{{ $consultation->examen_c }}</p>--}}
-                                    {{--<li class="list-group-item"><b>PROPOSITIONS THERAPEUTIQUES :</b> </li>--}}
-                                    {{--<p>{{ $consultation->proposition_therapeutique }}</p>--}}
-                                    {{--<li class="list-group-item"><b>PROPOSITIONS DE SUIVI :</b> </li>--}}
-                                    {{--<p>{{ $consultation->proposition }}</p>--}}
-                                    {{--<li class="list-group-item"><b>TYPE D'INTERVENTION :</b> </li>--}}
-                                    {{--<p>{{ $consultation->type_intervention }}</p>--}}
-                                    {{--<li class="list-group-item"><b>DATE INTERVENTION :</b> </li>--}}
-                                    {{--<p>{{ $consultation->date_intervention }}</p>--}}
-                                    {{--<li class="list-group-item"><b>TYPE D'ACTES A REALISER :</b> </li>--}}
-                                    {{--<p>{{ $consultation->acte }}</p>--}}
-                                    {{--<li class="list-group-item"><b>DEVIS PREVISIONNEL :</b> </li>--}}
-                                    {{--<p>{{ $consultation->devis_p }}</p>--}}
-                                    {{--<li class="list-group-item"><b>DATE CONSULTATION ANESTHESISTE :</b> </li>--}}
-                                    {{--<p>{{ $consultation->date_consultation_anesthesiste }}</p>--}}
-                                    {{--<li class="list-group-item"><b>DATE DE CONSULTATION :</b> </li>--}}
-                                    {{--<p>{{ $consultation->date_consultation }}</p>--}}
-                                {{--</ul>--}}
-                            {{--</div>--}}
-                        {{--@endforeach--}}
+                        @foreach($consultationAnesthesistes as $consultationAnesthesiste)
+                            <div class="bs-callout bs-callout-danger">
+                                <h4>CONSULTATION DU <small class="text-danger"><b>{{ $consultationAnesthesiste->created_at->toFormattedDateString() }}</b></small></h4>
+                                <hr>
+                                <ul class="list-group">
+                                    <li class="list-group-item"><b>SPECIALITE :</b> {{ $consultationAnesthesiste->specialite }}</li>
+                                    <li class="list-group-item"><b>MEDECIN TRAITANT :</b> Dr. {{ $consultationAnesthesiste->medecin_traitant }}</li>
+                                    <li class="list-group-item"><b>OPERATEUR :</b> Dr. {{ $consultationAnesthesiste->operateur }}</li>
+                                    <li class="list-group-item"><b>ANESTHESISTE :</b> Dr. {{ $consultationAnesthesiste->user->name }}</li>
+                                    <hr>
+                                    <li class="list-group-item"><b>MOTIF DE D'ADMISSION :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->motif_admission }}</p>
+                                    <li class="list-group-item"><b>DATE D'INTERVENTION :</b> </li>
+                                    <p>{!! nl2br($consultationAnesthesiste->date_intervention) !!}</p>
+                                    <li class="list-group-item"><b>MEMO :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->memo }}</p>
+                                    <li class="list-group-item"><b>ANESTHESIE EN SALLE :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->anesthesi_salle }}</p>
+                                    <li class="list-group-item"><b>DATE D'HOSPITALISATION :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->date_hospitalisation }}</p>
+                                    <li class="list-group-item"><b>CLASSE ASA :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->classe_asa }}</p>
+                                    <li class="list-group-item"><b>BENEFICES RISQUES :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->benefice_risque }}</p>
+                                    <li class="list-group-item"><b>RISQUES :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->risque }}</p>
+                                    <li class="list-group-item"><b>JEUNE PRE-OPERATOIRE :</b> </li>
+                                    <p><b>Solide :</b></p>
+                                    <p>{{ ($consultationAnesthesiste->solide) }}</p>
+                                    <p><b>Liquide :</b></p>
+                                    <p>{{ ($consultationAnesthesiste->liquide) }}</p>
+
+                                    <li class="list-group-item"><b>ANTECEDENTS / TRAITEMENT :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->antecedent_traitement }}</p>
+                                    <li class="list-group-item"><b>ALLERGIES :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->allergie }}</p>
+                                    <li class="list-group-item"><b>EXAMENS CLINIQUES :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->examen_clinique }}</p>
+
+                                    <li class="list-group-item"><b>INTUBATION :</b> {{ $consultationAnesthesiste->intubation }}</li>
+                                    <li class="list-group-item"><b>MALLAMPATI :</b> {{ $consultationAnesthesiste->mallampati }}</li>
+                                    <li class="list-group-item"><b>DISTANCE-INTERINCISIVE :</b> {{ $consultationAnesthesiste->distance_interincisive }}</li>
+                                    <li class="list-group-item"><b>DISTANCE-TYROMENTONIERE :</b> {{ $consultationAnesthesiste->distance_tyromentoniere }}</li>
+                                    <li class="list-group-item"><b>MOBILITE SERVICALE :</b> {{ $consultationAnesthesiste->mobilite_servicale }}</li>
+                                    <li class="list-group-item"><b>TECHNIQUE D'ANESTHESIE :</b> {{ $consultationAnesthesiste->technique_anesthesie1 }}</li>
+                                    <li class="list-group-item"><b>TECHNIQUE D'ANESTHESIE ENVISAGEE :</b> </li>
+                                    @foreach(explode(",", $consultationAnesthesiste->technique_anesthesie) as $technique)
+                                        <ul>
+                                            <li>
+                                                {{ $technique }}
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                    <li class="list-group-item"><b>ANTIBIOPROPHYLAXIE :</b> {{ $consultationAnesthesiste->antibiotique }}</li>
+                                    <li class="list-group-item"><b>SYNTHES PREOPERATOIRE :</b> </li>
+                                    <p>{{ $consultationAnesthesiste->synthese_preop }}</p>
+
+                                    <li class="list-group-item"><b>EXAMENS PARACLINIQUES :</b> </li>
+                                    @foreach(explode(",", $consultationAnesthesiste->examen_paraclinique) as $examen)
+                                        <ul>
+                                            <li>
+                                                {{ $examen }}
+                                            </li>
+                                        </ul>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <!-- resume -->

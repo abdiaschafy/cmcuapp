@@ -31,7 +31,7 @@ class ConsultationsController extends Controller
 
         return view('admin.consultations.index_anesthesiste', [
             'patient' => $patient,
-            'consultationAnesthesiste' => ConsultationAnesthesiste::with('patient', 'user')->get(),
+            'consultationAnesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->get(),
         ]);
     }
 

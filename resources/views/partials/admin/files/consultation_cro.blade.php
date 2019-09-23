@@ -201,7 +201,7 @@
             <tr>
                 <td><b>Technique d'anesthésie envisagée :</b></td>
                 <td>
-                    @foreach(explode(",", $consultation_anesthesistes->technique_anesthesie1) as $technique)
+                    @foreach(explode(",", $consultation_anesthesistes->technique_anesthesie) as $technique)
                         <ul>
                             <li>
                                 {{ $technique }}
