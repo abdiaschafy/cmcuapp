@@ -30,6 +30,8 @@ class CreateDevisTable extends Migration
             $table->integer('qte7')->nullable();
             $table->integer('qte8')->nullable();
             $table->integer('qte9')->nullable();
+            $table->integer('qte10')->nullable();
+            $table->integer('qte11')->nullable();
             $table->integer('prix_u')->nullable();
             $table->integer('prix_u1')->nullable();
             $table->integer('prix_u2')->nullable();
@@ -39,6 +41,8 @@ class CreateDevisTable extends Migration
             $table->integer('prix_u6')->nullable();
             $table->integer('prix_u7')->nullable();
             $table->integer('prix_u8')->nullable();
+            $table->integer('prix_u9')->nullable();
+            $table->integer('prix_u10')->nullable();
             $table->integer('montant')->nullable();
             $table->integer('montant1')->nullable();
             $table->integer('montant2')->nullable();
@@ -60,7 +64,12 @@ class CreateDevisTable extends Migration
             $table->string('elements6')->nullable();
             $table->string('elements7')->nullable();
             $table->string('elements8')->nullable();
+            $table->string('elements9')->nullable();
+            $table->string('elements10')->nullable();
             $table->string('arreter')->nullable();
+            $table->integer('total1')->nullable();
+            $table->integer('total2')->nullable();
+            $table->integer('total3')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

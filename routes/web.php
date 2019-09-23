@@ -152,6 +152,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::resource('/fiches', 'FichesController');
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
+    Route::get('devis/create', 'DevisController@create')->name('devis.create');
+    Route::post('devis', 'DevisController@store')->name('devis.store');
     Route::get('devis', 'DevisController@index')->name('devis.index');
     Route::get('devis/{id}','DevisController@export_devis')->name('devis.pdf');
 
@@ -160,6 +162,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('devisimage', 'DevisImageController@store')->name('devisimage.store');
     Route::get('devisimage/show/{patient}', 'DevisImageController@show')->name('devisimage.show');
     Route::get('devisimagef/{patient}', 'DevisImageController@showall')->name('devisimage.showall');
+   
 
 
     Route::get('clients', 'ClientController@index')->name('clients.index');
