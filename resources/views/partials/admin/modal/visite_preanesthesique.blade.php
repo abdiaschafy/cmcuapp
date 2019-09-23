@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('fiche_intervention.store') }}" method="post">
+                <form action="{{ route('visite_preanesthesique.store') }}" method="post">
                     @csrf
                     <div class="container">
                         <div class="col-md-10  toppad">
@@ -47,13 +47,13 @@
                                         <tr>
                                             <td><b>Date :</b> <span class="text-danger">*</span></td>
                                             <td>
-                                                <input type="date" class="form-control" name="date_vp" required>
+                                                <input type="date" value="{{ Carbon\Carbon::now()->ToDateString() }}" class="form-control" name="date_visite" required>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><b>VPA / Eléménts nouveaux (MAR) :</b> <span class="text-danger">*</span></td>
                                             <td>
-                                                <textarea name="vpa" class="form-control" id="vpa" cols="55" rows="10"></textarea>
+                                                <textarea name="element_nouveau" class="form-control" id="vpa" cols="55" rows="10">{{ old('element_nouveau') }}</textarea>
                                             </td>
                                         </tr>
 

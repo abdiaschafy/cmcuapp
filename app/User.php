@@ -72,6 +72,25 @@ class User extends Authenticatable
         return $this->hasMany(FicheIntervention::class);
     }
 
+    public function visite_preanesthesiques()
+    {
+        return $this->hasMany(VisitePreanesthesique::class);
+    }
+
+    public function premedications()
+    {
+        return $this->hasMany(Premedication::class);
+    }
+
+    public function traitement_hospitalisations()
+    {
+        return $this->hasMany(TraitementHospitalisation::class);
+    }
+    public function adaptation_traitements()
+    {
+        return $this->hasMany(AdaptationTraitement::class);
+    }
+
     public function devis()
     {
         return $this->hasMany(Devis::class);

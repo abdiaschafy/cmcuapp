@@ -12,6 +12,11 @@
         @include('partials.header')
         @can('show', \App\User::class)
             <div class="col-md-12  toppad  offset-md-0 ">
+                @can('infirmier', App\Patient::class)
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#DetailPremedication" title="Détails prémédication / préparation" data-whatever="@mdo">
+                    <i class="fas fa-eye"></i> Consignes IDE / Préparations
+                </button>
+                @endcan
                 <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right">
                     <i class="fas fa-arrow-left"></i>  Retour au dossier patient
                 </a>
@@ -22,9 +27,9 @@
                     <div class="container">
                         <h3 align="center">PREMEDICATION</h3>
                         <div class="table-responsive col-md-12">
-                            <form method="post" id="dynamic_form" action="{{ route('ordonances.store') }}">
+                            <form method="post" action="{{ route('premedication_consigne_preparation.store') }}">
                                 @csrf
-                                <span id="result"></span>
+                                @include('partials.flash')
                                 <table class="table table-bordered table-striped" id="user_table">
                                     <thead>
                                     <tr>
@@ -36,13 +41,17 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <input type="text" class="form-control" name="consigne_ide">
+                                                <input type="text" class="form-control" value="{{ old('consigne_ide') }}" name="consigne_ide" required>
                                             </td>
                                             <td>
-                                                <input type="text" class="form-control" name="preparation">
+                                                <input type="text" class="form-control" value="{{ old('premedication') }}" name="preparation" required>
                                             </td>
                                             <td>
-                                                <input type="submit" name="save" id="save" class="btn btn-primary" value="Enregistrer" />
+                                                <input type="submit" class="btn btn-primary" value="Enregistrer" />
+
+                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#DetailPremedication" title="Détails prémédication / préparation" data-whatever="@mdo">
+                                                    <i class="fas fa-eye"></i> Détails
+                                                </button>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -60,51 +69,52 @@
                         <div class="row">
                             <div class="container">
                                 <div class="table-responsive">
-                                    <form method="post" id="dynamic_form" action="{{ route('ordonances.store') }}">
+                                    <form method="post" id="dynamic_form" action="{{ route('traitement_hospitalisation.store') }}">
                                         @csrf
                                         <span id="result"></span>
                                         <table class="table table-bordered table-striped" id="user_table">
                                             <thead>
                                             <tr>
-                                                <th width="35%">Nom du médicament, dosage, posologie</th>
-                                                <th width="35%">Durée (j)</th>
-                                                <th width="35%">J (-1)</th>
-                                                <th width="35%">J (0)</th>
-                                                <th width="35%">J (1)</th>
-                                                <th width="35%">J (2)</th>
-                                                <th width="35%">Date</th>
-                                                <th width="30%">Action</th>
+                                                <th class="text-center" width="80%">Médicament, dosage, posologie</th>
+                                                <th width="40%">Durée (j)</th>
+                                                <th>J (-1)</th>
+                                                <th>J (0)</th>
+                                                <th>J (1)</th>
+                                                <th>J (2)</th>
+                                                <th>M</th>
+                                                <th>MI</th>
+                                                <th>N</th>
+                                                <th>S</th>
+                                                <th>M+1</th>
+                                                <th>MI+1</th>
+                                                <th>S+1</th>
+                                                <th>N+1</th>
+                                                <th>Date / Heure</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             <tr>
                                                 <td>
-                                                    <textarea name="" id="" cols="30" class="form-control" rows="2"></textarea>
+                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" required>{{ old('medicament_posologie_dosage') }}</textarea>
                                                 </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="text" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="date" class="form-control" name="preparation">
-                                                </td>
-                                                <td>
-                                                    <input type="submit" name="save" id="save" class="btn btn-primary" value="Enregistrer" />
-                                                </td>
+                                                <td><input type="number" class="form-control" name="duree"></td>
+                                                <td><input type="checkbox" value="Ok" name="j"></td>
+                                                <td><input type="checkbox" value="Ok" name="j0"></td>
+                                                <td><input type="checkbox" value="Ok" name="j1"></td>
+                                                <td><input type="checkbox" value="Ok" name="j2"></td>
+                                                <td><input type="checkbox" value="Ok" name="m"></td>
+                                                <td><input type="checkbox" value="Ok" name="mi"></td>
+                                                <td><input type="checkbox" value="Ok" name="n"></td>
+                                                <td><input type="checkbox" value="Ok" name="s"></td>
+                                                <td><input type="checkbox" value="Ok" name="m1"></td>
+                                                <td><input type="checkbox" value="Ok" name="mi1"></td>
+                                                <td><input type="checkbox" value="Ok" name="s1"></td>
+                                                <td><input type="checkbox" value="Ok" name="n1"></td>
+                                                <td><input type="datetime-local" value="{{ Carbon\Carbon::now()->ToDateString() }}" class="form-control" name="date" required></td>
                                             </tr>
                                             </tbody>
                                         </table>
+                                        <input type="submit" class="btn btn-primary mb-2 float-right" value="Enregistrer" />
                                         <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                                     </form>
                                 </div>
@@ -114,43 +124,45 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>
-                            <div>Nom du médicament, dosage, posologie</div>
-                        </th>
-                        <th>
-                            <div>Durée (j)</div>
-                        </th>
-                        <th>
-                            <div>J (-1)</div>
-                        </th>
-                        <th>
-                            <div>J (0)</div>
-                        </th>
-                        <th>
-                            <div>J (1)</div>
-                        </th>
-                        <th>
-                            <div>J (2)</div>
-                        </th>
-                        <th>
-                            <div>Date</div>
-                        </th>
-                        <th>
-                            <div>IDE</div>
-                        </th>
+                        <th><div class="text-center">Médicament, dosage, posologie</div></th>
+                        <th><div class="text-center">Durée (j)</div></th>
+                        <th><div>J (-1)</div></th>
+                        <th><div>J (0)</div></th>
+                        <th><div>J (1)</div></th>
+                        <th><div>J (2)</div></th>
+                        <th><div>M</div></th>
+                        <th><div>MI</div></th>
+                        <th><div>N</div></th>
+                        <th><div>S</div></th>
+                        <th><div>M+1</div></th>
+                        <th><div>MI+1</div></th>
+                        <th><div>S+1</div></th>
+                        <th><div>N+1</div></th>
+                        <th><div>Date</div></th>
+                        <th><div>IDE</div></th>
                     </tr>
                     </thead>
                     <tfoot>
+                    @foreach($TraitementHospitalisations as $TraitementHospitalisation)
                     <tr>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
+                        <td>{{ $TraitementHospitalisation->medicament_posologie_dosage }}</td>
+                        <td>{{ $TraitementHospitalisation->duree }} Jour(s)</td>
+                        <td>{{ $TraitementHospitalisation->j }}</td>
+                        <td>{{ $TraitementHospitalisation->j0 }}</td>
+                        <td>{{ $TraitementHospitalisation->j1 }}</td>
+                        <td>{{ $TraitementHospitalisation->j2 }}</td>
+                        <td>{{ $TraitementHospitalisation->m }}</td>
+                        <td>{{ $TraitementHospitalisation->mi }}</td>
+                        <td>{{ $TraitementHospitalisation->n }}</td>
+                        <td>{{ $TraitementHospitalisation->s }}</td>
+                        <td>{{ $TraitementHospitalisation->m1 }}</td>
+                        <td>{{ $TraitementHospitalisation->mi1 }}</td>
+                        <td>{{ $TraitementHospitalisation->s1 }}</td>
+                        <td>{{ $TraitementHospitalisation->n1 }}</td>
+                        <td>{{ $TraitementHospitalisation->date }}</td>
+                        <td>{{ $TraitementHospitalisation->user->name }} {{ $TraitementHospitalisation->user->prenom }}</td>
                     </tr>
+                    @endforeach
                     </tfoot>
                 </table>
                     <br>
@@ -158,51 +170,55 @@
                     <h1 class="text-center">Adaptation du traitemen personnel</h1>
                     @can('infirmier', \App\Patient::class)
                     <div class="table-responsive">
-                        <form method="post" id="dynamic_form" action="{{ route('ordonances.store') }}">
+                        <form method="post" action="{{ route('adaptation_traitement.store') }}">
                             @csrf
-                            <span id="result"></span>
                             <table class="table table-bordered table-striped" id="user_table">
                                 <thead>
                                 <tr>
-                                    <th width="35%">Nom du médicament, dosage, posologie</th>
-                                    <th width="35%">Durée (j)</th>
-                                    <th width="35%">J (-1)</th>
-                                    <th width="35%">J (0)</th>
-                                    <th width="35%">J (1)</th>
-                                    <th width="35%">J (2)</th>
-                                    <th width="35%">Date</th>
-                                    <th width="30%">Action</th>
+                                    <th class="text-center" width="80%">Médicament, dosage, posologie</th>
+                                    <th>Arrêt</th>
+                                    <th class="text-center">Poursuivre j'usqu'a la veille au soir</th>
+                                    <th class="text-center">A continuer le matin</th>
+                                    <th>J (-1)</th>
+                                    <th>J (0)</th>
+                                    <th>J (1)</th>
+                                    <th>J (2)</th>
+                                    <th>M</th>
+                                    <th>MI</th>
+                                    <th>N</th>
+                                    <th>S</th>
+                                    <th>M+1</th>
+                                    <th>MI+1</th>
+                                    <th>S+1</th>
+                                    <th>N+1</th>
+                                    <th width="5%">Date / Heure</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>
-                                        <textarea name="" id="" cols="30" class="form-control" rows="2"></textarea>
+                                        <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" required>{{ old('medicament_posologie_dosage') }}</textarea>
                                     </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="checkbox" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="date" class="form-control" name="preparation">
-                                    </td>
-                                    <td>
-                                        <input type="submit" name="save" id="save" class="btn btn-primary" value="Enregistrer" />
-                                    </td>
+                                    <td><input type="checkbox" value="Oui" name="arret"></td>
+                                    <td><input type="checkbox" value="Oui" name="poursuivre"></td>
+                                    <td><input type="checkbox" value="Oui" name="continuer"></td>
+                                    <td><input type="checkbox" value="Ok" name="j"></td>
+                                    <td><input type="checkbox" value="Ok" name="j0"></td>
+                                    <td><input type="checkbox" value="Ok" name="j1"></td>
+                                    <td><input type="checkbox" value="Ok" name="j2"></td>
+                                    <td><input type="checkbox" value="Ok" name="m"></td>
+                                    <td><input type="checkbox" value="Ok" name="mi"></td>
+                                    <td><input type="checkbox" value="Ok" name="n"></td>
+                                    <td><input type="checkbox" value="Ok" name="s"></td>
+                                    <td><input type="checkbox" value="Ok" name="m1"></td>
+                                    <td><input type="checkbox" value="Ok" name="mi1"></td>
+                                    <td><input type="checkbox" value="Ok" name="s1"></td>
+                                    <td><input type="checkbox" value="Ok" name="n1"></td>
+                                    <td><input type="datetime-local" value="{{ Carbon\Carbon::now()->ToDateString() }}" class="form-control" name="date" required></td>
                                 </tr>
                                 </tbody>
                             </table>
+                            <input type="submit" class="btn btn-primary mb-2 float-right" value="Enregistrer" />
                             <input name="patient_id" value="{{ $patient->id }}" type="hidden">
                         </form>
                     </div>
@@ -210,62 +226,53 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>
-                                <div class="text-center">Nom du médicament, dosage, posologie</div>
-                            </th>
-                            <th>
-                                <div class="text-center">Arrêt</div>
-                            </th>
-                            <th>
-                                <div class="text-center">A poursuivre j'usqu'a la veille au soir</div>
-                            </th>
-                            <th>
-                                <div class="text-center">A continuer le matin</div>
-                            </th>
-                            <th>
-                                <div>M</div>
-                            </th>
-                            <th>
-                                <div>MI</div>
-                            </th>
-                            <th>
-                                <div>S</div>
-                            </th>
-                            <th>
-                                <div>N</div>
-                            </th>
-                            <th>
-                                <div>M+1</div>
-                            </th>
-                            <th>
-                                <div>MI+1</div>
-                            </th>
-                            <th>
-                                <div>S+1</div>
-                            </th>
-                            <th>
-                                <div>N+1</div>
-                            </th>
+                            <th><div class="text-center">Médicament, dosage, posologie</div></th>
+                            <th><div class="text-center">Arrêt</div></th>
+                            <th><div class="text-center">Poursuivre j'usqu'a la veille au soir</div></th>
+                            <th><div class="text-center">A continuer le matin</div></th>
+                            <th><div>J (-1)</div></th>
+                            <th><div>J (0)</div></th>
+                            <th><div>J (1)</div></th>
+                            <th><div>J (2)</div></th>
+                            <th><div>M</div></th>
+                            <th><div>MI</div></th>
+                            <th><div>N</div></th>
+                            <th><div>S</div></th>
+                            <th><div>M+1</div></th>
+                            <th><div>MI+1</div></th>
+                            <th><div>S+1</div></th>
+                            <th><div>N+1</div></th>
+                            <th><div>Date</div></th>
+                            <th><div>IDE</div></th>
                         </tr>
                         </thead>
                         <tfoot>
+                        @foreach($AdaptationTraitements as $AdaptationTraitement)
                         <tr>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
+                            <td>{{ $AdaptationTraitement->medicament_posologie_dosage }}</td>
+                            <td>{{ $AdaptationTraitement->arret }}</td>
+                            <td>{{ $AdaptationTraitement->poursuivre }}</td>
+                            <td>{{ $AdaptationTraitement->continuer }}</td>
+                            <td>{{ $AdaptationTraitement->j }}</td>
+                            <td>{{ $AdaptationTraitement->j0 }}</td>
+                            <td>{{ $AdaptationTraitement->j1 }}</td>
+                            <td>{{ $AdaptationTraitement->j2 }}</td>
+                            <td>{{ $AdaptationTraitement->m }}</td>
+                            <td>{{ $AdaptationTraitement->mi }}</td>
+                            <td>{{ $AdaptationTraitement->n }}</td>
+                            <td>{{ $AdaptationTraitement->s }}</td>
+                            <td>{{ $AdaptationTraitement->m1 }}</td>
+                            <td>{{ $AdaptationTraitement->mi1 }}</td>
+                            <td>{{ $AdaptationTraitement->s1 }}</td>
+                            <td>{{ $AdaptationTraitement->n1 }}</td>
+                            <td>{{ $AdaptationTraitement->date }}</td>
+                            <td>{{ $AdaptationTraitement->user->name }} {{ $AdaptationTraitement->user->prenom }}</td>
                         </tr>
+                        @endforeach
                         </tfoot>
                     </table>
             </div>
+            @include('partials.admin.modal.detail_premedication_preparation')
         @endcan
     </div>
     </body>

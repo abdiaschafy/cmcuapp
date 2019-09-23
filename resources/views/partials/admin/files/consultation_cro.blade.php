@@ -237,21 +237,26 @@
                     </a>
                 </td>
                 <td>
-                    @if(count($patient->consultation_anesthesistes))
+                    @if(count($patient->visite_preanesthesiques))
                         <a class="btn btn-info" title="Imprimer le consentement éclairé" href="{{ route('consentement_eclaire.pdf', $patient->id) }}">
                             <i class="far fa-check-circle"></i> Consentement éclairé
                         </a>
                     @endif
                 </td>
             </tr>
-            @if (count($patient->consultation_anesthesistes))
+            @if (count($patient->visite_preanesthesiques))
 
                 <tr>
                     <td class="table-active"><b>DATE :</b></td>
-                    <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b></td>
+                    <td class="table-active"><b>{{ $visite_anesthesistes->date_visite }}</b></td>
                 </tr>
                 <tr>
                     <td><b>Eléments nouveaux :</b></td>
+                    <td>{{ $visite_anesthesistes->element_nouveau }}</td>
+                </tr>
+            @else
+                <tr>
+                    <td><b>Aucune visite pré-anesthésique disponible :</b></td>
                     <td></td>
                 </tr>
             @endif
