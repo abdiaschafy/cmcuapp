@@ -73,7 +73,14 @@ class PatientsController extends Controller
         $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->montant = $request->get('montant');
         $patient->avance = $request->get('avance');
-        $patient->reste = $patient->montant - $patient->avance;
+        if (!empty(\request('avance')))
+        {
+            $patient->reste = $patient->montant - $patient->avance;
+        }else{
+
+            $patient->reste = $patient->avance - $patient->assurec;
+        }
+
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');

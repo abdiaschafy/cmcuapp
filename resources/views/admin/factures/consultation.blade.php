@@ -33,6 +33,7 @@
                                 <td>MONTANT</td>
                                 <td>AVANCE</td>
                                 <td>RESTE</td>
+                                <td>PART PATIENT</td>
                                 <td>PART ASSURANCE</td>
                                 <td>DATE</td>
                                 <td>ACTION</td>
@@ -46,7 +47,8 @@
                                     <td>{{$facture->motif }}</td>
                                     <td>{{$facture->montant }} <b>FCFA</b></td>
                                     <td>{{$facture->avance }} <b>FCFA</b></td>
-                                    <td>{{$facture->reste1 }} <b>FCFA</b></td>
+                                    <td>{{$facture->reste }} <b>FCFA</b></td>
+                                    <td>{{$facture->assurec }} <b>FCFA</b></td>
                                     <td>{{$facture->assurancec }} <b>FCFA</b></td>
                                     <td>{{$facture->created_at }}</td>
                                     <td style="display: inline-flex;">
@@ -66,7 +68,14 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <a href="{{ route('bilan_consultation.pdf') }}" class="btn btn-success">Imprimer</a>
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Imprimer bilan
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('bilan_consultation.pdf') }}" class="btn btn-success mb-1"><i class="fas fa-print"></i> Quotidien</a></li>
+                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Hebdomadaire</a></li>
+                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Mensuel</a></li>
+                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Annuel</a></li>
+                        </ul>
                         {{--{{ $factures->links() }}--}}
                     </div>
                 </div>

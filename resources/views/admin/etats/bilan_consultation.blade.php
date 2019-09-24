@@ -6,9 +6,6 @@
     .logo{
         width: 100px;
     }
-    p {
-        line-height: 40%;
-    }
     hr {
         display: block; height: 1px;
         border: 0; border-top: 1px solid red;
@@ -39,14 +36,18 @@
     <div class="row">
         <hr class="text-danger">
     </div>
+    <h5 class="text-center">FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS</h5>
     <div class="container-fluid">
-        <table class="table">
+        <table class="table table-bordered">
             <thead>
             <tr>
                 <th>ID</th>
                 <th>PATIENT</th>
-                <th>MOTIF</th>
                 <th>MONTANT</th>
+                <th>AVANCE</th>
+                <th>RESTE</th>
+                <th>PART PATIENT</th>
+                <th>PART ASSURANCE</th>
                 <th>DATE</th>
             </tr>
             </thead>
@@ -55,13 +56,23 @@
             <tr>
                 <td>{{ $facture->id }}</td>
                 <td><small>{{ $facture->patient->name }} {{ $facture->patient->prenom }}</small></td>
-                <td><small>{{ $facture->motif }}</small></td>
                 <td><small>{{ $facture->montant }}</small></td>
-                <td><small>{{ $facture->created_at }}</small></td>
+                <td><small>{{ $facture->avance }}</small></td>
+                <td><small>{{ $facture->reste }}</small></td>
+                <td><small>{{ $facture->assurec }}</small></td>
+                <td><small>{{ $facture->assurancec }}</small></td>
+                <td><small>{{ $facture->created_at->ToDateString() }}</small></td>
             </tr>
             @endforeach
             <tr>
-                <td><h4>TATAUX:</h4></td>
+                <td><h4>TATAUX en Fcfa:</h4></td>
+                <td></td>
+                <td></td>
+                <td><h5>{{ $tautaux }}</h5></td>
+                <td>{{ $avances }}</td>
+                <td>{{ $restes }}</td>
+                <td>{{ $assurances }}</td>
+                <td></td>
             </tr>
         </table>
     </div>
