@@ -12,6 +12,7 @@ use App\Patient;
 use App\Produit;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FactureController extends Controller
 {
@@ -90,6 +91,23 @@ class FactureController extends Controller
         $pdf->save(storage_path('pdf/clientP').'.pdf');
 
         return $pdf->stream('clientP.pdf');
+    }
+
+    public function export_bilan_consultation()
+    {
+
+
+        $factures = FactureConsultation::with('patient')->get();
+        $tautaux = DB::table('facture_consultations')
+                    ->sum('montant');
+
+
+        $pdf = PDF::loadView('admin.etats.bilan_consultation', ['factures' => $factures]);
+
+
+        $pdf->save(storage_path('pdf/bilan_facture_consultation').'.pdf');
+
+        return $pdf->stream('bilan_facture_consultation.pdf');
     }
 
 }
