@@ -105,6 +105,7 @@ class FactureController extends Controller
         $avances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('avance');
         $restes = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('reste');
         $assurances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurancec');
+        $patients = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurec');
 
 
 
@@ -115,6 +116,7 @@ class FactureController extends Controller
             'restes' => $restes,
             'assurances' => $assurances,
             'date_today' => $date_today,
+            'patients' => $patients,
         ]);
 
         $pdf->setPaper('A4', 'landscape');

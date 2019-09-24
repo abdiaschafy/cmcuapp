@@ -54,7 +54,7 @@
             <tbody>
             @foreach($factures as $facture)
             <tr>
-                <td>{{ $facture->id }}</td>
+                <td>{{ $facture->numero }}</td>
                 <td><small>{{ $facture->patient->name }} {{ $facture->patient->prenom }}</small></td>
                 <td><small>{{ $facture->montant }}</small></td>
                 <td><small>{{ $facture->avance }}</small></td>
@@ -65,12 +65,12 @@
             </tr>
             @endforeach
             <tr>
-                <td><h4>TATAUX en Fcfa:</h4></td>
-                <td></td>
+                <td><h4>TOTAL en Fcfa:</h4></td>
                 <td></td>
                 <td><h5>{{ $tautaux }}</h5></td>
                 <td>{{ $avances }}</td>
                 <td>{{ $restes }}</td>
+                <td>{{ $patients }}</td>
                 <td>{{ $assurances }}</td>
                 <td></td>
             </tr>
