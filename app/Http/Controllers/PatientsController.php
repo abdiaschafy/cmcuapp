@@ -62,11 +62,10 @@ class PatientsController extends Controller
          $patient = new Patient();
         $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
         $patient->assurance = $request->get('assurance');
-        $patient->reste1= (($request->get('montant')));
 
         $patient->assurec =((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
 
-        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+//        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
@@ -75,9 +74,16 @@ class PatientsController extends Controller
         $patient->avance = $request->get('avance');
         if($patient->assurance){
             $patient->reste = $patient->assurec - $patient->avance  ;
-        }else
-        {
+        }else {
+
             $patient->reste = $request->get('montant') - $request->get('avance') ;
+        }
+
+        if(empty($patient->assurance)){
+            $patient->assurancec = 0  ;
+        }else {
+
+            $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         }
         
         $patient->demarcheur = $request->get('demarcheur');
