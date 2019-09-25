@@ -10,6 +10,11 @@ use Carbon\Carbon;
 class ParametresController extends Controller
 {
 
+    public function index(Patient $patient)
+    {
+        return view('admin.consultations.surveillance_rapproche_param', compact('patient'));
+    }
+
     public function store(ParametreRequest $request)
     {
         $patient = Patient::findOrFail($request->patient_id);

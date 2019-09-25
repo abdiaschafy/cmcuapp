@@ -76,7 +76,9 @@ class FichesController extends Controller
 
     public function edit($id)
     {
-        //
+        $fiche = Fiche::findOrfail($id);
+
+        return view('admin.fiches.edit', compact('fiche'));
     }
 
 

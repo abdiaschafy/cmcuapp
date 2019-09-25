@@ -278,9 +278,9 @@
         </td>
         <td>
             @can('anesthesiste', App\Patient::class)
-            <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
+            <a href="{{ route('surveillance_rapproche.index', $patient->id) }}" title="Surveillance rapprochée des paramètres" class="btn btn-success">
                 <i class="fas fa-eye"></i>
-                PREMEDICATION
+                SURVEILLANCE RAPPROCHEE
             </a>
             @endcan
         </td>
@@ -477,12 +477,15 @@
     @endif
     <tr>
         <td>
-            <h5 class="text-info">SURVEILLANCE POST ANESTHESIQUE</h5>
+            <h5 class="text-info" id="spa">SURVEILLANCE POST ANESTHESIQUE</h5>
         </td>
         <td></td>
     </tr>
 
-    
+    {{-- <tr>
+        <td class="table-active"><b>DATE :</b></td>
+        <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
+    </tr> --}}
 
 @endcan
 

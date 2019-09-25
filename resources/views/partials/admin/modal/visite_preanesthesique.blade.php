@@ -53,7 +53,7 @@
                                         <tr>
                                             <td><b>VPA / Eléménts nouveaux (MAR) :</b> <span class="text-danger">*</span></td>
                                             <td>
-                                                <textarea name="element_nouveau" class="form-control" id="vpa" cols="55" rows="10">{{ old('element_nouveau') }}</textarea>
+                                                <textarea name="element_nouveaux" class="form-control" id="vpa" cols="55" rows="10">{{ old('element_nouveaux') }}</textarea>
                                             </td>
                                         </tr>
 

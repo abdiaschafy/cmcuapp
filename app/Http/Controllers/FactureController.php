@@ -11,7 +11,9 @@ use App\FactureClient;
 use App\Patient;
 use App\Produit;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FactureController extends Controller
 {
@@ -90,6 +92,36 @@ class FactureController extends Controller
         $pdf->save(storage_path('pdf/clientP').'.pdf');
 
         return $pdf->stream('clientP.pdf');
+    }
+
+    public function export_bilan_consultation()
+    {
+
+        $date_today = Carbon::today()->toDateString();
+
+        $factures = FactureConsultation::with('patient')->where('date_insertion', '=', $date_today)->get();
+
+        $tautaux = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('montant');
+        $avances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('avance');
+        $restes = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('reste');
+        $assurances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurancec');
+        $patients = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurec');
+
+
+
+        $pdf = PDF::loadView('admin.etats.bilan_consultation', [
+            'factures' => $factures,
+            'tautaux' => $tautaux,
+            'avances' => $avances,
+            'restes' => $restes,
+            'assurances' => $assurances,
+            'date_today' => $date_today,
+            'patients' => $patients,
+        ]);
+
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->stream('bilan_facture_consultation.pdf');
     }
 
 }

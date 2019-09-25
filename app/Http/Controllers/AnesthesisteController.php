@@ -29,7 +29,7 @@ class AnesthesisteController extends Controller
             'user_id' => auth()->id(),
             'patient_id' => \request('patient_id'),
             'date_visite' => \request('date_visite'),
-            'element_nouveau' => \request('element_nouveau')
+            'element_nouveaux' => \request('element_nouveaux')
         ]);
 
         Flashy('Les nouveaux éléménts ont bien été pris en compte !!');
