@@ -31,10 +31,10 @@
                                 <td>PATIENT</td>
                                 <td>MOTIF</td>
                                 <td>MONTANT</td>
+                                <td>PART ASSURANCE</td>
+                                <td>PART PATIENT</td>
                                 <td>AVANCE</td>
                                 <td>RESTE</td>
-                                <td>PART PATIENT</td>
-                                <td>PART ASSURANCE</td>
                                 <td>DATE</td>
                                 <td>ACTION</td>
                             </tr>
@@ -46,10 +46,10 @@
                                     <td>{{$facture->patient->name }}</td>
                                     <td>{{$facture->motif }}</td>
                                     <td>{{$facture->montant }} <b>FCFA</b></td>
+                                    <td>{{$facture->assurancec }} <b>FCFA</b></td>
+                                    <td>{{$facture->assurec }} <b>FCFA</b></td>
                                     <td>{{$facture->avance }} <b>FCFA</b></td>
                                     <td>{{$facture->reste }} <b>FCFA</b></td>
-                                    <td>{{$facture->assurec }} <b>FCFA</b></td>
-                                    <td>{{$facture->assurancec }} <b>FCFA</b></td>
                                     <td>{{$facture->created_at }}</td>
                                     <td style="display: inline-flex;">
                                         <p class="mr-2" data-placement="top" data-toggle="tooltip" title="Voire les détails">

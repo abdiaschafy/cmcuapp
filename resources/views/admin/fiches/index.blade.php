@@ -37,8 +37,9 @@
                        <td>SOINS</td>
                        <td>UNE NOTE</td>
                         <td>VOIR</td>
-                        <td>SUPPRIMER</td>
+                        <td>EDITER</td>
                         <td>IMPRIMER</td>
+                        <td>SUPPRIMER</td>
                     </tr>
                     <tbody>
                     @foreach($fiche as $fiches)
@@ -54,6 +55,12 @@
                         <td>{{$fiches->soins}}</td>
                      <td>{{$fiches->notes}}</td>
                         <td><a href="{{ Route('fiches.show', $fiches->id)}}" class="btn btn-primary"><i class="fas fa-eye"></i></a></td>
+                        <td><a href="{{ Route('fiches.edit', $fiches->id)}}" class="btn btn-primary"><i class="far fa-edit"></i></a></td>
+                        <td>
+                            <p data-placement="top" data-toggle="tooltip" title="Delete">
+                                <a class="btn btn-success btn-xs" title="Imprimer" href="{{ route('fiche.pdf', $fiches->id) }}"><i class="fas fa-print"></i></a>
+                            </p>
+                        </td>
                         <td>
                             <form action="{{ route('fiches.destroy', $fiches->id)}}" method="post">
                                 @csrf @method('DELETE')
@@ -61,11 +68,6 @@
                                     <button type="submit" class="btn btn-danger btn-xs"  onclick="return myFunction()"><i class="fas fa-trash-alt"></i></button>
                                 </p>
                             </form>
-                         </td>
-                        <td>
-                            <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                <a class="btn btn-success btn-xs" title="Imprimer" href="{{ route('fiche.pdf', $fiches->id) }}"><i class="fas fa-print"></i></a>
-                            </p>
                         </td>
                     </tr>
                     @endforeach
