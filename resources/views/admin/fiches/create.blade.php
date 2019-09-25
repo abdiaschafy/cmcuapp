@@ -101,13 +101,15 @@
                         <TEXTAREA name="remarque_suggestion" rows=4 cols=40>Valeur par défaut</TEXTAREA>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary mr-2">ENREGISTRER</button>
+                    <button class="btn btn-success float-left" >
+                        <a href="{{ route('fiches.index') }}"><i class="fas fa-long-arrow-alt-left"></i> Retour</a>
+                    </button>
+                </div>
             </form>
         </div>
     </div>
-    <button class="btn btn-primary" >
-        <a href="{{ route('fiches.index') }}">Retour</a>
-    </button>
 </div>
 </body>
 @endsection

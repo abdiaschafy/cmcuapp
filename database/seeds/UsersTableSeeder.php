@@ -74,7 +74,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'NOUGWAPI',
             'prenom' => 'SORELLE',
             'login' => 'SORELLE',
-            'telephone' => '673013200',
+            'telephone' => '673013201',
             'sexe' => 'Féminin',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1983,03,26)->toDateTimeString(),

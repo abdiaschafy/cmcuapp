@@ -63,7 +63,7 @@ class FichesController extends Controller
         ]);
         $fiche->save();
 
-        return redirect()->route('fiches.index')->with('success', 'Le produit a été ajouté avec succès !');
+        return redirect()->route('fiches.index')->with('success', 'La fiche de satisfaction a bien été ajouté');
     }
 
 
@@ -76,15 +76,34 @@ class FichesController extends Controller
 
     public function edit($id)
     {
-        $fiche = Fiche::findOrfail($id);
+        $fiche = Fiche::findOrFail($id);
 
         return view('admin.fiches.edit', compact('fiche'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Fiche $fiche)
     {
-        //
+        $this->authorize('create', Fiche::class);
+        $request->validate([
+            'nom'=>'required',
+            'prenom'=> 'required',
+            'chambre_numero'=> 'required|integer',
+            'age'=> 'required|integer',
+            'service'=> 'required',
+            'infirmier_charge'=> 'required',
+            'accueil'=> 'required',
+            'restauration'=> 'required',
+            'chambre'=> 'required',
+            'soins'=> 'required',
+            'notes'=> 'required|integer',
+            'quizz'=> 'required',
+            'remarque_suggestion'=> 'required'
+
+        ]);
+
+        $fiche->update();
+        return redirect()->route('fiches.index')->with('success', 'La fiche de satisfaction a bien été modifié');
     }
 
 
