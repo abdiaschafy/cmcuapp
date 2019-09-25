@@ -12,7 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-        @can('create', \App\Devis::class)
+        @can('create', \App\Patient::class)
         <div class="container">
             <h1 class="text-center">LISTE DES DEVIS</h1>
         </div>
@@ -34,7 +34,7 @@
                             </thead>
                             <tbody>
 
-                            @foreach($devis as $devi)
+                            @foreach($devisd as $devi)
                                 <tr>
                                     <td>{{ $devi->nom}}</td>
                                     <td>{{ $devi->total3}}</td>
@@ -45,7 +45,7 @@
                                    
                                     @can('print_devis', \App\Patient::class)
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="{{ route('devis.pdf', $devi->id) }}"><i class="fas fa-print"></i></a>
+                                            <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="{{ route('devisd.pdf', $devi->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
                                     @endcan
                                    
@@ -64,7 +64,7 @@
         @can('print', \App\Patient::class)
             <div class="col-md-12 text-center">
 
-                <a href="{{ route('devis.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau devis ">Ajouter un devis</a>
+                <a href="{{ route('devisd.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau devis ">Ajouter un devis</a>
 
             </div>
         @endcan

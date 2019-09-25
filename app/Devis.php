@@ -87,4 +87,9 @@ class Devis extends Model
     {
         return $this->hasOne(Consultation::class);
     }
+
+    public function devisd()
+    {
+        return $this->hasOne(Devisd::class);
+    }
 }

@@ -162,8 +162,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('devisimage', 'DevisImageController@store')->name('devisimage.store');
     Route::get('devisimage/show/{patient}', 'DevisImageController@show')->name('devisimage.show');
     Route::get('devisimagef/{patient}', 'DevisImageController@showall')->name('devisimage.showall');
-   
 
+    Route::get('devisd/create', 'DevisdController@create')->name('devisd.create');
+    Route::post('devisd', 'DevisdController@store')->name('devisd.store');
+    Route::get('devisd', 'DevisdController@index')->name('devisd.index');
+    Route::get('devisd/{id}','DevisdController@export_devisd')->name('devisd.pdf');
+   
 
     Route::get('clients', 'ClientController@index')->name('clients.index');
     Route::get('clients/create', 'ClientController@create')->name('clients.create');

@@ -45,7 +45,10 @@ class Patient extends Model
     {
         return $this->hasMany(Devis::class);
     }
-
+    public function devisd()
+    {
+        return $this->hasMany(Devisd::class);
+    }
     public function soins()
     {
         return $this->hasMany(Soin::class);

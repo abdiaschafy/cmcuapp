@@ -482,10 +482,7 @@
         <td></td>
     </tr>
 
-    <tr>
-        <td class="table-active"><b>DATE :</b></td>
-        <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
-    </tr>
+    
 
 @endcan
 

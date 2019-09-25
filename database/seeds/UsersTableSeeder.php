@@ -286,7 +286,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $user22 = \App\User::create([
-            'role_id' => '5',
+            'role_id' => '3',
             'name' => 'ENDALE',
             'prenom' => 'TITI AMELIE',
             'login' => 'ENDALE',

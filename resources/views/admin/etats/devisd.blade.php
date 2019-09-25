@@ -128,7 +128,7 @@
                 </div>
             </div>
             <div class="row text-center text-success">
-            <p>POUR &nbsp; {{ $devis->nom}} </p>
+            <p>POUR &nbsp; {{ $devisd->nom}} </p>
                 <div class="text-center col-lg-6">
                    
                 </div>
@@ -152,24 +152,24 @@
                             <tr>
                                
                                 <td>
-                                    @if($devis->elements)
-                                    <b>{{ $devis->elements}}</b>
+                                    @if($devisd->elements)
+                                    <b>{{ $devisd->elements}}</b>
                                      @else
                                      @endif
                                 </td>
                                 
-                                @if($devis->qte1)
-                                <td>{{ $devis->qte1}}</td>
+                                @if($devisd->qte1)
+                                <td>{{ $devisd->qte1}}</td>
                                 @else
 
                                 @endif
 
-                                @if($devis->prix_u)
-                                <td>{{ $devis->prix_u}}</td>
+                                @if($devisd->prix_u)
+                                <td>{{ $devisd->prix_u}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant)
-                                <td>{{ $devis->montant}}</td>
+                                @if($devisd->montant)
+                                <td>{{ $devisd->montant}}</td>
                                 @else
                                 @endif
                             </tr>
@@ -177,89 +177,89 @@
                             <tr>
                                 
                                 <td>
-                                @if($devis->elements1)
-                                    <b>{{ $devis->elements1}}</b>
+                                @if($devisd->elements1)
+                                    <b>{{ $devisd->elements1}}</b>
                                     @else
 
                                      @endif
                                     
                                 </td>
-                                @if($devis->qte2)
-                                <td>{{ $devis->qte2}}</td>
+                                @if($devisd->qte2)
+                                <td>{{ $devisd->qte2}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u1)
-                                <td>{{ $devis->prix_u1}}</td>
+                                @if($devisd->prix_u1)
+                                <td>{{ $devisd->prix_u1}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant1)
-                                <td>{{ $devis->montant1}}</td>
+                                @if($devisd->montant1)
+                                <td>{{ $devisd->montant1}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                 <td>
-                                @if($devis->elements2)
-                                    <b>{{ $devis->elements2}}</b>
+                                @if($devisd->elements2)
+                                    <b>{{ $devisd->elements2}}</b>
                                     @else
 
                                 @endif
                                 </td>
-                                @if($devis->qte3)
-                                <td>{{ $devis->qte3}}</td>
+                                @if($devisd->qte3)
+                                <td>{{ $devisd->qte3}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u2)
-                                <td>{{ $devis->prix_u2}}</td>
+                                @if($devisd->prix_u2)
+                                <td>{{ $devisd->prix_u2}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u2)
-                                <td>{{ $devis->montant2}}</td>
+                                @if($devisd->prix_u2)
+                                <td>{{ $devisd->montant2}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                 <td>
-                                @if($devis->elements3)
-                                    <b>{{ $devis->elements3}}</b>
+                                @if($devisd->elements3)
+                                    <b>{{ $devisd->elements3}}</b>
                                     @else
 
                                 @endif
                                    
                                 </td>
-                                @if($devis->qte4)
-                                <td>{{ $devis->qte4}}</td>
+                                @if($devisd->qte4)
+                                <td>{{ $devisd->qte4}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u3)
-                                <td>{{ $devis->prix_u3}}</td>
+                                @if($devisd->prix_u3)
+                                <td>{{ $devisd->prix_u3}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant3)
-                                <td>{{ $devis->montant3}}</td>
+                                @if($devisd->montant3)
+                                <td>{{ $devisd->montant3}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                 <td>
-                                @if($devis->elements4)
-                                    <b>{{ $devis->elements4}}</b>
+                                @if($devisd->elements4)
+                                    <b>{{ $devisd->elements4}}</b>
                                     @else
                                 @endif
                                 </td>
-                                @if($devis->qte5)
-                                <td>{{ $devis->qte5}}</td>
+                                @if($devisd->qte5)
+                                <td>{{ $devisd->qte5}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u4)
-                                <td>{{ $devis->prix_u4}}</td>
+                                @if($devisd->prix_u4)
+                                <td>{{ $devisd->prix_u4}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant4)
-                                <td>{{ $devis->montant4}}</td>
+                                @if($devisd->montant4)
+                                <td>{{ $devisd->montant4}}</td>
                                 @else
                                 @endif
 
@@ -268,21 +268,21 @@
                             <tr>
                                
                                <td>
-                               @if($devis->elements5)
-                                   <b>{{ $devis->elements5}}</b>
+                               @if($devisd->elements5)
+                                   <b>{{ $devisd->elements5}}</b>
                                    @else
                                @endif
                                </td>
-                               @if($devis->qte6)
-                               <td>{{ $devis->qte6}}</td>
+                               @if($devisd->qte6)
+                               <td>{{ $devisd->qte6}}</td>
                                @else
                                @endif
-                               @if($devis->prix_u5)
-                               <td>{{ $devis->prix_u5}}</td>
+                               @if($devisd->prix_u5)
+                               <td>{{ $devisd->prix_u5}}</td>
                                @else
                                @endif
-                               @if($devis->montant5)
-                               <td>{{ $devis->montant5}}</td>
+                               @if($devisd->montant5)
+                               <td>{{ $devisd->montant5}}</td>
                                @else
                                @endif
 
@@ -291,21 +291,21 @@
                            <tr>
                                
                                <td>
-                               @if($devis->elements6)
-                                   <b>{{ $devis->elements6}}</b>
+                               @if($devisd->elements6)
+                                   <b>{{ $devisd->elements6}}</b>
                                    @else
                                @endif
                                </td>
-                               @if($devis->qte7)
-                               <td>{{ $devis->qte7}}</td>
+                               @if($devisd->qte7)
+                               <td>{{ $devisd->qte7}}</td>
                                @else
                                @endif
-                               @if($devis->prix_u6)
-                               <td>{{ $devis->prix_u6}}</td>
+                               @if($devisd->prix_u6)
+                               <td>{{ $devisd->prix_u6}}</td>
                                @else
                                @endif
-                               @if($devis->montant6)
-                               <td>{{ $devis->montant6}}</td>
+                               @if($devisd->montant6)
+                               <td>{{ $devisd->montant6}}</td>
                                @else 
                                @endif
 
@@ -325,7 +325,7 @@
                                    </td>
                                         <td colspan="3"></td>
                                        
-                                       <td class="ml-5 border-bottom">{{ $devis->total1}}</td>
+                                       <td class="ml-5 border-bottom">{{ $devisd->total1}}</td>
                                    </tr>
 
                               <tr>
@@ -338,85 +338,85 @@
                             <tr>
                                
                                 <td>
-                                @if($devis->elements7)
-                                    <b>{{ $devis->elements7}})</b>
+                                @if($devisd->elements7)
+                                    <b>{{ $devisd->elements7}})</b>
                                     @else
                                 @endif   
                                 </td>
-                                @if($devis->qte8)
-                                <td>{{ $devis->qte8}}</td>
+                                @if($devisd->qte8)
+                                <td>{{ $devisd->qte8}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u7)
-                                <td>{{ $devis->prix_u7}}</td>
+                                @if($devisd->prix_u7)
+                                <td>{{ $devisd->prix_u7}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant7)
-                                <td>{{ $devis->montant7}}</td>
+                                @if($devisd->montant7)
+                                <td>{{ $devisd->montant7}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                 <td>
-                                @if($devis->elements8)
-                                    <b>{{ $devis->elements8}}(750x12</b>
+                                @if($devisd->elements8)
+                                    <b>{{ $devisd->elements8}}(750x12</b>
                                     @else
                                 @endif
                                    
                                 </td>
-                                @if($devis->qte9)
-                                <td>{{ $devis->qte9}}</td>
+                                @if($devisd->qte9)
+                                <td>{{ $devisd->qte9}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u8)
-                                <td>{{ $devis->prix_u8}}</td>
+                                @if($devisd->prix_u8)
+                                <td>{{ $devisd->prix_u8}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant8)
-                                <td>{{ $devis->montant8}}</td>
+                                @if($devisd->montant8)
+                                <td>{{ $devisd->montant8}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                 <td>
-                                @if($devis->elements9)
-                                    <b>{{ $devis->elements9}}</b>
+                                @if($devisd->elements9)
+                                    <b>{{ $devisd->elements9}}</b>
                                     @else
                                 @endif   
                                 </td>
-                                @if($devis->qte10)
-                                <td>{{ $devis->qte10}}</td>
+                                @if($devisd->qte10)
+                                <td>{{ $devisd->qte10}}</td>
                                 @else
                                 @endif
-                                @if($devis->prix_u9)
-                                <td>{{ $devis->prix_u9}}</td>
+                                @if($devisd->prix_u9)
+                                <td>{{ $devisd->prix_u9}}</td>
                                 @else
                                 @endif
-                                @if($devis->montant9)
-                                <td>{{ $devis->montant9}}</td>
+                                @if($devisd->montant9)
+                                <td>{{ $devisd->montant9}}</td>
                                 @else
                                 @endif
                             </tr>
                             <tr>
                                
                                <td>
-                               @if($devis->elements10)
-                                   <b>{{ $devis->elements10}}</b>
+                               @if($devisd->elements10)
+                                   <b>{{ $devisd->elements10}}</b>
                                    @else
                                @endif   
                                </td>
-                               @if($devis->qte11)
-                               <td>{{ $devis->qte11}}</td>
+                               @if($devisd->qte11)
+                               <td>{{ $devisd->qte11}}</td>
                                @else
                                @endif
-                               @if($devis->prix_u10)
-                               <td>{{ $devis->prix_u10}}</td>
+                               @if($devisd->prix_u10)
+                               <td>{{ $devisd->prix_u10}}</td>
                                @else
                                @endif
-                               @if($devis->montant10)
-                               <td>{{ $devis->montant10}}</td>
+                               @if($devisd->montant10)
+                               <td>{{ $devisd->montant10}}</td>
                                @else
                                @endif
                            </tr>
@@ -432,7 +432,7 @@
                                 </td>
                                         <td colspan="3"></td>
                                     
-                                    <td>{{ $devis->total2}}</td>
+                                    <td>{{ $devisd->total2}}</td>
                            </tr>
                            <tr>
                                 <td >
@@ -446,7 +446,7 @@
                                 </td>
                                         <td colspan="3"></td>
                                         
-                                    <td  class="ml-5 border-bottom">{{ $devis->total3}}</td>
+                                    <td  class="ml-5 border-bottom">{{ $devisd->total3}}</td>
                            </tr>
                        
                        
@@ -461,7 +461,7 @@
                    <br>
                     <p class="ml-5 ">
                         
-                    Arrêté le présent devis à la somme de : {{ $devis->arreter}}
+                    Arrêté le présent devis à la somme de : {{ $devisd->arreter}}
                      
                     </p>
                 </div>

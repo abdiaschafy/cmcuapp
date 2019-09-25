@@ -24,7 +24,7 @@ class DevisController extends Controller
     public function store(Request $request)
     {
 
-        $this->authorize('create', Patient::class);
+        $this->authorize('create', Devis::class);
 
 
         $request->validate([
@@ -153,6 +153,7 @@ class DevisController extends Controller
 
     public function export_devis($id)
     {
+        $this->authorize('print_devis', Devis::class);
 
         $devis = Devis::find($id);
 
@@ -165,7 +166,7 @@ class DevisController extends Controller
 
     public function create()
     {
-        $this->authorize('create', Patient::class);
+        $this->authorize('create', Devis::class);
 
         return view('admin.devis.create');
     }

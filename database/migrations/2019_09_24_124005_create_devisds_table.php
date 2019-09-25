@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDevisTable extends Migration
+class CreateDevisdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class CreateDevisTable extends Migration
      */
     public function up()
     {
-        Schema::create('devis', function (Blueprint $table) {
-            
-            // devis orchidectomie bilaterale
+        Schema::create('devisds', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index()->nullable();
             $table->unsignedInteger('patient_id')->index()->nullable();
@@ -83,6 +81,6 @@ class CreateDevisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devis');
+        Schema::dropIfExists('devisds');
     }
 }

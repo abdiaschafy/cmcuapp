@@ -95,6 +95,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Devis::class);
     }
+
+    public function devisd()
+    {
+        return $this->hasMany(Devisd::class);
+    }
     
 //un users medecin aura plusieurs commentaires
    
