@@ -28,27 +28,35 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
+    
     @can('devis', \App\User::class)
         <div class="container">
-            <h1 class="text-center">AJOUTER UN DEVIS</h1>
+            <h1 class="text-center">AJOUTER UN DEVIS DETAILLE</h1>
             <hr>
             @include('partials.flash_form')
 
             <div class="card" style="width: 60rem;">
                 <div class="card-body">
-                    <h5 class="card-title">Ajouter un devis</h5>
+                    <h5 class="card-title">Ajouter un devis détaillé</h5>
                     <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
                     <hr>
-                    <form class="form-group col-md-12" action="{{ route('devis.store') }}" method="POST">
+                    <form class="form-group col-md-12" action="{{ route('devisd.store') }}" method="POST">
                         @csrf
-                        
+
+                       
                         <div class="row">
                             <div >
                             
                             <div class="box-part ">
                             <div class="form-group ">
-                                <label for="nom" class="col-form-label text-md-right">NOM DU DEVIS <span class="text-danger"></span></label>
-                                <input name="nom" class="form-control" value="{{ old('nom') }}" type="text" placeholder="nom du dévis" >
+                            <select class="form-control" name="nom">
+                                    <option value=""> Sélectionnez un devis</option>
+                                    @foreach ($deviss as $devis)
+                                        <option
+                                            value="{{ $devis->nom }} )" {{old("nom") ?: '' ? "selected": ""}}>
+                                        </option>
+                                    @endforeach
+                            </select>
                             </div>
                             </div>
                             

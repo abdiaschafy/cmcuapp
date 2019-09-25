@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'NGUMNJUEN',
             'prenom' => 'MOREEN',
             'login' => 'MOREEN',
-            'telephone' => '673013200',
+            'telephone' => '673013211',
             'sexe' => 'Féminin',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1987,12,31)->toDateTimeString(),
@@ -310,7 +310,7 @@ class UsersTableSeeder extends Seeder
         ]);
 
         $user22 = \App\User::create([
-            'role_id' => '5',
+            'role_id' => '3',
             'name' => 'ENDALE TITI',
             'prenom' => 'AMELIE',
             'login' => 'TITI',
