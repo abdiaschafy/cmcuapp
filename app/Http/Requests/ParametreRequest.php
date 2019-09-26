@@ -32,7 +32,7 @@ class ParametreRequest extends FormRequest
             'fr' => 'required',
             'inc_bmi' => '',
             'fc' => 'required',
-            'glycemie' => 'required',
+            'glycemie' => '',
             'spo2' => 'required',
             'poids' => 'required',
             'temperature' => 'required'
