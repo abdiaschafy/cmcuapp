@@ -59,33 +59,40 @@ class PatientsController extends Controller
                 'prise_en_charge'=> '',
                 'date_insertion'=> '',
             ]);
-         $patient = new Patient();
+
+        $patient = new Patient();
+
         $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
-        $patient->assurance = $request->get('assurance');
-
-        $patient->assurec =((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
-
-//        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
-        $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
-        $patient->prise_en_charge = $request->get('prise_en_charge');
         $patient->montant = $request->get('montant');
+        $patient->assurance = $request->get('assurance');
         $patient->avance = $request->get('avance');
-        if($patient->assurance){
-            $patient->reste = $patient->assurec - $patient->avance  ;
-        }elseif(empty($patient->assurance)) {
-
-            $patient->reste = 0;
+        $patient->numero_assurance = $request->get('numero_assurance');
+        $patient->prise_en_charge = $request->get('prise_en_charge');
+        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+        $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+        if ($patient->assurance){
+            if ($patient->avance){
+                $patient->reste = $patient->assurancec - $patient->avance;
+                $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+            }else{
+                $patient->reste = 0;
+                $patient->avance = 0;
+                $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+                $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+            }
         }else{
-            $patient->reste = $request->get('montant') - $request->get('avance') ;
-        }
-
-        if(empty($patient->assurance)){
-            $patient->assurancec = 0  ;
-        }else {
-
-            $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+            if ($patient->avance){
+                $patient->reste = $request->get('montant') - $request->get('avance');
+                $patient->assurec = 0;
+                $patient->assurancec = 0;
+            }else{
+                $patient->reste = 0;
+                $patient->avance = 0;
+                $patient->assurancec = 0;
+                $patient->assurec = $request->get('montant');
+            }
         }
         
         $patient->demarcheur = $request->get('demarcheur');

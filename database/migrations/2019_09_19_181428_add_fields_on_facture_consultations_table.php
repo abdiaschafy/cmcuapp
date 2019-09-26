@@ -16,7 +16,6 @@ class AddFieldsOnFactureConsultationsTable extends Migration
         Schema::table('facture_consultations', function (Blueprint $table) {
             $table->integer('avance')->nullable();
             $table->integer('reste')->nullable();
-            $table->string('reste1')->nullable();
             $table->string('assurance')->nullable();
             $table->integer('assurancec')->nullable();
             $table->integer('assurec')->nullable();
