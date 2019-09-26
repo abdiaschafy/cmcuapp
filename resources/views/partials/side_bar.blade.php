@@ -71,13 +71,14 @@
                     @endcan
                 </ul>
             </li>
-
+            @can('view', \App\User::class)
             <li>
                 <a href="{{ route('clients.index') }}">
                 <i class="fas fa-list-ul"></i>
                  Patients Externes
                 </a>        
            </li>
+           @endcan
            
            
         @endcan
