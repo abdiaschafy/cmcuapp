@@ -12,7 +12,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-        @can('create', \App\Patient::class)
+        @can('devis', \App\User::class)
         <div class="container">
             <h1 class="text-center">LISTE DES DEVIS DEBITES</h1>
         </div>
@@ -24,12 +24,12 @@
                         @include('partials.flash')
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
-                            @can('print', \App\Patient::class)
+{{--                            @can('print', \App\Patient::class)--}}
                            
                             <th>DEVIS</th>
                             <th>CONSULTER</th>
                             <th>AJOUTER</th>
-                            @endcan
+{{--                            @endcan--}}
                             </thead>
                             <tbody>
                             
@@ -38,16 +38,16 @@
                                  
                                  <td>{{ $devisimage->devis_p }}</td>
                                          
-                                                @can('consulter', \App\Patient::class)
+{{--                                                @can('consulter', \App\Patient::class)--}}
                                                         <td style="display: inline-flex;">
                                                             <a href="{{ route('devisimage.show', $devisimage->id) }}" title="consulter les devis du patient" class="btn btn-primary btn-xs mr-1"><i class="fas fa-eye"></i></a>
                                                         </td>
-                                                @endcan
-                                                    @can('consulter', \App\Patient::class)
+{{--                                                @endcan--}}
+{{--                                                    @can('consulter', \App\Patient::class)--}}
                                                         <td>
                                                             <a href="{{ route('devisimage.create') }}" title="ajouter un devis" class="btn btn-info btn-xs mr-1"><i class="far fa-calendar-plus"></i></a>
                                                         </td>
-                                                @endcan
+{{--                                                @endcan--}}
                                                
                                     </tr>
                             
@@ -67,13 +67,13 @@
                 </div>
             </div>
         </div>
-        @can('print', \App\Patient::class)
+{{--        @can('print', \App\Patient::class)--}}
             <div class="col-md-12 text-center">
 
                 <a href="{{ route('devisimage.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau devis">Ajouter un devis</a>
 
             </div>
-        @endcan
+{{--        @endcan--}}
         </div>
     </div>
     @endcan

@@ -14,7 +14,6 @@ class AddFieldsOnPatientsTable extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->integer('reste1')->nullable();
             $table->integer('reste')->nullable();
             $table->integer('assurancec')->nullable();
             $table->integer('assurec')->nullable();

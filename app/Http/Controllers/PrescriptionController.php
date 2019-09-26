@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use App\Prescription;
 use App\Patient;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
-use Db;
 
 class PrescriptionController extends Controller
 {
@@ -40,12 +40,11 @@ class PrescriptionController extends Controller
         $prescriptions->patient_id = $request->patient_id;
         $prescriptions->user_id = Auth::id();
         
-                $prescriptions->save();
+        $prescriptions->save();
 
+        Flashy('La nouvelle prescription a été crée avec succès !!');
 
-                Flashy('La nouvelle prescription a été crée avec succès !!');
-
-                return back();
+        return back();
     
     }
 
@@ -61,11 +60,9 @@ class PrescriptionController extends Controller
     {
 
         $prescriptions = Prescription::find($id);
-        $pdf = \PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
+        $pdf = PDF::loadView('admin.etats.prescriptions', compact('prescriptions'));
 
-        $pdf->save(storage_path('prescriptions').'.pdf');
-
-        return $pdf->download('prescriptions.pdf');
+        return $pdf->stream('prescriptions.pdf');
     }
 
 }

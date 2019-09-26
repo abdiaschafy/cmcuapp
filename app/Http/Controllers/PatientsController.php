@@ -6,6 +6,7 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
 use App\FicheIntervention;
+use App\Lettre;
 use App\Patient;
 use App\Ordonance;
 use App\User;
@@ -13,7 +14,6 @@ use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\image;
 
 
 
@@ -62,11 +62,10 @@ class PatientsController extends Controller
          $patient = new Patient();
         $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
         $patient->assurance = $request->get('assurance');
-        $patient->reste1= (($request->get('montant')));
 
         $patient->assurec =((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
 
-        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
+//        $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
@@ -75,10 +74,18 @@ class PatientsController extends Controller
         $patient->avance = $request->get('avance');
         if($patient->assurance){
             $patient->reste = $patient->assurec - $patient->avance  ;
-        }else
-        
-        {
+        }elseif(empty($patient->assurance)) {
+
+            $patient->reste = 0;
+        }else{
             $patient->reste = $request->get('montant') - $request->get('avance') ;
+        }
+
+        if(empty($patient->assurance)){
+            $patient->assurancec = 0  ;
+        }else {
+
+            $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         }
         
         $patient->demarcheur = $request->get('demarcheur');
@@ -178,9 +185,6 @@ class PatientsController extends Controller
             'consultations' => Consultation::latest()->first()
         ]);
 
-
-        $pdf->save(storage_path('lettre').'.pdf');
-
         return $pdf->stream('lettre-sortie.pdf');
     }
 
@@ -198,7 +202,7 @@ class PatientsController extends Controller
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
 
-        $facture = FactureConsultation::create([
+        FactureConsultation::create([
             'numero' => $patient->numero_dossier,
             'patient_id' => $patient->id,
             'assurance' => $patient->assurance,
@@ -215,7 +219,7 @@ class PatientsController extends Controller
         ]);
 
 
-        return back()->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
+        return redirect()->route('factures.consultation')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
     public function export_ordonance($id)
@@ -224,8 +228,6 @@ class PatientsController extends Controller
         $ordonance = Ordonance::with('patient', 'user')->find($id);
 
         $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance'));
-
-        $pdf->save(storage_path('ordonance').'.pdf');
 
         return $pdf->stream('ordonance.pdf');
     }

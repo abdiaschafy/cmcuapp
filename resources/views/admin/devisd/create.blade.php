@@ -29,7 +29,7 @@
     @include('partials.header')
     <!--// top-bar -->
     
-    @can('create', \App\Patient::class)
+    @can('devis', \App\User::class)
         <div class="container">
             <h1 class="text-center">AJOUTER UN DEVIS DETAILLE</h1>
             <hr>

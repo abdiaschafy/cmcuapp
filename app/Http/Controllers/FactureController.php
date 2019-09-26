@@ -74,9 +74,6 @@ class FactureController extends Controller
 
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
-
-        $pdf->save(storage_path('pdf/consultation').'.pdf');
-
         return $pdf->stream('consultation.pdf');
     }
 
@@ -88,11 +85,9 @@ class FactureController extends Controller
 
         $pdf = PDF::loadView('admin.etats.clientP', ['client' => $client]);
 
-
-        $pdf->save(storage_path('pdf/clientP').'.pdf');
-
         return $pdf->stream('clientP.pdf');
     }
+
 
     public function export_bilan_consultation()
     {

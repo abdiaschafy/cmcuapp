@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Client;
-use App\Consultation;
 use App\FactureClient;
-use App\FactureConsultation;
 use App\Patient;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
@@ -98,7 +95,7 @@ class ClientController extends Controller
         $this->authorize('update', Patient::class);
         $client = Client::find($id);
 
-        $facture = FactureClient::create([
+        FactureClient::create([
             
             'client_id' => $client->id,
             'nom' => $client->nom,
@@ -107,11 +104,11 @@ class ClientController extends Controller
             'montant' => $client->montant,
             'avance' => $client->avance,
             'reste' => $client->reste,
-            'user_id' => \auth()->user()->id,
+            'user_id' => \auth()->id(),
         ]);
 
 
-        return back()->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
+        return redirect()->route('factures.client')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
     

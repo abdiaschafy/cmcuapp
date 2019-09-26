@@ -35,14 +35,14 @@ class UserPolicy
     public function view(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,6
+            1,6,9
         ]);
     }
 
     public function devis(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,7
+            1,2,6,7,3
         ]);
     }
 
