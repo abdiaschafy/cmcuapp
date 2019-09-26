@@ -6,7 +6,6 @@ use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use MercurySeries\Flashy\Flashy;
 
 class UsersController extends Controller
 {
@@ -59,9 +58,6 @@ class UsersController extends Controller
         $user->password = Hash::make($password);
         $user->save();
 
-
-//        Flashy('Nous vous répondrons dans les plus brefs délais');
-
         return redirect()->route('users.index')->with('success',"L'utilisateur a bien été créer");
 
 
@@ -91,9 +87,6 @@ class UsersController extends Controller
             'login' => ['required', 'string', 'min:6', 'max:255'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
-
-//        $user = User::findOrFail($id);
-
 
         $mdpuser = $request->input('password');
         $verifypass = password_verify($mdpuser, $user->password);

@@ -7,7 +7,6 @@ use App\Patient;
 use App\Premedication;
 use App\TraitementHospitalisation;
 use App\VisitePreanesthesique;
-use Illuminate\Http\Request;
 
 class AnesthesisteController extends Controller
 {

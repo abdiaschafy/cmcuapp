@@ -48,7 +48,6 @@ class CompteRenduBlocOperatoireController extends Controller
             'suite_operatoire' => \request('suite_operatoire'),
             'traitement_propose' => \request('traitement_propose'),
             'soins' => \request('soins'),
-            'aide_op' => \request('aide_op'),
             'conclusion' => \request('conclusion'),
             'dure_intervention' => \request('dure_intervention'),
             'date_intervention' => \request('date_intervention'),
@@ -114,8 +113,6 @@ class CompteRenduBlocOperatoireController extends Controller
         $fiche_intervention = FicheIntervention::findOrFail($id);
 
         $pdf = PDF::loadView('admin.etats.fiche_intervention', compact('fiche_intervention'));
-
-        $pdf->save(storage_path('fiche_intervention').'.pdf');
 
         return $pdf->stream('fiche_intervention.pdf');
     }

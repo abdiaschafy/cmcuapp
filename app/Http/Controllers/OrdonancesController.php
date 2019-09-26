@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Ordonance;
 use App\Patient;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class OrdonancesController extends Controller
 {
@@ -31,9 +32,7 @@ class OrdonancesController extends Controller
     {
 
         $ordonance = Ordonance::find($id);
-        $pdf = \PDF::loadView('admin.etats.ordonance', compact('ordonance'));
-
-        $pdf->save(storage_path('ordonance').'.pdf');
+        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance'));
 
         return $pdf->download('ordonance.pdf');
     }

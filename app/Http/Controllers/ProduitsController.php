@@ -247,8 +247,6 @@ class ProduitsController extends Controller
 
         $pdf = PDF::loadView('admin.etats.pharmacie', ['produit' => $produit, 'patient' => $patient, 'produits' => $cart->items, 'totalPrix' => $cart->totalPrix, 'facture' => $facture]);
 
-        $pdf->save(storage_path('pharmacie').'.pdf');
-
         Session::forget('cart');
         return $pdf->stream('pharmacie.pdf');
     }

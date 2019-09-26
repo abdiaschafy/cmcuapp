@@ -1,19 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Patient;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
 use App\Devis;
-use App\Consultation;
 use Illuminate\Http\Request;
 
 class DevisController extends Controller
 {
-    public function index(Consultation $consultation)
+    public function index()
     {
        
         $devis = Devis::orderBy('id', 'asc')->paginate(100);
@@ -166,8 +160,6 @@ class DevisController extends Controller
         $devis = Devis::find($id);
 
         $pdf = \PDF::loadView('admin.etats.devis', compact('devis'));
-
-        $pdf->save(storage_path('devis').'.pdf');
 
         return $pdf->stream('devis.pdf');
     }

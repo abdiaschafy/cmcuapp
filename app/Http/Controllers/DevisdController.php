@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Devisd;
-use App\Consultation;
-use App\Patient;
 use\App\Devis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class DevisdController extends Controller
 {
@@ -17,6 +16,12 @@ class DevisdController extends Controller
         $devisd = Devisd::orderBy('id', 'asc')->paginate(100);
 
         return view('admin.devisd.index', compact('devisd'));
+    }
+
+    public function create()
+    {
+        $devis = Devis::all();
+        return view('admin.devisd.create', compact('devis'));
     }
 
 
@@ -150,18 +155,10 @@ class DevisdController extends Controller
     public function export_devisd($id)
     {
 
-        $devis = Devisd::find($id);
+        $devisd = Devisd::find($id);
 
-        $pdf = \PDF::loadView('admin.etats.devisd', compact('devisd'));
-
-        $pdf->save(storage_path('devisd').'.pdf');
+        $pdf = PDF::loadView('admin.etats.devisd', compact('devisd'));
 
         return $pdf->stream('devisd.pdf');
-    }
-
-    public function create()
-    {
-        $devis = Devis::all();
-        return view('admin.devisd.create', compact('devis'));
     }
 }

@@ -151,7 +151,6 @@ class ConsultationsController extends Controller
             'consultation_anesthesiste' => $patient->consultation_anesthesistes()->latest()->first()
         ]);
 
-       
 
         return $pdf->stream('consentement_eclaire.pdf');
     }

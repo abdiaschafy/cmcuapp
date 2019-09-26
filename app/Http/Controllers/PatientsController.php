@@ -6,6 +6,7 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
 use App\FicheIntervention;
+use App\Lettre;
 use App\Patient;
 use App\Ordonance;
 use App\User;
@@ -13,7 +14,6 @@ use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\image;
 
 
 
@@ -185,9 +185,6 @@ class PatientsController extends Controller
             'consultations' => Consultation::latest()->first()
         ]);
 
-
-        $pdf->save(storage_path('lettre').'.pdf');
-
         return $pdf->stream('lettre-sortie.pdf');
     }
 
@@ -205,7 +202,7 @@ class PatientsController extends Controller
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
 
-        $facture = FactureConsultation::create([
+        FactureConsultation::create([
             'numero' => $patient->numero_dossier,
             'patient_id' => $patient->id,
             'assurance' => $patient->assurance,
@@ -231,8 +228,6 @@ class PatientsController extends Controller
         $ordonance = Ordonance::with('patient', 'user')->find($id);
 
         $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance'));
-
-        $pdf->save(storage_path('ordonance').'.pdf');
 
         return $pdf->stream('ordonance.pdf');
     }

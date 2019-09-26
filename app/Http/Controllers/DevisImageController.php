@@ -5,16 +5,8 @@ use App\DevisImage;
 use Illuminate\Http\Request;
 use App\Patient;
 use App\Http\Requests\ImageDevisRequest;
-use App\Http\Controllers\Controller;
 use Intervention\Image\Facades\Image;
 use App\Devis;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
-
-use DB;
-use App\Examen;
 
 class DevisImageController extends Controller
 {
@@ -28,9 +20,8 @@ class DevisImageController extends Controller
 
     }
 
-   
-       
-        public function create()
+
+    public function create()
     {
         $devis = Devis::all();
         return view('admin.devisimage.create', compact('devis'));
@@ -40,9 +31,6 @@ class DevisImageController extends Controller
     public function store(ImageDevisRequest $request)
     {
 
-       
-        
-       
        $devisimages = new DevisImage();
         
        $devisimages->devis_p = $request->get('devis_p');
@@ -61,13 +49,15 @@ class DevisImageController extends Controller
         return redirect()->route('devisimage.index')->with('success', 'devis ajouté avec succès !');
     }
 
-    public function show(Request $request, $id){
+    public function show(Request $request, $id)
+    {
         
         $devisimages = DevisImage::find($id);
         return view('admin.devisimage.show', compact('devisimages'));
     }
 
-    public function showall(Patient $patient ){
+    public function showall(Patient $patient )
+    {
        
         $patients = Patient::with('devisimage')->where('id', $patient->id)->get();
         

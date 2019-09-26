@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Fiche;
-use Session;
+use Barryvdh\DomPDF\Facade as PDF;
 
 
 class FichesController extends Controller
@@ -119,12 +119,8 @@ class FichesController extends Controller
     {
 
         $fiche = Fiche::find($id);
-        $pdf = \PDF::loadView('admin.etats.fiche', compact('fiche'));
+        $pdf = PDF::loadView('admin.etats.fiche', compact('fiche'));
 
-        $pdf->save(storage_path('fiche').'.pdf');
-
-//        $content = $pdf->download()->getOriginalContent();
-//        Storage::put('public/admin/name.pdf',$content) ;
         return $pdf->stream('fiche.pdf');
         
     }
