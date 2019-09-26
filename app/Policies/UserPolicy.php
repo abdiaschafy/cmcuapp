@@ -35,7 +35,7 @@ class UserPolicy
     public function view(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,6
+            1,6,9
         ]);
     }
 

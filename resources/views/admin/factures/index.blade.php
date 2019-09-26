@@ -58,7 +58,6 @@
                         </table>
                         {{--{{ $factures->links() }}--}}
                     </div>
-                    <a href="#" class="btn btn-primary mr-2"><i class="fas fa-plus"></i> Ajouter une facture</a>
                 </div>
             </div>
     </div>

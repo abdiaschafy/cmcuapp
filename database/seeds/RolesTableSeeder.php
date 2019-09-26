@@ -44,7 +44,7 @@ class RolesTableSeeder extends Seeder
         ]);
 
         $role9 = \App\Role::create([
-            'name' => 'CAISSE',
+            'name' => 'COMPTABLE',
         ]);
 
     }

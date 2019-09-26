@@ -74,8 +74,10 @@ class PatientsController extends Controller
         $patient->avance = $request->get('avance');
         if($patient->assurance){
             $patient->reste = $patient->assurec - $patient->avance  ;
-        }else {
+        }elseif(empty($patient->assurance)) {
 
+            $patient->reste = 0;
+        }else{
             $patient->reste = $request->get('montant') - $request->get('avance') ;
         }
 
@@ -220,7 +222,7 @@ class PatientsController extends Controller
         ]);
 
 
-        return back()->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
+        return redirect()->route('factures.consultation')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
     public function export_ordonance($id)

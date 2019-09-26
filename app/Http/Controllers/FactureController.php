@@ -94,6 +94,7 @@ class FactureController extends Controller
         return $pdf->stream('clientP.pdf');
     }
 
+
     public function export_bilan_consultation()
     {
 

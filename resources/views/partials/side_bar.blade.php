@@ -65,7 +65,7 @@
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
                             <i class="fas fa-list-ul"></i>
-                            Produits anesthésiste
+                            Produits anesthésiques
                         </a>
                     </li>
                     @endcan
@@ -75,7 +75,7 @@
             <li>
                 <a href="{{ route('clients.index') }}">
                 <i class="fas fa-list-ul"></i>
-                 Clients Externes
+                 Patients Externes
                 </a>        
            </li>
            
@@ -116,7 +116,7 @@
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
                             <i class="fas fa-list-ul"></i>
-                            Produits anesthésiste
+                            Produits anesthésiques
                         </a>
                     </li>
                 </ul>
@@ -163,13 +163,9 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures consultations
                         </a>
-                        <a href="{{ route('factures.chambre') }}">
-                            <i class="far fa-money-bill-alt"></i>
-                            Factures chambres
-                        </a>
                         <a href="{{ route('factures.client') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Factures clients externes
+                            Factures patients externes
                         </a>
                        
                     </li>
