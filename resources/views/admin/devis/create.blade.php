@@ -28,7 +28,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-    @can('devis', \App\User::class)
+    @can('create', \App\Patient::class)
         <div class="container">
             <h1 class="text-center">AJOUTER UN DEVIS</h1>
             <hr>
@@ -61,7 +61,7 @@
                             </div>
                             
                         </div>
-
+                       
                         <div class="col-md-12">
                         <div class="row">
                             <div >

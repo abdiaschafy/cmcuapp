@@ -65,7 +65,7 @@
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
                             <i class="fas fa-list-ul"></i>
-                            Produits anesthésiques
+                            Produits anesthésiste
                         </a>
                     </li>
                     @endcan
@@ -75,7 +75,7 @@
             <li>
                 <a href="{{ route('clients.index') }}">
                 <i class="fas fa-list-ul"></i>
-                 Patients Externes
+                 Clients Externes
                 </a>        
            </li>
            @endcan
@@ -117,7 +117,7 @@
                     <li>
                         <a href="{{ route('produits.anesthesiste') }}">
                             <i class="fas fa-list-ul"></i>
-                            Produits anesthésiques
+                            Produits anesthésiste
                         </a>
                     </li>
                 </ul>
@@ -164,9 +164,13 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures consultations
                         </a>
+                        <a href="{{ route('factures.chambre') }}">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures chambres
+                        </a>
                         <a href="{{ route('factures.client') }}">
                             <i class="far fa-money-bill-alt"></i>
-                            Factures patients externes
+                            Factures clients externes
                         </a>
                        
                     </li>
@@ -175,7 +179,7 @@
             </li>
         @endcan
 
-        @can('devis', \App\User::class)
+        @can('create', \App\Patient::class)
             <li>
                 <a href="#devisSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-book"></i>
@@ -183,18 +187,22 @@
                     <i class="fas fa-angle-down fa-pull-right"></i>
                 </a>
                 <ul class="collapse list-unstyled" id="devisSubmenu">
+                
                     <li>
                         <a href="{{ route('devis.index') }}">
                             <i class="fas fa-list-ul"></i>
                             Liste des devis
                         </a>
                     </li>
+                   
+                   
                     <li>
                         <a href="{{ route('devisd.index') }}">
                             <i class="fas fa-list-ul"></i>
                             Devis détaillé(s)
                         </a>
                     </li>
+                    
                     <li>
                         <a href="{{ route('devisimage.index') }}">
                             <i class="fas fa-lock"></i>

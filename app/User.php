@@ -146,5 +146,11 @@ class User extends Authenticatable
 
     }
 
+    public function isLogistique()
+    {
+        return Auth::user()->role_id === 5;
+
+    }
+
 
 }

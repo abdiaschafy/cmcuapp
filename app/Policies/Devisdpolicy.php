@@ -17,7 +17,7 @@ class Devisdpolicy
      */
     public function before(User $user, $ability)
     {
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() && $user->isCaisse() && $user->isMedecin() && $user->isLogistique()) {
 
             return true;
         }
@@ -32,7 +32,7 @@ class Devisdpolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,3
+            1,2,6,5
         ]);
     }
 
@@ -40,14 +40,14 @@ class Devisdpolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,3
+            1,2,6,5
         ]);
     }
 
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,3
+            1,2,6,5
         ]);
 
     }
@@ -55,7 +55,7 @@ class Devisdpolicy
     public function print_devis(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,3
+            1,2,6,5
         ]);
 
     }
@@ -71,7 +71,7 @@ class Devisdpolicy
     public function consulter()
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,3
+            1,2,6,5
         ]);
 
     }

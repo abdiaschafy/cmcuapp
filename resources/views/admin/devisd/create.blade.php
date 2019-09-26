@@ -43,7 +43,7 @@
                     <form class="form-group col-md-12" action="{{ route('devisd.store') }}" method="POST">
                         @csrf
 
-                       
+
                         <div class="row">
                             <div >
                             
@@ -59,7 +59,7 @@
                             </select>
                             </div>
                             </div>
-                            
+
                             </div>
                             <div class="box-a">
                             <div class="form-group">
@@ -67,7 +67,7 @@
                                 <input name="arreter" class="form-control" value="{{ old('arreter') }}" type="text" placeholder=" (EN LETTRES)" >
                             </div>
                             </div>
-                            
+
                         </div>
                        
                         <div class="col-md-12">
