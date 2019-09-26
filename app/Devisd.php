@@ -91,4 +91,10 @@ class Devisd extends Model
         {
             return $this->belongsTo(Devis::class);
         }
+
+        public function isLogistique()
+        {
+            return Auth::user()->role_id === 5;
+    
+        }
 }

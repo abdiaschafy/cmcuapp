@@ -42,32 +42,34 @@
                     <hr>
                     <form class="form-group col-md-12" action="{{ route('devisd.store') }}" method="POST">
                         @csrf
-
-                       
                         <div class="row">
                             <div >
                             
                             <div class="box-part ">
                             <div class="form-group ">
-                            <select class="form-control" name="nom">
-                                    <option value=""> Sélectionnez un devis</option>
-                                    @foreach ($deviss as $devis)
-                                        <option
-                                            value="{{ $devis->nom }} )" {{old("nom") ?: '' ? "selected": ""}}>
-                                        </option>
-                                    @endforeach
-                            </select>
+                            <table class="table table-user-information ">
+                           <tbody>
+                                <tr>
+                                <td><b>Devis prévisionnel :</b></td>
+                                        <td>
+                                            <select class="form-control" name="devis_p">
+                                                <option> Sélectionner un devis</option>
+                                                @foreach ($devis as $devi)
+                                                    <option
+                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
+                                        </td>
+                                </tr>
+                            </tbody>
+                          </table>
                             </div>
                             </div>
                             
                             </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="arreter" class="col-form-label text-md-right">MONTANT TOTAL <span class="text-danger"></span></label>
-                                <input name="arreter" class="form-control" value="{{ old('arreter') }}" type="text" placeholder=" (EN LETTRES)" >
-                            </div>
-                            </div>
-                            
+                           
                         </div>
                        
                         <div class="col-md-12">

@@ -28,7 +28,7 @@
     <!-- Page Content Holder -->
     @include('partials.header')
     <!--// top-bar -->
-    @can('create', \App\Devis::class)
+    @can('create', \App\Patient::class)
         <div class="container">
             <h1 class="text-center">AJOUTER UN DEVIS</h1>
             <hr>

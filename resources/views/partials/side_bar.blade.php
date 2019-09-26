@@ -178,7 +178,7 @@
             </li>
         @endcan
 
-        @can('create', \App\Devis::class)
+        @can('create', \App\Patient::class)
             <li>
                 <a href="#devisSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-book"></i>
@@ -186,20 +186,22 @@
                     <i class="fas fa-angle-down fa-pull-right"></i>
                 </a>
                 <ul class="collapse list-unstyled" id="devisSubmenu">
+                
                     <li>
                         <a href="{{ route('devis.index') }}">
                             <i class="fas fa-list-ul"></i>
                             Liste des devis
                         </a>
                     </li>
-                    @can('create', \App\Devisd::class)
+                   
+                   
                     <li>
                         <a href="{{ route('devisd.index') }}">
                             <i class="fas fa-list-ul"></i>
                             Devis détaillé(s)
                         </a>
                     </li>
-                    @endcan
+                    
                     <li>
                         <a href="{{ route('devisimage.index') }}">
                             <i class="fas fa-lock"></i>

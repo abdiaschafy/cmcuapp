@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
             'name' => 'NGUMNJUEN',
             'prenom' => 'MOREEN',
             'login' => 'MOREEN',
-            'telephone' => '673013200',
+            'telephone' => '673013201',
             'sexe' => 'Féminin',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1987,12,31)->toDateTimeString(),
@@ -117,17 +117,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('infirmiere@cmcu2019')
         ]);
 
-        $user8 = \App\User::create([
-            'role_id' => '4',
-            'name' => 'NGUMNJUEN',
-            'prenom' => 'MOREEN',
-            'login' => 'NGUMNJUEN',
-            'telephone' => '673013200',
-            'sexe' => 'Féminin',
-            'lieu_naissance' => 'Njisse',
-            'date_naissance' => \Carbon\Carbon::createFromDate(1985,05,28)->toDateTimeString(),
-            'password' => bcrypt('infirmiere@cmcu2019')
-        ]);
+       
 
         $user9 = \App\User::create([
             'role_id' => '4',

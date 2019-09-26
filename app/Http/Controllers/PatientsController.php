@@ -76,6 +76,7 @@ class PatientsController extends Controller
         if($patient->assurance){
             $patient->reste = $patient->assurec - $patient->avance  ;
         }else
+        
         {
             $patient->reste = $request->get('montant') - $request->get('avance') ;
         }

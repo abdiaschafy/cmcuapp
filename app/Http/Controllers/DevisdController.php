@@ -8,6 +8,8 @@ use App\Patient;
 use\App\Devis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class DevisdController extends Controller
 {
@@ -153,6 +155,7 @@ class DevisdController extends Controller
     public function export_devisd($id)
     {
 
+        $this->authorize('create', Patient::class);
         $devis = Devisd::find($id);
 
         $pdf = \PDF::loadView('admin.etats.devisd', compact('devisd'));
@@ -164,8 +167,8 @@ class DevisdController extends Controller
 
     public function create()
     {
-        $this->authorize('create', Patient::class);
-        $deviss = Devis::all();
+       
+        $devis = Devis::all();
         return view('admin.devisd.create', compact('devis'));
     }
 }

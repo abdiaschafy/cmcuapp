@@ -92,4 +92,10 @@ class Devis extends Model
     {
         return $this->hasOne(Devisd::class);
     }
+
+    public function isLogistique()
+    {
+        return Auth::user()->role_id === 5;
+
+    }
 }
