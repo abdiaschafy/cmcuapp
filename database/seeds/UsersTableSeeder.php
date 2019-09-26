@@ -347,14 +347,14 @@ class UsersTableSeeder extends Seeder
 
         $user221 = \App\User::create([
             'role_id' => '9',
-            'name' => 'DOUMBE',
-            'prenom' => 'DOUMBE',
-            'login' => 'DOUMBE',
+            'name' => 'NDOUMBE',
+            'prenom' => 'CHRISTIAN',
+            'login' => 'NDOUMBE',
             'telephone' => '000020000',
             'sexe' => 'Masculin',
             'lieu_naissance' => 'Douala',
             'date_naissance' => \Carbon\Carbon::createFromDate(1980,12,15)->toDateTimeString(),
-            'password' => bcrypt('Doumbe@2019')
+            'password' => bcrypt('Compta@2019')
         ]);
 
 
