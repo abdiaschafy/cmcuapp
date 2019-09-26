@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Devisd;
+use App\Consultation;
+use App\Patient;
 use\App\Devis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 
 class DevisdController extends Controller
 {
-    public function index()
+    public function index(Consultation $consultation)
     {
        
         $devisd = Devisd::orderBy('id', 'asc')->paginate(100);
@@ -18,19 +21,16 @@ class DevisdController extends Controller
         return view('admin.devisd.index', compact('devisd'));
     }
 
-    public function create()
-    {
-        $devis = Devis::all();
-        return view('admin.devisd.create', compact('devis'));
-    }
-
 
     public function store(Request $request)
     {
 
+        $this->authorize('create', Patient::class);
 
 
         $request->validate([
+
+            //orchidectomie bilaterale
            
             'nom'=> ['', 'unique:devis'],
             'qte1'=> '',
@@ -155,10 +155,20 @@ class DevisdController extends Controller
     public function export_devisd($id)
     {
 
-        $devisd = Devisd::find($id);
+        $this->authorize('create', Patient::class);
+        $devis = Devisd::find($id);
 
-        $pdf = PDF::loadView('admin.etats.devisd', compact('devisd'));
+        $pdf = \PDF::loadView('admin.etats.devisd', compact('devisd'));
+
+        $pdf->save(storage_path('devisd').'.pdf');
 
         return $pdf->stream('devisd.pdf');
+    }
+
+    public function create()
+    {
+       
+        $devis = Devis::all();
+        return view('admin.devisd.create', compact('devis'));
     }
 }
