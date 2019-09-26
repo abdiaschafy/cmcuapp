@@ -180,6 +180,7 @@
         @endcan
 
         @can('create', \App\Patient::class)
+        @can('devis', \App\User::class)
             <li>
                 <a href="#devisSubmenu" data-toggle="collapse" aria-expanded="false">
                     <i class="fas fa-book"></i>
@@ -212,6 +213,7 @@
                    
                 </ul>
             </li>
+        @endcan
         @endcan
         <br>
         <br>
