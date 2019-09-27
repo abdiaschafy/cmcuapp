@@ -48,6 +48,7 @@
                 <th>RESTE</th>
                 <th>PART PATIENT</th>
                 <th>PART ASSURANCE</th>
+                <th>DMH</th>
                 <th>DATE</th>
             </tr>
             </thead>
@@ -61,6 +62,7 @@
                 <td><small>{{ $facture->reste }}</small></td>
                 <td><small>{{ $facture->assurec }}</small></td>
                 <td><small>{{ $facture->assurancec }}</small></td>
+                <td><small>{{ $facture->demarcheur }}</small></td>
                 <td><small>{{ $facture->created_at->ToDateString() }}</small></td>
             </tr>
             @endforeach

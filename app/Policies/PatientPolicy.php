@@ -123,7 +123,7 @@ class PatientPolicy
     public function anesthesiste()
     {
         return in_array(auth()->user()->id, [
-            12,
+            15,
         ]);
 
     }
@@ -131,7 +131,7 @@ class PatientPolicy
     public function chirurgien()
     {
         return in_array(auth()->user()->id, [
-            13,14,15,16,17,18,19,20,21,22,23,24,1
+            13,14,16,17,18,19,20,21,22,23,24,1
         ]);
 
     }

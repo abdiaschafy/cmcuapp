@@ -363,7 +363,7 @@
 
     <tr>
         <td>
-            @can('medecin', \App\Patient::class)
+            @can('chirurgien', \App\Patient::class)
             <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient">
                 <i class="fas fa-book"></i> Nouvelle consultation
             </a>
@@ -475,12 +475,14 @@
         @endcan
 
     @endif
+    @can('anesthesiste', \App\Patient::class)
     <tr>
         <td>
             <h5 class="text-info" id="spa">SURVEILLANCE POST ANESTHESIQUE</h5>
         </td>
         <td></td>
     </tr>
+    @endcan
 
     {{-- <tr>
         <td class="table-active"><b>DATE :</b></td>
