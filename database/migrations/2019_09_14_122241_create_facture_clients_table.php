@@ -23,6 +23,7 @@ class CreateFactureClientsTable extends Migration
             $table->string('avance')->nullable();
             $table->string('reste')->nullable();
             $table->string('motif')->nullable();
+            
             $table->timestamps();
         });
     }

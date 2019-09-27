@@ -8,7 +8,7 @@ class Client extends Model
 {
     protected $fillable = [
        
-        'client_id',
+       
         'user_id',
         'nom',
         'prenom',
@@ -16,17 +16,25 @@ class Client extends Model
         'montant',
         'avance',
         'reste',
+        'partassurance',
+        'partpatient',
+        'assurance',
+        'numero_assurance',
+        'prise_en_charge',
+        'demarcheur',
 
     ] ;
 
-    public function users()
-    {
-        return $this->belongsTo(User::class);
-    }
+   
 
     public function facture_client()
     {
         return $this->hasMany(FactureClient::class);
+    }
+
+     public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 

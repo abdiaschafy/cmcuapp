@@ -8,6 +8,11 @@ use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
+use App\Consultation;
+use App\User;
+use Barryvdh\DomPDF\Facade as PDF;
+
+
 
 
 
@@ -16,7 +21,7 @@ class ClientController extends Controller
     public function index()
     {
         $this->authorize('update', Patient::class);
-        $clients = Client::with('users')->latest()->paginate(100);
+        $clients = Client::with('user')->latest()->paginate(100);
         return view('admin.clients.index', compact('clients'));
 
     }
@@ -39,14 +44,53 @@ class ClientController extends Controller
                 'montant'=> '',
                 'avance'=> '',
                 'reste'=> '',
+                'partassurance'=> '',
+                'partpatient'=> '',
+                'assurance'=> '',
+                 'numero_assurance'=> '',
+                  'prise_en_charge'=> '',
+                  'demarcheur'=> '',
+
+               
                
             ]);
             $client = new Client();
             $client->nom = $request->get('nom');
             $client->prenom = $request->get('prenom');
-            $client->montant = $request->get('montant');
-            $client->avance = $request->get('avance');
-            $client->reste = $client->montant - $client->avance;
+        $client->montant = $request->get('montant');
+        $client->assurance = $request->get('assurance');
+        $client->avance = $request->get('avance');
+        
+        $client->numero_assurance = $request->get('numero_assurance');
+        $client->prise_en_charge = $request->get('prise_en_charge');
+
+        $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
+        $client->partpatient = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+        if ($client->assurance){
+            if ($client->avance){
+                $client->reste = $client->partassurance - $client->avance;
+                $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
+            }else{
+                $client->reste = 0;
+                $client->avance = 0;
+                $client->partpatient = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+                $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
+            }
+        }else{
+            if ($client->avance){
+                $client->reste = $request->get('montant') - $request->get('avance');
+                $client->partpatient = 0;
+                $client->partassurance = 0;
+            }else{
+                $client->reste = 0;
+                $client->avance = 0;
+                $client->partassurance = 0;
+                $client->partpatient = $request->get('montant');
+            }
+        }
+        
+         $client->assurance = $request->get('assurance');
+
             $client->motif = $request->get('motif');
             $client->user_id = Auth::id();
             $client->save();
@@ -60,21 +104,35 @@ class ClientController extends Controller
         $request->validate([
             'nom'=> '',
             'prenom'=> '',
-            'motif'=> '',
+            'assurance'=> '',
+            'partpatient'=> '',
+            'partassurance'=> '',
+            'numero_assurance'=> '',
             'montant'=> '',
+            'motif'=> '',
             'avance'=> '',
             'reste'=> '',
+            'demarcheur'=> '',
+            'prise_en_charge'=> '',
           
         ]);
 
 
         $client = Client::findOrFail($id);
-        $client->nom = $request->get('nom');
-        $client->prenom = $request->get('prenom');
-        $client->motif = $request->get('motif');
+       
+        $client->assurance = $request->get('assurance');
+        $client->numero_assurance = $request->get('numero_assurance');
+        $client->name = $request->get('nom');
         $client->montant = $request->get('montant');
         $client->avance = $request->get('avance');
         $client->reste = $request->get('reste');
+        $client->partpatient = $request->get('partpatient');
+        $client->partassurance = $request->get('partassurance');
+        $client->demarcheur = $request->get('demarcheur');
+        $client->prise_en_charge = $request->get('prise_en_charge');
+        $client->motif = $request->get('motif');
+        $client->prenom = $request->get('prenom');
+
         $client->user_id = Auth::id();
         $client->save();
 
@@ -98,12 +156,16 @@ class ClientController extends Controller
         FactureClient::create([
             
             'client_id' => $client->id,
-            'nom' => $client->nom,
-            'prenom' => $client->prenom,
+            'assurance' => $client->assurance,
+            'partassurance' => $client->partassurance,
+            'partpatient' => $client->partpatient,
             'motif' => $client->motif,
             'montant' => $client->montant,
+            'demarcheur' => $client->demarcheur,
             'avance' => $client->avance,
             'reste' => $client->reste,
+            'prenom' => $client->prenom,
+            'nom' => $client->nom,
             'user_id' => \auth()->id(),
         ]);
 
