@@ -28,7 +28,7 @@ class PatientPolicy
     public function create(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,4
+            1,2,6,4,9,3
         ]);
     }
 
