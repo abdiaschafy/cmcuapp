@@ -16,7 +16,7 @@ class DevisImageController extends Controller
         $devisimages = DevisImage::orderBy('id', 'asc')->paginate(100);
 
         
-        return view('admin.devisimage.index', compact('devisimages','patients'));
+        return view('admin.devisimage.index', compact('devisimages'));
 
     }
 

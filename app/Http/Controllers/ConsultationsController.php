@@ -68,7 +68,7 @@ class ConsultationsController extends Controller
             'examen_p'=> request('examen_p'),
             'devis_p'=> request('devis_p'),
             'motif_c'=> request('motif_c'),
-            'acte'=> implode(",", $request->acte),
+            'acte'=> implode(",", $request->acte ?? []),
             'type_intervention' => request('type_intervention'),
             'date_intervention' => request('date_intervention'),
             'date_consultation' => request('date_consultation'),

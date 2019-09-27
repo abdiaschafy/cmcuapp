@@ -68,8 +68,10 @@ class PatientsController extends Controller
         $patient->montant = $request->get('montant');
         $patient->assurance = $request->get('assurance');
         $patient->avance = $request->get('avance');
+        
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->prise_en_charge = $request->get('prise_en_charge');
+
         $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
         if ($patient->assurance){
