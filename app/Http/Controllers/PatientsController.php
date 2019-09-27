@@ -6,6 +6,7 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
 use App\FicheIntervention;
+use App\Http\Requests\FactureConsultationRequest;
 use App\Lettre;
 use App\Patient;
 use App\Ordonance;
@@ -14,7 +15,6 @@ use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 
 
 class PatientsController extends Controller
@@ -41,62 +41,62 @@ class PatientsController extends Controller
     {
         $this->authorize('update', Patient::class);
 
-            $request->validate([
-                'name'=> 'required',
-                'name'=> '',
-                'prenom'=> '',
-                'assurance'=> '',
-                'assurancec'=> '',
-                'assurec'=> '',
-                'motif'=> '',
-                'montant'=> '',
-                'avance'=> '',
-                'reste'=> '',
-                'reste1'=> '',
-                'demarcheur'=> '',
-                'numero_assurance'=> '',
-                'numero_dossier'=> '',
-                'prise_en_charge'=> '',
-                'date_insertion'=> '',
-            ]);
+        $request->validate([
+            'name' => 'required',
+            'name' => '',
+            'prenom' => '',
+            'assurance' => '',
+            'assurancec' => '',
+            'assurec' => '',
+            'motif' => '',
+            'montant' => '',
+            'avance' => '',
+            'reste' => '',
+            'reste1' => '',
+            'demarcheur' => '',
+            'numero_assurance' => '',
+            'numero_dossier' => '',
+            'prise_en_charge' => '',
+            'date_insertion' => '',
+        ]);
 
         $patient = new Patient();
 
-        $patient->numero_dossier = mt_rand(1000000, 9999999)-1;
+        $patient->numero_dossier = mt_rand(1000000, 9999999) - 1;
         $patient->name = $request->get('name');
         $patient->prenom = $request->get('prenom');
         $patient->montant = $request->get('montant');
         $patient->assurance = $request->get('assurance');
         $patient->avance = $request->get('avance');
-        
+
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->prise_en_charge = $request->get('prise_en_charge');
 
         $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
         $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
-        if ($patient->assurance){
-            if ($patient->avance){
+        if ($patient->assurance) {
+            if ($patient->avance) {
                 $patient->reste = $patient->assurancec - $patient->avance;
                 $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
-            }else{
+            } else {
                 $patient->reste = 0;
                 $patient->avance = 0;
                 $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
                 $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
             }
-        }else{
-            if ($patient->avance){
+        } else {
+            if ($patient->avance) {
                 $patient->reste = $request->get('montant') - $request->get('avance');
                 $patient->assurec = 0;
                 $patient->assurancec = 0;
-            }else{
+            } else {
                 $patient->reste = 0;
                 $patient->avance = 0;
                 $patient->assurancec = 0;
                 $patient->assurec = $request->get('montant');
             }
         }
-        
+
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
@@ -122,8 +122,8 @@ class PatientsController extends Controller
             'prescriptions' => $patient->prescriptions()->get(),
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossiers' => $patient->dossiers()->latest()->first(),
-            'parametres' =>$patient->parametres()->latest()->first(),
-            'compte_rendu_bloc_operatoires' =>$patient->compte_rendu_bloc_operatoires()->latest()->first()
+            'parametres' => $patient->parametres()->latest()->first(),
+            'compte_rendu_bloc_operatoires' => $patient->compte_rendu_bloc_operatoires()->latest()->first()
         ]);
     }
 
@@ -132,20 +132,20 @@ class PatientsController extends Controller
     {
         $this->authorize('update', Patient::class);
         $request->validate([
-            'name'=> '',
-            'prenom'=> '',
-            'assurance'=> '',
-            'assurancec'=> '',
-            'assurec'=> '',
-            'numero_assurance'=> '',
-            'numero_dossier'=> '',
-            'montant'=> '',
-            'motif'=> '',
-            'avance'=> '',
-            'reste'=> '',
-            'reste1'=> '',
-            'demarcheur'=> '',
-            'prise_en_charge'=> '',
+            'name' => '',
+            'prenom' => '',
+            'assurance' => '',
+            'assurancec' => '',
+            'assurec' => '',
+            'numero_assurance' => '',
+            'numero_dossier' => '',
+            'montant' => '',
+            'motif' => '',
+            'avance' => '',
+            'reste' => '',
+            'reste1' => '',
+            'demarcheur' => '',
+            'prise_en_charge' => '',
             'date_insertion' => 'date_insertion',
         ]);
 
@@ -205,27 +205,38 @@ class PatientsController extends Controller
         return redirect()->route('patients.index')->with('success', "Le dossier du patient a bien été supprimé");
     }
 
-    public function generate_consultation($id)
+    /**
+     * Post
+     *
+     * @mixin Eloquent
+     */
+    public function generate_consultation(Request $request, $id)
     {
         $this->authorize('update', Patient::class);
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
 
-        FactureConsultation::create([
-            'numero' => $patient->numero_dossier,
-            'patient_id' => $patient->id,
-            'assurance' => $patient->assurance,
-            'assurancec' => $patient->assurancec,
-            'assurec' => $patient->assurec,
-            'motif' => $patient->motif,
-            'montant' => $patient->montant,
-            'demarcheur' => $patient->demarcheur,
-            'avance' => $patient->avance,
-            'reste' => $patient->reste,
-            'prenom' => $patient->prenom,
-            'date_insertion' => $patient->date_insertion,
-            'user_id' => \auth()->user()->id,
-        ]);
+        $factureConsultations = FactureConsultation::where('numero', '=', $patient->numero_dossier)->first();
+
+        if ($factureConsultations){
+            return back()->with('error', 'La facture existe déja');
+        }else{
+            FactureConsultation::create([
+                'numero' => $patient->numero_dossier,
+                'patient_id' => $patient->id,
+                'assurance' => $patient->assurance,
+                'assurancec' => $patient->assurancec,
+                'assurec' => $patient->assurec,
+                'motif' => $patient->motif,
+                'montant' => $patient->montant,
+                'demarcheur' => $patient->demarcheur,
+                'avance' => $patient->avance,
+                'reste' => $patient->reste,
+                'prenom' => $patient->prenom,
+                'date_insertion' => $patient->date_insertion,
+                'user_id' => auth()->user()->id,
+            ]);
+        }
 
 
         return redirect()->route('factures.consultation')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
