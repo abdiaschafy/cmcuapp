@@ -68,7 +68,7 @@ class ClientController extends Controller
         $client->partpatient = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
         if ($client->assurance){
             if ($client->avance){
-                $client->reste = ($client->partpatient - $client->avance);
+                $client->reste =( $client->partpatient - $client->avance);
                 $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
             }else{
                 $client->reste = 0;
@@ -78,7 +78,7 @@ class ClientController extends Controller
             }
         }else{
             if ($client->avance){
-                $client->reste = ($client->partpatient - $request->get('avance'));
+                $client->reste = ((int)$request->get('montant') - (int)$request->get('avance'));
                 $client->partpatient = 0;
                 $client->partassurance = 0;
             }else{
