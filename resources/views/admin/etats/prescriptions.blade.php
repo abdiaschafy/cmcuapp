@@ -143,120 +143,71 @@ a {
     <div class="row">
         <div >
 
-            <div class="box-part ">
-
-                <i ></i>
-
                 <div class="title">
-                    <h5>HEMATOLOGIE</h5>
-
-                </div>
-
-                
+                    @if($prescriptions->hematologie)
+                    <h5><u>HEMATOLOGIE</u></h5>
                     {{$prescriptions->hematologie}}
+                    @else
+                    @endif
 
-            </div>
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->hemostase)
+                    <h5><u> HEMOSTASE</u></h5>
+                    {{$prescriptions->hemostase}}
+                    @else
+                    @endif
+                </div> <br>   
+                <div class="title">
+                    @if($prescriptions->biochimie)
+                    <h5><u>BIOCHIMIE</u></h5>
+                    {{$prescriptions->biochimie}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->serologie)
+                    <h5><u>SEROLOGIE</u></h5>
+                    {{$prescriptions->serologie}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->hormonologie)
+                    <h5><u>HORMONOLOGIE</u></h5>
+                    {{$prescriptions->hormonologie}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->marqueurs)
+                    <h5><u>MARQUEURS</u></h5>
+                    {{$prescriptions->marqueurs}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->bacteriologie)
+                    <h5><u>BACTERIOLOGIE</u></h5>
+                    {{$prescriptions->bacteriologie}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->spermiologie)
+                    <h5> <u>SPERMIOLOGIE</u></h5>
+                    {{$prescriptions->spermiologie}}
+                    @else
+                    @endif
+                </div><br>
+                <div class="title">
+                    @if($prescriptions->urines)
+                    <h5> <u>URINES</u></h5>
+                    {{$prescriptions->urines}}
+                    @else
+                    @endif
+                </div>
         </div>
-            <div class="box-a ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>HEMOSTASE</h5>
-                    
-                </div>
-
-                {{$prescriptions->hemostase}}
-            </div>
+            
     </div>
-    <div class="row">
-        <div >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>BIOCHIMIE</h5>
-                </div>
-                {{$prescriptions->biochimie}}
-            </div>
-        </div>
-        <div class="box-a ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>SEROLOGIE</h5>
-                    
-                </div>
-                {{$prescriptions->serologie}}
-            </div>
-    </div>
-    <div class="row">
-        <div  >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>HORMONOLOGIE</h5>
-                </div>
-                {{$prescriptions->hormonologie}}
-            </div>
-        </div>
-        <div class="box-a ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>MARQUEURS</h5>
-                    
-                </div>
-                {{$prescriptions->marqueurs}}
-            </div>
-    </div>
-    <div class="row">
-        <div  >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>BACTERIOLOGIE</h5>
-
-                </div>
-
-                {{$prescriptions->bacteriologie}}
-            </div>
-        </div>
-        <div class="box-a ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>SPERMIOLOGIE</h5>
-                    
-                </div>
-                {{$prescriptions->spermiologie}}
-            </div>
-    </div>
-    <div class="row">
-        <div >
-
-            <div class="box-part ">
-
-                <i ></i>
-
-                <div class="title">
-                    <h5>URINES</h5>
-                </div>
-                {{$prescriptions->urines}}
-            </div>
-        </div>
-       
-    </div>
-  </div>
-
+    
