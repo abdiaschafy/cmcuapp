@@ -23,6 +23,8 @@ class AddFieldsOnPatientsTable extends Migration
             $table->date('date_insertion')->nullable();
             $table->integer('montant')->nullable();
             $table->integer('avance')->nullable();
+            $table->integer('medecin_r')->nullable();
+
         });
     }
 
@@ -34,7 +36,7 @@ class AddFieldsOnPatientsTable extends Migration
     public function down()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->dropColumn('reste1', 'reste', 'assurancec', 'assurec', 'demarcheur', 'prenom', 'date_insertion', 'montant', 'avance');
+            $table->dropColumn('reste1', 'reste', 'assurancec', 'assurec', 'demarcheur', 'prenom', 'date_insertion', 'montant', 'avance', 'medecin_r');
         });
     }
 }

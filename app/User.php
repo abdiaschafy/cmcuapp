@@ -152,5 +152,10 @@ class User extends Authenticatable
 
     }
 
+    public function facture_consultations()
+    {
+        return $this->hasMany(FactureConsultation::class);
+    }
+
 
 }

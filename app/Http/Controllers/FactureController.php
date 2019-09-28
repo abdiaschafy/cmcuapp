@@ -14,6 +14,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class FactureController extends Controller
 {
@@ -42,10 +43,12 @@ class FactureController extends Controller
         ]);
     }
 
-    public function FactureConsultation(Patient $patient)
+    public function FactureConsultation(Patient $patient,User $user)
     {
         $this->authorize('view', User::class);
-        $factureConsultations = FactureConsultation::with('patient')->get();
+        $user = User::where('role_id', '=', 2)->get();
+        $factureConsultations = FactureConsultation::with('patient','user')->get();
+       
 
         return view('admin.factures.consultation', compact('factureConsultations'));
     }

@@ -23,6 +23,7 @@ class Patient extends Model
         'prenom',
         'demarcheur',
         'date_insertion',
+        'medecin_r',
         'image',
 
     ] ;

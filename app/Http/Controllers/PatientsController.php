@@ -29,11 +29,11 @@ class PatientsController extends Controller
     }
 
 
-    public function create()
+    public function create(User $user)
     {
         $this->authorize('update', Patient::class);
-
-        return view('admin.patients.create');
+        $users = User::where('role_id', '=', 2)->with('patients')->get();
+        return view('admin.patients.create',compact('users'));
     }
 
 
@@ -42,6 +42,7 @@ class PatientsController extends Controller
         $this->authorize('update', Patient::class);
 
             $request->validate([
+               
                 'name'=> 'required',
                 'name'=> '',
                 'prenom'=> '',
@@ -57,7 +58,8 @@ class PatientsController extends Controller
                 'numero_assurance'=> '',
                 'numero_dossier'=> '',
                 'prise_en_charge'=> '',
-                'date_insertion'=> '',
+                'date_insertion'=>  '',
+                'medecin'=>  '',
             ]);
 
         $patient = new Patient();
@@ -100,6 +102,7 @@ class PatientsController extends Controller
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
+        $patient->medecin_r = $request->get('medecin_r');
         $patient->user_id = Auth::id();
 
         $patient->save();
@@ -132,6 +135,7 @@ class PatientsController extends Controller
     {
         $this->authorize('update', Patient::class);
         $request->validate([
+            'user_id'=> '',
             'name'=> '',
             'prenom'=> '',
             'assurance'=> '',
@@ -147,6 +151,7 @@ class PatientsController extends Controller
             'demarcheur'=> '',
             'prise_en_charge'=> '',
             'date_insertion' => 'date_insertion',
+            'medecin_r' => 'medecin_r',
         ]);
 
 
@@ -166,6 +171,7 @@ class PatientsController extends Controller
         $patient->motif = $request->get('motif');
         $patient->date_insertion = $request->get('date_insertion');
         $patient->prenom = $request->get('prenom');
+        $patient->medecin_r = $request->get('medecin_r');
         $patient->user_id = Auth::id();
         $patient->save();
 
@@ -210,7 +216,7 @@ class PatientsController extends Controller
         $this->authorize('update', Patient::class);
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
-
+       
         FactureConsultation::create([
             'numero' => $patient->numero_dossier,
             'patient_id' => $patient->id,
@@ -224,6 +230,7 @@ class PatientsController extends Controller
             'reste' => $patient->reste,
             'prenom' => $patient->prenom,
             'date_insertion' => $patient->date_insertion,
+            'medecin_r' => $patient->medecin_r,
             'user_id' => \auth()->user()->id,
         ]);
 
