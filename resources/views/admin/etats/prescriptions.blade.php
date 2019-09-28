@@ -4,7 +4,7 @@
 <style>
 
     body{
-        background: #eee;
+        background:  #FFF;;
     }
     span{
         font-size:15px;
@@ -107,10 +107,10 @@ a {
     <br>
     <br>
     <div class="row">
-    <div class="col-5 offset-5">
-            <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
+    <div class="box-a ">
+            <p><small><u>Douala:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
         </div>
-     </div>
+     </div><br>
      <br>
      <br>
         <div class="row">
@@ -118,16 +118,15 @@ a {
         
         <div class="box-part ">
            <div class="title">
-            <p>NOM DU PATIENT: <small></small></p>
-            <small>{{ $prescriptions->patient->name }} </small>
+            <p>PATIENT: <small>{{ $prescriptions->patient->name }}</small></p>
+           
              </div>
             
         </div>
         
         </div>
         <div class="box-a">
-            <p>Prescripteur <small></small></p>
-
+            
             <div class="title">
             <p>DR : <small> {{ $prescriptions->user->prenom }} {{ $prescriptions->user->name }} </small></p>
 
@@ -142,7 +141,7 @@ a {
     <di>
     <div class="row">
         <div >
-
+            
                 <div class="title">
                     @if($prescriptions->hematologie)
                     <h5><u>HEMATOLOGIE</u></h5>
