@@ -20,6 +20,8 @@ class AddFieldsOnClientsTable extends Migration
             $table->string('demarcheur')->nullable();
             $table->string('numero_assurance')->nullable();
             $table->string('prise_en_charge')->nullable();
+            $table->string('medecin_r')->nullable();
+            $table->string('date_insertion')->nullable();
         });
     }
 
@@ -37,6 +39,8 @@ class AddFieldsOnClientsTable extends Migration
             $table->dropColumn('partassurance')->nullable();
             $table->dropColumn('partpatient')->nullable();
             $table->dropColumn('demarcheur')->nullable();
+            $table->string('medecin_r')->nullable();
+            $table->string('date_insertion')->nullable();
           
         });
     }

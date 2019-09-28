@@ -29,8 +29,8 @@ class ClientController extends Controller
     public function create()
     {
        
-
-        return view('admin.clients.create');
+        $users = User::where('role_id', '=', 2)->with('patients')->get();
+        return view('admin.clients.create',compact('users'));
     }
 
     public function store(Request $request)
@@ -50,6 +50,8 @@ class ClientController extends Controller
                  'numero_assurance'=> '',
                   'prise_en_charge'=> '',
                   'demarcheur'=> '',
+                  'medecin_r'=>  '',
+                  'date_insertion'=>  '',
 
                
                
@@ -85,6 +87,8 @@ class ClientController extends Controller
                 $client->reste = 0;
                 $client->avance = 0;
                 $client->partassurance = 0;
+                $client->medecin_r = ( $request->get('medecin_r'));
+                $client->date_insertion = $request->get('date_insertion');
                 $client->partpatient = $request->get('montant');
             }
         }
@@ -114,6 +118,8 @@ class ClientController extends Controller
             'reste'=> '',
             'demarcheur'=> '',
             'prise_en_charge'=> '',
+            'medecin_r' => 'medecin_r',
+            'date_insertion' => 'date_insertion',
           
         ]);
 
@@ -132,7 +138,8 @@ class ClientController extends Controller
         $client->prise_en_charge = $request->get('prise_en_charge');
         $client->motif = $request->get('motif');
         $client->prenom = $request->get('prenom');
-
+        $client->medecin_r = $request->get('medecin_r');
+        $client->date_insertion = $request->get('date_insertion');
         $client->user_id = Auth::id();
         $client->save();
 
@@ -166,6 +173,8 @@ class ClientController extends Controller
             'reste' => $client->reste,
             'prenom' => $client->prenom,
             'nom' => $client->nom,
+            'medecin_r' => $client->medecin_r,
+            'date_insertion' => $client->date_insertion,
             'user_id' => \auth()->id(),
         ]);
 

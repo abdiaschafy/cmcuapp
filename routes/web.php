@@ -177,6 +177,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
+    Route::get('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
 
 
 
