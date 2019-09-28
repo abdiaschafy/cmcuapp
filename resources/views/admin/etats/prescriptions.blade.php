@@ -118,7 +118,7 @@ a {
         
         <div class="box-part ">
            <div class="title">
-            <p>PATIENT: <small>{{ $prescriptions->patient->name }}</small></p>
+            <p> <u>PATIENT</u>: <small>{{ $prescriptions->patient->name }}</small></p>
            
              </div>
             
@@ -128,7 +128,7 @@ a {
         <div class="box-a">
             
             <div class="title">
-            <p>DR : <small> {{ $prescriptions->user->prenom }} {{ $prescriptions->user->name }} </small></p>
+            <p><u>DR</u> : <small> {{ $prescriptions->user->prenom }} {{ $prescriptions->user->name }} </small></p>
 
                 </div>
             
