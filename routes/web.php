@@ -98,13 +98,62 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
+    Route::get('consultations/edit/{patient}', 'ConsultationsController@edit')->name('consultations.edit');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
-    
-    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
+
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index_chirurgien')->name('consultations.index');
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
-    Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
+
+    Route::patch('consultation-chirurgien/{consultation}', 'ConsultationsController@update_chirurgien')->name('consultation_chirurgien.update');
+    Route::post('consultation-chirurgien', 'ConsultationsController@Cstore')->name('consultation_chirurgien.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     Route::get('consentement-eclaire/{patient}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 

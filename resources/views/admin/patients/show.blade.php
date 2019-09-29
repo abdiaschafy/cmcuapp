@@ -102,10 +102,6 @@
                                 </ul>
                         @endcan
                         @can('chirurgien', \App\Patient::class)
-                            {{--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#FicheIntervention" data-whatever="@mdo">--}}
-                            {{--<i class="fas fa-eye"></i>--}}
-                            {{--Fiche d'intervention--}}
-                            {{--</button>--}}
                             <button type="button" class="btn btn-primary" data-toggle="modal"
                                     data-target="#FicheInterventionAnesthesiste"
                                     title="Ajouter une fiche d'intervention" data-whatever="@mdo">
@@ -152,9 +148,9 @@
                                                                 <i class="fas fa-book"></i> Fiche de paramètres
                                                             </a>
                                                         @endcan
-                                                        @include('partials.admin.files.detail_patient')
+                                                        @include('admin.consultations.partials.detail_patient')
 
-                                                        @include('partials.admin.files.consultation_cro')
+                                                        @include('admin.consultations.show_consultation')
 
                                                     </table>
 
@@ -222,16 +218,16 @@
                                                             {{-- FIN DES BOUTONS DE MODAL --}}
 
                                                             {{-- TOUS LES MODAL IC --}}
-                                                            @include('partials.admin.modal.feuille_precription_examen')
-                                                            @include('partials.admin.modal.ordonance_show')
-                                                            @include('partials.admin.modal.consultation_show')
-                                                            @include('partials.admin.modal.feuille_show')
-                                                            @include('partials.admin.modal.fiche_intervention_show')
+                                                            @include('admin.modal.feuille_precription_examen')
+                                                            @include('admin.modal.ordonance_show')
+                                                            @include('admin.modal.consultation_show')
+                                                            @include('admin.modal.feuille_show')
+                                                            @include('admin.modal.fiche_intervention_show')
 
-                                                            @include('partials.admin.modal.fiche_intervention')
-                                                            @include('partials.admin.modal.fiche_intervention_anesthesiste')
-                                                            @include('partials.admin.modal.visite_preanesthesique')
-                                                            @include('partials.admin.modal.surveillance_post_a')
+                                                            @include('admin.modal.fiche_intervention')
+                                                            @include('admin.modal.fiche_intervention_anesthesiste')
+                                                            @include('admin.modal.visite_preanesthesique')
+                                                            @include('admin.modal.surveillance_post_a')
 
 
                                                             {{-- FIN DE TOUS LES MODAL --}}

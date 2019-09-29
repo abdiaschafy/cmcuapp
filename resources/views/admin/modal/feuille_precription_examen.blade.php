@@ -20,7 +20,7 @@
                     <form onsubmit="return envoi();" id="menu1" class="tab-pane fade" action="{{ route('prescriptions.store') }}" method="POST" >
                         <h3 class="text-center mb-4">Veuillez cocher les examens à prescrire</h3>
                         @csrf
-                        @include('partials.admin.files.feuille_examen')
+                        @include('admin.consultations.partials.feuille_examen')
                         <input type="hidden" value="{{ $patient->id }}" name="patient_id">
                         <button type="button" class="btn btn-secondary btn-md mt-2" data-dismiss="modal">Fermer</button>
                         <button type="submit"class="btn btn-primary btn-md mt-2">Enregistrer</button>

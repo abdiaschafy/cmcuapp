@@ -108,7 +108,7 @@ class PatientsController extends Controller
     }
 
 
-    public function show(Patient $patient)
+    public function show(Patient $patient, Consultation $consultation)
     {
         $this->authorize('update', Patient::class);
 
@@ -120,6 +120,7 @@ class PatientsController extends Controller
             'visite_anesthesistes' => VisitePreanesthesique::with('patient', 'user')->latest()->first(),
             'fiche_interventions' => FicheIntervention::with('patient', 'user')->get(),
             'prescriptions' => $patient->prescriptions()->get(),
+            'consultation' => $consultation,
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossiers' => $patient->dossiers()->latest()->first(),
             'parametres' => $patient->parametres()->latest()->first(),

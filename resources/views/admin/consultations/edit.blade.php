@@ -15,24 +15,9 @@
                 </div>
                 <br>
                 <br>
-                @can('chirurgien', \App\Patient::class)
-                <div class="col-md-8  offset-md-0  toppad">
-                    <div class="card">
-                        <div class="card-body">
-                            @include('partials.flash_form')
-                            <h3 class="card-title">Informations relatives au dossier patient</h3>
-                            <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
-                                        !! espace réservé au médecin</strong></i>
-                            </small>
-                            <table class="table table-user-information ">
-                                <tbody>
-                                @include('admin.consultations.chirurgiens.form.consultation_chirurgien_form')
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                @endcan
+                @include('admin.consultations.chirurgiens.form.consultation_chirurgien_form')
+                @include('admin.consultations.anesthesistes.form.consultation_anesthesiste_form')
+                @include('admin.consultations.infirmiers.form.fiche_parametre_form')
             </div>
         </div>
     </div>

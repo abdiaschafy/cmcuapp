@@ -15,7 +15,7 @@
 
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $consultations->created_at->toFormattedDateString() }}</b></td>
+                <td class="table-active"><b>{{ $consultations->created_at->toFormattedDateString() }}</b><a href="{{ route('consultations.edit', $patient->id ) }}" class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</a></td>
             </tr>
             <tr>
                 <td>
@@ -90,7 +90,7 @@
 
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b></td>
+                <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
             </tr>
             <tr>
                 <td><b>SERVICE :</b></td>
@@ -248,7 +248,7 @@
 
                 <tr>
                     <td class="table-active"><b>DATE :</b></td>
-                    <td class="table-active"><b>{{ $visite_anesthesistes->date_visite }}</b></td>
+                    <td class="table-active"><b>{{ $visite_anesthesistes->date_visite }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
                 </tr>
                 <tr>
                     <td><b>Eléments nouveaux :</b></td>
@@ -286,11 +286,11 @@
         </td>
     </tr>
 
-    @if (count($patient->parametres)>0)
+    @if (count($patient->parametres) > 0)
 
         <tr>
             <td class="table-active"><b>DATE :</b></td>
-            <td class="table-active"><b>{{ $parametres->created_at->toFormattedDateString() }}</b></td>
+            <td class="table-active"><b>{{ $parametres->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
         </tr>
         <tr>
             <td><b>DATE DE NAISSANCE :</b></td>
@@ -394,7 +394,7 @@
         @if (count($patient->compte_rendu_bloc_operatoires))
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
+                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
             </tr>
             <tr>
                 <td><b>NOM ET PRENOM DU CHIRURGIEN :</b></td>

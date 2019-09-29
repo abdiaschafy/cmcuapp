@@ -17,10 +17,10 @@ use Illuminate\Http\Request;
 class ConsultationsController extends Controller
 {
 
-    public function index(Consultation $consultations, Patient $patient)
+    public function index_chirurgien(Consultation $consultations, Patient $patient)
     {
 
-        return view('admin.consultations.index', [
+        return view('admin.consultations.index_chirurgien', [
             'patient' => $patient,
             'consultations' => Consultation::with('patient', 'user')->get(),
         ]);
@@ -37,18 +37,30 @@ class ConsultationsController extends Controller
 
 
 
-    public function create(Patient $patient, User $user)
+    public function create(Patient $patient)
     {
 
         $users = User::where('role_id', '=', 2)->with('patients')->get();
         $devis = Devis::all();
-        $consutation = Consultation::with('patient')->where('patient_id', $patient->id)->get();
+        $consultation = Consultation::with('patient')->where('patient_id', $patient->id)->first();
         $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->latest()->first();
 
-        return view('admin.consultations.create', compact('patient', 'users', 'consutation','devis', 'prescriptions'));
+        return view('admin.consultations.create', compact('patient', 'users', 'consultation','devis', 'prescriptions'));
     }
 
-    public function store(ConsultationRequest $request)
+    public function edit(Consultation $consultation, Patient $patient)
+    {
+
+        $users = User::where('role_id', '=', 2)->with('patients')->get();
+        $devis = Devis::all();
+        $consultation = Consultation::with('patient', 'user')->where('patient_id', $patient->id)->first();
+
+        $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->latest()->first();
+
+        return view('admin.consultations.edit', compact('patient', 'users', 'consultation','devis', 'prescriptions'));
+    }
+
+    public function Cstore(ConsultationRequest $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);
