@@ -360,7 +360,7 @@
                                
                                 <td>
                                 @if($devis->elements8)
-                                    <b>{{ $devis->elements8}}(750x12</b>
+                                    <b>{{ $devis->elements8}}</b>
                                     @else
                                 @endif
                                    
