@@ -290,7 +290,7 @@
 
         <tr>
             <td class="table-active"><b>DATE :</b></td>
-            <td class="table-active"><b>{{ $parametres->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
+            <td class="table-active"><b>{{ $parametres->created_at->toFormattedDateString() }}</b> @can('infirmier', \App\Patient::class)<a href="{{ route('consultations.edit', $patient->id) }}" class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</a>@endcan</td>
         </tr>
         <tr>
             <td><b>DATE DE NAISSANCE :</b></td>

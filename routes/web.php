@@ -98,26 +98,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('dossiers', 'DossiersController@store')->name('dossiers.store');
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
     Route::get('consultations/edit/{patient}', 'ConsultationsController@edit')->name('consultations.edit');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
@@ -125,33 +105,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('detatils-consultations/{patient}', 'ConsultationsController@index_chirurgien')->name('consultations.index');
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
 
-    Route::patch('consultation-chirurgien/{consultation}', 'ConsultationsController@update_chirurgien')->name('consultation_chirurgien.update');
-    Route::post('consultation-chirurgien', 'ConsultationsController@Cstore')->name('consultation_chirurgien.store');
+    Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
+    Route::post('consultation-chirurgien', 'ConsultationsController@store_consultation_chirurgien')->name('consultation_chirurgien.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     Route::get('consentement-eclaire/{patient}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
@@ -174,7 +130,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('soins', 'SoinsController@store')->name('soins.store');
 
 
-    Route::post('parametres', 'ParametresController@store')->name('parametres.store');
+    Route::post('parametres', 'ParametresController@fiche_parametre_store')->name('fiche_parametres.store');
+    Route::put('parametres/{parametre}', 'ParametresController@fiche_parametre_update')->name('fiche_parametres.update');
 
 
     Route::get('/chambres', 'ChambresController@index')->name('chambres.index');

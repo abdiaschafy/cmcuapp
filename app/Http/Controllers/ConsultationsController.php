@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use App\ConsultationAnesthesiste;
-use App\Prescription;
+use App\Parametre;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
 use App\Http\Requests\ConsultationRequest;
@@ -36,31 +36,32 @@ class ConsultationsController extends Controller
     }
 
 
-
-    public function create(Patient $patient)
+    public function create(Patient $patient, Consultation $consultation, Parametre $parametre)
     {
 
-        $users = User::where('role_id', '=', 2)->with('patients')->get();
-        $devis = Devis::all();
-        $consultation = Consultation::with('patient')->where('patient_id', $patient->id)->first();
-        $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->latest()->first();
-
-        return view('admin.consultations.create', compact('patient', 'users', 'consultation','devis', 'prescriptions'));
+        return view('admin.consultations.create', [
+            'patient' => $patient,
+            'devis' => Devis::all(),
+            'users' => User::where('role_id', '=', 2)->with('patients')->get(),
+            'consultation' => $consultation,
+            'parametre' => $parametre
+        ]);
     }
+
 
     public function edit(Consultation $consultation, Patient $patient)
     {
 
-        $users = User::where('role_id', '=', 2)->with('patients')->get();
-        $devis = Devis::all();
-        $consultation = Consultation::with('patient', 'user')->where('patient_id', $patient->id)->first();
-
-        $prescriptions = Prescription::with('patient')->where('patient_id', $patient->id)->latest()->first();
-
-        return view('admin.consultations.edit', compact('patient', 'users', 'consultation','devis', 'prescriptions'));
+        return view('admin.consultations.create', [
+            'patient' => $patient,
+            'devis' => Devis::all(),
+            'users' => User::where('role_id', '=', 2)->with('patients')->get(),
+            'consultation' => Consultation::where('patient_id', $patient->id)->latest()->first(),
+            'parametre' => Parametre::where('patient_id', $patient->id)->latest()->first()
+        ]);
     }
 
-    public function Cstore(ConsultationRequest $request)
+    public function store_consultation_chirurgien(ConsultationRequest $request)
     {
 
         $patient = Patient::findOrFail($request->patient_id);
@@ -92,6 +93,38 @@ class ConsultationsController extends Controller
 
         Flashy('La nouvelle consultation a été crée avec succès !!');
 
+        return back();
+    }
+
+    public function update_consultation_chirurgien(Consultation $consultation, Request $request)
+    {
+        $proposition = implode(',', $request->proposition);
+//        dd($proposition);
+        $acte = implode(',', $request->acte);
+
+        $consultation->update(request()->only([
+            'diagnostic'=> request('diagnostic'),
+            'interrogatoire'=> request('interrogatoire'),
+            'antecedent_m'=> request('antecedent_m'),
+            'antecedent_c'=> request('antecedent_c'),
+            'allergie'=> request('allergie'),
+            'groupe'=> request('groupe'),
+            'examen_c'=> request('examen_c'),
+            'examen_p'=> request('examen_p'),
+            'devis_p'=> request('devis_p'),
+            'motif_c'=> request('motif_c'),
+            'type_intervention' => request('type_intervention'),
+            'date_intervention' => request('date_intervention'),
+            'date_consultation' => request('date_consultation'),
+            'date_consultation_anesthesiste' => request('date_consultation_anesthesiste'),
+            'medecin_r'=> request('medecin_r'),
+            'proposition_therapeutique'=> request('proposition_therapeutique'),
+            'proposition'=> $proposition ?? implode(",", $request->proposition ?? []),
+            'acte'=> $acte,
+        ]));
+        $consultation->save();
+
+        Flashy('La mise à jour a été effectuée');
         return back();
     }
 

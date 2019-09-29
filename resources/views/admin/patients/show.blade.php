@@ -30,6 +30,7 @@
     <!-- Page Content Holder -->
         @include('partials.header')
         @can('show', \App\User::class)
+            @include('partials.flash')
             <div class="container">
                 <div class="row">
                     <div class="col-md-12  toppad  offset-md-0 ">

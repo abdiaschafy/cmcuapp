@@ -2,7 +2,8 @@
     {{ Form::model($consultation, ['route' => ['consultation_chirurgien.update', $consultation->id], 'method' => 'put', 'class'=>'form-horizontal form-label-left']) }}
 @else
     {{ Form::open(['route' => 'consultation_chirurgien.store', 'method' => 'post', 'class'=>'form-horizontal form-label-left']) }}
-@endif @csrf
+@endif
+@csrf
 <tr>
     <td>
         <h5 class="text-primary"><strong>CONSULTATION</strong></h5>
@@ -22,34 +23,24 @@
 </tr>
 <tr>
     <td><b>Motif de consultation :</b> <span class="text-danger">*</span></td>
-    <td>
-        {{ Form::textarea('motif_c', null, ['class' => 'form-control']) }}
-    </td>
+    <td>{{ Form::textarea('motif_c', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 <tr>
     <td><b>Interrogatoire :</b> <span class="text-danger">*</span></td>
-    <td>
-        <textarea class="splitLines form-control" name="interrogatoire" cols="55" rows="5" placeholder="Ici la note du médecin" required>{{ old('interrogatoire', $consultation->interrogatoire) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('interrogatoire', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 @if (!empty($consultation))
     <tr>
         <td><b>Antécédents médicaux :</b></td>
-        <td>
-            <textarea class="splitLines form-control" name="antecedent_m" cols="55" rows="3">{{ old('antecedent_m', $consultation->antecedent_m) }}</textarea>
-        </td>
+        <td>{{ Form::textarea('antecedent_m', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
     </tr>
     <tr>
         <td><b>Antécédents chirurgicaux :</b></td>
-        <td>
-            <textarea class="splitLines form-control" name="antecedent_c" cols="55" rows="3">{{ old('antecedent_c', $consultation->antecedent_c) }}</textarea>
-        </td>
+        <td>{{ Form::textarea('antecedent_c', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
     </tr>
     <tr>
         <td><b>Allergies :</b></td>
-        <td>
-            <textarea class="splitLines form-control" name="allergie" cols="55" rows="2">{{ old('allergie', $consultation->allergie) }}</textarea>
-        </td>
+        <td>{{ Form::textarea('allergie', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
     </tr>
     <tr>
         <td><b>Goupe sanguin du patient :</b></td>
@@ -70,90 +61,75 @@
 @endif
 <tr>
     <td>
-        <h5 class="text-primary">EXAMENS</h5></td>
+        <h5 class="text-primary"><strong>EXAMENS</strong></h5>
+    </td>
     <td></td>
 </tr>
 <tr>
-    <input name="patient_id" value="{{ $patient->id }}" type="hidden">
+    <td>{{ Form::hidden('patient_id', $patient->id, ['class' => 'form-control']) }}</td>
+    <td></td>
 </tr>
 <tr>
     <td><b>Examens physiques :</b> <span class="text-danger">*</span></td>
-    <td>
-        <textarea class="splitLines form-control" name="examen_p" cols="55" rows="3" placeholder="Examens physiques" required>{{ old('examen_p', $consultation->examen_p) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('examen_p', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 <tr>
     <td><b>Examens compléméntaires:</b> <span class="text-danger">*</span></td>
-    <td>
-        <textarea class="splitLines form-control" name="examen_c" cols="55" rows="3" placeholder="Examens compléméntaires" required>{{ old('examen_c', $consultation->examen_c) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('examen_c', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 <tr>
     <td><b>Diagnostic médical :</b> <span class="text-danger">*</span></td>
-    <td>
-        <textarea class="splitLines form-control" name="diagnostic" cols="55" rows="3" placeholder="Votre premier avis" required>{{ old('diagnostic', $consultation->diagnostic) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('diagnostic', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 <tr>
     <td><b>Proposition thérapeutique :</b> <span class="text-danger">*</span></td>
-    <td>
-        <textarea class="splitLines form-control" name="proposition_therapeutique" cols="55" rows="3" required>{{ old('proposition_therapeutique', $consultation->proposition_therapeutique) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('proposition_therapeutique', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
 </tr>
 <tr>
     <td><b>Proposition de suivi :</b> <span class="text-danger">*</span></td>
     <td class="form-group small">
         <div class="form-check">
-            <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision1" value="Hospitalisation" {{old( 'proposition',$consultation->proposition)=='Hospitalisation' ? 'checked' : '' }}> Hospitalisation
-            </label>
+            <input class="form-check-input" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision1" value="Hospitalisation" {{old( 'proposition',$consultation->proposition)=='Hospitalisation' ? 'checked' : '' }}> Hospitalisation
         </div>
         <div class="form-check">
-            <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision2" value="Intervention chirurgicale" {{old( 'proposition',$consultation->proposition)=='Intervention chirurgicale' ? 'checked' : '' }}> Intervention chirurgicale
-            </label>
+            <input class="form-check-input" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision2" value="Intervention chirurgicale" {{old( 'proposition',$consultation->proposition)=='Intervention chirurgicale' ? 'checked' : '' }}> Intervention chirurgicale
         </div>
         <div class="form-check">
-            <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision3" value="Consultation" {{old( 'proposition',$consultation->proposition)=='Consultation' ? 'checked' : '' }}> Consultation
-            </label>
+            <input class="form-check-input" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision3" value="Consultation" {{old( 'proposition',$consultation->proposition)=='Consultation' ? 'checked' : '' }}> Consultation
         </div>
         <div class="form-check">
-            <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision4" value="Actes à réaliser" {{old( 'proposition',$consultation->proposition)=='Actes à réaliser' ? 'checked' : '' }}> Actes à réaliser
-            </label>
+            <input class="form-check-input" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision4" value="Actes à réaliser" {{old( 'proposition',$consultation->proposition)=='Actes à réaliser' ? 'checked' : '' }}> Actes à réaliser
         </div>
         <div class="form-check">
-            <input class="form-check-input" tabIndex="1" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision5" value="Consultation d'anesthésiste" {{old( 'proposition',$consultation->proposition)=='Consultation d\'anesthésiste' ? 'checked' : '' }}> Consultation d'anesthésiste
-            </label>
+            <input class="form-check-input" onClick="ckChange(this)" type="checkbox" name="proposition[]" id="decision5" value="Consultation d'anesthésiste" {{old( 'proposition',$consultation->proposition)=='Consultation d\'anesthésiste' ? 'checked' : '' }}> Consultation d'anesthésiste
         </div>
     </td>
 </tr>
 <tr id="type_intervention" style='display:none;'>
     <td><b>Type d'intervention :</b></td>
-    <td>
-        <textarea class="splitLines form-control" name="type_intervention" cols="55" rows="3">{{ old('type_intervention', $consultation->type_intervention) }}</textarea>
-    </td>
+    <td>{{ Form::textarea('type_intervention', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
 </tr>
 <tr>
     <td><b>Date intervention :</b></td>
-    <td>
-        <input type="date" class="form-control col-md-6" name="date_intervention" value="{{ old('date_intervention', $consultation->date_intervention) }}">
-    </td>
+    <td>{{ Form::date('date_intervention', null, ['class' => 'form-control']) }}</td>
 </tr>
 <tr id="type_acte" style='display:none;'>
     <td><b>Type d'actes à réaliser :</b></td>
     <td>
         <div class="form-check">
-            <input type="checkbox" name="acte[]" {{old( 'acte',$consultation->acte)=='Echographie de l\'arbre urinaire' ? 'checked' : '' }} value="Echographie de l'arbre urinaire" class="form-check-input"> Echographie de l'arbre urinaire
+            <input type="checkbox" name="acte[]" value="Echographie de l'arbre urinaire" {{old( 'acte',$consultation->acte)=='Echographie de l\'arbre urinaire' ? 'checked' : '' }}> Echographie de l'arbre urinaire
         </div>
         <div class="form-check">
-            <input type="checkbox" name="acte[]" {{old( 'acte',$consultation->acte)=='Cystoscopie' ? 'checked' : '' }} value="Cystoscopie" class="form-check-input"> Cystoscopie
+            <input type="checkbox" name="acte[]" value="Cystoscopie" {{old( 'acte',$consultation->acte)=='Cystoscopie' ? 'checked' : '' }}> Cystoscopie
         </div>
         <div class="form-check">
-            <input type="checkbox" name="acte[]" {{old( 'acte',$consultation->acte)=='Biopsie prostatique' ? 'checked' : '' }} value="Biopsie prostatique" class="form-check-input"> Biopsie prostatique
+            <input type="checkbox" name="acte[]" value="Biopsie prostatique" {{old( 'acte',$consultation->acte)=='Biopsie prostatique' ? 'checked' : '' }}> Biopsie prostatique
         </div>
         <div class="form-check">
-            <input type="checkbox" name="acte[]" {{old( 'acte',$consultation->acte)=='Débitmétrie' ? 'checked' : '' }} value="Débitmétrie" class="form-check-input"> Débitmétrie
+            <input type="checkbox" name="acte[]" value="Débitmétrie" {{old( 'acte',$consultation->acte)=='Débitmétrie' ? 'checked' : '' }}> Débitmétrie
         </div>
         <div class="form-check">
-            <input type="checkbox" name="acte[]" {{old( 'acte',$consultation->acte)=='Echographie prostatique sous rectale' ? 'checked' : '' }} value="Echographie prostatique sous rectale" class="form-check-input"> Echographie prostatique sous rectale
+            <input type="checkbox" name="acte[]" value="Echographie prostatique sous rectale" {{old( 'acte',$consultation->acte)=='Echographie prostatique sous rectale' ? 'checked' : '' }}> Echographie prostatique sous rectale
         </div>
     </td>
 </tr>
@@ -163,8 +139,7 @@
         <select class="form-control" name="devis_p">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old( "devis_p", $consultation->devis_p) ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )
-                </option>
+                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old( "devis_p", $consultation->devis_p) ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
             @endforeach
         </select>
 
@@ -172,9 +147,7 @@
 </tr>
 <tr id="anesthesiste" style='display:none;'>
     <td><b>Date consultation anesthésiste :</b></td>
-    <td>
-        <input type="date" class="form-control col-md-6" name="date_consultation_anesthesiste" value="{{ old('date_consultation_anesthesiste', $consultation->date_consulation_anesthesiste) }}">
-    </td>
+    <td>{{ Form::date('date_consultation_anesthesiste', null, ['class' => 'form-control col-md-6']) }}</td>
 </tr>
 <tr>
     <td></td>
@@ -182,9 +155,7 @@
 </tr>
 <tr id="consultation" style='display:none;'>
     <td><b>Date de consultation :</b></td>
-    <td>
-        <input type="date" class="form-control col-md-6" name="date_consultation" value="{{ old('date_consultation', $consultation->date_consultation) }}">
-    </td>
+    <td>{{ Form::date('date_consultation', null, ['class' => 'form-control col-md-6']) }}</td>
 </tr>
 <tr>
     <td>

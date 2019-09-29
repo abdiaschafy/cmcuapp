@@ -15,7 +15,8 @@ class ParametresController extends Controller
         return view('admin.consultations.surveillance_rapproche_param', compact('patient'));
     }
 
-    public function store(ParametreRequest $request)
+
+    public function fiche_parametre_store(ParametreRequest $request)
     {
         $patient = Patient::findOrFail($request->patient_id);
 
@@ -28,7 +29,7 @@ class ParametresController extends Controller
             'bras_gauche' => request('bras_gauche'),
             'bras_droit' => request('bras_droit'),
             'taille' => request('taille'),
-            'inc_bmi' => request('poids')/((request('taille'))*(request('taille'))),
+            'inc_bmi' => number_format(request('poids')/((request('taille'))*(request('taille'))), 2),
             'date_naissance' => request('date_naissance'),
             'age' => Carbon::parse(request('date_naissance'))->age,
             'glycemie' => request('glycemie'),
@@ -39,6 +40,16 @@ class ParametresController extends Controller
         ]);
 
         Flashy('Les nouveaux paramètres ont bien été ajouté avec succès !!');
+
+        return back();
+    }
+
+    public function fiche_parametre_update(ParametreRequest $request, Parametre $parametre)
+    {
+
+        $parametre->update($request->all());
+
+        Flashy('Les paramètres ont bien été modifiés');
 
         return back();
     }
