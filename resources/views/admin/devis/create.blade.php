@@ -190,7 +190,7 @@
                             </div>
                            
                         </div>
-                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
+                        
                         <div class="row">
                             <div >
                             
@@ -241,6 +241,7 @@
                             </div>
                             
                         </div>
+                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
                         <div class="row">
                             <div >
                             

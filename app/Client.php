@@ -53,6 +53,8 @@ class Client extends Model
         'numero_assurance',
         'prise_en_charge',
         'demarcheur',
+        'medecin_r',
+        'date_insertion',
 
     ] ;
 

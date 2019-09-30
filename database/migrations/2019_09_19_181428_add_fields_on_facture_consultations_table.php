@@ -22,6 +22,7 @@ class AddFieldsOnFactureConsultationsTable extends Migration
             $table->string('demarcheur')->nullable();
             $table->string('prenom')->nullable();
             $table->date('date_insertion')->nullable();
+            $table->integer('medecin_r')->nullable();
         });
     }
 
@@ -41,6 +42,7 @@ class AddFieldsOnFactureConsultationsTable extends Migration
             $table->dropColumn('demarcheur')->nullable();
             $table->dropColumn('prenom')->nullable();
             $table->dropColumn('date_insertion')->nullable();
+            $table->integer('medecin_r')->nullable();
         });
     }
 }

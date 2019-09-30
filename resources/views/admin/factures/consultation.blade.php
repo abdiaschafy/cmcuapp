@@ -35,6 +35,7 @@
                                 <td>PART PATIENT</td>
                                 <td>AVANCE</td>
                                 <td>RESTE</td>
+                                <td>MEDECIN</td>
                                 <td>DATE</td>
                                 <td>ACTION</td>
                             </tr>
@@ -50,6 +51,7 @@
                                     <td>{{$facture->assurec }} <b>FCFA</b></td>
                                     <td>{{$facture->avance }} <b>FCFA</b></td>
                                     <td>{{$facture->reste }} <b>FCFA</b></td>
+                                    <td>{{$facture->medecin_r }}</td>
                                     <td>{{$facture->created_at }}</td>
                                     <td style="display: inline-flex;">
                                         <p class="mr-2" data-placement="top" data-toggle="tooltip" title="Voire les détails">

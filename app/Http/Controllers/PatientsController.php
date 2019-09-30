@@ -12,7 +12,6 @@ use App\Ordonance;
 use App\User;
 use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,11 +28,11 @@ class PatientsController extends Controller
     }
 
 
-    public function create()
+    public function create(User $user)
     {
         $this->authorize('update', Patient::class);
-
-        return view('admin.patients.create');
+        $users = User::where('role_id', '=', 2)->with('patients')->get();
+        return view('admin.patients.create',compact('users'));
     }
 
 
@@ -68,7 +67,7 @@ class PatientsController extends Controller
         $patient->montant = $request->get('montant');
         $patient->assurance = $request->get('assurance');
         $patient->avance = $request->get('avance');
-
+        
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->prise_en_charge = $request->get('prise_en_charge');
 
@@ -100,6 +99,7 @@ class PatientsController extends Controller
         $patient->demarcheur = $request->get('demarcheur');
         $patient->motif = 'CONSULTATION';
         $patient->date_insertion = $request->get('date_insertion');
+        $patient->medecin_r = $request->get('medecin_r');
         $patient->user_id = Auth::id();
 
         $patient->save();
@@ -148,6 +148,7 @@ class PatientsController extends Controller
             'demarcheur' => '',
             'prise_en_charge' => '',
             'date_insertion' => 'date_insertion',
+            'medecin_r' => '',
         ]);
 
 
@@ -167,6 +168,7 @@ class PatientsController extends Controller
         $patient->motif = $request->get('motif');
         $patient->date_insertion = $request->get('date_insertion');
         $patient->prenom = $request->get('prenom');
+        $patient->medecin_r = $request->get('medecin_r');
         $patient->user_id = Auth::id();
         $patient->save();
 
@@ -206,11 +208,7 @@ class PatientsController extends Controller
         return redirect()->route('patients.index')->with('success', "Le dossier du patient a bien été supprimé");
     }
 
-    /**
-     * Post
-     *
-     * @mixin Eloquent
-     */
+
     public function generate_consultation(Request $request, $id)
     {
         $this->authorize('update', Patient::class);
@@ -234,6 +232,7 @@ class PatientsController extends Controller
                 'avance' => $patient->avance,
                 'reste' => $patient->reste,
                 'prenom' => $patient->prenom,
+                'medecin_r' => $patient->medecin_r,
                 'date_insertion' => $patient->date_insertion,
                 'user_id' => auth()->user()->id,
             ]);
