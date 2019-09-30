@@ -90,7 +90,7 @@
 
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
+                <td class="table-active"><b>{{ $consultation_anesthesistes->created_at->toFormattedDateString() }}</b> <a href="{{ route('consultations.edit', $patient->id) }}" class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</a></td>
             </tr>
             <tr>
                 <td><b>SERVICE :</b></td>
@@ -363,7 +363,7 @@
 
     <tr>
         <td>
-            @can('chirurgien', \App\Patient::class)
+            @can('medecin', \App\Patient::class)
             <a class="btn btn-danger" href="{{ route('consultations.create', $patient->id) }}" title="Nouvelle consultation du patient">
                 <i class="fas fa-book"></i> Nouvelle consultation
             </a>

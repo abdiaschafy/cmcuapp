@@ -36,7 +36,7 @@ class ConsultationsController extends Controller
     }
 
 
-    public function create(Patient $patient, Consultation $consultation, Parametre $parametre)
+    public function create(Patient $patient, Consultation $consultation,ConsultationAnesthesiste $consultation_anesthesiste, Parametre $parametre)
     {
 
         return view('admin.consultations.create', [
@@ -44,7 +44,8 @@ class ConsultationsController extends Controller
             'devis' => Devis::all(),
             'users' => User::where('role_id', '=', 2)->with('patients')->get(),
             'consultation' => $consultation,
-            'parametre' => $parametre
+            'parametre' => $parametre,
+            'consultation_anesthesiste' => $consultation_anesthesiste
         ]);
     }
 
@@ -57,6 +58,7 @@ class ConsultationsController extends Controller
             'devis' => Devis::all(),
             'users' => User::where('role_id', '=', 2)->with('patients')->get(),
             'consultation' => Consultation::where('patient_id', $patient->id)->latest()->first(),
+            'consultation_anesthesiste' => ConsultationAnesthesiste::where('patient_id', $patient->id)->latest()->first(),
             'parametre' => Parametre::where('patient_id', $patient->id)->latest()->first()
         ]);
     }
@@ -174,6 +176,11 @@ class ConsultationsController extends Controller
         Flashy('La nouvelle consultation a été crée avec succès !!');
 
         return back();
+    }
+
+    public function update_consultation_anesthesiste()
+    {
+        dd('Ok');
     }
 
     

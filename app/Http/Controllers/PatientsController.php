@@ -6,13 +6,13 @@ use App\Consultation;
 use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
 use App\FicheIntervention;
-use App\Http\Requests\FactureConsultationRequest;
 use App\Lettre;
 use App\Patient;
 use App\Ordonance;
 use App\User;
 use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -248,7 +248,9 @@ class PatientsController extends Controller
         //$this->authorize('print', Patient::class);
         $ordonance = Ordonance::with('patient', 'user')->find($id);
 
-        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance'));
+        $compteur = 1;
+
+        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance', 'compteur'));
 
         return $pdf->stream('ordonance.pdf');
     }

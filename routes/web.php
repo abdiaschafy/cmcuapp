@@ -106,7 +106,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
 
     Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
+    Route::put('consultation-anesthesiste/{consultation}', 'ConsultationsController@update_consultation_anesthesiste')->name('consultation_anesthesiste.update');
     Route::post('consultation-chirurgien', 'ConsultationsController@store_consultation_chirurgien')->name('consultation_chirurgien.store');
+    Route::post('consultation-anesthesiste', 'ConsultationsController@store_consultation_anesthesiste')->name('consultation_anesthesiste.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
 
 
