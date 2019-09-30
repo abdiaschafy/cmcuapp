@@ -220,6 +220,7 @@
 
                                                             {{-- TOUS LES MODAL IC --}}
                                                             @include('admin.modal.feuille_precription_examen')
+                                                            @include('admin.modal.detail_premedication_preparation')
                                                             @include('admin.modal.ordonance_show')
                                                             @include('admin.modal.consultation_show')
                                                             @include('admin.modal.feuille_show')
