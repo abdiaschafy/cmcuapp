@@ -19,7 +19,7 @@
     padding-top: 1px;
     padding-bottom: 15px;
     position:fixed;
-    bottom:5;
+    bottom:5px;
     width:100%;
 }
 
@@ -46,17 +46,18 @@
 
     <div class="row">
         <div class="col-4">
-            <p>Dr.<small> {{ $ordonance->user->prenom }} {{ $ordonance->user->name }}</small></p>
-            <p><small>{{ $ordonance->user->specialite }}</small></p>
-            <p class="mt-2">Onmc: <small>{{ $ordonance->user->onmc }}</small></p>
+            <p><b>Dr. {{ $ordonance->user->prenom }} {{ $ordonance->user->name }}</b></p>
+            <p><small><b>{{ $ordonance->user->specialite }}</b></small></p>
+            <p class="mt-2"><b>Onmc: <small>{{ $ordonance->user->onmc }}</small></b></p>
         </div>
-        <div class="col-5 offset-5">
-            <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $ordonance->patient->name }}</p>
+        <div class="col-5 offset-6">
+            <p><small><b> {{ $ordonance->created_at->toRfc2822String() }}</b></small></p>
+            <br>
+            <br>
+            <br>
+            <p>{{ $ordonance->patient->name }} {{ $ordonance->patient->prenom }}</p>
         </div>
     </div>
-    <br>
-    <br>
     <br>
     <br>
     <div class="row">
@@ -70,27 +71,28 @@
         <div class="col-md-4">
             @foreach(explode(",", $ordonance->medicament) as $medicament)
                 <ul>
-                    <li>
-                        {{ $medicament }}
-                    </li>
+                    <p>{{ $compteur++ }} -   <u>{{ $medicament }}</u></p>
+{{--                    @foreach (explode(",", $ordonance->description) as $description)--}}
+{{--                        <p>{{ $description }}</p>--}}
+{{--                    @endforeach--}}
                 </ul>
             @endforeach
         </div>
         <div class="col-md-4 offset-3">
             @foreach(explode(",", $ordonance->quantite) as $quantite)
                 <ul>
-                    <li>
+                    <p>
                         {{ $quantite }}
-                    </li>
+                    </p>
                 </ul>
             @endforeach
         </div>
         <div class="col-md-4 offset-6">
             @foreach(explode(",", $ordonance->description) as $description)
                 <ul>
-                    <li>
+                    <p>
                         {{ $description }}
-                    </li>
+                    </p>
                 </ul>
             @endforeach
         </div>

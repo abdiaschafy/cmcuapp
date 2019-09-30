@@ -49,6 +49,7 @@
                 <th>PART PATIENT</th>
                 <th>PART ASSURANCE</th>
                 <th>DMH</th>
+                <th>MEDECIN</th>
                 <th>DATE</th>
             </tr>
             </thead>
@@ -63,11 +64,14 @@
                 <td><small>{{ $facture->assurec }}</small></td>
                 <td><small>{{ $facture->assurancec }}</small></td>
                 <td><small>{{ $facture->demarcheur }}</small></td>
+                <td><small>{{ $facture->medecin_r }}</small></td>
                 <td><small>{{ $facture->created_at->ToDateString() }}</small></td>
             </tr>
             @endforeach
             <tr>
                 <td><h4>TOTAL en Fcfa:</h4></td>
+                <td></td>
+                <td></td>
                 <td></td>
                 <td><h5>{{ $tautaux }}</h5></td>
                 <td>{{ $avances }}</td>

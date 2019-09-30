@@ -99,12 +99,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::get('consultations/create/{patient}', 'ConsultationsController@create')->name('consultations.create');
+    Route::get('consultations/edit/{patient}', 'ConsultationsController@edit')->name('consultations.edit');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
-    
-    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index')->name('consultations.index');
+
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index_chirurgien')->name('consultations.index');
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
-    Route::post('consultations', 'ConsultationsController@store')->name('consultations.store');
+
+    Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
+    Route::put('consultation-anesthesiste/{consultation}', 'ConsultationsController@update_consultation_anesthesiste')->name('consultation_anesthesiste.update');
+    Route::post('consultation-chirurgien', 'ConsultationsController@store_consultation_chirurgien')->name('consultation_chirurgien.store');
+    Route::post('consultation-anesthesiste', 'ConsultationsController@store_consultation_anesthesiste')->name('consultation_anesthesiste.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
+
+
     Route::get('consentement-eclaire/{patient}', 'ConsultationsController@Export_consentement_eclaire')->name('consentement_eclaire.pdf');
     Route::get('consultations/{id}','ConsultationsController@export')->name('consulatations.pdf');
 
@@ -125,7 +132,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('soins', 'SoinsController@store')->name('soins.store');
 
 
-    Route::post('parametres', 'ParametresController@store')->name('parametres.store');
+    Route::post('parametres', 'ParametresController@fiche_parametre_store')->name('fiche_parametres.store');
+    Route::put('parametres/{parametre}', 'ParametresController@fiche_parametre_update')->name('fiche_parametres.update');
 
 
     Route::get('/chambres', 'ChambresController@index')->name('chambres.index');
@@ -177,6 +185,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
+    Route::get('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
 
 
 

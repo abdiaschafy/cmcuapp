@@ -71,8 +71,8 @@
                                     </thead>
 
                                 </table>
-                                @include('partials.admin.modal.surveillance_rapproche_post')
-                                @include('partials.admin.modal.surveillance_rapproche_pre')
+                                @include('admin.modal.surveillance_rapproche_post')
+                                @include('admin.modal.surveillance_rapproche_pre')
                             </div>
                         </div>
                     </div>

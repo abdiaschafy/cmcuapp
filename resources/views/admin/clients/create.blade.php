@@ -26,6 +26,19 @@
                     <form class="form-group col-md-10" action="{{ route('clients.store') }}" method="POST">
                         @csrf
                         <div class="col-md-12">
+
+                        <div class="form-group">
+                        <b>Médecin  :</b> <span class="text-danger">*</span>
+                            
+                                <select class="form-control" name="medecin_r" id="medecin_r" required>
+                                    <option value="medecin_r"> Nom du médecin</option>
+                                    @foreach ($users as $user)
+                                        <option
+                                            value="{{ $user->name }} {{ $user->prenom }}" {{old("medecin_r") ?: '' ? "selected": ""}}>{{ $user->name }} {{ $user->prenom }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                           </div>
                             <div class="form-group">
                                 <label for="nom" class="col-form-label text-md-right">Nom <span class="text-danger">*</span></label>
                                 <input name="nom" class="form-control" value="{{ old('nom') }}" type="text" placeholder="Nom" required>
@@ -171,6 +184,10 @@
                                 
                             </select>
                         </div>
+                        <div class="form-group">
+                                <label for="date_insertion" class="col-form-label text-md-right">Date Création</label>
+                                <input type="date" name="date_insertion" class="form-control" value="{{ old('date_insertion') }}"  placeholder=" date de création du dossier au cmcu" required>
+                            </div>
                        
                         </div>
 

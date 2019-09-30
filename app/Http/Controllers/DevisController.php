@@ -95,6 +95,7 @@ class DevisController extends Controller
         $devis->qte4 = $request->get('qte4');
         $devis->qte5= $request->get('qte5');
         $devis->qte6 = $request->get('qte6');
+
         $devis->qte7= $request->get('qte7');
         $devis->qte8= $request->get('qte8');
         $devis->qte9= $request->get('qte9');
@@ -108,6 +109,7 @@ class DevisController extends Controller
         $devis->prix_u4 = $request->get('prix_u4');
         $devis->prix_u5 = $request->get('prix_u5');
         $devis->prix_u6 = $request->get('prix_u6');
+
         $devis->prix_u7 = $request->get('prix_u7');
         $devis->prix_u8 = $request->get('prix_u8');
         $devis->prix_u9 = $request->get('prix_u9');
@@ -120,6 +122,7 @@ class DevisController extends Controller
         $devis->montant4 = ((int)$request->get('qte5') * (int)$request->get('prix_u4'));
         $devis->montant5 = ((int)$request->get('qte6') * (int)$request->get('prix_u5'));
         $devis->montant6 = ((int)$request->get('qte7') * (int)$request->get('prix_u6'));
+        
         $devis->montant7 = ((int)$request->get('qte8') * (int)$request->get('prix_u7'));
         $devis->montant8 = ((int)$request->get('qte9') * (int)$request->get('prix_u8'));
         $devis->montant9 = ((int)$request->get('qte10') * (int)$request->get('prix_u9'));
@@ -139,7 +142,7 @@ class DevisController extends Controller
         $devis->arreter = $request->get('arreter');
 
         $devis->total1 = $devis->montant + $devis->montant1 + $devis->montant2 + $devis->montant3 + 
-        $devis->montant4 + $devis->montant5 + $devis->montant5 +  $devis->montant6;
+        $devis->montant4 + $devis->montant5 +  $devis->montant6;
 
         $devis->total2 =$devis->montant7 + $devis->montant8 + $devis->montant9 + $devis->montant10;
         $devis->total3 = $devis->total1 +  $devis->total2;

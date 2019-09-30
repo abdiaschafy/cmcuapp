@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Patient;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ConsultationRequest extends FormRequest

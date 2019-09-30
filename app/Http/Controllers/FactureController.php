@@ -42,10 +42,12 @@ class FactureController extends Controller
         ]);
     }
 
-    public function FactureConsultation(Patient $patient)
+    public function FactureConsultation(Patient $patient,User $user)
     {
         $this->authorize('view', User::class);
-        $factureConsultations = FactureConsultation::with('patient')->get();
+        $user = User::where('role_id', '=', 2)->get();
+        $factureConsultations = FactureConsultation::with('patient','user')->latest()->get();
+       
 
         return view('admin.factures.consultation', compact('factureConsultations'));
     }
@@ -61,9 +63,10 @@ class FactureController extends Controller
     public function FactureClient()
     {
         $this->authorize('view', User::class);
+        $user = User::where('role_id', '=', 2)->get();
         $facturesClients = FactureClient::with('client')->get();
 
-        return view('admin.factures.client', compact('facturesClients'));
+        return view('admin.factures.client', compact('facturesClients','user'));
     }
 
     public function export_consultation($id)
@@ -117,6 +120,36 @@ class FactureController extends Controller
         $pdf->setPaper('A4', 'landscape');
 
         return $pdf->stream('bilan_facture_consultation.pdf');
+    }
+
+    public function export_bilan_clientexterne()
+    {
+
+        $date_today = Carbon::today()->toDateString();
+
+        $factures = FactureClient::with('client')->where('date_insertion', '=', $date_today)->get();
+
+        $tautaux = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('montant');
+        $avances = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('avance');
+        $restes = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('reste');
+        $assurances = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('partassurance');
+        $clients = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('partpatient');
+
+
+
+        $pdf = PDF::loadView('admin.etats.bilan_clientexterne', [
+            'factures' => $factures,
+            'tautaux' => $tautaux,
+            'avances' => $avances,
+            'restes' => $restes,
+            'assurances' => $assurances,
+            'date_today' => $date_today,
+            'clients' => $clients,
+        ]);
+
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->stream('bilan_facture_clientexterne.pdf');
     }
 
 }

@@ -20,6 +20,7 @@ class AddFieldsOnFactureClientsTable extends Migration
             $table->string('demarcheur')->nullable();
             $table->string('numero_assurance')->nullable();
             $table->string('prise_en_charge')->nullable();
+            $table->string('date_insertion')->nullable();
         });
     }
 
@@ -31,12 +32,7 @@ class AddFieldsOnFactureClientsTable extends Migration
     public function down()
     {
         Schema::table('facture_clients', function (Blueprint $table) {
-            $table->string('numero_assurance')->nullable();
-            $table->string('prise_en_charge')->nullable();
-            $table->dropColumn('assurance')->nullable();
-            $table->dropColumn('partassurance')->nullable();
-            $table->dropColumn('partpatient')->nullable();
-            $table->dropColumn('demarcheur')->nullable();
+            $table->dropColumn('demarcheur');
           
         });
     }

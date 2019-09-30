@@ -67,9 +67,6 @@ class CreateDevisTable extends Migration
             $table->string('elements9')->nullable();
             $table->string('elements10')->nullable();
             $table->string('arreter')->nullable();
-            $table->integer('total1')->nullable();
-            $table->integer('total2')->nullable();
-            $table->integer('total3')->nullable();
             $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
