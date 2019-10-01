@@ -17,21 +17,21 @@ use Illuminate\Http\Request;
 class ConsultationsController extends Controller
 {
 
-    public function index_chirurgien(Consultation $consultations, Patient $patient)
+    public function IndexConsultationChirurgien(Consultation $consultations, Patient $patient)
     {
 
-        return view('admin.consultations.index_chirurgien', [
+        return view('admin.consultations.chirurgiens.index_consultation_chirurgien', [
             'patient' => $patient,
-            'consultations' => Consultation::with('patient', 'user')->get(),
+            'consultations' => Consultation::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
         ]);
     }
 
-    public function index_anesthesiste(ConsultationAnesthesiste $consultationAnesthesiste, Patient $patient)
+    public function IndexConsultationAnesthesiste(ConsultationAnesthesiste $consultationAnesthesiste, Patient $patient)
     {
 
-        return view('admin.consultations.index_anesthesiste', [
+        return view('admin.consultations.anesthesistes.index_consultation_anesthesiste', [
             'patient' => $patient,
-            'consultationAnesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->get(),
+            'consultationAnesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
         ]);
     }
 

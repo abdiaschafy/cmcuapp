@@ -102,7 +102,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/edit/{patient}', 'ConsultationsController@edit')->name('consultations.edit');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
 
-    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index_chirurgien')->name('consultations.index');
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@IndexConsultationChirurgien')->name('consultations.index');
     Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
 
     Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
@@ -196,7 +196,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('adaptation-traitement', 'AnesthesisteController@AdaptationTraitementPersoStore')->name('adaptation_traitement.store');
 
     Route::get('observations-medicales/{patient}', 'ChirurgienController@create')->name('observations_medicales.index');
-    Route::get('surveillance-rapproche/{patient}', 'ParametresController@index')->name('surveillance_rapproche.index');
+    Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
     Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');
 
 });

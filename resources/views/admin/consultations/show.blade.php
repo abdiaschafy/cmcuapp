@@ -21,7 +21,7 @@
         }
 
         .center-div{
-            margin: 0 auto px;
+            margin: 0 auto 0px;
             width: 100px;
 
             

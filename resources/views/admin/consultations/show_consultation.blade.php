@@ -274,7 +274,7 @@
 
     <tr>
         <td>
-            <h1 class="text-info">PARAMETRES</h1>
+            <h1 class="text-info"><a href="{{ route('fiche_parametre.index', $patient->id) }}">PARAMETRES</a></h1>
         </td>
         <td></td>
     </tr>

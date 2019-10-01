@@ -40,7 +40,7 @@
                     <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right"><i
                             class="fas fa-arrow-left"></i> Retour au dossier patient</a>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-10">
                     <!-- resumt -->
                     <div class="card">
                         <div class="card-header resume-heading">
@@ -56,41 +56,97 @@
                                 </div>
                             </div>
                         </div>
-                        @foreach($compteRenduBlocOperatoires as $compteRenduBlocOperatoire)
-                            <div class="bs-callout bs-callout-danger">
-                                <h4>COMPTE-RENDU DU <small class="text-danger"><b>{{ $compteRenduBlocOperatoire->created_at->toFormattedDateString() }}</b></small></h4>
-                                <hr>
-                                <ul class="list-group">
-                                    <li class="list-group-item"><b>OPERATEUR :</b> Dr. {{ $compteRenduBlocOperatoire->chirurgien }}</li>
-                                    <li class="list-group-item"><b>AIDE OPERATOIRE :</b> Dr. {{ $compteRenduBlocOperatoire->aide_op }}</li>
-                                    <li class="list-group-item"><b>ANESTHESISTE :</b> Dr. {{ $compteRenduBlocOperatoire->anesthesiste }}</li>
-                                    <li class="list-group-item"><b>INFIRMIER ANESTHESISTE :</b> Dr. {{ $compteRenduBlocOperatoire->infirmier_anesthesiste }}</li>
-                                    <hr>
-                                    <li class="list-group-item"><b>DATE D"ENTREE :</b> {{ $compteRenduBlocOperatoire->date_e }}</li>
-                                    <li class="list-group-item"><b>TYPE :</b> {{ $compteRenduBlocOperatoire->type_e }}</li>
-                                    <li class="list-group-item"><b>DATE DE SORTIE :</b> {{ $compteRenduBlocOperatoire->date_s }}</li>
-                                    <li class="list-group-item"><b>TYPE :</b> {{ $compteRenduBlocOperatoire->types_s }}</li>
-                                    <li class="list-group-item"><b>DATE INTERVENTION :</b> {{ $compteRenduBlocOperatoire->date_intervention }}</li>
-                                    <li class="list-group-item"><b>DUREE INTERVENTION :</b> {{ $compteRenduBlocOperatoire->dure_intervention }}</li>
-                                    <hr>
-                                    <li class="list-group-item"><b>COMPTE-RENDU OPERATOIRE :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->compte_rendu_o }}</p>
-                                    <li class="list-group-item"><b>INDICATIONS OPERATOIRES :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->indication_operatoire }}</p>
-                                    <li class="list-group-item"><b>RESULTATS HISTOPATHOLOGIQUES :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->resultat_histo }}</p>
-                                    <li class="list-group-item"><b>SUITES OPERATOIRES :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->suite_operatoire }}</p>
-                                    <li class="list-group-item"><b>TRAITEMENT PROPOSE :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->traitement_propose }}</p>
-                                    <li class="list-group-item"><b>SOINS :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->soins }}</p>
-                                    <li class="list-group-item"><b>CONCLUSION :</b> </li>
-                                    <p>{{ $compteRenduBlocOperatoire->conclusion }}</p>
 
-                                </ul>
-                            </div>
-                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <td></td>
+                                    <td><h1 class="text-info">COMPTE-RENDU</h1></td>
+                                </tr>
+                                @foreach($compteRenduBlocOperatoires as $compteRenduBlocOperatoire)
+                                <tr>
+                                    <td class="table-active"><b>DATE</b></td>
+                                    <td class="table-active">{{ $compteRenduBlocOperatoire->created_at->toFormattedDateString() }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>OPERATEUR</b></td>
+                                    <td><b>Dr.</b> {{ $compteRenduBlocOperatoire->chirurgien }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>AIDE OPERATOIRE</b></td>
+                                    <td><b>Dr.</b> {{ $compteRenduBlocOperatoire->aide_op }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>ANESTHESISTE</b></td>
+                                    <td><b>Dr.</b> {{ $compteRenduBlocOperatoire->anesthesiste }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>INFIRMIER ANESTHESISTE</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->infirmier_anesthesiste }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>DATE D'ENTREE</b> </td>
+                                    <td>{{ $compteRenduBlocOperatoire->date_e }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>TYPE D'ENTREE</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->type_e }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>DATE DE SORTIE</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->date_s }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>TYPE DE SORTIE</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->types_s }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>DATE INTERVENTION</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->date_intervention }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>DUREE INTERVENTION</b></td>
+                                    <td> {{ $compteRenduBlocOperatoire->dure_intervention }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>COMPTE-RENDU OPERATOIRE</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->compte_rendu_o }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>INDICATIONS OPERATOIRE</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->indication_operatoire }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>RESULTATS HISTOPATHOLOGIQUES</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->resultat_histo }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>SUITES OPERATOIRES</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->suite_operatoire }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>TRAITEMENT PROPOSE</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->traitement_propose }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>SOINS</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->soins }}</td>
+                                </tr>
+                                <tr>
+                                    <td><b>CONCLUSION</b></td>
+                                    <td>{{ $compteRenduBlocOperatoire->conclusion }}</td>
+                                </tr>
+                                @endforeach
+
+                                </thead>
+
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <!-- resume -->
