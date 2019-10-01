@@ -276,14 +276,7 @@
         <td>
             <h1 class="text-info">PARAMETRES</h1>
         </td>
-        <td>
-            @can('anesthesiste', App\Patient::class)
-            <a href="{{ route('surveillance_rapproche.index', $patient->id) }}" title="Surveillance rapprochée des paramètres" class="btn btn-success">
-                <i class="fas fa-eye"></i>
-                SURVEILLANCE RAPPROCHEE
-            </a>
-            @endcan
-        </td>
+        <td></td>
     </tr>
 
     @if (count($patient->parametres) > 0)
@@ -340,17 +333,6 @@
             <td><b>FC :</b></td>
             <td>{{ $parametres->fc }} Pls/min</td>
         </tr>
-        @can('infirmier', App\Patient::class)
-        <tr>
-            <td>
-                <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
-                    <i class="fas fa-eye"></i>
-                    PREMEDICATION
-                </a>
-            </td>
-            <td></td>
-        </tr>
-        @endcan
     @else
 
         <tr>
