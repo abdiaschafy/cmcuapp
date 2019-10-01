@@ -120,6 +120,12 @@
                                                                                 <i class="fas fa-eye"></i>
                                                                                 Examens
                                                                             </button>
+                                                                            <a href="{{ route('surveillance_post_anesthesise.index', $patient->id) }}"
+                                                                                    class="btn btn-primary btn-block mb-2"
+                                                                                    title="Détails surveillance post-aneshésiste">
+                                                                                <i class="fas fa-eye"></i>
+                                                                                Surveillance post-anesthésique
+                                                                            </a>
                                                                             <button type="button"
                                                                                     class="btn btn-primary btn-block"
                                                                                     title="Fiches d'intervention"

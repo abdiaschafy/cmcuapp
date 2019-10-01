@@ -111,4 +111,12 @@ class AnesthesisteController extends Controller
 
     }
 
+    public function IndexSurveillancePostAnesthesise(Patient $patient)
+    {
+        return view('admin.consultations.index_surveillance_post_anesthesique', [
+
+            'patient' => $patient,
+        ]);
+    }
+
 }
