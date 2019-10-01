@@ -338,7 +338,7 @@
         </tr>
         <tr>
             <td><b>FC :</b></td>
-            <td>{{ $parametres->temperature }} Pls/min</td>
+            <td>{{ $parametres->fc }} Pls/min</td>
         </tr>
         @can('infirmier', App\Patient::class)
         <tr>
