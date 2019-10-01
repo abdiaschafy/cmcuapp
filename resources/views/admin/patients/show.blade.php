@@ -115,10 +115,19 @@
                                                                                     class="btn btn-primary btn-block mb-2"
                                                                                     title="Liste des examens pour ce patient"
                                                                                     data-toggle="modal"
-                                                                                    data-target="#feuilleAll"
+                                                                                    data-target="#biologieAll"
                                                                                     data-whatever="@mdo">
                                                                                 <i class="fas fa-eye"></i>
-                                                                                Examens
+                                                                                Examens Biologie
+                                                                            </button>
+                                                                            <button type="button"
+                                                                                    class="btn btn-primary btn-block mb-2"
+                                                                                    title="Liste des examens pour ce patient"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#imagerieAll"
+                                                                                    data-whatever="@mdo">
+                                                                                <i class="fas fa-eye"></i>
+                                                                                Examens Imagerie
                                                                             </button>
                                                                             <a href="{{ route('surveillance_post_anesthesise.index', $patient->id) }}"
                                                                                     class="btn btn-primary btn-block mb-2"
@@ -154,7 +163,8 @@
                                                             @include('admin.modal.detail_premedication_preparation')
                                                             @include('admin.modal.ordonance_show')
                                                             @include('admin.modal.consultation_show')
-                                                            @include('admin.modal.feuille_show')
+                                                            @include('admin.modal.index_examen_biologie')
+                                                            @include('admin.modal.index_examen_imagerie')
                                                             @include('admin.modal.fiche_intervention_show')
 
                                                             @include('admin.modal.fiche_intervention')
