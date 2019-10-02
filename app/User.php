@@ -185,6 +185,11 @@ class User extends Authenticatable
         return $this->hasMany(Ordonance::class);
     }
 
+    public function compte_rendu_bloc_operatoires()
+    {
+        return $this->hasMany(CompteRenduBlocOperatoire::class);
+    }
+
     public function prescriptions()
     {
         return $this->hasMany(Prescription::class);

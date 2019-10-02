@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
 
     Route::get('detatils-consultations/{patient}', 'ConsultationsController@IndexConsultationChirurgien')->name('consultations.index');
-    Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
+    Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@IndexConsultationAnesthesiste')->name('consultations.index_anesthesiste');
 
     Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
     Route::put('consultation-anesthesiste/{consultation}', 'ConsultationsController@update_consultation_anesthesiste')->name('consultation_anesthesiste.update');
@@ -120,7 +120,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('compte-rendu-bloc-global/{patient}', 'CompteRenduBlocOperatoireController@index')->name('compte_rendu_bloc.index');
     Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');
+    Route::get('compte-rendu-bloc/edit/{patient}', 'CompteRenduBlocOperatoireController@edit')->name('compte_rendu_bloc.edit');
     Route::post('compte-rendu-bloc', 'CompteRenduBlocOperatoireController@store')->name('compte_rendu_bloc.store');
+    Route::put('compte-rendu-bloc/{compteRenduBlocOperatoire}', 'CompteRenduBlocOperatoireController@update')->name('compte_rendu_bloc.update');
     Route::get('compte-rendu-bloc/{id}', 'CompteRenduBlocOperatoireController@compte_rendu_bloc_pdf')->name('compte_rendu_bloc_pdf.pdf');
 
 

@@ -53,7 +53,7 @@ class ConsultationsController extends Controller
     public function edit(Consultation $consultation, Patient $patient)
     {
 
-        return view('admin.consultations.create', [
+        return view('admin.consultations.edit', [
             'patient' => $patient,
             'devis' => Devis::all(),
             'users' => User::where('role_id', '=', 2)->with('patients')->get(),
@@ -101,7 +101,7 @@ class ConsultationsController extends Controller
     public function update_consultation_chirurgien(Consultation $consultation, Request $request)
     {
         $proposition = implode(',', $request->proposition);
-//        dd($proposition);
+
         $acte = implode(',', $request->acte);
 
         $consultation->update(request()->only([

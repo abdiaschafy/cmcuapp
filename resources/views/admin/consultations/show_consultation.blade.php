@@ -376,7 +376,7 @@
         @if (count($patient->compte_rendu_bloc_operatoires))
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
+                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b> <a href="{{ route('compte_rendu_bloc.edit', $patient->id) }}" title="Modifier le compte-rendu" class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</a></td>
             </tr>
             <tr>
                 <td><b>NOM ET PRENOM DU CHIRURGIEN :</b></td>

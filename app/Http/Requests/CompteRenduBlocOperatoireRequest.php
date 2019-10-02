@@ -30,7 +30,6 @@ class CompteRenduBlocOperatoireRequest extends FormRequest
             'date_intervention'=> 'required',
             'dure_intervention'=> 'required',
             'compte_rendu_o'=> 'required',
-            'compte_rendu_o'=> 'required',
             'conclusion'=> 'required',
         ];
     }
