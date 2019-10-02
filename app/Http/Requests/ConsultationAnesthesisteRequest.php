@@ -29,7 +29,6 @@ class ConsultationAnesthesisteRequest extends FormRequest
             'examen_clinique' => 'required',
             'traitement_en_cours' => 'required',
             'risque' => 'required',
-            'information_patient' => 'required',
             'synthese_preop' => 'required',
             'technique_anesthesie' => 'required',
         ];

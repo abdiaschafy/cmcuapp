@@ -16,7 +16,9 @@
         <select class="form-control" name="medecin_r" id="medecin_r" required>
             <option value=""> Nom du médecin</option>
             @foreach ($users as $user)
-                <option value="{{ $user->name }} {{ $user->prenom }}" {{ old( 'medecin_r',$consultation->medecin_r)==$consultation->medecin_r ? 'selected' : '' }}>{{ $user->name }} {{ $user->prenom }}</option>
+                <option
+                    value="{{ $user->name }} {{ $user->prenom }}" {{old('medecin_r', $consultation->medecin_r) == ($user->name . ' ' . $user->prenom) ? 'selected' : ''}}>{{ $user->name }} {{ $user->prenom }}
+                </option>
             @endforeach
         </select>
     </td>
@@ -139,7 +141,7 @@
         <select class="form-control" name="devis_p">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old( "devis_p", $consultation->devis_p) ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
+                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old('devis_p', $consultation->devis_p) == $consultation->devis_p ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
             @endforeach
         </select>
 

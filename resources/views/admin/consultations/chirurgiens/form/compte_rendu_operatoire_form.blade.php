@@ -56,7 +56,6 @@
     <tr>
         <td><b>Nom du chirurgien :</b> <span class="text-danger">*</span></td>
         <td>
-{{--            {{ Form::select('chirurgien', $users, null, ['class' => 'form-control', 'placeholder' => 'Nom du chirurgien', 'required' => 'required']) }}--}}
             <select class="form-control" name="chirurgien" id="chirurgien" required>
                 <option value=""> Nom du chirurgien</option>
                 @foreach ($users as $user)
