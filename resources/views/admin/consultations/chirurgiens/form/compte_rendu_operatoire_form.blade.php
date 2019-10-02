@@ -26,7 +26,7 @@
             {{ Form::date('date_e', null, ['class' => 'form-control', 'required' => 'required']) }}
         </td>
         <td>
-            {{ Form::select('type_e', ['Urgence' => 'Urgence', 'Hospitalisation' => 'Hospitalisation'], null, ['class' => 'form-control', 'placeholder' => 'Motif d\'entrer', 'required' => 'required']) }}
+            {{ Form::select('type_e', ['Urgence' => 'Urgence', 'Hospitalisation' => 'Hospitalisation'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Motif d\'entrer', 'required' => 'required']) }}
         </td>
     </tr>
     <tr>
@@ -44,7 +44,7 @@
             {{ Form::date('date_s', null, ['class' => 'form-control', 'required' => 'required']) }}
         </td>
         <td>
-            {{ Form::select('type_s', ['Retour au domicile' => 'Retour au domicile', 'Transfert' => 'Transfert', 'Convalescence' => 'Convalescence', 'Décédé' => 'Décédé' ], null, ['class' => 'form-control', 'placeholder' => 'Motif de sortie', 'required' => 'required']) }}
+            {{ Form::select('type_s', ['Retour au domicile' => 'Retour au domicile', 'Transfert' => 'Transfert', 'Convalescence' => 'Convalescence', 'Décédé' => 'Décédé' ], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Motif de sortie', 'required' => 'required']) }}
         </td>
     </tr>
     <tr>
@@ -56,7 +56,7 @@
     <tr>
         <td><b>Nom du chirurgien :</b> <span class="text-danger">*</span></td>
         <td>
-            <select class="form-control" name="chirurgien" id="chirurgien" required>
+            <select class="form-control col-md-6" name="chirurgien" id="chirurgien" required>
                 <option value=""> Nom du chirurgien</option>
                 @foreach ($users as $user)
                     <option
@@ -69,7 +69,7 @@
     <tr>
         <td><b>Aide opératoire :</b> <span class="text-danger">*</span></td>
         <td>
-            <select class="form-control" name="aide_op" id="aide_op" required>
+            <select class="form-control col-md-6" name="aide_op" id="aide_op" required>
                 <option value=""> Nom de l'aide opératoire</option>
                 <option value="Aucun"> Aucun</option>
                 @foreach ($users as $user)
@@ -82,7 +82,7 @@
     <tr>
         <td><b>Anesthésiste :</b> <span class="text-danger">*</span></td>
         <td>
-            <select class="form-control" name="anesthesiste" id="anesthesiste" required>
+            <select class="form-control col-md-6" name="anesthesiste" id="anesthesiste" required>
                 <option value=""> Nom de l'anesthésiste</option>
                 @foreach ($anesthesistes as $anesthesiste)
                     <option
@@ -95,7 +95,7 @@
     <tr>
         <td><b>Infirmier anesthésiste :</b> <span class="text-danger">*</span></td>
         <td>
-            <select class="form-control" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
+            <select class="form-control col-md-6" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
                 <option value=""> Nom de l'infirmier anesthésiste</option>
                 @foreach ($infirmierAnesthesistes as $infirmierAnesthesiste)
                     <option

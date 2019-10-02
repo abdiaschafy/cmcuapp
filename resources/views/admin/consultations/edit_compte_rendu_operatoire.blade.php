@@ -16,7 +16,7 @@
                 <br>
                 <br>
                 <div class="col-md-12  offset-md-0  toppad">
-                    <div class="card col-md-8">
+                    <div class="card col-md-10">
                         <div class="card-body">
                             @include('partials.flash_form')
                             <h3 class="card-title">COMPTE-RENDU OPERATOIRE</h3>

@@ -13,7 +13,7 @@
 <tr>
     <td><b>Médecin de référence :</b> <span class="text-danger">*</span></td>
     <td>
-        <select class="form-control" name="medecin_r" id="medecin_r" required>
+        <select class="form-control col-md-6" name="medecin_r" id="medecin_r" required>
             <option value=""> Nom du médecin</option>
             @foreach ($users as $user)
                 <option
@@ -29,25 +29,31 @@
 </tr>
 <tr>
     <td><b>Interrogatoire :</b> <span class="text-danger">*</span></td>
-    <td>{{ Form::textarea('interrogatoire', null, ['class' => 'form-control splitLines', 'rows' => '4', 'required' => 'required']) }}</td>
+    <td>{{ Form::textarea('interrogatoire', null, ['class' => 'form-control splitLines', 'rows' => '5', 'required' => 'required']) }}</td>
 </tr>
-@if (!empty($consultation))
+{{--    @if (isset($consultation->antecedent_m))--}}
     <tr>
         <td><b>Antécédents médicaux :</b></td>
-        <td>{{ Form::textarea('antecedent_m', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
+        <td>{{ Form::textarea('antecedent_m', null, ['class' => 'form-control splitLines', 'rows' => '3']) }}</td>
     </tr>
+{{--    @endif--}}
+{{--    @if (isset($consultation->antecedent_c))--}}
     <tr>
         <td><b>Antécédents chirurgicaux :</b></td>
-        <td>{{ Form::textarea('antecedent_c', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
+        <td>{{ Form::textarea('antecedent_c', null, ['class' => 'form-control splitLines', 'rows' => '3']) }}</td>
     </tr>
+{{--    @endif--}}
+{{--    @if (isset($consultation->allergie))--}}
     <tr>
         <td><b>Allergies :</b></td>
-        <td>{{ Form::textarea('allergie', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
+        <td>{{ Form::textarea('allergie', null, ['class' => 'form-control splitLines', 'rows' => '3']) }}</td>
     </tr>
+{{--    @endif--}}
+{{--    @if (isset($consultation->groupe))--}}
     <tr>
         <td><b>Goupe sanguin du patient :</b></td>
         <td>
-            <select class="form-control" name="groupe" id="groupe">
+            <select class="form-control col-md-5" name="groupe" id="groupe">
                 <option value="">Groupes sanguins</option>
                 <option value="O-" {{old( 'groupe',$consultation->groupe)=='O-' ? 'selected' : '' }}>O-</option>
                 <option value="O+" {{old( 'groupe',$consultation->groupe)=='O+' ? 'selected' : '' }}>O+</option>
@@ -60,7 +66,7 @@
             </select>
         </td>
     </tr>
-@endif
+{{--    @endif--}}
 <tr>
     <td>
         <h5 class="text-primary"><strong>EXAMENS</strong></h5>
@@ -113,7 +119,7 @@
 </tr>
 <tr>
     <td><b>Date intervention :</b></td>
-    <td>{{ Form::date('date_intervention', null, ['class' => 'form-control']) }}</td>
+    <td>{{ Form::date('date_intervention', null, ['class' => 'form-control col-md-5']) }}</td>
 </tr>
 <tr id="type_acte" style='display:none;'>
     <td><b>Type d'actes à réaliser :</b></td>
@@ -141,7 +147,7 @@
         <select class="form-control" name="devis_p">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old('devis_p', $consultation->devis_p) == $consultation->devis_p ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
+                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old('devis_p', $consultation->devis_p) == ($consultation->devis_p . ' ' . $devi->montant10 . ' ' . '0 FCFA') ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
             @endforeach
         </select>
 

@@ -16,7 +16,7 @@
                 <br>
                 <br>
                 @can('medecin', \App\Patient::class)
-                <div class="col-md-8  offset-md-0  toppad">
+                <div class="col-md-10  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             @include('partials.flash_form')
