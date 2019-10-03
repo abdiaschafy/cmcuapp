@@ -10,9 +10,21 @@ use Carbon\Carbon;
 class ParametresController extends Controller
 {
 
-    public function index(Patient $patient)
+    public function IndexSurveillanceRapprocheParametre(Patient $patient)
     {
-        return view('admin.consultations.surveillance_rapproche_param', compact('patient'));
+        return view('admin.consultations.infirmiers.index_surveillance_rapproche_param', [
+
+            'patient' => $patient,
+        ]);
+    }
+
+    public function IndexParametrePatient(Patient $patient)
+    {
+        return view('admin.consultations.infirmiers.index_fiche_parametre', [
+
+            'patient' => $patient,
+            'parametres' => Parametre::with('patient')->where('patient_id', '=', $patient->id)->get()
+        ]);
     }
 
 

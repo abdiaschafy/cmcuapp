@@ -1,14 +1,14 @@
-<div class="modal fade" id="feuilleAll" tabindex="-1" role="dialog" aria-labelledby="feuilleAll" aria-hidden="true">
+<div class="modal fade" id="imagerieAll" tabindex="-1" role="dialog" aria-labelledby="feuilleAll" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">LISTE DES EXAMENS</h5>
+                <h5 class="modal-title" id="exampleModalLabel">EXAMENS IMAGERIE</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            @if (count($patient->prescriptions))
+                @if (count($patient->prescriptions))
 
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
@@ -50,7 +50,7 @@
                         {{ $ordonances->links() }}
 
                     </div>
-            @endif
+                @endif
             </div>
         </div>
     </div>

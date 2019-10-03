@@ -15,43 +15,21 @@
                 </div>
                 <br>
                 <br>
-                @can('medecin', \App\Patient::class)
-                <div class="col-md-10  offset-md-0  toppad">
-                    <div class="card">
+                <div class="col-md-12  offset-md-0  toppad">
+                    <div class="card col-md-10">
                         <div class="card-body">
                             @include('partials.flash_form')
-                            <h3 class="card-title">Informations relatives au dossier patient</h3>
+                            <h3 class="card-title">COMPTE-RENDU OPERATOIRE</h3>
                             <small class="text-danger"><i><strong><i class="fas fa-exclamation-triangle"></i> Attention
-                                        !! espace réservé au médecin</strong></i>
-                            </small>
+                                        !! espace réservé au médecin</strong></i></small>
                             <table class="table table-user-information ">
                                 <tbody>
-                                    @can('chirurgien', \App\Patient::class)
-                                        @include('admin.consultations.chirurgiens.form.consultation_chirurgien_form')
-                                    @endcan
-                                    @can('anesthesiste', \App\Patient::class)
-                                        @include('admin.consultations.anesthesistes.form.consultation_anesthesiste_form')
-                                    @endcan
+                                    @include('admin.consultations.chirurgiens.form.compte_rendu_operatoire_form')
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-                @endcan
-                @can('infirmier', \App\Patient::class)
-                    <div class="col-md-6  offset-md-0  toppad">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="card-title text-uppercase text-primary"><b>Prise des paramètres du patient</b>
-                                    <small><strong></strong></small>
-                                </div>
-                                <small class="text-info" title="La prise des paramètres du patient doit être quotidienne"><i
-                                        class="fas fa-info-circle"></i></small>
-                                @include('admin.consultations.infirmiers.form.fiche_parametre_form')
-                            </div>
-                        </div>
-                    </div>
-                @endcan
             </div>
         </div>
     </div>
@@ -73,7 +51,7 @@
 {{--                    lines[i + 1] = lines[i].substring(space + 1) + (lines[i + 1] || "");--}}
 {{--                    lines[i] = lines[i].substring(0, space);--}}
 {{--                }--}}
-{{--                textarea[x].value = lines.slice(0, 70).join("\n");--}}
+{{--                textarea[x].value = lines.slice(0, 69).join("\n");--}}
 {{--            };--}}
 {{--        }--}}
 {{--    </script>--}}
