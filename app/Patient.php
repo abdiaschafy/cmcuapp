@@ -212,6 +212,11 @@ class Patient extends Model
         return $this->hasMany(Dossier::class);
     }
 
+    public function fiche_consommables()
+    {
+        return $this->hasMany(FicheConsommable::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

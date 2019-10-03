@@ -242,6 +242,15 @@ class PatientsController extends Controller
         return redirect()->route('factures.consultation')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
+    public function FcheConsommableCreate(Patient $patient)
+    {
+
+        return view('admin.patients.fiche_consommable', [
+
+            'patient' => $patient,
+        ]);
+    }
+
     public function export_ordonance($id)
     {
         //$this->authorize('print', Patient::class);

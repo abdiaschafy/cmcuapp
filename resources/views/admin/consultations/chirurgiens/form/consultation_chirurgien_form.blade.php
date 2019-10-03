@@ -147,7 +147,7 @@
         <select class="form-control" name="devis_p">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old('devis_p', $consultation->devis_p) == ($consultation->devis_p . ' ' . $devi->montant10 . ' ' . '0 FCFA') ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )</option>
+                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old('devis_p', $consultation->devis_p) == ($consultation->devis_p . ' ' . $devi->montant10 . ' ' . '0 FCFA') ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )</option>
             @endforeach
         </select>
 

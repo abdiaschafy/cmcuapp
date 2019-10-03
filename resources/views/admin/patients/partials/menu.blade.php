@@ -29,6 +29,11 @@
             </a>
         </li>
     </ul>
+
+    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">
+        <i class="far fa-plus-square"></i>
+        FICHES DE CONSOMMABLES
+    </a>
 @endcan
 @can('chirurgien', \App\Patient::class)
     <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
@@ -84,6 +89,10 @@
         <i class="far fa-plus-square"></i>
         Observations médicales
     </a>
+    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">
+        <i class="far fa-plus-square"></i>
+        FICHES DE CONSOMMABLES
+    </a>
 {{--    FIN DE LA LISTE DES ELEMENTS HORS MENU --}}
 @endcan
 
@@ -123,6 +132,10 @@
     <a href="{{ route('observations_medicales.index', $patient->id) }}" class="btn btn-primary">
         <i class="far fa-plus-square"></i>
         Observations médicales
+    </a>
+    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">
+        <i class="far fa-plus-square"></i>
+        FICHES DE CONSOMMABLES
     </a>
     {{--    FIN DE LA LISTE DES ELEMENTS HORS MENU --}}
 @endcan

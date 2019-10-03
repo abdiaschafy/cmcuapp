@@ -198,6 +198,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('adaptation-traitement', 'AnesthesisteController@AdaptationTraitementPersoStore')->name('adaptation_traitement.store');
 
     Route::get('observations-medicales/{patient}', 'ChirurgienController@create')->name('observations_medicales.index');
+    Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
     Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
     Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');

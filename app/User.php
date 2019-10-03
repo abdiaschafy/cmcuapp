@@ -190,6 +190,11 @@ class User extends Authenticatable
         return $this->hasMany(CompteRenduBlocOperatoire::class);
     }
 
+    public function fiche_consommables()
+    {
+        return $this->hasMany(FicheConsommable::class);
+    }
+
     public function prescriptions()
     {
         return $this->hasMany(Prescription::class);
