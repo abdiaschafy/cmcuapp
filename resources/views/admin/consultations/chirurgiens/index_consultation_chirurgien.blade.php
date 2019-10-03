@@ -91,10 +91,10 @@
                                     <td>{{ $consultation->acte }}</td>
                                 </tr>
                                 @endif
-                                @if (!empty($consultation->devis_p))
+                                @if (!empty($consultation->devis_id))
                                 <tr>
                                     <td><b>DEVIS PREVISIONNEL</b></td>
-                                    <td>{{ $consultation->devis_p }}</td>
+                                    <td>{{ $consultation->devis_id }}</td>
                                 </tr>
                                 @endif
                                 @if (!empty($consultation->date_consultation_anesthesiste))

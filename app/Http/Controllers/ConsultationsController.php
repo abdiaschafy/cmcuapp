@@ -82,7 +82,7 @@ class ConsultationsController extends Controller
             'proposition'=> implode(",", $request->proposition),
             'examen_c'=> request('examen_c'),
             'examen_p'=> request('examen_p'),
-            'devis_p'=> request('devis_p'),
+            'devis_id'=> request('devis_id'),
             'motif_c'=> request('motif_c'),
             'acte'=> implode(",", $request->acte ?? []),
             'type_intervention' => request('type_intervention'),
@@ -110,7 +110,7 @@ class ConsultationsController extends Controller
         $consultation->groupe = request('groupe');
         $consultation->examen_c = request('examen_c');
         $consultation->examen_p = request('examen_p');
-        $consultation->devis_p = request('devis_p');
+        $consultation->devis_id = request('devis_id');
         $consultation->motif_c = request('motif_c');
         $consultation->type_intervention = request('type_intervention');
         $consultation->date_intervention = request('date_intervention');
