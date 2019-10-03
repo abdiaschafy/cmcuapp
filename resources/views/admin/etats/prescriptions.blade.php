@@ -136,7 +136,7 @@ a {
        </div>
     <br>
     <br>
-     <div class="text-center"><h3><u>LISTE(S) DE(S) EXAMEN(S)</u> </h3></div>
+     <div class="text-center"><h3><u>BULLETIN EXAMEN(S)</u> </h3></div>
     <br>
     <di>
     <div class="row">
@@ -209,4 +209,3 @@ a {
         </div>
             
     </div>
-    

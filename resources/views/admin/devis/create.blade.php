@@ -241,7 +241,7 @@
                             </div>
                             
                         </div>
-                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
+                       
                         <div class="row">
                             <div >
                             
@@ -292,6 +292,7 @@
                             </div>
                            
                         </div>
+                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
                         <div class="row">
                             <div >
                             
@@ -324,7 +325,7 @@
                             <div class="box-part ">
                                 <div class="form-group">
                                     <label for="elements10" class="col-form-label text-md-right">Element 11 <span class="text-danger"></span></label>
-                                    <input name="elements10" class="form-control" value="{{ old('elements10') }}" type="text" placeholder="Element 11" >
+                                    <input name="elements10" class="form-control" value="{{ old('elements10') }}" type="text" placeholder="Element 10" >
                                 </div>
                             </div>
                             
@@ -339,6 +340,81 @@
                             <div class="form-group">
                                 <label for="prix_u10" class="col-form-label text-md-right">Prix unitaire 10 <span class="text-danger"></span></label>
                                 <input name="prix_u10" class="form-control" value="{{ old('prix_u10') }}" type="text" placeholder="Prix unitaire 10" >
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div >
+                            
+                            <div class="box-part ">
+                                <div class="form-group">
+                                    <label for="elements11" class="col-form-label text-md-right">Element 12 <span class="text-danger"></span></label>
+                                    <input name="elements11" class="form-control" value="{{ old('elements11') }}" type="text" placeholder="Element 11" >
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="qte12" class="col-form-label text-md-right">Quantité 12 <span class="text-danger"></span></label>
+                                <input name="qte12" class="form-control" value="{{ old('qte12') }}" type="text" placeholder="Quantité 12" >
+                            </div>
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="prix_u11" class="col-form-label text-md-right">Prix unitaire 11 <span class="text-danger"></span></label>
+                                <input name="prix_u11" class="form-control" value="{{ old('prix_u11') }}" type="text" placeholder="Prix unitaire 11" >
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div >
+                            
+                            <div class="box-part ">
+                                <div class="form-group">
+                                    <label for="elements12" class="col-form-label text-md-right">Element 13 <span class="text-danger"></span></label>
+                                    <input name="elements12" class="form-control" value="{{ old('elements12') }}" type="text" placeholder="Element 12" >
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="qte13" class="col-form-label text-md-right">Quantité 13 <span class="text-danger"></span></label>
+                                <input name="qte13" class="form-control" value="{{ old('qte13') }}" type="text" placeholder="Quantité 13" >
+                            </div>
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="prix_u12" class="col-form-label text-md-right">Prix unitaire 12 <span class="text-danger"></span></label>
+                                <input name="prix_u12" class="form-control" value="{{ old('prix_u12') }}" type="text" placeholder="Prix unitaire 12" >
+                            </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div >
+                            
+                            <div class="box-part ">
+                                <div class="form-group">
+                                    <label for="elements13" class="col-form-label text-md-right">Element 14 <span class="text-danger"></span></label>
+                                    <input name="elements13" class="form-control" value="{{ old('elements13') }}" type="text" placeholder="Element 13" >
+                                </div>
+                            </div>
+                            
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="qte14" class="col-form-label text-md-right">Quantité 14 <span class="text-danger"></span></label>
+                                <input name="qte14" class="form-control" value="{{ old('qte14') }}" type="text" placeholder="Quantité 14" >
+                            </div>
+                            </div>
+                            <div class="box-a">
+                            <div class="form-group">
+                                <label for="prix_u13" class="col-form-label text-md-right">Prix unitaire 13 <span class="text-danger"></span></label>
+                                <input name="prix_u13" class="form-control" value="{{ old('prix_u13') }}" type="text" placeholder="Prix unitaire 13" >
                             </div>
                             </div>
                             

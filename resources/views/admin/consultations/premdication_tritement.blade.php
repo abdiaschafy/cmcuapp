@@ -272,7 +272,7 @@
                         </tfoot>
                     </table>
             </div>
-            @include('partials.admin.modal.detail_premedication_preparation')
+            @include('admin.modal.detail_premedication_preparation')
         @endcan
     </div>
     </body>
