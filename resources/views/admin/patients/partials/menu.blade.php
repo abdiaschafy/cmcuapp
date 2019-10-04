@@ -3,13 +3,6 @@
         Menu
         <span class="caret"></span></button>
     <ul class="dropdown-menu">
-        <li class="dropdown-header">Dropdown header 1</li>
-        <li>
-            <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#SpostAnesth"
-                    title="Surveillance post anesthésique" data-whatever="@mdo">
-                <i class="far fa-plus-square"></i> Surveillance post anesthésique
-            </button>
-        </li>
         <li>
             <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success mb-1">
                 <i class="fas fa-eye"></i>
@@ -36,10 +29,15 @@
         </li>
     </ul>
 
-    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">
-        <i class="far fa-plus-square"></i>
-        FICHES DE CONSOMMABLES
-    </a>
+    <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#SpostAnesth"
+            title="Surveillance post anesthésique" data-whatever="@mdo">
+        <i class="far fa-plus-square"></i> Surveillance post anesthésique
+    </button>
+
+{{--    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">--}}
+{{--        <i class="far fa-plus-square"></i>--}}
+{{--        FICHES DE CONSOMMABLES--}}
+{{--    </a>--}}
 @endcan
 @can('chirurgien', \App\Patient::class)
     <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
@@ -95,10 +93,10 @@
         <i class="far fa-plus-square"></i>
         Observations médicales
     </a>
-    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">
-        <i class="far fa-plus-square"></i>
-        FICHES DE CONSOMMABLES
-    </a>
+{{--    <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">--}}
+{{--        <i class="far fa-plus-square"></i>--}}
+{{--        FICHES DE CONSOMMABLES--}}
+{{--    </a>--}}
 {{--    FIN DE LA LISTE DES ELEMENTS HORS MENU --}}
 @endcan
 

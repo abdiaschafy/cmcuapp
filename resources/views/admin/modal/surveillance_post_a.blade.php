@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('fiche_intervention.store') }}" method="post">
+                <form action="{{ route('surveillance_post_anesthesise.store') }}" method="post">
                     @csrf
                     <div class="container">
                         <div class="col-md-10  toppad">
@@ -21,35 +21,35 @@
                                         <tr>
                                             <td><b>Surveillance :</b> <span class="text-danger">*</span></td>
                                             <td>
-                                                <textarea name="vpa" class="form-control" id="vpa" cols="55" rows="3"></textarea>
+                                                <textarea name="surveillance" class="form-control" cols="55" rows="3"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><b>Traitement(s) :</b> </td>
                                             <td>
-                                                <textarea name="vpa" class="form-control" id="vpa" cols="55" rows="3"></textarea>
+                                                <textarea name="traitement" class="form-control" cols="55" rows="3"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><b>Examen(s) paraclinique(s) post opératoire :</b> </td>
                                             <td>
-                                                <textarea name="vpa" class="form-control" id="vpa" cols="55" rows="3"></textarea>
+                                                <textarea name="examen_paraclinique" class="form-control" cols="55" rows="3"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><b>Observation(s) :</b> <span class="text-danger">*</span></td>
                                             <td>
-                                                <textarea name="vpa" class="form-control" id="vpa" cols="55" rows="3"></textarea>
+                                                <textarea name="observation" class="form-control" cols="55" rows="3"></textarea>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <label for=""><b>Date de sortie :</b></label>
-                                                <input type="date" class="form-control" name="date_s" required>
+                                                <input type="date" class="form-control" name="date_sortie">
                                             </td>
                                             <td>
                                                 <label for=""><b>Heure de sortie :</b></label>
-                                                <input type="time" class="form-control col-md-5" name="heur_s" required>
+                                                <input type="time" class="form-control col-md-5" name="heur_sortie">
                                             </td>
                                         </tr>
                                         </tbody>
@@ -61,6 +61,7 @@
                     </div>
                     <br>
                     <input type="hidden" value="{{ $patient->id }}" name="patient_id">
+                    <input type="hidden" value="{{ Carbon\Carbon::now()->ToDateString() }}" name="date_creation">
                 </form>
             </div>
         </div>

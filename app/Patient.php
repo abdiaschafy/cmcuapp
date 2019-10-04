@@ -227,6 +227,11 @@ class Patient extends Model
         return $this->hasMany(SoinsInfirmier::class);
     }
 
+    public function surveillance_post_anesthesiques()
+    {
+        return $this->hasMany(SurveillancePostAnesthesique::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

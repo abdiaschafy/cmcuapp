@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Client;
 use App\ObservationMedicale;
 use App\Patient;
+use App\SoinsInfirmier;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,8 @@ class ChirurgienController extends Controller
             'users' => User::where('role_id', '=', 2)->get(),
             'patient' => $patient,
             'patient_externes' => Client::orderBy('nom', 'asc')->get(),
-            'observation_medicales' => ObservationMedicale::with('patient')->where('patient_id', '=', $patient->id)->get()
+            'observation_medicales' => ObservationMedicale::with('patient')->where('patient_id', '=', $patient->id)->get(),
+            'soins_infirmiers' => SoinsInfirmier::with('patient')->where('patient_id', '=', $patient->id)->get()
         ]);
     }
 

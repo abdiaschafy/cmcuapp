@@ -28,31 +28,49 @@
                                         </td>
                                         <td></td>
                                     </tr>
-                                    <tr>
-                                        <td class="table-active">DATE:</td>
-                                        <td class="table-active">date ici</td>
-                                    </tr>
-                                    <tr>
-                                        <td>SURVEILLANCE</td>
-                                        <td>dddddddddddddddddddddddddddddddddddddddddddddddd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>TRAITEMENT(S)</td>
-                                        <td>dddddddddddddddddddddddddddddddddddddddddddddddd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>EXAMEN(S) PARACLINIQUE(S) POST OPERATOIRE</td>
-                                        <td>dddddddddddddddddddddddddddddddddddddddddddddddd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>OBSERVATION(S)</td>
-                                        <td>dddddddddddddddddddddddddddddddddddddddddddddddd</td>
-                                    </tr>
-                                    <tr>
-                                        <td>DATE DE SORTIE</td>
-                                        <td>dddddddddddddddddddddddddddddddddddddddddddddddd</td>
-                                    </tr>
+                                    @foreach($surveillance_post_anesthesiques as $surveillance_post_anesthesique)
+                                    @if (!empty($surveillance_post_anesthesique->surveillance))
+                                        <tr>
+                                            <td class="table-active">DATE:</td>
+                                            <td class="table-active">
+                                                <b>{{ $surveillance_post_anesthesique->surveillance }}</b></td>
+                                        </tr>
+                                    @endif
+                                    @if (!empty($surveillance_post_anesthesique->surveillance))
+                                        <tr>
+                                            <td><b>SURVEILLANCE</b></td>
+                                            <td>{{ nl2br($surveillance_post_anesthesique->surveillance) }}</td>
+                                        </tr>
+                                    @endif
+                                    @if (!empty($surveillance_post_anesthesique->traitement))
+                                        <tr>
+                                            <td><b>TRAITEMENT</b></td>
+                                            <td>{{ nl2br($surveillance_post_anesthesique->traitement) }}</td>
+                                        </tr>
+                                    @endif
+                                    @if (!empty($surveillance_post_anesthesique->examen_paraclinique))
+                                        <tr>
+                                            <td><b>EXAMEN</b></td>
+                                            <td>{{ nl2br($surveillance_post_anesthesique->examen_paraclinique) }}</td>
+                                        </tr>
+                                    @endif
+                                    @if (!empty($surveillance_post_anesthesique->observation))
+                                        <tr>
+                                            <td><b>OBSERVATION</b></td>
+                                            <td>{{ nl2br($surveillance_post_anesthesique->observation) }}</td>
+                                        </tr>
+                                    @endif
+                                    @if (!empty($surveillance_post_anesthesique->date_sortie))
+                                        <tr>
+                                            <td><b>DATE / HEURE de SORTIE</b></td>
+                                            <td>
+                                                <p>Date: {{ nl2br($surveillance_post_anesthesique->date_sortie) }}</p>
+                                                <p>Date: {{ nl2br($surveillance_post_anesthesique->heur_sortie) }}</p>
+                                            </td>
+                                        </tr>
+                                    @endif
 
+                                    @endforeach
 
                                     </thead>
 
