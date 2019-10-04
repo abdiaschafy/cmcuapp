@@ -131,9 +131,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('ordonance-creation/create/{patient}','OrdonancesController@ordonance_create')->name('ordonance.create');
 
 
-    Route::post('soins', 'SoinsController@store')->name('soins.store');
-
-
     Route::post('parametres', 'ParametresController@fiche_parametre_store')->name('fiche_parametres.store');
     Route::put('parametres/{parametre}', 'ParametresController@fiche_parametre_update')->name('fiche_parametres.update');
 
@@ -197,10 +194,18 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('traitement-hospitalisation', 'AnesthesisteController@TraitementHospitalisationStore')->name('traitement_hospitalisation.store');
     Route::post('adaptation-traitement', 'AnesthesisteController@AdaptationTraitementPersoStore')->name('adaptation_traitement.store');
 
-    Route::get('observations-medicales/{patient}', 'ChirurgienController@create')->name('observations_medicales.index');
+    Route::get('observations-medicales/{patient}', 'ChirurgienController@AbservationMedicaleCreate')->name('observations_medicales.index');
+    Route::post('observations-medicales', 'ChirurgienController@AbservationMedicaleStore')->name('observations_medicales.store');
+    Route::put('observations-medicales/{}', 'ChirurgienController@AbservationMedicaleUpdate')->name('observations_medicales.update');
+    Route::get('observations-medicales/edit/{}', 'ChirurgienController@AbservationMedicaleEdit')->name('observations_medicales.edit');
+
     Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
+    Route::post('fiches-consommables', 'PatientsController@FcheConsommableStore')->name('fiche_consommable.store');
+    Route::get('aucomplete', 'PatientsController@Autocomplete')->name('autocomplete');
     Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
     Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');
 
+
+    Route::post('soins-infirmier', 'PatientsController@SoinsInfirmierStore')->name('soins_infirmiers.store');
 });

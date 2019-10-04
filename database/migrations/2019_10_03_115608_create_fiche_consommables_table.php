@@ -17,6 +17,7 @@ class CreateFicheConsommablesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->unsignedInteger('patient_id')->index();
+            $table->unsignedInteger('produit_id')->index();
             $table->string('consommable');
             $table->string('jour')->nullable();
             $table->string('nuit')->nullable();

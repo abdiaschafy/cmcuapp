@@ -28,6 +28,12 @@
                 Consultations chirurgien
             </a>
         </li>
+        <li>
+            <a href="{{ route('observations_medicales.index', $patient->id) }}" class="btn btn-primary mb-1">
+                <i class="far fa-plus-square"></i>
+                Observations médicales
+            </a>
+        </li>
     </ul>
 
     <a href="{{ route('fiche_consommable.index', $patient->id) }}" class="btn btn-info">

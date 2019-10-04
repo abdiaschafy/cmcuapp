@@ -37,6 +37,7 @@
 
 <script src="{{ mix('js/all.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="{{ mix('js/typehead.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>

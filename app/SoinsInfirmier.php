@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FicheConsommable extends Model
+class SoinsInfirmier extends Model
 {
     protected $guarded = [];
 
@@ -18,10 +18,5 @@ class FicheConsommable extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function produit()
-    {
-        return $this->belongsTo(Produit::class);
     }
 }

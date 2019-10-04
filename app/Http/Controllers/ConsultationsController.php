@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use App\ConsultationAnesthesiste;
-use App\Http\Requests\ConsultationAnesthesisteRequest;
 use App\Parametre;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Devis;
