@@ -144,10 +144,10 @@
 <tr>
     <td><b>Devis prévisionnel :</b></td>
     <td>
-        <select class="form-control" name="devis_p">
+        <select class="form-control" name="devis_id">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old('devis_p', $consultation->devis_p) == ($consultation->devis_p . ' ' . $devi->montant10 . ' ' . '0 FCFA') ? 'selected' : ''}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )</option>
+                <option value="{{ $devi->id }}" {{old('devis_id', $devi->devis_id) == ($devi->devis_id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )</option>
             @endforeach
         </select>
 
