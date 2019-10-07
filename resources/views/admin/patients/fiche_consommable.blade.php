@@ -7,37 +7,31 @@
     <body>
 
     <style type="text/css">
-        .bs-example {
-            /*font-family: sans-serif;*/
-            position: relative;
-            margin: 100px;
-        }
-        .typeahead {
-            background-color: #FFFFFF;
-        }
-        .tt-query {
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-        }
-        .tt-hint {
-            color: #999999;
+        .tt-dropdown-menu {
+            width: 100% !important;
         }
         .tt-menu {
-            background-color: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-            margin-top: 12px;
-            padding: 8px 0;
             width: 422px;
-        }
-        .tt-suggestion {
-            font-size: 22px;  /* Set suggestion dropdown font size */
-            padding: 3px 20px;
+            margin: 12px 0;
+            padding: 8px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
         }
         .tt-suggestion:hover {
             cursor: pointer;
-            background-color: #0097CF;
-            color: #FFFFFF;
+            color: #fff;
+            background-color: #0097cf;
+        }
+        #scrollable-dropdown-menu {
+            max-height: 150px;
+            overflow-y: auto;
         }
         .tt-suggestion p {
             margin: 0;
@@ -79,10 +73,10 @@
                                 {{ Form::hidden('patient_id', $patient->id, ['']) }}
                                 {{ Form::hidden('user_id', $user_id, ['']) }}
                                 <tr>
-                                    <td>{{ Form::text('search', null, ['class' => 'form-control col-md-12 typeahead tt-query', 'id' => 'search', 'autocomplete' => 'off', 'spellcheck' => 'false']) }}</td>
+                                    <td>{{ Form::search('consommable', null, ['class' => 'form-control col-md-8 typeahead tt-query', 'spellcheck' => 'false', 'autocomplete' => 'off', 'id' => 'search', 'required' => 'required']) }}</td>
                                     <td>{{ Form::text('jour', null, ['class' => 'form-control']) }}</td>
                                     <td>{{ Form::text('nuit', null, ['class' => 'form-control']) }}</td>
-                                    <td>{{ Form::date('date', null, ['class' => 'form-control']) }}</td>
+                                    <td>{{ Form::date('date', null, ['class' => 'form-control', 'required' => 'required']) }}</td>
                                 </tr>
                                 <tr>
                                     <td>{{ Form::button('Enregistrer', ['type' => 'submit', 'class' => 'btn btn-primary']) }}</td>

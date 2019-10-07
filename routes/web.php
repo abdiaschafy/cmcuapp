@@ -201,7 +201,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
     Route::post('fiches-consommables', 'PatientsController@FcheConsommableStore')->name('fiche_consommable.store');
-    Route::get('aucomplete', 'PatientsController@Autocomplete')->name('autocomplete');
+    Route::get('autocomplete', 'PatientsController@Autocomplete')->name('autocomplete');
     Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
 

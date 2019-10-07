@@ -252,7 +252,7 @@
                 </tr>
                 <tr>
                     <td><b>Eléments nouveaux :</b></td>
-                    <td>{{ $visite_anesthesistes->element_nouveau }}</td>
+                    <td>{{ $visite_anesthesistes->element_nouveaux }}</td>
                 </tr>
             @else
                 <tr>
@@ -457,19 +457,7 @@
         @endcan
 
     @endif
-    @can('anesthesiste', \App\Patient::class)
-    <tr>
-        <td>
-            <h5 class="text-info" id="spa">SURVEILLANCE POST ANESTHESIQUE</h5>
-        </td>
-        <td></td>
-    </tr>
-    @endcan
 
-    {{-- <tr>
-        <td class="table-active"><b>DATE :</b></td>
-        <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
-    </tr> --}}
 
 @endcan
 

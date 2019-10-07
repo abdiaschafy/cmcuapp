@@ -38,6 +38,7 @@
 <script src="{{ mix('js/all.js') }}"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 <script src="{{ mix('js/typehead.js') }}"></script>
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>--}}
 <script src="{{ asset('admin/datatables/js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('admin/datatables/js/dataTables.bootstrap4.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
@@ -91,6 +92,19 @@
     } );
 </script>
 
+<script type="text/javascript">
+    var path = "{{ route('autocomplete') }}";
+    $('#search').typeahead({
+        minLength: 1,
+        hint: true,
+        highlight: true,
+        source:  function (query, process) {
+            return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        },
+    });
+</script>
 
 @include('flashy::message')
 
