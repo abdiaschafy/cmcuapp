@@ -31,9 +31,13 @@
                                     @foreach($surveillance_post_anesthesiques as $surveillance_post_anesthesique)
                                     @if (!empty($surveillance_post_anesthesique->surveillance))
                                         <tr>
-                                            <td class="table-active">DATE:</td>
+                                            <td class="table-active"><b class="badge badge-danger">DATE: {{ $surveillance_post_anesthesique->date_creation }}</b></td>
                                             <td class="table-active">
-                                                <b>{{ $surveillance_post_anesthesique->surveillance }}</b></td>
+                                                <a href="{{ route('surveillance_post_anesthesise.index', $surveillance_post_anesthesique->id) }}" class="btn btn-primary mb-1" id="SpostAnesthUpdate{{ $surveillance_post_anesthesique->id }}" data-toggle="modal" data-target="#SpostAnesthUpdate"
+                                                        title="Apporter des modifications" data-whatever="@mdo">
+                                                    <i class="far fa-edit"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endif
                                     @if (!empty($surveillance_post_anesthesique->surveillance))
@@ -65,7 +69,7 @@
                                             <td><b>DATE / HEURE de SORTIE</b></td>
                                             <td>
                                                 <p>Date: {{ nl2br($surveillance_post_anesthesique->date_sortie) }}</p>
-                                                <p>Date: {{ nl2br($surveillance_post_anesthesique->heur_sortie) }}</p>
+                                                <p>Heure: {{ nl2br($surveillance_post_anesthesique->heur_sortie) }}</p>
                                             </td>
                                         </tr>
                                     @endif
@@ -81,7 +85,9 @@
                 </div>
             </div>
         @endcan
-
+{{--        MODAL PLACE--}}
+            @include('admin.modal.surveillance_post_a_update')
+{{--        END MODAL PLACE--}}
     </div>
     </body>
 

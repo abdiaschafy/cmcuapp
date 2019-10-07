@@ -207,6 +207,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');
     Route::post('surveillance-post-anesthesique', 'AnesthesisteController@SurveillancePostAnesthesiseStore')->name('surveillance_post_anesthesise.store');
+    Route::put('surveillance-post-anesthesique/{surveillancePostAnesthesique}', 'AnesthesisteController@SurveillancePostAnesthesiseUpdate')->name('surveillance_post_anesthesise.update');
 
 
     Route::post('soins-infirmier', 'PatientsController@SoinsInfirmierStore')->name('soins_infirmiers.store');

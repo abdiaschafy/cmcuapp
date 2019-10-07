@@ -12,6 +12,7 @@ use App\Patient;
 use App\Ordonance;
 use App\Produit;
 use App\SoinsInfirmier;
+use App\SurveillancePostAnesthesique;
 use App\User;
 use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -128,7 +129,9 @@ class PatientsController extends Controller
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossiers' => $patient->dossiers()->latest()->first(),
             'parametres' => $patient->parametres()->latest()->first(),
+            'premedications' => $patient->premedications()->latest()->get(),
             'compte_rendu_bloc_operatoires' => $patient->compte_rendu_bloc_operatoires()->latest()->first()
+
         ]);
     }
 

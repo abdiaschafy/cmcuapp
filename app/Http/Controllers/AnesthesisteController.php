@@ -19,7 +19,8 @@ class AnesthesisteController extends Controller
             'patient' => $patient,
             'TraitementHospitalisations' => TraitementHospitalisation::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
             'AdaptationTraitements' => AdaptationTraitement::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
-            'premedications' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
+            'premedications' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->latest()->get(),
+            'medicament' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->latest()->first(['medicament']),
         ]);
     }
 
@@ -46,7 +47,8 @@ class AnesthesisteController extends Controller
             'user_id' => auth()->id(),
             'patient_id' => \request('patient_id'),
             'consigne_ide' => \request('consigne_ide'),
-            'preparation' => \request('preparation')
+            'preparation' => \request('preparation'),
+            'medicament' => \request('medicament')
         ]);
 
         Flashy('Les nouveaux éléménts ont bien été pris en compte !!');
@@ -113,12 +115,13 @@ class AnesthesisteController extends Controller
 
     }
 
-    public function IndexSurveillancePostAnesthesise(Patient $patient)
+    public function IndexSurveillancePostAnesthesise(Patient $patient, SurveillancePostAnesthesique $surveillancePostAnesthesique)
     {
         return view('admin.consultations.index_surveillance_post_anesthesique', [
 
             'patient' => $patient,
-            'surveillance_post_anesthesiques' => SurveillancePostAnesthesique::with('patient')->where('patient_id', '=', $patient->id)->get()
+            'surveillance_post_anesthesiques' => SurveillancePostAnesthesique::with('patient')->where('patient_id', '=', $patient->id)->get(),
+//            'surveillance_post_anesthesique' => $surveillancePostAnesthesique
         ]);
     }
 
