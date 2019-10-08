@@ -187,17 +187,17 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h6 class="invoice-id">RECU:{{ $client->motif }}</h6>
+                        <h6 class="invoice-id">RECU:{{ $clients->motif }}</h6>
                         <br>
                     </div>
                 </div>
-                @if($client->assurance)
-                <h6 class="text-center">ASSURANCE:{{ $client->assurance }}</h6>
+                @if($clients->assurance)
+                <h6 class="text-center">ASSURANCE:{{ $clients->assurance }}</h6>
                 @else
                 @endif
-                <h6 class="text-center">{{ $client->demarcheur }}</h6>
-                @if($client->assurance)
-                  <h6>PART ASSURANCE: {{ $client->partpatient }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $client->partassurance }}</h6>
+                <h6 class="text-center">{{ $clients->demarcheur }}</h6>
+                @if($clients->assurance)
+                  <h6>PART ASSURANCE: {{ $clients->partpatient }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $clients->partassurance }}</h6>
                   @else
                @endif  
                  <table border="0" cellspacing="0" cellpadding="0">
@@ -212,24 +212,24 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left" ><h5> {{ $client->nom }}</h5></td>
-                            <td class="text-left" ><h5> {{ $client->prenom }}</h5></td>
-                            <td class="text-left"><h4> {{ $client->montant }}</h4></td>
-                            @if($client->avance)
-                            <td class="text-left"><h4>{{ $client->avance }}</h4></td>
+                            <td class="text-left" ><h5> {{ $clients->nom }}</h5></td>
+                            <td class="text-left" ><h5> {{ $clients->prenom }}</h5></td>
+                            <td class="text-left"><h4> {{ $clients->montant }}</h4></td>
+                            @if($clients->avance)
+                            <td class="text-left"><h4>{{ $clients->avance }}</h4></td>
                             @else
                             <td class="text-left"><h4>0</h4></td>
                             @endif
-                            @if($client->avance)
-                            <td class="text-left"><h4>{{ $client->reste }}</h4></td>
+                            @if($clients->avance)
+                            <td class="text-left"><h4>{{ $clients->reste }}</h4></td>
                             @else
                                 <td class="text-left"><h4>0</h4></td>
                             @endif
                         </tr>
                     <tr>
                         <div class="notices">
-                           <H6><div>LA CAISSE:{{ $client->user->prenom }} {{ $client->user->nom }}</div></H6>
-                           <H6><div class="notice">Douala,{{ $client->created_at->toFormattedDateString() }}</div></H6>
+                           <H6><div>LA CAISSE:{{ $clients->user->prenom }} {{ $clients->user->nom }}</div></H6>
+                           <H6><div class="notice">Douala,{{ $clients->created_at->toFormattedDateString() }}</div></H6>
                         </div>
                     </tr>
                     </tbody>
@@ -261,17 +261,17 @@
                 <div class="row contacts">
 
                     <div  class="col invoice-details ">
-                        <h6 class="invoice-id">RECU:{{ $client->motif }}</h6>
+                        <h6 class="invoice-id">RECU:{{ $clients->motif }}</h6>
                         <br>
                     </div>
                 </div>
-                @if($client->assurance)
-                <h6 class="text-center">ASSURANCE:{{ $client->assurance }}</h6>
+                @if($clients->assurance)
+                <h6 class="text-center">ASSURANCE:{{ $clients->assurance }}</h6>
                 @else
                 @endif
-                <h6 class="text-center">{{ $client->demarcheur }}</h6>
-                @if($client->assurance)
-                  <h6>PART ASSURANCE: {{ $client->partpatient }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $client->partassurance }}</h6>
+                <h6 class="text-center">{{ $clients->demarcheur }}</h6>
+                @if($clients->assurance)
+                  <h6>PART ASSURANCE: {{ $clients->partpatient }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PART PATIENT: {{ $clients->partassurance }}</h6>
                   @else
                @endif  
                  <table border="0" cellspacing="0" cellpadding="0">
@@ -286,24 +286,24 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td class="text-left" ><h5> {{ $client->nom }}</h5></td>
-                            <td class="text-left" ><h5> {{ $client->prenom }}</h5></td>
-                            <td class="text-left"><h4> {{ $client->montant }}</h4></td>
-                            @if($client->avance)
-                            <td class="text-left"><h4>{{ $client->avance }}</h4></td>
+                            <td class="text-left" ><h5> {{ $clients->nom }}</h5></td>
+                            <td class="text-left" ><h5> {{ $clients->prenom }}</h5></td>
+                            <td class="text-left"><h4> {{ $clients->montant }}</h4></td>
+                            @if($clients->avance)
+                            <td class="text-left"><h4>{{ $clients->avance }}</h4></td>
                             @else
                             <td class="text-left"><h4>0</h4></td>
                             @endif
-                            @if($client->avance)
-                            <td class="text-left"><h4>{{ $client->reste }}</h4></td>
+                            @if($clients->avance)
+                            <td class="text-left"><h4>{{ $clients->reste }}</h4></td>
                             @else
                                 <td class="text-left"><h4>0</h4></td>
                             @endif
                         </tr>
                     <tr>
                         <div class="notices">
-                           <H6><div>LA CAISSE:{{ $client->user->prenom }} {{ $client->user->nom }}</div></H6>
-                           <H6><div class="notice">Douala,{{ $client->created_at->toFormattedDateString() }}</div></H6>
+                           <H6><div>LA CAISSE:{{ $clients->user->prenom }} {{ $clients->user->nom }}</div></H6>
+                           <H6><div class="notice">Douala,{{ $clients->created_at->toFormattedDateString() }}</div></H6>
                         </div>
                     </tr>
                     </tbody>

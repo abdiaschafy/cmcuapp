@@ -1,11 +1,11 @@
 <div class="grid-container">
     <div class="grid-item">
         <h5 class="text-center mb-2"><u><b>RADIOGRAPHIE</b></u></h5>
-        <p><input type="checkbox" id="rqdiogrqphie" name="rqdiogrqphie[]" value="Thorax">Thorax</p>
-        <p><input type="checkbox" id="rqdiogrqphie" name="rqdiogrqphie[]" value="Abdomen sans préparation">Abdomen sans préparation</p>
+        <p><input type="checkbox" id="radiographie" name="radiographie[]" value="Thorax">Thorax</p>
+        <p><input type="checkbox" id="radiographie" name="radiographie[]" value="Abdomen sans préparation">Abdomen sans préparation</p>
         <p>
             <label for="">Autres :</label>
-            <input type="text" name="rqdiogrqphie[]" class="form-control">
+            <input type="text" name="radiographie[]" class="form-control">
         </p>
     </div>
     <div class="grid-item">

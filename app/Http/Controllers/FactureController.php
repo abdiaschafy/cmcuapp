@@ -60,13 +60,13 @@ class FactureController extends Controller
         return view('admin.factures.chambre', compact('factureChambres'));
     }
 
-    public function FactureClient()
+    public function FactureClient(Patient $patient)
     {
         $this->authorize('view', User::class);
         $user = User::where('role_id', '=', 2)->get();
-        $facturesClients = FactureClient::with('client')->get();
+        $facturesClients = FactureClient::with('client')->latest()->get();
 
-        return view('admin.factures.client', compact('facturesClients','user'));
+        return view('admin.factures.client', compact('facturesClients'));
     }
 
     public function export_consultation($id)
@@ -83,7 +83,8 @@ class FactureController extends Controller
     public function export_client($id)
     {
        
-
+        $this->authorize('update', Patient::class);
+        $this->authorize('print', Patient::class);
         $client = Client::find($id);
 
         $pdf = PDF::loadView('admin.etats.clientP', ['client' => $client]);

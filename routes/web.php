@@ -153,7 +153,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
     Route::get('/factures-client', 'FactureController@FactureClient')->name('factures.client');
-    Route::get('facture/{id}','FactureController@export_client')->name('factures.client_pdf');
+    Route::get('client-facture/{id}','FactureController@export_client')->name('factures.client_pdf');
    
 
 
@@ -184,6 +184,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
+    //Route::get('clients/{id}','ClientController@export_client')->name('clientP.pdf');
     Route::get('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
 
 
@@ -210,4 +211,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
 
     Route::post('soins-infirmier', 'PatientsController@SoinsInfirmierStore')->name('soins_infirmiers.store');
+
+    Route::get('imagerie/create/{patient}', 'ImagerieController@create')->name('imageries.create');
+    Route::post('imagerie', 'ImagerieController@store')->name('imageries.store');
+    Route::get('imagerie_examens/{id}','ImagerieController@export_imageries')->name('imageries_examens.pdf');
 });
