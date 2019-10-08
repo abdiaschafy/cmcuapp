@@ -6,6 +6,38 @@
 
     <body>
 
+    <style type="text/css">
+        .tt-dropdown-menu {
+            width: 100% !important;
+        }
+        .tt-menu {
+            width: 422px;
+            margin: 12px 0;
+            padding: 8px 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        }
+        .tt-suggestion:hover {
+            cursor: pointer;
+            color: #fff;
+            background-color: #0097cf;
+        }
+        #scrollable-dropdown-menu {
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .tt-suggestion p {
+            margin: 0;
+        }
+    </style>
+
     <div class="wrapper">
         @include('partials.side_bar')
 
@@ -17,6 +49,11 @@
                     <i class="fas fa-eye"></i> Consignes IDE / Préparations
                 </button>
                 @endcan
+                @can('anesthesiste', App\Patient::class)
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#DetailPremedication" title="Détails prémédication / préparation" data-whatever="@mdo">
+                            <i class="fas fa-eye"></i> Détails
+                        </button>
+                @endcan
                 <a href="{{ route('patients.show', $patient->id) }}" class="btn btn-success float-right">
                     <i class="fas fa-arrow-left"></i>  Retour au dossier patient
                 </a>
@@ -26,20 +63,25 @@
                 <div class="row col-md-12">
                     <div class="container">
                         <h3 align="center">PREMEDICATION</h3>
-                        <div class="table-responsive col-md-12">
-                            <form method="post" action="{{ route('premedication_consigne_preparation.store') }}">
-                                @csrf
-                                @include('partials.flash')
-                                <table class="table table-bordered table-striped" id="user_table">
-                                    <thead>
-                                    <tr>
-                                        <th width="35%">CONSIGNE IDE</th>
-                                        <th width="35%">PREPARATION</th>
-                                        <th width="30%">Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                        <div class="row">
+                            <div class="table-responsive col-md-12">
+                                <form method="post" action="{{ route('premedication_consigne_preparation.store') }}">
+                                    @csrf
+                                    @include('partials.flash')
+                                    <table class="table table-bordered table-striped" id="user_table">
+                                        <thead>
                                         <tr>
+                                            <th width="35%">MEDICAMENT</th>
+                                            <th width="35%">CONSIGNE IDE</th>
+                                            <th width="35%">PREPARATION</th>
+                                            <th width="30%">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <input type="search" name="medicament" class="form-control typeahead tt-query" id="search" autocomplete="off" required>
+                                            </td>
                                             <td>
                                                 <input type="text" class="form-control" value="{{ old('consigne_ide') }}" name="consigne_ide" required>
                                             </td>
@@ -48,16 +90,13 @@
                                             </td>
                                             <td>
                                                 <input type="submit" class="btn btn-primary" value="Enregistrer" />
-
-                                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#DetailPremedication" title="Détails prémédication / préparation" data-whatever="@mdo">
-                                                    <i class="fas fa-eye"></i> Détails
-                                                </button>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                                <input name="patient_id" value="{{ $patient->id }}" type="hidden">
-                            </form>
+                                        </tbody>
+                                    </table>
+                                    <input name="patient_id" value="{{ $patient->id }}" type="hidden">
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,8 +122,8 @@
                                                 <th>J (2)</th>
                                                 <th>M</th>
                                                 <th>MI</th>
-                                                <th>N</th>
                                                 <th>S</th>
+                                                <th>N</th>
                                                 <th>M+1</th>
                                                 <th>MI+1</th>
                                                 <th>S+1</th>
@@ -95,7 +134,7 @@
                                             <tbody>
                                             <tr>
                                                 <td>
-                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" required>{{ old('medicament_posologie_dosage') }}</textarea>
+                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" disabled>{{ $medicament->medicament }}</textarea>
                                                 </td>
                                                 <td><input type="number" class="form-control" name="duree"></td>
                                                 <td><input type="checkbox" value="Ok" name="j"></td>
@@ -104,8 +143,8 @@
                                                 <td><input type="checkbox" value="Ok" name="j2"></td>
                                                 <td><input type="checkbox" value="Ok" name="m"></td>
                                                 <td><input type="checkbox" value="Ok" name="mi"></td>
-                                                <td><input type="checkbox" value="Ok" name="n"></td>
                                                 <td><input type="checkbox" value="Ok" name="s"></td>
+                                                <td><input type="checkbox" value="Ok" name="n"></td>
                                                 <td><input type="checkbox" value="Ok" name="m1"></td>
                                                 <td><input type="checkbox" value="Ok" name="mi1"></td>
                                                 <td><input type="checkbox" value="Ok" name="s1"></td>
@@ -132,8 +171,8 @@
                         <th><div>J (2)</div></th>
                         <th><div>M</div></th>
                         <th><div>MI</div></th>
-                        <th><div>N</div></th>
                         <th><div>S</div></th>
+                        <th><div>N</div></th>
                         <th><div>M+1</div></th>
                         <th><div>MI+1</div></th>
                         <th><div>S+1</div></th>
@@ -153,8 +192,8 @@
                         <td>{{ $TraitementHospitalisation->j2 }}</td>
                         <td>{{ $TraitementHospitalisation->m }}</td>
                         <td>{{ $TraitementHospitalisation->mi }}</td>
-                        <td>{{ $TraitementHospitalisation->n }}</td>
                         <td>{{ $TraitementHospitalisation->s }}</td>
+                        <td>{{ $TraitementHospitalisation->n }}</td>
                         <td>{{ $TraitementHospitalisation->m1 }}</td>
                         <td>{{ $TraitementHospitalisation->mi1 }}</td>
                         <td>{{ $TraitementHospitalisation->s1 }}</td>
@@ -185,8 +224,8 @@
                                     <th>J (2)</th>
                                     <th>M</th>
                                     <th>MI</th>
-                                    <th>N</th>
                                     <th>S</th>
+                                    <th>N</th>
                                     <th>M+1</th>
                                     <th>MI+1</th>
                                     <th>S+1</th>
@@ -208,8 +247,8 @@
                                     <td><input type="checkbox" value="Ok" name="j2"></td>
                                     <td><input type="checkbox" value="Ok" name="m"></td>
                                     <td><input type="checkbox" value="Ok" name="mi"></td>
-                                    <td><input type="checkbox" value="Ok" name="n"></td>
                                     <td><input type="checkbox" value="Ok" name="s"></td>
+                                    <td><input type="checkbox" value="Ok" name="n"></td>
                                     <td><input type="checkbox" value="Ok" name="m1"></td>
                                     <td><input type="checkbox" value="Ok" name="mi1"></td>
                                     <td><input type="checkbox" value="Ok" name="s1"></td>
@@ -236,8 +275,8 @@
                             <th><div>J (2)</div></th>
                             <th><div>M</div></th>
                             <th><div>MI</div></th>
-                            <th><div>N</div></th>
                             <th><div>S</div></th>
+                            <th><div>N</div></th>
                             <th><div>M+1</div></th>
                             <th><div>MI+1</div></th>
                             <th><div>S+1</div></th>
@@ -259,8 +298,8 @@
                             <td>{{ $AdaptationTraitement->j2 }}</td>
                             <td>{{ $AdaptationTraitement->m }}</td>
                             <td>{{ $AdaptationTraitement->mi }}</td>
-                            <td>{{ $AdaptationTraitement->n }}</td>
                             <td>{{ $AdaptationTraitement->s }}</td>
+                            <td>{{ $AdaptationTraitement->n }}</td>
                             <td>{{ $AdaptationTraitement->m1 }}</td>
                             <td>{{ $AdaptationTraitement->mi1 }}</td>
                             <td>{{ $AdaptationTraitement->s1 }}</td>

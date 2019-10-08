@@ -71,10 +71,10 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-primary mb-1">
-                <i class="fas fa-eye"></i>
-                Surveillance post anesthésique
-            </a>
+            <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#SpostAnesth"
+                    title="Surveillance post anesthésique" data-whatever="@mdo">
+                <i class="far fa-plus-square"></i> Surveillance post anesthésique
+            </button>
         </li>
     </ul>
 
