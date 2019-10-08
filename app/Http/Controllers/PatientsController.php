@@ -260,24 +260,46 @@ class PatientsController extends Controller
 
     public function Autocomplete(Request $request)
     {
-        $search = $request->get('consommable');
 
-        $data = Produit::where('designation', 'LIKE', '%' . $search . '%')->get();
+        $datas = Produit::select('designation')->where('designation', 'LIKE', "%{$request->input('query')}%")->get();
 
-        return response()->json($data);
+        $results = [];
+        foreach ($datas as $data)
+        {
+            $results[] = $data->designation;
+        }
+        return response()->json($results);
     }
 
-    public function FcheConsommableStore(Request $request)
+    public function FcheConsommableStore(Request $request, Produit $produit)
     {
 
         FicheConsommable::create([
             'user_id' => \request('user_id'),
             'patient_id' => \request('patient_id'),
             'consommable' => \request('consommable'),
-            'jour' => \request('consommable'),
+            'jour' => \request('jour'),
             'nuit' => \request('nuit'),
             'date' => \request('date'),
         ]);
+
+        $produits = Produit::where('designation', '=', request('consommable'))->get();
+
+        foreach ($produits as $produit){
+
+            if (!empty(\request('jour'))){
+
+                $produit->qte_stock = $produit->qte_stock - \request('jour');
+                $produit->save();
+            }
+            if (!empty(\request('nuit'))){
+                $produit->qte_stock = $produit->qte_stock - \request('nuit');
+                $produit->save();
+            }
+        }
+
+        \Flashy::info('La liste des produit a été mis à jour');
+        return back();
     }
 
     public function SoinsInfirmierStore()

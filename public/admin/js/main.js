@@ -81,16 +81,16 @@ function searchFunction() {
 //         });
 // });
 
-$(document).ready(function(){
-    // Defining the local dataset
-    var path = "{{ route('autocomplete') }}";
-
-    $('.typeahead').typeahead(
-        {
-            source: function (query, process) {
-                return $.get(path, { query: query}, function (data){
-                    return process(data);
-                });
-            }
-        });
-});
+// $(document).ready(function(){
+//     // Defining the local dataset
+//     var path = "{{ route('autocomplete') }}";
+//
+//     $('.typeahead').typeahead(
+//         {
+//             source: function (query, process) {
+//                 return $.get(path, { query: query}, function (data){
+//                     return process(data);
+//                 });
+//             }
+//         });
+// });
