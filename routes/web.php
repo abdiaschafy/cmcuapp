@@ -153,7 +153,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
     Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
-    Route::get('/factures-client', 'FactureController@FactureClient')->name('factures.client');
+    Route::get('factures-client', 'FactureController@FactureClient')->name('factures.client');
     Route::get('facture/{id}','FactureController@export_client')->name('factures.client_pdf');
    
 

@@ -64,7 +64,7 @@ class FactureController extends Controller
     {
         $this->authorize('view', User::class);
         $user = User::where('role_id', '=', 2)->get();
-        $facturesClients = FactureClient::with('client')->get();
+        $facturesClients = FactureClient::with('client')->latest()->get();
 
         return view('admin.factures.client', compact('facturesClients','user'));
     }
@@ -77,18 +77,17 @@ class FactureController extends Controller
 
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
-        return $pdf->stream('consultation.pdf');
+        return $pdf->stream('factures.consultation_pdf');
     }
 
     public function export_client($id)
     {
-       
 
-        $client = Client::find($id);
+        $pdf = PDF::loadView('admin.etats.clientP', [
+            'client' => FactureClient::with('user')->findOrFail($id)
+        ]);
 
-        $pdf = PDF::loadView('admin.etats.clientP', ['client' => $client]);
-
-        return $pdf->stream('clientP.pdf');
+        return $pdf->stream('factures.client_pdf');
     }
 
 

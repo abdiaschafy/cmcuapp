@@ -20,7 +20,7 @@
             border: 1px solid #000;
         }
         .logo{
-            width: 30px;
+            width: 40px;
             padding-top: 10px;
         }
         #inventory-invoice{
@@ -145,8 +145,9 @@
             width: 90%;
             text-align: center;
             color: #777;
+            font-size: 6px;
             border-top: 1px solid #aaa;
-            padding: 8px 0
+            padding: 4px 0
         }
         @media print {
             .invoice {
@@ -171,16 +172,13 @@
     <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
-        <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
-        <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
-        <strong>www.cmcu-cm.com</strong><br>
+        <h6>VALLEE MANGA BELL DOUALA-BALI</h6>
+        <h6>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</h6>
+        <p><h6>www.cmcu-cm.com</h6></p>
     </div>
 
 <div id="inventory-invoice">
 
-    {{--<div class="toolbar hidden-print">--}}
-       {{--<hr>--}}
-    {{--</div>--}}
     <div class="invoice overflow-auto">
         <div style="min-width: 500px">
             <main>
@@ -236,7 +234,7 @@
                   </table>
                 </main>
             <footer>
-                Centre Medical Churigical-d'Urologie situé a la Vallée Douala Manga Bell Douala-Bali.
+                Centre Medico-churigical d'urologie situé à la Vallée Douala Manga Bell Douala-Bali.
                               TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945.
                               SITE WEB: http://www.cmcu-cm.com
             </footer>
@@ -246,15 +244,12 @@
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
-        <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
-        <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
-        <strong>www.cmcu-cm.com</strong><br>
+        <h6>VALLEE MANGA BELL DOUALA-BALI</h6>
+        <h6>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</h6>
+        <p><h6>www.cmcu-cm.com</h6></p>
     </div>
     <div id="inventory-invoice">
 
-    {{--<div class="toolbar hidden-print">--}}
-       {{--<hr>--}}
-    {{--</div>--}}
     <div class="invoice overflow-auto">
         <div style="min-width: 300px">
             <main>

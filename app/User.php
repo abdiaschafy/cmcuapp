@@ -223,5 +223,10 @@ class User extends Authenticatable
         return $this->hasMany(FactureConsultation::class);
     }
 
+    public function facture_clients()
+    {
+        return $this->hasMany(FactureClient::class);
+    }
+
 
 }

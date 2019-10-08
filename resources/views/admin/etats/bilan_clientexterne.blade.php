@@ -56,7 +56,7 @@
             <tbody>
             @foreach($factures as $facture)
             <tr>
-                <td>{{ $facture->numero }}</td>
+                <td>{{ $facture->id }}</td>
                 <td><small>{{ $facture->client->nom }} {{ $facture->client->prenom }}</small></td>
                 <td><small>{{ $facture->montant }}</small></td>
                 <td><small>{{ $facture->avance }}</small></td>
