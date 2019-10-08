@@ -65,4 +65,9 @@ class ParametresController extends Controller
 
         return back();
     }
+
+    public function SurveillancePreStore()
+    {
+        dd('ok');
+    }
 }

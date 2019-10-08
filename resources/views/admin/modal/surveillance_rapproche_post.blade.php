@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('fiche_intervention.store') }}" method="post">
+                <form action="{{ route('surveillance_preop_param') }}" method="post">
                     @csrf
                     <div class="container">
                         <div class="col-md-10  toppad">
