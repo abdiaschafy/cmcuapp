@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('surveillance_preop_param') }}" method="post">
+                <form action="{{ route('surveillance_rapproche_param') }}" method="post">
                     @csrf
                     <div class="container">
                         <div class="col-md-10  toppad">
@@ -43,13 +43,13 @@
                                                 <label for=""><b>INTERVENTION(S)</b></label>
                                                 <input type="text" class="form-control" name="intevention" value="{{ old('intevention') }}" disabled="disabled">
                                             </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
                                             <td>
                                                 <label for=""><b>DATE / HEURE :</b></label>
                                                 <input type="datetime-local" class="form-control" name="date_heure" value="{{ old('date_heure') }}">
                                             </td>
-                                        </tr>
-
-                                        <tr>
                                             <td>
                                                 <label for=""><b>T.A :</b></label>
                                                 <input type="text" class="form-control" name="ta" value="{{ old('ta') }}">
@@ -58,26 +58,29 @@
                                                 <label for=""><b>F.R :</b></label>
                                                 <input type="number" class="form-control" name="fr" value="{{ old('fr') }}">
                                             </td>
+                                        </tr>
+
+                                        <tr>
+
                                             <td>
                                                 <label for=""><b>POULS :</b></label>
                                                 <input type="number" class="form-control" name="pouls" value="{{ old('pouls') }}">
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>
                                                 <label for=""><b>SPO2 :</b></label>
                                                 <input type="number" class="form-control" name="spo2" value="{{ old('spo2') }}">
                                             </td>
                                             <td>
                                                 <label for=""><b>T° :</b></label>
-                                                <input type="text" class="form-control" name="temperature" value="{{ old('temperature') }}">
+                                                <input type="number" class="form-control" name="temperature" step="any" value="{{ old('temperature') }}">
                                             </td>
+                                        </tr>
+
+                                        <tr>
                                             <td>
                                                 <label for=""><b>DIURESE :</b></label>
                                                 <input type="text" class="form-control" name="diurese" value="{{ old('diurese') }}">
                                             </td>
-                                        </tr>
-                                        <tr>
                                             <td>
                                                 <label for=""><b>CONSCIENCE :</b></label>
                                                 <input type="text" class="form-control" name="conscience" value="{{ old('conscience') }}">
@@ -86,10 +89,21 @@
                                                 <label for=""><b>DOULEUR :</b></label>
                                                 <input type="text" class="form-control" name="douleur" value="{{ old('douleur') }}">
                                             </td>
-                                            <td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width: 1000px;">
                                                 <label for=""><b>OBSERVATIONS / PLAINTES</b></label>
-                                                <textarea class="form-control" name="observation_plainte" cols="30" rows="3">{{ old('observation_plainte') }}</textarea>
+                                                <textarea class="form-control" name="observation_plainte" cols="100" rows="3">{{ old('observation_plainte') }}</textarea>
                                             </td>
+                                            <td>
+                                                <label><b>Période :</b></label>
+                                                <select name="type" class="form-control" required>
+                                                    <option value=""><b>Période :</b></option>
+                                                    <option value="preoperatoire">Pré-opératoire</option>
+                                                    <option value="postoperatoire">Post-opératoire</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
                                         </tr>
                                         </tbody>
                                     </table>

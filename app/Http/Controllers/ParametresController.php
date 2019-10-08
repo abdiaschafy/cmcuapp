@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
+use App\SurveillanceRapprocheParametre;
 use Carbon\Carbon;
+use MercurySeries\Flashy\Flashy;
 
 class ParametresController extends Controller
 {
@@ -15,6 +17,7 @@ class ParametresController extends Controller
         return view('admin.consultations.infirmiers.index_surveillance_rapproche_param', [
 
             'patient' => $patient,
+            ''
         ]);
     }
 
@@ -66,8 +69,13 @@ class ParametresController extends Controller
         return back();
     }
 
-    public function SurveillancePreStore()
+    public function SurveillanceRapprocheStore()
     {
-        dd('ok');
+        SurveillanceRapprocheParametre::create([
+
+            ''
+        ]);
+
+        Flashy::info('Les paramètres ont été enregistrés');
     }
 }
