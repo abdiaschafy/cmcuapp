@@ -163,6 +163,11 @@ class Patient extends Model
         return $this->hasMany(Prescription::class);
     }
 
+    public function imageries()
+    {
+        return $this->hasMany(Imagerie::class);
+    }
+
     public function compte_rendu_bloc_operatoires()
     {
         return $this->hasMany(CompteRenduBlocOperatoire::class);

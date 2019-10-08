@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if (count($patient->prescriptions))
+                @if (count($patient->imageries))
 
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordred table-striped">
@@ -19,23 +19,20 @@
                             </thead>
                             <tbody>
 
-                            @foreach($patient->prescriptions as $prescription)
+                            @foreach($patient->imageries as $imagerie)
 
                                 <tr>
                                     <td>
-                                        {{ $prescription->hematologie }}
-                                        {{ $prescription->hemostase }}
-                                        {{ $prescription->biochimie }}
-                                        {{ $prescription->hormonologie }}
-                                        {{ $prescription->marqeurs }}
-                                        {{ $prescription->bacteriologie }}
-                                        {{ $prescription->spermiologie }}
-                                        {{ $prescription->serologie }}
-                                        {{ $prescription->examen }}
+                                        {{ $imagerie->radiographie }}
+                                        {{ $imagerie->echographie }}
+                                        {{ $imagerie->scanner }}
+                                        {{ $imagerie->irm }}
+                                        {{ $imagerie->scintigraphie }}
+                                        {{ $imagerie->autre }}
                                     </td>
-                                    <td>{{ $prescription->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $imagerie->created_at->toFormattedDateString() }}</td>
                                     <td>
-                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('prescription_examens.pdf', $prescription->id) }}">
+                                        <a class="btn btn-success btn-xs" title="Imprimer l'ordonance" href="{{ route('imageries_examens.pdf', $imagerie->id) }}">
                                             <i class="fas fa-print"></i>
                                         </a>
                                     </td>

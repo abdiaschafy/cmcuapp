@@ -27,7 +27,7 @@
                         <button type="submit"class="btn btn-primary btn-md mt-2">Enregistrer</button>
                     </form>
 
-                    <form id="menu2" class="tab-pane fade" action="{{ route('prescriptions.store') }}" method="POST" >
+                    <form id="menu2" class="tab-pane fade" action="{{ route('imageries.store') }}" method="post" >
                         <h3 class="text-center mb-4">IMAGERIE</h3>
                         @csrf
                         @include('admin.consultations.partials.feuille_examen_imagerie')

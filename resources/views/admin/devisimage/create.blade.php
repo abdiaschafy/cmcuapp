@@ -30,7 +30,7 @@
                                                 <option> Sélectionner un devis</option>
                                                 @foreach ($devis as $devi)
                                                     <option
-                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->montant10 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->montant10 }} FCFA )
+                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )
                                                     </option>
                                                 @endforeach
                                             </select>
