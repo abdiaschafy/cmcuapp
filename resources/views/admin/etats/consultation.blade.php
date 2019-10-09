@@ -20,7 +20,7 @@
             border: 1px solid #000;
         }
         .logo{
-            width: 30px;
+            width: 40px;
             padding-top: 10px;
         }
         #inventory-invoice{
@@ -35,7 +35,7 @@
         }
         .invoice header {
             padding: 10px 0;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             border-bottom: 1px solid #3989c6
         }
         .invoice .company-details {
@@ -83,10 +83,10 @@
             width: 90%;
             border-collapse: collapse;
             border-spacing: 0;
-            margin-bottom: 20px
+            margin-bottom: 10px
         }
         .invoice table td,.invoice table th {
-            padding: 15px;
+            padding: 10px;
             background: #eee;
             border-bottom: 1px solid #fff
         }
@@ -145,6 +145,7 @@
             width: 90%;
             text-align: center;
             color: #777;
+            font-size: 6px;
             border-top: 1px solid #aaa;
             padding: 8px 0
         }
@@ -155,7 +156,7 @@
             }
             .invoice footer {
                 position: absolute;
-                bottom: 10px;
+                bottom: 8px;
                 page-break-after: always
             }
             .invoice>div:last-child {
@@ -171,9 +172,9 @@
     <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
-        <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
-        <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
-        <strong>www.cmcu-cm.com</strong><br>
+        <h6>VALLEE MANGA BELL DOUALA-BALI</h6>
+        <h6>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</h6>
+        <p><h6>www.cmcu-cm.com</h6></p>
     </div>
 
 <div id="inventory-invoice">
@@ -236,7 +237,7 @@
                   </table>
                 </main>
             <footer>
-                Centre Medical Churigical-d'Urologie situé a la Vallée Douala Manga Bell Douala-Bali.
+                Centre Medico-churirgical d'urologie situé a la Vallée Douala Manga Bell Douala-Bali.
                               TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945.
                               SITE WEB: http://www.cmcu-cm.com
             </footer>
@@ -246,9 +247,9 @@
  <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
         <h6><strong>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</strong></h6>
-        <strong>VALLEE MANGA BELL DOUALA-BALI</strong><br>
-        <strong>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</strong><br>
-        <strong>www.cmcu-cm.com</strong><br>
+        <h6>VALLEE MANGA BELL DOUALA-BALI</h6>
+        <h6>TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945</h6>
+        <p><h6>www.cmcu-cm.com</h6></p>
     </div>
     <div id="inventory-invoice">
         <div class="invoice overflow-auto">
@@ -308,7 +309,7 @@
                     </table>
                 </main>
                 <footer>
-                    Centre Medical Churigical-d'Urologie situé a la Vallée Douala Manga Bell Douala-Bali.
+                    Centre Medico-churirgical d'urologie situé a la Vallée Douala Manga Bell Douala-Bali.
                     TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945.
                     SITE WEB: http://www.cmcu-cm.com
                 </footer>

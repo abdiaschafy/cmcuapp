@@ -234,7 +234,7 @@
                   </table>
                 </main>
             <footer>
-                Centre Medico-churigical d'urologie situé à la Vallée Douala Manga Bell Douala-Bali.
+                Centre Medico-churirgical d'urologie situé à la Vallée Douala Manga Bell Douala-Bali.
                               TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945.
                               SITE WEB: http://www.cmcu-cm.com
             </footer>
@@ -305,7 +305,7 @@
                   </table>
                 </main>
             <footer>
-                Centre Medical Churigical-d'Urologie situé a la Vallée Douala Manga Bell Douala-Bali.
+                Centre Medico-churirgical d'urologie situé a la Vallée Douala Manga Bell Douala-Bali.
                               TEL: (+ 237) 233 423 389 / 674 068 988 / 698 873 945.
                               SITE WEB: http://www.cmcu-cm.com
             </footer>
