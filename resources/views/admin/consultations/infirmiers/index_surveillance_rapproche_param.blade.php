@@ -19,11 +19,7 @@
                 <div class="row">
                     <button type="button" class="btn btn-primary mb-2 mr-2" title="Surveillance pré-opératoire" data-toggle="modal" data-target="#SurveillancePre" data-whatever="@mdo">
                         <i class="far fa-plus-square"></i>
-                        Surveillance pré-opératoire
-                    </button>
-                    <button type="button" class="btn btn-primary mb-2" title="Surveillance post-opératoire" data-toggle="modal" data-target="#SurveillancePost" data-whatever="@mdo">
-                        <i class="far fa-plus-square"></i>
-                        Surveillance post-opératoire
+                        PRISE DE PARAMETRES
                     </button>
                     <div class="col-md-10">
                         <div class="card">
@@ -71,8 +67,7 @@
                                     </thead>
 
                                 </table>
-                                @include('admin.modal.surveillance_rapproche_post')
-                                @include('admin.modal.surveillance_rapproche_pre')
+                                @include('admin.modal.surveillance_rapproche_param')
                             </div>
                         </div>
                     </div>

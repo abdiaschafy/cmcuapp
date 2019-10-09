@@ -28,9 +28,16 @@ mix.styles([
 mix.scripts([
     'public/admin/js/jquery-2.2.3.min.js',
     'node_modules/froala-editor/js/froala_editor.pkgd.min.js',
+    'public/admin/js/typehead.js',
     'public/admin/js/script.js',
     'public/admin/js/main.js',
     ],
 
     'public/js/all.js');
+
+mix.scripts([
+        'public/admin/js/typehead.js',
+    ],
+
+    'public/js/typehead.js');
 

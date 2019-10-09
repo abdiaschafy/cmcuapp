@@ -182,9 +182,6 @@ class ClientController extends Controller
         return redirect()->route('factures.client')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
     }
 
-    
-   
-
 
     
 }

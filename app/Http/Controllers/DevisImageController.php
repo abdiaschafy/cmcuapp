@@ -12,11 +12,11 @@ class DevisImageController extends Controller
 {
     public function index(Request $request)
     {
-       
+        $devis = Devis::all();
         $devisimages = DevisImage::orderBy('id', 'asc')->paginate(100);
 
         
-        return view('admin.devisimage.index', compact('devisimages'));
+        return view('admin.devisimage.index', compact('devisimages','devis'));
 
     }
 

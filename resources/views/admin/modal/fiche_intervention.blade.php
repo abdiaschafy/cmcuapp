@@ -10,7 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('soins.store') }}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="container">
                         <div class="row">

@@ -34,82 +34,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12  toppad  offset-md-0 ">
-                        @can('chirurgien', \App\Patient::class)
-                            <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
-                                Menu
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <a href="{{ route('ordonance.create', $patient->id) }}" title="Nouvelle ordonnance médicale"
-                                   class="btn btn-success mb-1">
-                                    <i class="far fa-plus-square"></i>
-                                    Ordonnance
-                                </a>
-                                <li>
-                                    <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}"
-                                       class="btn btn-success mb-1">
-                                        <i class="fas fa-eye"></i>
-                                        Consultations anesthésiste
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#spa" class="btn btn-success mb-1">
-                                        <i class="fas fa-eye"></i>
-                                        Surveillance post anesthésique
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="{{ route('observations_medicales.index', $patient->id) }}" class="btn btn-primary mb-1">
-                                        <i class="far fa-plus-square"></i>
-                                        Observations médicales
-                                    </a>
-                                </li>
-                            </ul>
-
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#ordonanceModal"
-                                    title="Prescrire un examen complémentaire" data-whatever="@mdo">
-                                <i class="far fa-plus-square"></i> Examens complémentaires
-                            </button>
-                        @endcan
-                        @can('anesthesiste', \App\Patient::class)
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SpostAnesth"
-                                    title="Surveillance post anesthésique" data-whatever="@mdo">
-                                <i class="far fa-plus-square"></i> Surveillance post anesthésique
-                            </button>
-                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                    Menu
-                                    <span class="caret"></span></button>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-header">Dropdown header 1</li>
-                                    <li>
-                                        <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-success mb-1">
-                                            <i class="fas fa-eye"></i>
-                                            Consultations chirurgien
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('consultations.index', $patient->id) }}" class="btn btn-success mb-1">
-                                            <i class="fas fa-eye"></i>
-                                            Surveillance post anesthésique
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
-                                            <i class="fas fa-eye"></i>
-                                            PREMEDICATION
-                                        </a>
-                                    </li>
-                                </ul>
-                        @endcan
-                        @can('chirurgien', \App\Patient::class)
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#FicheInterventionAnesthesiste"
-                                    title="Ajouter une fiche d'intervention" data-whatever="@mdo">
-                                <i class="far fa-plus-square"></i>
-                                Fiche d'intervention
-                            </button>
-                        @endcan
+                        @include('admin.patients.partials.menu')
                         <a href="{{ route('patients.index') }}" class="btn btn-success float-right"
                            title="Retour à la liste des patients">
                             <i class="fas fa-arrow-left"></i> Retour à la liste des patients
@@ -190,11 +115,26 @@
                                                                                     class="btn btn-primary btn-block mb-2"
                                                                                     title="Liste des examens pour ce patient"
                                                                                     data-toggle="modal"
-                                                                                    data-target="#feuilleAll"
+                                                                                    data-target="#biologieAll"
                                                                                     data-whatever="@mdo">
                                                                                 <i class="fas fa-eye"></i>
-                                                                                Examens
+                                                                                Examens Biologie
                                                                             </button>
+                                                                            <button type="button"
+                                                                                    class="btn btn-primary btn-block mb-2"
+                                                                                    title="Liste des examens pour ce patient"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#imagerieAll"
+                                                                                    data-whatever="@mdo">
+                                                                                <i class="fas fa-eye"></i>
+                                                                                Examens Imagerie
+                                                                            </button>
+                                                                            <a href="{{ route('surveillance_post_anesthesise.index', $patient->id) }}"
+                                                                                    class="btn btn-primary btn-block mb-2"
+                                                                                    title="Détails surveillance post-aneshésiste">
+                                                                                <i class="fas fa-eye"></i>
+                                                                                Surveillance post-anesthésique
+                                                                            </a>
                                                                             <button type="button"
                                                                                     class="btn btn-primary btn-block"
                                                                                     title="Fiches d'intervention"
@@ -223,7 +163,8 @@
                                                             @include('admin.modal.detail_premedication_preparation')
                                                             @include('admin.modal.ordonance_show')
                                                             @include('admin.modal.consultation_show')
-                                                            @include('admin.modal.feuille_show')
+                                                            @include('admin.modal.index_examen_biologie')
+                                                            @include('admin.modal.index_examen_imagerie')
                                                             @include('admin.modal.fiche_intervention_show')
 
                                                             @include('admin.modal.fiche_intervention')

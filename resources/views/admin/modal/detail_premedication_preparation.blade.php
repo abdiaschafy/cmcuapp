@@ -16,6 +16,7 @@
                         @if(count($premedications))
                             <table id="myTable" class="table table-bordred table-striped">
                                 <thead>
+                                <th>MEDICAMENT</th>
                                 <th>CONSIGNES IDE</th>
                                 <th>PREPARATION</th>
                                 <th>DATE DE CREATION</th>
@@ -25,6 +26,7 @@
                                 @foreach($patient->premedications as $premedication)
 
                                     <tr>
+                                        <td>{{ $premedication->medicament }}</td>
                                         <td>{{ $premedication->consigne_ide }}</td>
                                         <td>{{ $premedication->preparation }}</td>
                                         <td>{{ $premedication->created_at }}</td>

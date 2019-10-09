@@ -185,6 +185,36 @@ class User extends Authenticatable
         return $this->hasMany(Ordonance::class);
     }
 
+    public function compte_rendu_bloc_operatoires()
+    {
+        return $this->hasMany(CompteRenduBlocOperatoire::class);
+    }
+
+    public function fiche_consommables()
+    {
+        return $this->hasMany(FicheConsommable::class);
+    }
+
+    public function observation_medicales()
+    {
+        return $this->hasMany(ObservationMedicale::class);
+    }
+
+    public function surveillance_post_anesthesiques()
+    {
+        return $this->hasMany(SurveillancePostAnesthesique::class);
+    }
+
+    public function surveillance_rapproche_parametres()
+    {
+        return $this->hasMany(SurveillanceRapprocheParametre::class);
+    }
+
+    public function soins_infirmiers()
+    {
+        return $this->hasMany(SoinsInfirmier::class);
+    }
+
     public function prescriptions()
     {
         return $this->hasMany(Prescription::class);

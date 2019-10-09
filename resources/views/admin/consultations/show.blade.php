@@ -21,7 +21,7 @@
         }
 
         .center-div{
-            margin: 0 auto px;
+            margin: 0 auto 0px;
             width: 100px;
 
             
@@ -52,7 +52,7 @@
                                         <li class="list-group-item">GROUPE SANGUIN : {{("$consultations->groupe")}}</li>
                                         <li class="list-group-item">ALLERGIE : {{("$consultations->allergie")}}</li>
                                         <li class="list-group-item">ANTECEDENT MEDICAL : {{("$consultations->antecedent_m")}}</li>
-                                        <li class="list-group-item">ANTECEDENT CHIRURGICAL : {{("$consultations->antecedent_c")}}</li>
+                                        <li class="list-group-item">ANTECEDENT CHIRURGICAUX : {{("$consultations->antecedent_c")}}</li>
                                         <li class="list-group-item"><i class="fa fa-envelope"></i> john@example.com</li>
                                     </ul>
                                 </div>

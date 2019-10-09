@@ -59,6 +59,11 @@ class Produit extends Model
             ->withPivot('item', 'prix_total')
             ->withTimestamps();
     }
+
+    public function fiche_consommables()
+    {
+        return $this->hasMany(FicheConsommable::class);
+    }
 }
 
 

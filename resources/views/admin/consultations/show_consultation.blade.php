@@ -252,7 +252,7 @@
                 </tr>
                 <tr>
                     <td><b>Eléments nouveaux :</b></td>
-                    <td>{{ $visite_anesthesistes->element_nouveau }}</td>
+                    <td>{{ $visite_anesthesistes->element_nouveaux }}</td>
                 </tr>
             @else
                 <tr>
@@ -274,16 +274,9 @@
 
     <tr>
         <td>
-            <h1 class="text-info">PARAMETRES</h1>
+            <h1 class="text-info"><a href="{{ route('fiche_parametre.index', $patient->id) }}">PARAMETRES</a></h1>
         </td>
-        <td>
-            @can('anesthesiste', App\Patient::class)
-            <a href="{{ route('surveillance_rapproche.index', $patient->id) }}" title="Surveillance rapprochée des paramètres" class="btn btn-success">
-                <i class="fas fa-eye"></i>
-                SURVEILLANCE RAPPROCHEE
-            </a>
-            @endcan
-        </td>
+        <td></td>
     </tr>
 
     @if (count($patient->parametres) > 0)
@@ -340,17 +333,6 @@
             <td><b>FC :</b></td>
             <td>{{ $parametres->fc }} Pls/min</td>
         </tr>
-        @can('infirmier', App\Patient::class)
-        <tr>
-            <td>
-                <a href="{{ route('premedication_adaptation.index', $patient->id) }}" title="Traitement à l'hospitalisation / adaptation au traitement personnel" class="btn btn-success">
-                    <i class="fas fa-eye"></i>
-                    PREMEDICATION
-                </a>
-            </td>
-            <td></td>
-        </tr>
-        @endcan
     @else
 
         <tr>
@@ -394,7 +376,7 @@
         @if (count($patient->compte_rendu_bloc_operatoires))
             <tr>
                 <td class="table-active"><b>DATE :</b></td>
-                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b> <button class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</button></td>
+                <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b> <a href="{{ route('compte_rendu_bloc.edit', $patient->id) }}" title="Modifier le compte-rendu" class="btn btn-primary float-right"><i class="fas fa-eye"></i> Editer</a></td>
             </tr>
             <tr>
                 <td><b>NOM ET PRENOM DU CHIRURGIEN :</b></td>
@@ -475,19 +457,7 @@
         @endcan
 
     @endif
-    @can('anesthesiste', \App\Patient::class)
-    <tr>
-        <td>
-            <h5 class="text-info" id="spa">SURVEILLANCE POST ANESTHESIQUE</h5>
-        </td>
-        <td></td>
-    </tr>
-    @endcan
 
-    {{-- <tr>
-        <td class="table-active"><b>DATE :</b></td>
-        <td class="table-active"><b>{{ $compte_rendu_bloc_operatoires->created_at->toFormattedDateString() }}</b></td>
-    </tr> --}}
 
 @endcan
 

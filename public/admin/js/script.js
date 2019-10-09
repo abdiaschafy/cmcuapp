@@ -44,7 +44,8 @@ $(document).ready(function(){
         pluginsEnabled: ['quickInsert', 'image', 'table', 'lists'],
         // toolbarButtons: ['getPDF'],
         height: 300
-    })
+    });
+
 
 });
 

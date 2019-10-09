@@ -8,6 +8,7 @@ use App\Http\Requests\CompteRenduBlocOperatoireRequest;
 use App\Patient;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
+use function GuzzleHttp\Promise\all;
 use Illuminate\Http\Request;
 
 class CompteRenduBlocOperatoireController extends Controller
@@ -16,19 +17,36 @@ class CompteRenduBlocOperatoireController extends Controller
     public function index(CompteRenduBlocOperatoire $compteRenduBlocOperatoire, Patient $patient)
     {
 
-        return view('admin.operations.index', [
+        return view('admin.consultations.chirurgiens.index_compte_rendu_operatoire', [
             'patient' => $patient,
             'compteRenduBlocOperatoires' => CompteRenduBlocOperatoire::with('patient')->get(),
         ]);
     }
 
 
-    public function create(Patient $patient)
+    public function create(CompteRenduBlocOperatoire $compteRenduBlocOperatoire, Patient $patient)
     {
-        $users = User::where('role_id', '=', 2)->get();
-        $anesthesiste = User::where('name', '=', 'TENKE')->get();
-        $infirmierAnesthesiste = User::where('role_id', '=', 4)->get();
-        return view('admin.operations.create', compact('patient', 'users', 'anesthesiste', 'infirmierAnesthesiste'));
+
+        return view('admin.consultations.create_compte_rendu_operatoire', [
+
+            'compteRenduBlocOperatoire' => $compteRenduBlocOperatoire,
+            'patient' => $patient,
+            'users' => User::where('role_id', '=', 2)->get(),
+            'anesthesistes' => User::where('name', '=', 'TENKE')->get(),
+            'infirmierAnesthesistes' => User::where('role_id', '=', 4)->get()
+        ]);
+    }
+
+    public function edit(Patient $patient)
+    {
+        return view('admin.consultations.edit_compte_rendu_operatoire', [
+
+            'compteRenduBlocOperatoire' => CompteRenduBlocOperatoire::with('user')->where('patient_id', $patient->id)->latest()->first(),
+            'patient' => $patient,
+            'users' => User::where('role_id', '=', 2)->get(),
+            'anesthesistes' => User::where('name', '=', 'TENKE')->get(),
+            'infirmierAnesthesistes' => User::where('role_id', '=', 4)->get()
+        ]);
     }
 
 
@@ -58,6 +76,15 @@ class CompteRenduBlocOperatoireController extends Controller
         ]);
 
         Flashy('Le compte rendu du bloc opérqtoire a été ajouté avec succes');
+
+        return back();
+    }
+
+    public function update(CompteRenduBlocOperatoireRequest $request, CompteRenduBlocOperatoire $compteRenduBlocOperatoire, Patient $patient)
+    {
+        $compteRenduBlocOperatoire->update($request->all());
+
+        Flashy('Le compte rendu du bloc opérqtoire a été mis à jour');
 
         return back();
     }

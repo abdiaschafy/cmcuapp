@@ -16,7 +16,7 @@
                 <br>
                 <br>
                 @can('medecin', \App\Patient::class)
-                <div class="col-md-8  offset-md-0  toppad">
+                <div class="col-md-10  offset-md-0  toppad">
                     <div class="card">
                         <div class="card-body">
                             @include('partials.flash_form')
@@ -30,7 +30,7 @@
                                         @include('admin.consultations.chirurgiens.form.consultation_chirurgien_form')
                                     @endcan
                                     @can('anesthesiste', \App\Patient::class)
-                                        @include('admin.consultations.chirurgiens.form.consultation_anesthesiste_form')
+                                        @include('admin.consultations.anesthesistes.form.consultation_anesthesiste_form')
                                     @endcan
                                 </tbody>
                             </table>

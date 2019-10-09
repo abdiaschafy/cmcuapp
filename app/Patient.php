@@ -163,6 +163,11 @@ class Patient extends Model
         return $this->hasMany(Prescription::class);
     }
 
+    public function imageries()
+    {
+        return $this->hasMany(Imagerie::class);
+    }
+
     public function compte_rendu_bloc_operatoires()
     {
         return $this->hasMany(CompteRenduBlocOperatoire::class);
@@ -212,6 +217,26 @@ class Patient extends Model
         return $this->hasMany(Dossier::class);
     }
 
+    public function fiche_consommables()
+    {
+        return $this->hasMany(FicheConsommable::class);
+    }
+
+    public function observation_medicales()
+    {
+        return $this->hasMany(ObservationMedicale::class);
+    }
+
+    public function soins_infirmiers()
+    {
+        return $this->hasMany(SoinsInfirmier::class);
+    }
+
+    public function surveillance_post_anesthesiques()
+    {
+        return $this->hasMany(SurveillancePostAnesthesique::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -220,6 +245,11 @@ class Patient extends Model
     public function event()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function surveillance_rapproche_parametres()
+    {
+        return $this->hasMany(SurveillanceRapprocheParametre::class);
     }
 
     public function getCreatedDateAttribute()

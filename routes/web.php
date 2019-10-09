@@ -102,11 +102,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('consultations/edit/{patient}', 'ConsultationsController@edit')->name('consultations.edit');
     Route::get('consultations/{patient}', 'ConsultationsController@show')->name('consultations.show');
 
-    Route::get('detatils-consultations/{patient}', 'ConsultationsController@index_chirurgien')->name('consultations.index');
-    Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@index_anesthesiste')->name('consultations.index_anesthesiste');
+    Route::get('detatils-consultations/{patient}', 'ConsultationsController@IndexConsultationChirurgien')->name('consultations.index');
+    Route::get('consultations-anesthesique/{patient}', 'ConsultationsController@IndexConsultationAnesthesiste')->name('consultations.index_anesthesiste');
 
     Route::put('consultation-chirurgien/{consultation}', 'ConsultationsController@update_consultation_chirurgien')->name('consultation_chirurgien.update');
-    Route::put('consultation-anesthesiste/{consultation}', 'ConsultationsController@update_consultation_anesthesiste')->name('consultation_anesthesiste.update');
+    Route::put('consultation-anesthesiste/{consultationAnesthesiste}', 'ConsultationsController@update_consultation_anesthesiste')->name('consultation_anesthesiste.update');
     Route::post('consultation-chirurgien', 'ConsultationsController@store_consultation_chirurgien')->name('consultation_chirurgien.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@store_consultation_anesthesiste')->name('consultation_anesthesiste.store');
     Route::post('consultation-anesthesiste', 'ConsultationsController@Astore')->name('consultation_anesthesiste.store');
@@ -120,16 +120,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('compte-rendu-bloc-global/{patient}', 'CompteRenduBlocOperatoireController@index')->name('compte_rendu_bloc.index');
     Route::get('compte-rendu-bloc/create/{patient}', 'CompteRenduBlocOperatoireController@create')->name('compte_rendu_bloc.create');
+    Route::get('compte-rendu-bloc/edit/{patient}', 'CompteRenduBlocOperatoireController@edit')->name('compte_rendu_bloc.edit');
     Route::post('compte-rendu-bloc', 'CompteRenduBlocOperatoireController@store')->name('compte_rendu_bloc.store');
+    Route::put('compte-rendu-bloc/{compteRenduBlocOperatoire}', 'CompteRenduBlocOperatoireController@update')->name('compte_rendu_bloc.update');
     Route::get('compte-rendu-bloc/{id}', 'CompteRenduBlocOperatoireController@compte_rendu_bloc_pdf')->name('compte_rendu_bloc_pdf.pdf');
 
 
 
     Route::post('ordonances', 'OrdonancesController@store')->name('ordonances.store');
     Route::get('ordonance-creation/create/{patient}','OrdonancesController@ordonance_create')->name('ordonance.create');
-
-
-    Route::post('soins', 'SoinsController@store')->name('soins.store');
 
 
     Route::post('parametres', 'ParametresController@fiche_parametre_store')->name('fiche_parametres.store');
@@ -185,6 +184,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('clients/{client}', 'ClientController@destroy')->name('clients.destroy');
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
+    //Route::get('clients/{id}','ClientController@export_client')->name('clientP.pdf');
     Route::get('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
 
 
@@ -195,7 +195,27 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::post('traitement-hospitalisation', 'AnesthesisteController@TraitementHospitalisationStore')->name('traitement_hospitalisation.store');
     Route::post('adaptation-traitement', 'AnesthesisteController@AdaptationTraitementPersoStore')->name('adaptation_traitement.store');
 
-    Route::get('observations-medicales/{patient}', 'ChirurgienController@create')->name('observations_medicales.index');
-    Route::get('surveillance-rapproche/{patient}', 'ParametresController@index')->name('surveillance_rapproche.index');
+    Route::get('observations-medicales/{patient}', 'ChirurgienController@AbservationMedicaleCreate')->name('observations_medicales.index');
+    Route::post('observations-medicales', 'ChirurgienController@AbservationMedicaleStore')->name('observations_medicales.store');
+    Route::put('observations-medicales/{}', 'ChirurgienController@AbservationMedicaleUpdate')->name('observations_medicales.update');
+    Route::get('observations-medicales/edit/{}', 'ChirurgienController@AbservationMedicaleEdit')->name('observations_medicales.edit');
 
+    Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
+    Route::post('fiches-consommables', 'PatientsController@FcheConsommableStore')->name('fiche_consommable.store');
+    Route::get('autocomplete', 'PatientsController@Autocomplete')->name('autocomplete');
+    Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
+
+    Route::post('surveillance-rapproche-parametres', 'ParametresController@SurveillanceRapprocheStore')->name('surveillance_rapproche_param');
+
+    Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');
+    Route::post('surveillance-post-anesthesique', 'AnesthesisteController@SurveillancePostAnesthesiseStore')->name('surveillance_post_anesthesise.store');
+    Route::put('surveillance-post-anesthesique/{surveillancePostAnesthesique}', 'AnesthesisteController@SurveillancePostAnesthesiseUpdate')->name('surveillance_post_anesthesise.update');
+
+
+    Route::post('soins-infirmier', 'PatientsController@SoinsInfirmierStore')->name('soins_infirmiers.store');
+
+    Route::get('imagerie/create/{patient}', 'ImagerieController@create')->name('imageries.create');
+    Route::post('imagerie', 'ImagerieController@store')->name('imageries.store');
+    Route::get('imagerie_examens/{id}','ImagerieController@export_imageries')->name('imageries_examens.pdf');
 });

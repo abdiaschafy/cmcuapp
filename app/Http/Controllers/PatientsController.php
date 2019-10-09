@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Consultation;
 use App\ConsultationAnesthesiste;
 use App\FactureConsultation;
+use App\FicheConsommable;
 use App\FicheIntervention;
 use App\Lettre;
 use App\Patient;
 use App\Ordonance;
+use App\Produit;
+use App\SoinsInfirmier;
+use App\SurveillancePostAnesthesique;
 use App\User;
 use App\VisitePreanesthesique;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use MercurySeries\Flashy\Flashy;
 
 
 class PatientsController extends Controller
@@ -32,7 +37,7 @@ class PatientsController extends Controller
     {
         $this->authorize('update', Patient::class);
         $users = User::where('role_id', '=', 2)->with('patients')->get();
-        return view('admin.patients.create',compact('users'));
+        return view('admin.patients.create', compact('users'));
     }
 
 
@@ -67,7 +72,7 @@ class PatientsController extends Controller
         $patient->montant = $request->get('montant');
         $patient->assurance = $request->get('assurance');
         $patient->avance = $request->get('avance');
-        
+
         $patient->numero_assurance = $request->get('numero_assurance');
         $patient->prise_en_charge = $request->get('prise_en_charge');
 
@@ -124,7 +129,9 @@ class PatientsController extends Controller
             'ordonances' => $patient->ordonances()->paginate(5),
             'dossiers' => $patient->dossiers()->latest()->first(),
             'parametres' => $patient->parametres()->latest()->first(),
+            'premedications' => $patient->premedications()->latest()->get(),
             'compte_rendu_bloc_operatoires' => $patient->compte_rendu_bloc_operatoires()->latest()->first()
+
         ]);
     }
 
@@ -217,9 +224,9 @@ class PatientsController extends Controller
 
         $factureConsultations = FactureConsultation::where('numero', '=', $patient->numero_dossier)->first();
 
-        if ($factureConsultations){
+        if ($factureConsultations) {
             return back()->with('error', 'La facture existe déja');
-        }else{
+        } else {
             FactureConsultation::create([
                 'numero' => $patient->numero_dossier,
                 'patient_id' => $patient->id,
@@ -240,6 +247,78 @@ class PatientsController extends Controller
 
 
         return redirect()->route('factures.consultation')->with('success', 'La facture a bien été généré veuillez consulter votre liste des factures');
+    }
+
+    public function FcheConsommableCreate(FicheConsommable $consommable, Patient $patient)
+    {
+
+        return view('admin.patients.fiche_consommable', [
+            'Produits' => Produit::all(),
+            'consommable' => $consommable,
+            'consommables' => FicheConsommable::with('patient')->where('patient_id', '=', $patient->id)->get(),
+            'patient' => $patient,
+            'user_id' => auth()->user()->id
+        ]);
+    }
+
+    public function Autocomplete(Request $request)
+    {
+
+        $datas = Produit::select('designation')->where('designation', 'LIKE', "%{$request->input('query')}%")->get();
+
+        $results = [];
+        foreach ($datas as $data)
+        {
+            $results[] = $data->designation;
+        }
+        return response()->json($results);
+    }
+
+    public function FcheConsommableStore(Request $request, Produit $produit)
+    {
+
+        FicheConsommable::create([
+            'user_id' => \request('user_id'),
+            'patient_id' => \request('patient_id'),
+            'consommable' => \request('consommable'),
+            'jour' => \request('jour'),
+            'nuit' => \request('nuit'),
+            'date' => \request('date'),
+        ]);
+
+        $produits = Produit::where('designation', '=', request('consommable'))->get();
+
+        foreach ($produits as $produit){
+
+            if (!empty(\request('jour'))){
+
+                $produit->qte_stock = $produit->qte_stock - \request('jour');
+                $produit->save();
+            }
+            if (!empty(\request('nuit'))){
+                $produit->qte_stock = $produit->qte_stock - \request('nuit');
+                $produit->save();
+            }
+        }
+
+        \Flashy::info('La liste des produit a été mis à jour');
+        return back();
+    }
+
+    public function SoinsInfirmierStore()
+    {
+        SoinsInfirmier::create([
+
+            "user_id" => \auth()->id(),
+            "patient_id" => \request('patient_id'),
+            "date" => \request('date'),
+            "observation" => \request('observation'),
+            "patient_externe" => \request('patient_externe'),
+        ]);
+
+        Flashy::info('Votre enregistrement a bien été pris en compte');
+
+        return back();
     }
 
     public function export_ordonance($id)

@@ -5,14 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
+use App\SurveillanceRapprocheParametre;
 use Carbon\Carbon;
+use MercurySeries\Flashy\Flashy;
 
 class ParametresController extends Controller
 {
 
-    public function index(Patient $patient)
+    public function IndexSurveillanceRapprocheParametre(Patient $patient)
     {
-        return view('admin.consultations.surveillance_rapproche_param', compact('patient'));
+        return view('admin.consultations.infirmiers.index_surveillance_rapproche_param', [
+
+            'patient' => $patient,
+            ''
+        ]);
+    }
+
+    public function IndexParametrePatient(Patient $patient)
+    {
+        return view('admin.consultations.infirmiers.index_fiche_parametre', [
+
+            'patient' => $patient,
+            'parametres' => Parametre::with('patient')->where('patient_id', '=', $patient->id)->get()
+        ]);
     }
 
 
@@ -52,5 +67,15 @@ class ParametresController extends Controller
         Flashy('Les paramètres ont bien été modifiés');
 
         return back();
+    }
+
+    public function SurveillanceRapprocheStore()
+    {
+        SurveillanceRapprocheParametre::create([
+
+            ''
+        ]);
+
+        Flashy::info('Les paramètres ont été enregistrés');
     }
 }

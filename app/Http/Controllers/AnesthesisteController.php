@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\AdaptationTraitement;
 use App\Patient;
 use App\Premedication;
+use App\SurveillancePostAnesthesique;
 use App\TraitementHospitalisation;
 use App\VisitePreanesthesique;
+use MercurySeries\Flashy\Flashy;
 
 class AnesthesisteController extends Controller
 {
@@ -17,7 +19,8 @@ class AnesthesisteController extends Controller
             'patient' => $patient,
             'TraitementHospitalisations' => TraitementHospitalisation::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
             'AdaptationTraitements' => AdaptationTraitement::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
-            'premedications' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->get(),
+            'premedications' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->latest()->get(),
+            'medicament' => Premedication::with('patient', 'user')->where('patient_id', '=', $patient->id)->latest()->first(['medicament']),
         ]);
     }
 
@@ -44,7 +47,8 @@ class AnesthesisteController extends Controller
             'user_id' => auth()->id(),
             'patient_id' => \request('patient_id'),
             'consigne_ide' => \request('consigne_ide'),
-            'preparation' => \request('preparation')
+            'preparation' => \request('preparation'),
+            'medicament' => \request('medicament')
         ]);
 
         Flashy('Les nouveaux éléménts ont bien été pris en compte !!');
@@ -109,6 +113,36 @@ class AnesthesisteController extends Controller
 
         return back();
 
+    }
+
+    public function IndexSurveillancePostAnesthesise(Patient $patient, SurveillancePostAnesthesique $surveillancePostAnesthesique)
+    {
+        return view('admin.consultations.index_surveillance_post_anesthesique', [
+
+            'patient' => $patient,
+            'surveillance_post_anesthesiques' => SurveillancePostAnesthesique::with('patient')->where('patient_id', '=', $patient->id)->get(),
+//            'surveillance_post_anesthesique' => $surveillancePostAnesthesique
+        ]);
+    }
+
+    public function SurveillancePostAnesthesiseStore()
+    {
+        SurveillancePostAnesthesique::create([
+
+           'user_id' => auth()->id(),
+           'patient_id' => request('patient_id'),
+           'date_creation' => request('date_creation'),
+           'surveillance' => request('surveillance'),
+           'traitement' => request('traitement'),
+           'examen_paraclinique' => request('examen_paraclinique'),
+           'observation' => request('observation'),
+           'date_sortie' => request('date_sortie'),
+           'heur_sortie' => request('heur_sortie'),
+        ]);
+
+        Flashy::info('Votre enregistrement a bien été pris en compte');
+
+        return back();
     }
 
 }
