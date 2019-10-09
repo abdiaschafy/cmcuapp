@@ -36,7 +36,7 @@
     <div class="row">
         <hr class="text-danger">
     </div>
-    <h5 class="text-center">FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS</h5>
+    <h5 class="text-center"><u>FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS PATIENTS EXTERNES</u></h5>
     <div class="container-fluid">
         <table class="table table-bordered">
             <thead>
