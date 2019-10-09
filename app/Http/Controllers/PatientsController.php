@@ -120,7 +120,7 @@ class PatientsController extends Controller
         return view('admin.patients.show', [
             'patient' => $patient,
             'medecin' => User::where('role_id', '=', 2)->get(),
-            'consultations' => Consultation::with('patient', 'user')->latest()->first(),
+            'consultations' => Consultation::with('patient', 'user')->where('patient_id', '=', $patient->id)->latest()->first(),
             'consultation_anesthesistes' => ConsultationAnesthesiste::with('patient', 'user')->latest()->first(),
             'visite_anesthesistes' => VisitePreanesthesique::with('patient', 'user')->latest()->first(),
             'fiche_interventions' => FicheIntervention::with('patient', 'user')->get(),
