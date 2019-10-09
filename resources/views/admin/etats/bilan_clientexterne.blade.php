@@ -80,6 +80,14 @@
             </tr>
         </table>
     </div>
+    <div class="row">
+            <div class="col-md-6">
+                <p><u>LE COMPTABLE</u></p>
+            </div>
+            <div class="col-md-6 offset-10">
+                <p><u>L'ASSISTANTE</u></p>
+            </div>
+        </div>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
