@@ -36,14 +36,14 @@ class PatientPolicy
     public function update(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,2,6,4
+            1,2,6,4,9
         ]);
     }
 
     public function print(User $user)
     {
         return in_array(auth()->user()->role_id, [
-            1,6
+            1,6,9
         ]);
 
     }

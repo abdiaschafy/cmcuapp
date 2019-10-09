@@ -36,7 +36,7 @@
     <div class="row">
         <hr class="text-danger">
     </div>
-    <h5 class="text-center">FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS</h5>
+    <h5 class="text-center"><u>FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS CONSULTATION</u></h5>
     <div class="container-fluid">
         <table class="table table-bordered">
             <thead>
@@ -81,6 +81,14 @@
                 <td></td>
             </tr>
         </table>
+        <div class="row">
+            <div class="col-md-6">
+                <p><u>LE COMPTABLE</u></p>
+            </div>
+            <div class="col-md-6 offset-10">
+                <p><u>L'ASSISTANTE</u></p>
+            </div>
+        </div>
     </div>
     <footer class="footer">
         <div class="text-center col-6 offset-2">

@@ -27,7 +27,6 @@
                             <thead>
                             <tr>
                             <td>ID</td>
-                                <td>NUMERO</td>
                                 <td>PATIENT</td>
                                 <td>MOTIF</td>
                                 <td>MONTANT</td>
@@ -43,7 +42,6 @@
                             @foreach($facturesClients as $facture)
                                 <tr>
                                 <td>{{$facture->id}}</td>
-                                    <td>{{$facture->numero}}</td>
                                     <td>{{$facture->client->nom }}</td>
                                     <td>{{$facture->motif }}</td>
                                     <td>{{$facture->montant }} <b>FCFA</b></td>

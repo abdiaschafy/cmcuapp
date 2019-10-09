@@ -74,8 +74,8 @@
                                 {{ Form::hidden('user_id', $user_id, ['']) }}
                                 <tr>
                                     <td>{{ Form::search('consommable', null, ['class' => 'form-control col-md-8 typeahead tt-query', 'spellcheck' => 'false', 'autocomplete' => 'off', 'id' => 'search', 'required' => 'required']) }}</td>
-                                    <td>{{ Form::text('jour', null, ['class' => 'form-control']) }}</td>
-                                    <td>{{ Form::text('nuit', null, ['class' => 'form-control']) }}</td>
+                                    <td>{{ Form::number('jour', null, ['class' => 'form-control', 'min' => 0]) }}</td>
+                                    <td>{{ Form::number('nuit', null, ['class' => 'form-control', 'min' => 0]) }}</td>
                                     <td>{{ Form::date('date', null, ['class' => 'form-control', 'required' => 'required']) }}</td>
                                 </tr>
                                 <tr>
