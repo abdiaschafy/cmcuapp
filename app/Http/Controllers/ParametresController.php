@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FicheIntervention;
 use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
@@ -12,12 +13,37 @@ use MercurySeries\Flashy\Flashy;
 class ParametresController extends Controller
 {
 
+    public function SurveillanceRapprocheParametre(Patient $patient)
+    {
+        return view('admin.consultations.infirmiers.surveillance_rapproche_param', [
+
+            'patient' => $patient,
+            'paramPre' => SurveillanceRapprocheParametre::with('patient')
+                            ->where('patient_id', $patient->id)
+                            ->where('periode', 'preoperatoire')
+                            ->latest()->first(),
+            'paramPost' => SurveillanceRapprocheParametre::with('patient')
+                ->where('patient_id', $patient->id)
+                ->where('periode', 'postoperatoire')
+                ->latest()->first(),
+
+            'age_patient' => Parametre::where('patient_id', '=', $patient->id)->latest()->pluck('age'),
+            'intervention' => FicheIntervention::where('patient_id', '=', $patient->id)->pluck('type_intervention')
+        ]);
+    }
+
     public function IndexSurveillanceRapprocheParametre(Patient $patient)
     {
         return view('admin.consultations.infirmiers.index_surveillance_rapproche_param', [
 
             'patient' => $patient,
-            ''
+            'paramPosts' => SurveillanceRapprocheParametre::with('patient')
+                ->where('patient_id', $patient->id)
+                ->where('periode', 'postoperatoire')->get(),
+
+            'paramPres' => SurveillanceRapprocheParametre::with('patient')
+                ->where('patient_id', $patient->id)
+                ->where('periode', 'preoperatoire')->get()
         ]);
     }
 
@@ -73,9 +99,24 @@ class ParametresController extends Controller
     {
         SurveillanceRapprocheParametre::create([
 
-            ''
+            'patient_id' => request('patient_id'),
+            'user_id' => auth()->id(),
+            'date' => request('date'),
+            'heure' => request('heure'),
+            'ta' => request('ta'),
+            'fr' => request('fr'),
+            'spo2' => request('spo2'),
+            'temperature' => request('temperature'),
+            'diurese' => request('diurese'),
+            'pouls' => request('pouls'),
+            'conscience' => request('conscience'),
+            'douleur' => request('douleur'),
+            'observation_plainte' => request('observation_plainte'),
+            'periode' => request('periode'),
         ]);
 
         Flashy::info('Les paramètres ont été enregistrés');
+
+        return back();
     }
 }

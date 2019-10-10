@@ -84,7 +84,7 @@ class FactureController extends Controller
     {
 
         $pdf = PDF::loadView('admin.etats.clientP', [
-            'client' => FactureClient::with('user')->findOrFail($id)
+            'clients' => FactureClient::with('user')->findOrFail($id)
         ]);
 
         return $pdf->stream('factures.client_pdf');

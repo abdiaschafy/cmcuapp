@@ -9,6 +9,8 @@ class SurveillanceRapprocheParametre extends Model
 
     protected $guarded = [];
 
+    public $timestamps = false;
+
     public function patient()
     {
         return $this->belongsTo(Patient::class);
