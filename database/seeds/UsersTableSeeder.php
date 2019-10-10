@@ -145,12 +145,12 @@ class UsersTableSeeder extends Seeder
             'role_id' => '4',
             'name' => 'SEUTIO TCHOUBI',
             'prenom' => 'ROMEO',
-            'login' => 'SEUTIO',
+            'login' => 'ROMEO SEUTIO',
             'telephone' => '694546170',
             'sexe' => 'Masculin',
             'lieu_naissance' => 'Njisse',
             'date_naissance' => \Carbon\Carbon::createFromDate(1985,05,28)->toDateTimeString(),
-            'password' => bcrypt('infirmier@2019')
+            'password' => bcrypt('dOLIPRANE@2019')
         ]);
 
         $user10 = \App\User::create([

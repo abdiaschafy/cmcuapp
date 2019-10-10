@@ -77,19 +77,17 @@ class FactureController extends Controller
 
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
-        return $pdf->stream('consultation.pdf');
+        return $pdf->stream('factures.consultation_pdf');
     }
 
     public function export_client($id)
     {
-       
-        $this->authorize('update', Patient::class);
-        $this->authorize('print', Patient::class);
-        $client = Client::find($id);
 
-        $pdf = PDF::loadView('admin.etats.clientP', ['client' => $client]);
+        $pdf = PDF::loadView('admin.etats.clientP', [
+            'clients' => FactureClient::with('user')->findOrFail($id)
+        ]);
 
-        return $pdf->stream('clientP.pdf');
+        return $pdf->stream('factures.client_pdf');
     }
 
 

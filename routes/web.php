@@ -152,8 +152,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
     Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
-    Route::get('/factures-client', 'FactureController@FactureClient')->name('factures.client');
-    Route::get('client-facture/{id}','FactureController@export_client')->name('factures.client_pdf');
+    Route::get('factures-client', 'FactureController@FactureClient')->name('factures.client');
+    Route::get('facture/{id}','FactureController@export_client')->name('factures.client_pdf');
    
 
 
@@ -203,11 +203,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
     Route::post('fiches-consommables', 'PatientsController@FcheConsommableStore')->name('fiche_consommable.store');
     Route::get('autocomplete', 'PatientsController@Autocomplete')->name('autocomplete');
-    Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('surveillance-rapproche/{patient}', 'ParametresController@SurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('surveillance-rapproche-details/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
 
-    Route::post('surveillance-rapproche-preop', 'ParametresController@SurveillancePreStore')->name('surveillance_preop_param');
-    Route::post('surveillance-rapproche-postop', 'ParametresController@SurveillancePostStore')->name('surveillance_postop_param');
+    Route::post('surveillance-rapproche-parametres', 'ParametresController@SurveillanceRapprocheStore')->name('surveillance_rapproche_param');
 
     Route::get('surveillance-post-anesthesique/{patient}', 'AnesthesisteController@IndexSurveillancePostAnesthesise')->name('surveillance_post_anesthesise.index');
     Route::post('surveillance-post-anesthesique', 'AnesthesisteController@SurveillancePostAnesthesiseStore')->name('surveillance_post_anesthesise.store');

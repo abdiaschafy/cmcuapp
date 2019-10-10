@@ -134,7 +134,7 @@
                                             <tbody>
                                             <tr>
                                                 <td>
-                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" disabled>{{ $medicament->medicament }}</textarea>
+                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" disabled>@if(!empty($medicament)){{ $medicament->medicament }}@endif</textarea>
                                                 </td>
                                                 <td><input type="number" class="form-control" name="duree"></td>
                                                 <td><input type="checkbox" value="Ok" name="j"></td>

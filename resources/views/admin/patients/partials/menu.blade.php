@@ -50,12 +50,6 @@
             <i class="far fa-plus-square"></i>
             Fiche d'intervention
         </button>
-        <li>
-            <a href="#spa" class="btn btn-success mb-1">
-                <i class="fas fa-eye"></i>
-                Surveillance post anesthésique
-            </a>
-        </li>
         <li class="divider"></li>
         <li>
             <a href="{{ route('consultations.index_anesthesiste', $patient->id) }}"

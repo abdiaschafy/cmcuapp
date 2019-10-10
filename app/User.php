@@ -205,6 +205,11 @@ class User extends Authenticatable
         return $this->hasMany(SurveillancePostAnesthesique::class);
     }
 
+    public function surveillance_rapproche_parametres()
+    {
+        return $this->hasMany(SurveillanceRapprocheParametre::class);
+    }
+
     public function soins_infirmiers()
     {
         return $this->hasMany(SoinsInfirmier::class);
@@ -246,6 +251,11 @@ class User extends Authenticatable
     public function facture_consultations()
     {
         return $this->hasMany(FactureConsultation::class);
+    }
+
+    public function facture_clients()
+    {
+        return $this->hasMany(FactureClient::class);
     }
 
 

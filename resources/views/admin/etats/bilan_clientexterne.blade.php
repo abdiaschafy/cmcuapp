@@ -36,7 +36,7 @@
     <div class="row">
         <hr class="text-danger">
     </div>
-    <h5 class="text-center">FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS</h5>
+    <h5 class="text-center"><u>FICHE DE SUIVI DES ENCAISSEMENTS JOURNALIERS PATIENTS EXTERNES</u></h5>
     <div class="container-fluid">
         <table class="table table-bordered">
             <thead>
@@ -56,7 +56,7 @@
             <tbody>
             @foreach($factures as $facture)
             <tr>
-                <td>{{ $facture->numero }}</td>
+                <td>{{ $facture->id }}</td>
                 <td><small>{{ $facture->client->nom }} {{ $facture->client->prenom }}</small></td>
                 <td><small>{{ $facture->montant }}</small></td>
                 <td><small>{{ $facture->avance }}</small></td>
@@ -80,6 +80,14 @@
             </tr>
         </table>
     </div>
+    <div class="row">
+            <div class="col-md-6">
+                <p><u>LE COMPTABLE</u></p>
+            </div>
+            <div class="col-md-6 offset-10">
+                <p><u>L'ASSISTANTE</u></p>
+            </div>
+        </div>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
