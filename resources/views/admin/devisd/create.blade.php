@@ -19,6 +19,31 @@
   float:right;
 }
 
+.scrolling table {
+    table-layout: inherit;
+ *margin-left: -100px;/*ie7*/
+}
+
+.scrolling td, th {
+	vertical-align: top;
+	padding: 10px;
+	min-width: 130px;
+}
+.scrolling th {
+	position: absolute;
+ *position: relative; /*ie7*/
+	left: 0;
+	width: 120px;
+}
+.outer {
+	position: relative
+}
+.inner {
+	overflow-x: auto;
+	overflow-y: visible;
+	margin-left: 120px;
+}
+
 </style>
     <body>
     <div class="se-pr-con"></div>
@@ -44,13 +69,11 @@
                         @csrf
                         <div class="row">
                             <div >
-                            
-                            <div class="box-part ">
-                            <div class="form-group ">
-                            <table class="table table-user-information ">
+                            <div class="row">
+                            <table class="col-md-3 col-sm-3 col-xs-9">
                            <tbody>
                                 <tr>
-                                <td><b>Devis prévisionnel :</b></td>
+                                <td><b>Devis:</b></td>
                                         <td>
                                             <select class="form-control" name="devis_p">
                                                 <option> Sélectionner un devis</option>
@@ -65,310 +88,382 @@
                                 </tr>
                             </tbody>
                           </table>
-                            </div>
+                            </div><br>
 
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="arreter" class="col-form-label text-md-right">MONTANT TOTAL <span class="text-danger"></span></label>
-                                <input name="arreter" class="form-control" value="{{ old('arreter') }}" type="text" placeholder=" (EN LETTRES)" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                       
-                        <div class="col-md-12">
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements" class="col-form-label text-md-right">Element 1 <span class="text-danger"></span></label>
-                                    <input name="elements" class="form-control" value="{{ old('elements') }}" type="text" placeholder="element 1" >
+                            <div class="row">
+                            <div class="col-md-5 col-sm-5 col-xs-9">
+                            <div class="scrolling outer">
+                                <div class="inner">
+                                <table class="table table-striped table-hover table-condensed">
+                                    <tr>
+                                       
+                                    <th><input type="text" placeholder="Element" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element2" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element3" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element4" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element5" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element6" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element7" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element8" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element9" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element10" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element11" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element12" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element13" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element14" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                    <th><input type="text" placeholder="Element15" class="form-control" value=""></th>
+                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
+                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
+                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
+                                    </tr>
+                                    <tr>
+                                   
+                                </table>
                                 </div>
                             </div>
-                            
                             </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte1" class="col-form-label text-md-right">Quantité 1<span class="text-danger"></span></label>
-                                <input name="qte1" class="form-control" value="{{ old('qte1') }}" type="text" placeholder="Quantité 1" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u" class="col-form-label text-md-right">Prix Unitaire 1 <span class="text-danger"></span></label>
-                                <input name="prix_u" class="form-control" value="{{ old('prix_u') }}" type="text" placeholder="Prix Unitaire 1" >
-                            </div>
-                            </div>
-                           
+                        
                         </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements1" class="col-form-label text-md-right">Element 2 <span class="text-danger"></span></label>
-                                    <input name="elements1" class="form-control" value="{{ old('elements1') }}" type="text" placeholder="Element 2" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte2" class="col-form-label text-md-right">Quantité 2<span class="text-danger"></span></label>
-                                <input name="qte2" class="form-control" value="{{ old('qte2') }}" type="text" placeholder="Quantité 2" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u1" class="col-form-label text-md-right">Prix unitaire 2 <span class="text-danger"></span></label>
-                                <input name="prix_u1" class="form-control" value="{{ old('prix_u1') }}" type="text" placeholder="Prix unitaire 2" >
-                            </div>
-                            </div>
-                            
                         </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements2" class="col-form-label text-md-right">Element 3 <span class="text-danger"></span></label>
-                                    <input name="elements2" class="form-control" value="{{ old('elements2') }}" type="text" placeholder="Element 3" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte3" class="col-form-label text-md-right">Quantité 3 <span class="text-danger"></span></label>
-                                <input name="qte3" class="form-control" value="{{ old('qte3') }}" type="text" placeholder="Quantité 3" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u2" class="col-form-label text-md-right">Prix unitaire 3<span class="text-danger"></span></label>
-                                <input name="prix_u2" class="form-control" value="{{ old('prix_u2') }}" type="text" placeholder="Prix unitaire 3" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements3" class="col-form-label text-md-right">Element 4<span class="text-danger"></span></label>
-                                    <input name="elements3" class="form-control" value="{{ old('elements3') }}" type="text" placeholder="Element 4" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte4" class="col-form-label text-md-right">Quantité 4 <span class="text-danger"></span></label>
-                                <input name="qte4" class="form-control" value="{{ old('qte4') }}" type="text" placeholder="Quantité 4" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u3" class="col-form-label text-md-right">Prix unitaire 4<span class="text-danger"></span></label>
-                                <input name="prix_u3" class="form-control" value="{{ old('prix_u3') }}" type="text" placeholder="Prix unitaire 4" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements4" class="col-form-label text-md-right">Element 5<span class="text-danger"></span></label>
-                                    <input name="elements4" class="form-control" value="{{ old('elements4') }}" type="text" placeholder="Element 5" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte5" class="col-form-label text-md-right">Quantité 5 <span class="text-danger"></span></label>
-                                <input name="qte5" class="form-control" value="{{ old('qte5') }}" type="text" placeholder="Quantité 5" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u4" class="col-form-label text-md-right">Prix unitaire 5<span class="text-danger"></span></label>
-                                <input name="prix_u4" class="form-control" value="{{ old('prix_u4') }}" type="text" placeholder="Prix unitaire 5" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements5" class="col-form-label text-md-right">Element 6 <span class="text-danger"></span></label>
-                                    <input name="elements5" class="form-control" value="{{ old('elements5') }}" type="text" placeholder="Element 6" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte6" class="col-form-label text-md-right">Quantité 6 <span class="text-danger"></span></label>
-                                <input name="qte6" class="form-control" value="{{ old('qte6') }}" type="text" placeholder="Quantité 6" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u5" class="col-form-label text-md-right">Prix unitaire 6<span class="text-danger"></span></label>
-                                <input name="prix_u5" class="form-control" value="{{ old('prix_u5') }}" type="text" placeholder="Prix unitaire 6" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements6" class="col-form-label text-md-right">Element 7 <span class="text-danger"></span></label>
-                                    <input name="elements6" class="form-control" value="{{ old('elements6') }}" type="text" placeholder="Element 7 " >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte7" class="col-form-label text-md-right">Quantité 7<span class="text-danger"></span></label>
-                                <input name="qte7" class="form-control" value="{{ old('qte7') }}" type="text" placeholder="Quantité 7" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u6" class="col-form-label text-md-right">Prix unitaire 7 <span class="text-danger"></span></label>
-                                <input name="prix_u6" class="form-control" value="{{ old('prix_u6') }}" type="text" placeholder="Prix unitaire 8" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements7" class="col-form-label text-md-right">Element 8 <span class="text-danger"></span></label>
-                                    <input name="elements7" class="form-control" value="{{ old('elements7') }}" type="text" placeholder="Element 8 " >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte8" class="col-form-label text-md-right">Quantité 8 <span class="text-danger"></span></label>
-                                <input name="qte8" class="form-control" value="{{ old('qte8') }}" type="text" placeholder="Quantité 8" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u7" class="col-form-label text-md-right">Prix unitaire 8 <span class="text-danger"></span></label>
-                                <input name="prix_u7" class="form-control" value="{{ old('prix_u7') }}" type="text" placeholder="Prix unitaire 8 " >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements8" class="col-form-label text-md-right">Element 9 <span class="text-danger"></span></label>
-                                    <input name="elements8" class="form-control" value="{{ old('elements8') }}" type="text" placeholder="elements8" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte9" class="col-form-label text-md-right">Quantité 9 <span class="text-danger"></span></label>
-                                <input name="qte9" class="form-control" value="{{ old('qte9') }}" type="text" placeholder="Quantité 9 " >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u8" class="col-form-label text-md-right">Prix unitaire 9 <span class="text-danger"></span></label>
-                                <input name="prix_u8" class="form-control" value="{{ old('prix_u8') }}" type="text" placeholder="Prix unitaire 9" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements9" class="col-form-label text-md-right">Element 10 <span class="text-danger"></span></label>
-                                    <input name="elements9" class="form-control" value="{{ old('elements9') }}" type="text" placeholder="Element 10" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte10" class="col-form-label text-md-right">Quantité 10 <span class="text-danger"></span></label>
-                                <input name="qte10" class="form-control" value="{{ old('qte10') }}" type="text" placeholder="Quantité 10" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u9" class="col-form-label text-md-right">Prix unitaire 10 <span class="text-danger"></span></label>
-                                <input name="prix_u9" class="form-control" value="{{ old('prix_u9') }}" type="text" placeholder="Prix unitaire 10" >
-                            </div>
-                            </div>
-                            
-                        </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements10" class="col-form-label text-md-right">Element 11 <span class="text-danger"></span></label>
-                                    <input name="elements10" class="form-control" value="{{ old('elements10') }}" type="text" placeholder="Element 11" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte11" class="col-form-label text-md-right">Quantité 11 <span class="text-danger"></span></label>
-                                <input name="qte11" class="form-control" value="{{ old('qte11') }}" type="text" placeholder="Quantité 11" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u10" class="col-form-label text-md-right">Prix unitaire 10 <span class="text-danger"></span></label>
-                                <input name="prix_u10" class="form-control" value="{{ old('prix_u10') }}" type="text" placeholder="Prix unitaire 10" >
-                            </div>
-                            </div>
-                            
                         </div>
                             </br>
 
-                            <button type="submit" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
-                            <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
-                        </div>
-                    </form>
+        <button type="submit" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
+            <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
                 </div>
-            </div>
+      </form>
+       </div>
         </div>
-
     </div>
+
+</div>
     @endcan
-    </body>
+ </body>
 
 @stop
