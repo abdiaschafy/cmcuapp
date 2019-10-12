@@ -15,23 +15,20 @@ class CreateSurveillanceRapprocheParametresTable extends Migration
     {
         Schema::create('surveillance_rapproche_parametres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nom_patient');
-            $table->string('age_patient');
-            $table->string('infirmier');
-            $table->string('indication_chirurgicale');
-            $table->string('intevention');
-            $table->dateTime('date_heure');
+            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('patient_id')->index();
+            $table->date('date');
+            $table->time('heure');
             $table->string('ta');
-            $table->string('fr');
-            $table->integer('pouls');
+            $table->string('fr')->nullable();
+            $table->integer('pouls')->nullable();
             $table->integer('spo2');
-            $table->integer('temperature');
-            $table->string('diurese');
+            $table->integer('temperature')->nullable();
+            $table->string('diurese')->nullable();
             $table->string('conscience');
-            $table->string('douleur');
-            $table->string('observation_plainte');
-            $table->string('type');
-            $table->timestamps();
+            $table->string('douleur')->nullable();
+            $table->string('observation_plainte')->nullable();
+            $table->string('periode');
         });
     }
 

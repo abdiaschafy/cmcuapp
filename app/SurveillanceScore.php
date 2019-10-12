@@ -4,9 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SurveillanceRapprocheParametre extends Model
+class SurveillanceScore extends Model
 {
-
     protected $guarded = [];
 
     public $timestamps = false;

@@ -21,87 +21,75 @@
                                         <tr>
                                             <td>
                                                 <label for=""><b>PATIENT :</b></label>
-                                                <input type="text" class="form-control" name="nom_patient" value="{{ old('nom_patient') }}" disabled="disabled">
+                                                <input type="text" class="form-control" name="nom_patient" value="{{ $patient->name }} {{ $patient->prenom }}" disabled="disabled">
                                             </td>
                                             <td>
-                                                <label for=""><b>AGE :</b></label>
-                                                <input type="text" class="form-control" name="age_patient" value="{{ old('age_patient') }}" disabled="disabled">
-                                            </td>
-                                            <td>
-                                                <label for=""><b>INFIRMIER(E) :</b></label>
-                                                <input type="text" class="form-control" name="infirmier" value="{{ old('infirmier') }}" disabled="disabled">
+                                                <label><b>Période :</b> <span class="text-danger">*</span></label>
+                                                <select name="periode" class="form-control" required>
+                                                    <option value=""><b>Période :</b></option>
+                                                    <option value="preoperatoire">Pré-opératoire</option>
+                                                    <option value="postoperatoire">Post-opératoire</option>
+                                                </select>
                                             </td>
                                         </tr>
 
 
                                         <tr>
-                                            <td>
-                                                <label for=""><b>INDICATION(S) CHIRURGICALE(S) :</b></label>
-                                                <input type="text" class="form-control" name="indication_chirurgicale" value="{{ old('indication_chirurgicale') }}" disabled="disabled">
+                                            <td style="width: 50%;">
+                                                <label for=""><b>DATE :</b></label>
+                                                <input type="date" class="form-control" name="date" value="{{ old('date', Carbon\Carbon::now()->ToDateString()) }}">
                                             </td>
-                                            <td>
-                                                <label for=""><b>INTERVENTION(S)</b></label>
-                                                <input type="text" class="form-control" name="intevention" value="{{ old('intevention') }}" disabled="disabled">
+                                            <td style="width: 50%;">
+                                                <label for=""><b>HEURE :</b></label>
+                                                <input type="time" class="form-control" name="heure" value="{{ old('heure') }}">
                                             </td>
-                                            <td></td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <label for=""><b>DATE / HEURE :</b></label>
-                                                <input type="datetime-local" class="form-control" name="date_heure" value="{{ old('date_heure') }}">
-                                            </td>
-                                            <td>
-                                                <label for=""><b>T.A :</b></label>
+                                                <label for=""><b>T.A :</b> <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="ta" value="{{ old('ta') }}">
                                             </td>
                                             <td>
-                                                <label for=""><b>F.R :</b></label>
+                                                <label for=""><b>F.R :</b> <span class="text-danger">*</span></label>
                                                 <input type="number" class="form-control" name="fr" value="{{ old('fr') }}">
                                             </td>
                                         </tr>
 
                                         <tr>
-
                                             <td>
-                                                <label for=""><b>POULS :</b></label>
-                                                <input type="number" class="form-control" name="pouls" value="{{ old('pouls') }}">
-                                            </td>
-                                            <td>
-                                                <label for=""><b>SPO2 :</b></label>
+                                                <label for=""><b>SPO2 :</b> <span class="text-danger">*</span></label>
                                                 <input type="number" class="form-control" name="spo2" value="{{ old('spo2') }}">
                                             </td>
                                             <td>
-                                                <label for=""><b>T° :</b></label>
-                                                <input type="number" class="form-control" name="temperature" step="any" value="{{ old('temperature') }}">
+                                                <label for=""><b>T° :</b> <span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" name="temperature" min="0" step="any" value="{{ old('temperature') }}">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label for=""><b>DIURESE</b> <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="diurese" value="{{ old('diurese') }}">
+                                            </td>
+                                            <td>
+                                                <label for=""><b>POULS :</b> <span class="text-danger">*</span></label>
+                                                <input type="number" class="form-control" name="pouls" value="{{ old('pouls') }}">
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
-                                                <label for=""><b>DIURESE :</b></label>
-                                                <input type="text" class="form-control" name="diurese" value="{{ old('diurese') }}">
-                                            </td>
-                                            <td>
-                                                <label for=""><b>CONSCIENCE :</b></label>
+                                                <label for=""><b>CONSCIENCE :</b> <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="conscience" value="{{ old('conscience') }}">
                                             </td>
                                             <td>
-                                                <label for=""><b>DOULEUR :</b></label>
+                                                <label for=""><b>DOULEUR :</b> <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="douleur" value="{{ old('douleur') }}">
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 1000px;">
-                                                <label for=""><b>OBSERVATIONS / PLAINTES</b></label>
+                                                <label for=""><b>OBSERVATIONS / PLAINTES</b> <span class="text-danger">*</span></label>
                                                 <textarea class="form-control" name="observation_plainte" cols="100" rows="3">{{ old('observation_plainte') }}</textarea>
-                                            </td>
-                                            <td>
-                                                <label><b>Période :</b></label>
-                                                <select name="type" class="form-control" required>
-                                                    <option value=""><b>Période :</b></option>
-                                                    <option value="preoperatoire">Pré-opératoire</option>
-                                                    <option value="postoperatoire">Post-opératoire</option>
-                                                </select>
                                             </td>
                                             <td></td>
                                         </tr>

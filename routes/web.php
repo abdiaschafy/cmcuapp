@@ -203,8 +203,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiches-consommables/{patient}', 'PatientsController@FcheConsommableCreate')->name('fiche_consommable.index');
     Route::post('fiches-consommables', 'PatientsController@FcheConsommableStore')->name('fiche_consommable.store');
     Route::get('autocomplete', 'PatientsController@Autocomplete')->name('autocomplete');
-    Route::get('surveillance-rapproche/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('surveillance-rapproche/{patient}', 'ParametresController@SurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
+    Route::get('surveillance-rapproche-details/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
+
+    Route::get('surveillance-details/{patient}', 'ParametresController@IndexSurveillanceScore')->name('surveillance_score.index');
+    Route::post('surveillance-score', 'ParametresController@SurveillanceScoreStore')->name('surveillance_score.store');
 
     Route::post('surveillance-rapproche-parametres', 'ParametresController@SurveillanceRapprocheStore')->name('surveillance_rapproche_param');
 
