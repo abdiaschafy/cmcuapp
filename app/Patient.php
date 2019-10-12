@@ -252,6 +252,11 @@ class Patient extends Model
         return $this->hasMany(SurveillanceRapprocheParametre::class);
     }
 
+    public function surveillance_scores()
+    {
+        return $this->hasMany(SurveillanceScore::class);
+    }
+
     public function getCreatedDateAttribute()
     {
         return $this->created_at->diffForHumans;

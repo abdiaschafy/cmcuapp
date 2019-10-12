@@ -17,10 +17,12 @@
             </a>
             <div class="container">
                 <div class="row">
-                    <button type="button" class="btn btn-primary mb-2 mr-2" title="Surveillance pré-opératoire" data-toggle="modal" data-target="#SurveillancePre" data-whatever="@mdo">
-                        <i class="far fa-plus-square"></i>
-                        PRISE DE PARAMETRES
-                    </button>
+                    @can('infirmier', \App\Patient::class)
+                        <button type="button" class="btn btn-primary mb-2 mr-2" title="Surveillance pré-opératoire" data-toggle="modal" data-target="#SurveillancePre" data-whatever="@mdo">
+                            <i class="far fa-plus-square"></i>
+                            PRISE DE PARAMETRES
+                        </button>
+                    @endcan
                     <div class="col-md-10">
                         <div class="card">
                             <div class="card-body">

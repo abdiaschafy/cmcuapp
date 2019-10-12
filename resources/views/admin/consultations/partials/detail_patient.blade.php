@@ -13,7 +13,7 @@
 </tr>
 <tr>
     <td>
-        <b>FARIS DE CONSULTATION :</b>
+        <b>FRAIS DE CONSULTATION :</b>
     </td>
     <td>{{ $patient->montant }} FCFA</td>
 </tr>

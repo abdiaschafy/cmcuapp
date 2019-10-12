@@ -15,8 +15,8 @@ class CreateSurveillanceRapprocheParametresTable extends Migration
     {
         Schema::create('surveillance_rapproche_parametres', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('user_id')->index();
+            $table->unsignedInteger('patient_id')->index();
             $table->date('date');
             $table->time('heure');
             $table->string('ta');
