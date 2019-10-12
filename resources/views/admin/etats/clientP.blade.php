@@ -86,7 +86,7 @@
             margin-bottom: 20px
         }
         .invoice table td,.invoice table th {
-            padding: 15px;
+            padding: 10px;
             background: #eee;
             border-bottom: 1px solid #fff
         }
