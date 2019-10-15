@@ -44,6 +44,9 @@
 	margin-left: 120px;
 }
 
+.table-sortable tbody tr {
+    cursor: move;
+}
 </style>
     <body>
     <div class="se-pr-con"></div>
@@ -75,11 +78,11 @@
                                 <tr>
                                 <td><b>Devis:</b></td>
                                         <td>
-                                            <select class="form-control" name="devis_p">
+                                            <select class="form-control" name="devis_id">
                                                 <option> Sélectionner un devis</option>
                                                 @foreach ($devis as $devi)
                                                     <option
-                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )
+                                                        value="{{ $devi->id }}" {{old('devis_id', $devi->devis_id) == ($devi->devis_id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -89,372 +92,58 @@
                             </tbody>
                           </table>
                             </div><br>
-
-                            <div class="row">
-                            <div class="col-md-5 col-sm-5 col-xs-9">
-                            <div class="scrolling outer">
-                                <div class="inner">
-                                <table class="table table-striped table-hover table-condensed">
-                                    <tr>
-                                       
-                                    <th><input type="text" placeholder="Element" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element2" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element3" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element4" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element5" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element6" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element7" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element8" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element9" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element10" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element11" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element12" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element13" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element14" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                    <th><input type="text" placeholder="Element15" class="form-control" value=""></th>
-                                    <td><input type="text" placeholder="element1" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix1" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix2" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix3" placeholder="prix3" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element4" class="form-control"  value=""></td>
-                                    <td><input type="text" placeholder="prix4" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix5" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix6" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix7" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix8" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix9" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="element10" class="form-control" value=""></td>
-                                    <td><input type="text" placeholder="prix10" class="form-control" value=""></td>
-                                    </tr>
-                                    <tr>
-                                   
+                            <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                                    <thead>
+                                        <tr >
+                                            <th class="text-center">
+                                                Element
+                                            </th>
+                                            <th class="text-center">
+                                                Produit
+                                            </th>
+                                            <th class="text-center">
+                                                Prix
+                                            </th>
+                                            <th class="text-center">
+                                                Option
+                                            </th>
+                                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id='addr0' data-id="0" class="hidden">
+                                            <td data-name="name">
+                                                <input type="text" name='name0'  placeholder='Element' class="form-control"/>
+                                            </td>
+                                            <td data-name="mail">
+                                                <input type="text" name='mail0' placeholder='Produit' class="form-control"/>
+                                            </td>
+                                            <td data-name="desc">
+                                                <input name="desc0" placeholder="Prix" class="form-control">
+                                            </td>
+                                            
+                                            <td data-name="del">
+                                                <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                                            </td>
+                                        <td data-name="name">
+                                        <a id="add_rows" class="btn btn-success">Add Row</a>
+                                        </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
-                                </div>
                             </div>
-                            </div>
-                        
+                        </div>
+                        <a id="add_row" class="btn btn-primary float-right">Add Row</a>
                         </div>
                         </div>
                         </div>
                             </br>
 
-        <button type="submit" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
+        <button type="submi name="souselements"t" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
             <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
                 </div>
       </form>
@@ -464,6 +153,182 @@
 
 </div>
     @endcan
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $("#add_row").on("click", function() {
+        // Dynamic Rows Code
+      
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        // add delete button and td
+        /*
+        $("<td></td>").append(
+            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
+                .click(function() {
+                    $(this).closest("tr").remove();
+                })
+        ).appendTo($(tr));
+        */
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logic'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+
+
+
+    // Sortable Code
+    var fixHelperModified = function(e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+    
+        $helper.children().each(function(index) {
+            $(this).width($originals.eq(index).width())
+        });
+        
+        return $helper;
+    };
+  
+    $(".table-sortable tbody").sortable({
+        helper: fixHelperModified      
+    }).disableSelection();
+
+    $(".table-sortable thead").disableSelection();
+
+
+
+    $("#add_row").trigger("click");
+});
+    </script>
+
+    <script>
+             $(document).ready(function() {
+    $("#add_rows").on("click", function() {
+        // Dynamic Rows Code
+      
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        // add delete button and td
+        /*
+        $("<td></td>").append(
+            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
+                .click(function() {
+                    $(this).closest("tr").remove();
+                })
+        ).appendTo($(tr));
+        */
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logics'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+
+
+
+    // Sortable Code
+    var fixHelperModified = function(e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+    
+        $helper.children().each(function(index) {
+            $(this).width($originals.eq(index).width())
+        });
+        
+        return $helper;
+    };
+  
+    $(".table-sortable tbody").sortable({
+        helper: fixHelperModified      
+    }).disableSelection();
+
+    $(".table-sortable thead").disableSelection();
+
+
+
+    $("#add_rows").trigger("click");
+});
+    </script>
  </body>
 
 @stop
