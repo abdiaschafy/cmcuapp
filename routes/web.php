@@ -161,9 +161,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
     Route::get('devis/create', 'DevisController@create')->name('devis.create');
+    Route::get('devis/edit/{id}', 'DevisController@edit')->name('devis.edit');
     Route::post('devis', 'DevisController@store')->name('devis.store');
     Route::get('devis', 'DevisController@index')->name('devis.index');
-    Route::get('devis/{id}','DevisController@export_devis')->name('devis.pdf');
+    Route::post('devis/{id}','DevisController@export_devis')->name('devis.pdf');
 
     Route::get('devisimage/', 'DevisImageController@index')->name('devisimage.index');
     Route::get('devisimage/create', 'DevisImageController@create')->name('devisimage.create');

@@ -1,92 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\DevisRequest;
+use App\Http\Requests\DevisUpdateRequest;
 use App\Patient;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
 use App\Devis;
-use App\Consultation;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 
 class DevisController extends Controller
 {
-    public function index(Consultation $consultation)
+    public function index()
     {
        
-        $devis = Devis::orderBy('id', 'asc')->paginate(100);
+        $devis = Devis::paginate(100);
 
         return view('admin.devis.index', compact('devis'));
     }
 
-    public function store(Request $request)
+    public function edit($id)
+    {
+        $devi = Devis::findOrFail($id);
+        $patients = Patient::orderBy('name', 'asc')->get();
+
+        return view('admin.devis.edit', compact('devi', 'patients'));
+    }
+
+
+    public function store(DevisRequest $request)
     {
 
         $this->authorize('create', Patient::class);
 
-
-        $request->validate([
-
-            //orchidectomie bilaterale
-           
-            'nom'=> ['', 'unique:devis'],
-            'qte1'=> '',
-            'qte2'=> '',
-            'qte3'=> '',
-            'qte4'=> '',
-            'qte5'=> '',
-            'qte6'=> '',
-            'qte7'=> '',
-            'qte8'=> '',
-            'qte9'=> '',
-            'qte10'=> '',
-            'qte11'=> '',
-
-            'prix_u'=> '',
-            'prix_u1'=> '',
-            'prix_u2'=> '',
-            'prix_u3'=> '',
-            'prix_u4'=> '',
-            'prix_u5'=> '',
-            'prix_u6'=> '',
-            'prix_u7'=> '',
-            'prix_u8'=> '',
-            'prix_u9'=> '',
-            'prix_u10'=> '',
-
-            'montant'=> '',
-            'montant1'=> '',
-            'montant2'=> '',
-            'montant3'=> '',
-            'montant4'=> '',
-            'montant5'=> '',
-            'montant6'=> '',
-            'montant7'=> '',
-            'montant8'=> '',
-            'montant9'=> '',
-            'montant10'=> '',
-            
-            'elements'=> '',
-            'elements1'=> '',
-            'elements2'=> '',
-            'elements3'=> '',
-            'elements4'=> '',
-            'elements5'=> '',
-            'elements6'=> '',
-            'elements7'=> '',
-            'elements8'=> '',
-            'elements9'=> '',
-            'elements10'=> '',
-            'arreter'=> '',
-            'total1'=> '',
-            'total2'=> '',
-            'total3'=> '',
-
-
-
-        ]);
         $devis = new Devis();
         $devis->nom = $request->get('nom');
         $devis->qte1 = $request->get('qte1');
@@ -163,15 +109,22 @@ class DevisController extends Controller
         return redirect()->route('devis.index')->with('success', 'ajouté avec succès !');
     }
 
-    public function export_devis($id)
+    public function export_devis(Devis $devis, $id)
     {
         $this->authorize('create', Patient::class);
 
         $devis = Devis::find($id);
+        $devis->update([
 
-        $pdf = \PDF::loadView('admin.etats.devis', compact('devis'));
+            'patient_id' => \request('patient_id')
+        ]);
 
-        $pdf->save(storage_path('devis').'.pdf');
+
+
+        $pdf = PDF::loadView('admin.etats.devis', [
+
+            'devis' => $devis,
+        ]);
 
         return $pdf->stream('devis.pdf');
     }
