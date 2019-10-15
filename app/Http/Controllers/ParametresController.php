@@ -7,6 +7,7 @@ use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
 use App\SurveillanceRapprocheParametre;
+use App\SurveillanceScore;
 use Carbon\Carbon;
 use MercurySeries\Flashy\Flashy;
 
@@ -53,6 +54,15 @@ class ParametresController extends Controller
 
             'patient' => $patient,
             'parametres' => Parametre::with('patient')->where('patient_id', '=', $patient->id)->get()
+        ]);
+    }
+
+    public function IndexSurveillanceScore(Patient $patient)
+    {
+        return view('admin.consultations.infirmiers.index_scrore_aptitude', [
+
+            'patient' => $patient,
+            'surveillance_scores' => SurveillanceScore::with('patient')->where('patient_id', $patient->id)->latest()->get()
         ]);
     }
 
@@ -116,6 +126,37 @@ class ParametresController extends Controller
         ]);
 
         Flashy::info('Les paramètres ont été enregistrés');
+
+        return back();
+    }
+
+    public function SurveillanceScoreStore()
+    {
+        SurveillanceScore::create([
+
+            'user_id' => auth()->id(),
+            'patient_id' => request('patient_id'),
+            'horaire' => request('horaire'),
+            'ta' => request('ta'),
+            'fc' => request('fc'),
+            'spo2' => request('spo2'),
+            'fr' => request('fr'),
+            'douleur' => request('douleur'),
+            'temperature' => request('temperature'),
+            'glycemie' => request('glycemie'),
+            'sedation' => request('sedation'),
+            'nausee' => request('nausee'),
+            'vomissement' => request('vomissement'),
+            'saignement' => request('saignement'),
+            'pansement' => request('pansement'),
+            'conscience' => request('conscience'),
+            'drains' => request('drains'),
+            'miction' => request('miction'),
+            'lever' => request('lever'),
+            'score' => request('score'),
+        ]);
+
+        Flashy::info('Votre enregistrement a bien été pris en compte');
 
         return back();
     }

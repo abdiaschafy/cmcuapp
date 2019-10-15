@@ -27,6 +27,12 @@
                 Observations médicales
             </a>
         </li>
+        <li>
+            <a href="{{ route('surveillance_score.index', $patient->id) }}" class="btn btn-success">
+                <i class="far fa-plus-square"></i>
+                Surveillance d'aptitude >= 9/10
+            </a>
+        </li>
     </ul>
 
     <button type="button" class="btn btn-primary mb-1" data-toggle="modal" data-target="#SpostAnesth"
@@ -69,6 +75,12 @@
                     title="Surveillance post anesthésique" data-whatever="@mdo">
                 <i class="far fa-plus-square"></i> Surveillance post anesthésique
             </button>
+        </li>
+        <li>
+            <a href="{{ route('surveillance_score.index', $patient->id) }}" class="btn btn-success">
+                <i class="far fa-plus-square"></i>
+                Surveillance d'aptitude >= 9/10
+            </a>
         </li>
     </ul>
 
@@ -122,6 +134,12 @@
                class="btn btn-primary mb-1">
                 <i class="fas fa-eye"></i>
                 Consultations anesthésiste
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('surveillance_score.index', $patient->id) }}" class="btn btn-success">
+                <i class="far fa-plus-square"></i>
+                Surveillance d'aptitude >= 9/10
             </a>
         </li>
     </ul>

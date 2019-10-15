@@ -161,9 +161,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('fiche/{id}','FichesController@export_pdf')->name('fiche.pdf');
 
     Route::get('devis/create', 'DevisController@create')->name('devis.create');
+    Route::get('devis/edit/{id}', 'DevisController@edit')->name('devis.edit');
     Route::post('devis', 'DevisController@store')->name('devis.store');
     Route::get('devis', 'DevisController@index')->name('devis.index');
-    Route::get('devis/{id}','DevisController@export_devis')->name('devis.pdf');
+    Route::post('devis/{id}','DevisController@export_devis')->name('devis.pdf');
 
     Route::get('devisimage/', 'DevisImageController@index')->name('devisimage.index');
     Route::get('devisimage/create', 'DevisImageController@create')->name('devisimage.create');
@@ -206,6 +207,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('surveillance-rapproche/{patient}', 'ParametresController@SurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
     Route::get('surveillance-rapproche-details/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
+
+    Route::get('surveillance-details/{patient}', 'ParametresController@IndexSurveillanceScore')->name('surveillance_score.index');
+    Route::post('surveillance-score', 'ParametresController@SurveillanceScoreStore')->name('surveillance_score.store');
 
     Route::post('surveillance-rapproche-parametres', 'ParametresController@SurveillanceRapprocheStore')->name('surveillance_rapproche_param');
 

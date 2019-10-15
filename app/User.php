@@ -210,6 +210,11 @@ class User extends Authenticatable
         return $this->hasMany(SurveillanceRapprocheParametre::class);
     }
 
+    public function surveillance_scores()
+    {
+        return $this->hasMany(SurveillanceScore::class);
+    }
+
     public function soins_infirmiers()
     {
         return $this->hasMany(SoinsInfirmier::class);
