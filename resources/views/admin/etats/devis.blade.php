@@ -38,8 +38,10 @@
         <div class="col-7 offset-3">
             <div class="text-center">
                 <p>CENTRE MEDICO-CHIRURGICAL D'UROLOGIE</p>
+                <p>007/10/D/ONMC</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
+{{--                <p><small>Email: <u>cmcu@yahoo.fr / contact@cmcu-cm.com</u></small></p>--}}
                 <p><small>www.cmcu-cm.com</small></p>
             </div>
         </div>
@@ -49,6 +51,9 @@
         <hr class="text-danger">
     </div>
     <div class="row">
+        <div class="col-md-4">
+            <p><small><b>{{ $devis->patient->name }} {{ $devis->patient->prenom }}</b></small></p>
+        </div>
         <div class="col-md-4 offset-8">
             <p><small><b> Douala, {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
         </div>
@@ -309,6 +314,11 @@
     </table>
 
     Arrêté le présent devis à la somme de : {{ $devis->arreter}}
+    <br>
+    <br>
+    <div class="row">
+        <p class="col-md-1 offset-8"><u>LA DIRECTION</u></p>
+    </div>
     <footer class="footer">
         <div class="col-md-12">
             <small>

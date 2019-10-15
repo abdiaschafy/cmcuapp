@@ -44,6 +44,7 @@
                                     <td style="display: inline-flex;">
                                    
                                     @can('create', \App\Patient::class)
+                                            <a href="{{ route('devis.edit', $devi->id) }}" class="btn btn-info mr-1" title="Attribuer le divis à un patient"><i class="far fa-edit"></i></a>
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="{{ route('devis.pdf', $devi->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
@@ -55,8 +56,6 @@
 
                             </tbody>
                         </table>
-                        <div class="clearfix"></div>
-                        {{--{{ $devis->links() }}--}}
                     </div>
                 </div>
             </div>
