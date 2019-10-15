@@ -19,6 +19,34 @@
   float:right;
 }
 
+.scrolling table {
+    table-layout: inherit;
+ *margin-left: -100px;/*ie7*/
+}
+
+.scrolling td, th {
+	vertical-align: top;
+	padding: 10px;
+	min-width: 130px;
+}
+.scrolling th {
+	position: absolute;
+ *position: relative; /*ie7*/
+	left: 0;
+	width: 120px;
+}
+.outer {
+	position: relative
+}
+.inner {
+	overflow-x: auto;
+	overflow-y: visible;
+	margin-left: 120px;
+}
+
+.table-sortable tbody tr {
+    cursor: move;
+}
 </style>
     <body>
     <div class="se-pr-con"></div>
@@ -44,19 +72,17 @@
                         @csrf
                         <div class="row">
                             <div >
-                            
-                            <div class="box-part ">
-                            <div class="form-group ">
-                            <table class="table table-user-information ">
+                            <div class="row">
+                            <table class="col-md-3 col-sm-3 col-xs-9">
                            <tbody>
                                 <tr>
-                                <td><b>Devis prévisionnel :</b></td>
+                                <td><b>Devis:</b></td>
                                         <td>
-                                            <select class="form-control" name="devis_p">
+                                            <select class="form-control" name="devis_id">
                                                 <option> Sélectionner un devis</option>
                                                 @foreach ($devis as $devi)
                                                     <option
-                                                        value="{{ $devi->nom }} &nbsp; ({{ $devi->total3 }} FCFA)" {{old("devis_p") ?: '' ? "selected": ""}}>{{ $devi->nom }} &nbsp;({{ $devi->total3 }} FCFA )
+                                                        value="{{ $devi->id }}" {{old('devis_id', $devi->devis_id) == ($devi->devis_id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -65,310 +91,244 @@
                                 </tr>
                             </tbody>
                           </table>
+                            </div><br>
+                            <div class="container">
+                        <div class="row clearfix">
+                            <div class="col-md-12 table-responsive">
+                                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                                    <thead>
+                                        <tr >
+                                            <th class="text-center">
+                                                Element
+                                            </th>
+                                            <th class="text-center">
+                                                Produit
+                                            </th>
+                                            <th class="text-center">
+                                                Prix
+                                            </th>
+                                            <th class="text-center">
+                                                Option
+                                            </th>
+                                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr id='addr0' data-id="0" class="hidden">
+                                            <td data-name="name">
+                                                <input type="text" name='name0'  placeholder='Element' class="form-control"/>
+                                            </td>
+                                            <td data-name="mail">
+                                                <input type="text" name='mail0' placeholder='Produit' class="form-control"/>
+                                            </td>
+                                            <td data-name="desc">
+                                                <input name="desc0" placeholder="Prix" class="form-control">
+                                            </td>
+                                            
+                                            <td data-name="del">
+                                                <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
+                                            </td>
+                                        <td data-name="name">
+                                        <a id="add_rows" class="btn btn-success">Add Row</a>
+                                        </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="arreter" class="col-form-label text-md-right">MONTANT TOTAL <span class="text-danger"></span></label>
-                                <input name="arreter" class="form-control" value="{{ old('arreter') }}" type="text" placeholder=" (EN LETTRES)" >
-                            </div>
-                            </div>
-                            
                         </div>
-                       
-                        <div class="col-md-12">
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements" class="col-form-label text-md-right">Element 1 <span class="text-danger"></span></label>
-                                    <input name="elements" class="form-control" value="{{ old('elements') }}" type="text" placeholder="element 1" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte1" class="col-form-label text-md-right">Quantité 1<span class="text-danger"></span></label>
-                                <input name="qte1" class="form-control" value="{{ old('qte1') }}" type="text" placeholder="Quantité 1" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u" class="col-form-label text-md-right">Prix Unitaire 1 <span class="text-danger"></span></label>
-                                <input name="prix_u" class="form-control" value="{{ old('prix_u') }}" type="text" placeholder="Prix Unitaire 1" >
-                            </div>
-                            </div>
-                           
+                        <a id="add_row" class="btn btn-primary float-right">Add Row</a>
                         </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements1" class="col-form-label text-md-right">Element 2 <span class="text-danger"></span></label>
-                                    <input name="elements1" class="form-control" value="{{ old('elements1') }}" type="text" placeholder="Element 2" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte2" class="col-form-label text-md-right">Quantité 2<span class="text-danger"></span></label>
-                                <input name="qte2" class="form-control" value="{{ old('qte2') }}" type="text" placeholder="Quantité 2" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u1" class="col-form-label text-md-right">Prix unitaire 2 <span class="text-danger"></span></label>
-                                <input name="prix_u1" class="form-control" value="{{ old('prix_u1') }}" type="text" placeholder="Prix unitaire 2" >
-                            </div>
-                            </div>
-                            
                         </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements2" class="col-form-label text-md-right">Element 3 <span class="text-danger"></span></label>
-                                    <input name="elements2" class="form-control" value="{{ old('elements2') }}" type="text" placeholder="Element 3" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte3" class="col-form-label text-md-right">Quantité 3 <span class="text-danger"></span></label>
-                                <input name="qte3" class="form-control" value="{{ old('qte3') }}" type="text" placeholder="Quantité 3" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u2" class="col-form-label text-md-right">Prix unitaire 3<span class="text-danger"></span></label>
-                                <input name="prix_u2" class="form-control" value="{{ old('prix_u2') }}" type="text" placeholder="Prix unitaire 3" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements3" class="col-form-label text-md-right">Element 4<span class="text-danger"></span></label>
-                                    <input name="elements3" class="form-control" value="{{ old('elements3') }}" type="text" placeholder="Element 4" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte4" class="col-form-label text-md-right">Quantité 4 <span class="text-danger"></span></label>
-                                <input name="qte4" class="form-control" value="{{ old('qte4') }}" type="text" placeholder="Quantité 4" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u3" class="col-form-label text-md-right">Prix unitaire 4<span class="text-danger"></span></label>
-                                <input name="prix_u3" class="form-control" value="{{ old('prix_u3') }}" type="text" placeholder="Prix unitaire 4" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements4" class="col-form-label text-md-right">Element 5<span class="text-danger"></span></label>
-                                    <input name="elements4" class="form-control" value="{{ old('elements4') }}" type="text" placeholder="Element 5" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte5" class="col-form-label text-md-right">Quantité 5 <span class="text-danger"></span></label>
-                                <input name="qte5" class="form-control" value="{{ old('qte5') }}" type="text" placeholder="Quantité 5" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u4" class="col-form-label text-md-right">Prix unitaire 5<span class="text-danger"></span></label>
-                                <input name="prix_u4" class="form-control" value="{{ old('prix_u4') }}" type="text" placeholder="Prix unitaire 5" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <h6 class="btn btn-primary" >HOSPITALISATION </h6>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements5" class="col-form-label text-md-right">Element 6 <span class="text-danger"></span></label>
-                                    <input name="elements5" class="form-control" value="{{ old('elements5') }}" type="text" placeholder="Element 6" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte6" class="col-form-label text-md-right">Quantité 6 <span class="text-danger"></span></label>
-                                <input name="qte6" class="form-control" value="{{ old('qte6') }}" type="text" placeholder="Quantité 6" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u5" class="col-form-label text-md-right">Prix unitaire 6<span class="text-danger"></span></label>
-                                <input name="prix_u5" class="form-control" value="{{ old('prix_u5') }}" type="text" placeholder="Prix unitaire 6" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements6" class="col-form-label text-md-right">Element 7 <span class="text-danger"></span></label>
-                                    <input name="elements6" class="form-control" value="{{ old('elements6') }}" type="text" placeholder="Element 7 " >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte7" class="col-form-label text-md-right">Quantité 7<span class="text-danger"></span></label>
-                                <input name="qte7" class="form-control" value="{{ old('qte7') }}" type="text" placeholder="Quantité 7" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u6" class="col-form-label text-md-right">Prix unitaire 7 <span class="text-danger"></span></label>
-                                <input name="prix_u6" class="form-control" value="{{ old('prix_u6') }}" type="text" placeholder="Prix unitaire 8" >
-                            </div>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements7" class="col-form-label text-md-right">Element 8 <span class="text-danger"></span></label>
-                                    <input name="elements7" class="form-control" value="{{ old('elements7') }}" type="text" placeholder="Element 8 " >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte8" class="col-form-label text-md-right">Quantité 8 <span class="text-danger"></span></label>
-                                <input name="qte8" class="form-control" value="{{ old('qte8') }}" type="text" placeholder="Quantité 8" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u7" class="col-form-label text-md-right">Prix unitaire 8 <span class="text-danger"></span></label>
-                                <input name="prix_u7" class="form-control" value="{{ old('prix_u7') }}" type="text" placeholder="Prix unitaire 8 " >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements8" class="col-form-label text-md-right">Element 9 <span class="text-danger"></span></label>
-                                    <input name="elements8" class="form-control" value="{{ old('elements8') }}" type="text" placeholder="elements8" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte9" class="col-form-label text-md-right">Quantité 9 <span class="text-danger"></span></label>
-                                <input name="qte9" class="form-control" value="{{ old('qte9') }}" type="text" placeholder="Quantité 9 " >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u8" class="col-form-label text-md-right">Prix unitaire 9 <span class="text-danger"></span></label>
-                                <input name="prix_u8" class="form-control" value="{{ old('prix_u8') }}" type="text" placeholder="Prix unitaire 9" >
-                            </div>
-                            </div>
-                           
-                        </div>
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements9" class="col-form-label text-md-right">Element 10 <span class="text-danger"></span></label>
-                                    <input name="elements9" class="form-control" value="{{ old('elements9') }}" type="text" placeholder="Element 10" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte10" class="col-form-label text-md-right">Quantité 10 <span class="text-danger"></span></label>
-                                <input name="qte10" class="form-control" value="{{ old('qte10') }}" type="text" placeholder="Quantité 10" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u9" class="col-form-label text-md-right">Prix unitaire 10 <span class="text-danger"></span></label>
-                                <input name="prix_u9" class="form-control" value="{{ old('prix_u9') }}" type="text" placeholder="Prix unitaire 10" >
-                            </div>
-                            </div>
-                            
-                        </div>
-
-                        <div class="row">
-                            <div >
-                            
-                            <div class="box-part ">
-                                <div class="form-group">
-                                    <label for="elements10" class="col-form-label text-md-right">Element 11 <span class="text-danger"></span></label>
-                                    <input name="elements10" class="form-control" value="{{ old('elements10') }}" type="text" placeholder="Element 11" >
-                                </div>
-                            </div>
-                            
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="qte11" class="col-form-label text-md-right">Quantité 11 <span class="text-danger"></span></label>
-                                <input name="qte11" class="form-control" value="{{ old('qte11') }}" type="text" placeholder="Quantité 11" >
-                            </div>
-                            </div>
-                            <div class="box-a">
-                            <div class="form-group">
-                                <label for="prix_u10" class="col-form-label text-md-right">Prix unitaire 10 <span class="text-danger"></span></label>
-                                <input name="prix_u10" class="form-control" value="{{ old('prix_u10') }}" type="text" placeholder="Prix unitaire 10" >
-                            </div>
-                            </div>
-                            
                         </div>
                             </br>
 
-                            <button type="submit" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
-                            <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
-                        </div>
-                    </form>
+        <button type="submi name="souselements"t" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
+            <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
                 </div>
-            </div>
+      </form>
+       </div>
         </div>
-
     </div>
+
+</div>
     @endcan
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+    $("#add_row").on("click", function() {
+        // Dynamic Rows Code
+      
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        // add delete button and td
+        /*
+        $("<td></td>").append(
+            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
+                .click(function() {
+                    $(this).closest("tr").remove();
+                })
+        ).appendTo($(tr));
+        */
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logic'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+
+
+
+    // Sortable Code
+    var fixHelperModified = function(e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+    
+        $helper.children().each(function(index) {
+            $(this).width($originals.eq(index).width())
+        });
+        
+        return $helper;
+    };
+  
+    $(".table-sortable tbody").sortable({
+        helper: fixHelperModified      
+    }).disableSelection();
+
+    $(".table-sortable thead").disableSelection();
+
+
+
+    $("#add_row").trigger("click");
+});
+    </script>
+
+    <script>
+             $(document).ready(function() {
+    $("#add_rows").on("click", function() {
+        // Dynamic Rows Code
+      
+        // Get max row id and set new id
+        var newid = 0;
+        $.each($("#tab_logic tr"), function() {
+            if (parseInt($(this).data("id")) > newid) {
+                newid = parseInt($(this).data("id"));
+            }
+        });
+        newid++;
+        
+        var tr = $("<tr></tr>", {
+            id: "addr"+newid,
+            "data-id": newid
+        });
+        
+        // loop through each td and create new elements with name of newid
+        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
+            var td;
+            var cur_td = $(this);
+            
+            var children = cur_td.children();
+            
+            // add new td and element if it has a nane
+            if ($(this).data("name") !== undefined) {
+                td = $("<td></td>", {
+                    "data-name": $(cur_td).data("name")
+                });
+                
+                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
+                c.attr("name", $(cur_td).data("name") + newid);
+                c.appendTo($(td));
+                td.appendTo($(tr));
+            } else {
+                td = $("<td></td>", {
+                    'text': $('#tab_logic tr').length
+                }).appendTo($(tr));
+            }
+        });
+        
+        // add delete button and td
+        /*
+        $("<td></td>").append(
+            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
+                .click(function() {
+                    $(this).closest("tr").remove();
+                })
+        ).appendTo($(tr));
+        */
+        
+        // add the new row
+        $(tr).appendTo($('#tab_logics'));
+        
+        $(tr).find("td button.row-remove").on("click", function() {
+             $(this).closest("tr").remove();
+        });
+});
+
+
+
+
+    // Sortable Code
+    var fixHelperModified = function(e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+    
+        $helper.children().each(function(index) {
+            $(this).width($originals.eq(index).width())
+        });
+        
+        return $helper;
+    };
+  
+    $(".table-sortable tbody").sortable({
+        helper: fixHelperModified      
+    }).disableSelection();
+
+    $(".table-sortable thead").disableSelection();
+
+
+
+    $("#add_rows").trigger("click");
+});
+    </script>
+ </body>
 
 @stop
