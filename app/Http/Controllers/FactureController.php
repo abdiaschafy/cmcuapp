@@ -65,9 +65,9 @@ class FactureController extends Controller
         $this->authorize('view', User::class);
         $user = User::where('role_id', '=', 2)->get();
         $facturesClients = FactureClient::with('client')->latest()->get();
-        $clients=Client::all()->get();
+       
 
-        return view('admin.factures.client', compact('facturesClients','clients'));
+        return view('admin.factures.client', compact('facturesClients'));
     }
 
     public function export_consultation($id)
