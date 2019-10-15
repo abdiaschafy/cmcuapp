@@ -65,7 +65,6 @@ class FactureController extends Controller
         $this->authorize('view', User::class);
         $user = User::where('role_id', '=', 2)->get();
         $facturesClients = FactureClient::with('client')->latest()->get();
-       
 
         return view('admin.factures.client', compact('facturesClients'));
     }
