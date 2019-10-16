@@ -145,11 +145,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('/chambres/{chambre}/attribute', 'ChambresController@attribute')->name('chambres.attribute');
 
 
-    Route::get('/factures', 'FactureController@index')->name('factures.index');
-    Route::get('/factures/{facture}', 'FactureController@show')->name('factures.show');
-    Route::delete('/facture', 'FactureController@destroy')->name('factures.destroy');
-    Route::get('/factures-consultation', 'FactureController@FactureConsultation')->name('factures.consultation');
-    Route::get('/factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
+    Route::get('factures', 'FactureController@index')->name('factures.index');
+    Route::get('factures-devis', 'FactureController@FactureDevis')->name('facture_devis.index');
+    Route::get('factures-devis/create', 'FactureController@FactureDevisCreate')->name('facture_devis.create');
+    Route::post('factures-devis', 'FactureController@FactureDevisStore')->name('facture_devis.store');
+    Route::get('factures-devis/{id}', 'FactureController@export_facture_devis')->name('facture_devis.pdf');
+    Route::get('factures/{facture}', 'FactureController@show')->name('factures.show');
+    Route::delete('facture', 'FactureController@destroy')->name('factures.destroy');
+    Route::get('factures-consultation', 'FactureController@FactureConsultation')->name('factures.consultation');
+    Route::get('factures-chambre', 'FactureController@FactureChambre')->name('factures.chambre');
     Route::get('patient-facture/{id}','FactureController@export_consultation')->name('factures.consultation_pdf');
 
     Route::get('factures-client', 'FactureController@FactureClient')->name('factures.client');
@@ -207,6 +211,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('surveillance-rapproche/{patient}', 'ParametresController@SurveillanceRapprocheParametre')->name('surveillance_rapproche.index');
     Route::get('surveillance-rapproche-details/{patient}', 'ParametresController@IndexSurveillanceRapprocheParametre')->name('surveillance_rapproche');
     Route::get('parametres-patients/{patient}', 'ParametresController@IndexParametrePatient')->name('fiche_parametre.index');
+
+    Route::get('prescriptions-medicales/{patient}', 'ParametresController@IndexPrescriptionMedicale')->name('prescription_medicale.index');
+    Route::post('prescriptions-medicales', 'ParametresController@PrescriptionMedicaleStore')->name('prescription_medicale.store');
 
     Route::get('surveillance-details/{patient}', 'ParametresController@IndexSurveillanceScore')->name('surveillance_score.index');
     Route::post('surveillance-score', 'ParametresController@SurveillanceScoreStore')->name('surveillance_score.store');

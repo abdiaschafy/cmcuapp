@@ -6,6 +6,7 @@ use App\FicheIntervention;
 use App\Http\Requests\ParametreRequest;
 use App\Parametre;
 use App\Patient;
+use App\PrescriptionMedicale;
 use App\SurveillanceRapprocheParametre;
 use App\SurveillanceScore;
 use Carbon\Carbon;
@@ -64,6 +65,42 @@ class ParametresController extends Controller
             'patient' => $patient,
             'surveillance_scores' => SurveillanceScore::with('patient')->where('patient_id', $patient->id)->latest()->get()
         ]);
+    }
+
+    public function IndexPrescriptionMedicale(Patient $patient)
+    {
+
+        return view('admin.consultations.infirmiers.index_prescription_medicale', [
+
+            'patient' => $patient,
+            'prescription_medicales' => PrescriptionMedicale::with('patient', 'user')->where('patient_id', $patient->id)->get()
+        ]);
+    }
+
+    public function PrescriptionMedicaleStore()
+    {
+
+        PrescriptionMedicale::create([
+
+            'user_id' => auth()->id(),
+            'patient_id' => request('patient_id'),
+            'allergie' => request('allergie'),
+            'date' => request('date'),
+            'medicament' => request('medicament'),
+            'posologie' => request('posologie'),
+            'voie' => request('voie'),
+            'heure' => request('heure'),
+            'matin' => request('matin'),
+            'apre_midi' => request('apre_midi'),
+            'soir' => request('soir'),
+            'regime' => request('regime'),
+            'consultation_specialise' => request('consultation_specialise'),
+            'protocole' => request('protocole'),
+        ]);
+
+        Flashy::info('Bien enregistré');
+
+        return back();
     }
 
 

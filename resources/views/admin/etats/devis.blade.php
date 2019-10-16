@@ -41,7 +41,6 @@
                 <p>007/10/D/ONMC</p>
                 <p>VALLEE MANGA BELL DOUALA-BALI</p>
                 <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
-{{--                <p><small>Email: <u>cmcu@yahoo.fr / contact@cmcu-cm.com</u></small></p>--}}
                 <p><small>www.cmcu-cm.com</small></p>
             </div>
         </div>

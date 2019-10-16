@@ -68,6 +68,13 @@
                                                                 dossier</a>
                                                         @endcan
                                                         @can('infirmier', \App\Patient::class)
+                                                            <a class="btn btn-dark mr-2"
+                                                               href="{{ route('prescription_medicale.index', $patient->id) }}"
+                                                               title="Prescriptions médicales">
+                                                                <i class="fas fa-book"></i> Prescripttions medicales
+                                                            </a>
+                                                        @endcan
+                                                        @can('infirmier', \App\Patient::class)
                                                             <a class="btn btn-danger"
                                                                href="{{ route('consultations.create', $patient->id) }}"
                                                                title="Nouvelle consultation du patient pour la prise des paramètres">

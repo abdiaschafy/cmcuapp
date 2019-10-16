@@ -172,6 +172,10 @@
                             <i class="far fa-money-bill-alt"></i>
                             Factures clients externes
                         </a>
+                        <a href="{{ route('facture_devis.index') }}">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures devis
+                        </a>
                        
                     </li>
                 </ul>

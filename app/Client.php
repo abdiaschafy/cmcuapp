@@ -60,7 +60,7 @@ class Client extends Model
 
    
 
-    public function facture_client()
+    public function facture_clients()
     {
         return $this->hasMany(FactureClient::class);
     }
