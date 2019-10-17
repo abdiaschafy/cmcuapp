@@ -147,7 +147,7 @@
         <select class="form-control" name="devis_id">
             <option value=""> Sélectionnez un devis</option>
             @foreach ($devis as $devi)
-                <option value="{{ $devi->id }}" {{old('devis_id', $devi->devis_id) == ($devi->devis_id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )</option>
+                <option value="{{ $devi->id }}" {{old('devis_id', $devi->id) == ($devi->id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )</option>
             @endforeach
         </select>
 
