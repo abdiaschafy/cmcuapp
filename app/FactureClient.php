@@ -38,8 +38,7 @@ use Illuminate\Database\Eloquent\Model;
 class FactureClient extends Model
 {
     protected $guarded = [];
-    protected $table = 'facture_clients';
-
+  
     public function client()
     {
         return $this->belongsTo(Client::class);
