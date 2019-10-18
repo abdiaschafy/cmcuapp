@@ -54,12 +54,14 @@
                             </tbody>
                         </table>
                     </div>
+                    @can('infirmier', \App\Patient::class)
                     <button type="button" class="btn btn-primary"
                             data-toggle="modal" data-target="#PrescriptionMedicale"
                             data-whatever="@mdo">
                         <i class="fas fa-eye"></i>
                         Nouveau enregistrement
                     </button>
+                    @endcan
                 </div>
             </div>
     </div>

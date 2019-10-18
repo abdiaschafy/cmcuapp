@@ -230,4 +230,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('imagerie/create/{patient}', 'ImagerieController@create')->name('imageries.create');
     Route::post('imagerie', 'ImagerieController@store')->name('imageries.store');
     Route::get('imagerie_examens/{id}','ImagerieController@export_imageries')->name('imageries_examens.pdf');
+
+    Route::post('active-licence', 'AdminController@ActiveLicence')->name('active_licence_key');
 });

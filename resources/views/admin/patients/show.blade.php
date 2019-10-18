@@ -67,7 +67,7 @@
                                                                class="btn btn-info">Completer le
                                                                 dossier</a>
                                                         @endcan
-                                                        @can('infirmier', \App\Patient::class)
+                                                        @can('med_inf_anes', \App\Patient::class)
                                                             <a class="btn btn-dark mr-2"
                                                                href="{{ route('prescription_medicale.index', $patient->id) }}"
                                                                title="Prescriptions médicales">
