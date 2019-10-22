@@ -3066,7 +3066,7 @@ var Tooltip = function ($$$1) {
         return DATA_KEY;
       }
     }, {
-      key: "Event",
+      key: "Models.Event",
       get: function get() {
         return Event;
       }
@@ -3259,7 +3259,7 @@ var Popover = function ($$$1) {
         return DATA_KEY;
       }
     }, {
-      key: "Event",
+      key: "Models.Event",
       get: function get() {
         return Event;
       }

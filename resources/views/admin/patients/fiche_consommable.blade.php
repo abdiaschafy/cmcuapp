@@ -60,10 +60,10 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th class="text-center" style="width: 30%">CONSOMMABLES</th>
-                                <th class="text-center" style="width: 5%">P</th>
-                                <th class="text-center" style="width: 5%">G</th>
-                                <th class="text-center" style="width: 5%">DATE</th>
+                                <th class="text-center" style="width: 90%">CONSOMMABLES</th>
+                                <th class="text-center" style="width: 10%">P</th>
+                                <th class="text-center" style="width: 10%">G</th>
+                                <th class="text-center" style="width: 10%">DATE</th>
 
                             </tr>
                             </thead>
@@ -73,7 +73,7 @@
                                 {{ Form::hidden('patient_id', $patient->id, ['']) }}
                                 {{ Form::hidden('user_id', $user_id, ['']) }}
                                 <tr>
-                                    <td>{{ Form::search('consommable', null, ['class' => 'form-control col-md-8 typeahead tt-query', 'spellcheck' => 'false', 'autocomplete' => 'off', 'id' => 'search', 'required' => 'required']) }}</td>
+                                    <td>{{ Form::search('consommable', null, ['class' => 'form-control col-md-10 typeahead tt-query', 'spellcheck' => 'false', 'autocomplete' => 'off', 'id' => 'search', 'required' => 'required']) }}</td>
                                     <td>{{ Form::number('jour', null, ['class' => 'form-control', 'min' => 0]) }}</td>
                                     <td>{{ Form::number('nuit', null, ['class' => 'form-control', 'min' => 0]) }}</td>
                                     <td>{{ Form::date('date', null, ['class' => 'form-control', 'required' => 'required']) }}</td>
@@ -87,6 +87,7 @@
                                 <td class="table-active">P</td>
                                 <td class="table-active">G</td>
                                 <td class="table-active">DATE</td>
+                                <td class="table-active">IDE</td>
                             </tr>
                             @foreach($consommables as $consommable)
                             <tr>
@@ -94,6 +95,7 @@
                                 <td>{{ $consommable->jour }}</td>
                                 <td>{{ $consommable->nuit }}</td>
                                 <td>{{ $consommable->date }}</td>
+                                <td>{{ $consommable->user->name }}</td>
                             </tr>
                             @endforeach
                             </tbody>

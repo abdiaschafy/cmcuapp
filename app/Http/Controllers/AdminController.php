@@ -23,6 +23,11 @@ class AdminController extends Controller
         $patients = Patient::count();
         $consultation = Consultation::with('user')->where('user_id', '=', \auth()->id())->get();
         $events = Event::with('patients', 'user')->where('user_id', '=', \auth()->id())->get();
+        $license = rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999);
+        
+        for ($i=0; $i < 1000000; $i++) { 
+           
+        }
 
         return view('admin.dashboard', compact('produits', 'users', 'patients', 'events', 'consultation'));
     }
@@ -50,9 +55,9 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
-//    function phpans_license(){
-//        $license = rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999);
-//        return $license;
-//    }
+    function phpans_license(){
+        $license = rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999) . '-' . rand(1000,9999);
+        return $license;
+    }
 
 }
