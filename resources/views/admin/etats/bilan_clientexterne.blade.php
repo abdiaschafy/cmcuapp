@@ -41,9 +41,9 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th>ID</th>
                 <th>CLIENT</th>
                 <th>MONTANT</th>
+                <th>MOTIF</th>
                 <th>AVANCE</th>
                 <th>RESTE</th>
                 <th>PART PATIENT</th>
@@ -56,9 +56,9 @@
             <tbody>
             @foreach($factures as $facture)
             <tr>
-                <td>{{ $facture->id }}</td>
                 <td><small>{{ $facture->client->nom }} {{ $facture->client->prenom }}</small></td>
                 <td><small>{{ $facture->montant }}</small></td>
+                <td><small>{{ $facture->motif }}</small></td>
                 <td><small>{{ $facture->avance }}</small></td>
                 <td><small>{{ $facture->reste }}</small></td>
                 <td><small>{{ $facture->partpatient }}</small></td>

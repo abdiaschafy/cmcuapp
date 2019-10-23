@@ -27,7 +27,7 @@ class PatientsController extends Controller
     public function index()
     {
         $this->authorize('update', Patient::class);
-        $patients = Patient::with('user')->latest()->paginate(100);
+        $patients = Patient::with('user')->latest()->get();
         return view('admin.patients.index', compact('patients'));
 
     }
