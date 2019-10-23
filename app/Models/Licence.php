@@ -13,4 +13,9 @@ class Licence extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function cle_activations()
+    {
+        $this->hasMany(CleActivation::class);
+    }
 }

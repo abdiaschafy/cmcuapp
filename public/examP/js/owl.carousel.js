@@ -750,7 +750,7 @@
 	 * @todo Horizontal swipe threshold as option
 	 * @todo #261
 	 * @protected
-	 * @param {Event} event - The event arguments.
+	 * @param {Models.Event} event - The event arguments.
 	 */
 	Owl.prototype.onDragStart = function(event) {
 		var stage = null;
@@ -812,7 +812,7 @@
 	 * Handles the `touchmove` and `mousemove` events.
 	 * @todo #261
 	 * @protected
-	 * @param {Event} event - The event arguments.
+	 * @param {Models.Event} event - The event arguments.
 	 */
 	Owl.prototype.onDragMove = function(event) {
 		var minimum = null,
@@ -848,7 +848,7 @@
 	 * @todo #261
 	 * @todo Threshold for click event
 	 * @protected
-	 * @param {Event} event - The event arguments.
+	 * @param {Models.Event} event - The event arguments.
 	 */
 	Owl.prototype.onDragEnd = function(event) {
 		var delta = this.difference(this._drag.pointer, this.pointer(event)),
@@ -1295,7 +1295,7 @@
 	/**
 	 * Handles the end of an animation.
 	 * @protected
-	 * @param {Event} event - The event arguments.
+	 * @param {Models.Event} event - The event arguments.
 	 */
 	Owl.prototype.onTransitionEnd = function(event) {
 
@@ -1540,7 +1540,7 @@
 	 * @param {String} [namespace=carousel] - The event namespace.
 	 * @param {String} [state] - The state which is associated with the event.
 	 * @param {Boolean} [enter=false] - Indicates if the call enters the specified state or not.
-	 * @returns {Event} - The event arguments.
+	 * @returns {Models.Event} - The event arguments.
 	 */
 	Owl.prototype.trigger = function(name, data, namespace, state, enter) {
 		var status = {
@@ -1655,7 +1655,7 @@
 	 * Gets unified pointer coordinates from event.
 	 * @todo #261
 	 * @protected
-	 * @param {Event} - The `mousedown` or `touchstart` event.
+	 * @param {Models.Event} - The `mousedown` or `touchstart` event.
 	 * @returns {Object} - Contains `x` and `y` coordinates of current pointer position.
 	 */
 	Owl.prototype.pointer = function(event) {
@@ -2372,7 +2372,7 @@
 	/**
 	 * Starts the current video.
 	 * @public
-	 * @param {Event} event - The event arguments.
+	 * @param {Models.Event} event - The event arguments.
 	 */
 	Video.prototype.play = function(event) {
 		var target = $(event.target),
@@ -3119,7 +3119,7 @@
 	/**
 	 * Extends event data.
 	 * @protected
-	 * @param {Event} event - The event object which gets thrown.
+	 * @param {Models.Event} event - The event object which gets thrown.
 	 */
 	Navigation.prototype.onTrigger = function(event) {
 		var settings = this._core.settings;

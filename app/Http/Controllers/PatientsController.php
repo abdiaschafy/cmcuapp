@@ -253,7 +253,7 @@ class PatientsController extends Controller
     {
 
         return view('admin.patients.fiche_consommable', [
-            'Produits' => Produit::all(),
+            'produits' => Produit::all(),
             'consommable' => $consommable,
             'consommables' => FicheConsommable::with('patient')->where('patient_id', '=', $patient->id)->get(),
             'patient' => $patient,
@@ -274,7 +274,7 @@ class PatientsController extends Controller
         return response()->json($results);
     }
 
-    public function FcheConsommableStore(Request $request, Produit $produit)
+    public function FcheConsommableStore(Request $request)
     {
 
         FicheConsommable::create([
@@ -301,7 +301,7 @@ class PatientsController extends Controller
             }
         }
 
-        \Flashy::info('La liste des produit a été mis à jour');
+        \Flashy::info('La liste des consommables a été mis à jour');
         return back();
     }
 

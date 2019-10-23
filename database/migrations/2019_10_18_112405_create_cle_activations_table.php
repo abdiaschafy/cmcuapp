@@ -15,7 +15,10 @@ class CreateCleActivationsTable extends Migration
     {
         Schema::create('cle_activations', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->unsignedInteger('licence_id')->index()->nullable();
+            $table->string('secret');
+            $table->integer('type');
+            $table->boolean('statut');
         });
     }
 
