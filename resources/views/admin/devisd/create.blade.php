@@ -11,6 +11,9 @@
   margin: 10px 0px;
   
 }
+
+
+
 .box-a {
   background: #FFF;
   border-radius: 0;
@@ -46,6 +49,50 @@
 
 .table-sortable tbody tr {
     cursor: move;
+}
+
+.form-container{
+  padding:10px;
+  padding-bottom:25px;
+  margin:0 auto;
+  margin-top:20px;
+  width:50%;
+  border-radius:20px;
+  background-color: #ececec;
+}
+
+.add-one{
+  color:green;
+  text-align:center;
+  font-weigth:bolder;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.delete{
+  color:white;
+  background-color:rgb(231, 76, 60);
+  text-align:center;
+  margin-top:6px;
+  font-weight:700;
+  border-radius:5px;
+  min-width:20px;
+  cursor:pointer;
+}
+
+#singlebutton{
+  width:100%;
+  margin-top:20px;
+}
+
+.title{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:40px;
+}
+
+.dynamic-element{
+  margin-bottom:0px;
 }
 </style>
     <body>
@@ -124,20 +171,28 @@
                                             </td>
                                             <td data-name="desc">
                                                 <input name="desc0" placeholder="Prix" class="form-control">
+                                               
                                             </td>
                                             
                                             <td data-name="del">
                                                 <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
                                             </td>
-                                        <td data-name="name">
-                                        <a id="add_rows" class="btn btn-success">Add Row</a>
-                                        </td>
+                                            
                                         </tr>
                                     </tbody>
+                                   <tbody>
+                                   <tr id='profesor' class="hidden">
+                                   <div class="dynamic-stuff">
+                                                            
+                                    </div>
+
+                                    </tr>
+                                   </tbody>
                                 </table>
                             </div>
                         </div>
-                        <a id="add_row" class="btn btn-primary float-right">Add Row</a>
+                        <a id="add_row" class="btn btn-primary float-right">Add Row</a><br>
+                        <a id="profesor" class="btn btn-success add-one float-left">Ajouter</a>
                         </div>
                         </div>
                         </div>
@@ -152,6 +207,8 @@
     </div>
 
 </div>
+
+
     @endcan
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>
@@ -235,100 +292,53 @@
     }).disableSelection();
 
     $(".table-sortable thead").disableSelection();
-
-
-
+   ///iciciii
     $("#add_row").trigger("click");
 });
-    </script>
 
-    <script>
-             $(document).ready(function() {
-    $("#add_rows").on("click", function() {
-        // Dynamic Rows Code
-      
-        // Get max row id and set new id
-        var newid = 0;
-        $.each($("#tab_logic tr"), function() {
-            if (parseInt($(this).data("id")) > newid) {
-                newid = parseInt($(this).data("id"));
-            }
-        });
-        newid++;
-        
-        var tr = $("<tr></tr>", {
-            id: "addr"+newid,
-            "data-id": newid
-        });
-        
-        // loop through each td and create new elements with name of newid
-        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
-            var td;
-            var cur_td = $(this);
-            
-            var children = cur_td.children();
-            
-            // add new td and element if it has a nane
-            if ($(this).data("name") !== undefined) {
-                td = $("<td></td>", {
-                    "data-name": $(cur_td).data("name")
-                });
-                
-                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
-                c.attr("name", $(cur_td).data("name") + newid);
-                c.appendTo($(td));
-                td.appendTo($(tr));
-            } else {
-                td = $("<td></td>", {
-                    'text': $('#tab_logic tr').length
-                }).appendTo($(tr));
-            }
-        });
-        
-        // add delete button and td
-        /*
-        $("<td></td>").append(
-            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
-                .click(function() {
-                    $(this).closest("tr").remove();
-                })
-        ).appendTo($(tr));
-        */
-        
-        // add the new row
-        $(tr).appendTo($('#tab_logics'));
-        
-        $(tr).find("td button.row-remove").on("click", function() {
-             $(this).closest("tr").remove();
-        });
+      //Clone the hidden element and shows it
+      $('.add-one').click(function(){
+  $('.dynamic-element').first().clone().appendTo('.dynamic-stuff').show();
+  attach_delete();
 });
 
 
-
-
-    // Sortable Code
-    var fixHelperModified = function(e, tr) {
-        var $originals = tr.children();
-        var $helper = tr.clone();
+//Attach functionality to delete buttons
+function attach_delete(){
+  $('.delete').off();
+  $('.delete').click(function(){
+    console.log("click");
+    $(this).closest('.form-group').remove();
+  });
+}
+    </script>
+   
+<!-- HIDDEN DYNAMIC ELEMENT TO CLONE -->
+<!-- you can replace it with any other elements -->
+<div class="form-group dynamic-element" style="display:none">
+  <div class="row">
+  <div class="col-md-2"></div>
     
-        $helper.children().each(function(index) {
-            $(this).width($originals.eq(index).width())
-        });
-        
-        return $helper;
-    };
-  
-    $(".table-sortable tbody").sortable({
-        helper: fixHelperModified      
-    }).disableSelection();
+  <!-- Replace these fields -->
+  <div class="col-md-4">
+  <td>
+    <input type="text" id="profesor" name='profesor[]' placeholder='Produit' class="form-control"/>
+   </td>
+  </div>
+  <div class="col-md-3">
+  <td>
+    <input type="text" id="rol" name='rol[]' placeholder='Prix' class="form-control"/>
+   </td>
+  </div>
+    <!-- End of fields-->
+    <div class="col-md-1">
+      <p class="delete">x</p>
+    </div>
+  </div>
+</div>
+<!-- END OF HIDDEN ELEMENT -->
 
-    $(".table-sortable thead").disableSelection();
 
-
-
-    $("#add_rows").trigger("click");
-});
-    </script>
  </body>
 
 @stop
