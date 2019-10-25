@@ -8,9 +8,7 @@ use App\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\image;
-use App\Consultation;
 use App\User;
-use Barryvdh\DomPDF\Facade as PDF;
 
 
 

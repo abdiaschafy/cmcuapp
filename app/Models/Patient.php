@@ -188,6 +188,16 @@ class Patient extends Model
         return $this->hasMany(FicheIntervention::class);
     }
 
+    public function facture_devis()
+    {
+        return $this->hasMany(FactureDevi::class);
+    }
+
+    public function prescription_medicales()
+    {
+        return $this->hasMany(PrescriptionMedicale::class);
+    }
+
     public function visite_preanesthesiques()
     {
         return $this->hasMany(VisitePreanesthesique::class);

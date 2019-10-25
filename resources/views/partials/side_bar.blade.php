@@ -2,11 +2,11 @@
 <nav id="sidebar">
     <div class="sidebar-header">
         <h1>
-            <a href="#">{{ config('app.name') }}</a>
+{{--            <a href="#">{{ config('app.name') }}</a>--}}
         </h1>
         <span>M</span>
     </div>
-    <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg img-fluid">
+    <img src="{{ asset('admin/images/licence_image.jpg') }}" class="profile-bg img-fluid" style="width: 100%">
     <ul class="list-unstyled components">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">
@@ -171,6 +171,10 @@
                         <a href="{{ route('factures.client') }}">
                             <i class="far fa-money-bill-alt"></i>
                             Factures clients externes
+                        </a>
+                        <a href="{{ route('facture_devis.index') }}">
+                            <i class="far fa-money-bill-alt"></i>
+                            Factures devis
                         </a>
                        
                     </li>

@@ -30,7 +30,34 @@
 
 
 </head>
+<div id="myModal" data-backdrop="static" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <img src="{{ asset('admin/images/licence_image.jpg') }}" class="offset-4">
+            </div>
+            <div class="modal-body">
+                @include('partials.flash_form')
+                <h1 class="text-center text-danger">VOTRE LICENCE A EXPIRE</h1>
+                <br>
+                <br>
+                <form action="{{ route('active_licence_key') }}" method="POST" class="form-group">
+                    @csrf
+                    <label for=""><b>Veuillez saisir la clé de licence reçu par mail ici</b></label>
+                    <textarea name="license_key" cols="30" rows="5" class="form-control" required></textarea>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success"><i class="fas fa-check text-danger"></i> Valider</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 @yield('content')
 
 
@@ -116,6 +143,18 @@
         });
     });
 </script>
+
+@php
+    $licence = \App\Licence::where('client', 'cmcuapp')->first();
+@endphp
+
+@if ($licence->expire_date <= \Carbon\Carbon::now())
+    <script type="text/javascript">
+        $(window).on('load',function(){
+            $('#myModal').modal('show');
+        });
+    </script>
+@endif
 
 @include('flashy::message')
 

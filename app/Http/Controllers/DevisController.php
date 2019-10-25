@@ -109,7 +109,7 @@ class DevisController extends Controller
         return redirect()->route('devis.index')->with('success', 'ajouté avec succès !');
     }
 
-    public function export_devis(Devis $devis, $id)
+    public function export_devis($id)
     {
         $this->authorize('create', Patient::class);
 

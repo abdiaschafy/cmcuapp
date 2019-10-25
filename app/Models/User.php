@@ -224,6 +224,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Prescription::class);
     }
+
+    public function facture_devis()
+    {
+        return $this->hasMany(FactureDevi::class);
+    }
+
+    public function prescription_medicales()
+    {
+        return $this->hasMany(PrescriptionMedicale::class);
+    }
+
+
     public function isAdmin()
     {
         return Auth::user()->role_id === 1;

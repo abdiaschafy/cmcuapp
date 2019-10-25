@@ -18,6 +18,10 @@
                 <hr>
                 @include('partials.flash_form')
 
+                <a href="{{ route('devis.index') }}" class="btn btn-success float-right mb-2"
+                   title="Retour à la liste des patients">
+                    <i class="fas fa-arrow-left"></i> Retour à la liste des devis
+                </a>
                 <div class="card" style="width: 60rem;">
                     <div class="card-body">
                         <h5 class="card-title"><b>{{ $devi->nom }}</b></h5>
@@ -29,7 +33,7 @@
 
                             <div class="form-group">
                                 <label for="nom" class="col-form-label text-md-right"><b>NOM DU PATIENT</b> <span class="text-danger">*</span></label>
-                                <select name="patient_id" id="patient_id" class="form-control">
+                                <select name="patient_id" id="patient_id" class="form-control" required>
                                     <option value="">Nom du patient</option>
                                     @foreach ($patients as $patient)
                                         <option value="{{ $patient->id }}">{{ $patient->name }} {{ $patient->prenom }}</option>
