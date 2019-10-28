@@ -70,14 +70,21 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Imprimer bilan
-                            <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="{{ route('bilan_consultation.pdf') }}" class="btn btn-success mb-1"><i class="fas fa-print"></i> Quotidien</a></li>
-                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Hebdomadaire</a></li>
-                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Mensuel</a></li>
-                            <li><a href="#" class="btn btn-success mb-1"><i class="fas fa-print"></i> Annuel</a></li>
-                        </ul>
+
+                        <form class="form-group col-md-4" method="POST" action="{{ route('bilan_consultation.pdf') }}">
+                            @csrf
+                          <div class="input-group mb-3">
+                            <select name="day" class="form-control" required>
+                                <option>Bien vouloir choisir une date</option>
+                                @foreach($lists as $list)
+                                    <option value="{{ $list }}">{{ $list }}</option>
+                                @endforeach
+                            </select>
+                            <div class="input-group-append">
+                              <button class="btn btn-primary">Imprimer</button>
+                            </div>
+                          </div>
+                        </form>
                         {{--{{ $factures->links() }}--}}
                     </div>
                 </div>

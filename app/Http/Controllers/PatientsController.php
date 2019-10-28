@@ -201,7 +201,8 @@ class PatientsController extends Controller
 
         $pdf = PDF::loadView('admin.etats.lettre', [
             'patient' => $patient,
-            'consultations' => Consultation::latest()->first()
+            'consultations' => Consultation::where('patient_id', $patient->id)->latest()->first(),
+            'dossiers' => $patient->dossiers()->latest()->first(),
         ]);
 
         return $pdf->stream('lettre-sortie.pdf');

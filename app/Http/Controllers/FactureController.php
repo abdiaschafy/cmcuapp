@@ -17,6 +17,7 @@ use Dompdf\Dompdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Image;
 
 class FactureController extends Controller
 {
@@ -48,28 +49,69 @@ class FactureController extends Controller
     public function FactureConsultation(Patient $patient,User $user)
     {
         $this->authorize('view', User::class);
+        $month = Carbon::now()->month;
+        $year = Carbon::now()->year;
+
+        $start_date = "01-".$month."-".$year;
+        $start_time = strtotime($start_date);
+
+        $end_time = strtotime("+1 month", $start_time);
+
+        for($i=$start_time; $i<$end_time; $i+=86400)
+        {
+           $lists[] = date('Y-m-d', $i);
+        }
+
         $user = User::where('role_id', '=', 2)->get();
         $factureConsultations = FactureConsultation::with('patient','user')->latest()->get();
        
 
-        return view('admin.factures.consultation', compact('factureConsultations'));
+        return view('admin.factures.consultation', compact('factureConsultations', 'lists'));
     }
 
     public function FactureChambre(Patient $patient)
     {
         $this->authorize('view', User::class);
+
+        $month = Carbon::now()->month;
+        $year = Carbon::now()->year;
+
+        $start_date = "01-".$month."-".$year;
+        $start_time = strtotime($start_date);
+
+        $end_time = strtotime("+1 month", $start_time);
+
+        for($i=$start_time; $i<$end_time; $i+=86400)
+        {
+           $lists[] = date('Y-m-d', $i);
+        }
+
         $factureChambres = FactureChambre::with('patient')->get();
 
-        return view('admin.factures.chambre', compact('factureChambres'));
+        return view('admin.factures.chambre', compact('factureChambres', 'lists'));
     }
 
     public function FactureClient(Patient $patient)
     {
         $this->authorize('view', User::class);
+
+        $month = Carbon::now()->month;
+        $year = Carbon::now()->year;
+
+        $start_date = "01-".$month."-".$year;
+        $start_time = strtotime($start_date);
+
+        $end_time = strtotime("+1 month", $start_time);
+
+        for($i=$start_time; $i<$end_time; $i+=86400)
+        {
+           $lists[] = date('Y-m-d', $i);
+        }
+
         $user = User::where('role_id', '=', 2)->get();
         $facturesClients = FactureClient::with('client')->latest()->get();
 
-        return view('admin.factures.client', compact('facturesClients'));
+        return view('admin.factures.client', compact('facturesClients', 'lists'));
     }
 
     public function FactureDevis()
@@ -152,6 +194,7 @@ class FactureController extends Controller
         $this->authorize('update', Patient::class);
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
+        $img = Image::make(public_path('admin/images/logo.jpg'));
 
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
@@ -184,15 +227,15 @@ class FactureController extends Controller
     public function export_bilan_consultation()
     {
 
-        $date_today = Carbon::today()->toDateString();
 
-        $factures = FactureConsultation::with('patient')->where('date_insertion', '=', $date_today)->get();
+        $factures = FactureConsultation::with('patient')->where('date_insertion', '=', \request('day'))->get();
 
-        $tautaux = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('montant');
-        $avances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('avance');
-        $restes = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('reste');
-        $assurances = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurancec');
-        $patients = DB::table('facture_consultations')->where('date_insertion', '=', $date_today)->sum('assurec');
+
+        $tautaux = DB::table('facture_consultations')->where('date_insertion', '=', \request('day'))->sum('montant');
+        $avances = DB::table('facture_consultations')->where('date_insertion', '=', \request('day'))->sum('avance');
+        $restes = DB::table('facture_consultations')->where('date_insertion', '=', \request('day'))->sum('reste');
+        $assurances = DB::table('facture_consultations')->where('date_insertion', '=', \request('day'))->sum('assurancec');
+        $patients = DB::table('facture_consultations')->where('date_insertion', '=', \request('day'))->sum('assurec');
 
 
 
@@ -202,7 +245,6 @@ class FactureController extends Controller
             'avances' => $avances,
             'restes' => $restes,
             'assurances' => $assurances,
-            'date_today' => $date_today,
             'patients' => $patients,
         ]);
 
@@ -214,15 +256,14 @@ class FactureController extends Controller
     public function export_bilan_clientexterne()
     {
 
-        $date_today = Carbon::today()->toDateString();
 
-        $factures = FactureClient::with('client')->where('date_insertion', '=', $date_today)->get();
+        $factures = FactureClient::with('client')->where('date_insertion', '=', \request('day'))->get();
 
-        $tautaux = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('montant');
-        $avances = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('avance');
-        $restes = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('reste');
-        $assurances = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('partassurance');
-        $clients = DB::table('facture_clients')->where('date_insertion', '=', $date_today)->sum('partpatient');
+        $tautaux = DB::table('facture_clients')->where('date_insertion', '=', \request('day'))->sum('montant');
+        $avances = DB::table('facture_clients')->where('date_insertion', '=', \request('day'))->sum('avance');
+        $restes = DB::table('facture_clients')->where('date_insertion', '=', \request('day'))->sum('reste');
+        $assurances = DB::table('facture_clients')->where('date_insertion', '=', \request('day'))->sum('partassurance');
+        $clients = DB::table('facture_clients')->where('date_insertion', '=', \request('day'))->sum('partpatient');
 
 
 
@@ -232,7 +273,6 @@ class FactureController extends Controller
             'avances' => $avances,
             'restes' => $restes,
             'assurances' => $assurances,
-            'date_today' => $date_today,
             'clients' => $clients,
         ]);
 

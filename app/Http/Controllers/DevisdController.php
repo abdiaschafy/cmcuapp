@@ -8,8 +8,7 @@ use App\Patient;
 use\App\Devis;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Session;
+use yii\widgets\ActiveForm;
 
 class DevisdController extends Controller
 {

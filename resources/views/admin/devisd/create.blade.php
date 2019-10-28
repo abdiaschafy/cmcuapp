@@ -1,344 +1,115 @@
 @extends('layouts.admin')
-
 @section('title', 'CMCU | Ajouter un devis')
-
 @section('content')
-<style>
-.box-part {
-  background: #FFF;
-  border-radius: 0;
-  padding: 20px 6px;
-  margin: 10px 0px;
-  
-}
+<body>
+   <div class="se-pr-con"></div>
+   <div class="wrapper">
+      @include('partials.side_bar')
+      <!-- Page Content Holder -->
+      @include('partials.header')
+      <!--// top-bar -->
+      @can('devis', \App\User::class)
+      <div class="container">
+         <h1 class="text-center">AJOUTER UN DEVIS DETAILLE</h1>
+         <hr>
+         @include('partials.flash_form')
 
 
+          <div class="table-responsive">
+              <form method="post" id="dynamic_form" action="">
+                  @csrf
+                  <table class="table table-bordered table-striped">
+                      <thead>
+                      <tr>
+                          <th>
+                              Désignation
+                              <button type="button" name="add_first" id="add_first" class="btn btn-success float-right">
+                                  <i class="far fa-plus-square"></i>
+                              </button>
+                          </th>
+                          <th colspan="3"></th>
+                      </tr>
+                      </thead>
+                      <tbody>
 
-.box-a {
-  background: #FFF;
-  border-radius: 0;
-  padding: 20px 6px;
-  margin: 10px 0px;
-  float:right;
-}
+                      </tbody>
+                      <tfoot>
+                      <tr>
+                          <td colspan="2" align="right">&nbsp;</td>
+                          <td colspan="1" align="right">&nbsp;</td>
+                          <td>
+                              <input type="submit" name="save" id="save" class="btn btn-primary" value="Enregistrer" />
+                          </td>
+                      </tr>
+                      </tfoot>
+                  </table>
+{{--                  <input name="patient_id" value="{{ $patient->id }}" type="hidden">--}}
+              </form>
+          </div>
 
-.scrolling table {
-    table-layout: inherit;
- *margin-left: -100px;/*ie7*/
-}
+      </div>
+   </div>
+   @endcan
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
-.scrolling td, th {
-	vertical-align: top;
-	padding: 10px;
-	min-width: 130px;
-}
-.scrolling th {
-	position: absolute;
- *position: relative; /*ie7*/
-	left: 0;
-	width: 120px;
-}
-.outer {
-	position: relative
-}
-.inner {
-	overflow-x: auto;
-	overflow-y: visible;
-	margin-left: 120px;
-}
+   <script>
+       $(document).ready(function(){
 
-.table-sortable tbody tr {
-    cursor: move;
-}
+           var count = 1;
 
-.form-container{
-  padding:10px;
-  padding-bottom:25px;
-  margin:0 auto;
-  margin-top:20px;
-  width:50%;
-  border-radius:20px;
-  background-color: #ececec;
-}
+           dynamic_field(count);
 
-.add-one{
-  color:green;
-  text-align:center;
-  font-weigth:bolder;
-  cursor:pointer;
-  margin-top:10px;
-}
+           function dynamic_field(number)
+           {
+               html = '<tr>';
+               html += '' +
+                   '<td>' +
+                   '<input id="0" type="text" name="medicament[]" class="form-control" />' +
+                   '</td>'
+               ;
+               html += '' +
+                   '<td>' +
+                   '<label for="1">Désignation :</label>' +
+                   '<input id="1" type="text" name="designation[]" class="form-control" />' +
+                   '</td>'
+               ;
+               html += '' +
+                   '<td>' +
+                   '<label for="3">prix :</label>' +
+                   '<input id="3" type="number" name="prix[]" min="0" class="form-control" />' +
+                   '</td>'
+               ;
 
-.delete{
-  color:white;
-  background-color:rgb(231, 76, 60);
-  text-align:center;
-  margin-top:6px;
-  font-weight:700;
-  border-radius:5px;
-  min-width:20px;
-  cursor:pointer;
-}
+               tfoot = '<tfoot>';
+               tfoot = '';
+               if(number > 1)
+               {
+                   html += '<td><button type="button" name="remove" id="" class="btn btn-danger remove"><i class="fas fa-minus"></i></button></td></tr>';
+                   $('tbody').append(html);
+               }
+               else
+               {
+                   html += '<td><button type="button" name="add" id="add" class="btn btn-success"><i class="far fa-plus-square"></i></button></td></tr>';
+                   $('tbody').html(html);
+               }
+           }
 
-#singlebutton{
-  width:100%;
-  margin-top:20px;
-}
+           $(document).on('click', '#add', function(){
+               count++;
+               dynamic_field(count);
+           });
 
-.title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:40px;
-}
+           $(document).on('click', '#add_first', function(){
+               count++;
+               dynamic_field(count);
+           });
 
-.dynamic-element{
-  margin-bottom:0px;
-}
-</style>
-    <body>
-    <div class="se-pr-con"></div>
-    <div class="wrapper">
-    @include('partials.side_bar')
+           $(document).on('click', '.remove', function(){
+               count--;
+               $(this).closest("tr").remove();
+           });
 
-    <!-- Page Content Holder -->
-    @include('partials.header')
-    <!--// top-bar -->
-    
-    @can('devis', \App\User::class)
-        <div class="container">
-            <h1 class="text-center">AJOUTER UN DEVIS DETAILLE</h1>
-            <hr>
-            @include('partials.flash_form')
-
-            <div class="card" style="width: 60rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Ajouter un devis détaillé</h5>
-                    <small class="text-info" title="Les champs marqués par une étoile rouge sont obligatoire"><i class="fas fa-info-circle"></i></small>
-                    <hr>
-                    <form class="form-group col-md-12" action="{{ route('devisd.store') }}" method="POST">
-                        @csrf
-                        <div class="row">
-                            <div >
-                            <div class="row">
-                            <table class="col-md-3 col-sm-3 col-xs-9">
-                           <tbody>
-                                <tr>
-                                <td><b>Devis:</b></td>
-                                        <td>
-                                            <select class="form-control" name="devis_id">
-                                                <option> Sélectionner un devis</option>
-                                                @foreach ($devis as $devi)
-                                                    <option
-                                                        value="{{ $devi->id }}" {{old('devis_id', $devi->devis_id) == ($devi->devis_id) ? 'selected' : ''}}>{{ $devi->nom }} ({{ $devi->total3 }} FCFA )
-                                                    </option>
-                                                @endforeach
-                                            </select>
-
-                                        </td>
-                                </tr>
-                            </tbody>
-                          </table>
-                            </div><br>
-                            <div class="container">
-                        <div class="row clearfix">
-                            <div class="col-md-12 table-responsive">
-                                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
-                                    <thead>
-                                        <tr >
-                                            <th class="text-center">
-                                                Element
-                                            </th>
-                                            <th class="text-center">
-                                                Produit
-                                            </th>
-                                            <th class="text-center">
-                                                Prix
-                                            </th>
-                                            <th class="text-center">
-                                                Option
-                                            </th>
-                                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr id='addr0' data-id="0" class="hidden">
-                                            <td data-name="name">
-                                                <input type="text" name='name0'  placeholder='Element' class="form-control"/>
-                                            </td>
-                                            <td data-name="mail">
-                                                <input type="text" name='mail0' placeholder='Produit' class="form-control"/>
-                                            </td>
-                                            <td data-name="desc">
-                                                <input name="desc0" placeholder="Prix" class="form-control">
-                                               
-                                            </td>
-                                            
-                                            <td data-name="del">
-                                                <button name="del0" class='btn btn-danger glyphicon glyphicon-remove row-remove'><span aria-hidden="true">×</span></button>
-                                            </td>
-                                            
-                                        </tr>
-                                    </tbody>
-                                   <tbody>
-                                   <tr id='profesor' class="hidden">
-                                   <div class="dynamic-stuff">
-                                                            
-                                    </div>
-
-                                    </tr>
-                                   </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <a id="add_row" class="btn btn-primary float-right">Add Row</a><br>
-                        <a id="profesor" class="btn btn-success add-one float-left">Ajouter</a>
-                        </div>
-                        </div>
-                        </div>
-                            </br>
-
-        <button type="submi name="souselements"t" class="btn btn-primary btn-lg col-md-3" title="enregistrer un nouveau devis">Ajouter</button>
-            <a href="{{ route('devis.index') }}" class="btn btn-warning btn-lg col-md-3 offset-md-1" title="Retour à la liste des devis">Annuler</a>
-                </div>
-      </form>
-       </div>
-        </div>
-    </div>
-
-</div>
-
-
-    @endcan
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script>
-        $(document).ready(function() {
-    $("#add_row").on("click", function() {
-        // Dynamic Rows Code
-      
-        // Get max row id and set new id
-        var newid = 0;
-        $.each($("#tab_logic tr"), function() {
-            if (parseInt($(this).data("id")) > newid) {
-                newid = parseInt($(this).data("id"));
-            }
-        });
-        newid++;
-        
-        var tr = $("<tr></tr>", {
-            id: "addr"+newid,
-            "data-id": newid
-        });
-        
-        // loop through each td and create new elements with name of newid
-        $.each($("#tab_logic tbody tr:nth(0) td"), function() {
-            var td;
-            var cur_td = $(this);
-            
-            var children = cur_td.children();
-            
-            // add new td and element if it has a nane
-            if ($(this).data("name") !== undefined) {
-                td = $("<td></td>", {
-                    "data-name": $(cur_td).data("name")
-                });
-                
-                var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
-                c.attr("name", $(cur_td).data("name") + newid);
-                c.appendTo($(td));
-                td.appendTo($(tr));
-            } else {
-                td = $("<td></td>", {
-                    'text': $('#tab_logic tr').length
-                }).appendTo($(tr));
-            }
-        });
-        
-        // add delete button and td
-        /*
-        $("<td></td>").append(
-            $("<button class='btn btn-danger glyphicon glyphicon-remove row-remove'></button>")
-                .click(function() {
-                    $(this).closest("tr").remove();
-                })
-        ).appendTo($(tr));
-        */
-        
-        // add the new row
-        $(tr).appendTo($('#tab_logic'));
-        
-        $(tr).find("td button.row-remove").on("click", function() {
-             $(this).closest("tr").remove();
-        });
-});
-
-
-
-
-    // Sortable Code
-    var fixHelperModified = function(e, tr) {
-        var $originals = tr.children();
-        var $helper = tr.clone();
-    
-        $helper.children().each(function(index) {
-            $(this).width($originals.eq(index).width())
-        });
-        
-        return $helper;
-    };
-  
-    $(".table-sortable tbody").sortable({
-        helper: fixHelperModified      
-    }).disableSelection();
-
-    $(".table-sortable thead").disableSelection();
-   ///iciciii
-    $("#add_row").trigger("click");
-});
-
-      //Clone the hidden element and shows it
-      $('.add-one').click(function(){
-  $('.dynamic-element').first().clone().appendTo('.dynamic-stuff').show();
-  attach_delete();
-});
-
-
-//Attach functionality to delete buttons
-function attach_delete(){
-  $('.delete').off();
-  $('.delete').click(function(){
-    console.log("click");
-    $(this).closest('.form-group').remove();
-  });
-}
-    </script>
-   
-<!-- HIDDEN DYNAMIC ELEMENT TO CLONE -->
-<!-- you can replace it with any other elements -->
-<div class="form-group dynamic-element" style="display:none">
-  <div class="row">
-  <div class="col-md-2"></div>
-    
-  <!-- Replace these fields -->
-  <div class="col-md-4">
-  <td>
-    <input type="text" id="profesor" name='profesor[]' placeholder='Produit' class="form-control"/>
-   </td>
-  </div>
-  <div class="col-md-3">
-  <td>
-    <input type="text" id="rol" name='rol[]' placeholder='Prix' class="form-control"/>
-   </td>
-  </div>
-    <!-- End of fields-->
-    <div class="col-md-1">
-      <p class="delete">x</p>
-    </div>
-  </div>
-</div>
-<!-- END OF HIDDEN ELEMENT -->
-
-
- </body>
-
+       });
+   </script>
+</body>
 @stop

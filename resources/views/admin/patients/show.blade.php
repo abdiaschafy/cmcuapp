@@ -152,8 +152,18 @@
                                                                                 <small>Fiches d'intervention</small>
                                                                             </button>
                                                                             <a href="{{ route('dossiers.create', $patient->id) }}"
-                                                                               class="btn btn-info btn-block">Completer
+                                                                               class="btn btn-info btn-block mb-2">Completer
                                                                                 le dossier</a>
+                                                                            @if (count($patient->consultations))
+                                                                                @can('medecin', \App\Patient::class)
+                                                                                    <a class="btn btn-success btn-block"
+                                                                                       title="Imprimer la lettre de sortie"
+                                                                                       href="{{ route('print.sortie', $patient->id) }}">
+                                                                                        <i class="fas fa-print"></i>
+                                                                                        Lettre de consultation
+                                                                                    </a>
+                                                                                @endcan
+                                                                            @endif
                                                                         </div>
                                                                     </div>
                                                                 @endcan

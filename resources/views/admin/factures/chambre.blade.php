@@ -65,6 +65,21 @@
                         {{--{{ $factures->links() }}--}}
                     </div>
                 </div>
+                <button class="btn btn-primary mb-2 offset-5">Ajouter une facture</button>
+                        <form class="form-group col-md-4" method="POST" action="{{ route('bilan_consultation.pdf') }}">
+                            @csrf
+                          <div class="input-group mb-3">
+                            <select name="day" class="form-control" required>
+                                <option>Bien vouloir choisir une date</option>
+                                @foreach($lists as $list)
+                                    <option value="{{ $list }}">{{ $list }}</option>
+                                @endforeach
+                            </select>
+                            <div class="input-group-append">
+                              <button class="btn btn-primary">Imprimer</button>
+                            </div>
+                          </div>
+                        </form>
             </div>
     </div>
     </div>

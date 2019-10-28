@@ -162,11 +162,23 @@
                 page-break-before: always
             }
         }
+
+        #watermark {
+                position: fixed;
+                top: 45%;
+                width: 100%;
+                text-align: center;
+                opacity: .2;
+                transform: rotate(10deg);
+                transform-origin: 50% 50%;
+            }
         
     </style>
 </head>
 <body>
-
+<div id="watermark">
+            <img src="{{ asset('admin/images/filigrane.PNG') }}" height="100%" width="100%" />
+        </div>
 <div class="container">
     <div class="row text-center">
         <img class="logo" src="{{ asset('admin/images/logo.jpg') }}" alt="">
