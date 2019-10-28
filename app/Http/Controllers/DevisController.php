@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\DevisRequest;
-use App\Http\Requests\DevisUpdateRequest;
 use App\Patient;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\Auth;
 use App\Devis;
-use Illuminate\Support\Facades\Request;
 
 class DevisController extends Controller
 {
     public function index()
     {
        
-        $devis = Devis::paginate(100);
+        $devis = Devis::latest()->get();
 
         return view('admin.devis.index', compact('devis'));
     }
