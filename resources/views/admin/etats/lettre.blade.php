@@ -11,7 +11,8 @@
         width: 100px;
     }
     p {
-        line-height: 40%;
+        line-height: 100%;
+        text-align: justify;
     }
     hr {
         display: block; height: 1px;
@@ -66,20 +67,28 @@
         <p>Douala, le {{ \Carbon\Carbon::now()->formatLocalized('%d %B %Y') }}</p>
     </div>
     <br>
-    <br>
-    <br>
     <p>Cher confrère, {{ $consultations->medecin }}</p>
     <br>
-    <p>Voici les informations concernant votre patient <b>{{ $consultations->patient->name }}</b> reçu en consultation au CMCU</p>
-    le {{ $consultations->created_at->formatLocalized('%d %B %Y') }} suite au diagnostic suivant: {!! nl2br(e($consultations->diagnostic)) !!}
-    <br>
-    <br>
+    <p>
+        Je vois à la consultation d’urologie ce {{ $consultations->created_at->formatLocalized('%d %B %Y') }} @if($dossiers->sexe == 'Masculin')Mr @else Me @endif
+        <b>{{ $consultations->patient->name }}</b> né le {{ $dossiers->date_naissance }}.
+    </p>
+    @if ($consultations->motif_c)
+        <p><b><u>MOTIF DE CONSULTATION</u> :</b> {{ $consultations->motif_c }}.</p>
+    @endif
+    @if ($consultations->examen_c)
+        <p><b><u>EXAMEN(S) COMPLEMENTAIRE(S)</u> :</b></p>
+        {!! nl2br(e($consultations->examen_c)) !!}. <br><br>
+    @endif
+    @if ($consultations->proposition_therapeutique)
+        <p><b><u>POPOSITION THERAPEUTIQUE</u> :</b> {{ $consultations->proposition_therapeutique }}.</p>
+    @endif
+    @if ($consultations->diagnostic)
+        <p><b><u>DIAGNOSTIC</u> :</b> {{ $consultations->diagnostic }}.</p>
+    @endif
     <p>Je reste bien entendu à votre entiere disposition pour tout échange d'informations.</p>
     <br>
-    <br>
-    <br>
-    <br>
-    <p>Bien cordialement</p>
+    <p>Bien Confraternellement</p>
     <footer class="footer">
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>

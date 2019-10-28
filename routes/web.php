@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::delete('patients/{patient}', 'PatientsController@destroy')->name('patients.destroy');
     Route::get('patient/{id}','PatientsController@generate_consultation')->name('consultation.pdf');
     Route::get('ordonance/{ordonance}','PatientsController@export_ordonance')->name('ordonance.pdf');
-    Route::get('bilan-consultation','FactureController@export_bilan_consultation')->name('bilan_consultation.pdf');
+    Route::post('bilan-consultation','FactureController@export_bilan_consultation')->name('bilan_consultation.pdf');
 
     //Route::post('patients/upload-image/{patientId}', 'PatientController@fileStore')->name('patients.upload');
     //Route::post('patients/delete-image', 'Patient@fileDestroy')->name('patients.deleteImage');
@@ -190,7 +190,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
 
     Route::get('client/{id}','ClientController@generate_client')->name('clientP.pdf');
     //Route::get('clients/{id}','ClientController@export_client')->name('clientP.pdf');
-    Route::get('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
+    Route::post('bilan-clientexterne','FactureController@export_bilan_clientexterne')->name('bilan_clientexterne.pdf');
 
 
 

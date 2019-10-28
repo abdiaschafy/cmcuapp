@@ -27,7 +27,7 @@ class PatientsController extends Controller
     public function index()
     {
         $this->authorize('update', Patient::class);
-        $patients = Patient::with('user')->latest()->paginate(100);
+        $patients = Patient::with('user')->latest()->get();
         return view('admin.patients.index', compact('patients'));
 
     }
@@ -201,7 +201,8 @@ class PatientsController extends Controller
 
         $pdf = PDF::loadView('admin.etats.lettre', [
             'patient' => $patient,
-            'consultations' => Consultation::latest()->first()
+            'consultations' => Consultation::where('patient_id', $patient->id)->latest()->first(),
+            'dossiers' => $patient->dossiers()->latest()->first(),
         ]);
 
         return $pdf->stream('lettre-sortie.pdf');
