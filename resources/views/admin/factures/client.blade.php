@@ -30,10 +30,7 @@
                                 <td>PATIENT</td>
                                 <td>MOTIF</td>
                                 <td>MONTANT</td>
-                                <td>PART ASSURANCE</td>
-                                <td>PART PATIENT</td>
                                 <td>AVANCE</td>
-                                <td>RESTE</td>
                                 <td>MEDECIN</td>
                                 <td>DATE</td>
                                 <td>ACTION</td>
@@ -42,13 +39,10 @@
                             @foreach($facturesClients as $facture)
                                 <tr>
                                     <td>{{$facture->id}}</td>
-                                    <td>{{$facture->client->nom }}</td>
+                                    <td>{{$facture->nom }}</td>
                                     <td>{{$facture->motif }}</td>
                                     <td>{{$facture->montant }} <b>FCFA</b></td>
-                                    <td>{{$facture->assurancec }} <b>FCFA</b></td>
-                                    <td>{{$facture->assurec }} <b>FCFA</b></td>
                                     <td>{{$facture->avance }} <b>FCFA</b></td>
-                                    <td>{{$facture->reste }} <b>FCFA</b></td>
                                     <td>{{$facture->medecin_r }}</td>
                                     <td>{{$facture->created_at}}</td>
                                     <td style="display: inline-flex;">

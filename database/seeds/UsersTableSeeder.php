@@ -321,6 +321,76 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('Happi@2019')
         ]);
 
+        $user2001 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'SANDJON',
+            'prenom' => 'Jean Paul',
+            'login' => 'SANDJON',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'ANESTHESISTE',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Sandjon@2019')
+        ]);
+
+        $user2101 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'EYOMGETA',
+            'prenom' => 'Divine',
+            'login' => 'EYOMGETA',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Eyomgeta@2019')
+        ]);
+
+        $user21041 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'TOUKAM',
+            'prenom' => 'Eve',
+            'login' => 'TOUKAM',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Féminin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Toukam@2019')
+        ]);
+
+        $user29041 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'CHENDJOU',
+            'prenom' => 'Brice',
+            'login' => 'CHENDJOU',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('Chendjou@2019')
+        ]);
+
+        $user29041 = \App\User::create([
+            'role_id' => '2',
+            'name' => 'EPOUPA NGALLE',
+            'prenom' => 'Franck',
+            'login' => 'EPOUPA',
+            'telephone' => mt_rand(10000000, 99999999),
+            'sexe' => 'Masculin',
+            'lieu_naissance' => 'Yaounde',
+            'specialite' => 'Chirurgien urologue',
+            'onmc' => '0000',
+            'date_naissance' => \Carbon\Carbon::createFromDate(1984,11,30)->toDateTimeString(),
+            'password' => bcrypt('ENFranck@2019')
+        ]);
+
         $user22 = \App\User::create([
             'role_id' => '3',
             'name' => 'ENDALE TITI',
