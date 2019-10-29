@@ -232,4 +232,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('imagerie_examens/{id}','ImagerieController@export_imageries')->name('imageries_examens.pdf');
 
     Route::post('active-licence', 'AdminController@ActiveLicence')->name('active_licence_key');
+
+    Route::get('consultationsdesuivi/create/{patient}', 'ConsultationSuiviController@create')->name('consultationsdesuivi.create');
+    Route::get('consultationsdesuivi/edit/{patient}', 'ConsultationSuiviController@edit')->name('consultationsdesuivi.edit');
+    Route::get('consultationsdesuivi/{patient}', 'ConsultationSuiviController@show')->name('consultationsdesuivi.show');
+    Route::post('consultationsdesuivi', 'ConsultationSuiviController@store')->name('consultationsdesuivi.store');
 });
