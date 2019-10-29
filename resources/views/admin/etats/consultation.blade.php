@@ -165,7 +165,7 @@
 
         #watermark {
                 position: fixed;
-                top: 45%;
+                top: 1%;
                 width: 100%;
                 text-align: center;
                 opacity: .2;
@@ -177,7 +177,7 @@
 </head>
 <body>
 <div id="watermark">
-            <img src="{{ asset('admin/images/filigrane.PNG') }}" height="100%" width="100%" />
+            <img src="{{ asset('admin/images/watermake.JPG') }}" height="100%" width="100%" />
         </div>
 <div class="container">
     <div class="row text-center">

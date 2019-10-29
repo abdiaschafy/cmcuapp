@@ -51,19 +51,19 @@
     </div>
     <div class="row">
         <div class="col-md-4">
-            <p><small><b>{{ $devis->patient->name }} {{ $devis->patient->prenom }}</b></small></p>
+            <p><small><b>Doit :{{ $devis->patient->name }} {{ $devis->patient->prenom }}</b></small></p>
         </div>
         <div class="col-md-4 offset-8">
             <p><small><b> Douala, {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
         </div>
     </div>
     <div class="text-center text-primary devis_numero">
-        <p><h4 class="devis"><u>DEVIS N°2019092015MSJJ</u></h4></p>
+        <p><h4 class="devis"><u>DEVIS N°{{ \Carbon\Carbon::now()->toDateString() . '/' . substr($devis->nom, 2,5) }}</u></h4></p>
     </div>
     <br>
 
     <div class="row">
-        <h5 class="text-center"><u>{{ $devis->nom}}</u></h5>
+        <h5 class="text-center"><u>{{ $devis->nom }}</u></h5>
     </div>
     <br>
 
