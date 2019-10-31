@@ -14,7 +14,7 @@
     <!--// top-bar -->
         @can('devis', \App\User::class)
         <div class="container">
-            <h1 class="text-center">LISTE DES DEVIS</h1>
+            <h1 class="text-center">DEVIS DÉTAILLÉ</h1>
         </div>
         <hr>
         <div class="container">
@@ -24,31 +24,27 @@
                         @include('partials.flash')
                         <table id="myTable" class="table table-bordred table-striped">
                             <thead>
+                            <th>DESIGNATION</th>
+                            <th>MONTANT</th>
                             <th>
-                                NOM
+                                ACTION
+                                <a href="{{ route('devisd.create') }}" class="btn btn-primary float-right" title="Vous allez jouter les elements d'un nouveau devis"><i class="fas fa-plus-circle"></i></a>
                             </th>
-                           
-                            <th>MONTANT TOTAL</th>
-                            <th>DATE DE CREATION</th>
-                            <th>ACTION</th>
                             </thead>
                             <tbody>
 
                             @foreach($devisd as $devi)
                                 <tr>
-                                    <td>{{ $devi->nom}}</td>
-                                    <td>{{ $devi->total3}}</td>
-                                   
-                                    <td>{{ $devi->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $devi->devis->nom}}</td>
+                                    <td>{{ $total = array_sum(explode('/', $devi->prix)) }} FCFA</td>
                                     
                                     <td style="display: inline-flex;">
-                                   
-{{--                                    @can('print_devis', \App\Patient::class)--}}
                                         <p data-placement="top" data-toggle="tooltip" title="Delete">
                                             <a class="btn btn-success btn-xs mr-1" title="Imprimer le devis" href="{{ route('devisd.pdf', $devi->id) }}"><i class="fas fa-print"></i></a>
                                         </p>
-{{--                                    @endcan--}}
-                                   
+                                        @can('create', \App\Patient::class)
+                                            <a href="{{ route('devis.edit', $devi->id) }}" class="btn btn-info mr-1" title="Attribuer le divis à un patient"><i class="far fa-edit"></i></a>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -56,17 +52,28 @@
                             </tbody>
                         </table>
                         <div class="clearfix"></div>
-                        {{--{{ $devis->links() }}--}}
                     </div>
                 </div>
             </div>
         </div>
 {{--        @can('print', \App\Patient::class)--}}
-            <div class="col-md-12 text-center">
+{{--            <div class="col-md-12 text-center">--}}
 
-                <a href="{{ route('devisd.create') }}" class="btn btn-primary" title="Vous allez jouter un nouveau devis ">Ajouter un devis</a>
-
-            </div>
+{{--                <form class="form-group" method="post" action="{{ route('devisd.pdf') }}">--}}
+{{--                    @csrf--}}
+{{--                    <div class="input-group mb-3">--}}
+{{--                        <select name="devis_id" class="form-control col-md-6" required>--}}
+{{--                            <option value=""> Nom du devis</option>--}}
+{{--                            @foreach ($devis as $devi)--}}
+{{--                                <option value="{{ $devi->id }}"> {{ $devi->nom }}</option>--}}
+{{--                            @endforeach--}}
+{{--                        </select>--}}
+{{--                        <div class="input-group-append">--}}
+{{--                            <button class="btn btn-primary">Imprimer</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
 {{--        @endcan--}}
 
         </div>
