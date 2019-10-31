@@ -16,7 +16,7 @@
 
 
           <div class="table-responsive">
-              <form method="post" id="dynamic_form" action="">
+              <form method="post" id="dynamic_form" action="{{ route('devisd.store') }}">
                   @csrf
                   <table class="table table-bordered table-striped">
                       <thead>
@@ -27,7 +27,14 @@
                                   <i class="far fa-plus-square"></i>
                               </button>
                           </th>
-                          <th colspan="3"></th>
+                          <th colspan="3">
+                              <select name="devis_id" class="form-control" required>
+                                  <option value=""> Nom du devis</option>
+                                  @foreach ($devis as $devi)
+                                      <option value="{{ $devi->id }}"> {{ $devi->nom }}</option>
+                                  @endforeach
+                              </select>
+                          </th>
                       </tr>
                       </thead>
                       <tbody>
@@ -64,19 +71,19 @@
                html = '<tr>';
                html += '' +
                    '<td>' +
-                   '<input id="0" type="text" name="medicament[]" class="form-control" />' +
+                   '<input id="0" type="text" name="categorie[]" oninput="this.value = this.value.toUpperCase()" class="form-control" />' +
                    '</td>'
                ;
                html += '' +
                    '<td>' +
-                   '<label for="1">Désignation :</label>' +
-                   '<input id="1" type="text" name="designation[]" class="form-control" />' +
+                   '<label for="1">Produit :</label>' +
+                   '<input id="1" type="text" name="produit[]" oninput="this.value = this.value.toUpperCase()" class="form-control" />' +
                    '</td>'
                ;
                html += '' +
                    '<td>' +
                    '<label for="3">prix :</label>' +
-                   '<input id="3" type="number" name="prix[]" min="0" class="form-control" />' +
+                   '<input id="3" type="number" name="prix[]" min="0" class="form-control" required/>' +
                    '</td>'
                ;
 

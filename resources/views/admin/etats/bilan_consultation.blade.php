@@ -65,7 +65,7 @@
                 <td><small>{{ $facture->assurancec }}</small></td>
                 <td><small>{{ $facture->demarcheur }}</small></td>
                 <td><small>{{ $facture->medecin_r }}</small></td>
-                <td><small>{{ $facture->created_at->ToDateString() }}</small></td>
+                <td><small>{{ $facture->date_insertion }}</small></td>
             </tr>
             @endforeach
             <tr>

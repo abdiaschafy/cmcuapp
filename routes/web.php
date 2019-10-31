@@ -179,7 +179,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth'] ], function () {
     Route::get('devisd/create', 'DevisdController@create')->name('devisd.create');
     Route::post('devisd', 'DevisdController@store')->name('devisd.store');
     Route::get('devisd', 'DevisdController@index')->name('devisd.index');
-    Route::get('devisd/{id}','DevisdController@export_devisd')->name('devisd.pdf');
+    Route::get('devis-print/{id}','DevisdController@export_devisd')->name('devisd.pdf');
    
 
     Route::get('clients', 'ClientController@index')->name('clients.index');
