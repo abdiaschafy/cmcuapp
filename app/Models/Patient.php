@@ -252,6 +252,12 @@ class Patient extends Model
         return $this->belongsTo(User::class);
     }
 
+
+    public function consultationdesuivi()
+    {
+        return $this->hasMany(ConsultationSuivi::class);
+    }
+
     public function event()
     {
         return $this->hasMany(Event::class);

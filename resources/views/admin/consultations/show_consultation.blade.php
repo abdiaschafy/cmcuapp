@@ -354,8 +354,8 @@
         @if (count($patient->consultations))
             @can('chirurgien', \App\Patient::class)
                 <td>
-                    <a class="btn btn-success" title="Consultation de suivi" href="#">
-                        <i class="fas fa-print"></i> Consultation de suivi
+                    <a class="btn btn-success" title="Consultation de suivi" href="{{ route('consultationsdesuivi.create', $patient->id) }}">
+                        <i class="fas fa-book"></i> Consultation de suivi
                     </a>
                 </td>
             @endcan

@@ -275,5 +275,10 @@ class User extends Authenticatable
         return $this->hasMany(FactureClient::class);
     }
 
+    public function consultationdesuivi()
+    {
+        return $this->hasMany(ConsultationSuivi::class);
+    }
+
 
 }

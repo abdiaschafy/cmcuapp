@@ -24,9 +24,9 @@ class ClientController extends Controller
 
     }
 
-    public function create()
+    public function create(User $user)
     {
-       
+        $this->authorize('update', Patient::class);
         $users = User::where('role_id', '=', 2)->with('patients')->get();
         return view('admin.clients.create',compact('users'));
     }
@@ -153,7 +153,7 @@ class ClientController extends Controller
     }
 
 
-    public function generate_client($id)
+    public function generate_client(Request $request, $id)
     {
         $this->authorize('update', Patient::class);
         $client = Client::find($id);
