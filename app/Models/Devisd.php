@@ -18,4 +18,9 @@ class Devisd extends Model
         {
             return $this->belongsTo(Devis::class);
         }
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }
