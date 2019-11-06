@@ -194,7 +194,6 @@ class FactureController extends Controller
         $this->authorize('update', Patient::class);
         $this->authorize('print', Patient::class);
         $patient = Patient::find($id);
-        $img = Image::make(public_path('admin/images/logo.jpg'));
 
         $pdf = PDF::loadView('admin.etats.consultation', ['patient' => $patient]);
 
