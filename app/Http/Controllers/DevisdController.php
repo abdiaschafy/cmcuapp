@@ -47,7 +47,10 @@ class DevisdController extends Controller
         $devisd->devis_id = $request->devis_id;
         $devisd->categorie = implode('/', $request->categorie);
         $devisd->produit = implode('/', $request->produit);
-        $devisd->prix = implode('/', $request->prix);
+        $devisd->quantite = implode('/', $request->quantite);
+        $devisd->prix_unit = implode('/', $request->prix_unit);
+
+        $devisd->prix = ((int)explode('/', $request->prix_unit)) * dd(((int)explode('/', $request->quantite)));
 
 //        for($count = 0; $count < count($categorie); $count++)
 //        {

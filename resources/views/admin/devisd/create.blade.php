@@ -82,8 +82,19 @@
                ;
                html += '' +
                    '<td>' +
+                   '<label for="3">Quanité :</label>' +
+                   '<input id="3" type="number" name="quantite[]" min="0" class="form-control" required/>' +
+                   '</td>'
+               ;
+               html += '' +
+                   '<td>' +
                    '<label for="3">prix :</label>' +
-                   '<input id="3" type="number" name="prix[]" min="0" class="form-control" required/>' +
+                   '<input id="3" type="number" name="prix_unit[]" min="0" class="form-control" required/>' +
+                   '</td>'
+               ;
+               html += '' +
+                   '<td>' +
+                   '<input id="3" type="hidden" name="prix[]" min="0" class="form-control"/>' +
                    '</td>'
                ;
 

@@ -60,7 +60,8 @@ class ClientController extends Controller
         $client->montant = $request->get('montant');
         $client->assurance = $request->get('assurance');
         $client->avance = $request->get('avance');
-        
+        $client->date_insertion = $request->get('date_insertion');
+
         $client->numero_assurance = $request->get('numero_assurance');
         $client->prise_en_charge = $request->get('prise_en_charge');
 
@@ -73,8 +74,8 @@ class ClientController extends Controller
             }else{
                 $client->reste = 0;
                 $client->avance = 0;
-                $client->partpatient = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
-                $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
+                $client->partassurance = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
+                $client->partpatient = ((int)$request->get('montant')) - ((int)$client->partpatient);
             }
         }else{
             if ($client->avance){
@@ -94,6 +95,7 @@ class ClientController extends Controller
          $client->assurance = $request->get('assurance');
 
             $client->motif = $request->get('motif');
+            $client->medecin_r = $request->get('medecin_r');
             $client->user_id = Auth::id();
             $client->save();
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Consultation;
 use App\ConsultationAnesthesiste;
+use App\Dossier;
 use App\FactureConsultation;
 use App\FicheConsommable;
 use App\FicheIntervention;
@@ -325,11 +326,12 @@ class PatientsController extends Controller
     public function export_ordonance($id)
     {
         //$this->authorize('print', Patient::class);
-        $ordonance = Ordonance::with('patient', 'user')->find($id);
 
-        $compteur = 1;
+        $pdf = PDF::loadView('admin.etats.ordonance', [
 
-        $pdf = PDF::loadView('admin.etats.ordonance', compact('ordonance', 'compteur'));
+            'compteur' => 1,
+            'ordonance' => Ordonance::with('patient', 'user')->find($id)
+        ]);
 
         return $pdf->stream('ordonance.pdf');
     }

@@ -20,7 +20,7 @@ class PrescriptionController extends Controller
     public function store(Request $request)
     {
        
-       $prescriptions = [];
+        $prescriptions = [];
         $patient = Patient::findOrFail($request->patient_id);
 
         $prescriptions = new Prescription ();

@@ -59,6 +59,10 @@
                 <td><b>PROPOSITION THERAPEUTIQUE :</b></td>
                 <td>{{ ($consultations->proposition_therapeutique) }}</td>
             </tr>
+            <tr>
+                <td><b>PROPOSITION DE SUIVI :</b></td>
+                <td>{{ ($consultations->proposition) }}</td>
+            </tr>
         @else
         <tr>
             <td>

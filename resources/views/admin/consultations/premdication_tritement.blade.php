@@ -104,7 +104,7 @@
                     <br>
                     <hr>
                     <h1 class="text-center">Traitement à l'hospitalistion</h1>
-                    @can('infirmier', \App\Patient::class)
+                    @can('med_inf_anes', \App\Patient::class)
                         <div class="row">
                             <div class="container">
                                 <div class="table-responsive">
@@ -134,7 +134,7 @@
                                             <tbody>
                                             <tr>
                                                 <td>
-                                                    <textarea name="medicament_posologie_dosage" id="" cols="50" class="form-control" rows="2" disabled>@if(!empty($medicament)){{ $medicament->medicament }}@endif</textarea>
+                                                    <textarea name="medicament_posologie_dosage" cols="50" class="form-control" rows="2" disabled>@if(!empty($medicament)){{ $medicament->medicament }}@endif</textarea>
                                                 </td>
                                                 <td><input type="number" class="form-control" name="duree"></td>
                                                 <td><input type="checkbox" value="Ok" name="j"></td>
@@ -207,7 +207,7 @@
                     <br>
                     <hr class="pb-3 pt-3">
                     <h1 class="text-center">Adaptation du traitemen personnel</h1>
-                    @can('infirmier', \App\Patient::class)
+                    @can('med_inf_anes', \App\Patient::class)
                     <div class="table-responsive">
                         <form method="post" action="{{ route('adaptation_traitement.store') }}">
                             @csrf
