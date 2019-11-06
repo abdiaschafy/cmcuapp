@@ -70,12 +70,14 @@
             @endforeach
             <tr>
                 <td><h4>TOTAL en Fcfa:</h4></td>
-                <td></td>
                 <td><h5>{{ $tautaux }}</h5></td>
+                <td></td>
                 <td>{{ $avances }}</td>
                 <td>{{ $restes }}</td>
                 <td>{{ $clients }}</td>
                 <td>{{ $assurances }}</td>
+                <td></td>
+                <td></td>
                 <td></td>
             </tr>
         </table>

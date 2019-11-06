@@ -6,7 +6,7 @@
         </h1>
         <span>M</span>
     </div>
-    <img src="{{ asset('admin/images/licence_image.jpg') }}" class="profile-bg img-fluid" style="width: 100%">
+    <img src="{{ asset('admin/images/logo.jpg') }}" class="profile-bg img-fluid" style="width: 100%">
     <ul class="list-unstyled components">
         <li class="active">
             <a href="{{ route('admin.dashboard') }}">

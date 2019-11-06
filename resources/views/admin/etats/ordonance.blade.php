@@ -7,7 +7,7 @@
         width: 100px;
     }
     p {
-        line-height: 40%;
+        line-height: 100%;
     }
     hr {
         display: block; height: 1px;
@@ -67,14 +67,14 @@
     <br>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
             @foreach(explode(",", $ordonance->medicament) as $medicament)
                 <ul>
                     <p>{{ $compteur++ }} -   <u>{{ $medicament }}</u></p>
                 </ul>
             @endforeach
         </div>
-        <div class="col-md-4 offset-3">
+        <div class="col-md-3 offset-4">
             @foreach(explode(",", $ordonance->quantite) as $quantite)
                 <ul>
                     <p>
