@@ -57,12 +57,14 @@ class AnesthesisteController extends Controller
 
     }
 
-    public function TraitementHospitalisationStore()
+    public function TraitementHospitalisationStore(Patient $patient)
     {
+        $medicament = Premedication::with('patient', 'user')->get();
+
         TraitementHospitalisation::create([
             'user_id' => auth()->id(),
             'patient_id' => \request('patient_id'),
-            'medicament_posologie_dosage' => \request('medicament_posologie_dosage'),
+            'medicament_posologie_dosage' => $medicament->name,
             'duree' => \request('duree'),
             'j' => \request('j'),
             'j0' => \request('j0'),

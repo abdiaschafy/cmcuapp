@@ -3,7 +3,7 @@
     <td>
         <b>NOM ET PRENOM DU PATIENT :</b>
     </td>
-    <td>{{ $patient->name }}</td>
+    <td>{{ $patient->name }} {{ $patient->prenom }}</td>
 </tr>
 <tr>
     <td>

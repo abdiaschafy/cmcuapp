@@ -11,7 +11,7 @@
         width: 100px;
     }
     p {
-        line-height: 100%;
+        line-height: 140%;
         text-align: justify;
     }
     hr {
@@ -50,31 +50,42 @@
 
     <div class="row">
         <div class="col-4">
-            <p>Dr <small>{{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></p>
-            <p><small>{{ $consultations->user->specialite }}</small></p>
-            <p>Onmc: <small>{{ $consultations->user->onmc }}</small></p>
+            <span>Dr <small>{{ $consultations->user->name }}</small> <small>{{ $consultations->user->prenom }}</small></span><br>
+            <span><small>{{ $consultations->user->specialite }}</small></span><br>
+            <span>Onmc: <small>{{ $consultations->user->onmc }}</small></span>
         </div>
-        <div class="col-6 offset-5">
-            <p><small><u>Date:</u><b> {{ $consultations->created_at->formatLocalized('%d %B %Y') }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $consultations->patient->name }}</p>
+        <div class="col-5 offset-6">
+{{--            <p><small><u>Date:</u><b> {{ $consultations->created_at->formatLocalized('%d %B %Y') }}</b></small></p>--}}
+            <p>Douala, le {{ \Carbon\Carbon::now()->formatLocalized('%d %B %Y') }}</p>
         </div>
     </div>
     <div class="row">
         Ref: {{ $patient->numero_dossier .'/'. $consultations->id }}
     </div>
     <br>
-    <div class="row col-md-5 offset-7">
-        <p>Douala, le {{ \Carbon\Carbon::now()->formatLocalized('%d %B %Y') }}</p>
+    <div class="row col-md-5 offset-3">
+        <div class="row">
+            <h4><u>LETTRE DE CONSULTATION</u></h4>
+        </div>
     </div>
+    <div class="row col-md-5 offset-3">
+        <div class="row">
+            <p>Concernant @if($dossiers->sexe == 'Masculin')Mr @else Me @endif {{ $consultations->patient->name }} {{ $consultations->patient->prenom }}</p>
+        </div>
+    </div>
+    <br>
     <br>
     <p>Cher confrère, {{ $consultations->medecin }}</p>
     <br>
     <p>
         Je vois à la consultation d’urologie ce {{ $consultations->created_at->formatLocalized('%d %B %Y') }} @if($dossiers->sexe == 'Masculin')Mr @else Me @endif
-        <b>{{ $consultations->patient->name }}</b> né le {{ $dossiers->date_naissance }}.
+        <b>{{ $consultations->patient->name }} {{ $consultations->patient->prenom }}</b> né le {{ $dossiers->date_naissance }}.
     </p>
     @if ($consultations->motif_c)
-        <p><b><u>MOTIF DE CONSULTATION</u> :</b> {{ $consultations->motif_c }}.</p>
+        <p>
+            <b><u>MOTIF DE CONSULTATION</u> :</b> {{ $consultations->motif_c }}.
+            Signalons également les antécédents suivant : @if($consultations->antecedent_m){{ $consultations->antecedent_m }}@endif
+        </p>
     @endif
     @if ($consultations->examen_c)
         <p><b><u>EXAMEN(S) COMPLEMENTAIRE(S)</u> :</b></p>
@@ -86,6 +97,26 @@
     @if ($consultations->diagnostic)
         <p><b><u>DIAGNOSTIC</u> :</b> {{ $consultations->diagnostic }}.</p>
     @endif
+    @if ($consultations->proposition)
+        @if ($consultations->proposition == 'Hospitalisation')
+            Le patient sera hospitalisé pour un suivi médical.
+        @endif
+        @if ($consultations->proposition == 'Consultation')
+            Le patient sera revu en consultation le {{ $consultations->date_consultation }}.
+        @endif
+        @if ($consultations->proposition == 'Consultation d\'anesthésiste')
+            Le patient est programmé pour une consultation avec l'anesthésiste en date du {{ $consultations->date_consultation }}.
+        @endif
+        @if ($consultations->proposition == 'Intervention chirurgicale')
+                Il a été clairement expliqué au patient la nécessité de recourir à un
+                geste chirurgical dont les détails sont contenus dans la fiche d'intervention.
+        @endif
+        @if ($consultations->proposition == 'Actes à réaliser')
+            <p><b><u>ACTES A REALISER</u> :</b> {{ $consultations->acte }}</p>
+        @endif
+    @endif
+    <br>
+    <br>
     <p>Je reste bien entendu à votre entiere disposition pour tout échange d'informations.</p>
     <br>
     <p>Bien Confraternellement</p>
