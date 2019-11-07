@@ -1,22 +1,30 @@
 <link href="{{ asset('admin/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 <style>
     .cpi-titulo3 {
-        font-size: 12px;
+        font-size: 10px;
     }
     .logo{
         width: 100px;
     }
     p {
-        line-height: 40%;
+        line-height: 100%;
+        font-family: 'Crimson Text', sans-serif !important;
     }
     hr {
         display: block; height: 1px;
         border: 0; border-top: 1px solid red;
         margin: 1em 0; padding: 0;
     }
+    .h4 {
+        text-align: center;
+    }
+    .force{
+        margin-top: -85px !important;
+        margin-right: 50px !important;
+    }
     .footer {
         padding-top: 1px;
-        padding-bottom: 15px;
+        padding-bottom: 80px;
         position:fixed;
         bottom:5;
         width:100%;
@@ -45,54 +53,72 @@
 
     <div class="row">
         <div class="col-md-4">
-            <p><small><b>Chirurgien:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></p>
-            <p><small><b>Anesthesiste:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></p>
+            <span><small><b>Chirurgien:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></span><br>
+            <span><small><b>Aide opératoire:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->aide_op }}</small></span><br>
+            <span><small><b>Anesthesiste:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></span><br>
+            <span><small><b>Infirmier anesthesiste:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></span>
         </div>
-        <div class="col-md-3 offset-5">
-            <p><small><u>Date:</u><b> {{ $date = \Carbon\Carbon::now()->toFormattedDateString() }}</b></small></p>
-            <p><u>Nom du patient:</u> {{ $patient->name }}</p>
+        <div class="col-md-3 offset-6">
+            <span><small><b>DATE D'ENTREE :</b> {{ $patient->compte_rendu_bloc_operatoires->last()->date_e }}</small></span><br>
+            <span><small><b>TYPE D'ENTREE :</b> {{ $patient->compte_rendu_bloc_operatoires->last()->type_e }}</small></span><br>
+            <span><small><b>DATE DE SORTIE :</b> {{ $patient->compte_rendu_bloc_operatoires->last()->date_s }}</small></span><br>
+            <span><small><b>TYPE DE SORTIE :</b> {{ $patient->compte_rendu_bloc_operatoires->last()->type_s }}</small></span><br>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
+
+    <p class="force"><h4 class="h4"><u>COMPTE-RENDU OPERATOIRE</u></h4></p>
+
+    <div class="row col-md-5 offset-3">
+        <div class="row">
+            <p>Concernant le patient {{ $patient->name }} {{ $patient->prenom }} pour {{ $patient->compte_rendu_bloc_operatoires->last()->titre_intervention }}</p>
+        </div>
+    </div>
     <div class="row">
-        <h5 class="text-center"><u class="text-danger">{{ $patient->consultations->last()->diagnostique }}</u></h5>
+        <p class="text-center"><u class="text-danger">{{ $patient->consultations->last()->diagnostique }}</u></p>
     </div>
     <br>
-    <h4 class="text-"><u>TYPE D'INTERVENTION :</u></h4>
+    <h6 class="text-"><u>TYPE D'INTERVENTION :</u></h6>
     <div class="">
-        <h5>
-            {!! nl2br(e($patient->consultations->last()->type_intervention)) !!}
-        </h5>
+        <p>
+            <b>{!! nl2br(e($patient->consultations->last()->type_intervention)) !!}</b>
+        </p>
     </div>
-    <br>
-    <h4 class="text-"><u>INDICATION OPERATOIRE :</u></h4>
+    <h6 class="text-"><u>DATE D'INTERVENTION :</u> {{ $patient->compte_rendu_bloc_operatoires->last()->date_intervention }}</h6>
+    <h6 class="text-"><u>INDICATIONS OPERATOIRES :</u></h6>
     <div class="">
-        <h5>
-            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->compte_rendu_o)) !!}
-        </h5>
-    </div>
-    <br>
-    <br>
-    <h4 class="text-"><u>INTERVENTION :</u></h4>
-    <div class="">
-        <h5>
+        <p>
             {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->indication_operatoire)) !!}
-        </h5>
+        </p>
     </div>
-    <br>
-    <br>
-    <h4 class="text-"><u>SUITES OPERATOIRES :</u></h4>
+    <h6 class="text-"><u>COMPTE-RENDU OPERATOIRE :</u></h6>
     <div class="">
-        <h5>
+        <p>
+            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->compte_rendu_o)) !!}
+        </p>
+    </div>
+    <h6 class="text-"><u>SUITES OPERATOIRES :</u></h6>
+    <div class="">
+        <p>
             {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->suite_operatoire)) !!}
-        </h5>
+        </p>
+    </div>
+    <h6 class="text-"><u>CONCLUSIONS :</u></h6>
+    <div class="">
+        <p>
+            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->conclusion)) !!}
+        </p>
+    </div>
+    <h6 class="text-"><u>PROPOSITION DE SUIVI :</u></h6>
+    <div class="">
+        <p>
+            {!! nl2br(e($patient->compte_rendu_bloc_operatoires->last()->proposition_suivi)) !!}
+        </p>
     </div>
     <footer class="footer">
+        <p class="offset-8"><b>Dr {{ auth()->user()->name }}</b></p>
         <div class="text-center col-6 offset-2">
-            <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
-            <small>www.cmcu-cm.com</small>
+            <!-- <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small> -->
+            <!-- <small>www.cmcu-cm.com</small> -->
         </div>
     </footer>
 </div>

@@ -166,6 +166,7 @@
         </div>
     </div>
     <footer class="footer">
+        <p class="offset-8"><b>Dr {{ auth()->user()->name }}</b></p>
         <div class="text-center col-6 offset-2">
             <small>TEL:(+237) 233 423 389 / 674 068 988 / 698 873 945</small>
             <small>www.cmcu-cm.com</small>

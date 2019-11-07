@@ -17,7 +17,7 @@ class ChirurgienController extends Controller
 
         return view('admin.consultations.observation_medicale', [
 
-            'anesthesistes' => User::where('name', '=', 'TENKE')->get(),
+            'anesthesistes' => User::whereIn('users.name', ['TENKE', 'SANDJON'])->get(),
             'users' => User::where('role_id', '=', 2)->get(),
             'patient' => $patient,
             'patient_externes' => Client::orderBy('nom', 'asc')->get(),

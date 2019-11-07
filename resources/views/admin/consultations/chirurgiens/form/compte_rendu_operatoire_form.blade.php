@@ -26,7 +26,7 @@
             {{ Form::date('date_e', null, ['class' => 'form-control', 'required' => 'required']) }}
         </td>
         <td>
-            {{ Form::select('type_e', ['Urgence' => 'Urgence', 'Hospitalisation' => 'Hospitalisation'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Motif d\'entrer', 'required' => 'required']) }}
+            {{ Form::select('type_e', ['Urgence' => 'Urgence', 'Hospitalisation' => 'Hospitalisation', 'Ambulatoire' => 'Ambulatoire'], null, ['class' => 'form-control col-md-6', 'placeholder' => 'Motif d\'entrée', 'required' => 'required']) }}
         </td>
     </tr>
     <tr>
@@ -95,14 +95,15 @@
     <tr>
         <td><b>Infirmier anesthésiste :</b> <span class="text-danger">*</span></td>
         <td>
-            <select class="form-control col-md-6" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
+            <input class="form-control" type="text" name="infirmier_anesthesiste" value="{{ old('infirmier_anesthesiste', $compteRenduBlocOperatoire->infirmier_anesthesiste) }}" placeholder="Nom de l'infirmier anesthésiste" required="">
+            <!-- <select class="form-control col-md-6" name="infirmier_anesthesiste" id="infirmier_anesthesiste" required>
                 <option value=""> Nom de l'infirmier anesthésiste</option>
                 @foreach ($infirmierAnesthesistes as $infirmierAnesthesiste)
                     <option
                         value="{{ $infirmierAnesthesiste->name }} {{ $infirmierAnesthesiste->prenom }}" {{old('infirmier_anesthesiste', $compteRenduBlocOperatoire->infirmier_anesthesiste) == ($infirmierAnesthesiste->name . ' ' . $infirmierAnesthesiste->prenom) ? 'selected' : ''}}>{{ $infirmierAnesthesiste->name }} {{ $infirmierAnesthesiste->prenom }}
                     </option>
                 @endforeach
-            </select>
+            </select> -->
         </td>
     </tr>
     <tr>
@@ -110,6 +111,14 @@
             <h5 class="text-primary"><strong>DETAILS OPERATIONS</strong></h5>
         </td>
         <td></td>
+    </tr>
+    <tr>
+        <td><b>Titre de l'intervention</b> <span class="text-danger">*</span></td>
+        <td>{{ Form::text('titre_intervention', null, ['class' => 'form-control', 'placeholder' => 'Tire de l\'intervention', 'required' => 'required']) }}</td>
+    </tr>
+    <tr>
+        <td><b>Type d'intervention</b> <span class="text-danger">*</span></td>
+        <td>{{ Form::text('type_intervention', null, ['class' => 'form-control', 'placeholder' => 'Type\'intervention', 'required' => 'required']) }}</td>
     </tr>
     <tr>
         <td><b>Date de l'inervention :</b> <span class="text-danger">*</span></td>
@@ -143,6 +152,10 @@
     <tr>
         <td><b>Soins et examens à réaliser :</b></td>
         <td>{{ Form::textarea('soins', null, ['class' => 'form-control splitLines', 'rows' => '4']) }}</td>
+    </tr>
+    <tr>
+        <td><b>Proposition de suivi :</b></td>
+        <td>{{ Form::textarea('proposition_suivi', null, ['class' => 'form-control splitLines', 'rows' => '3']) }}</td>
     </tr>
     <tr>
         <td><b>Conclusions :</b> <span class="text-danger">*</span></td>

@@ -32,7 +32,7 @@ class CompteRenduBlocOperatoireController extends Controller
             'compteRenduBlocOperatoire' => $compteRenduBlocOperatoire,
             'patient' => $patient,
             'users' => User::where('role_id', '=', 2)->get(),
-            'anesthesistes' => User::where('name', '=', 'TENKE')->get(),
+            'anesthesistes' => User::whereIn('users.name', ['TENKE', 'SANDJON'])->get(),
             'infirmierAnesthesistes' => User::where('role_id', '=', 4)->get()
         ]);
     }
@@ -44,7 +44,7 @@ class CompteRenduBlocOperatoireController extends Controller
             'compteRenduBlocOperatoire' => CompteRenduBlocOperatoire::with('user')->where('patient_id', $patient->id)->latest()->first(),
             'patient' => $patient,
             'users' => User::where('role_id', '=', 2)->get(),
-            'anesthesistes' => User::where('name', '=', 'TENKE')->get(),
+            'anesthesistes' => User::whereIn('users.name', ['TENKE', 'SANDJON'])->get(),
             'infirmierAnesthesistes' => User::where('role_id', '=', 4)->get()
         ]);
     }
@@ -69,6 +69,9 @@ class CompteRenduBlocOperatoireController extends Controller
             'conclusion' => \request('conclusion'),
             'dure_intervention' => \request('dure_intervention'),
             'date_intervention' => \request('date_intervention'),
+            'titre_intervention' => \request('titre_intervention'),
+            'type_intervention' => \request('type_intervention'),
+            'proposition_suivi' => \request('proposition_suivi'),
             'date_e'=> request('date_e'),
             'date_s'=> request('date_s'),
             'type_e'=> request('type_e'),
@@ -128,8 +131,6 @@ class CompteRenduBlocOperatoireController extends Controller
         $patient = Patient::with('compte_rendu_bloc_operatoires', 'consultations')->findOrFail($id);
 
         $pdf = PDF::loadView('admin.etats.crbo', compact('patient'));
-
-        $pdf->save(storage_path('crbo').'.pdf');
 
         return $pdf->stream('crbo.pdf');
     }
