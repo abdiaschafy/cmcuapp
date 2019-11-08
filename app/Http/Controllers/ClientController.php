@@ -69,11 +69,12 @@ class ClientController extends Controller
         $client->partpatient = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
         if ($client->assurance){
             if ($client->avance){
-                $client->reste =( $client->partpatient - $client->avance);
+                $client->reste = ($client->partpatient - $client->avance);
+                $client->avance = $client->avance;
                 $client->partassurance = ((int)$request->get('montant')) - ((int)$client->partpatient);
             }else{
                 $client->reste = 0;
-                $client->avance = 0;
+                $client->avance = $client->partpatient;
                 $client->partassurance = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
                 $client->partpatient = ((int)$request->get('montant')) - ((int)$client->partpatient);
             }
@@ -84,11 +85,9 @@ class ClientController extends Controller
                 $client->partassurance = 0;
             }else{
                 $client->reste = 0;
-                $client->avance = 0;
+                $client->avance = $request->get('montant');
                 $client->partassurance = 0;
-                $client->medecin_r = ( $request->get('medecin_r'));
-                $client->date_insertion = $request->get('date_insertion');
-                $client->partpatient = $request->get('montant');
+                $client->partpatient = 0;
             }
         }
         

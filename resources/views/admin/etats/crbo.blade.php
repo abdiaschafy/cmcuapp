@@ -64,10 +64,10 @@
 
     <div class="row">
         <div class="col-md-4">
-            <span><small><b>Chirurgien:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></span><br>
-            <span><small><b>Aide opératoire:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->aide_op }}</small></span><br>
-            <span><small><b>Anesthesiste:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></span><br>
-            <span><small><b>Infirmier anesthesiste:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></span>
+            <span><small><b>CHIRURGIEN :</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></span><br>
+            <span><small><b>AIDE OPERATOIRE:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->aide_op }}</small></span><br>
+            <span><small><b>ANESTHESISTE :</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->anesthesiste }}</small></span><br>
+            <span><small><b>INFIRMIER ANESTHESISTE:</b> {{ $patient->compte_rendu_bloc_operatoires->last()->infirmier_anesthesiste }}</small></span>
         </div>
         <div class="col-md-2 offset-7">
             <span><small><b>DATE D'ENTREE :</b> {{ $patient->compte_rendu_bloc_operatoires->last()->date_e }}</small></span><br>

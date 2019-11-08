@@ -81,11 +81,12 @@ class PatientsController extends Controller
         $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
         if ($patient->assurance) {
             if ($patient->avance) {
-                $patient->reste = $patient->assurancec - $patient->avance;
+                $patient->reste = $patient->assurec - $patient->avance;
+                $patient->avance = $patient->avance;
                 $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
             } else {
                 $patient->reste = 0;
-                $patient->avance = 0;
+                $patient->avance = $patient->assurec;
                 $patient->assurec = ((int)$request->get('montant') * (((int)$request->get('prise_en_charge')) / 100));
                 $patient->assurancec = ((int)$request->get('montant')) - ((int)$patient->assurec);
             }
@@ -96,9 +97,9 @@ class PatientsController extends Controller
                 $patient->assurancec = 0;
             } else {
                 $patient->reste = 0;
-                $patient->avance = 0;
+                $patient->avance = $request->get('montant');
                 $patient->assurancec = 0;
-                $patient->assurec = $request->get('montant');
+                $patient->assurec = 0;
             }
         }
 

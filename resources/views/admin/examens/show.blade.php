@@ -15,7 +15,7 @@
  
     
         <div class="col-sm-9" style="pading-top: 30px;">
-            <img   src="{{ asset('public/images/' . $examens->image) }}" heigth="1000px" width="800px" >
+            <img   src="{{ asset('images/' . $examens->image) }}" heigth="1000px" width="800px" >
             
             <div style="text-align:center; pading-top: 50px; ">
                 <br>
