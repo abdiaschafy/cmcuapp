@@ -54,6 +54,8 @@
                                                 <input type="checkbox" name="apre_midi">
                                                 <label> <b>S :</b></label>
                                                 <input type="checkbox" name="soir">
+                                                <label> <b>N :</b></label>
+                                                <input type="checkbox" name="nuit">
                                             </td>
                                         </tr>
 

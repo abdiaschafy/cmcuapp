@@ -30,10 +30,11 @@
                                 <th>POSOLOGIE</th>
                                 <th>H</th>
                                 <th>VOIE</th>
-                                <th>N</th>
                                 <th>M</th>
                                 <th>AM</th>
                                 <th>S</th>
+                                <th>N</th>
+                                <th>PLANIFIER</th>
                                 <th>IDE</th>
                             </tr>
                             <tbody>
@@ -49,6 +50,7 @@
                                     <td>{{ $prescription_medicale->soir }}</td>
                                     <td>{{ $prescription_medicale->nuit }}</td>
                                     <td>{{ $prescription_medicale->user->name }}</td>
+                                    <td><button title="V" class="btn btn-primary"><i class="fas fa-eye"></i></button></td>
                                 </tr>
                             @endforeach
                             </tbody>

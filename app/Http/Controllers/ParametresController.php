@@ -91,6 +91,7 @@ class ParametresController extends Controller
             'voie' => request('voie'),
             'heure' => request('heure'),
             'matin' => request('matin'),
+            'nuit' => request('nuit'),
             'apre_midi' => request('apre_midi'),
             'soir' => request('soir'),
             'regime' => request('regime'),

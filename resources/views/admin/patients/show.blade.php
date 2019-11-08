@@ -89,6 +89,9 @@
                                             <button type="button" class="btn btn-primary btn-block mb-2" title="Liste des examens pour ce patient" data-toggle="modal" data-target="#imagerieAll" data-whatever="@mdo">
                                                 <i class="fas fa-eye"></i> Examens Imagerie
                                             </button>
+                                            <a href="{{ route('examens.index') }}" class="btn btn-primary btn-block mb-2" title="Détails surveillance post-aneshésiste">
+                                                <i class="fas fa-eye"></i> Résultats d'examens
+                                            </a>
                                             <a href="{{ route('surveillance_post_anesthesise.index', $patient->id) }}" class="btn btn-primary btn-block mb-2" title="Détails surveillance post-aneshésiste">
                                                 <i class="fas fa-eye"></i> Surveillance post-anesthésique
                                             </a>

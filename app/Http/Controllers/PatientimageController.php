@@ -34,12 +34,20 @@ class PatientimageController extends Controller
         $examens->type = $request->get('type');
         $examens->patient_id = $request->patient_id;
 
-        $image = $request->file('image');
+// dd($request->hasFile('image'));
+$image = $request->file('image');
         $filename['image'] = time() . '.' . $image->getClientOriginalExtension();
-        $location = 'images/' . $filename['image'];
-        Image::make($image)->resize(800, 400)->save($location);
+        $location = 'images/';
+        // Image::make($image->getRealPath())->resize(800, 400)->save($location);
+        $image->move($location, $filename['image']);
         $examens->image = $filename['image'];
         $examens->save();
+
+        // $image = $request->file('image');
+        // $filename['image'] = time() . '.' . $image->getClientOriginalExtension();
+        // dd($image->move('upload/images' . '.jpeg'));
+        // $examens->image = $filename['image'];
+        // $examens->save();
     
            
         return redirect()->route('examens.index')->with('success', 'examen ajouté avec succès !');

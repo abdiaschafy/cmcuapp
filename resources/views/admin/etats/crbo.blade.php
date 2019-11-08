@@ -19,7 +19,7 @@
         text-align: center;
     }
     .force{
-        margin-top: -85px !important;
+        margin-top: -10px !important;
         margin-right: 50px !important;
     }
     .footer {
@@ -51,6 +51,14 @@
         <hr class="text-danger">
     </div>
 
+    <p class="force"><h4 class="h4"><u>COMPTE-RENDU OPERATOIRE</u></h4></p>
+
+    <div class="row col-md-5 offset-2">
+        <div class="row">
+            <p>Concernant le patient {{ $patient->name }} {{ $patient->prenom }} pour <b>{{ $patient->compte_rendu_bloc_operatoires->last()->titre_intervention }}</b></p>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-4">
             <span><small><b>Chirurgien:</b> Dr. {{ $patient->compte_rendu_bloc_operatoires->last()->chirurgien }}</small></span><br>
@@ -66,17 +74,6 @@
         </div>
     </div>
 
-    <p class="force"><h4 class="h4"><u>COMPTE-RENDU OPERATOIRE</u></h4></p>
-
-    <div class="row col-md-5 offset-3">
-        <div class="row">
-            <p>Concernant le patient {{ $patient->name }} {{ $patient->prenom }} pour {{ $patient->compte_rendu_bloc_operatoires->last()->titre_intervention }}</p>
-        </div>
-    </div>
-    <div class="row">
-        <p class="text-center"><u class="text-danger">{{ $patient->consultations->last()->diagnostique }}</u></p>
-    </div>
-    <br>
     <h6 class="text-"><u>TYPE D'INTERVENTION :</u></h6>
     <div class="">
         <p>
